@@ -100,7 +100,11 @@ WindArrowRenderer::Draw(Canvas &canvas, const Angle screen_angle,
 
   const unsigned offset = uround(M_SQRT2 * wind.norm);
   BulkPixelPoint label[] = {
+// #ifdef _MSC_VER
+//     { 18, static_cast<double>(-26 - int(offset)) },
+// #else
     { 18, -26 - int(offset) },
+// #endif
   };
   PolygonRotateShift(label, ARRAY_SIZE(label),
                      pos, wind.bearing - screen_angle);

@@ -212,7 +212,7 @@ dlgStartupShowModal()
   if (dff->GetNumFiles() == 1) {
     /* skip this dialog if there is only one */
     const auto path = dff->GetPathFile();
-    if (ProfileFileHasPassword(path) == TriState::FALSE &&
+    if (ProfileFileHasPassword(path) == TriState::False &&
         SelectProfile(path)) {
       delete dff;
       return true;

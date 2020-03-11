@@ -20,6 +20,10 @@
 }
  */
 
+#ifdef  _MSC_VER
+#include "Util/Compiler.h"
+#endif  // _MSC_VER
+
 #include "Task/MapTaskManager.hpp"
 #include "Task/ProtectedTaskManager.hpp"
 #include "Components.hpp"

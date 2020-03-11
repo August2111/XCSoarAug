@@ -24,6 +24,7 @@ Copyright_License {
 #ifndef XCSOAR_THREAD_SHARED_MUTEX_HXX
 #define XCSOAR_THREAD_SHARED_MUTEX_HXX
 
+#include "Util/Compiler.h"
 #include <shared_mutex>
 
 #ifdef _WIN32

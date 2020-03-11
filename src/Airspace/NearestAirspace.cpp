@@ -35,7 +35,7 @@ Copyright_License {
 #include "NMEA/Derived.hpp"
 
 gcc_pure
-__attribute__((always_inline))
+gcc_always_inline
 static inline NearestAirspace
 CalculateNearestAirspaceHorizontal(const GeoPoint &location,
                                    const FlatProjection &projection,

@@ -107,7 +107,7 @@ ifeq ($(TARGET),PC)
     TARGET_ARCH += -m64
   else
     HOST_TRIPLET = i686-w64-mingw32
-    TARGET_ARCH += -march=i586
+    TARGET_ARCH +=-march=i586
   endif
   TCPREFIX = $(HOST_TRIPLET)-
 
@@ -125,7 +125,7 @@ endif
 ifeq ($(TARGET),CYGWIN)
   TCPREFIX :=
 
-  TARGET_ARCH += -march=i586
+  TARGET_ARCH +=-march=i586
 
   WINVER = 0x0600
 

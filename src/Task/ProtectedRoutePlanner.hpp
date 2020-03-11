@@ -23,9 +23,9 @@
 #ifndef XCSOAR_PROTECTED_ROUTE_PLANNER_HPP
 #define XCSOAR_PROTECTED_ROUTE_PLANNER_HPP
 
+#include "Util/Compiler.h"
 #include "Thread/Guard.hpp"
 #include "Task/RoutePlannerGlue.hpp"
-#include "Util/Compiler.h"
 
 struct GlideSettings;
 struct RoutePlannerConfig;

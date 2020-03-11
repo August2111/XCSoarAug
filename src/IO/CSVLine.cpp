@@ -80,10 +80,20 @@ CSVLine::Read(char *dest, size_t size)
 bool
 CSVLine::ReadCompare(const char *value)
 {
+#ifdef _MSC_VER
+  // aug: I think this better generally
+  size_t length = strlen(value);
+  char* buffer = new char[length + 2];
+  Read(buffer, length + 2);
+  bool is_equal = StringIsEqual(buffer, value);
+  delete[] buffer;
+  return is_equal;
+#else
   size_t length = strlen(value);
   char buffer[length + 2];
   Read(buffer, length + 2);
   return StringIsEqual(buffer, value);
+#endif
 }
 
 long

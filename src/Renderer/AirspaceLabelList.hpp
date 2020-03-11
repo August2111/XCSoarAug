@@ -56,11 +56,21 @@ public:
   }
 
   const Label *begin() const {
+#ifdef AUG_MSC
+    auto result = labels.begin();
+    return &result.operator*();  //  labels.begin();
+#else
     return labels.begin();
+#endif
   }
 
   const Label *end() const {
+#ifdef AUG_MSC
+    auto result = labels.end();
+    return &result.operator*();  //  labels.begin();
+#else
     return labels.end();
+#endif
   }
 
   const Label &operator[](unsigned i) const {

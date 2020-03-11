@@ -59,6 +59,8 @@ protected:
   HFONT font = nullptr;
 #elif defined(USE_APPKIT) || defined(USE_UIKIT)
   NSDictionary *draw_attributes = nil;
+#elif defined(_MSC_VER)
+  // NSDictionary *draw_attributes = nil;
 #else
 #error No font renderer
 #endif
@@ -94,9 +96,13 @@ public:
     return nil != draw_attributes;
 #elif defined(ANDROID)
     return text_util_object != nullptr;
-    #else
+#else
+#   ifdef _MSC_VER
+    return false;
+#else
     return font != nullptr;
-    #endif
+#endif
+#endif
   }
 
 #ifdef USE_FREETYPE

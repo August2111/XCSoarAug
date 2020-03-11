@@ -56,7 +56,7 @@ ThermalAssistantRenderer::ThermalAssistantRenderer(const ThermalAssistantLook &_
                                                    unsigned _padding, bool _small)
   :look(_look),
    padding(_padding),
-   small(_small),
+   is_small(_small),
    direction(Angle::Zero()) {}
 
 void
@@ -114,18 +114,18 @@ ThermalAssistantRenderer::PaintRadarPlane(Canvas &canvas) const
 
   int x = mid.x + (circling.TurningLeft() ? radius : -radius);
 
-  canvas.DrawLine(x + Layout::FastScale(small ? 5 : 10),
-              mid.y - Layout::FastScale(small ? 1 : 2),
-              x - Layout::FastScale(small ? 5 : 10),
-              mid.y - Layout::FastScale(small ? 1 : 2));
+  canvas.DrawLine(x + Layout::FastScale(is_small ? 5 : 10),
+              mid.y - Layout::FastScale(is_small ? 1 : 2),
+              x - Layout::FastScale(is_small ? 5 : 10),
+              mid.y - Layout::FastScale(is_small ? 1 : 2));
   canvas.DrawLine(x,
-              mid.y - Layout::FastScale(small ? 3 : 6),
+              mid.y - Layout::FastScale(is_small ? 3 : 6),
               x,
-              mid.y + Layout::FastScale(small ? 3 : 6));
-  canvas.DrawLine(x + Layout::FastScale(small ? 2 : 4),
-              mid.y + Layout::FastScale(small ? 2 : 4),
-              x - Layout::FastScale(small ? 2 : 4),
-              mid.y + Layout::FastScale(small ? 2 : 4));
+              mid.y + Layout::FastScale(is_small ? 3 : 6));
+  canvas.DrawLine(x + Layout::FastScale(is_small ? 2 : 4),
+              mid.y + Layout::FastScale(is_small ? 2 : 4),
+              x - Layout::FastScale(is_small ? 2 : 4),
+              mid.y + Layout::FastScale(is_small ? 2 : 4));
 }
 
 void
@@ -138,7 +138,7 @@ ThermalAssistantRenderer::PaintRadarBackground(Canvas &canvas, double max_lift) 
   canvas.Select(look.outer_circle_pen);
   canvas.DrawCircle(mid.x, mid.y, radius);
 
-  if (small)
+  if (is_small)
     return;
 
   canvas.SetTextColor(COLOR_BLACK);
@@ -187,7 +187,7 @@ ThermalAssistantRenderer::PaintAdvisor(Canvas &canvas,
 void
 ThermalAssistantRenderer::PaintNotCircling(Canvas &canvas) const
 {
-  if (small)
+  if (is_small)
     return;
 
   const TCHAR* str = _("Not Circling");

@@ -34,8 +34,8 @@ static void Load(const ProfileMap &map,
                  SkyLinesTracking::CloudSettings &settings) {
   bool bvalue;
   settings.enabled = map.Get(ProfileKeys::CloudEnabled, bvalue)
-    ? (bvalue ? TriState::TRUE : TriState::FALSE)
-    : TriState::UNKNOWN;
+    ? (bvalue ? TriState::True : TriState::False)
+    : TriState::Unknown;
 
   map.Get(ProfileKeys::CloudShowThermals, settings.show_thermals);
 

@@ -61,7 +61,7 @@ protected:
    */
   unsigned radius;
 
-  bool small;
+  bool is_small;
 
   Angle direction;
   CirclingInfo circling;

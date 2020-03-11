@@ -43,8 +43,13 @@ RenderFAISector(Canvas &canvas, const WindowProjection &projection,
     .ClipPolygon(clipped, geo_points, geo_end - geo_points);
 
   BulkPixelPoint points[FAI_TRIANGLE_SECTOR_MAX], *p = points;
+#ifndef AUG_MSC
   for (GeoPoint *geo_i = clipped; geo_i != clipped_end;)
     *p++ = projection.GeoToScreen(*geo_i++);
+#else // AUG_MSC
+  for (GeoPoint* geo_i = clipped; geo_i != clipped_end;)
+    *p++ = {0, 0};
+#endif  // AUG_MSC
 
   canvas.DrawPolygon(points, p - points);
 }

@@ -26,7 +26,7 @@
 #include "Screen/Layout.hpp"
 
 void
-ThermalAssistantLook::Initialise(bool small, bool inverse)
+ThermalAssistantLook::Initialise(bool is_small, bool inverse)
 {
   background_color = COLOR_WHITE;
   circle_color = Color(0xB0, 0xB0, 0xB0);
@@ -40,7 +40,7 @@ ThermalAssistantLook::Initialise(bool small, bool inverse)
   polygon_brush.Create(polygon_fill_color);
 #endif /* !OPENGL */
 
-  unsigned width = Layout::FastScale(small ? 1u : 2u);
+  unsigned width = Layout::FastScale(is_small ? 1u : 2u);
 #ifdef ENABLE_OPENGL
   polygon_pen.Create(width, polygon_border_color.WithAlpha(128));
 #else /* !OPENGL */

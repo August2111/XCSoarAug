@@ -33,9 +33,18 @@ Copyright_License {
 struct PixelPoint : IntPoint2D {
   PixelPoint() = default;
 
+#ifdef _MSC_VER
+//  template<typename... Args>
+//  constexpr PixelPoint(Args&&... args)
+//    :IntPoint2D(args...) {}
+
+  constexpr PixelPoint(int x, int y)
+    :IntPoint2D(x, y) {}
+#else  // _MSC_VER
   template<typename... Args>
   constexpr PixelPoint(Args&&... args)
     :IntPoint2D(args...) {}
+#endif
 };
 
 struct PixelSize {

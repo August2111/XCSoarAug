@@ -24,6 +24,14 @@ Copyright_License {
 #ifndef XCSOAR_FLARM_TRAFFIC_LIST_HPP
 #define XCSOAR_FLARM_TRAFFIC_LIST_HPP
 
+#ifdef _MSC_VER
+// aug: ist das notwendig? offensichtlich nein...
+#   include <array>
+#   include <list>
+#   include <initializer_list>
+#endif
+
+
 #include "Traffic.hpp"
 #include "NMEA/Validity.hpp"
 #include "Util/TrivialArray.hxx"
@@ -160,16 +168,30 @@ struct TrafficList {
    * Search for the previous traffic in the ordered list.
    */
   const FlarmTraffic *PreviousTraffic(const FlarmTraffic *t) const {
+#ifdef _MSC_VER
+    // aug: Versuche, das Problem der Liste in den Griff zu bekommen
+    // return t > list.begin()
+//    auto traffic = std::find(list.begin(), list.end(), t);
+//    return traffic != list.begin()
+    return false
+#else
     return t > list.begin()
+#endif
       ? t - 1
-      : NULL;
+      : nullptr;
   }
 
   /**
    * Search for the next traffic in the ordered list.
    */
   const FlarmTraffic *NextTraffic(const FlarmTraffic *t) const {
+#ifdef _MSC_VER
+//    auto traffic = std::find(list.begin(), list.end(), t);
+//    return traffic != list.end()
+    return false
+#else
     return t + 1 < list.end()
+#endif
       ? t + 1
       : NULL;
   }
@@ -178,14 +200,22 @@ struct TrafficList {
    * Search for the first traffic in the ordered list.
    */
   const FlarmTraffic *FirstTraffic() const {
+#ifdef _MSC_VER
+    return list.empty() ? nullptr : &list[0];
+#else
     return list.empty() ? NULL : list.begin();
+#endif
   }
 
   /**
    * Search for the last traffic in the ordered list.
    */
   const FlarmTraffic *LastTraffic() const {
+#ifdef _MSC_VER
+    return list.empty() ? nullptr : &list[list.size()-1];
+#else
     return list.empty() ? NULL : list.end() - 1;
+#endif
   }
 
   /**
@@ -195,7 +225,13 @@ struct TrafficList {
   const FlarmTraffic *FindMaximumAlert() const;
 
   unsigned TrafficIndex(const FlarmTraffic *t) const {
+#ifdef _MSC_VER
+//    auto traffic = std::find(list.begin(), list.end(), t);
+//    return traffic - list.begin();
+    return 0;
+#else
     return t - list.begin();
+#endif
   }
 };
 

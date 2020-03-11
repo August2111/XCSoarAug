@@ -178,7 +178,11 @@ public:
   void OnCancelMode() override;
 
 #ifdef _WIN32
+#if _MSC_VER
+  bool OnCommand(unsigned id, unsigned code);
+#else
   bool OnCommand(unsigned id, unsigned code) override;
+#endif
 #endif
 
   void SetKeyDownFunction(KeyDownFunction function) {

@@ -297,7 +297,11 @@ RasterTileCache::SaveCache(FILE *file) const
 
   if (fwrite(&header, sizeof(header), 1, file) != 1 ||
       /* .. and segments */
-      fwrite(segments.begin(), sizeof(*segments.begin()), segments.size(), file) != segments.size())
+#ifdef AUG_MSC
+    fwrite(&segments.begin().operator*(), sizeof(*segments.begin()), segments.size(), file) != segments.size())
+#else  // AUG_MSC
+    fwrite(segments.begin(), sizeof(*segments.begin()), segments.size(), file) != segments.size())
+#endif  // AUG_MSC
     return false;
 
   /* save tiles */

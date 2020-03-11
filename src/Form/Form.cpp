@@ -265,7 +265,11 @@ WndForm::OnCommand(unsigned id, unsigned code)
     return true;
   }
 
+#ifdef AUG_MSC
+  return false; // TODO!!!
+#else
   return ContainerWindow::OnCommand(id, code);
+#endif
 }
 
 #endif
@@ -328,6 +332,9 @@ WndForm::ShowModal()
 
 #if defined(ANDROID) || defined(USE_POLL_EVENT) || defined(ENABLE_SDL)
   EventLoop loop(*event_queue, main_window);
+#elif defined(AUG_MSC)
+  // TODO !!!! DialogEventLoop loop(*event_queue, *this);
+  EventLoop loop(*event_queue);
 #else
   DialogEventLoop loop(*event_queue, *this);
 #endif

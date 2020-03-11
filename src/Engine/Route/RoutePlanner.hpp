@@ -23,6 +23,10 @@
 #ifndef ROUTE_PLANNER_HPP
 #define ROUTE_PLANNER_HPP
 
+#ifdef _MSC_VER
+#   include "Util/Compiler.h"
+#endif
+
 #include "RoutePolars.hpp"
 #include "Route.hpp"
 #include "RouteLink.hpp"

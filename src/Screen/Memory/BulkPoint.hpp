@@ -32,9 +32,21 @@ Copyright_License {
 struct BulkPixelPoint : PixelPoint {
   BulkPixelPoint() = default;
 
+#ifdef AUG_MSC
+  constexpr BulkPixelPoint(int x, int y = 0)
+    :PixelPoint(static_cast<double>(x), 
+      static_cast<double>(y)) {
+  }
+
+  BulkPixelPoint operator=(const PixelPoint& p) {
+    // BulkPixelPoint p2(p.x, p.y);
+    return BulkPixelPoint(p.x, p.y); // { static_cast<double>(p.x), static_cast<double>(p.y) };
+  }
+#else  // AUG_MSC
   template<typename... Args>
-  constexpr BulkPixelPoint(Args&&... args)
+  constexpr BulkPixubleelPoint(Args&&... args)
     :PixelPoint(args...) {}
+#endif  // AUG_MSC
 };
 
 #endif

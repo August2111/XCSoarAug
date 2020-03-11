@@ -1,0 +1,160 @@
+
+
+# file(GLOB_RECURSE SOURCE_FILES  ${PROJECTGROUP_SOURCE_DIR}/src/*.cpp)
+file(GLOB_RECURSE HEADER_FILES  *.h*)
+
+set(DIALOG_SOURCES
+    Inflate.cpp
+    Message.cpp
+    LockScreen.cpp
+    Error.cpp
+    ListPicker.cpp
+    ProgressDialog.cpp
+    JobDialog.cpp
+    WidgetDialog.cpp
+    FileManager.cpp
+    Device/DeviceEditWidget.cpp
+    Device/DeviceListDialog.cpp
+    Device/PortMonitor.cpp
+    Device/ManageCAI302Dialog.cpp
+    Device/CAI302/UnitsEditor.cpp
+    Device/CAI302/WaypointUploader.cpp
+    Device/ManageFlarmDialog.cpp
+    Device/BlueFly/BlueFlyConfigurationDialog.cpp
+    Device/LX/ManageV7Dialog.cpp
+    Device/LX/V7ConfigWidget.cpp
+    Device/LX/ManageNanoDialog.cpp
+    Device/LX/NanoConfigWidget.cpp
+    Device/LX/ManageLX16xxDialog.cpp
+    Device/Vega/VegaParametersWidget.cpp
+    Device/Vega/VegaConfigurationDialog.cpp
+    Device/Vega/VegaDemoDialog.cpp
+    Device/Vega/SwitchesDialog.cpp
+    Device/FLARM/ConfigWidget.cpp
+    MapItemListDialog.cpp
+    MapItemListSettingsDialog.cpp
+    MapItemListSettingsPanel.cpp
+    ColorListDialog.cpp
+    Airspace/dlgAirspace.cpp
+    Airspace/dlgAirspacePatterns.cpp
+    Airspace/dlgAirspaceDetails.cpp
+    Airspace/AirspaceList.cpp
+    Airspace/AirspaceCRendererSettingsDialog.cpp
+    Airspace/AirspaceCRendererSettingsPanel.cpp
+    Airspace/dlgAirspaceWarnings.cpp
+    Settings/WindSettingsPanel.cpp
+    Settings/WindSettingsDialog.cpp
+    Settings/dlgBasicSettings.cpp
+    Settings/dlgConfiguration.cpp
+    Settings/dlgConfigInfoboxes.cpp
+    Traffic/TrafficList.cpp
+    Traffic/FlarmTrafficDetails.cpp
+    Traffic/TeamCodeDialog.cpp
+    dlgAnalysis.cpp
+    dlgChecklist.cpp
+    ProfileListDialog.cpp
+    Plane/PlaneListDialog.cpp
+    Plane/PlaneDetailsDialog.cpp
+    Plane/PlanePolarDialog.cpp
+    Plane/PolarShapeEditWidget.cpp
+    DataField.cpp
+    ComboPicker.cpp
+    FilePicker.cpp
+    HelpDialog.cpp
+    dlgInfoBoxAccess.cpp
+    ReplayDialog.cpp
+    dlgSimulatorPrompt.cpp
+    SimulatorPromptWindow.cpp
+    StartupDialog.cpp
+    ProfilePasswordDialog.cpp
+   
+    dlgStatus.cpp
+    StatusPanels/StatusPanel.cpp
+    StatusPanels/FlightStatusPanel.cpp
+    StatusPanels/SystemStatusPanel.cpp
+    StatusPanels/TaskStatusPanel.cpp
+    StatusPanels/RulesStatusPanel.cpp
+    StatusPanels/TimesStatusPanel.cpp
+   
+    Waypoint/WaypointInfoWidget.cpp
+    Waypoint/WaypointCommandsWidget.cpp
+    Waypoint/dlgWaypointDetails.cpp
+    Waypoint/Manager.cpp
+    Waypoint/dlgWaypointEdit.cpp
+    Waypoint/WaypointList.cpp
+    Waypoint/NearestWaypoint.cpp
+   
+    Settings/Panels/AirspaceConfigPanel.cpp
+    Settings/Panels/GaugesConfigPanel.cpp
+    Settings/Panels/VarioConfigPanel.cpp
+    Settings/Panels/GlideComputerConfigPanel.cpp
+    Settings/Panels/WindConfigPanel.cpp
+    Settings/Panels/InfoBoxesConfigPanel.cpp
+    Settings/Panels/InterfaceConfigPanel.cpp
+    Settings/Panels/LayoutConfigPanel.cpp
+    Settings/Panels/LoggerConfigPanel.cpp
+    Settings/Panels/MapDisplayConfigPanel.cpp
+    Settings/Panels/PagesConfigPanel.cpp
+    Settings/Panels/RouteConfigPanel.cpp
+    Settings/Panels/SafetyFactorsConfigPanel.cpp
+    Settings/Panels/SiteConfigPanel.cpp
+    Settings/Panels/SymbolsConfigPanel.cpp
+    Settings/Panels/TaskRulesConfigPanel.cpp
+    Settings/Panels/TaskDefaultsConfigPanel.cpp
+    Settings/Panels/ScoringConfigPanel.cpp
+    Settings/Panels/TerrainDisplayConfigPanel.cpp
+    Settings/Panels/UnitsConfigPanel.cpp
+    Settings/Panels/TimeConfigPanel.cpp
+    Settings/Panels/WaypointDisplayConfigPanel.cpp
+    Settings/Panels/TrackingConfigPanel.cpp
+    Settings/Panels/CloudConfigPanel.cpp
+    Settings/Panels/WeatherConfigPanel.cpp
+   
+    Task/Widgets/ObservationZoneEditWidget.cpp
+    Task/Widgets/CylinderZoneEditWidget.cpp
+    Task/Widgets/LineSectorZoneEditWidget.cpp
+    Task/Widgets/SectorZoneEditWidget.cpp
+    Task/Widgets/KeyholeZoneEditWidget.cpp
+    Task/Manager/TaskMapButtonRenderer.cpp
+    Task/Manager/TaskManagerDialog.cpp
+    Task/Manager/TaskClosePanel.cpp
+    Task/Manager/TaskEditPanel.cpp
+    Task/Manager/TaskPropertiesPanel.cpp
+    Task/Manager/TaskMiscPanel.cpp
+    Task/Manager/TaskActionsPanel.cpp
+    Task/Manager/TaskListPanel.cpp
+    Task/OptionalStartsDialog.cpp
+    Task/TaskPointDialog.cpp
+    Task/MutateTaskPointDialog.cpp
+    Task/dlgTaskHelpers.cpp
+    Task/TargetDialog.cpp
+    Task/AlternatesListDialog.cpp
+   
+    Tracking/CloudEnableDialog.cpp
+   
+    NumberEntry.cpp
+    TextEntry.cpp
+    KnobTextEntry.cpp
+    TouchTextEntry.cpp
+    TimeEntry.cpp
+    GeoPointEntry.cpp
+    Weather/WeatherDialog.cpp
+    Weather/RASPDialog.cpp
+    dlgCredits.cpp
+    dlgQuickMenu.cpp
+)
+# ifeq ($(HAVE_PCM_PLAYER),y)
+# DIALOG_SOURCES +=
+    # Settings/Panels/AudioVarioConfigPanel.cpp
+    # Settings/Panels/AudioConfigPanel.cpp
+# endif
+
+# ifeq ($(HAVE_HTTP),y)
+# DIALOG_SOURCES +=
+    # Weather/PCMetDialog.cpp
+    # Weather/NOAAList.cpp
+    # Weather/NOAADetails.cpp
+# endif
+
+set(SOURCE_FILES ${DIALOG_SOURCES} )
+set(SCRIPT_FILES CMakeSource.txt)

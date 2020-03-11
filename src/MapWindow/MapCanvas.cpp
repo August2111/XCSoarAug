@@ -63,8 +63,10 @@ void
 MapCanvas::Project(const Projection &projection,
                    const SearchPointVector &points, BulkPixelPoint *screen)
 {
+#ifndef AUG_MSC
   for (auto it = points.begin(); it != points.end(); ++it)
     *screen++ = projection.GeoToScreen(it->GetLocation());
+#endif  // AUG_MSC
 }
 
 bool
@@ -88,8 +90,10 @@ MapCanvas::PreparePolygon(const SearchPointVector &points)
 
   /* project all GeoPoints to screen coordinates */
   raster_points.GrowDiscard(num_raster_points);
+#ifndef AUG_MSC
   for (unsigned i = 0; i < num_raster_points; ++i)
     raster_points[i] = projection.GeoToScreen(geo_points[i]);
+#endif  // AUG_MSC
 
   return true;
 }

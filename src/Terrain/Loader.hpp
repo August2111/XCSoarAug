@@ -24,6 +24,7 @@ Copyright_License {
 #ifndef XCSOAR_TERRAIN_LOADER_HPP
 #define XCSOAR_TERRAIN_LOADER_HPP
 
+#include "jasper/jas_stream.h"
 #include "Thread/SharedMutex.hpp"
 
 struct zzip_dir;

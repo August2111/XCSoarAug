@@ -24,8 +24,9 @@ Copyright_License {
 #ifndef XCSOAR_ASIO_THREAD_HPP
 #define XCSOAR_ASIO_THREAD_HPP
 
+#define BOOST_ASIO_SEPARATE_COMPILATION
 #include "Thread/Thread.hpp"
-
+#include <boost/asio/impl/src.hpp>
 #include <boost/asio.hpp>
 
 /**

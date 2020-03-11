@@ -20,6 +20,7 @@ Copyright_License {
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 */
+#if 1  // def AUG_BLENDE
 
 #include "CalculationThread.hpp"
 #include "Computer/GlideComputer.hpp"
@@ -124,3 +125,4 @@ CalculationThread::ForceTrigger()
 
   WorkerThread::Trigger();
 }
+#endif AUG_BLENDE

@@ -1,0 +1,1 @@
+// TODO(aug): aus Compatibilitätsgründen angelegt, wird für extern "C" gebraucht, ist aber nicht vorhanden ? ;-(

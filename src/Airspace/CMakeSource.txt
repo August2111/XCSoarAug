@@ -1,0 +1,62 @@
+file(GLOB_RECURSE HEADER_FILES  *.h*)
+
+file(GLOB_RECURSE SOURCE_FILES *.cpp)
+file(GLOB_RECURSE HEADER_FILES *.h*)
+set(MAP_SOURCES
+    # Airspace
+    ${SRC}/Airspace/ProtectedAirspaceWarningManager.cpp
+    ${SRC}/Airspace/ActivePredicate.cpp
+    ${SRC}/Airspace/AirspaceGlue.cpp
+    ${SRC}/Airspace/AirspaceParser.cpp
+    ${SRC}/Airspace/AirspaceVisibility.cpp
+    ${SRC}/Airspace/AirspaceComputerSettings.cpp
+    ${SRC}/Airspace/NearestAirspace.cpp
+    ${SRC}/Renderer/AirspaceRendererSettings.cpp
+    ${SRC}/Renderer/GeoBitmapRenderer.cpp
+
+    # Task
+    ${SRC}/Task/Serialiser.cpp
+    ${SRC}/Task/Deserialiser.cpp
+    ${SRC}/Task/SaveFile.cpp
+    ${SRC}/Task/LoadFile.cpp
+    ${SRC}/Task/TaskFile.cpp
+    ${SRC}/Task/TaskFileXCSoar.cpp
+    ${SRC}/Task/TaskFileIGC.cpp
+    ${SRC}/Task/TaskFileSeeYou.cpp
+    ${SRC}/Task/DefaultTask.cpp
+    ${SRC}/Task/MapTaskManager.cpp
+    ${SRC}/Task/ProtectedTaskManager.cpp
+    ${SRC}/Task/FileProtectedTaskManager.cpp
+    ${SRC}/Task/RoutePlannerGlue.cpp
+    ${SRC}/Task/ProtectedRoutePlanner.cpp
+    ${SRC}/Task/TaskStore.cpp
+    ${SRC}/Task/TypeStrings.cpp
+    ${SRC}/Task/ValidationErrorStrings.cpp
+
+    # Waypoints
+# set(WAYPOINT_SOURCES  #!
+    ${SRC}/Waypoint/WaypointList.cpp
+    ${SRC}/Waypoint/WaypointListBuilder.cpp
+    ${SRC}/Waypoint/WaypointFilter.cpp
+    ${SRC}/Waypoint/WaypointGlue.cpp
+    ${SRC}/Waypoint/SaveGlue.cpp
+    ${SRC}/Waypoint/LastUsed.cpp
+    ${SRC}/Waypoint/HomeGlue.cpp
+    ${SRC}/Waypoint/WaypointFileType.cpp
+    ${SRC}/Waypoint/WaypointReader.cpp
+    ${SRC}/Waypoint/WaypointReaderBase.cpp
+    ${SRC}/Waypoint/WaypointReaderOzi.cpp
+    ${SRC}/Waypoint/WaypointReaderFS.cpp
+    ${SRC}/Waypoint/WaypointReaderWinPilot.cpp
+    ${SRC}/Waypoint/WaypointReaderSeeYou.cpp
+    ${SRC}/Waypoint/WaypointReaderZander.cpp
+    ${SRC}/Waypoint/WaypointReaderCompeGPS.cpp
+    ${SRC}/Waypoint/CupWriter.cpp
+    ${SRC}/Waypoint/Factory.cpp   
+    ${SRC}/Waypoint/WaypointDetailsReader.cpp
+# )
+)
+
+set(SOURCE_FILES ${MAP_SOURCES})
+
+set(SCRIPT_FILES CMakeSource.txt)

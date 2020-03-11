@@ -24,6 +24,7 @@ Copyright_License {
 #ifndef XCSOAR_OS_FILE_MAPPING_HPP
 #define XCSOAR_OS_FILE_MAPPING_HPP
 
+#include "Util/Compiler.h"
 #include <stddef.h>
 
 #ifndef HAVE_POSIX

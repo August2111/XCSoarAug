@@ -193,8 +193,14 @@ TeamCodeWidget::OnFlarmLockClicked()
 {
   TeamCodeSettings &settings =
     CommonInterface::SetComputerSettings().team_code;
+
+#ifdef _MSC_VER  // aug
+  TCHAR newTeamFlarmCNTarget[100];  // settings.team_flarm_callsign.capacity()];
+  _tcscpy(newTeamFlarmCNTarget, settings.team_flarm_callsign.c_str());
+#else
   TCHAR newTeamFlarmCNTarget[settings.team_flarm_callsign.capacity()];
   _tcscpy(newTeamFlarmCNTarget, settings.team_flarm_callsign.c_str());
+#endif
 
   if (!TextEntryDialog(newTeamFlarmCNTarget, 4))
     return;

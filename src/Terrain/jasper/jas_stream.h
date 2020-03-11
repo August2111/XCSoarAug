@@ -74,6 +74,8 @@
 * Includes.
 \******************************************************************************/
 
+#include "Util/Compiler.h"
+
 /* The configuration header file should be included first. */
 #include <jasper/jas_config.h>
 
@@ -87,7 +89,6 @@
 #endif
 #include <jasper/jas_types.h>
 
-#include "Util/Compiler.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -231,10 +232,12 @@ typedef struct {
 	jas_uchar tinybuf_[JAS_STREAM_MAXPUTBACK + 1];
 
 	/* The operations for the underlying stream file object. */
-	jas_stream_ops_t *ops_;
+// aug
+  jas_stream_ops_t *ops_;
 
 	/* The underlying stream file object. */
-	jas_stream_obj_t *obj_;
+// aug
+  jas_stream_obj_t *obj_;
 
 	/* The number of characters read/written. */
 	long rwcnt_;

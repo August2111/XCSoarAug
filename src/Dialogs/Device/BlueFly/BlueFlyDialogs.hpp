@@ -24,6 +24,10 @@ Copyright_License {
 #ifndef XCSOAR_DIALOGS_BLUEFLY_HPP
 #define XCSOAR_DIALOGS_BLUEFLY_HPP
 
+#ifdef _MSC_VER  // aug: include before all others!
+#   include "Util/Compiler.h"
+#endif
+
 class Device;
 
 void

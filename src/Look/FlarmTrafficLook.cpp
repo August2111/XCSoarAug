@@ -27,7 +27,7 @@
 #include "Screen/Layout.hpp"
 
 void
-FlarmTrafficLook::Initialise(const TrafficLook &other, bool small, bool inverse)
+FlarmTrafficLook::Initialise(const TrafficLook &other, bool is_small, bool inverse)
 {
   passive_color = Color(0x99, 0x99, 0x99);
   warning_color = other.warning_color;
@@ -48,7 +48,7 @@ FlarmTrafficLook::Initialise(const TrafficLook &other, bool small, bool inverse)
   team_brush_yellow.Create(other.team_color_yellow);
   team_brush_magenta.Create(other.team_color_magenta);
 
-  unsigned width = Layout::FastScale(small ? 1u : 2u);
+  unsigned width = Layout::FastScale(is_small ? 1u : 2u);
   warning_pen.Create(width, warning_color);
   alarm_pen.Create(width, alarm_color);
   default_pen.Create(width, default_color);
@@ -66,7 +66,7 @@ FlarmTrafficLook::Initialise(const TrafficLook &other, bool small, bool inverse)
 
   no_traffic_font.Load(FontDescription(Layout::FontScale(22)));
   label_font.Load(FontDescription(Layout::FontScale(12)));
-  side_info_font.Load(FontDescription(Layout::FontScale(small ? 8 : 12),
+  side_info_font.Load(FontDescription(Layout::FontScale(is_small ? 8 : 12),
                                       true));
 
   info_labels_font.Load(FontDescription(Layout::FontScale(12), true));

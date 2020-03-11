@@ -34,8 +34,8 @@ Copyright_License {
 
 class WaypointLabelList : private NonCopyable {
 public:
-  struct Label{
-    TCHAR Name[NAME_SIZE+1];
+  struct Label {
+    TCHAR Name[NAME_SIZE + 1];
     PixelPoint Pos;
     TextInBoxMode Mode;
     int AltArivalAGL;
@@ -53,22 +53,37 @@ protected:
 
 public:
   WaypointLabelList(unsigned _width, unsigned _height)
-    :width(_width), height(_height) {}
+    :width(_width), height(_height) {
+  }
 
-  void Add(const TCHAR *name, int x, int y,
-           TextInBoxMode Mode, bool bold,
-           int AltArivalAGL,
-           bool inTask, bool isLandable, bool isAirport,
-           bool isWatchedWaypoint);
+  void Add(const TCHAR* name, int x, int y,
+    TextInBoxMode Mode, bool bold,
+    int AltArivalAGL,
+    bool inTask, bool isLandable, bool isAirport,
+    bool isWatchedWaypoint);
   void Sort();
 
-  const Label *begin() const {
-    return labels.begin();
+#ifdef AUG_MSC
+  //  const Label operator=(std::_Array_const_iterator<Label, 256u> iter) {
+  //    return iter.operator*();
+  //  }
+
+  const Label* begin() const {
+    return &labels.end().operator*();
   }
 
-  const Label *end() const {
+  const Label* end() const {
+    return &labels.end().operator*();
+  }
+#else
+
+  const Label* begin() const {
     return labels.end();
   }
-};
 
+  const Label* end() const {
+    return labels.end();
+  }
 #endif
+};
+#endif  // XCSOAR_WAYPOINT_LABEL_LIST_HPP

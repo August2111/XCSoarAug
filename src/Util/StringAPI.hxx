@@ -32,6 +32,14 @@
 
 #include "Compiler.h"
 
+#if defined(_MSC_VER)
+#define strcasecmp  std::strcmp
+#define strncasecmp  std::strncmp
+// #define strdup      std::strdup
+#define strtok      std::strtok
+#define strcpy      std::strcpy
+#endif
+
 #include <string.h>
 
 #ifdef _UNICODE

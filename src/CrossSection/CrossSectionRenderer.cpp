@@ -182,7 +182,11 @@ CrossSectionRenderer::PaintAircraft(Canvas &canvas, const ChartRenderer &chart,
   canvas.SelectNullPen();
 
   BulkPixelPoint line[4];
+#ifdef _MSC_VER
+  // TODO(aug): das geht noch nicht (richtig)
+#else
   line[0] = chart.ToScreen(0, gps_info.nav_altitude);
+#endif
   line[1].x = rc.left;
   line[1].y = line[0].y;
   line[2].x = line[1].x;

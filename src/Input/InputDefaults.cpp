@@ -80,7 +80,9 @@ makeLabel(InputConfig &input_config,
           InputEvents::Mode mode_id, const TCHAR* label,
           unsigned location, unsigned event_id)
 {
+#ifndef AUG_MSC  // TODO(aug): Warum nicht?
   input_config.AppendMenu(mode_id, label, location, event_id);
+#endif
 }
 
 static void

@@ -24,6 +24,10 @@ Copyright_License {
 #ifndef XCSOAR_DIALOGS_TRAFFIC_HPP
 #define XCSOAR_DIALOGS_TRAFFIC_HPP
 
+#ifdef _MSC_VER  // aug: include before all others!
+#   include "Util/Compiler.h"
+#endif
+
 #include <tchar.h>
 
 class FlarmId;

@@ -7,7 +7,8 @@
 #undef JAS_CONFIGURE
 #endif
 
-#if 1
+// #if 1  // AUG_MSC
+#if defined(JAS_CONFIGURE)
 
 #define JAS_VERSION "unknown"
 #define JAS_HAVE_FCNTL_H		1

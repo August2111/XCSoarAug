@@ -136,8 +136,11 @@ struct ProjectedFans {
     assert(remaining > 0);
     --remaining;
 #endif
-
+#
+#ifndef AUG_MSC
+    // Konvertierung von Argument 1 von "const PixelPoint" in "const _Ty &" nicht möglich
     points.push_back(pt);
+#endif
   }
 
   void DrawFill(Canvas &canvas) const {

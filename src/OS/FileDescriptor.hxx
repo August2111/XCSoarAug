@@ -34,7 +34,12 @@
 
 #include <utility>
 
+#ifdef _MSC_VER
+typedef int mode_t;
+typedef int ssize_t;
+#else
 #include <unistd.h>
+#endif
 #include <sys/types.h>
 
 #ifdef __linux__
@@ -43,6 +48,7 @@
 
 #ifdef _WIN32
 #include <wchar.h>
+#include "io.h"
 #endif
 
 /**

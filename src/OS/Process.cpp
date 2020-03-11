@@ -21,8 +21,8 @@ Copyright_License {
 }
 */
 
-#include "Process.hpp"
 #include "Util/Compiler.h"
+#include "Process.hpp"
 
 #ifdef HAVE_POSIX
 

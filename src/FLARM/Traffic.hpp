@@ -188,6 +188,14 @@ struct FlarmTraffic {
   static const TCHAR* GetTypeString(AircraftType type);
 
   void Update(const FlarmTraffic &other);
+
+#ifdef _MSC_VER
+  bool operator>(FlarmTraffic* t) {
+#if 1  // TODO(aug) !!!!!!!!!!!!!!!!!
+    return true;
+#endif
+  }
+#endif
 };
 
 static_assert(std::is_trivial<FlarmTraffic>::value, "type is not trivial");

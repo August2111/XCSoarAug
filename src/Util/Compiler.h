@@ -24,6 +24,80 @@ Copyright_License {
 #ifndef COMPILER_H
 #define COMPILER_H
 
+
+#ifdef _MSC_VER
+#   include   "WinSock2.h"
+// #   define _WINSOCKAPI_
+#   include   "windows.h"
+#   include   <algorithm>
+// #   define USE_WINUSER
+
+#   include   "corecrt_math_defines.h"
+
+// #if !defined(TRUE) || !defined(FALSE)
+// #   define TRUE 1
+// #   define FALSE 0
+// #endif
+
+#define STRING2(x) #x
+#define STRING(x) STRING2(x)
+
+#define CLANG_OR_GCC_VERSION(x, y)   0
+#define GCC_CHECK_VERSION(x, y)  0
+#define GCC_OLDER_THAN(x, y)  0
+#define CLANG_CHECK_VERSION(x, y)  0
+
+// #define BOOST_ASIO_WINDOWS_RUNTIME
+// #define ENABLE_OPENGL
+#define AUG_MSC  1
+#ifdef AUG_MSC
+#else  // AUG_MSC
+#endif  // AUG_MSC
+
+#define DT_UNDERLINE 0  // gibt es in WinUser.h nicht!
+#define JAS_DLLEXPORT
+
+// typedef int jas_stream_t;
+// #include "jasper/jas_stream.h"
+
+// #define LogFormat printf
+// #define LogFormat printf
+#define __attribute__(x)
+
+#define gcc_const    //  aug: const  //  aug: 
+#define gcc_deprecated   //  aug: deprecated  //  aug: 
+#define gcc_may_alias // aug:  may_alias
+#define gcc_malloc  // aug:  malloc
+#define gcc_noreturn  // aug:  noreturn
+#define gcc_packed  // aug: packed
+#define gcc_printf(a,b)
+// aug:format(printf, a, b)
+#define gcc_pure  //  aug:
+#define gcc_sentinel    //  aug: sentinel
+#define gcc_unused   //  aug: unused
+#define gcc_warn_unused_result  //  aug: warn_unused_result
+
+#define gcc_nonnull(...)
+// __assume(__VA_ARGS__ != nullptr)
+#define gcc_nonnull_all   // __assume(!nullptr)
+#define gcc_returns_nonnull // returns_nonnull
+
+#define gcc_likely(x)  (x)
+//  aug: __builtin_expect (!!(x), 1)
+#define gcc_unlikely(x)  (x)
+//  aug: __builtin_expect (!!(x), 0)
+
+#define gcc_aligned(n)
+//  aug: aligned(n)
+
+#define gcc_visibility_hidden  //  aug: visibility("hidden")
+#define gcc_visibility_default  //  aug: visibility("default")
+
+#define gcc_always_inline
+// inline  // wird dann mehrfach verwendet... //  aug: always_inline
+
+#else  // _MSC_VER
+
 #define GCC_MAKE_VERSION(major, minor, patchlevel) ((major) * 10000 + (minor) * 100 + patchlevel)
 
 #ifdef __GNUC__
@@ -70,7 +144,7 @@ Copyright_License {
 #    error Sorry, your gcc version is too old.  You need at least version 6.
 #  endif
 #else
-#  warning Untested compiler.  Use at your own risk!
+// #  warning Untested compiler.  Use at your own risk!
 #endif
 
 /**
@@ -140,6 +214,7 @@ Copyright_License {
 #define gcc_always_inline inline
 
 #endif
+#endif  // _MSC_VER
 
 #if CLANG_OR_GCC_VERSION(4,3)
 
@@ -161,7 +236,7 @@ Copyright_License {
 
 #if GCC_CHECK_VERSION(7,0)
 #define gcc_fallthrough __attribute__((fallthrough))
-#elif CLANG_CHECK_VERSION(10,0) && defined(__cplusplus)
+#elif CLANG_CHECK_VERSION(10,0)
 #define gcc_fallthrough [[fallthrough]]
 #else
 #define gcc_fallthrough
@@ -196,3 +271,4 @@ Copyright_License {
 #endif
 
 #endif
+

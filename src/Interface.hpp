@@ -25,8 +25,13 @@ Copyright_License {
 #define XCSOAR_INTERFACE_HPP
 
 #include "Blackboard/InterfaceBlackboard.hpp"
+#ifdef  AUGUST
 #include "Thread/Debug.hpp"
 #include "Util/Compiler.h"
+else
+class InterfaceBlackboard;
+
+#endif  // AUGUST
 
 struct UIState;
 class MainWindow;
@@ -52,6 +57,12 @@ namespace CommonInterface {
     return Private::movement_detected;
   }
 
+#ifdef _MSC_VER
+#   define MY_ASSERT(expression) ((void)0)
+#else  // _MSC_VER
+#   define MY_ASSERT assert
+#endif  // _MSC_VER
+
   // TODO: make this protected
   /**
    * Returns InterfaceBlackboard.Basic (NMEA_INFO) (read-only)
@@ -59,7 +70,7 @@ namespace CommonInterface {
    */
   gcc_const
   static inline const MoreData &Basic() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard.Basic();
   }
@@ -70,21 +81,21 @@ namespace CommonInterface {
    */
   gcc_const
   static inline const DerivedInfo &Calculated() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard.Calculated();
   }
 
   gcc_const
   static inline const SystemSettings &GetSystemSettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard.GetSystemSettings();
   }
 
   gcc_const
   static inline SystemSettings &SetSystemSettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard.SetSystemSettings();
   }
@@ -95,7 +106,7 @@ namespace CommonInterface {
    */
   gcc_const
   static inline const ComputerSettings& GetComputerSettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard.GetComputerSettings();
   }
@@ -106,14 +117,14 @@ namespace CommonInterface {
    */
   gcc_const
   static inline ComputerSettings &SetComputerSettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard.SetComputerSettings();
   }
 
   gcc_const
   static inline const UISettings &GetUISettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard.GetUISettings();
   }
@@ -124,35 +135,35 @@ namespace CommonInterface {
    */
   gcc_const
   static inline const MapSettings& GetMapSettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return GetUISettings().map;
   }
 
   gcc_const
   static inline const FullBlackboard &Full() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard;
   }
 
   gcc_const
   static inline LiveBlackboard &GetLiveBlackboard() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard;
   }
 
   gcc_const
   static inline UISettings &SetUISettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::blackboard.SetUISettings();
   }
 
   gcc_const
   static inline const DisplaySettings& GetDisplaySettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return GetUISettings().display;
   }
@@ -163,73 +174,73 @@ namespace CommonInterface {
    */
   gcc_const
   static inline MapSettings &SetMapSettings() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return SetUISettings().map;
   }
 
   static inline const UIState &GetUIState() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::ui_state;
   }
 
   static inline UIState &SetUIState() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     return Private::ui_state;
   }
 
   static inline void ReadBlackboardBasic(const MoreData &nmea_info) {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.ReadBlackboardBasic(nmea_info);
   }
 
   static inline void ReadBlackboardCalculated(const DerivedInfo &derived_info) {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.ReadBlackboardCalculated(derived_info);
   }
 
   static inline void ReadCommonStats(const CommonStats &common_stats) {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.ReadCommonStats(common_stats);
   }
 
   static inline void AddListener(BlackboardListener &listener) {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.AddListener(listener);
   }
 
   static inline void RemoveListener(BlackboardListener &listener) {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.RemoveListener(listener);
   }
 
   static inline void BroadcastGPSUpdate() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.BroadcastGPSUpdate();
   }
 
   static inline void BroadcastCalculatedUpdate() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.BroadcastCalculatedUpdate();
   }
 
   static inline void BroadcastComputerSettingsUpdate() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.BroadcastComputerSettingsUpdate();
   }
 
   static inline void BroadcastUISettingsUpdate() {
-    assert(InMainThread());
+    MY_ASSERT(InMainThread());
 
     Private::blackboard.BroadcastUISettingsUpdate();
   }

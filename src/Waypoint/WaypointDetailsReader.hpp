@@ -24,6 +24,10 @@ Copyright_License {
 #ifndef WAYPOINT_DETAILS_READER_HPP
 #define WAYPOINT_DETAILS_READER_HPP
 
+#ifdef _MSC_VER
+#   include "Util/Compiler.h"
+#endif
+
 class Waypoints;
 class OperationEnvironment;
 class TLineReader;

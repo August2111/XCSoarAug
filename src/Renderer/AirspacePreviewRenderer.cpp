@@ -57,8 +57,11 @@ GetPolygonPoints(std::vector<BulkPixelPoint> &pts,
   const SearchPointVector &border = airspace.GetPoints();
 
   pts.reserve(border.size());
+#ifdef AUG_MSC
+#else
   for (auto it = border.begin(), it_end = border.end(); it != it_end; ++it)
     pts.push_back(projection.GeoToScreen(it->GetLocation()));
+#endif
 }
 
 bool

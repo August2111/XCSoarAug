@@ -222,8 +222,8 @@ AbstractAirspace::GetClearance(const FlatProjection &projection) const
     return m_clearance;
 
   m_clearance = m_border;
-  if (is_convex != TriState::FALSE)
-    is_convex = m_clearance.PruneInterior() ? TriState::FALSE : TriState::TRUE;
+  if (is_convex != TriState::False)
+    is_convex = m_clearance.PruneInterior() ? TriState::False : TriState::True;
 
   FlatBoundingBox bb = m_clearance.CalculateBoundingbox();
   FlatGeoPoint center = bb.GetCenter();

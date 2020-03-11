@@ -75,7 +75,11 @@ struct VisitorAdapter {
 WaypointPtr
 Waypoints::WaypointNameTree::Get(const TCHAR *name) const
 {
+#ifdef AUG_MSC
+  TCHAR normalized_name[0x1000];
+#else
   TCHAR normalized_name[_tcslen(name) + 1];
+#endif
   NormalizeSearchString(normalized_name, name);
   return RadixTree<WaypointPtr>::Get(normalized_name, nullptr);
 }
@@ -84,7 +88,11 @@ void
 Waypoints::WaypointNameTree::VisitNormalisedPrefix(const TCHAR *prefix,
                                                    WaypointVisitor &visitor) const
 {
+#ifdef AUG_MSC
+  TCHAR normalized[0x1000];
+#else
   TCHAR normalized[_tcslen(prefix) + 1];
+#endif
   NormalizeSearchString(normalized, prefix);
   VisitorAdapter adapter(visitor);
   VisitPrefix(normalized, adapter);
@@ -95,7 +103,12 @@ Waypoints::WaypointNameTree::SuggestNormalisedPrefix(const TCHAR *prefix,
                                                      TCHAR *dest,
                                                      size_t max_length) const
 {
+#ifdef AUG_MSC
+  TCHAR normalized[0x1000];
+#else
   TCHAR normalized[_tcslen(prefix) + 1];
+#endif
+//  TCHAR normalized[_tcslen(prefix) + 1];
   NormalizeSearchString(normalized, prefix);
   return Suggest(normalized, dest, max_length);
 }
@@ -103,7 +116,12 @@ Waypoints::WaypointNameTree::SuggestNormalisedPrefix(const TCHAR *prefix,
 void
 Waypoints::WaypointNameTree::Add(WaypointPtr wp)
 {
+#ifdef AUG_MSC
+  TCHAR normalized_name[0x1000];
+#else
   TCHAR normalized_name[wp->name.length() + 1];
+#endif
+//  TCHAR normalized_name[wp->name.length() + 1];
   NormalizeSearchString(normalized_name, wp->name.c_str());
   RadixTree<WaypointPtr>::Add(normalized_name, std::move(wp));
 }
@@ -111,7 +129,11 @@ Waypoints::WaypointNameTree::Add(WaypointPtr wp)
 void
 Waypoints::WaypointNameTree::Remove(const WaypointPtr &wp)
 {
+#ifdef AUG_MSC
+  TCHAR normalized_name[0x1000];
+#else
   TCHAR normalized_name[wp->name.length() + 1];
+#endif
   NormalizeSearchString(normalized_name, wp->name.c_str());
   RadixTree<WaypointPtr>::Remove(normalized_name, wp);
 }

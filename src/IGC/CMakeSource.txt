@@ -1,0 +1,13 @@
+file(GLOB_RECURSE HEADER_FILES  *.h*)
+
+# file(GLOB_RECURSE SOURCE_FILES *.cpp)
+set(SOURCE_FILES  #!
+    ${SRC}/IGC/IGCFix.cpp
+    ${SRC}/IGC/IGCWriter.cpp
+    ${SRC}/IGC/IGCString.cpp
+    ${SRC}/IGC/Generator.cpp
+    ${SRC}/IGC/IGCParser.cpp
+)
+file(GLOB_RECURSE HEADER_FILES *.h*)
+
+set(SCRIPT_FILES CMakeSource.txt)

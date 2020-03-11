@@ -46,6 +46,7 @@ IsTaskLegVisible(const OrderedTaskPoint &tp)
 
   case TaskPointType::UNORDERED:
     break;
+  default: break;
   }
 
   gcc_unreachable();

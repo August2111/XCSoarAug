@@ -23,10 +23,10 @@
 #ifndef XCSOAR_PROTECTED_TASK_MANAGER_HPP
 #define XCSOAR_PROTECTED_TASK_MANAGER_HPP
 
+#include "Util/Compiler.h"
 #include "Thread/Guard.hpp"
 #include "Engine/Task/Unordered/AbortIntersectionTest.hpp"
 #include "Engine/Waypoint/Ptr.hpp"
-#include "Util/Compiler.h"
 
 struct AGeoPoint;
 struct TaskBehaviour;

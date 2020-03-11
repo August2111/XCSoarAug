@@ -30,6 +30,10 @@ Copyright_License {
 #include "Util/Clamp.hpp"
 
 #include <algorithm>
+#ifdef _MSC_VER
+#   define _USE_MATH_DEFINES // for C++
+#   include <cmath>
+#endif
 
 void
 HorizonRenderer::Draw(Canvas &canvas, const PixelRect &rc,

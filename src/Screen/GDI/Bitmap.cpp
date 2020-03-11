@@ -27,11 +27,18 @@ Copyright_License {
 
 #include <assert.h>
 
-Bitmap::Bitmap(Bitmap &&src)
-  :bitmap(src.bitmap)
+Bitmap::Bitmap(Bitmap&& src)
+#ifdef USE_MEMORY_CANVAS
+#ifdef NO_AUG_MSC
 {
+  // TODO!!!!!!!!!!!!!!! bitmap gibt es nicht!
+}
+#else
+  :bitmap(src.bitmap) {
   src.bitmap = nullptr;
 }
+#endif
+#endif
 
 bool
 Bitmap::LoadFile(Path path)
@@ -42,9 +49,13 @@ Bitmap::LoadFile(Path path)
 void
 Bitmap::Reset()
 {
-  if (bitmap != nullptr) {
-    assert(IsScreenInitialized());
+#ifdef USE_MEMORY_CANVAS
+  {
+#ifdef AUG_MSC
+    // TODO!!!!!!!!!!!!!!! bitmap gibt es nicht!
+#endif
 
+#else
 #ifndef NDEBUG
     bool success =
 #endif
@@ -52,6 +63,9 @@ Bitmap::Reset()
     assert(success);
 
     bitmap = nullptr;
+    if (bitmap != nullptr) {
+      assert(IsScreenInitialized());
+#endif
   }
 }
 
@@ -61,7 +75,9 @@ Bitmap::GetSize() const
   assert(IsDefined());
 
   BITMAP bm;
+#ifndef AUG_MSC
   ::GetObject(bitmap, sizeof(bm), &bm);
+#endif
   const PixelSize size = { bm.bmWidth, bm.bmHeight };
   return size;
 }

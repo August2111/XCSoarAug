@@ -27,6 +27,9 @@ Copyright_License {
 #include "Thread/Mutex.hxx"
 #include "Util/Compiler.h"
 
+#   define TRUE 1
+#   define FALSE 0
+
 #include <boost/asio/ip/udp.hpp>
 
 #include <stdint.h>

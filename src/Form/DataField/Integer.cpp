@@ -117,7 +117,14 @@ DataFieldInteger::SpeedUp(bool keyup)
 void
 DataFieldInteger::AppendComboValue(ComboList &combo_list, int value) const
 {
+#ifdef AUG_MSC
+  static const int nmConst1 = 0x1000;  //  edit_format.capacity();
+   static const int nmConst2 = 0x1000;  // display_format.capacity();
+ 
+   TCHAR a[nmConst1], b[nmConst2];
+#else
   TCHAR a[edit_format.capacity()], b[display_format.capacity()];
+#endif
   _stprintf(a, edit_format, value);
   _stprintf(b, display_format, value);
   combo_list.Append(combo_list.size(), a, b);

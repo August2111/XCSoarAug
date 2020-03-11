@@ -120,7 +120,6 @@ ConvertLineReader::ReadLine()
       return nullptr;
 
     /* fall through ... */
-    gcc_fallthrough;
 
   case Charset::AUTO:
     return narrow;

@@ -424,6 +424,19 @@ File::ReadString(Path path, char *buffer, size_t size)
   assert(buffer != nullptr);
   assert(size > 0);
 
+#ifdef AUG_MSC
+// #include "corecrt_io.h"
+// #include <xlocmes>
+  auto fd = fopen(path.c_str(), "r");
+  if (fd < 0)
+    return false;
+  size_t nbytes = fread( buffer, 1, size - 1, fd);
+  fclose(fd);
+  if (nbytes < 0)
+    return false;
+  buffer[nbytes] = '\0'; 
+  return true;
+#else
   int flags = O_RDONLY;
 #ifdef O_NOCTTY
   flags |= O_NOCTTY;
@@ -435,14 +448,13 @@ File::ReadString(Path path, char *buffer, size_t size)
   int fd = _topen(path.c_str(), flags);
   if (fd < 0)
     return false;
-
   ssize_t nbytes = read(fd, buffer, size - 1);
   close(fd);
   if (nbytes < 0)
     return false;
-
   buffer[nbytes] = '\0';
   return true;
+#endif
 }
 
 bool
@@ -451,6 +463,14 @@ File::WriteExisting(Path path, const char *value)
   assert(path != nullptr);
   assert(value != nullptr);
 
+#ifdef AUG_MSC
+  auto fd = fopen(path.c_str(), "w");
+  if (fd == nullptr)
+    return false;
+  const size_t length = strlen(value);
+  size_t nbytes = fwrite( value, 1, length, fd);
+  return fclose(fd) == 0 && nbytes == (size_t)length;
+#else  // AUG_MSC
   int flags = O_WRONLY;
 #ifdef O_NOCTTY
   flags |= O_NOCTTY;
@@ -462,10 +482,10 @@ File::WriteExisting(Path path, const char *value)
   int fd = _topen(path.c_str(), flags);
   if (fd < 0)
     return false;
-
   const size_t length = strlen(value);
   ssize_t nbytes = write(fd, value, length);
   return close(fd) == 0 && nbytes == (ssize_t)length;
+#endif  // AUG_MSC
 }
 
 bool
@@ -473,6 +493,12 @@ File::CreateExclusive(Path path)
 {
   assert(path != nullptr);
 
+#ifdef AUG_MSC
+  auto fd = fopen(path.c_str(), "w");
+  if (fd == nullptr)
+    return false;
+  fclose(fd);
+#else  // AUG_MSC
   int flags = O_WRONLY | O_CREAT | O_EXCL;
 #ifdef O_NOCTTY
   flags |= O_NOCTTY;
@@ -486,5 +512,6 @@ File::CreateExclusive(Path path)
     return false;
 
   close(fd);
+#endif  // AUG_MSC
   return true;
 }

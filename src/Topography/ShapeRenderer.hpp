@@ -63,7 +63,11 @@ public:
   void AddPoint(PixelPoint pt) {
     assert(num_points < points.size());
 
+#ifdef AUG_MSC
+    points[num_points++] = {0, 0};  // TODO!!!!!!!!!!!!!!!
+#else
     points[num_points++] = pt;
+#endif
   }
 
   /**

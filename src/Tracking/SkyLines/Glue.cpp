@@ -190,7 +190,7 @@ SkyLinesTracking::Glue::SetSettings(const Settings &settings)
 {
   thermal_enabled = settings.cloud.show_thermals;
 
-  if (settings.cloud.enabled == TriState::TRUE && settings.cloud.key != 0) {
+  if (settings.cloud.enabled == TriState::True && settings.cloud.key != 0) {
     cloud_client.SetKey(settings.cloud.key);
     if (!cloud_client.IsDefined()) {
       const boost::asio::ip::udp::resolver::query query(boost::asio::ip::udp::v4(),

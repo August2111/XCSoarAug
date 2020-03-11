@@ -37,6 +37,10 @@ sin_cos(const double thetha)
   double s, c;
 #ifdef __APPLE__
   __sincos(thetha, &s, &c);
+#elif defined(_MSC_VER)
+  s = sin(thetha);
+  c = cos(thetha);
+  // sincos(thetha, &s, &c);
 #else
   sincos(thetha, &s, &c);
 #endif

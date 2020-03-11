@@ -182,6 +182,9 @@ GaugeVario::MakePolygon(const int i)
 
   const FastIntegerRotation r(Angle::Degrees(i));
 
+#ifdef AUG_MSC
+  // TODO(aug): Hier muss noch etwas implementiert werden!
+#else
   bit[0] = TransformRotatedPoint(r.Rotate(-offset.x + nlength0, nwidth),
                                  offset);
   bit[1] = TransformRotatedPoint(r.Rotate(-offset.x + nlength1, 0),
@@ -190,7 +193,9 @@ GaugeVario::MakePolygon(const int i)
                                  offset);
 
   *bline = TransformRotatedPoint(r.Rotate(-offset.x + nline, 0),
-                                 offset);
+    offset);
+#endif
+
 }
 
 BulkPixelPoint *

@@ -51,7 +51,11 @@ FlarmTrafficWindow::FlarmTrafficWindow(const FlarmTrafficLook &_look,
    distance(2000),
    selection(-1), warning(-1),
    h_padding(_h_padding), v_padding(_v_padding),
-   small(_small),
+#ifdef _MSC_VER
+  is_small(_small),
+#else  // _MSC_VER
+  small(_small),
+#endif  // _MSC_VER
    enable_north_up(false),
    heading(Angle::Zero()),
    side_display_type(SIDE_INFO_VARIO)
@@ -195,7 +199,7 @@ FlarmTrafficWindow::Update(Angle new_direction, const TrafficList &new_data,
 
   FlarmId selection_id;
   PixelPoint pt;
-  if (!small && selection >= 0) {
+  if (!is_small && selection >= 0) {
     selection_id = data.list[selection].id;
     pt = sc[selection];
   } else {
@@ -235,7 +239,7 @@ FlarmTrafficWindow::RangeScale(double d) const
 void
 FlarmTrafficWindow::PaintRadarNoTraffic(Canvas &canvas) const
 {
-  if (small)
+  if (is_small)
     return;
 
   const TCHAR* str = _("No Traffic");
@@ -354,7 +358,7 @@ FlarmTrafficWindow::PaintRadarTarget(Canvas &canvas,
         circle_pen = &look.default_pen;
       }
 
-      if (!small && static_cast<unsigned> (selection) == i) {
+      if (!is_small && static_cast<unsigned> (selection) == i) {
         text_color = &look.selection_color;
         target_brush = arrow_brush = &look.selection_brush;
         target_pen = &look.selection_pen;
@@ -377,14 +381,14 @@ FlarmTrafficWindow::PaintRadarTarget(Canvas &canvas,
   if (circles > 0) {
     canvas.SelectHollowBrush();
     canvas.Select(*circle_pen);
-    canvas.DrawCircle(sc[i].x, sc[i].y, Layout::FastScale(small ? 8 : 16));
+    canvas.DrawCircle(sc[i].x, sc[i].y, Layout::FastScale(is_small ? 8 : 16));
     if (circles == 2)
-      canvas.DrawCircle(sc[i].x, sc[i].y, Layout::FastScale(small ? 10 : 19));
+      canvas.DrawCircle(sc[i].x, sc[i].y, Layout::FastScale(is_small ? 10 : 19));
   }
 
   // Create an arrow polygon
   BulkPixelPoint Arrow[5];
-  if (small) {
+  if (is_small) {
     Arrow[0].x = -3;
     Arrow[0].y = 4;
     Arrow[1].x = 0;
@@ -423,7 +427,7 @@ FlarmTrafficWindow::PaintRadarTarget(Canvas &canvas,
   // Draw the polygon
   canvas.DrawPolygon(Arrow, 5);
 
-  if (small) {
+  if (is_small) {
     if (!WarningMode() || traffic.HasAlarm())
       PaintTargetInfoSmall(canvas, traffic, i, *text_color, *arrow_brush);
 
@@ -434,7 +438,7 @@ FlarmTrafficWindow::PaintRadarTarget(Canvas &canvas,
   if (WarningMode())
     return;
 
-  // if vertical speed to small or negative -> skip this one
+  // if vertical speed to is_small or negative -> skip this one
   if (side_display_type == SIDE_INFO_VARIO &&
       (!traffic.climb_rate_avg30s_available ||
        traffic.climb_rate_avg30s < 0.5 ||
@@ -581,8 +585,8 @@ FlarmTrafficWindow::PaintRadarPlane(Canvas &canvas) const
 {
   canvas.Select(look.plane_pen);
 
-  IntPoint2D p1(Layout::FastScale(small ? 5 : 10),
-                -Layout::FastScale(small ? 1 : 2));
+  IntPoint2D p1(Layout::FastScale(is_small ? 5 : 10),
+                -Layout::FastScale(is_small ? 1 : 2));
   IntPoint2D p2(-p1.x, p1.y);
 
   if (enable_north_up) {
@@ -593,7 +597,7 @@ FlarmTrafficWindow::PaintRadarPlane(Canvas &canvas) const
   canvas.DrawLine(radar_mid.x + p1.x, radar_mid.y + p1.y,
                   radar_mid.x + p2.x, radar_mid.y + p2.y);
 
-  p2 = { 0, Layout::FastScale(small ? 3 : 6) };
+  p2 = { 0, Layout::FastScale(is_small ? 3 : 6) };
   p1 = { 0, -p2.y };
 
   if (enable_north_up) {
@@ -604,7 +608,7 @@ FlarmTrafficWindow::PaintRadarPlane(Canvas &canvas) const
   canvas.DrawLine(radar_mid.x + p1.x, radar_mid.y + p1.y,
                   radar_mid.x + p2.x, radar_mid.y + p2.y);
 
-  p1.x = Layout::FastScale(small ? 2 : 4);
+  p1.x = Layout::FastScale(is_small ? 2 : 4);
   p1.y = p1.x;
   p2 = { -p1.x, p1.y };
 
@@ -659,7 +663,7 @@ FlarmTrafficWindow::PaintRadarBackground(Canvas &canvas) const
 
   PaintRadarPlane(canvas);
 
-  if (small)
+  if (is_small)
     return;
 
   // Paint zoom strings
@@ -710,7 +714,7 @@ void
 FlarmTrafficWindow::OnPaint(Canvas &canvas)
 {
 #ifdef ENABLE_OPENGL
-  if (small) {
+  if (is_small) {
     const ScopeAlphaBlend alpha_blend;
 
     canvas.SelectBlackPen();

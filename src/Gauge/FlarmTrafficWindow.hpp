@@ -61,7 +61,11 @@ protected:
    */
   unsigned radius;
 
+#ifdef _MSC_VER
+  bool is_small;
+#else  // _MSC_VER
   bool small;
+#endif  // _MSC_VER
 
   PixelPoint sc[TrafficList::MAX_COUNT];
 

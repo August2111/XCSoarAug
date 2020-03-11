@@ -30,6 +30,7 @@
 #ifndef THREAD_MUTEX_HXX
 #define THREAD_MUTEX_HXX
 
+#include "Util/Compiler.h"
 #include <mutex>
 
 #ifdef _WIN32

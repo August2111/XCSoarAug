@@ -24,8 +24,8 @@ Copyright_License {
 #ifndef XCSOAR_PROFILE_PASSWORD_DIALOG_HPP
 #define XCSOAR_PROFILE_PASSWORD_DIALOG_HPP
 
-#include "Util/TriState.hpp"
 #include "Util/Compiler.h"
+#include "Util/TriState.hpp"
 
 #ifdef _WIN32
 #include <windows.h>
