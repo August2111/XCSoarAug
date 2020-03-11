@@ -1,0 +1,7 @@
+//       1 > ------Erstellen gestartet : Projekt: OS, Konfiguration : Debug x64------
+//       2 > ------Erstellen gestartet : Projekt: Renderer, Konfiguration : Debug x64------
+//  3 > ------Erstellen gestartet : Projekt: Screen, Konfiguration : Debug x64------
+//  4 > ------Erstellen gestartet : Projekt: Terrain, Konfiguration : Debug x64------
+//       5 > ------Erstellen gestartet : Projekt: Weather, Konfiguration : Debug x64------
+//  6 > ------Erstellen gestartet : Projekt: XCSoarWin, Konfiguration : Debug x64------
+//  7 > ------Erstellen gestartet : Projekt: zzip, Konfiguration : Debug x64------
