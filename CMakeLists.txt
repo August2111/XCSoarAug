@@ -24,16 +24,21 @@ include(CMakeSource.cmake)
 
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
-      # LUA ist vermutlich besser im output ordner aufgehoben...
-      include_directories("D:/Projects/3rd_Party/lua/lua-5.3.5/src")
       # add_definitions("/ZW")
+      if (EXISTS "D:/Projects/3rd_Party")
+      # LUA ist vermutlich besser im output ordner aufgehoben...
+        include_directories("D:/Projects/3rd_Party/zlib")
+      else()
+        include_directories("D:/link_libs/lua-5.3.5/src")
+        include_directories("D:/link_libs/zlib/zlib-1.2.11")
+      endif()
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
       message(STATUS "+++ System = WIN32 / MinGW!")
       set(Boost_COMPILER "mgw73")  # necessary: changed mgw as boost compiler to mgw73!
-      include_directories(D:/Projects/3rd_Party/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include)
+      include_directories("D:/Projects/3rd_Party/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
       # LUA ist vermutlich besser im output ordner aufgehoben...
-      include_directories(D:/Projects/3rd_Party/lua/lua-5.3.5/src)
+      include_directories("D:/Projects/3rd_Party/lua/lua-5.3.5/src")
 elseif(ANDROID)
     message(STATUS "+++ System = ANDROID / ${ANDROID_ABI}!")
     set(Boost_COMPILER "clang")  # necessary: changed clang8 as boost compiler to clang!
@@ -51,7 +56,6 @@ string(REPLACE "\\" "/" Boost_ROOT ${Boost_ROOT})
 # message(FATAL_ERROR "+++ Boost_ROOT: ${Boost_ROOT} vs. $ENV{Boost_ROOT}!")
 #####################################################################################
 #####################################################################################
-include_directories(D:/Projects/3rd_Party/zlib)
 # add_compile_definitions(USE_MEMORY_CANVAS)
 add_compile_definitions(NOMINMAX)
 add_compile_definitions("XCSOAR_VERSION=\"7.1\"")

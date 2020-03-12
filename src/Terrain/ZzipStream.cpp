@@ -23,6 +23,7 @@ Copyright_License {
 
 #include "ZzipStream.hpp"
 
+#include <zzip/conf.h>
 #include <zzip/util.h>
 
 static int
