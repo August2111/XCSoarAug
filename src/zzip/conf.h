@@ -23,19 +23,22 @@
 # define ZZIP_SIZEOF_INT     4
 # define ZZIP_SIZEOF_LONG    4
 
-# include <cstdint>  // aug
-// typedef unsigned long long    _zzip___int64;
-#define _zzip___int64 long long
+#ifdef ZZIP_PACKAGE
+// # include <cstdint>  // aug
+// #define _zzip___int64 long long
+// #else
+typedef unsigned char           uint8_t;  // aug
+typedef unsigned short int      uint16_t;  // aug
+typedef unsigned int            uint32_t;  // aug
+typedef unsigned long long int  uint64_t;  // aug
+// #define _zzip_restrict __restrict__
+typedef unsigned long long      _zzip___int64;
+#define __restrict__
+#endif
 # include <zzip/_config.h>  // aug
-// typedef unsigned char           uint8_t;  // aug
-// typedef unsigned short int      uint16_t;  // aug
-// typedef unsigned int            uint32_t;  // aug
-// typedef unsigned long long int  uint64_t;  // aug
 
 #undef ZZIP_HAVE_UNISTD_H
 #undef ZZIP_HAVE_SYS_PARAM_H
-// #define _zzip_restrict __restrict__
-#define __restrict__
 
 # elif defined ZZIP_1_H
 # include "zzip-1.h"

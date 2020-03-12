@@ -25,9 +25,10 @@ foreach(source_file ${${TARGET_NAME}_SOURCES})
         string(REPLACE "/" "\\" src_path ${src_path})
     endif()
     source_group("Source\\${src_path}" FILES  ${source_file})
-    message(STATUS "### ${src_path}  --- ${source_file}")
+    message(STATUS "${src_path}  --- ${source_file}")
 endforeach()
 
+add_compile_definitions(ZZIP_PACKAGE)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_library(${TARGET_NAME} STATIC
@@ -36,5 +37,5 @@ add_library(${TARGET_NAME} STATIC
     ${SCRIPT_FILES}
 )
 # message(FATAL_ERROR "Stop!")
-set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
+set_target_properties(${TARGET_NAME} PROPERTIES FOLDER 3rdParty)
 
