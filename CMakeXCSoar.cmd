@@ -2,10 +2,10 @@
 
 REM Am 05.10.2019 aktuell!
 
-echo start CMake XCSoar - ein XCSoar-Fork für Windows!
+if not defined PROJECT_NAME  set PROJECT_NAME=XCSoarAug
+echo start CMake %PROJECT_NAME% - a XCSoar-Fork for Windows!
 cd /D %~dp0
 
-if not defined PROJECT_NAME  set PROJECT_NAME=XCSoarWin
 if not defined SOURCE_DIR  set SOURCE_DIR=%CD%
 if not defined BINARY_DIR set BINARY_DIR=D:\Projects\Binaries
 if not defined TARGET_PLATFORM  set TARGET_PLATFORM=64

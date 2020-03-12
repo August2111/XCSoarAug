@@ -4,7 +4,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f
 
 message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
-set(ENABLE_OPENGL ON)  # better outside????
+set(ENABLE_OPENGL OFF)  # better outside????
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
   message(STATUS "+++ TARGET_NAME = ${TARGET_NAME}")
@@ -106,14 +106,15 @@ link_directories(${Boost_ROOT}/lib)
 include_directories(
     ${PROJECTGROUP_SOURCE_DIR}/src
     ${PROJECTGROUP_SOURCE_DIR}/src/Engine
-    ${PROJECTGROUP_SOURCE_DIR}/output/include
+    # ${PROJECTGROUP_SOURCE_DIR}/
+    ${PROJECTGROUP_BINARY_DIR}/output/include
     # besser mit find_package
-    ${PROJECTGROUP_SOURCE_DIR}/output/src/curl-7.64.1/include
+    ${PROJECTGROUP_BINARY_DIR}/output/src/curl-7.64.1/include
 
     # D:/Projects/3rd_Party/boost/boost_1_72_0/vc142/include/boost-1_72/boost/predef/other
     ${Boost_INCLUDE_DIR}/boost/predef/other
     #  ${Boost_INCLUDE_DIR}/boost/beast/zlib  # wegen zlib.h, hier liegt aber zlib.hpp!
-    D:/link_libs/opencv/opencv_3_4_3/sources/3rdparty/zlib  # wegen zlib.h!
+    # D:/link_libs/opencv/opencv_3_4_3/sources/3rdparty/zlib  # wegen zlib.h!
 )
 # organize the files in subdirectories
 # foreach(source_file ${SOURCE_FILES})

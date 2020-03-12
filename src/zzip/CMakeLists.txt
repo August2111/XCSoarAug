@@ -4,7 +4,7 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
   message(STATUS "+++ TARGET_NAME = ${TARGET_NAME}")
-  project(${TARGET_NAME} CXX) # Your project name
+  project(${TARGET_NAME} C) # Your project name
 
   set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
 
@@ -19,7 +19,7 @@ foreach(source_file ${${TARGET_NAME}_SOURCES})
     message(STATUS "!!! Source File from List:  --- ${source_file}")
     string(REPLACE "${TARGET_NAME}/" "" source_file ${source_file})
     list(APPEND SOURCE_FILES ${source_file})
-    set_source_files_properties(${source_file} PROPERTIES LANGUAGE CXX)
+    set_source_files_properties(${source_file} PROPERTIES LANGUAGE C)
     get_filename_component(src_path ${source_file} DIRECTORY)
     if (src_path)
         string(REPLACE "/" "\\" src_path ${src_path})

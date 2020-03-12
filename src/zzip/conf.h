@@ -19,7 +19,24 @@
 #if !defined ZZIP_OMIT_CONFIG_H
 # if defined _MSC_VER || defined __BORLANDC__ || defined __WATCOMC__
 // aug: # include <zzip/_msvc.h>
-# include <zzip/_config.h>
+# define ZZIP_SIZEOF_SHORT   2
+# define ZZIP_SIZEOF_INT     4
+# define ZZIP_SIZEOF_LONG    4
+
+# include <cstdint>  // aug
+// typedef unsigned long long    _zzip___int64;
+#define _zzip___int64 long long
+# include <zzip/_config.h>  // aug
+// typedef unsigned char           uint8_t;  // aug
+// typedef unsigned short int      uint16_t;  // aug
+// typedef unsigned int            uint32_t;  // aug
+// typedef unsigned long long int  uint64_t;  // aug
+
+#undef ZZIP_HAVE_UNISTD_H
+#undef ZZIP_HAVE_SYS_PARAM_H
+// #define _zzip_restrict __restrict__
+#define __restrict__
+
 # elif defined ZZIP_1_H
 # include "zzip-1.h"
 # elif defined ZZIP_2_H
