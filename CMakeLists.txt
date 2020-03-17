@@ -140,7 +140,7 @@ if(EXISTS "${Boost_ROOT}/include/boost-1_72/boost/version.hpp")
 elseif(EXISTS "${Boost_ROOT}/include/boost/version.hpp")
     set(Boost_INCLUDE_DIR "${Boost_ROOT}/include")
 else()
-    message(FATAL_ERROR "!!! Boost: include dir not found! (Boost_ROOT = ${Boost_ROOT})")
+    message(FATAL_ERROR "!!! Boost: include directories not found! (Boost_ROOT = ${Boost_ROOT})")
 endif()
 include_directories( ${Boost_INCLUDE_DIR})
 link_directories(${Boost_ROOT}/lib)
@@ -150,7 +150,7 @@ include_directories(
     ${PROJECTGROUP_SOURCE_DIR}/src/Engine
     # ${PROJECTGROUP_SOURCE_DIR}/
     ${PROJECTGROUP_BINARY_DIR}/output/include
-    # besser mit find_package
+    # better with find_package
 #    ${PROJECTGROUP_BINARY_DIR}/output/src/curl-7.64.1/include
 
     # D:/Projects/3rd_Party/boost/boost_1_72_0/vc142/include/boost-1_72/boost/predef/other
@@ -242,10 +242,9 @@ add_subdirectory(src/zzip)    # externes project as intern
 
 # add_subdirectory(output/data)
 # add_subdirectory(${THIRD_PARTY}/lua1  3rd_party/lua)
-# add_subdirectory(${THIRD_PARTY}/lu  3rd_party/lua)
 # add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.0  3rd_party/jasper)
 
-# nur test:
+# only test:
 # set_source_files_properties(output/data/memory_fields.c PROPERTIES LANGUAGE CXX)
 #      output/data/memory_fields.c
 add_executable(${TARGET_NAME}
@@ -253,7 +252,7 @@ add_executable(${TARGET_NAME}
       CMakeSource.cmake
       src/XCSoar.cpp
       # XCSoarDummy.cpp
-#      output/data/memory_fields.c
+      output/data/memory_fields.c
       src/Version.cpp
       XCSoar.def )
 
@@ -284,7 +283,6 @@ target_link_libraries(${TARGET_NAME}
     Logger
     Look
     Lua
-    #  lua1
     MapWindow
     Markers
     Math
