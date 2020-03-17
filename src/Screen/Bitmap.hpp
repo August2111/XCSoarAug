@@ -117,7 +117,12 @@ public:
 #endif
 
 #ifdef USE_MEMORY_CANVAS
-  Bitmap(Bitmap &&src) = default;
+  Bitmap(Bitmap&& src) = default;
+//  #ifdef AUG_MSC
+//    Bitmap(Bitmap&& src);
+//  #else
+//    Bitmap(Bitmap&& src) = default;
+//  #endif
 #else
   Bitmap(Bitmap &&src);
 #endif

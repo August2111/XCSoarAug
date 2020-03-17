@@ -26,6 +26,7 @@ Copyright_License {
 
 #include <assert.h>
 
+#if !defined(USE_MEMORY_CANVAS) // && !defined(AUG_MSC)   // "hat bereits einen Funktionsrumpf"
 void
 Brush::Create(const Color c)
 {
@@ -34,6 +35,7 @@ Brush::Create(const Color c)
   Destroy();
   brush = ::CreateSolidBrush(c);
 }
+#endif
 
 #ifdef HAVE_HATCHED_BRUSH
 
@@ -49,7 +51,6 @@ Brush::Create(const Bitmap &bitmap)
   brush = ::CreatePatternBrush(bitmap.GetNative());
 }
 
-#endif
 
 void
 Brush::Destroy()
@@ -66,3 +67,4 @@ Brush::Destroy()
     brush = nullptr;
   }
 }
+#endif

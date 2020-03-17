@@ -7,7 +7,7 @@ cd /D %~dp0
 set SOURCE_DIR=%CD%
 set BINARY_DIR=D:\Projects\Binaries
 set TARGET_PLATFORM=64
-set THIRD_PARTY=D:/Projects/3rd_party
+set THIRD_PARTY=D:/Projects/3rd_Party
 set COMPILER=VS2019
 set PROGRAM_DIR=D:\Programs
 set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\vc142

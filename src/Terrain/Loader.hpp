@@ -24,8 +24,11 @@ Copyright_License {
 #ifndef XCSOAR_TERRAIN_LOADER_HPP
 #define XCSOAR_TERRAIN_LOADER_HPP
 
+#include "Util/Compiler.h"
 #include "jasper/jas_stream.h"
 #include "Thread/SharedMutex.hpp"
+#include "jasper/jas_seq.h"
+// typedef jas_matrix_t jas_matrix;  // insert AUG_MSC
 
 struct zzip_dir;
 struct GeoPoint;
@@ -34,11 +37,20 @@ class RasterProjection;
 class OperationEnvironment;
 
 class TerrainLoader {
-  SharedMutex &mutex;
+#ifndef AUG_MSC
+  static SharedMutex& mutex;
+#else
+  SharedMutex& mutex;
+#endif
 
   RasterTileCache &raster_tile_cache;
 
+#ifndef AUG_MSC
+  static const bool scan_overview;
+  static const bool scan_tiles;
+#else
   const bool scan_overview, scan_tiles;
+#endif
 
   OperationEnvironment &env;
 

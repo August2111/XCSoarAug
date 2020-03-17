@@ -6,9 +6,9 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
   message(STATUS "+++ TARGET_NAME = ${TARGET_NAME}")
   project(${TARGET_NAME} C) # Your project name
 
-  set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
+ set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
 
-  set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
+#   set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
 
 # include(../../CMakeSource.txt)
 
@@ -18,18 +18,19 @@ message(STATUS "##### PROJECTGROUP_SOURCE_DIR:  --- ${PROJECTGROUP_SOURCE_DIR}")
 
 set(SOURCE_FILES )
 foreach(source_file ${${TARGET_NAME}_SOURCES})
-    message(STATUS "!!! Source File from List:  --- ${source_file}")
+    # message(STATUS "!!! Source File from List:  --- ${source_file}")
     string(REPLACE "${TARGET_NAME}/" "" source_file ${source_file})
     list(APPEND SOURCE_FILES ${source_file})
-    set_source_files_properties(${source_file} PROPERTIES LANGUAGE C)
+    # set_source_files_properties(${source_file} PROPERTIES LANGUAGE CXX)
     get_filename_component(src_path ${source_file} DIRECTORY)
     if (src_path)
         string(REPLACE "/" "\\" src_path ${src_path})
     endif()
     source_group("Source\\${src_path}" FILES  ${source_file})
-    message(STATUS "### ${src_path}  --- ${source_file}")
+    # message(STATUS "${src_path}  --- ${source_file}")
 endforeach()
 
+add_compile_definitions(ZZIP_PACKAGE)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_compile_definitions(ZZLIB_PACKAGE)
@@ -40,5 +41,5 @@ add_library(${TARGET_NAME} STATIC
     ${SCRIPT_FILES}
 )
 # message(FATAL_ERROR "Stop!")
-# set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
+set_target_properties(${TARGET_NAME} PROPERTIES FOLDER 3rdParty)
 

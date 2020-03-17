@@ -21,9 +21,8 @@ Copyright_License {
 }
 */
 
-#include "Terrain/RasterTile.hpp"
 
-#include "jasper/jas_seq.h"
+#include "Terrain/RasterTile.hpp"
 
 #include <algorithm>
 

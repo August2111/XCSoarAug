@@ -62,6 +62,10 @@ Copyright_License {
 
 #include <assert.h>
 
+#ifdef _AUG
+// #   include <boost/asio/impl/src.hpp>
+// with ssl:  #   include <boost/asio/ssl/impl/src.hpp>
+#endif
 static const char *const Usage = "\n"
   "  -datapath=      path to XCSoar data can be defined\n"
 #ifdef SIMULATOR_AVAILABLE
@@ -134,7 +138,7 @@ Main()
 /**
  * Main entry point for the whole XCSoar application
  */
-#if !defined(_WIN32) || 1
+#if !defined(_WIN32) || 0
 int main(int argc, char **argv)
 #else
 int WINAPI

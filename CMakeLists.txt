@@ -21,16 +21,44 @@ message(STATUS "*** PROJECTGROUP_BINARY_DIR = '${PROJECTGROUP_BINARY_DIR}'")
 # file(GLOB_RECURSE HEADER_FILES  ${PROJECTGROUP_SOURCE_DIR}/src/*.h*)
 set(SRC "${PROJECTGROUP_SOURCE_DIR}/src")
 include(CMakeSource.cmake)
+# message(FATAL_ERROR "Stop. !")
 
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
       # add_definitions("/ZW")
-      if (EXISTS "D:/Projects/3rd_Party")
-      # LUA ist vermutlich besser im output ordner aufgehoben...
-        include_directories("D:/Projects/3rd_Party/zlib")
+      if (EXISTS ${THIRD_PARTY})
+          if (ON OR WIN64)  # momentan kein Flag verfügbar!
+              add_compile_definitions(_AMD64_)
+          else()
+              message(FATAL_ERROR "Error: WIN32 not implemented?")
+          endif()
+          # LUA ist vermutlich besser im output ordner aufgehoben...
+          if (${THIRD_PARTY} MATCHES "D:/Projects/3rd_Party")
+            # set(THIRD_PARTY "D:/Projects/3rd_Party")
+            # include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11")
+            # message(FATAL_ERROR "wrong THIRD_PARTY = ${THIRD_PARTY}")
+            include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11/install_vc142_x64/include")
+            include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
+            include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
+            # include_directories("${THIRD_PARTY}/_install/JasPer_2.0.14/include")
+            include_directories("${THIRD_PARTY}/jasper/JasPer_2.0.14/include")
+            # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
+            include_directories("${THIRD_PARTY}/MapServer/src")
+          elseif(${THIRD_PARTY} MATCHES "D:/link_libs")
+            # set(THIRD_PARTY "D:/link_libs")
+            include_directories("${THIRD_PARTY}/lua/lua-5.3.5/include")
+            include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11/include")
+            include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
+            # include_directories("${THIRD_PARTY}/jasper/JasPer/include")
+            # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
+            include_directories("${THIRD_PARTY}/jasper/JasPer_2.0.14/include")
+            include_directories("${THIRD_PARTY}/MapServer/src")
+          else()
+            message(FATAL_ERROR "unknown THIRD_PARTY = ${THIRD_PARTY}")
+          endif()
+          include_directories("output/include")
       else()
-        include_directories("D:/link_libs/lua-5.3.5/src")
-        include_directories("D:/link_libs/zlib/zlib-1.2.11")
+         message(FATAL_ERROR "THIRD_PARTY = don't exists!")
       endif()
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
@@ -58,10 +86,14 @@ string(REPLACE "\\" "/" Boost_ROOT ${Boost_ROOT})
 #####################################################################################
 # add_compile_definitions(USE_MEMORY_CANVAS)
 add_compile_definitions(NOMINMAX)
+add_compile_definitions(_AUG)
+# nur einmal fdefinieren!!! add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
 add_compile_definitions("XCSOAR_VERSION=\"7.1\"")
 # add_definitions(/std:c++11 /Zc:__cplusplus)
 if(MSVC)
-  add_definitions(/std:c++14 /Zc:__cplusplus)
+# add_compile_definitions(_X86_) #  _IA64_)
+##  add_definitions(/std:c++14 /Zc:__cplusplus)
+# TARGET_ARCHITECTURE: _AMD64_ _X86_ _IA64_ _ARM_ _ARM64_
 endif()
 # USE_MEMORY_CANVAS
 # USE_GDI
@@ -79,8 +111,9 @@ if(ENABLE_OPENGL)
     message(STATUS "glu imported libname: ${GLU_IMPORTED_LIBNAME}")
     add_compile_definitions(ENABLE_OPENGL)
 else()
-    add_compile_definitions(USE_MEMORY_CANVAS)
-    # add_compile_definitions(USE_GDI)
+    # add_compile_definitions(USE_MEMORY_CANVAS)
+    add_compile_definitions(USE_GDI)
+    add_compile_definitions(USE_WIN32_RESOURCES USE_WINUSER)
 endif()
 #####################################################################################
 #####################################################################################
@@ -88,13 +121,18 @@ endif()
 if(NOT Boost_DIR)
   set(Boost_DIR "${Boost_ROOT}/lib/cmake/Boost-1.72.0")
 endif()
+
+
 set(Boost_USE_STATIC_LIBS         ON)
 set(Boost_USE_MULTITHREADED       ON)
 set(Boost_USE_STATIC_RUNTIME      OFF)
 # set(Boost_DEBUG                   ON)
 set(Boost_DEBUG                   OFF)
-# add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
-set(BOOST_COMPONENTS system regex filesystem thread chrono)
+if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
+    add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
+    # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
+endif()
+set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
 find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 
 if(EXISTS "${Boost_ROOT}/include/boost-1_72/boost/version.hpp")
@@ -113,7 +151,7 @@ include_directories(
     # ${PROJECTGROUP_SOURCE_DIR}/
     ${PROJECTGROUP_BINARY_DIR}/output/include
     # besser mit find_package
-    ${PROJECTGROUP_BINARY_DIR}/output/src/curl-7.64.1/include
+#    ${PROJECTGROUP_BINARY_DIR}/output/src/curl-7.64.1/include
 
     # D:/Projects/3rd_Party/boost/boost_1_72_0/vc142/include/boost-1_72/boost/predef/other
     ${Boost_INCLUDE_DIR}/boost/predef/other
@@ -185,6 +223,7 @@ add_subdirectory(src/Screen)
 add_subdirectory(src/Task)
 add_subdirectory(src/TeamCode)
 add_subdirectory(src/Terrain)
+#  add_subdirectory(src/Terrain/jasper)
 add_subdirectory(src/Thread)
 add_subdirectory(src/Time)
 add_subdirectory(src/Topography)
@@ -196,17 +235,27 @@ add_subdirectory(src/Waypoint)
 add_subdirectory(src/Weather)
 add_subdirectory(src/Widget)
 add_subdirectory(src/XML)
-add_subdirectory(src/zzip)
 
+# add_subdirectory(${THIRD_PARTY}/zzip  3rd_party/zzip)
+add_subdirectory(src/zzip)    # externes project as intern
+# add_subdirectory(src/lua1 3rd_party/lua)
 
+# add_subdirectory(output/data)
+# add_subdirectory(${THIRD_PARTY}/lua1  3rd_party/lua)
+# add_subdirectory(${THIRD_PARTY}/lu  3rd_party/lua)
+# add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.0  3rd_party/jasper)
 
-# nur test: 
+# nur test:
+# set_source_files_properties(output/data/memory_fields.c PROPERTIES LANGUAGE CXX)
+#      output/data/memory_fields.c
 add_executable(${TARGET_NAME}
 # add_library(${TARGET_NAME} STATIC
+      CMakeSource.cmake
       src/XCSoar.cpp
-      XCSoarDummy.cpp
+      # XCSoarDummy.cpp
+#      output/data/memory_fields.c
       src/Version.cpp
-      XCSoar.def)
+      XCSoar.def )
 
 target_link_libraries(${TARGET_NAME}
     PUBLIC
@@ -235,6 +284,7 @@ target_link_libraries(${TARGET_NAME}
     Logger
     Look
     Lua
+    #  lua1
     MapWindow
     Markers
     Math
@@ -251,7 +301,7 @@ target_link_libraries(${TARGET_NAME}
     Renderer
     Replay
     Repository
-#    Screen
+    Screen
     Task
     TeamCode
     Terrain
@@ -266,18 +316,36 @@ target_link_libraries(${TARGET_NAME}
     Weather
     Widget
     XML
-#    zzip
+    zzip  # das ist noch ein internes 3rd Party Project
+   "${THIRD_PARTY}/jasper/JasPer_2.0.14/lib/jasper.lib"   # PC0781
+#    ${THIRD_PARTY}/_install/JasPer-2.0.0/lib/jasper.lib   #flaps5
+    "${THIRD_PARTY}/lua/lua-5.3.5/lib/lua1.lib"
+    "${THIRD_PARTY}/zlib/zlib-1.2.11/install_vc142_x64/lib/zlibstatic.lib"
+    "${THIRD_PARTY}/curl/curl-7.64.1/install_vc142_x64/DLL Release/libcurl.lib"
 
+    msimg32.lib  # Windows
+#    D:/Projects/3rd_Party/zlib/zlibwapi.lib
+# D:\Projects\3rd_Party\curl\curl-7.64.1\build\Win64\VC16\LIB Release\libcurl.lib
+ #   D:\Projects\3rd_Party\zlib\zlib-1.2.11\install_vc142_x64\lib\zlibstatic.lib
+#    data
+    ${Boost_LIBRARIES}
 #  
     XCSoar
 ) # Reihenfolge is very important!!!!
 
+#    target_link_libraries(${TARGET_NAME}
+#        PRIVATE   # PUBLIC
+#        Boost::filesystem
+#        ${BOOST_COMPONENTS}
+#     )
+
+  # add_compile_definitions}
 if(ENABLE_OPENGL)
     target_link_libraries(${TARGET_NAME}
         PRIVATE   # PUBLIC
         OpenGL::GL
         OpenGL:GLU # single colon!
-        GLUT::GLUT
+        # GLUT::GLUT
     )
 endif()
 

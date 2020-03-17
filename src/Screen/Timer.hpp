@@ -25,7 +25,8 @@ Copyright_License {
 #define XCSOAR_SCREEN_TIMER_HXX
 
 #ifdef USE_WINUSER
-#include <windows.h>
+#include "Util/Compiler.h"  // inserted: AUG_MSC
+// #include <windows.h>
 #else
 #include "Event/Timer.hpp"
 #endif

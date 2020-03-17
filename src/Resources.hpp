@@ -12,12 +12,22 @@
 
 #include "Util/ConstBuffer.hxx"
 
+#ifdef AUG_MSC
+#define MAKE_RESOURCE(name, id) \
+  extern "C" uint8_t resource_ ## id[8]; \
+  extern "C" const size_t resource_ ## id ## _size; \
+  static constexpr ResourceId name(resource_ ##id, &resource_ ## id ## _size);
+#else
 #define MAKE_RESOURCE(name, id) \
   extern "C" uint8_t resource_ ## id[]; \
   extern "C" const size_t resource_ ## id ## _size; \
   static constexpr ResourceId name(resource_ ##id, &resource_ ## id ## _size);
-
 #endif
+#endif
+
+// extern "C" const size_t resource_XXX_size;
+// extern "C" uint8_t resource_XXX[8];
+// static constexpr ResourceId NAME_XXX(resource_XXX, &resource_XXX_size);
 
 MAKE_RESOURCE(IDB_LANDABLE, 139);
 MAKE_RESOURCE(IDB_LANDABLE_HD, 5139);

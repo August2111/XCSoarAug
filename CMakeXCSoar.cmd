@@ -9,8 +9,8 @@ cd /D %~dp0
 if not defined SOURCE_DIR  set SOURCE_DIR=%CD%
 if not defined BINARY_DIR set BINARY_DIR=D:\Projects\Binaries
 if not defined TARGET_PLATFORM  set TARGET_PLATFORM=64
-if not defined THIRD_PARTY set THIRD_PARTY=D:/Projects/3rd_party
-if not exist "%THIRD_PARTY%" set THIRD_PARTY=D:/link_libs
+if not defined THIRD_PARTY set THIRD_PARTY=D:\Projects\3rd_party
+if not exist "%THIRD_PARTY%" set THIRD_PARTY=D:\link_libs
 REM if not defined QT_VERSION  set QT_VERSION=5.13.1
 if not defined COMPILER  set COMPILER=VS2019
 if not defined PROGRAM_DIR  set PROGRAM_DIR=D:\Programs
@@ -20,7 +20,7 @@ if "%COMPUTERNAME%"  == "FLAPS5"      if not defined Boost_ROOT set Boost_ROOT=%
 if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%/qt
 
 cmake --version > NUL
-if errorlevel 1 PATH = d:\Programme\CMake\bin;%PATH%
+if errorlevel 1 PATH = %PROGRAM_DIR%\CMake\bin;%PATH%
 cmake --version
 echo ERRORLEVEL = %ERRORLEVEL%
 REM pause
@@ -147,6 +147,8 @@ if defined MySQL_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DMySQL_DIR=%MySQL_ROOT:
 if defined OpenCV_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DOpenCV_DIR=%OpenCV_DIR:\=/%
 :: das geht so nicht! if defined Qt5_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DQt5_ROOT=%Qt5_ROOT:\=/%/android
 if defined Boost_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DBoost_ROOT=%Boost_ROOT:\=/%
+if defined THIRD_PARTY set CMAKE_DEFINES=%CMAKE_DEFINES% -DTHIRD_PARTY=%THIRD_PARTY:\=/%
+
 
 :::::::::::::::  Qt-Part ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 REM set Qtx_DIR=%QT_ROOT%/%QT_VERSION%/%QT_COMPILER%/lib

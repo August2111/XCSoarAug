@@ -29,11 +29,18 @@ Copyright_License {
 #include "Operation/Operation.hpp"
 #include "OS/ConvertPathName.hpp"
 
+#ifdef JASPR_2_0_0
 extern "C" {
-#include "jasper/jp2/jp2_cod.h"
-#include "jasper/jpc/jpc_dec.h"
-#include "jasper/jpc/jpc_t1cod.h"
+  #include "jasper/jp2/jp2_cod.h"
+  #include "jasper/jpc/jpc_dec.h"
+  #include "jasper/jpc/jpc_t1cod.h"
 }
+#else  // JASPER_2_0_14
+extern "C" {
+  #include "jasper/jas_stream.h"
+}
+#endif
+
 
 long
 TerrainLoader::SkipMarkerSegment(long file_offset) const
@@ -171,6 +178,12 @@ TerrainLoader::SetSize(unsigned _width, unsigned _height,
                               tile_columns, tile_rows);
 }
 
+#if AUG_MSC
+// const bool TerrainLoader::scan_overview = false;
+// const bool TerrainLoader::scan_tiles = false;
+// SharedMutex& TerrainLoader::mutex;
+#endif
+
 void
 TerrainLoader::PutTileData(unsigned index,
                            unsigned start_x, unsigned start_y,
@@ -190,6 +203,13 @@ TerrainLoader::PutTileData(unsigned index,
 static bool
 LoadJPG2000(jas_stream_t *in, void *loader)
 {
+#if _AUG
+  // das geht so mit Jasper 2.0.14 nicht, da fehlen die Header usw...
+  // bei jasper 2.0.0 müsste das alles da sein, aber da klappt anderes nicht ;-(
+  bool success = false;
+  in = in;
+  loader = loader;
+#else
   /* Get the first box.  This should be a JP box. */
   auto box = jp2_box_get(in);
   if (box == nullptr)
@@ -234,14 +254,27 @@ LoadJPG2000(jas_stream_t *in, void *loader)
 
   jpc_initluts();
 
-  const auto dec = jpc_dec_create(&opts, in);
-  if (dec == nullptr)
-    return false;
-
-  dec->loader = loader;
-
-  bool success = jpc_dec_decode(dec) == 0;
-  jpc_dec_destroy(dec);
+        #ifdef AUG_MSC
+          const auto dec = jpc_seg_alloc();  //  &opts, in);
+          if (dec == nullptr)
+            return false;
+        
+          bool success = false;
+          // aug!!!  dec->loader = loader;
+        
+        // aug!!!   success = jpc_seg_decode(dec) == 0; 
+          jpc_seg_destroy(dec);
+        #else
+          const auto dec = jpc_dec_create(&opts, in);
+          if (dec == nullptr)
+            return false;
+        
+          dec->loader = loader;
+        
+          bool success = jpc_dec_decode(dec) == 0;
+          jpc_dec_destroy(dec);
+        #endif
+#endif
   return success;
 }
 

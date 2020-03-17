@@ -46,6 +46,11 @@ typedef unsigned long long int  uint64_t;  // aug
 // #   include <string>  // aug
 // #   include <cstdint>  // aug
 typedef long long int           off64_t;
+// typedef long long int           _zzip_ssize_t;
+// typedef size_t           _zzip_ssize_t;
+#if !defined(ssize_t)
+    typedef size_t           ssize_t;
+#endif
 #endif  // ZZLIB_PACKAGE
 
 # elif defined ZZIP_1_H

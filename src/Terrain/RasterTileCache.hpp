@@ -37,7 +37,7 @@ Copyright_License {
 
 #define RASTER_SLOPE_FACT 12
 
-struct jas_matrix;
+// struct jas_matrix;
 struct GridLocation;
 
 class RasterTileCache {

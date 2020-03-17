@@ -26,6 +26,8 @@ Copyright_License {
 
 // IWYU pragma: begin_exports
 
+#include "Util/Compiler.h"  // New from AUG_MSC
+
 #ifdef ENABLE_OPENGL
 #include "OpenGL/BufferCanvas.hpp"
 #elif defined(USE_MEMORY_CANVAS)
