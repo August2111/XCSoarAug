@@ -24,13 +24,14 @@ endforeach()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-set_source_files_properties(../../output/data/memory_fields.c PROPERTIES LANGUAGE CXX)
+set_source_files_properties(
+  ../../temp_data/memory_fields.c PROPERTIES LANGUAGE CXX)
 
 add_library(${TARGET_NAME} STATIC
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
-    ../../output/data/memory_fields.c
+    ${PROJECTGROUP_SOURCE_DIR}/temp_data/memory_fields.c
 )
 # target_link_libraries(${TARGET_NAME} data)
 # message(FATAL_ERROR "Stop!")

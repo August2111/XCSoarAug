@@ -34,14 +34,16 @@ if (WIN32 AND MSVC)
           endif()
           # LUA ist vermutlich besser im output ordner aufgehoben...
           if (${THIRD_PARTY} MATCHES "D:/Projects/3rd_Party")
+            set(THIRD_PARTY2 "D:/Projects/link_libs")
             # set(THIRD_PARTY "D:/Projects/3rd_Party")
             # include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11")
             # message(FATAL_ERROR "wrong THIRD_PARTY = ${THIRD_PARTY}")
-            include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11/install_vc142_x64/include")
+            include_directories("${THIRD_PARTY2}/zlib/zlib-1.2.11/include")
             include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
             include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
             # include_directories("${THIRD_PARTY}/_install/JasPer_2.0.14/include")
-            include_directories("${THIRD_PARTY}/jasper/JasPer_2.0.14/include")
+            # old include_directories("${THIRD_PARTY}/jasper/JasPer_2.0.14/include")
+            include_directories("${THIRD_PARTY2}/jasper/JasPer-2.0.14/include")
             # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
             include_directories("${THIRD_PARTY}/MapServer/src")
           elseif(${THIRD_PARTY} MATCHES "D:/link_libs")
@@ -51,7 +53,7 @@ if (WIN32 AND MSVC)
             include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
             # include_directories("${THIRD_PARTY}/jasper/JasPer/include")
             # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
-            include_directories("${THIRD_PARTY}/jasper/JasPer_2.0.14/include")
+            include_directories("${THIRD_PARTY}/jasper/JasPer-2.0.14/include")
             include_directories("${THIRD_PARTY}/MapServer/src")
           else()
             message(FATAL_ERROR "unknown THIRD_PARTY = ${THIRD_PARTY}")
@@ -252,7 +254,7 @@ add_executable(${TARGET_NAME}
       CMakeSource.cmake
       src/XCSoar.cpp
       # XCSoarDummy.cpp
-      output/data/memory_fields.c
+      # output/data/memory_fields.c
       src/Version.cpp
       XCSoar.def )
 
@@ -327,7 +329,7 @@ target_link_libraries(${TARGET_NAME}
  #   D:\Projects\3rd_Party\zlib\zlib-1.2.11\install_vc142_x64\lib\zlibstatic.lib
 #    data
     ${Boost_LIBRARIES}
-#  
+#
     XCSoar
 ) # Reihenfolge is very important!!!!
 

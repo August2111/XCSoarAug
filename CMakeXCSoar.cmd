@@ -2,9 +2,10 @@
 
 REM Am 05.10.2019 aktuell!
 
-if not defined PROJECT_NAME  set PROJECT_NAME=XCSoarAug
-echo start CMake %PROJECT_NAME% - a XCSoar-Fork for Windows!
 cd /D %~dp0
+if not defined PROJECT_NAME for %%A in ("%CD%") do (Set PROJECT_NAME=%%~nxA)
+REM if not defined PROJECT_NAME  set PROJECT_NAME=XCSoarAug
+echo start CMake %PROJECT_NAME% - a XCSoar-Fork for Windows!
 
 if not defined SOURCE_DIR  set SOURCE_DIR=%CD%
 if not defined BINARY_DIR set BINARY_DIR=D:\Projects\Binaries
