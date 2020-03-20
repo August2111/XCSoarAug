@@ -7,36 +7,25 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
   project(${TARGET_NAME} CXX) # Your project name
 
 # include(../../CMakeSource.txt)
-
-# add_compile_definitions(_WINSOCKAPI_)
 # organize the files in subdirectories
 message(STATUS "##### PROJECTGROUP_SOURCE_DIR:  --- ${PROJECTGROUP_SOURCE_DIR}")
 
+list(APPEND ${TARGET_NAME}_SOURCES  ${TARGET_NAME}/jpc_rtc.cpp)
 set(SOURCE_FILES )
 foreach(source_file ${${TARGET_NAME}_SOURCES})
-    # message(STATUS "!!! Source File from List:  --- ${source_file}")
     string(REPLACE "${TARGET_NAME}/" "" source_file ${source_file})
     list(APPEND SOURCE_FILES ${source_file})
     get_filename_component(src_path ${source_file} DIRECTORY)
-    if (ON)
-       # string(REPLACE "${PROJECTGROUP_SOURCE_DIR}/src" "" src_path ${src_path})
-#      string(REPLACE "${CMAKE_CURRENT_SOURCE_DIR}" "" src_path ${src_path})
-#      string(REPLACE "${TARGET_NAME}" "" src_path ${src_path})
-   endif()
     if (src_path)
         string(REPLACE "/" "\\" src_path ${src_path})
     endif()
     source_group("Source\\${src_path}" FILES  ${source_file})
-    if ((${source_file} MATCHES ".*.c")  AND (NOT ${source_file} MATCHES ".*.cpp"))
-       set_source_files_properties(${source_file} PROPERTIES LANGUAGE C)
-       message(STATUS "+++ Terrain  ${source_file}")
-    else()
-       message(STATUS "### ${src_path}  --- ${source_file}")
-    endif()
+    # message(STATUS "### ${src_path}  --- ${source_file}")
 endforeach()
-# message(FATAL_ERROR "Stop!")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+# include_directories(${3rd_Party}/jasper/Jasper-2.0.0/src/jasper)
+include_directories(${3rd_Party}/_install/jasper/JasPer_2.0.0/include)
 
 add_library(${TARGET_NAME} STATIC
     ${SOURCE_FILES}

@@ -21,9 +21,8 @@ Copyright_License {
 }
 */
 
-#include "Terrain/RasterTile.hpp"
 
-#include "jasper/jas_seq.h"
+#include "Terrain/RasterTile.hpp"
 
 #include <algorithm>
 
@@ -53,7 +52,11 @@ RasterTile::LoadCache(FILE *file)
 }
 
 void
-RasterTile::CopyFrom(const struct jas_matrix &m)
+#ifdef JAS_2_0_0
+RasterTile::CopyFrom(const struct jas_matrix& m)
+#else
+RasterTile::CopyFrom(const jas_matrix_t& m)
+#endif
 {
   if (!IsDefined())
     return;

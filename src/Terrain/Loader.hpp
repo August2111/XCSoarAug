@@ -24,8 +24,10 @@ Copyright_License {
 #ifndef XCSOAR_TERRAIN_LOADER_HPP
 #define XCSOAR_TERRAIN_LOADER_HPP
 
+#include "Util/Compiler.h"
 #include "jasper/jas_stream.h"
 #include "Thread/SharedMutex.hpp"
+#include "jasper/jas_seq.h"
 
 struct zzip_dir;
 struct GeoPoint;
@@ -34,11 +36,20 @@ class RasterProjection;
 class OperationEnvironment;
 
 class TerrainLoader {
-  SharedMutex &mutex;
+#ifndef AUG_MSC
+  static SharedMutex& mutex;
+#else
+  SharedMutex& mutex;
+#endif
 
   RasterTileCache &raster_tile_cache;
 
+#ifndef AUG_MSC
+  static const bool scan_overview;
+  static const bool scan_tiles;
+#else
   const bool scan_overview, scan_tiles;
+#endif
 
   OperationEnvironment &env;
 
@@ -77,7 +88,11 @@ public:
   void PutTileData(unsigned index,
                    unsigned start_x, unsigned start_y,
                    unsigned end_x, unsigned end_y,
-                   const struct jas_matrix &m);
+#ifdef JAS_2_0_0
+    const struct jas_matrix& m);
+#else
+    const jas_matrix_t& m);
+#endif
 
 private:
   bool LoadJPG2000(struct zzip_dir *dir, const char *path);

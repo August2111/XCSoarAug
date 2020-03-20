@@ -14,6 +14,8 @@ set(BASIC_SOURCES
     ${SRC}/Components.cpp
     ${SRC}/DataGlobals.cpp
 
+    ${SRC}/FlightStatistics.cpp  # _AUG: vergessen?
+
     ${SRC}/HorizonWidget.cpp
     ${SRC}/Interface.cpp
     ${SRC}/LocalPath.cpp
@@ -55,6 +57,7 @@ set(BASIC_SOURCES
     ${SRC}/Version.cpp
    
     ${SRC}/RateLimiter.cpp
+    ${SRC}/TeamActions.cpp  # _AUG: vergessen?
 )
 
 # set(BASIC_SOURCES

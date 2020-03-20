@@ -1155,26 +1155,6 @@ set(TeamCode_SOURCES
 set(Terrain_SOURCES
         Terrain/HeightMatrix.cpp
         Terrain/Intersection.cpp
-        Terrain/jasper/base/jas_malloc.c
-        Terrain/jasper/base/jas_seq.c
-        Terrain/jasper/base/jas_stream.c
-        Terrain/jasper/base/jas_string.c
-        Terrain/jasper/base/jas_tvp.c
-        Terrain/jasper/jp2/jp2_cod.c
-        Terrain/jasper/jpc/jpc_bs.c
-        Terrain/jasper/jpc/jpc_cs.c
-        Terrain/jasper/jpc/jpc_dec.c
-        Terrain/jasper/jpc/jpc_math.c
-        Terrain/jasper/jpc/jpc_mqcod.c
-        Terrain/jasper/jpc/jpc_mqdec.c
-        Terrain/jasper/jpc/jpc_qmfb.c
-        Terrain/jasper/jpc/jpc_rtc.cpp
-        Terrain/jasper/jpc/jpc_t1cod.c
-        Terrain/jasper/jpc/jpc_t1dec.c
-        Terrain/jasper/jpc/jpc_t2cod.c
-        Terrain/jasper/jpc/jpc_t2dec.c
-        Terrain/jasper/jpc/jpc_tagtree.c
-        Terrain/jasper/jpc/jpc_tsfb.c
         Terrain/Loader.cpp
         Terrain/RasterBuffer.cpp
         Terrain/RasterMap.cpp
@@ -1191,6 +1171,50 @@ set(Terrain_SOURCES
         Terrain/ZzipStream.cpp
 )
 
+set(jasper_SOURCES
+        jasper/base/jas_malloc.c
+        jasper/base/jas_seq.c
+        jasper/base/jas_stream.c
+        jasper/base/jas_string.c
+        jasper/base/jas_tvp.c
+        jasper/jp2/jp2_cod.c
+        jasper/jpc/jpc_bs.c
+        jasper/jpc/jpc_cs.c
+        jasper/jpc/jpc_dec.c
+        jasper/jpc/jpc_math.c
+        jasper/jpc/jpc_mqcod.c
+        jasper/jpc/jpc_mqdec.c
+        jasper/jpc/jpc_qmfb.c
+        jasper/jpc/jpc_rtc.cpp
+        jasper/jpc/jpc_t1cod.c
+        jasper/jpc/jpc_t1dec.c
+        jasper/jpc/jpc_t2cod.c
+        jasper/jpc/jpc_t2dec.c
+        jasper/jpc/jpc_tagtree.c
+        jasper/jpc/jpc_tsfb.c
+)
+# set(jasper_SOURCES
+#         Terrain/jasper/base/jas_malloc.c
+#         Terrain/jasper/base/jas_seq.c
+#         Terrain/jasper/base/jas_stream.c
+#         Terrain/jasper/base/jas_string.c
+#         Terrain/jasper/base/jas_tvp.c
+#         Terrain/jasper/jp2/jp2_cod.c
+#         Terrain/jasper/jpc/jpc_bs.c
+#         Terrain/jasper/jpc/jpc_cs.c
+#         Terrain/jasper/jpc/jpc_dec.c
+#         Terrain/jasper/jpc/jpc_math.c
+#         Terrain/jasper/jpc/jpc_mqcod.c
+#         Terrain/jasper/jpc/jpc_mqdec.c
+#         Terrain/jasper/jpc/jpc_qmfb.c
+#         Terrain/jasper/jpc/jpc_rtc.cpp
+#         Terrain/jasper/jpc/jpc_t1cod.c
+#         Terrain/jasper/jpc/jpc_t1dec.c
+#         Terrain/jasper/jpc/jpc_t2cod.c
+#         Terrain/jasper/jpc/jpc_t2dec.c
+#         Terrain/jasper/jpc/jpc_tagtree.c
+#         Terrain/jasper/jpc/jpc_tsfb.c
+# )
 set(Thread_SOURCES
         Thread/Debug.cpp
         Thread/RecursivelySuspensibleThread.cpp
@@ -1211,6 +1235,25 @@ set(Time_SOURCES
 
 set(Topography_SOURCES
         Topography/CachedTopographyRenderer.cpp
+#         Topography/shapelib/mapalloc.c
+#         Topography/shapelib/mapbits.c
+#         Topography/shapelib/mapprimitive.c
+#         Topography/shapelib/mapsearch.c
+#         Topography/shapelib/mapshape.c
+#         Topography/shapelib/mapstring.c
+#         Topography/shapelib/maptree.c
+#         Topography/shapelib/mapxbase.c
+        Topography/Thread.cpp
+        Topography/TopographyFile.cpp
+        Topography/TopographyFileRenderer.cpp
+        Topography/TopographyGlue.cpp
+        Topography/TopographyRenderer.cpp
+        Topography/TopographyStore.cpp
+        Topography/XShape.cpp
+)
+
+set (MapServer_SOURCES
+   not used up to now!
         Topography/shapelib/mapalloc.c
         Topography/shapelib/mapbits.c
         Topography/shapelib/mapprimitive.c
@@ -1219,13 +1262,6 @@ set(Topography_SOURCES
         Topography/shapelib/mapstring.c
         Topography/shapelib/maptree.c
         Topography/shapelib/mapxbase.c
-        Topography/Thread.cpp
-        Topography/TopographyFile.cpp
-        Topography/TopographyFileRenderer.cpp
-        Topography/TopographyGlue.cpp
-        Topography/TopographyRenderer.cpp
-        Topography/TopographyStore.cpp
-        Topography/XShape.cpp
 )
 
 set(Tracking_SOURCES

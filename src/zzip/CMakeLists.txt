@@ -8,6 +8,8 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
   set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
 
+  set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
+
 # include(../../CMakeSource.txt)
 
 # add_compile_definitions(_WINSOCKAPI_)
@@ -30,6 +32,8 @@ endforeach()
 
 add_compile_definitions(ZZIP_PACKAGE)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+add_compile_definitions(ZZLIB_PACKAGE)
 
 add_library(${TARGET_NAME} STATIC
     ${SOURCE_FILES}

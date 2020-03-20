@@ -37,7 +37,7 @@ Copyright_License {
 
 #define RASTER_SLOPE_FACT 12
 
-struct jas_matrix;
+// struct jas_matrix;
 struct GridLocation;
 
 class RasterTileCache {
@@ -272,11 +272,19 @@ public:
   void PutOverviewTile(unsigned index,
                        unsigned start_x, unsigned start_y,
                        unsigned end_x, unsigned end_y,
+#ifdef JAS_2_0_0
                        const struct jas_matrix &m);
+#else
+                       const jas_matrix_t &m);
+#endif
 
   bool PollTiles(int x, int y, unsigned radius);
 
-  void PutTileData(unsigned index, const struct jas_matrix &m);
+#ifdef JAS_2_0_0
+  void PutTileData(unsigned index, const struct jas_matrix& m);
+#else
+  void PutTileData(unsigned index, const jas_matrix_t& m);
+#endif
 
   void FinishTileUpdate();
 

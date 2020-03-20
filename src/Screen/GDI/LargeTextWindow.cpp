@@ -39,7 +39,11 @@ LargeTextWindow::SetText(const TCHAR *text)
 {
   // Replace \n by \r\r\n to enable usage of line-breaks in edit control
   unsigned size = _tcslen(text);
+#ifdef AUG_MSC
+  TCHAR* buffer = new TCHAR[size * sizeof(TCHAR) * 3];
+#else
   TCHAR buffer[size * sizeof(TCHAR) * 3];
+#endif
   const TCHAR* p2 = text;
   TCHAR* p3 = buffer;
   for (; *p2 != _T('\0'); p2++) {
@@ -59,6 +63,9 @@ LargeTextWindow::SetText(const TCHAR *text)
   *p3 = _T('\0');
 
   ::SetWindowText(hWnd, buffer);
+#ifdef AUG_MSC
+  delete[] buffer;
+#endif
 }
 
 void

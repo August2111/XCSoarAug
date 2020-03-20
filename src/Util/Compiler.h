@@ -55,7 +55,10 @@ Copyright_License {
 #endif  // AUG_MSC
 
 #define DT_UNDERLINE 0  // gibt es in WinUser.h nicht!
-#define JAS_DLLEXPORT
+// #define JAS_DLL
+// od declaration 
+
+// #define JAS_DLLEXPORT
 
 // typedef int jas_stream_t;
 // #include "jasper/jas_stream.h"

@@ -21,6 +21,7 @@ Copyright_License {
 }
 */
 
+// #define _WIN64 // RC_INVOKED //_X86_  //NT_INCLUDED  //_X86_
 #include "FontDescription.hpp"
 
 #ifdef USE_GDI

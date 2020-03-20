@@ -28,8 +28,8 @@ Copyright_License {
 #include "RasterBuffer.hpp"
 
 #include <stdio.h>
+#include "jasper/jas_seq.h"
 
-struct jas_matrix;
 
 class RasterTile {
   struct MetaData {
@@ -113,7 +113,11 @@ public:
     return !buffer.IsDefined();
   }
 
+#ifdef JAS_2_0_0
   void CopyFrom(const struct jas_matrix &m);
+#else
+  void CopyFrom(const jas_matrix_t& m);
+#endif
 
   /**
    * Determine the non-interpolated height at the specified pixel

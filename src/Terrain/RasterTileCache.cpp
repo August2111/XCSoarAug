@@ -45,7 +45,11 @@ void
 RasterTileCache::PutOverviewTile(unsigned index,
                                  unsigned start_x, unsigned start_y,
                                  unsigned end_x, unsigned end_y,
+#ifdef JAS_2_0_0
                                  const struct jas_matrix &m)
+#else
+                                 const jas_matrix_t& m)
+#endif
 {
   tiles.GetLinear(index).Set(start_x, start_y, end_x, end_y);
 
@@ -76,8 +80,11 @@ RasterTileCache::PutOverviewTile(unsigned index,
 
 void
 RasterTileCache::PutTileData(unsigned index,
-                             const struct jas_matrix &m)
-{
+#ifdef JAS_2_0_0
+  const struct jas_matrix& m) {
+#else
+const jas_matrix_t& m) {
+#endif
   auto &tile = tiles.GetLinear(index);
   if (!tile.IsRequested())
     return;

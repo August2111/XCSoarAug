@@ -2,6 +2,7 @@
 #define JPC_RTC_H
 
 #include "Util/Compiler.h"
+#include "jasper/jas_seq.h"
 
 struct jas_matrix;
 
@@ -15,11 +16,15 @@ extern "C" {
   void jas_rtc_ProcessComment(void *loader, const char *data, unsigned size);
   void jas_rtc_StartTile(void *loader, unsigned index);
 
-  void jas_rtc_PutTileData(void *loader,
-			   unsigned index,
-			   unsigned start_x, unsigned start_y,
-			   unsigned end_x, unsigned end_y,
-			   const struct jas_matrix *data);
+  void jas_rtc_PutTileData(void* loader,
+    unsigned index,
+    unsigned start_x, unsigned start_y,
+    unsigned end_x, unsigned end_y,
+#ifdef JAS_2_0_0
+    const struct jas_matrix* data);
+#else
+    const jas_matrix_t* data);
+#endif
 
   void jas_rtc_SetSize(void *loader,
 		       unsigned width, unsigned height,

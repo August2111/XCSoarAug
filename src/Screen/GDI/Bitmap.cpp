@@ -27,17 +27,28 @@ Copyright_License {
 
 #include <assert.h>
 
+#ifdef _AUG   // "hat bereits einen Funktionsrumpf"
+// Bitmap::Bitmap() {
+// 
+// }
+
 Bitmap::Bitmap(Bitmap&& src)
-#ifdef USE_MEMORY_CANVAS
-#ifdef NO_AUG_MSC
+#   ifdef USE_MEMORY_CANVAS
+#       ifdef AUG_MSC
 {
   // TODO!!!!!!!!!!!!!!! bitmap gibt es nicht!
 }
-#else
+#       else
   :bitmap(src.bitmap) {
   src.bitmap = nullptr;
 }
-#endif
+#       endif
+// #endif
+#   else
+{
+  // TODO!!!!!!!!!!!!!!! bitmap gibt es nicht!
+}
+#   endif
 #endif
 
 bool
@@ -69,6 +80,7 @@ Bitmap::Reset()
   }
 }
 
+// #ifndef AUG_MSC  // "hat bereits einen Funktionsrumpf"
 PixelSize
 Bitmap::GetSize() const
 {
@@ -81,3 +93,4 @@ Bitmap::GetSize() const
   const PixelSize size = { bm.bmWidth, bm.bmHeight };
   return size;
 }
+// #endif

@@ -24,6 +24,7 @@ Copyright_License {
 #ifndef XCSOAR_SCREEN_COLOR_HPP
 #define XCSOAR_SCREEN_COLOR_HPP
 
+#include "Util/Compiler.h"  // inserted from AUG_MSC
 // IWYU pragma: begin_exports
 #ifdef ENABLE_OPENGL
 #include "Screen/OpenGL/Color.hpp"
@@ -35,6 +36,8 @@ Copyright_License {
 #error No Color implementation
 #endif
 // IWYU pragma: end_exports
+
+// TODO(aug): possible Prepocessor-Defines;  NO_ENABLE_OPENGL;NO_USE_GDI;USE_MEMORY_CANVAS
 
 static constexpr Color COLOR_WHITE = Color(0xff, 0xff, 0xff);
 static constexpr Color COLOR_BLACK = Color(0x00, 0x00, 0x00);

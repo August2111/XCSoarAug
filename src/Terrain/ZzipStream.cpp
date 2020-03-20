@@ -23,6 +23,7 @@ Copyright_License {
 
 #include "ZzipStream.hpp"
 
+#include <zzip/conf.h>
 #include <zzip/util.h>
 
 static int
@@ -69,6 +70,7 @@ OpenJasperZzipStream(struct zzip_dir *dir, const char *path)
   if (f == nullptr)
     return nullptr;
 
+#if defined(JAS_2_0_0) || !defined(_AUG)
   jas_stream_t *stream = jas_stream_create();
   if (stream == nullptr) {
     zzip_file_close(f);
@@ -81,6 +83,8 @@ OpenJasperZzipStream(struct zzip_dir *dir, const char *path)
 
   /* By default, use full buffering for this type of stream. */
   jas_stream_initbuf(stream, JAS_STREAM_FULLBUF, 0, 0);
-
+#else
+  jas_stream_t* stream = nullptr;
+#endif
   return stream;
 }

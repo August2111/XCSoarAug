@@ -27,7 +27,7 @@ Copyright_License {
 #include "Screen/Color.hpp"
 #include "Screen/Features.hpp"
 #include "Debug.hpp"
-#include "Util/Compiler.h"
+// #include "Util/Compiler.h"  // disabled: AUG_MSC
 
 #include <assert.h>
 

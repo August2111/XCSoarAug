@@ -21,6 +21,12 @@ Copyright_License {
 }
 */
 
+#if _AUG
+  // BOOST_ASIO_SEPARATE_COMPILATION und das include-file sokll nur 1x im Project aufgerufen werden (also auch nicht
+  // in einem Header-File..! Deshalb habe ich es jetzt hier abgelegt, möglicherweise 
+#endif
+#define BOOST_ASIO_SEPARATE_COMPILATION
+#include <boost/asio/impl/src.hpp>
 #include "AsioThread.hpp"
 
 bool

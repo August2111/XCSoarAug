@@ -111,6 +111,7 @@ extern "C"
   extern const size_t AUTHORS_gz_size;
 }
 
+
 void
 dlgCreditsShowModal(SingleWindow &parent)
 {
