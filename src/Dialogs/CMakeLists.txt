@@ -24,13 +24,19 @@ endforeach()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+<<<<<<< HEAD
 message(STATUS "!!!!!! PROJECTGROUP_SOURCE_DIR = '${PROJECTGROUP_SOURCE_DIR}'")
 set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/data_temp/memory_fields.c PROPERTIES LANGUAGE CXX)
+=======
+set_source_files_properties(
+  ../../temp_data/memory_fields.c PROPERTIES LANGUAGE CXX)
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 
 add_library(${TARGET_NAME} STATIC
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
+    ${PROJECTGROUP_SOURCE_DIR}/temp_data/memory_fields.c
 )
 # target_link_libraries(${TARGET_NAME} data)
 # message(FATAL_ERROR "Stop!")

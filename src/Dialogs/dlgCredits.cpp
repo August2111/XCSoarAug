@@ -102,6 +102,16 @@ CreateLogoPage(ContainerWindow &parent, const PixelRect &rc,
   return window;
 }
 
+#ifdef _AUG
+extern "C"
+ {
+  extern uint8_t* COPYING_gz;
+  extern size_t COPYING_gz_size;
+
+  extern uint8_t* AUTHORS_gz;
+  extern size_t AUTHORS_gz_size;
+ }
+#else
 extern "C"
 {
   extern const uint8_t COPYING_gz[];
@@ -110,6 +120,7 @@ extern "C"
   extern const uint8_t AUTHORS_gz[];
   extern const size_t AUTHORS_gz_size;
 }
+#endif
 
 
 void

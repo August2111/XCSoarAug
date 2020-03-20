@@ -117,6 +117,7 @@ public:
 #endif
 
 #ifdef USE_MEMORY_CANVAS
+<<<<<<< HEAD
   Bitmap(Bitmap && src) = default;
   //  #ifdef AUG_MSC
   //    Bitmap(Bitmap&& src);
@@ -134,6 +135,14 @@ public:
 #ifndef _AUG
     Bitmap(const Bitmap & other) = delete;
     Bitmap& operator=(const Bitmap & other) = delete;
+=======
+  Bitmap(Bitmap&& src) = default;
+//  #ifdef AUG_MSC
+//    Bitmap(Bitmap&& src);
+//  #else
+//    Bitmap(Bitmap&& src) = default;
+//  #endif
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 #else
     // neuer Platzhalter für eigentliche Funktion 'Bitmap()' in Weather.lib!
     Bitmap(const Bitmap& other) {}

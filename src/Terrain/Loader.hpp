@@ -28,6 +28,10 @@ Copyright_License {
 #include "jasper/jas_stream.h"
 #include "Thread/SharedMutex.hpp"
 #include "jasper/jas_seq.h"
+<<<<<<< HEAD
+=======
+// typedef jas_matrix_t jas_matrix;  // insert AUG_MSC
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 
 struct zzip_dir;
 struct GeoPoint;

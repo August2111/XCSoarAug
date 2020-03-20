@@ -23,6 +23,7 @@ include(CMakeSource.cmake)
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
       # add_definitions("/ZW")
+<<<<<<< HEAD
       include_directories("${PROJECTGROUP_SOURCE_DIR}/data_temp")  # temporory data!
       if (EXISTS "D:/Projects/3rd_Party")
       if (ON OR WIN64)  # momentan kein Flag verfügbar!
@@ -50,6 +51,43 @@ if (WIN32 AND MSVC)
         include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
         # include_directories("${THIRD_PARTY}/MapServer/src")
         include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
+=======
+      if (EXISTS ${THIRD_PARTY})
+          if (ON OR WIN64)  # momentan kein Flag verfügbar!
+              add_compile_definitions(_AMD64_)
+          else()
+              message(FATAL_ERROR "Error: WIN32 not implemented?")
+          endif()
+          # LUA ist vermutlich besser im output ordner aufgehoben...
+          if (${THIRD_PARTY} MATCHES "D:/Projects/3rd_Party")
+            set(THIRD_PARTY2 "D:/Projects/link_libs")
+            # set(THIRD_PARTY "D:/Projects/3rd_Party")
+            # include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11")
+            # message(FATAL_ERROR "wrong THIRD_PARTY = ${THIRD_PARTY}")
+            include_directories("${THIRD_PARTY2}/zlib/zlib-1.2.11/include")
+            include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
+            include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
+            # include_directories("${THIRD_PARTY}/_install/JasPer_2.0.14/include")
+            # old include_directories("${THIRD_PARTY}/jasper/JasPer_2.0.14/include")
+            include_directories("${THIRD_PARTY2}/jasper/JasPer-2.0.14/include")
+            # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
+            include_directories("${THIRD_PARTY}/MapServer/src")
+          elseif(${THIRD_PARTY} MATCHES "D:/link_libs")
+            # set(THIRD_PARTY "D:/link_libs")
+            include_directories("${THIRD_PARTY}/lua/lua-5.3.5/include")
+            include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11/include")
+            include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
+            # include_directories("${THIRD_PARTY}/jasper/JasPer/include")
+            # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
+            include_directories("${THIRD_PARTY}/jasper/JasPer-2.0.14/include")
+            include_directories("${THIRD_PARTY}/MapServer/src")
+          else()
+            message(FATAL_ERROR "unknown THIRD_PARTY = ${THIRD_PARTY}")
+          endif()
+          include_directories("output/include")
+      else()
+         message(FATAL_ERROR "THIRD_PARTY = don't exists!")
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
       endif()
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
@@ -112,12 +150,21 @@ endif()
 if(NOT Boost_DIR)
   set(Boost_DIR "${Boost_ROOT}/lib/cmake/Boost-1.72.0")
 endif()
+
+
 set(Boost_USE_STATIC_LIBS         ON)
 set(Boost_USE_MULTITHREADED       ON)
 set(Boost_USE_STATIC_RUNTIME      OFF)
 # set(Boost_DEBUG                   ON)
 set(Boost_DEBUG                   OFF)
+<<<<<<< HEAD
 # add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
+=======
+if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
+    add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
+    # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
+endif()
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
 find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 
@@ -126,7 +173,7 @@ if(EXISTS "${Boost_ROOT}/include/boost-1_72/boost/version.hpp")
 elseif(EXISTS "${Boost_ROOT}/include/boost/version.hpp")
     set(Boost_INCLUDE_DIR "${Boost_ROOT}/include")
 else()
-    message(FATAL_ERROR "!!! Boost: include dir not found! (Boost_ROOT = ${Boost_ROOT})")
+    message(FATAL_ERROR "!!! Boost: include directories not found! (Boost_ROOT = ${Boost_ROOT})")
 endif()
 include_directories( ${Boost_INCLUDE_DIR})
 link_directories(${Boost_ROOT}/lib)
@@ -136,7 +183,11 @@ include_directories(
     ${PROJECTGROUP_SOURCE_DIR}/src/Engine
     # ${PROJECTGROUP_SOURCE_DIR}/
     ${PROJECTGROUP_BINARY_DIR}/output/include
+<<<<<<< HEAD
     # besser mit find_package
+=======
+    # better with find_package
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 #    ${PROJECTGROUP_BINARY_DIR}/output/src/curl-7.64.1/include
 
     # D:/Projects/3rd_Party/boost/boost_1_72_0/vc142/include/boost-1_72/boost/predef/other
@@ -222,6 +273,7 @@ add_subdirectory(src/Weather)
 add_subdirectory(src/Widget)
 add_subdirectory(src/XML)
 
+<<<<<<< HEAD
 add_subdirectory(src/zzip 3rd_party/zzip)
 # add_subdirectory(src/zzip 3rd_party/lua)
 # add_subdirectory(src/lua1 3rd_party/lua)
@@ -233,6 +285,17 @@ add_subdirectory(${THIRD_PARTY}/mapserver/mapserver-0  3rd_party/MapServer)
 # add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.0  3rd_party/jasper)
 
 # nur test:
+=======
+# add_subdirectory(${THIRD_PARTY}/zzip  3rd_party/zzip)
+add_subdirectory(src/zzip)    # externes project as intern
+# add_subdirectory(src/lua1 3rd_party/lua)
+
+# add_subdirectory(output/data)
+# add_subdirectory(${THIRD_PARTY}/lua1  3rd_party/lua)
+# add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.0  3rd_party/jasper)
+
+# only test:
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 # set_source_files_properties(output/data/memory_fields.c PROPERTIES LANGUAGE CXX)
 #      output/data/memory_fields.c
 add_executable(${TARGET_NAME}
@@ -240,7 +303,11 @@ add_executable(${TARGET_NAME}
       CMakeSource.cmake
       src/XCSoar.cpp
       # XCSoarDummy.cpp
+<<<<<<< HEAD
 #      output/data/memory_fields.c
+=======
+      # output/data/memory_fields.c
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
       src/Version.cpp
       XCSoar.def )
 
@@ -303,6 +370,7 @@ target_link_libraries(${TARGET_NAME}
     Weather
     Widget
     XML
+<<<<<<< HEAD
     # internal 3rd party libs!
     zzip
     MapServer
@@ -317,6 +385,14 @@ target_link_libraries(${TARGET_NAME}
 #    D:\Projects\3rd_Party\_install\JasPer-2.0.0\lib\jasper.lib
     "${THIRD_PARTY2}/zlib/zlib-1.2.11/lib/zlibstatic.lib"
     "${THIRD_PARTY}/curl/curl-7.64.1/build/Win64/VC16/DLL Release/libcurl.lib"
+=======
+    zzip  # das ist noch ein internes 3rd Party Project
+   "${THIRD_PARTY}/jasper/JasPer_2.0.14/lib/jasper.lib"   # PC0781
+#    ${THIRD_PARTY}/_install/JasPer-2.0.0/lib/jasper.lib   #flaps5
+    "${THIRD_PARTY}/lua/lua-5.3.5/lib/lua1.lib"
+    "${THIRD_PARTY}/zlib/zlib-1.2.11/install_vc142_x64/lib/zlibstatic.lib"
+    "${THIRD_PARTY}/curl/curl-7.64.1/install_vc142_x64/DLL Release/libcurl.lib"
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 
     msimg32.lib  # Windows
 #    D:/Projects/3rd_Party/zlib/zlibwapi.lib
@@ -324,7 +400,11 @@ target_link_libraries(${TARGET_NAME}
  #   D:\Projects\3rd_Party\zlib\zlib-1.2.11\install_vc142_x64\lib\zlibstatic.lib
 #    data
     ${Boost_LIBRARIES}
+<<<<<<< HEAD
 #  
+=======
+#
+>>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
     XCSoar
 ) # Reihenfolge is very important!!!!
 
