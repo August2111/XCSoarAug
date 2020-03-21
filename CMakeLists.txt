@@ -36,7 +36,7 @@ if (WIN32 AND MSVC)
       endif()
       # LUA ist vermutlich besser im output ordner aufgehoben...
         set(THIRD_PARTY "D:/Projects/3rd_Party")
-        set(THIRD_PARTY2 "D:/Projects/link_libs")
+        set(THIRD_PARTY2 "D:/link_libs")
         # include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11")
         include_directories("${THIRD_PARTY2}/zlib/zlib-1.2.11/include")
         #              D:\Projects\link_libs\zlib\zlib-1.2.11\include
@@ -285,23 +285,24 @@ if (NOT ASIO_GROUPING)  #next test: ASIO
     endforeach()
 endif()
 
-# only test:
-# set_source_files_properties(output/data/memory_fields.c PROPERTIES LANGUAGE CXX)
-#      output/data/memory_fields.c
-add_executable(${TARGET_NAME}
-# add_library(${TARGET_NAME} STATIC
-      ${SOURCE_FILES} # test ASIO!
-      CMakeSource.cmake
-      src/XCSoar.cpp
-      # XCSoarDummy.cpp
-      src/Version.cpp
-      XCSoar.def
-      Data/XCSoar.rc
-   )
+list(APPEND SOURCE_FILES "src/XCSoar.cpp")
+list(APPEND SOURCE_FILES "src/Version.cpp")
+if (MSVC)
+  list(APPEND SOURCE_FILES "Data/XCSoar.def")
+  list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
+else()
+  list(APPEND SOURCE_FILES "Data/XCSoar.rc")
+endif()
+  list(APPEND SOURCE_FILES "CMakeSource.cmake")
 
-# target_link_libraries(${TARGET_NAME}
+if (ANDROID)  # library!
+   add_library(${TARGET_NAME} STATIC ${SOURCE_FILES})
+else()        # executable!
+   add_executable(${TARGET_NAME}     ${SOURCE_FILES})
+endif()
+
+# preparing target_link_libraries!
 set(XCSOAR_LINK_LIBRARIES
-#    PUBLIC
     Airspace
     Atmosphere
     Audio

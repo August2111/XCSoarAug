@@ -27,8 +27,12 @@ Copyright_License {
 #include <assert.h>
 
 #ifdef USE_WIN32_RESOURCES
-
+#include <string>
 #include <windows.h>
+
+// #include "boost/gil/extension/io/png.hpp"
+// #include "boost/gil.hpp"
+// #include "boost/gil/io/base.hpp"
 
 static HINSTANCE ResourceLoaderInstance;
 
@@ -95,9 +99,174 @@ ResourceLoader::Load(ResourceId id)
 #endif
 
 #ifdef USE_WIN32_RESOURCES
+/*
+inline
+bool CGdiPlusBitmapResource::Load(LPCTSTR pName, LPCTSTR pType,
+  HMODULE hInst) {
+  Empty();
+
+  HRSRC hResource = ::FindResource(hInst, pName, pType);
+  if (!hResource)
+    return false;
+
+  DWORD imageSize = ::SizeofResource(hInst, hResource);
+  if (!imageSize)
+    return false;
+
+  const void* pResourceData = ::LockResource(::LoadResource(hInst,
+    hResource));
+  if (!pResourceData)
+    return false;
+
+  m_hBuffer = ::GlobalAlloc(GMEM_MOVEABLE, imageSize);
+  if (m_hBuffer) {
+    void* pBuffer = ::GlobalLock(m_hBuffer);
+    if (pBuffer) {
+      CopyMemory(pBuffer, pResourceData, imageSize);
+
+      IStream* pStream = NULL;
+      if (::CreateStreamOnHGlobal(m_hBuffer, FALSE, &pStream) == S_OK) {
+        m_pBitmap = Gdiplus::Bitmap::FromStream(pStream);
+        pStream->Release();
+        if (m_pBitmap) {
+          if (m_pBitmap->GetLastStatus() == Gdiplus::Ok)
+            return true;
+
+          delete m_pBitmap;
+          m_pBitmap = NULL;
+        }
+      }
+      m_pBitmap = NULL;
+      ::GlobalUnlock(m_hBuffer);
+    }
+    ::GlobalFree(m_hBuffer);
+    m_hBuffer = NULL;
+  }
+  return false;
+}
+System::Drawing::Image getImageFromRes(long resource_ID) {
+/**/
+HBITMAP
+// test_gil(HBITMAP hBitmap) {
+test_gil(std::string filename) {
+  HBITMAP oBitmap = nullptr;
+  DIBSECTION d;
+/*  geht nicht !!!!!!!!!!!!!!!!!!!!!!!
+//  //testing, assume rgb8_image_t in object
+//  int nBytes = ::GetObject(hBitmap, sizeof(DIBSECTION), &d);
+//  HEImage image(d.dsBm.bmWidth, d.dsBm.bmHeight);//, d.dsBm.bmBits,  0 ); should just be able to attach bits
+//  memcpy(&image.g_image._view[0], d.dsBm.bmBits,
+//    d.dsBmih.biSizeImage);
+//  //gil::jpeg_read_image("C:\\cpp\\HE_9\\jpeg-8c\\GIL_test\\In\\IMG_0006.JPG", image.g_image );
+//
+//  HEImage image2(d.dsBm.bmWidth, d.dsBm.bmHeight);
+//  //testing, just flip image...
+//  gil::copy_pixels(gil::rotated180_view(image.g_image._view),
+//    image2.g_image._view);
+  boost::gil::rgb8_image_t image;
+//  boost::gil::read_image("D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\aboveterrain.png",
+  boost::gil::read_image(filename, image , boost::gil::png_tag());
+
+  BITMAPINFO bi24BitInfo; //testing, populate to match rgb8_image_t
+  memset(&bi24BitInfo, 0, sizeof(BITMAPINFO));
+  bi24BitInfo.bmiHeader.biSize = sizeof(bi24BitInfo.bmiHeader);
+  bi24BitInfo.bmiHeader.biBitCount = 24; // rgb 8 bytes for each  component(3)
+    bi24BitInfo.bmiHeader.biCompression = BI_RGB;// rgb = 3 components
+  bi24BitInfo.bmiHeader.biPlanes = 1;
+  bi24BitInfo.bmiHeader.biWidth = d.dsBm.bmWidth;
+  bi24BitInfo.bmiHeader.biHeight = d.dsBm.bmHeight;
+
+  oBitmap = ::CreateDIBSection(NULL, &bi24BitInfo,
+    DIB_RGB_COLORS, 0, 0, 0);
+
+//  nBytes = ::GetObject(oBitmap, sizeof(DIBSECTION), &d);
+
+  memcpy(d.dsBm.bmBits, &image, d.dsBmih.biSizeImage);
+*/
+  return oBitmap;
+}
+
+HBITMAP
+getImageFromRes(HMODULE hInst, long resource_ID) {
+  // Function getImageFromRes
+  // A function for loading PNG images from resources in C++ CLR/CLI
+  // Copyright (C) Giuseppe Pischedda 2007 for most code
+  // and a little part of this code by Bordon and adapted by me for PNG images in C++ CLR/CLI.
+  HBITMAP bitmap = nullptr;
+
+  //Load the resource module:
+//  HMODULE hInst = NULL;
+
+  // Find the resource using the resource ID from file "resource.h"
+//  HRSRC hResource = ::FindResource(hInst, MAKEINTRESOURCE(resource_ID), "PNG");
+  // using namespace boost::gil;
+  // boost::gil::image_read_settings<png_t> readSettings;
+//////  boost::gil::rgb8_image_t newImage;
+//////  boost::gil::read_image("D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\aboveterrain.png",
+//////    newImage, boost::gil::png_tag());
+//////
+//////  HRSRC hResource = ::FindResource(hInst, "D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\aboveterrain.png", "PNG");
+//////  if (!hResource) return nullptr;
+//////
+//////  // Load the resource and save the total size.
+//////  DWORD Size = SizeofResource(hInst, hResource);
+//////  HGLOBAL MemoryHandle = LoadResource(hInst, hResource);
+//////  if (MemoryHandle == NULL) return nullptr;
+//////
+//////  bitmap = (HBITMAP)MemoryHandle;
+//////
+//////  if (bitmap->unused)
+//////    bitmap = nullptr;
+  bitmap = test_gil("D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\aboveterrain.png");
+  /*/
+  //Create a cli::array of byte with size = total size + 2
+  cli::array<BYTE>^ MemPtr = gcnew array<BYTE>(Size + 2);
+
+  //Cast from LPVOID to char *
+  char* lkr = (char*)(LockResource(MemoryHandle));
+
+  //Copy from unmanaged memory to managed array
+  System::Runtime::InteropServices::Marshal::Copy((IntPtr)lkr, MemPtr, 0, Size);
+
+  // Create a new MemoryStream with size = MemPtr
+  System::IO::MemoryStream^ stream = gcnew System::IO::MemoryStream(MemPtr);
+
+  //Write in the MemoryStream
+  stream->Write(MemPtr, 0, Size);
+
+  //Set the position for read the stream
+  stream->Position = 0;
+
+  //Free allocated resources
+  FreeLibrary(hInst);
+
+  //Create an Image abstract class pointer
+  System::Drawing::Image^ ptrPNG;
+
+  //Assign the stream to abstract class pointer
+  ptrPNG = System::Drawing::Image::FromStream(stream);
+  return ptrPNG;
+  /**/
+  return bitmap;
+}
+
+
 HBITMAP
 ResourceLoader::LoadBitmap2(ResourceId id)
 {
-  return ::LoadBitmap(ResourceLoaderInstance, MAKEINTRESOURCE((unsigned)id));
+  HBITMAP bitmap = ::LoadBitmap(ResourceLoaderInstance, MAKEINTRESOURCE((unsigned)id));
+ 
+  // ::LoadResource()
+//  char str[0x1000];
+//  strcpy(str, MAKEINTRESOURCE((unsigned)id));
+  if (bitmap == nullptr) {
+    bitmap = getImageFromRes(ResourceLoaderInstance, (unsigned)id);
+//     CImage::Load();
+//       .Pass the CImage to m_staticLogo.SetBitmap().
+//    LPSTR str = MAKEINTRESOURCE((unsigned)id);
+//    HANDLE hImage = ::LoadImage(ResourceLoaderInstance, MAKEINTRESOURCE((unsigned)id), 0, 10, 10, 0);
+//    bitmap = nullptr;
+  }
+  return bitmap;
 }
 #endif

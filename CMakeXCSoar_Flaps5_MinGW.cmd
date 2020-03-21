@@ -10,7 +10,7 @@ set TARGET_PLATFORM=64
 set THIRD_PARTY=D:/Projects/3rd_Party
 set COMPILER=MinGW
 set PROGRAM_DIR=D:\Programs
-set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\mingw
+set Boost_ROOT=D:\link_libs\boost\boost_1_72_0\mingw
 set QT_ROOT=%THIRD_PARTY%/qt
 
 call CMakeXCSoar.cmd
