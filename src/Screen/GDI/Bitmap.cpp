@@ -27,7 +27,6 @@ Copyright_License {
 
 #include <assert.h>
 
-<<<<<<< HEAD
 #ifdef _AUG   // "hat bereits einen Funktionsrumpf"
 // Bitmap::Bitmap() {
 // 
@@ -36,12 +35,6 @@ Copyright_License {
 Bitmap::Bitmap(Bitmap&& src)
 #   ifdef USE_MEMORY_CANVAS
 #       ifdef AUG_MSC
-=======
-#ifndef AUG_MSC   // "hat bereits einen Funktionsrumpf"
-Bitmap::Bitmap(Bitmap&& src)
-#ifdef USE_MEMORY_CANVAS
-#ifdef AUG_MSC
->>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 {
   // TODO!!!!!!!!!!!!!!! bitmap gibt es nicht!
 }
@@ -57,7 +50,7 @@ Bitmap::Bitmap(Bitmap&& src)
 }
 #   endif
 #endif
-#endif
+
 
 bool
 Bitmap::LoadFile(Path path)
@@ -69,17 +62,16 @@ void
 Bitmap::Reset()
 {
 #ifdef USE_MEMORY_CANVAS
-  {
-#ifdef AUG_MSC
-    // TODO!!!!!!!!!!!!!!! bitmap gibt es nicht!
-#endif
+{
 
 #else
 #ifndef NDEBUG
     bool success =
 #endif
       ::DeleteObject(bitmap);
+#ifndef _AUG  // strirbt hier momentan ???
     assert(success);
+#endif
 
     bitmap = nullptr;
     if (bitmap != nullptr) {
@@ -95,9 +87,9 @@ Bitmap::GetSize() const
   assert(IsDefined());
 
   BITMAP bm;
-#ifndef AUG_MSC
+// #ifndef AUG_MSC
   ::GetObject(bitmap, sizeof(bm), &bm);
-#endif
+// #endif
   const PixelSize size = { bm.bmWidth, bm.bmHeight };
   return size;
 }

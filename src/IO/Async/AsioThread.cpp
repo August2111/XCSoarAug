@@ -21,11 +21,11 @@ Copyright_License {
 }
 */
 
-#if _AUG
+#if  _AUG
   // BOOST_ASIO_SEPARATE_COMPILATION und das include-file sokll nur 1x im Project aufgerufen werden (also auch nicht
   // in einem Header-File..! Deshalb habe ich es jetzt hier abgelegt, möglicherweise 
 #endif
-#define BOOST_ASIO_SEPARATE_COMPILATION
+// #define BOOST_ASIO_SEPARATE_COMPILATION
 #include <boost/asio/impl/src.hpp>
 #include "AsioThread.hpp"
 
@@ -56,3 +56,26 @@ AsioThread::Run() noexcept
 
   io_context.run();
 }
+
+
+#if 0 // _AUG
+#include "GlobalAsioThread.hpp"
+// #include "AsioThread.hpp"
+
+AsioThread* asio_thread;
+
+void
+InitialiseAsioThread() {
+  assert(asio_thread == nullptr);
+
+  asio_thread = new AsioThread();
+  asio_thread->Start();
+}
+
+void
+DeinitialiseAsioThread() {
+  asio_thread->Stop();
+  delete asio_thread;
+  asio_thread = nullptr;
+}
+#endif

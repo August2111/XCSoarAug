@@ -21,6 +21,7 @@ Copyright_License {
 }
 */
 
+#if 1 // !_AUG
 #include "GlobalAsioThread.hpp"
 #include "AsioThread.hpp"
 
@@ -42,3 +43,4 @@ DeinitialiseAsioThread()
   delete asio_thread;
   asio_thread = nullptr;
 }
+#endif

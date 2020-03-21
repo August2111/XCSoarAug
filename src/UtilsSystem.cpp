@@ -94,7 +94,8 @@ PixelSize
 SystemWindowSize()
 {
 #if defined(_WIN32)
-#ifdef _AUG
+// #ifdef _AUG
+#if 0  // _AUG
     HWND console = GetConsoleWindow();
     RECT r;
     GetWindowRect(console, &r); //stores the console's current dimensions

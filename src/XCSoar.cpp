@@ -138,17 +138,17 @@ Main()
 /**
  * Main entry point for the whole XCSoar application
  */
-#if !defined(_WIN32) || 0
-int main(int argc, char **argv)
+#if !defined(_WIN32)
+int main(int argc, char **argv) {
 #else
 int WINAPI
 WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         gcc_unused LPSTR lpCmdLine2,
-        int nCmdShow)
-#endif
-{
+        int nCmdShow) {
+
 #ifdef USE_WIN32_RESOURCES
   ResourceLoader::Init(hInstance);
+#endif
 #endif
 
   Net::Initialise();

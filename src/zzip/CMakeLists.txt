@@ -27,11 +27,7 @@ foreach(source_file ${${TARGET_NAME}_SOURCES})
         string(REPLACE "/" "\\" src_path ${src_path})
     endif()
     source_group("Source\\${src_path}" FILES  ${source_file})
-<<<<<<< HEAD
-    message(STATUS "${src_path}  --- ${source_file}")
-=======
     # message(STATUS "${src_path}  --- ${source_file}")
->>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
 endforeach()
 
 add_compile_definitions(ZZIP_PACKAGE)

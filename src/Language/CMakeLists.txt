@@ -24,13 +24,13 @@ endforeach()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/data_temp/memory_fields.c PROPERTIES LANGUAGE C)
+set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
 
 add_library(${TARGET_NAME} STATIC
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
-    ${PROJECTGROUP_SOURCE_DIR}/data_temp/memory_fields.c
+    ${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c
 )
 
 # target_link_libraries( ${TARGET_NAME}

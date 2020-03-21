@@ -360,10 +360,20 @@ public:
   }
 
   void Move(const PixelRect rc) {
+#if _AUG
+    PixelRect rcx = rc;
+    if (rcx.bottom <= rcx.top)
+      rcx.bottom = rcx.top + 2;
+    if (rcx.right <= rcx.left)
+      rcx.right = rcx.left + 2;
+
+    Move(rcx.left, rcx.top, rcx.GetWidth(), rcx.GetHeight());
+#else
     assert(rc.left < rc.right);
     assert(rc.top < rc.bottom);
 
     Move(rc.left, rc.top, rc.GetWidth(), rc.GetHeight());
+#endif
   }
 
   void MoveToCenter() {

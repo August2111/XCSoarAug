@@ -71,6 +71,10 @@ protected:
   void Create(HDC _dc, PixelSize new_size) {
     assert(_dc != nullptr);
     assert(new_size.cx > 0);
+#if _AUG
+    if (new_size.cy <= 0)
+      new_size.cy = new_size.cx;
+#endif
     assert(new_size.cy > 0);
 
     Destroy();

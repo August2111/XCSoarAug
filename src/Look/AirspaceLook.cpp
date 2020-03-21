@@ -74,6 +74,7 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
   Reinitialise(settings);
 
   // airspace brushes and colors
+#ifndef _AUG  // zur zeit nicht möglich!
 #ifdef HAVE_HATCHED_BRUSH
   bitmaps[0].Load(IDB_AIRSPACE0);
   bitmaps[1].Load(IDB_AIRSPACE1);
@@ -86,6 +87,7 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
 
   for (unsigned i = 0; i < ARRAY_SIZE(AirspaceLook::brushes); i++)
     brushes[i].Create(bitmaps[i]);
+#endif
 #endif
 
   thick_pen.Create(Layout::ScalePenWidth(10), COLOR_BLACK);

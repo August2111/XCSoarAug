@@ -12,6 +12,7 @@ set(BASIC_SOURCES
     ${SRC}/BallastDumpManager.cpp
     ${SRC}/BatteryTimer.cpp
     ${SRC}/Components.cpp
+    ${SRC}/CommandLine.cpp
     ${SRC}/DataGlobals.cpp
 
     ${SRC}/FlightStatistics.cpp  # _AUG: vergessen?
@@ -25,6 +26,7 @@ set(BASIC_SOURCES
     ${SRC}/ProgressGlue.cpp
     ${SRC}/Protection.cpp
     ${SRC}/RadioFrequency.cpp
+    ${SRC}/ResourceLoader.cpp
     ${SRC}/Simulator.cpp
     ${SRC}/Startup.cpp
     ${SRC}/UIActions.cpp

@@ -98,7 +98,8 @@ public:
     return text_util_object != nullptr;
 #else
 #   ifdef _MSC_VER
-    return false;
+    // OLD-XC: return false;
+    return font != nullptr;  // _AUG
 #else
     return font != nullptr;
 #endif

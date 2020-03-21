@@ -53,9 +53,11 @@ struct PixelSize {
   PixelSize() = default;
 
   constexpr PixelSize(int _width, int _height)
+//    :cx(_width = 720), cy(_height = 600) {}  //_AUG!
     :cx(_width), cy(_height) {}
 
   constexpr PixelSize(unsigned _width, unsigned _height)
+//    :cx(_width = 800), cy(_height=640) {}   // _AUG
     :cx(_width), cy(_height) {}
 
   constexpr PixelSize(long _width, long _height)

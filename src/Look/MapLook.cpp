@@ -45,8 +45,8 @@ MapLook::Initialise(const MapSettings &settings,
 #endif
 
 #ifdef HAVE_HATCHED_BRUSH
-  above_terrain_bitmap.Load(IDB_ABOVETERRAIN);
-  above_terrain_brush.Create(above_terrain_bitmap);
+  if (above_terrain_bitmap.Load(IDB_ABOVETERRAIN))
+    above_terrain_brush.Create(above_terrain_bitmap);
 #endif
 
   terrain_warning_icon.LoadResource(IDB_TERRAINWARNING, IDB_TERRAINWARNING_HD);
