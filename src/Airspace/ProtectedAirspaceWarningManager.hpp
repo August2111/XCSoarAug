@@ -23,7 +23,7 @@
 #ifndef XCSOAR_PROTECTED_AIRSPACE_WARNING_MANAGER_HPP
 #define XCSOAR_PROTECTED_AIRSPACE_WARNING_MANAGER_HPP
 
-#ifdef _MSC_VER  // aug: is this always correct?
+#ifdef _WIN32  // _MSC_VER  // aug: is this always correct?
 #include "Util/Compiler.h"
 #include "Thread/Guard.hpp"
 #else

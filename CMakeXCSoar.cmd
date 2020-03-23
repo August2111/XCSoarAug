@@ -16,8 +16,6 @@ REM if not defined QT_VERSION  set QT_VERSION=5.13.1
 if not defined COMPILER  set COMPILER=VS2019
 if not defined PROGRAM_DIR  set PROGRAM_DIR=D:\Programs
 REM if not defined BOOST_ROOT set BOOST_ROOT=%THIRD_PARTY%/boost/boost_1_65_1
-if "%COMPUTERNAME%"  == "PCDERAD0781" if not defined Boost_ROOT set Boost_ROOT=D:\Programme\boost\boost_1_72_0\vc142
-if "%COMPUTERNAME%"  == "FLAPS5"      if not defined Boost_ROOT set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\vc142
 if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%/qt
 
 cmake --version > NUL
@@ -41,6 +39,7 @@ set MAKETOOL=mingw32-make
   set PATH=%PATH%;%COMPILER_HOME%
   set GENERATOR=MinGW Makefiles
   rem set GENERATOR=Eclipse CDT4 - MinGW Makefiles
+  if not defined Boost_ROOT set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\mingw
 goto CompilerEnd
 
 : VS2013
@@ -87,6 +86,8 @@ echo Im Compiler 'VS2015-Pfad'
   set GENERATOR=Visual Studio %COMPILER_VERSION%
   SET VS_BATCH=C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvars64.bat
   set QT_COMPILER=msvc2017_64
+  if "%COMPUTERNAME%"  == "PCDERAD0781" if not defined Boost_ROOT set Boost_ROOT=D:\Programme\boost\boost_1_72_0\vc142
+  if "%COMPUTERNAME%"  == "FLAPS5"      if not defined Boost_ROOT set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\vc142
   goto CallVSBatch
 
   : Borland

@@ -24,11 +24,35 @@ Copyright_License {
 #ifndef COMPILER_H
 #define COMPILER_H
 
+#ifdef _WIN32
+#   define AUG_MSC  1
+#   ifdef AUG_MSC
+#   else  // AUG_MSC
+#   endif  // AUG_MSC
 
-#ifdef _MSC_VER
+#if _WIN32_WINNT < 0xA00
+
+// #ifdef _WIN32_WINNT
+// #define XSTR(x) STR(x)
+// #define STR(x) #x
+// #   pragma message "_WIN32_WINNT: " XSTR(_WIN32_WINNT)
+// #   pragma GCC diagnostic warning "_WIN32_WINNT: " XSTR(_WIN32_WINNT)
+// #endif
+#   undef  _WIN32_WINNT
+// #pragma message "#undef _WIN32_WINNT!"
+#endif
+
+#ifndef _WIN32_WINNT
+#   define _WIN32_WINNT 0x0A00  // _AUG! Windows7 or above
+#endif
+
+
 #   include   "WinSock2.h"
 // #   define _WINSOCKAPI_
 #   include   "windows.h"
+#endif
+
+#ifdef _MSC_VER
 #   include   <algorithm>
 // #   define USE_WINUSER
 
@@ -49,10 +73,6 @@ Copyright_License {
 
 // #define BOOST_ASIO_WINDOWS_RUNTIME
 // #define ENABLE_OPENGL
-#define AUG_MSC  1
-#ifdef AUG_MSC
-#else  // AUG_MSC
-#endif  // AUG_MSC
 
 #define DT_UNDERLINE 0  // gibt es in WinUser.h nicht!
 // #define JAS_DLL

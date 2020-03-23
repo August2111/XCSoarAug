@@ -16,7 +16,9 @@ set MINGW=D:\link_libs\Qt\Qt5.14.0\Tools\mingw730_64
 goto START_MINGW
 
 : MinGW_Flaps5
+
 goto MinGW_FromQt
+
 REM set PROGRAM_DIR=D:\Programs
 REM set TARGET_PLATFORM=64
 REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\x%TARGET_PLATFORM%

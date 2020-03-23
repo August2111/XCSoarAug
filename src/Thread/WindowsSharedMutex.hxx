@@ -32,41 +32,64 @@
 
 #include <windows.h>
 
-/**
- * Low-level wrapper for a SRWLOCK.
- */
+ /**
+  * Low-level wrapper for a SRWLOCK.
+  */
 class WindowsSharedMutex {
-	SRWLOCK srwlock = SRWLOCK_INIT;
+  SRWLOCK srwlock = SRWLOCK_INIT;
 
 public:
-	constexpr WindowsSharedMutex() = default;
+  constexpr WindowsSharedMutex() = default;
 
-	WindowsSharedMutex(const WindowsSharedMutex &other) = delete;
-	WindowsSharedMutex &operator=(const WindowsSharedMutex &other) = delete;
+  WindowsSharedMutex(const WindowsSharedMutex& other) = delete;
+  WindowsSharedMutex& operator=(const WindowsSharedMutex& other) = delete;
 
-	void lock() {
-		AcquireSRWLockExclusive(&srwlock);
-	}
+  void lock() {
+#ifdef MSVC
+    AcquireSRWLockExclusive(&srwlock);
+#else
+    // TODO(aug): !!!AcquireSRWLockExclusive(&srwlock);
+  }
 
-	bool try_lock() {
-		return TryAcquireSRWLockExclusive(&srwlock);
-	}
+  bool try_lock() {
+#ifdef MSVC
+    return TryAcquireSRWLockExclusive(&srwlock);
+#else
+    // TODO(aug): !!!return TryAcquireSRWLockExclusive(&srwlock);
+#endif
+  }
 
-	void unlock() {
-		ReleaseSRWLockExclusive(&srwlock);
-	}
+  void unlock() {
+#ifdef MSVC
+    ReleaseSRWLockExclusive(&srwlock);
+#else
+    // TODO(aug): !!!ReleaseSRWLockExclusive(&srwlock);
+#endif
+  }
 
-	void lock_shared() {
-		AcquireSRWLockShared(&srwlock);
-	}
+  void lock_shared() {
+#ifdef MSVC
+    AcquireSRWLockShared(&srwlock);
+#else
+    // TODO(aug): !!!AcquireSRWLockShared(&srwlock);
+#endif
+  }
 
-	bool try_lock_shared() {
-		return TryAcquireSRWLockShared(&srwlock);
-	}
+  bool try_lock_shared() {
+#ifdef MSVC
+    TryAcquireSRWLockShared(&srwlock);
+#else
+    // TODO(aug): !!!return TryAcquireSRWLockShared(&srwlock);
+#endif
+  }
 
-	void unlock_shared() {
-		ReleaseSRWLockShared(&srwlock);
-	}
+  void unlock_shared() {
+#ifdef MSVC
+    ReleaseSRWLockShared(&srwlock);
+#else
+    // TODO(aug): !!!ReleaseSRWLockShared(&srwlock);
+#endif
+  }
 };
 
 #endif

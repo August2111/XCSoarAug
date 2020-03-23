@@ -40,7 +40,7 @@
 
 /* TRUE and FALSE are macros on some platforms (at least on Win32, iOS and
  * macOS) - undefine */
-#ifdef _MSC_VER
+#if defined(_WIN32) || defined(_AUG) || 1
  /**
   * A boolean type that has a third state called "unknown".
   */

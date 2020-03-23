@@ -54,51 +54,25 @@ if (WIN32 AND MSVC)
         include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
         # include_directories("${THIRD_PARTY}/MapServer/src")
         include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
-### =======
-###       if (EXISTS ${THIRD_PARTY})
-###           if (ON OR WIN64)  # momentan kein Flag verfügbar!
-###               add_compile_definitions(_AMD64_)
-###           else()
-###               message(FATAL_ERROR "Error: WIN32 not implemented?")
-###           endif()
-###           # LUA ist vermutlich besser im output ordner aufgehoben...
-###           if (${THIRD_PARTY} MATCHES "D:/Projects/3rd_Party")
-###             set(THIRD_PARTY2 "D:/Projects/link_libs")
-###             # set(THIRD_PARTY "D:/Projects/3rd_Party")
-###             # include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11")
-###             # message(FATAL_ERROR "wrong THIRD_PARTY = ${THIRD_PARTY}")
-###             include_directories("${THIRD_PARTY2}/zlib/zlib-1.2.11/include")
-###             include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
-###             include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
-###             # include_directories("${THIRD_PARTY}/_install/JasPer_2.0.14/include")
-###             # old include_directories("${THIRD_PARTY}/jasper/JasPer_2.0.14/include")
-###             include_directories("${THIRD_PARTY2}/jasper/JasPer-2.0.14/include")
-###             # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
-###             include_directories("${THIRD_PARTY}/MapServer/src")
-###           elseif(${THIRD_PARTY} MATCHES "D:/link_libs")
-###             # set(THIRD_PARTY "D:/link_libs")
-###             include_directories("${THIRD_PARTY}/lua/lua-5.3.5/include")
-###             include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11/include")
-###             include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
-###             # include_directories("${THIRD_PARTY}/jasper/JasPer/include")
-###             # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
-###             include_directories("${THIRD_PARTY}/jasper/JasPer-2.0.14/include")
-###             include_directories("${THIRD_PARTY}/MapServer/src")
-###           else()
-###             message(FATAL_ERROR "unknown THIRD_PARTY = ${THIRD_PARTY}")
-###           endif()
-###           include_directories("output/include")
-###       else()
-###          message(FATAL_ERROR "THIRD_PARTY = don't exists!")
-### >>>>>>> fdac890a458210fc5fca2db1d9a7ca5400a441d6
       endif()
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
+        set(THIRD_PARTY "D:/Projects/3rd_Party")
+        set(THIRD_PARTY2 "D:/link_libs")
       message(STATUS "+++ System = WIN32 / MinGW!")
       set(Boost_COMPILER "mgw73")  # necessary: changed mgw as boost compiler to mgw73!
-      include_directories("D:/Projects/3rd_Party/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
+      include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
       # LUA ist vermutlich besser im output ordner aufgehoben...
-      include_directories("D:/Projects/3rd_Party/lua/lua-5.3.5/src")
+      include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
+      include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
+      include_directories("${THIRD_PARTY2}/zlib/zlib-1.2.11/include")
+      include_directories("${THIRD_PARTY2}/jasper/JasPer-2.0.14/include")
+
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
+
+      add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
+      set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
+
 elseif(ANDROID)
     message(STATUS "+++ System = ANDROID / ${ANDROID_ABI}!")
     set(Boost_COMPILER "clang")  # necessary: changed clang8 as boost compiler to clang!
@@ -110,7 +84,7 @@ if (NOT Boost_ROOT)
     set(Boost_ROOT $ENV{Boost_ROOT})
 endif()
 if (NOT Boost_ROOT)
-    set(Boost_ROOT "D:/Projects/3rd_party/boost/boost_1_72_0")  # Flaps5!
+    set(Boost_ROOT "D:/link_libs/boost/boost_1_72_0")  # Flaps5!
 endif()
 string(REPLACE "\\" "/" Boost_ROOT ${Boost_ROOT})
 # message(FATAL_ERROR "+++ Boost_ROOT: ${Boost_ROOT} vs. $ENV{Boost_ROOT}!")
@@ -119,7 +93,7 @@ string(REPLACE "\\" "/" Boost_ROOT ${Boost_ROOT})
 # add_compile_definitions(USE_MEMORY_CANVAS)
 add_compile_definitions(NOMINMAX)
 add_compile_definitions(_AUG)
-# nur einmal fdefinieren!!! add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
+# nur einmal definieren!!! add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
 add_compile_definitions("XCSOAR_VERSION=\"7.1\"")
 # add_definitions(/std:c++11 /Zc:__cplusplus)
 if(MSVC)
@@ -152,7 +126,10 @@ endif()
 
 if(NOT Boost_DIR)
   set(Boost_DIR "${Boost_ROOT}/lib/cmake/Boost-1.72.0")
+
+  message(STATUS "!!!!  Boost_DIR ${Boost_DIR}")
 endif()
+#  message(FATAL_ERROR "!!!!  Boost_DIR ${Boost_DIR}")
 
 
 set(Boost_USE_STATIC_LIBS         ON)
