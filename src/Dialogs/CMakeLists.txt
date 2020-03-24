@@ -8,7 +8,7 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
 # include(../../CMakeSource.txt)
 # organize the files in subdirectories
-message(STATUS "##### PROJECTGROUP_SOURCE_DIR:  --- ${PROJECTGROUP_SOURCE_DIR}")
+# message(STATUS "##### PROJECTGROUP_SOURCE_DIR:  --- ${PROJECTGROUP_SOURCE_DIR}")
 
 set(SOURCE_FILES )
 foreach(source_file ${${TARGET_NAME}_SOURCES})
@@ -33,7 +33,7 @@ foreach(source_file ${${TARGET_NAME}_HEADERS})
         string(REPLACE "/" "\\" src_path ${src_path})
     endif()
     source_group("Header Files\\${src_path}" FILES  ${source_file})
-    message(STATUS "### ${src_path}  --- ${source_file}")
+    # message(STATUS "### ${src_path}  --- ${source_file}")
 endforeach()
 # message(FATAL_ERROR Stop!)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

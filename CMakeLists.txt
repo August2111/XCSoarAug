@@ -6,6 +6,8 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
 set(ENABLE_OPENGL OFF)  # better outside????
 
+# Debugging Path: PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\bin
+
 set(ASIO_GROUPING ON)
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
@@ -25,48 +27,42 @@ include(CMakeSource.cmake)
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
       # add_definitions("/ZW")
-      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
       # add_compile_definitions(BOOST_ASIO_WORKAROUND=1)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
-      if (EXISTS "D:/Projects/3rd_Party")
+      if (NOT THIRD_PARTY AND EXISTS "D:/Projects/3rd_Party")
+        set(THIRD_PARTY "D:/Projects/3rd_Party")
+      endif()
+      if (NOT LINK_LIBS AND EXISTS "D:/link_libs")
+        set(LINK_LIBS "D:/link_libs")
+      endif()
       if (ON OR WIN64)  # momentan kein Flag verfügbar!
           add_compile_definitions(_AMD64_)
       else()
           message(FATAL_ERROR "Error: WIN32 not implemented?")
       endif()
       # LUA ist vermutlich besser im output ordner aufgehoben...
-        set(THIRD_PARTY "D:/Projects/3rd_Party")
-        set(THIRD_PARTY2 "D:/link_libs")
-        # include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11")
-        include_directories("${THIRD_PARTY2}/zlib/zlib-1.2.11/include")
-        #              D:\Projects\link_libs\zlib\zlib-1.2.11\include
-        include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
-        include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
-        include_directories("${THIRD_PARTY2}/jasper/JasPer-2.0.14/include")
-        # include_directories("${THIRD_PARTY}/_install/JasPer/include"
-# include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
-        include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
-      else()
-        set(THIRD_PARTY "D:/link_libs")
-        include_directories("${THIRD_PARTY}/lua-5.3.5/src")
-        include_directories("${THIRD_PARTY}/zlib/zlib-1.2.11")
-        # include_directories("${THIRD_PARTY}/jasper/JasPer/include")
-        include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
-        # include_directories("${THIRD_PARTY}/MapServer/src")
-        include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
-      endif()
+      # include_directories("${THIRD_PARTY}/lua-5.3.5/src")
+      include_directories("${LINK_LIBS}/lua/lua-5.3.5/include")
+      include_directories("${LINK_LIBS}/curl/curl-7.64.1/include")
+      # include_directories("${THIRD_PARTY}/jasper/JasPer/include")
+      # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
+      include_directories("${LINK_LIBS}/jasper/JasPer-2.0.14/include")
+      # include_directories("${THIRD_PARTY}/MapServer/src")
+      include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
+      include_directories("${LINK_LIBS}/zlib/zlib-1.2.11/include")
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
-        set(THIRD_PARTY "D:/Projects/3rd_Party")
-        set(THIRD_PARTY2 "D:/link_libs")
+      set(THIRD_PARTY "D:/Projects/3rd_Party")
+      set(LINK_LIBS "D:/link_libs")
       message(STATUS "+++ System = WIN32 / MinGW!")
       set(Boost_COMPILER "mgw73")  # necessary: changed mgw as boost compiler to mgw73!
       include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
       # LUA ist vermutlich besser im output ordner aufgehoben...
       include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
       include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
-      include_directories("${THIRD_PARTY2}/zlib/zlib-1.2.11/include")
-      include_directories("${THIRD_PARTY2}/jasper/JasPer-2.0.14/include")
+      include_directories("${LINK_LIBS}/zlib/zlib-1.2.11/include")
+      include_directories("${LINK_LIBS}/jasper/JasPer-2.0.14/include")
 
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
@@ -162,7 +158,7 @@ include_directories(
     # better with find_package
 #    ${PROJECTGROUP_BINARY_DIR}/output/src/curl-7.64.1/include
 
-    # D:/Projects/3rd_Party/boost/boost_1_72_0/vc142/include/boost-1_72/boost/predef/other
+    # D:/Projects/3rd_Party/boost/boost_1_72_0/msvc2019/include/boost-1_72/boost/predef/other
     ${Boost_INCLUDE_DIR}/boost/predef/other
     #  ${Boost_INCLUDE_DIR}/boost/beast/zlib  # wegen zlib.h, hier liegt aber zlib.hpp!
     # D:/link_libs/opencv/opencv_3_4_3/sources/3rdparty/zlib  # wegen zlib.h!
@@ -226,13 +222,17 @@ add_subdirectory(src/Widget)
 add_subdirectory(src/XML)
 
 add_subdirectory(src/zzip 3rd_party/zzip)
-# add_subdirectory(src/zzip 3rd_party/lua)
-# add_subdirectory(src/lua1 3rd_party/lua)
 
 # add_subdirectory(output/data)
-add_subdirectory(${THIRD_PARTY}/lua  3rd_party/lua)
-add_subdirectory(${THIRD_PARTY}/mapserver/mapserver-0  3rd_party/MapServer)
-# add_subdirectory(${THIRD_PARTY}/lu  3rd_party/lua)
+if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
+# das muss aber rein!!!    add_subdirectory(${THIRD_PARTY}/lua/lua-5.3.5  3rd_party/lua)
+    add_subdirectory(${THIRD_PARTY}/lua  3rd_party/lua)
+
+#    add_subdirectory(${THIRD_PARTY}/MapServer/Src  3rd_party/MapServer)
+elseif ($ENV{COMPUTERNAME} MATCHES "Flaps5")
+    add_subdirectory(${THIRD_PARTY}/lua  3rd_party/lua)
+endif()
+    add_subdirectory(${THIRD_PARTY}/mapserver/mapserver-0  3rd_party/MapServer)
 # add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.0  3rd_party/jasper)
 
 if(ASIO_GROUPING)   # test ASIO: 
@@ -246,11 +246,11 @@ endif()
 set(SOURCE_FILES )
 if (NOT ASIO_GROUPING)  #next test: ASIO
     foreach(source_file
-          ${Device_SOURCES} # test ASIO!
-          ${MapWindow_SOURCES} # test ASIO!
-          ${Tracking_SOURCES} # test ASIO!
-          ${Dialogs_SOURCES} # test ASIO!
-          ${IO_SOURCES} # test ASIO!
+          ${Device_SOURCES}
+          ${MapWindow_SOURCES}
+          ${Tracking_SOURCES}
+          ${Dialogs_SOURCES}
+          ${IO_SOURCES}
     )
         get_filename_component(src_path ${source_file} DIRECTORY)
         if (src_path)
@@ -345,31 +345,27 @@ if(ASIO_GROUPING)   # test ASIO:
     )
 endif()
 
-if ($ENV{COMPUTERNAME} MATCHES "FLAPS5")
-# target_link_libraries(${TARGET_NAME}
+#3rd party XCSOAR_LINK_LIBRARIES:
 list(APPEND XCSOAR_LINK_LIBRARIES
-   # internal 3rd party libs!
     zzip
     MapServer
     lua1
-   "${THIRD_PARTY2}/jasper/JasPer-2.0.14/lib/jasper.lib"
-    "${THIRD_PARTY2}/zlib/zlib-1.2.11/lib/zlibstatic.lib"
-    "${THIRD_PARTY}/curl/curl-7.64.1/build/Win64/VC16/DLL Release/libcurl.lib"
-    )
-elseif ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
-    target_link_libraries(${TARGET_NAME}
-     zzip  # das ist noch ein internes 3rd Party Project
-   "${THIRD_PARTY}/jasper/JasPer-2.0.14/lib/jasper.lib"   # PC0781
-#    ${THIRD_PARTY}/_install/JasPer-2.0.0/lib/jasper.lib   #flaps5
-    "${THIRD_PARTY}/lua/lua-5.3.5/lib/lua1.lib"
-    "${THIRD_PARTY}/zlib/zlib-1.2.11/install_vc142_x64/lib/zlibstatic.lib"
-    "${THIRD_PARTY}/curl/curl-7.64.1/install_vc142_x64/DLL Release/libcurl.lib"
+    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/msvc2019/jasper.lib"
+    "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurl.lib"
+    "${LINK_LIBS}/zlib/zlib-1.2.11/lib/msvc2019/zlibstatic.lib"
 )
-endif()
-# target_link_libraries(${TARGET_NAME}
-list(APPEND XCSOAR_LINK_LIBRARIES
+
+if (WIN32)  # Windows only:
+    list(APPEND XCSOAR_LINK_LIBRARIES
     msimg32.lib  # Windows
     Winmm.lib  # Windows!
+    )
+else()
+###  .. other OS!
+endif()
+
+# target_link_libraries(${TARGET_NAME}
+list(APPEND XCSOAR_LINK_LIBRARIES
     ${Boost_LIBRARIES}
     XCSoar
 ) # Reihenfolge is very important!!!!

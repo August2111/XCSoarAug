@@ -10,13 +10,13 @@ echo start CMake %PROJECT_NAME% - a XCSoar-Fork for Windows!
 if not defined SOURCE_DIR  set SOURCE_DIR=%CD%
 if not defined BINARY_DIR set BINARY_DIR=D:\Projects\Binaries
 if not defined TARGET_PLATFORM  set TARGET_PLATFORM=64
-if not defined THIRD_PARTY set THIRD_PARTY=D:\Projects\3rd_party
-if not exist "%THIRD_PARTY%" set THIRD_PARTY=D:\link_libs
+if not defined THIRD_PARTY set THIRD_PARTY=D:\Projects\3rdParty
+REM if not exist "%THIRD_PARTY%" set THIRD_PARTY=D:\link_libs
 REM if not defined QT_VERSION  set QT_VERSION=5.13.1
 if not defined COMPILER  set COMPILER=VS2019
 if not defined PROGRAM_DIR  set PROGRAM_DIR=D:\Programs
 REM if not defined BOOST_ROOT set BOOST_ROOT=%THIRD_PARTY%/boost/boost_1_65_1
-if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%/qt
+if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%\qt
 
 cmake --version > NUL
 if errorlevel 1 PATH = %PROGRAM_DIR%\CMake\bin;%PATH%
@@ -58,6 +58,7 @@ echo Im Compiler 'VS2015-Pfad'
   rem set MAKETOOL=jom
   set MAKETOOL=nmake
   set PATH=%PATH%;c:/Programs/Jom_1_0_14
+  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\msvc2015
   goto VisualStudio
   
 : VS2017
@@ -72,6 +73,7 @@ echo Im Compiler 'VS2015-Pfad'
   set GENERATOR=Visual Studio %COMPILER_VERSION% Win64
   SET VS_BATCH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvars64.bat
   set QT_COMPILER=msvc2017_64
+  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\msvc2017
   goto CallVSBatch
 
 : VS2019
@@ -86,20 +88,9 @@ echo Im Compiler 'VS2015-Pfad'
   set GENERATOR=Visual Studio %COMPILER_VERSION%
   SET VS_BATCH=C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvars64.bat
   set QT_COMPILER=msvc2017_64
-  if "%COMPUTERNAME%"  == "PCDERAD0781" if not defined Boost_ROOT set Boost_ROOT=D:\Programme\boost\boost_1_72_0\vc142
-  if "%COMPUTERNAME%"  == "FLAPS5"      if not defined Boost_ROOT set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\vc142
+  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\msvc2019
   goto CallVSBatch
 
-  : Borland
-  REM set VSCOMMONTOOLS=%VS140COMNTOOLS%
-  set MAKETOOL=make
-  REM set PATH=%PATH%;B:/Programs/Jom_1_0_14
-  
-  set GENERATOR=Borland Makefiles
-  set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_CXX_COMPILER=C:/Programs/Embarcadero/BCC101/bin/bcc32c.exe 
-  set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_CXX_COMPILER=C:/Programs/Embarcadero/BCC101/bin/bcc32c.exe 
-  goto CompilerEnd
-   
 : VisualStudio  
   if not "%TARGET_PLATFORM:64=!!%"=="%TARGET_PLATFORM%" goto VS20xx_x64
 : VS20xx_x32
@@ -115,6 +106,17 @@ echo Im Compiler 'VS2015-Pfad'
   call "%VS_BATCH%"
   REM pause
 goto CompilerEnd
+
+  : Borland
+  REM set VSCOMMONTOOLS=%VS140COMNTOOLS%
+  set MAKETOOL=make
+  REM set PATH=%PATH%;B:/Programs/Jom_1_0_14
+  
+  set GENERATOR=Borland Makefiles
+  set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_CXX_COMPILER=C:/Programs/Embarcadero/BCC101/bin/bcc32c.exe 
+  set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_CXX_COMPILER=C:/Programs/Embarcadero/BCC101/bin/bcc32c.exe 
+  goto CompilerEnd
+
 : NoCompiler
 
   echo No Compiler defined
@@ -150,7 +152,7 @@ if defined OpenCV_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DOpenCV_DIR=%OpenCV_DI
 :: das geht so nicht! if defined Qt5_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DQt5_ROOT=%Qt5_ROOT:\=/%/android
 if defined Boost_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DBoost_ROOT=%Boost_ROOT:\=/%
 if defined THIRD_PARTY set CMAKE_DEFINES=%CMAKE_DEFINES% -DTHIRD_PARTY=%THIRD_PARTY:\=/%
-
+if defined LINK_LIBS set CMAKE_DEFINES=%CMAKE_DEFINES% -DLINK_LIBS=%LINK_LIBS:\=/%
 
 :::::::::::::::  Qt-Part ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 REM set Qtx_DIR=%QT_ROOT%/%QT_VERSION%/%QT_COMPILER%/lib

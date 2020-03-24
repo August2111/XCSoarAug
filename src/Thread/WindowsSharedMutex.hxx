@@ -49,12 +49,14 @@ public:
     AcquireSRWLockExclusive(&srwlock);
 #else
     // TODO(aug): !!!AcquireSRWLockExclusive(&srwlock);
+#endif
   }
 
   bool try_lock() {
 #ifdef MSVC
     return TryAcquireSRWLockExclusive(&srwlock);
 #else
+    return false;
     // TODO(aug): !!!return TryAcquireSRWLockExclusive(&srwlock);
 #endif
   }
@@ -77,9 +79,10 @@ public:
 
   bool try_lock_shared() {
 #ifdef MSVC
-    TryAcquireSRWLockShared(&srwlock);
+      return TryAcquireSRWLockShared(&srwlock);
 #else
-    // TODO(aug): !!!return TryAcquireSRWLockShared(&srwlock);
+      return false;
+      // TODO(aug): !!!return TryAcquireSRWLockShared(&srwlock);
 #endif
   }
 
