@@ -51,11 +51,11 @@ FlarmTrafficWindow::FlarmTrafficWindow(const FlarmTrafficLook &_look,
    distance(2000),
    selection(-1), warning(-1),
    h_padding(_h_padding), v_padding(_v_padding),
-#ifdef _MSC_VER
+#ifdef _AUG
   is_small(_small),
-#else  // _MSC_VER
+#else  // _AUG
   small(_small),
-#endif  // _MSC_VER
+#endif  // _AUG
    enable_north_up(false),
    heading(Angle::Zero()),
    side_display_type(SIDE_INFO_VARIO)
