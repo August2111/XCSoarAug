@@ -1,15 +1,13 @@
 # XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC
 cmake_minimum_required(VERSION 3.15)
-message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
+message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}! TARGET_NAME = ${TARGET_NAME}")
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-  message(STATUS "+++ TARGET_NAME = ${TARGET_NAME}")
+
   project(${TARGET_NAME} CXX) # Your project name
 
 # include(../../CMakeSource.txt)
 # organize the files in subdirectories
-message(STATUS "##### PROJECTGROUP_SOURCE_DIR:  --- ${PROJECTGROUP_SOURCE_DIR}")
-
 set(SOURCE_FILES )
 foreach(source_file ${${TARGET_NAME}_SOURCES})
     string(REPLACE "${TARGET_NAME}/" "" source_file ${source_file})

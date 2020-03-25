@@ -65,7 +65,7 @@ TerrainLoader::SkipMarkerSegment(long file_offset) const
          !raster_tile_cache.tiles.GetLinear(segment->tile).IsRequested()) {
     ++segment;
 
-#ifdef AUG_MSC
+#if defined(_AUG) && defined(_MSC_VER)
     if (segment >= &raster_tile_cache.segments.end().operator*())
 #else  // AUG_MSC
     if (segment >= raster_tile_cache.segments.end())

@@ -21,6 +21,7 @@ Copyright_License {
 }
 */
 
+#include "Util/Compiler.h"
 #include "GlobalFonts.hpp"
 #include "FontSettings.hpp"
 #include "Screen/Font.hpp"

@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.15)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f.e. in Visual Studio
 
-message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
+message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}! TARGET_NAME = ${TARGET_NAME}")
 
 set(ENABLE_OPENGL OFF)  # better outside????
 
@@ -11,7 +11,7 @@ set(ENABLE_OPENGL OFF)  # better outside????
 set(ASIO_GROUPING ON)
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-  message(STATUS "+++ TARGET_NAME = ${TARGET_NAME}")
+
   project(${TARGET_NAME} CXX) # Your project name
 
 get_filename_component(PROJECTGROUP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR} ABSOLUTE)
@@ -53,13 +53,14 @@ if (WIN32 AND MSVC)
       include_directories("${LINK_LIBS}/zlib/zlib-1.2.11/include")
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
-      set(THIRD_PARTY "D:/Projects/3rd_Party")
-      set(LINK_LIBS "D:/link_libs")
+      # set(THIRD_PARTY "D:/Projects/3rd_Party")
+      # set(LINK_LIBS "D:/link_libs")
       message(STATUS "+++ System = WIN32 / MinGW!")
       set(Boost_COMPILER "mgw73")  # necessary: changed mgw as boost compiler to mgw73!
       include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
       # LUA ist vermutlich besser im output ordner aufgehoben...
       include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
+      include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
       include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
       include_directories("${LINK_LIBS}/zlib/zlib-1.2.11/include")
       include_directories("${LINK_LIBS}/jasper/JasPer-2.0.14/include")
@@ -76,13 +77,13 @@ else()
    message(FATAL_ERROR "+++ Unbekanntes System: !")
 endif()
 
-if (NOT Boost_ROOT)
-    set(Boost_ROOT $ENV{Boost_ROOT})
-endif()
-if (NOT Boost_ROOT)
-    set(Boost_ROOT "D:/link_libs/boost/boost_1_72_0")  # Flaps5!
-endif()
-string(REPLACE "\\" "/" Boost_ROOT ${Boost_ROOT})
+## if (NOT Boost_ROOT)
+##     set(Boost_ROOT $ENV{Boost_ROOT})
+## endif()
+## #  if (NOT Boost_ROOT)
+#      set(Boost_ROOT "D:/link_libs/boost/boost_1_72_0")  # Flaps5!
+#  endif()
+###string(REPLACE "\\" "/" Boost_ROOT ${Boost_ROOT})
 # message(FATAL_ERROR "+++ Boost_ROOT: ${Boost_ROOT} vs. $ENV{Boost_ROOT}!")
 #####################################################################################
 #####################################################################################
@@ -135,10 +136,11 @@ set(Boost_USE_STATIC_RUNTIME      OFF)
 set(Boost_DEBUG                   OFF)
 if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
     add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
-    # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 endif()
 set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
 find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
+
+#    message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 
 if(EXISTS "${Boost_ROOT}/include/boost-1_72/boost/version.hpp")
     set(Boost_INCLUDE_DIR "${Boost_ROOT}/include/boost-1_72")
@@ -223,15 +225,7 @@ add_subdirectory(src/XML)
 
 add_subdirectory(src/zzip 3rd_party/zzip)
 
-# add_subdirectory(output/data)
-if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
-# das muss aber rein!!!    add_subdirectory(${THIRD_PARTY}/lua/lua-5.3.5  3rd_party/lua)
-    add_subdirectory(${THIRD_PARTY}/lua  3rd_party/lua)
-
-#    add_subdirectory(${THIRD_PARTY}/MapServer/Src  3rd_party/MapServer)
-elseif ($ENV{COMPUTERNAME} MATCHES "Flaps5")
-    add_subdirectory(${THIRD_PARTY}/lua  3rd_party/lua)
-endif()
+    add_subdirectory(${THIRD_PARTY}/lua/lua-5.3.5  3rd_party/lua)
     add_subdirectory(${THIRD_PARTY}/mapserver/mapserver-0  3rd_party/MapServer)
 # add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.0  3rd_party/jasper)
 

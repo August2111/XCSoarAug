@@ -7,7 +7,7 @@ cd /D %~dp0
 set SOURCE_DIR=%CD%
 set BINARY_DIR=D:\Projects\Binaries
 set TARGET_PLATFORM=64
-set THIRD_PARTY=D:/Projects/3rd_Party
+set THIRD_PARTY=D:\Projects\3rd_Party
 set LINK_LIBS=D:\link_libs
 set COMPILER=VS2019
 set PROGRAM_DIR=D:\Programs

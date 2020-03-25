@@ -11,11 +11,9 @@ if not defined SOURCE_DIR  set SOURCE_DIR=%CD%
 if not defined BINARY_DIR set BINARY_DIR=D:\Projects\Binaries
 if not defined TARGET_PLATFORM  set TARGET_PLATFORM=64
 if not defined THIRD_PARTY set THIRD_PARTY=D:\Projects\3rdParty
-REM if not exist "%THIRD_PARTY%" set THIRD_PARTY=D:\link_libs
-REM if not defined QT_VERSION  set QT_VERSION=5.13.1
+if not defined LINK_LIBS set LINK_LIBS=D:\link_libs
 if not defined COMPILER  set COMPILER=VS2019
 if not defined PROGRAM_DIR  set PROGRAM_DIR=D:\Programs
-REM if not defined BOOST_ROOT set BOOST_ROOT=%THIRD_PARTY%/boost/boost_1_65_1
 if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%\qt
 
 cmake --version > NUL
@@ -33,13 +31,16 @@ goto %COMPILER%
 :MinGW
 if not "%COMPILER%"=="MinGW"  goto VS2013
 echo Im Compiler 'MinGW-Pfad'
-set MINGW_DIR=%PROGRAM_DIR%\MinGW\x%TARGET_PLATFORM%
+REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\x%TARGET_PLATFORM%
+REM set MINGW_DIR=%PROGRAM_DIR%\MinGW
+set MINGW_DIR=%THIRD_PARTY%\qt\Qt5.14.0\Tools\mingw730_64
+
 set COMPILER_HOME=%MINGW_DIR%\bin
 set MAKETOOL=mingw32-make
-  set PATH=%PATH%;%COMPILER_HOME%
+  set PATH=%COMPILER_HOME%;%PATH%
   set GENERATOR=MinGW Makefiles
   rem set GENERATOR=Eclipse CDT4 - MinGW Makefiles
-  if not defined Boost_ROOT set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\mingw
+  if not defined Boost_ROOT set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\mgw73
 goto CompilerEnd
 
 : VS2013

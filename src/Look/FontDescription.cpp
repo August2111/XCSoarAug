@@ -21,7 +21,7 @@ Copyright_License {
 }
 */
 
-// #define _WIN64 // RC_INVOKED //_X86_  //NT_INCLUDED  //_X86_
+#include "Util/Compiler.h"  // _AUG
 #include "FontDescription.hpp"
 
 #ifdef USE_GDI

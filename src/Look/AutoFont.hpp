@@ -24,6 +24,7 @@ Copyright_License {
 #ifndef XCSOAR_AUTO_FONT_HPP
 #define XCSOAR_AUTO_FONT_HPP
 
+#include "Util/Compiler.h"
 #include <tchar.h>
 
 class FontDescription;

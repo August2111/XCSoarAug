@@ -46,8 +46,11 @@ Copyright_License {
 #   define _WIN32_WINNT 0x0A00  // _AUG! Windows7 or above
 #endif
 
-
+#ifdef _MSC_VER
 #   include   "WinSock2.h"
+#else
+#   include   "winsock2.h"  // MinGW!
+#endif
 // #   define _WINSOCKAPI_
 #   include   "windows.h"
 #endif
