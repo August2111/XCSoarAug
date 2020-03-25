@@ -74,9 +74,6 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
   Reinitialise(settings);
 
   // airspace brushes and colors
-#if _AUG  // zur zeit nicht möglich!
-  AirspaceRendererSettings s = settings;  // only as placeholder (_AUG)
-#else
 #ifdef HAVE_HATCHED_BRUSH
   bitmaps[0].Load(IDB_AIRSPACE0);
   bitmaps[1].Load(IDB_AIRSPACE1);
@@ -87,6 +84,11 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
   bitmaps[6].Load(IDB_AIRSPACE6);
   bitmaps[7].Load(IDB_AIRSPACE7);
 
+#if _AUG_MSC  // zur zeit nicht möglich!
+  AirspaceRendererSettings s = settings;  // only as placeholder (_AUG)
+  // TODO(aug)   // das BRUSH::Create geht nicht weil bitmaps == nullptr;
+  // weil PNG sich nicht laden lassen!!!!
+#else
   for (unsigned i = 0; i < ARRAY_SIZE(AirspaceLook::brushes); i++)
     brushes[i].Create(bitmaps[i]);
 #endif

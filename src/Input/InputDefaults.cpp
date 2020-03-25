@@ -81,7 +81,12 @@ makeLabel(InputConfig &input_config,
           unsigned location, unsigned event_id)
 {
 #if _AUG_MSC  // TODO(aug): Warum nicht?
-  location = location;
+  // location = location;
+#   pragma message("Input: makeLabel (MSVC)!")
+  input_config.AppendMenuA(mode_id, label, location, event_id);
+#elif _AUG || MINGW
+#   pragma message("Input: makeLabel (MINGW)!")
+  input_config.AppendMenuA(mode_id, label, location, event_id);
 #else
   input_config.AppendMenu(mode_id, label, location, event_id);
 #endif

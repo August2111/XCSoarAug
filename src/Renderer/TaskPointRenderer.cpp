@@ -178,15 +178,15 @@ TaskPointRenderer::DrawIsoline(const AATPoint &tp)
     return;
 
   BulkPixelPoint screen[21];
-#if _AUG_MSC
-  PixelPoint pp = m_proj.GeoToScreen(start);
-  screen[0] = pp;
-  pp = m_proj.GeoToScreen(end);
-  screen[20] = pp;
-#else
+// #if _AUG_MSC
+//   PixelPoint pp = m_proj.GeoToScreen(start);
+//   screen[0] = pp;
+//   pp = m_proj.GeoToScreen(end);
+//   screen[20] = pp;
+// #else
   screen[0] = m_proj.GeoToScreen(start);
-  screen[20] = 
-#endif
+  screen[20] = m_proj.GeoToScreen(end);
+// #endif
 
   for (unsigned i = 1; i < 20; ++i) {
     constexpr double twentieth = 1.0 / 20.0;

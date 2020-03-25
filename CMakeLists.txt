@@ -228,8 +228,10 @@ add_subdirectory(src/Waypoint)
 add_subdirectory(src/Weather)
 add_subdirectory(src/Widget)
 add_subdirectory(src/XML)
-
-add_subdirectory(src/zzip 3rd_party/zzip)
+if (NOT MINGW)
+  # TODO(aug) fuer MinGW erst einmal weglassen!
+  add_subdirectory(src/zzip 3rd_party/zzip)
+endif()
 
     add_subdirectory(${THIRD_PARTY}/lua/lua-5.3.5  3rd_party/lua)
     add_subdirectory(${THIRD_PARTY}/mapserver/mapserver-0  3rd_party/MapServer)
@@ -266,6 +268,8 @@ list(APPEND SOURCE_FILES "src/XCSoar.cpp")
 list(APPEND SOURCE_FILES "src/Version.cpp")
 if (MSVC)
   list(APPEND SOURCE_FILES "Data/XCSoar.def")
+  list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
+elseif(MINGW)
   list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
 else()
   list(APPEND SOURCE_FILES "Data/XCSoar.rc")
@@ -373,8 +377,9 @@ list(APPEND XCSOAR_LINK_LIBRARIES
 ) # Reihenfolge is very important!!!!
 
 target_link_libraries(${TARGET_NAME} PUBLIC ${XCSOAR_LINK_LIBRARIES})
-target_link_options(${TARGET_NAME} PUBLIC "/SUBSYSTEM:WINDOWS")
-
+if(MSVC)
+  target_link_options(${TARGET_NAME} PUBLIC "/SUBSYSTEM:WINDOWS")
+endif()
 #    target_link_libraries(${TARGET_NAME}
 #        PRIVATE   # PUBLIC
 #        Boost::filesystem
