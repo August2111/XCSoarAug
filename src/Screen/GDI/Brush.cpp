@@ -26,7 +26,7 @@ Copyright_License {
 
 #include <assert.h>
 
-#if !defined(USE_MEMORY_CANVAS) // && !defined(AUG_MSC)   // "hat bereits einen Funktionsrumpf"
+#if !defined(USE_MEMORY_CANVAS)  // "hat bereits einen Funktionsrumpf"
 void
 Brush::Create(const Color c)
 {

@@ -62,10 +62,6 @@ Copyright_License {
 
 #include <assert.h>
 
-#ifdef _AUG
-// #   include <boost/asio/impl/src.hpp>
-// with ssl:  #   include <boost/asio/ssl/impl/src.hpp>
-#endif
 static const char *const Usage = "\n"
   "  -datapath=      path to XCSoar data can be defined\n"
 #ifdef SIMULATOR_AVAILABLE

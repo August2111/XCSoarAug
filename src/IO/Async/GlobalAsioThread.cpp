@@ -21,7 +21,8 @@ Copyright_License {
 }
 */
 
-#if 1 // !_AUG
+// TODO(aug): hier hatte ich mal etwas experimentiert aber das am Ende beseitigt?
+
 #include "GlobalAsioThread.hpp"
 #include "AsioThread.hpp"
 
@@ -43,4 +44,3 @@ DeinitialiseAsioThread()
   delete asio_thread;
   asio_thread = nullptr;
 }
-#endif

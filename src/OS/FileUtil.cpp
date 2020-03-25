@@ -424,7 +424,7 @@ File::ReadString(Path path, char *buffer, size_t size)
   assert(buffer != nullptr);
   assert(size > 0);
 
-#ifdef AUG_MSC
+#if _AUG_MSC  // TODO(aug) file operations has to be better organized!
 // #include "corecrt_io.h"
 // #include <xlocmes>
   auto fd = fopen(path.c_str(), "r");
@@ -463,14 +463,14 @@ File::WriteExisting(Path path, const char *value)
   assert(path != nullptr);
   assert(value != nullptr);
 
-#ifdef AUG_MSC
+#if _AUG_MSC  // TODO(aug) file operations has to be better organized!
   auto fd = fopen(path.c_str(), "w");
   if (fd == nullptr)
     return false;
   const size_t length = strlen(value);
   size_t nbytes = fwrite( value, 1, length, fd);
   return fclose(fd) == 0 && nbytes == (size_t)length;
-#else  // AUG_MSC
+#else  // _AUG_MSC
   int flags = O_WRONLY;
 #ifdef O_NOCTTY
   flags |= O_NOCTTY;
@@ -485,7 +485,7 @@ File::WriteExisting(Path path, const char *value)
   const size_t length = strlen(value);
   ssize_t nbytes = write(fd, value, length);
   return close(fd) == 0 && nbytes == (ssize_t)length;
-#endif  // AUG_MSC
+#endif  // _AUG_MSC
 }
 
 bool
@@ -493,12 +493,12 @@ File::CreateExclusive(Path path)
 {
   assert(path != nullptr);
 
-#ifdef AUG_MSC
+#if _AUG_MSC  // TODO(aug) file operations has to be better organized!
   auto fd = fopen(path.c_str(), "w");
   if (fd == nullptr)
     return false;
   fclose(fd);
-#else  // AUG_MSC
+#else  // _AUG_MSC
   int flags = O_WRONLY | O_CREAT | O_EXCL;
 #ifdef O_NOCTTY
   flags |= O_NOCTTY;
@@ -512,6 +512,6 @@ File::CreateExclusive(Path path)
     return false;
 
   close(fd);
-#endif  // AUG_MSC
+#endif  // _AUG_MSC
   return true;
 }

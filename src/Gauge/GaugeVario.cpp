@@ -182,8 +182,9 @@ GaugeVario::MakePolygon(const int i)
 
   const FastIntegerRotation r(Angle::Degrees(i));
 
-#ifdef AUG_MSC
+#if _AUG_MSC
   // TODO(aug): Hier muss noch etwas implementiert werden!
+  bit[0] = { 0, 0};
 #else
   bit[0] = TransformRotatedPoint(r.Rotate(-offset.x + nlength0, nwidth),
                                  offset);

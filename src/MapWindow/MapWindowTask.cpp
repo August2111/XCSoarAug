@@ -89,14 +89,14 @@ MapWindow::DrawRoute(Canvas &canvas)
   const auto &route = Calculated().planned_route;
 
   const auto r_size = route.size();
-#ifdef AUG_MSC
-  BulkPixelPoint* p = new BulkPixelPoint[r_size];
+#ifdef _AUG_MSC
+  BulkPixelPoint* p = new BulkPixelPoint[r_size, r_size];
   BulkPixelPoint*pp = &p[0];
 #else
   BulkPixelPoint p[r_size], * pp = &p[0];
 #endif
   for (auto i = route.begin(), end = route.end(); i != end; ++i, ++pp)
-#ifdef AUG_MSC
+#if _AUG_MSC
     *pp = {0, 0};
 #else
     *pp = render_projection.GeoToScreen(*i);
@@ -106,7 +106,7 @@ MapWindow::DrawRoute(Canvas &canvas)
 
   canvas.Select(look.task.bearing_pen);
   canvas.DrawPolyline(p, r_size);
-#ifdef AUG_MSC
+#if _AUG_MSC
   delete[] p;
 #endif
 }

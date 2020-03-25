@@ -25,13 +25,13 @@ Copyright_License {
 #define XCSOAR_INTERFACE_HPP
 
 #include "Blackboard/InterfaceBlackboard.hpp"
-#ifdef  AUGUST
-#include "Thread/Debug.hpp"
-#include "Util/Compiler.h"
-else
-class InterfaceBlackboard;
-
-#endif  // AUGUST
+// #ifdef  AUGUST  // TODO(aug): was habe ich hier gemacht (und warum)?
+// #include "Thread/Debug.hpp"
+// #include "Util/Compiler.h"
+// #else
+// class InterfaceBlackboard;
+//
+// #endif  // AUGUST
 
 struct UIState;
 class MainWindow;

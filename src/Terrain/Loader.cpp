@@ -65,11 +65,11 @@ TerrainLoader::SkipMarkerSegment(long file_offset) const
          !raster_tile_cache.tiles.GetLinear(segment->tile).IsRequested()) {
     ++segment;
 
-#if defined(_AUG) && defined(_MSC_VER)
+#if defined(_AUG_MSC)  // an other type!
     if (segment >= &raster_tile_cache.segments.end().operator*())
-#else  // AUG_MSC
+#else
     if (segment >= raster_tile_cache.segments.end())
-#endif  // AUG_MSC
+#endif
       /* last segment is hidden; shouldn't happen either, because we
          expect EOC there */
       break;
@@ -178,7 +178,7 @@ TerrainLoader::SetSize(unsigned _width, unsigned _height,
                               tile_columns, tile_rows);
 }
 
-#if AUG_MSC
+#if _AUG_MSC  // ?? TODO(aug): code in original not necessary? Compare it!
 // const bool TerrainLoader::scan_overview = false;
 // const bool TerrainLoader::scan_tiles = false;
 // SharedMutex& TerrainLoader::mutex;
@@ -188,7 +188,7 @@ void
 TerrainLoader::PutTileData(unsigned index,
                            unsigned start_x, unsigned start_y,
                            unsigned end_x, unsigned end_y,
-#ifdef JAS_2_0_0
+#ifdef JAS_2_0_0  // _AUG!
   const struct jas_matrix& m) {
 #else
   const jas_matrix_t& m) {
@@ -206,7 +206,7 @@ TerrainLoader::PutTileData(unsigned index,
 static bool
 LoadJPG2000(jas_stream_t *in, void *loader)
 {
-#if _AUG
+#if _AUG  // TODO(aug): !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // das geht so mit Jasper 2.0.14 nicht, da fehlen die Header usw...
   // bei jasper 2.0.0 müsste das alles da sein, aber da klappt anderes nicht ;-(
   bool success = false;
@@ -257,7 +257,7 @@ LoadJPG2000(jas_stream_t *in, void *loader)
 
   jpc_initluts();
 
-        #ifdef AUG_MSC
+        #if _AUG_MSC
           const auto dec = jpc_seg_alloc();  //  &opts, in);
           if (dec == nullptr)
             return false;

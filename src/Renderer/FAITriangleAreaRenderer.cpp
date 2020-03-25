@@ -29,27 +29,21 @@ Copyright_License {
 #include "Screen/Canvas.hpp"
 
 void
-RenderFAISector(Canvas &canvas, const WindowProjection &projection,
-                const GeoPoint &pt1, const GeoPoint &pt2,
-                bool reverse, const FAITriangleSettings &settings)
-{
+RenderFAISector(Canvas& canvas, const WindowProjection& projection,
+  const GeoPoint& pt1, const GeoPoint& pt2,
+  bool reverse, const FAITriangleSettings& settings) {
   GeoPoint geo_points[FAI_TRIANGLE_SECTOR_MAX];
-  GeoPoint *geo_end = GenerateFAITriangleArea(geo_points, pt1, pt2,
-                                              reverse, settings);
+  GeoPoint* geo_end = GenerateFAITriangleArea(geo_points, pt1, pt2,
+    reverse, settings);
 
   GeoPoint clipped[FAI_TRIANGLE_SECTOR_MAX * 3],
-    *clipped_end = clipped +
+    * clipped_end = clipped +
     GeoClip(projection.GetScreenBounds().Scale(1.1))
     .ClipPolygon(clipped, geo_points, geo_end - geo_points);
 
-  BulkPixelPoint points[FAI_TRIANGLE_SECTOR_MAX], *p = points;
-#ifndef AUG_MSC
-  for (GeoPoint *geo_i = clipped; geo_i != clipped_end;)
-    *p++ = projection.GeoToScreen(*geo_i++);
-#else // AUG_MSC
+  BulkPixelPoint points[FAI_TRIANGLE_SECTOR_MAX], * p = points;
   for (GeoPoint* geo_i = clipped; geo_i != clipped_end;)
-    *p++ = {0, 0};
-#endif  // AUG_MSC
+    *p++ = projection.GeoToScreen(*geo_i++);
 
   canvas.DrawPolygon(points, p - points);
 }

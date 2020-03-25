@@ -70,7 +70,7 @@ OpenJasperZzipStream(struct zzip_dir *dir, const char *path)
   if (f == nullptr)
     return nullptr;
 
-#if defined(JAS_2_0_0) || !defined(_AUG)
+#if defined(JAS_2_0_0) || !defined(_AUG_MSC)  // TODO(aug): check it on MinGW!
   jas_stream_t *stream = jas_stream_create();
   if (stream == nullptr) {
     zzip_file_close(f);

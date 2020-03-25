@@ -36,7 +36,7 @@ class RasterProjection;
 class OperationEnvironment;
 
 class TerrainLoader {
-#ifndef AUG_MSC
+#if  !_AUG_MSC
   static SharedMutex& mutex;
 #else
   SharedMutex& mutex;
@@ -44,7 +44,7 @@ class TerrainLoader {
 
   RasterTileCache &raster_tile_cache;
 
-#ifndef AUG_MSC
+#if !_AUG_MSC
   static const bool scan_overview;
   static const bool scan_tiles;
 #else

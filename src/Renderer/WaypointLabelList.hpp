@@ -63,7 +63,7 @@ public:
     bool isWatchedWaypoint);
   void Sort();
 
-#if defined(AUG_MSC) && _MSC_VER
+#if _AUG_MSC
   //  const Label operator=(std::_Array_const_iterator<Label, 256u> iter) {
   //    return iter.operator*();
   //  }

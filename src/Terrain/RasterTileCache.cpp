@@ -304,11 +304,11 @@ RasterTileCache::SaveCache(FILE *file) const
 
   if (fwrite(&header, sizeof(header), 1, file) != 1 ||
       /* .. and segments */
-#if defined(_AUG) && defined(_MSC_VER)
+#if defined(_AUG_MSC)  // an other type!
     fwrite(&segments.begin().operator*(), sizeof(*segments.begin()), segments.size(), file) != segments.size())
-#else  // AUG_MSC
+#else
     fwrite(segments.begin(), sizeof(*segments.begin()), segments.size(), file) != segments.size())
-#endif  // AUG_MSC
+#endif
     return false;
 
   /* save tiles */

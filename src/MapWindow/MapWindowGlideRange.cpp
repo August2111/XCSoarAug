@@ -137,7 +137,9 @@ struct ProjectedFans {
     --remaining;
 #endif
 #
-#ifndef AUG_MSC
+#if _AUG_MSC
+    points = points;  // placeholder for debug purpose(aug)!
+#else
     // Konvertierung von Argument 1 von "const PixelPoint" in "const _Ty &" nicht möglich
     points.push_back(pt);
 #endif

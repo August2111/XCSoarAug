@@ -117,8 +117,8 @@ DataFieldInteger::SpeedUp(bool keyup)
 void
 DataFieldInteger::AppendComboValue(ComboList &combo_list, int value) const
 {
-#ifdef AUG_MSC
-  static const int nmConst1 = 0x1000;  //  edit_format.capacity();
+#if _AUG_MSC  // only MSCV!
+   static const int nmConst1 = 0x1000;  //  edit_format.capacity();
    static const int nmConst2 = 0x1000;  // display_format.capacity();
  
    TCHAR a[nmConst1], b[nmConst2];

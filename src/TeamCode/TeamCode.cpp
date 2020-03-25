@@ -128,12 +128,12 @@ double
 TeamCode::GetRange() const
 {
   // Get last three values from teamcode (3-5)
-#ifdef AUG_MSC
+#if _AUG_MSC  // an other type?
   unsigned value = GetValueFromTeamCode(&code.begin().operator*() + 2, 3);
 #else
   unsigned value = GetValueFromTeamCode(code.begin() + 2, 3);
 #endif
-  return value * 100;
+  return static_cast<double>(value * 100);  // _AUG: no overflow possible!
 }
 
 void

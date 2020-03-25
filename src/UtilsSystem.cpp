@@ -94,21 +94,21 @@ PixelSize
 SystemWindowSize()
 {
 #if defined(_WIN32)
-// #ifdef _AUG
-#if 0  // _AUG
-    HWND console = GetConsoleWindow();
-    RECT r;
-    GetWindowRect(console, &r); //stores the console's current dimensions
-    unsigned width = r.right - r.left;  // +2 * GetSystemMetrics(SM_CXFIXEDFRAME);
-  unsigned height = r.bottom - r.top;  // +2 * GetSystemMetrics(SM_CYFIXEDFRAME)
-    // + GetSystemMetrics(SM_CYCAPTION);
 
-//    MoveWindow(console, r.left, r.top, 800, 100, TRUE); // 800 width, 100 height
-#else
+//    #if 0  // TODO(aug) remove it again! _AUG
+//        HWND console = GetConsoleWindow();
+//        RECT r;
+//        GetWindowRect(console, &r); //stores the console's current dimensions
+//        unsigned width = r.right - r.left;  // +2 * GetSystemMetrics(SM_CXFIXEDFRAME);
+//      unsigned height = r.bottom - r.top;  // +2 * GetSystemMetrics(SM_CYFIXEDFRAME)
+//        // + GetSystemMetrics(SM_CYCAPTION);
+//    
+//    //    MoveWindow(console, r.left, r.top, 800, 100, TRUE); // 800 width, 100 height
+//    #else
   unsigned width = CommandLine::width + 2 * GetSystemMetrics(SM_CXFIXEDFRAME);
   unsigned height = CommandLine::height + 2 * GetSystemMetrics(SM_CYFIXEDFRAME)
     + GetSystemMetrics(SM_CYCAPTION);
-#endif
+//    #endif
   return { width, height };
 #elif defined(ANDROID)
   return native_view->GetSize();

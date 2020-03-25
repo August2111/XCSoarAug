@@ -12,7 +12,7 @@
 
 #include "Util/ConstBuffer.hxx"
 
-#ifdef AUG_MSC
+#if _AUG_MSC
 #define MAKE_RESOURCE(name, id) \
   extern "C" uint8_t resource_ ## id[8]; \
   extern "C" const size_t resource_ ## id ## _size; \

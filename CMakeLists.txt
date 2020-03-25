@@ -7,7 +7,7 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}! TARGET_NAME = ${TAR
 set(ENABLE_OPENGL OFF)  # better outside????
 
 # Debugging Path: 
-# PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\bin
+# PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\bin\msvc2019
 
 set(ASIO_GROUPING ON)
 
@@ -27,10 +27,12 @@ include(CMakeSource.cmake)
 
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
-      # add_definitions("/ZW")
-      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
       # add_compile_definitions(BOOST_ASIO_WORKAROUND=1)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
+      add_compile_definitions(_AUG_MSC=1)
+
+      # add_definitions("/ZW")
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
       if (NOT THIRD_PARTY AND EXISTS "D:/Projects/3rd_Party")
         set(THIRD_PARTY "D:/Projects/3rd_Party")
       endif()
@@ -90,7 +92,7 @@ endif()
 #####################################################################################
 # add_compile_definitions(USE_MEMORY_CANVAS)
 add_compile_definitions(NOMINMAX)
-add_compile_definitions(_AUG)
+add_compile_definitions(_AUG=1)
 # nur einmal definieren!!! add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
 add_compile_definitions("XCSOAR_VERSION=\"7.1\"")
 # add_definitions(/std:c++11 /Zc:__cplusplus)

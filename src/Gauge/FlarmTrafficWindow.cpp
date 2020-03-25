@@ -51,7 +51,7 @@ FlarmTrafficWindow::FlarmTrafficWindow(const FlarmTrafficLook &_look,
    distance(2000),
    selection(-1), warning(-1),
    h_padding(_h_padding), v_padding(_v_padding),
-#ifdef _AUG
+#if _AUG  // all projects!
   is_small(_small),
 #else  // _AUG
   small(_small),

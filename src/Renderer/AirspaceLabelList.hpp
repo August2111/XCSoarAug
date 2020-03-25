@@ -56,7 +56,7 @@ public:
   }
 
   const Label *begin() const {
-#if defined(AUG_MSC) && _MSC_VER
+#if _AUG_MSC
     auto result = labels.begin();
     return &result.operator*();  //  labels.begin();
 #else
@@ -65,7 +65,7 @@ public:
   }
 
   const Label *end() const {
-#if defined(AUG_MSC) && _MSC_VER
+#if _AUG_MSC
     auto result = labels.end();
     return &result.operator*();  //  labels.begin();
 #else

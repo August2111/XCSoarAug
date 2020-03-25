@@ -72,20 +72,19 @@ StencilMapCanvas::DrawSearchPointVector(const SearchPointVector &points)
     return;
 
   /* draw it all */
-#ifdef AUG_MSC
+#if _AUG_MSC  // dynamic array!!!
   BulkPixelPoint* screen = new BulkPixelPoint[size];
-  for (unsigned i = 0; i < size; ++i)
-    screen[i] = {0, 0};
 #else
   BulkPixelPoint screen[size];
+#endif
+
   for (unsigned i = 0; i < size; ++i)
     screen[i] = proj.GeoToScreen(geo_points[i]);
-#endif
 
   buffer.DrawPolygon(&screen[0], size);
   if (use_stencil)
     stencil.DrawPolygon(&screen[0], size);
-#ifdef AUG_MSC
+#if _AUG_MSC
   delete[] screen;
 #endif
 }

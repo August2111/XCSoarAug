@@ -74,7 +74,9 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
   Reinitialise(settings);
 
   // airspace brushes and colors
-#ifndef _AUG  // zur zeit nicht möglich!
+#if _AUG  // zur zeit nicht möglich!
+  AirspaceRendererSettings s = settings;  // only as placeholder (_AUG)
+#else
 #ifdef HAVE_HATCHED_BRUSH
   bitmaps[0].Load(IDB_AIRSPACE0);
   bitmaps[1].Load(IDB_AIRSPACE1);

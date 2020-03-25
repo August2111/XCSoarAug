@@ -63,15 +63,12 @@ void
 MapCanvas::Project(const Projection &projection,
                    const SearchPointVector &points, BulkPixelPoint *screen)
 {
-#ifndef AUG_MSC
   for (auto it = points.begin(); it != points.end(); ++it)
     *screen++ = projection.GeoToScreen(it->GetLocation());
-#endif  // AUG_MSC
 }
 
 bool
-MapCanvas::PreparePolygon(const SearchPointVector &points)
-{
+MapCanvas::PreparePolygon(const SearchPointVector& points) {
   unsigned num_points = points.size();
   if (num_points < 3)
     return false;
@@ -83,17 +80,15 @@ MapCanvas::PreparePolygon(const SearchPointVector &points)
 
   /* clip them */
   num_raster_points = clip.ClipPolygon(geo_points.begin(),
-                                       geo_points.begin(), num_points);
+    geo_points.begin(), num_points);
   if (num_raster_points < 3)
     /* it's completely outside the screen */
     return false;
 
   /* project all GeoPoints to screen coordinates */
   raster_points.GrowDiscard(num_raster_points);
-#ifndef AUG_MSC
   for (unsigned i = 0; i < num_raster_points; ++i)
     raster_points[i] = projection.GeoToScreen(geo_points[i]);
-#endif  // AUG_MSC
 
   return true;
 }

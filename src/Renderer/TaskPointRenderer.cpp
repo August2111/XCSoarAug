@@ -154,11 +154,7 @@ TaskPointRenderer::DrawTaskLine(const GeoPoint &start, const GeoPoint &end)
                                       Layout::Scale(25));
   PolygonRotateShift(Arrow, 2, p_p, ang);
   Arrow[2] = Arrow[1];
-#ifdef AUG_MSC
-  Arrow[1] = {0,0};
-#else AUG_MSC
   Arrow[1] = p_p;
-#endif  //  AUG_MSC
 
   canvas.Select(LegActive() ? task_look.arrow_active_pen :
                               task_look.arrow_inactive_pen);
@@ -182,14 +178,15 @@ TaskPointRenderer::DrawIsoline(const AATPoint &tp)
     return;
 
   BulkPixelPoint screen[21];
-#ifdef AUG_MSC
-  screen[0] =
-  screen[20] =
-  { 0,0 };
-#else AUG_MSC
+#if _AUG_MSC
+  PixelPoint pp = m_proj.GeoToScreen(start);
+  screen[0] = pp;
+  pp = m_proj.GeoToScreen(end);
+  screen[20] = pp;
+#else
   screen[0] = m_proj.GeoToScreen(start);
-  screen[20] = m_proj.GeoToScreen(end);
-#endif  //  AUG_MSC
+  screen[20] = 
+#endif
 
   for (unsigned i = 1; i < 20; ++i) {
     constexpr double twentieth = 1.0 / 20.0;

@@ -20,11 +20,6 @@ Copyright_License {
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 */
-#ifdef _AUG
-  // done in IO/Async/AsioThread.cpp!!!
-// #   include <boost/asio/impl/src.hpp>
-// with ssl:  #   include <boost/asio/ssl/impl/src.hpp>
-#endif
 
 #include "BasicComputer.hpp"
 #include "NMEA/MoreData.hpp"

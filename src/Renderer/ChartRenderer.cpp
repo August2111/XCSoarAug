@@ -301,9 +301,11 @@ ChartRenderer::DrawFilledLine(const double xmin, const double ymin,
 {
   BulkPixelPoint line[4];
 
-#ifdef AUG_MSC
-  line[0] = {0, 0};  // ToScreen(xmin, ymin);
-  line[1] = { 0, 0 };  // ToScreen(xmax, ymax);
+#if 0 //  _AUG_MSC  // TODO(aug) PointOPeration!
+  PixelPoint p = ToScreen(xmin, ymin);
+  line[0] = {p.x, p.y};  // ToScreen(xmin, ymin);
+  p = ToScreen(xmax, ymax);
+  line[1] = { p.x, p.y};  // ToScreen(xmax, ymax);
 #else
   line[0] = ToScreen(xmin, ymin);
   line[1] = ToScreen(xmax, ymax);
@@ -383,8 +385,16 @@ ChartRenderer::DrawLineGraph(const XYDataStore &lsdata, const Pen &pen, bool swa
 
   auto *p = points;
   for (const auto& i : slots)
-#ifdef AUG_MSC
-    *p++ = { 0, 0};
+#if _AUG_MSC
+  {
+    PixelPoint pp;
+    if (swap)
+      pp = ToScreen(i.y, i.x);
+    else
+      pp = ToScreen(i.x, i.y);
+
+    *p++ = pp;
+  }
 #else
     *p++ = swap? ToScreen(i.y, i.x) : ToScreen(i.x, i.y);
 #endif
@@ -558,14 +568,15 @@ ChartRenderer::DrawFilledY(const std::vector<std::pair<double, double>> &vals,
   const unsigned fsize = vals.size()+2;
   auto *line = point_buffer.get(fsize);
 
-#ifdef AUG_MSC
-  for (unsigned i = 0; i < vals.size(); ++i)
-    line[i + 2] = 
-  { 0,0 };
-#else AUG_MSC
+#if  0 // _AUG_MSC
+  for (unsigned i = 0; i < vals.size(); ++i) {
+    PixelPoint p = ToScreen(vals[i].first, vals[i].second);
+    line[i + 2] = p;
+  }
+#else
   for (unsigned i = 0; i < vals.size(); ++i)
     line[i + 2] = ToScreen(vals[i].first, vals[i].second);
-#endif  //  AUG_MSC
+#endif
   for (unsigned i = 0; i < vals.size(); ++i)
     line[i + 2] = ToScreen(vals[i].first, vals[i].second);
 
