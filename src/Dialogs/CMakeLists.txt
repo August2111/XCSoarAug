@@ -43,7 +43,6 @@ add_library(${TARGET_NAME} STATIC
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
-# to Language!    ${PROJECTGROUP_SOURCE_DIR}/temp_data/memory_fields.c
 )
 # target_link_libraries(${TARGET_NAME} data)
 # message(FATAL_ERROR "Stop!")

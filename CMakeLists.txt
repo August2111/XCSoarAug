@@ -6,7 +6,8 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}! TARGET_NAME = ${TAR
 
 set(ENABLE_OPENGL OFF)  # better outside????
 
-# Debugging Path: PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\bin
+# Debugging Path: 
+# PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\bin
 
 set(ASIO_GROUPING ON)
 
@@ -118,8 +119,11 @@ else()
     add_compile_definitions(USE_GDI)
     add_compile_definitions(USE_WIN32_RESOURCES USE_WINUSER)
 endif()
+
 #####################################################################################
 #####################################################################################
+
+# add_compile_definitions(CURL_STATICLIB)
 
 if(NOT Boost_DIR)
   set(Boost_DIR "${Boost_ROOT}/lib/cmake/Boost-1.72.0")
@@ -344,7 +348,9 @@ list(APPEND XCSOAR_LINK_LIBRARIES
     zzip
     MapServer
     lua1
+#    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/msvc2019/jasperstatic.lib"
     "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/msvc2019/jasper.lib"
+#    "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurlstatic.lib"
     "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurl.lib"
     "${LINK_LIBS}/zlib/zlib-1.2.11/lib/msvc2019/zlibstatic.lib"
 )
