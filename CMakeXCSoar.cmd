@@ -16,10 +16,13 @@ if not defined COMPILER  set COMPILER=VS2019
 if not defined PROGRAM_DIR  set PROGRAM_DIR=D:\Programs
 if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%\qt
 
-cmake --version > NUL
-if errorlevel 1 PATH = %PROGRAM_DIR%\CMake\bin;%PATH%
+echo %PATH:CMake=XXXX%
+if "%PATH%" == "%PATH:CMake=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo Added CMake to PATH!!
+REM echo %PATH%
 cmake --version
-echo ERRORLEVEL = %ERRORLEVEL%
+REM if errorlevel 1 PATH = %PROGRAM_DIR%\CMake\bin;%PATH%
+REM cmake --version
+if errorlevel 1 echo ERRORLEVEL = %ERRORLEVEL% & goto CMakeFoundError
 REM pause
 
 if exist CMakeCache.txt del CMakeCache.txt
@@ -30,17 +33,20 @@ if exist CMakeFiles rmdir  CMakeFiles  /S /Q
 goto %COMPILER%
 :MinGW
 if not "%COMPILER%"=="MinGW"  goto VS2013
-echo Im Compiler 'MinGW-Pfad'
+  echo Im Compiler 'MinGW-Pfad'
 REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\x%TARGET_PLATFORM%
 REM set MINGW_DIR=%PROGRAM_DIR%\MinGW
-set MINGW_DIR=%THIRD_PARTY%\qt\Qt5.14.0\Tools\mingw730_64
-
-set COMPILER_HOME=%MINGW_DIR%\bin
-set MAKETOOL=mingw32-make
-  set PATH=%COMPILER_HOME%;%PATH%
+  set MINGW_DIR=%THIRD_PARTY%\qt\Qt5.14.0\Tools\mingw730_64
+  if not exist %MINGW_DIR% set MINGW_DIR=%LINK_LIBS%\qt\Qt5.14.0\Tools\mingw730_64
+  set COMPILER_HOME=%MINGW_DIR%\bin
+  set MAKETOOL=mingw32-make
+  REM if "%PATH%" == "%PATH:mingw=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo CMake!!
+  PATH=%COMPILER_HOME%;%PATH%
+  PATH
+  pause
   set GENERATOR=MinGW Makefiles
   rem set GENERATOR=Eclipse CDT4 - MinGW Makefiles
-  if not defined Boost_ROOT set Boost_ROOT=%THIRD_PARTY%\boost\boost_1_72_0\mgw73
+  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\mgw73
 goto CompilerEnd
 
 : VS2013
@@ -211,3 +217,16 @@ exit /B 0
 echo %BUILD_DIR%\%SOLUTION_NAME%.sln not exist!?!
 echo Error during CMake creation "Flaps" (errorlevel = %ERRORLEVEL%)
 pause
+exit /B 0
+
+:CMakeFoundError
+echo Error: CMake not found?
+PATH=%PROGRAM_DIR%\CMake\bin;%PATH%
+echo %PATH%
+cmake --version
+REM if errorlevel 1 PATH = %PROGRAM_DIR%\CMake\bin;%PATH%
+REM cmake --version
+pause
+exit /B 0
+
+

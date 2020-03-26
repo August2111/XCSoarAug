@@ -7,7 +7,7 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}! TARGET_NAME = ${TAR
 set(ENABLE_OPENGL OFF)  # better outside????
 
 # Debugging Path: 
-# PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\bin\msvc2019
+# PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\lib\msvc2019
 
 set(ASIO_GROUPING ON)
 
