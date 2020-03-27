@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.15)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f.e. in Visual Studio
 
-message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}! TARGET_NAME = ${TARGET_NAME}")
+message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
 set(ENABLE_OPENGL OFF)  # better outside????
 
@@ -27,6 +27,9 @@ include(CMakeSource.cmake)
 
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
+      if(NOT TOOLCHAIN)
+        set(TOOLCHAIN msvc2019)
+      endif()
       # add_compile_definitions(BOOST_ASIO_WORKAROUND=1)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
       add_compile_definitions(_AUG_MSC=1)
@@ -59,7 +62,9 @@ elseif(WIN32 AND MINGW)
       # set(THIRD_PARTY "D:/Projects/3rd_Party")
       # set(LINK_LIBS "D:/link_libs")
       message(STATUS "+++ System = WIN32 / MinGW!")
-      set(Boost_COMPILER "mgw73")  # necessary: changed mgw as boost compiler to mgw73!
+      set(TOOLCHAIN mgw73)
+
+      set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
       include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
       # LUA ist vermutlich besser im output ordner aufgehoben...
       include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
@@ -71,7 +76,7 @@ elseif(WIN32 AND MINGW)
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
-      set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
+#      set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
 
 elseif(ANDROID)
     message(STATUS "+++ System = ANDROID / ${ANDROID_ABI}!")
@@ -173,7 +178,7 @@ include_directories(
 )
 
 # message(FATAL_ERROR "Test-Stop!")
-
+if (ON)  # if (OFF OR MSVC)
 add_subdirectory(src)
 
 add_subdirectory(src/Airspace)
@@ -228,15 +233,23 @@ add_subdirectory(src/Waypoint)
 add_subdirectory(src/Weather)
 add_subdirectory(src/Widget)
 add_subdirectory(src/XML)
-if (NOT MINGW)
-  # TODO(aug) fuer MinGW erst einmal weglassen!
-  add_subdirectory(src/zzip 3rd_party/zzip)
-endif()
 
+# if (NOT MINGW)
+  # add_subdirectory(src/zzip 3rd_party/zzip)
+  add_subdirectory(${THIRD_PARTY}/zzip/zzip-1.0.0 3rd_party/zzip)
+# endif()
     add_subdirectory(${THIRD_PARTY}/lua/lua-5.3.5  3rd_party/lua)
     add_subdirectory(${THIRD_PARTY}/mapserver/mapserver-0  3rd_party/MapServer)
-# add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.0  3rd_party/jasper)
+endif(OFF)
 
+if (MINGW)
+#    add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.14  3rd_party/jasper)
+#    add_subdirectory(${THIRD_PARTY}/curl/curl-7.64.1  3rd_party/curl)
+#    add_subdirectory(${THIRD_PARTY}/curl  3rd_party/curl)
+else()
+  # TODO(aug) fuer MinGW erst einmal weglassen!
+    add_subdirectory(${THIRD_PARTY}/curl 3rd_party/curl)
+endif()
 if(ASIO_GROUPING)   # test ASIO: 
     add_subdirectory(src/Device)
     add_subdirectory(src/Dialogs)
@@ -350,16 +363,33 @@ if(ASIO_GROUPING)   # test ASIO:
 endif()
 
 #3rd party XCSOAR_LINK_LIBRARIES:
+# Internal Libs
 list(APPEND XCSOAR_LINK_LIBRARIES
     zzip
     MapServer
     lua1
+)
+# External Libs
+if (MSVC)
+list(APPEND XCSOAR_LINK_LIBRARIES
 #    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/msvc2019/jasperstatic.lib"
     "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/msvc2019/jasper.lib"
 #    "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurlstatic.lib"
     "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurl.lib"
     "${LINK_LIBS}/zlib/zlib-1.2.11/lib/msvc2019/zlibstatic.lib"
 )
+elseif(MINGW)
+list(APPEND XCSOAR_LINK_LIBRARIES
+
+#    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/jasperstatic.a"
+    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/libjasper.a"
+#    "${LINK_LIBS}/curl/curl-7.64.1/lib/${TOOLCHAIN}/libcurlstatic.a"
+    "${LINK_LIBS}/curl/curl-7.64.1/lib/${TOOLCHAIN}/libcurl.a"
+#    "${LINK_LIBS}/zlib/zlib-1.2.11/lib/${TOOLCHAIN}/zlibstatic.a"
+    "${LINK_LIBS}/zlib/zlib-1.2.11/lib/${TOOLCHAIN}/libzlib.dll.a"
+)
+else()
+endif()
 
 if (WIN32)  # Windows only:
     list(APPEND XCSOAR_LINK_LIBRARIES
