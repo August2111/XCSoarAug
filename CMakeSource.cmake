@@ -1097,6 +1097,18 @@ set(Screen_SOURCES
         Screen/Color.cpp
         Screen/Debug.cpp
         Screen/DoubleBufferWindow.cpp
+        Screen/Icon.cpp
+        Screen/Layout.cpp
+        Screen/ProgressBar.cpp
+        Screen/Ramp.cpp
+        Screen/SingleWindow.cpp
+        Screen/SolidContainerWindow.cpp
+        Screen/TerminalWindow.cpp
+        Screen/Util.cpp
+        Screen/Window.cpp
+)
+if (NOT ENABLE_OPENGL)  # USE_GDI
+ list(APPEND Screen_SOURCES
         Screen/GDI/Bitmap.cpp
         Screen/GDI/Brush.cpp
         Screen/GDI/BufferCanvas.cpp
@@ -1116,16 +1128,34 @@ set(Screen_SOURCES
         Screen/GDI/VirtualCanvas.cpp
         Screen/GDI/Window.cpp
         Screen/GDI/WindowCanvas.cpp
-        Screen/Icon.cpp
-        Screen/Layout.cpp
-        Screen/ProgressBar.cpp
-        Screen/Ramp.cpp
-        Screen/SingleWindow.cpp
-        Screen/SolidContainerWindow.cpp
-        Screen/TerminalWindow.cpp
-        Screen/Util.cpp
-        Screen/Window.cpp
-)
+  )
+elseif(ENABLE_OPENGL)
+  list(APPEND Screen_SOURCES
+        Screen/OpenGL/Bitmap.cpp
+        Screen/OpenGL/Buffer.cpp
+        Screen/OpenGL/BufferCanvas.cpp
+        Screen/OpenGL/Canvas.cpp
+        Screen/OpenGL/ConstantAlpha.cpp
+        Screen/OpenGL/Dynamic.cpp
+        Screen/OpenGL/Extension.cpp
+        Screen/OpenGL/FBO.cpp
+        Screen/OpenGL/Geo.cpp
+        Screen/OpenGL/Globals.cpp
+        Screen/OpenGL/Init.cpp
+        Screen/OpenGL/RawBitmap.cpp
+        Screen/OpenGL/Rotate.cpp
+        Screen/OpenGL/Shaders.cpp
+        Screen/OpenGL/Shapes.cpp
+        Screen/OpenGL/SubCanvas.cpp
+        Screen/OpenGL/Surface.cpp
+        Screen/OpenGL/Texture.cpp
+        Screen/OpenGL/TopCanvas.cpp
+        Screen/OpenGL/Triangulate.cpp
+        Screen/OpenGL/UncompressedImage.cpp
+        Screen/OpenGL/VertexArray.cpp
+  )
+
+endif()
 
 set(Task_SOURCES
         Task/DefaultTask.cpp

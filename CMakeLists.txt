@@ -7,7 +7,7 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 set(ENABLE_OPENGL OFF)  # better outside????
 
 # Debugging Path: 
-# PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\lib\msvc2019
+# PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\bin\msvc2019
 
 set(ASIO_GROUPING ON)
 
@@ -85,6 +85,11 @@ else()
    message(FATAL_ERROR "+++ Unbekanntes System: !")
 endif()
 
+# ALLE: ?
+      include_directories("${LINK_LIBS}/libpng/libpng-1.6.37/include")  # neu am 27.03 wg. einbinden der PNG-Bilder aus der Resource
+
+      include_directories("${THIRD_PARTY}/glut/glut-3.7/include")  # neu am 27.03
+
 ## if (NOT Boost_ROOT)
 ##     set(Boost_ROOT $ENV{Boost_ROOT})
 ## endif()
@@ -110,6 +115,8 @@ endif()
 # USE_GDI
 
 if(ENABLE_OPENGL)
+    # set(FreeGLUT_DIR ${LINK_LIBS}/glut/freeglut-3.2.1/lib/msvc2019/cmake/FreeGLUT)
+    # find_package(FreeGLUT REQUIRED)
     find_package(OpenGL REQUIRED)
     
     if(NOT TARGET OpenGL::GLU)
@@ -121,6 +128,12 @@ if(ENABLE_OPENGL)
     get_target_property(GLU_IMPORTED_LIBNAME OpenGL::GLU IMPORTED_LIBNAME)
     message(STATUS "glu imported libname: ${GLU_IMPORTED_LIBNAME}")
     add_compile_definitions(ENABLE_OPENGL)
+    add_compile_definitions(USE_WIN32_RESOURCES USE_WINUSER)
+
+    include_directories(D:/Programs/Android/android-ndk-r21/sysroot/usr/include/GLES2)
+    include_directories(${Boost_INCLUDE_DIR}/boost/compute/interop)
+
+    # message(FATAL_ERROR "OpenGL-Stop!  OpenGL_INCLUDE_DIR = ${OpenGL_INCLUDE_DIR}")
 else()
     # add_compile_definitions(USE_MEMORY_CANVAS)
     add_compile_definitions(USE_GDI)
@@ -175,6 +188,9 @@ include_directories(
     ${Boost_INCLUDE_DIR}/boost/predef/other
     #  ${Boost_INCLUDE_DIR}/boost/beast/zlib  # wegen zlib.h, hier liegt aber zlib.hpp!
     # D:/link_libs/opencv/opencv_3_4_3/sources/3rdparty/zlib  # wegen zlib.h!
+
+    ${THIRD_PARTY}/glfw/glfw-3.3.2.bin.WIN64/include
+    ${LINK_LIBS}/glm/glm-0.9.9/include
 )
 
 # message(FATAL_ERROR "Test-Stop!")
@@ -377,6 +393,7 @@ list(APPEND XCSOAR_LINK_LIBRARIES
 #    "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurlstatic.lib"
     "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurl.lib"
     "${LINK_LIBS}/zlib/zlib-1.2.11/lib/msvc2019/zlibstatic.lib"
+    "${LINK_LIBS}/libpng/libpng-1.6.37/lib/msvc2019/libpng16_static.lib"   # libpng.lib"
 )
 elseif(MINGW)
 list(APPEND XCSOAR_LINK_LIBRARIES
@@ -423,6 +440,10 @@ if(ENABLE_OPENGL)
         OpenGL::GL
         OpenGL:GLU # single colon!
         # GLUT::GLUT
+        # FreeGLUT::FreeGLUT
+        ###${THIRD_PARTY}/glfw/glfw-3.3.2.bin.WIN64/lib-vc2019/glfw3.lib
+        ### ${LINK_LIBS}/glm/glm-0.9.9/lib/msvc2019/glm_static.lib
+        ###${LINK_LIBS}/glut/freeglut-3.2.1/lib/msvc2019/freeglut.lib   # libpng.lib"
     )
 endif()
 

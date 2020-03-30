@@ -29,6 +29,8 @@ Copyright_License {
 #include "System.hpp"
 #include "Attribute.hpp"
 
+#include "OpenGL.hpp"
+
 #include <stdint.h>
 
 /**

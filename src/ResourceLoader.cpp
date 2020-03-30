@@ -30,9 +30,13 @@ Copyright_License {
 #include <string>
 #include <windows.h>
 
-// #include "boost/gil/extension/io/png.hpp"
-// #include "boost/gil.hpp"
-// #include "boost/gil/io/base.hpp"
+#define WITH_BOOST_GIL    1
+#if WITH_BOOST_GIL
+#   include <iostream>
+#   include "boost/gil/extension/io/png.hpp"
+#   include "boost/gil.hpp"
+#   include "boost/gil/io/base.hpp"
+#endif
 
 static HINSTANCE ResourceLoaderInstance;
 
@@ -151,7 +155,8 @@ HBITMAP
 test_gil(std::string filename) {
   HBITMAP oBitmap = nullptr;
   DIBSECTION d;
-/*  geht nicht !!!!!!!!!!!!!!!!!!!!!!!
+/*  geht nicht !!!!!!!!!!!!!!!!!!!!!!! */
+#if WITH_BOOST_GIL
 //  //testing, assume rgb8_image_t in object
 //  int nBytes = ::GetObject(hBitmap, sizeof(DIBSECTION), &d);
 //  HEImage image(d.dsBm.bmWidth, d.dsBm.bmHeight);//, d.dsBm.bmBits,  0 ); should just be able to attach bits
@@ -163,26 +168,43 @@ test_gil(std::string filename) {
 //  //testing, just flip image...
 //  gil::copy_pixels(gil::rotated180_view(image.g_image._view),
 //    image2.g_image._view);
+
   boost::gil::rgb8_image_t image;
 //  boost::gil::read_image("D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\aboveterrain.png",
-  boost::gil::read_image(filename, image , boost::gil::png_tag());
+  try {
+    boost::gil::read_image(filename, image, boost::gil::png_tag());
+  }
+  catch (...) {
+    std::cout << "boost exception!" << std::endl;
+  }
 
-  BITMAPINFO bi24BitInfo; //testing, populate to match rgb8_image_t
-  memset(&bi24BitInfo, 0, sizeof(BITMAPINFO));
-  bi24BitInfo.bmiHeader.biSize = sizeof(bi24BitInfo.bmiHeader);
-  bi24BitInfo.bmiHeader.biBitCount = 24; // rgb 8 bytes for each  component(3)
+  if (image.width() > 0) {
+    BITMAPINFO bi24BitInfo; //testing, populate to match rgb8_image_t
+    memset(&bi24BitInfo, 0, sizeof(BITMAPINFO));
+    bi24BitInfo.bmiHeader.biSize = sizeof(bi24BitInfo.bmiHeader);
+    bi24BitInfo.bmiHeader.biBitCount = 24; // rgb 8 bytes for each  component(3)
     bi24BitInfo.bmiHeader.biCompression = BI_RGB;// rgb = 3 components
-  bi24BitInfo.bmiHeader.biPlanes = 1;
-  bi24BitInfo.bmiHeader.biWidth = d.dsBm.bmWidth;
-  bi24BitInfo.bmiHeader.biHeight = d.dsBm.bmHeight;
+    bi24BitInfo.bmiHeader.biPlanes = 1;
+    bi24BitInfo.bmiHeader.biWidth = image.width(); // = d.dsBm.bmWidth
+    bi24BitInfo.bmiHeader.biHeight = image.height();  //  = d.dsBm.bmHeight
 
-  oBitmap = ::CreateDIBSection(NULL, &bi24BitInfo,
-    DIB_RGB_COLORS, 0, 0, 0);
+    oBitmap = ::CreateDIBSection(NULL, &bi24BitInfo,
+      DIB_RGB_COLORS, 0, 0, 0);
 
-//  nBytes = ::GetObject(oBitmap, sizeof(DIBSECTION), &d);
+    uint32_t nBytes = ::GetObject(oBitmap, sizeof(DIBSECTION), &d);
 
-  memcpy(d.dsBm.bmBits, &image, d.dsBmih.biSizeImage);
-*/
+#if 1
+    memcpy(d.dsBm.bmBits, &image, d.dsBmih.biSizeImage);
+#else
+    for (size_t l = image.height(); l-- > 0 ; ) {
+      memcpy((char*)d.dsBm.bmBits + l * d.dsBmih.biBitCount * image.width(),
+        &image, d.dsBmih.biBitCount * image.width());
+    }
+#endif
+    /*   */
+  }
+#endif  // WITH_BOOST_GIL
+
   return oBitmap;
 }
 
@@ -217,7 +239,32 @@ getImageFromRes(HMODULE hInst, long resource_ID) {
 //////
 //////  if (bitmap->unused)
 //////    bitmap = nullptr;
-  bitmap = test_gil("D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\aboveterrain.png");
+  std::string png_filename = "D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\";
+
+#define IDB_ABOVETERRAIN 321
+#define IDB_AIRSPACE    235
+#define IDB_AIRSPACE0   240
+#define IDB_AIRSPACE1   241
+#define IDB_AIRSPACE2   242
+#define IDB_AIRSPACE3   280
+#define IDB_AIRSPACE4   306
+#define IDB_AIRSPACE5   311
+#define IDB_AIRSPACE6   317
+#define IDB_AIRSPACE7   318
+  switch (resource_ID) {
+    case IDB_AIRSPACE: png_filename +="airspace.png"; break;
+    case IDB_AIRSPACE0: png_filename +="airspace0.png"; break;
+      case IDB_AIRSPACE1: png_filename +="airspace1.png"; break;
+      case IDB_AIRSPACE2: png_filename +="airspace2.png"; break;
+      case IDB_AIRSPACE3: png_filename +="airspace3.png"; break;
+      case IDB_AIRSPACE4: png_filename +="airspace4.png"; break;
+      case IDB_AIRSPACE5: png_filename +="airspace5.png"; break;
+      case IDB_AIRSPACE6: png_filename +="airspace6.png"; break;
+      case IDB_AIRSPACE7: png_filename +="airspace7.png"; break;
+      default: png_filename += "aboveterrain.png"; break;
+
+  }
+  bitmap = test_gil(png_filename);
   /*/
   //Create a cli::array of byte with size = total size + 2
   cli::array<BYTE>^ MemPtr = gcnew array<BYTE>(Size + 2);
