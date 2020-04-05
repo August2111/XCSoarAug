@@ -29,7 +29,7 @@ Copyright_License {
 #include "Operation/Operation.hpp"
 #include "OS/ConvertPathName.hpp"
 
-#ifdef JASPR_2_0_0
+#ifdef JAS_XCSOAR
 extern "C" {
   #include "jasper/jp2/jp2_cod.h"
   #include "jasper/jpc/jpc_dec.h"
@@ -188,7 +188,7 @@ void
 TerrainLoader::PutTileData(unsigned index,
                            unsigned start_x, unsigned start_y,
                            unsigned end_x, unsigned end_y,
-#ifdef JAS_2_0_0  // _AUG!
+#ifdef JAS_XCSOAR  // _AUG!
   const struct jas_matrix& m) {
 #else
   const jas_matrix_t& m) {
@@ -288,10 +288,16 @@ TerrainLoader::LoadJPG2000(struct zzip_dir *dir, const char *path)
   if (in == nullptr)
     return false;
 
+#if !defined(_AUG_MSC)
+  // TODO(aug): Unbedingt einbauen
   env.SetProgressRange(jas_stream_length(in) / 65536);
+#endif  // !defined(_MSC_AUG)
 
   bool success = ::LoadJPG2000(in, this);
+#if !defined(_AUG_MSC)
+  // TODO(aug): Unbedingt einbauen
   jas_stream_close(in);
+#endif   // !defined(_MSC_AUG)
   return success;
 }
 

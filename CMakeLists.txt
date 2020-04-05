@@ -6,8 +6,22 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
 set(ENABLE_OPENGL OFF)  # better outside????
 
-# Debugging Path: 
-# PATH=$(PATH);D:\link_libs\curl\curl-7.64.1\lib\msvc2019;D:\link_libs\jasper\JasPer-2.0.14\bin\msvc2019
+set(XCSOAR_CURL_VERSION "curl-7.64.1")  # curl-git")
+# set(XCSOAR_CURL_VERSION "curl_git")  # curl-git")
+add_definitions(-DCURL_STATICLIB)
+
+set(XCSOAR_JASPER_VERSION "JasPer-2.0.14")
+# set(XCSOAR_JASPER_VERSION "JasPer-xcsoar)
+# add_definitions(-DJAS_XCSOAR)
+
+#  1>Terrain.lib(Loader.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "jas_stream_close" in Funktion ""bool __cdecl LoadTerrainOverview(struct zzip_dir *,char const *,char const *,class RasterTileCache &,bool,class OperationEnvironment &)" (?LoadTerrainOverview@@YA_NPEAUzzip_dir@@PEBD1AEAVRasterTileCache@@_NAEAVOperationEnvironment@@@Z)".
+# 1>Terrain.lib(Loader.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "jas_stream_length" in Funktion ""bool __cdecl LoadTerrainOverview(struct zzip_dir *,char const *,char const *,class RasterTileCache &,bool,class OperationEnvironment &)" (?LoadTerrainOverview@@YA_NPEAUzzip_dir@@PEBD1AEAVRasterTileCache@@_NAEAVOperationEnvironment@@@Z)".
+
+set(XCSOAR_LUA_VERSION "lua-5.3.5")
+set(XCSOAR_MAPSERVER_VERSION "mapserver-0.0.1")
+set(XCSOAR_ZLIB_VERSION "zlib-1.2.11")
+set(XCSOAR_ZZIP_VERSION "zzip-0.0.1")
+set(XCSOAR_LIBPNG_VERSION "libpng-1.6.37")
 
 set(ASIO_GROUPING ON)
 
@@ -33,6 +47,7 @@ if (WIN32 AND MSVC)
       # add_compile_definitions(BOOST_ASIO_WORKAROUND=1)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
       add_compile_definitions(_AUG_MSC=1)
+#      HAVE_HATCHED_BRUSH
 
       # add_definitions("/ZW")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
@@ -48,30 +63,25 @@ if (WIN32 AND MSVC)
           message(FATAL_ERROR "Error: WIN32 not implemented?")
       endif()
       # LUA ist vermutlich besser im output ordner aufgehoben...
-      # include_directories("${THIRD_PARTY}/lua-5.3.5/src")
-      include_directories("${LINK_LIBS}/lua/lua-5.3.5/include")
-      include_directories("${LINK_LIBS}/curl/curl-7.64.1/include")
-      # include_directories("${THIRD_PARTY}/jasper/JasPer/include")
-      # include_directories("${THIRD_PARTY}/jasper/Jasper-2.0.0/src")
-      include_directories("${LINK_LIBS}/jasper/JasPer-2.0.14/include")
-      # include_directories("${THIRD_PARTY}/MapServer/src")
-      include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
-      include_directories("${LINK_LIBS}/zlib/zlib-1.2.11/include")
+
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
       # set(THIRD_PARTY "D:/Projects/3rd_Party")
       # set(LINK_LIBS "D:/link_libs")
       message(STATUS "+++ System = WIN32 / MinGW!")
-      set(TOOLCHAIN mgw73)
+      if(NOT TOOLCHAIN)
+        # set(TOOLCHAIN mgw73)
+        set(TOOLCHAIN mgw82)
+      endif()
 
       set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
       include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
       # LUA ist vermutlich besser im output ordner aufgehoben...
-      include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
+      # include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
       include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
-      include_directories("${THIRD_PARTY}/curl/curl-7.64.1/include")
-      include_directories("${LINK_LIBS}/zlib/zlib-1.2.11/include")
-      include_directories("${LINK_LIBS}/jasper/JasPer-2.0.14/include")
+      # include_directories("${THIRD_PARTY}/curl/${XCSOAR_CURL_VERSION}/include")
+      # include_directories("${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include")
+      # include_directories("${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/include")
 
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
@@ -86,9 +96,17 @@ else()
 endif()
 
 # ALLE: ?
-      include_directories("${LINK_LIBS}/libpng/libpng-1.6.37/include")  # neu am 27.03 wg. einbinden der PNG-Bilder aus der Resource
+# interneal Project
+      include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # internal lib
 
-      include_directories("${THIRD_PARTY}/glut/glut-3.7/include")  # neu am 27.03
+# external Projects
+      include_directories("${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/include")
+      include_directories("${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/include")
+      include_directories("${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/include")
+      include_directories("${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include") # for external
+
+      include_directories("${LINK_LIBS}/libpng/libpng-1.6.37/include")  # neu am 27.03 wg. einbinden der PNG-Bilder aus der Resource
+#      include_directories("${THIRD_PARTY}/glut/glut-3.7/include")  # neu am 27.03
 
 ## if (NOT Boost_ROOT)
 ##     set(Boost_ROOT $ENV{Boost_ROOT})
@@ -143,10 +161,9 @@ endif()
 #####################################################################################
 #####################################################################################
 
-# add_compile_definitions(CURL_STATICLIB)
-
 if(NOT Boost_DIR)
-  set(Boost_DIR "${Boost_ROOT}/lib/cmake/Boost-1.72.0")
+  # set(Boost_DIR "${Boost_ROOT}/lib/cmake/Boost-1.72.0")
+  set(Boost_DIR "${Boost_ROOT}/lib/${TOOLCHAIN}/cmake/Boost-1.72.0")
 
   message(STATUS "!!!!  Boost_DIR ${Boost_DIR}")
 endif()
@@ -182,7 +199,7 @@ include_directories(
     # ${PROJECTGROUP_SOURCE_DIR}/
     ${PROJECTGROUP_BINARY_DIR}/output/include
     # better with find_package
-#    ${PROJECTGROUP_BINARY_DIR}/output/src/curl-7.64.1/include
+#    ${PROJECTGROUP_BINARY_DIR}/output/src/${XCSOAR_CURL_VERSION}/include
 
     # D:/Projects/3rd_Party/boost/boost_1_72_0/msvc2019/include/boost-1_72/boost/predef/other
     ${Boost_INCLUDE_DIR}/boost/predef/other
@@ -194,7 +211,7 @@ include_directories(
 )
 
 # message(FATAL_ERROR "Test-Stop!")
-if (ON)  # if (OFF OR MSVC)
+
 add_subdirectory(src)
 
 add_subdirectory(src/Airspace)
@@ -250,22 +267,15 @@ add_subdirectory(src/Weather)
 add_subdirectory(src/Widget)
 add_subdirectory(src/XML)
 
-# if (NOT MINGW)
-  # add_subdirectory(src/zzip 3rd_party/zzip)
-  add_subdirectory(${THIRD_PARTY}/zzip/zzip-1.0.0 3rd_party/zzip)
-# endif()
-    add_subdirectory(${THIRD_PARTY}/lua/lua-5.3.5  3rd_party/lua)
-    add_subdirectory(${THIRD_PARTY}/mapserver/mapserver-0  3rd_party/MapServer)
-endif(OFF)
+# 3rd Party !!!!
+add_subdirectory(3rd_party)
 
 if (MINGW)
-#    add_subdirectory(${THIRD_PARTY}/jasper/Jasper-2.0.14  3rd_party/jasper)
-#    add_subdirectory(${THIRD_PARTY}/curl/curl-7.64.1  3rd_party/curl)
-#    add_subdirectory(${THIRD_PARTY}/curl  3rd_party/curl)
+#    add_subdirectory(${THIRD_PARTY}/curl/${XCSOAR_CURL_VERSION}  3rd_party/curl)
 else()
   # TODO(aug) fuer MinGW erst einmal weglassen!
-    add_subdirectory(${THIRD_PARTY}/curl 3rd_party/curl)
 endif()
+
 if(ASIO_GROUPING)   # test ASIO: 
     add_subdirectory(src/Device)
     add_subdirectory(src/Dialogs)
@@ -273,7 +283,6 @@ if(ASIO_GROUPING)   # test ASIO:
     add_subdirectory(src/MapWindow)
     add_subdirectory(src/Tracking)
 endif()
-
 set(SOURCE_FILES )
 if (NOT ASIO_GROUPING)  #next test: ASIO
     foreach(source_file
@@ -381,29 +390,32 @@ endif()
 #3rd party XCSOAR_LINK_LIBRARIES:
 # Internal Libs
 list(APPEND XCSOAR_LINK_LIBRARIES
-    zzip
+#    zzip
     MapServer
-    lua1
+#    lua1
 )
 # External Libs
 if (MSVC)
 list(APPEND XCSOAR_LINK_LIBRARIES
-#    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/msvc2019/jasperstatic.lib"
-    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/msvc2019/jasper.lib"
-#    "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurlstatic.lib"
-    "${LINK_LIBS}/curl/curl-7.64.1/lib/msvc2019/libcurl.lib"
-    "${LINK_LIBS}/zlib/zlib-1.2.11/lib/msvc2019/zlibstatic.lib"
-    "${LINK_LIBS}/libpng/libpng-1.6.37/lib/msvc2019/libpng16_static.lib"   # libpng.lib"
+   "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/msvc2019/zzip.lib"
+   "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/lib/msvc2019/lua.lib"
+#   "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/lib/msvc2019/jasper.lib"
+   "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/msvc2019/libcurlstatic.lib"
+#     libcurl
+# 7.69.1:
+    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/msvc2019/libcurl.lib"
+    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/msvc2019/zlibstatic.lib"
+    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/msvc2019/libpng16_static.lib"   # libpng.lib"
 )
 elseif(MINGW)
 list(APPEND XCSOAR_LINK_LIBRARIES
 
 #    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/jasperstatic.a"
-    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/libjasper.a"
+    "${LINK_LIBS}/jasper/{XCSOAR_JASPER_VERSION}/lib/${TOOLCHAIN}/libjasper.a"
 #    "${LINK_LIBS}/curl/curl-7.64.1/lib/${TOOLCHAIN}/libcurlstatic.a"
-    "${LINK_LIBS}/curl/curl-7.64.1/lib/${TOOLCHAIN}/libcurl.a"
-#    "${LINK_LIBS}/zlib/zlib-1.2.11/lib/${TOOLCHAIN}/zlibstatic.a"
-    "${LINK_LIBS}/zlib/zlib-1.2.11/lib/${TOOLCHAIN}/libzlib.dll.a"
+    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/libcurl.a"
+#    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/zlibstatic.a"
+    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/libzlib.dll.a"
 )
 else()
 endif()

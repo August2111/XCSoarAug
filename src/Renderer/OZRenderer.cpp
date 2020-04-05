@@ -56,8 +56,10 @@ OZRenderer::Prepare(Canvas &canvas, Layer layer, int offset) const
 
     // this color is used as the black bit
     canvas.SetTextColor(color);
+#ifdef HAVE_HATCHED_BRUSH
     // get brush, can be solid or a 1bpp bitmap
     canvas.Select(airspace_look.brushes[settings.classes[AATASK].brush]);
+#endif
 #else /* !GDI */
     canvas.Select(Brush(color.WithAlpha(64)));
 #endif /* !GDI */

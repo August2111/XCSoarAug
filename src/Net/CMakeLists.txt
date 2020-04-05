@@ -1,4 +1,4 @@
-# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC
+# XCSoar-Net# XCSoar-Net# XCSoar-Net# XCSoar-Net# XCSoar-Net# XCSoar-Net# XCSoar-Net# XCSoar-Net# XCSoar-Net# XCSoar-Net
 cmake_minimum_required(VERSION 3.15)
 message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
@@ -9,7 +9,13 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 # include(../../CMakeSource.txt)
 # organize the files in subdirectories
 
-
+if(OFF)
+#  if(${XCSOAR_CURL_VERSION} STREQUAL "curl-7.69.1")
+    set(CURL_DIR "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/msvc2019/cmake/CURL")
+    find_package(CURL REQUIRED)
+#  endif()
+endif()
+# add_compile_definitions(CURL_STATICLIB)
 set(SOURCE_FILES )
 foreach(source_file ${${TARGET_NAME}_SOURCES})
     string(REPLACE "${TARGET_NAME}/" "" source_file ${source_file})

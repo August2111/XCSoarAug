@@ -45,7 +45,7 @@ void
 RasterTileCache::PutOverviewTile(unsigned index,
                                  unsigned start_x, unsigned start_y,
                                  unsigned end_x, unsigned end_y,
-#ifdef JAS_2_0_0
+#ifdef JAS_XCSOAR
                                  const struct jas_matrix &m)
 #else
                                  const jas_matrix_t& m)
@@ -80,7 +80,7 @@ RasterTileCache::PutOverviewTile(unsigned index,
 
 void
 RasterTileCache::PutTileData(unsigned index,
-#ifdef JAS_2_0_0
+#ifdef JAS_XCSOAR
   const struct jas_matrix& m) {
 #else
 const jas_matrix_t& m) {

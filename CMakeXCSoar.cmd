@@ -16,10 +16,12 @@ if not defined COMPILER  set COMPILER=VS2019
 if not defined PROGRAM_DIR  set PROGRAM_DIR=D:\Programs
 if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%\qt
 
-echo %PATH:CMake=XXXX%
+REM  echo %PATH:CMake=XXXX%
 if "%PATH%" == "%PATH:CMake=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo Added CMake to PATH!!
 REM echo %PATH%
 cmake --version
+echo CMake version & pause
+
 REM if errorlevel 1 PATH = %PROGRAM_DIR%\CMake\bin;%PATH%
 REM cmake --version
 if errorlevel 1 echo ERRORLEVEL = %ERRORLEVEL% & goto CMakeFoundError
@@ -131,7 +133,7 @@ goto CompilerEnd
   exit 1
 
 : CompilerEnd
-
+echo CompilerEnd & pause
 
 :: MySQL ist derzeit nicht aktiv!
 :: set PATH=%PATH%;Q:\MySQL32\lib\opt

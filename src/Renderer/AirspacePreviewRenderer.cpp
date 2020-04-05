@@ -86,13 +86,17 @@ AirspacePreviewRenderer::PrepareFill(
   Color color = class_look.fill_color;
   canvas.Select(Brush(LightColor(color)));
 #else
+#ifdef HAVE_HATCHED_BRUSH
   unsigned brush = class_settings.brush;
+#endif  // HAVE_HATCHED_BRUSH
 #ifdef HAVE_ALPHA_BLEND
   if (settings.transparency)
     brush = 3;
 #endif
 
+#ifdef HAVE_HATCHED_BRUSH
   canvas.Select(look.brushes[brush]);
+#endif  // HAVE_HATCHED_BRUSH
   canvas.SetTextColor(LightColor(class_look.fill_color));
   canvas.SetMixMask();
 #endif

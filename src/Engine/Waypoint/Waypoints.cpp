@@ -76,12 +76,16 @@ WaypointPtr
 Waypoints::WaypointNameTree::Get(const TCHAR *name) const
 {
 #ifdef _AUG_MSC
-  TCHAR normalized_name[0x1000];
+  TCHAR*  normalized = new TCHAR[_tcslen(name) + 1];
+  NormalizeSearchString(normalized, name);
+   WaypointPtr ptr = RadixTree<WaypointPtr>::Get(normalized, nullptr);
+   delete[] normalized;
+   return ptr;
 #else
-  TCHAR normalized_name[_tcslen(name) + 1];
+  TCHAR normalized[_tcslen(name) + 1];
+  NormalizeSearchString(normalized, name);
+  return RadixTree<WaypointPtr>::Get(normalized, nullptr);
 #endif
-  NormalizeSearchString(normalized_name, name);
-  return RadixTree<WaypointPtr>::Get(normalized_name, nullptr);
 }
 
 void
@@ -89,13 +93,16 @@ Waypoints::WaypointNameTree::VisitNormalisedPrefix(const TCHAR *prefix,
                                                    WaypointVisitor &visitor) const
 {
 #ifdef _AUG_MSC
-  TCHAR normalized[0x1000];
+  TCHAR* normalized = new TCHAR[_tcslen(prefix) + 1];
 #else
   TCHAR normalized[_tcslen(prefix) + 1];
 #endif
   NormalizeSearchString(normalized, prefix);
   VisitorAdapter adapter(visitor);
   VisitPrefix(normalized, adapter);
+#ifdef _AUG_MSC
+  delete[] normalized;
+#endif
 }
 
 TCHAR *
@@ -104,38 +111,49 @@ Waypoints::WaypointNameTree::SuggestNormalisedPrefix(const TCHAR *prefix,
                                                      size_t max_length) const
 {
 #ifdef _AUG_MSC
-  TCHAR normalized[0x1000];
+  TCHAR* normalized = new TCHAR[_tcslen(prefix) + 1];
 #else
   TCHAR normalized[_tcslen(prefix) + 1];
 #endif
-//  TCHAR normalized[_tcslen(prefix) + 1];
   NormalizeSearchString(normalized, prefix);
+#ifdef _AUG_MSC
+  TCHAR* str = Suggest(normalized, dest, max_length);
+  delete[] normalized;
+  return str;
+#else
   return Suggest(normalized, dest, max_length);
+#endif
 }
 
 void
 Waypoints::WaypointNameTree::Add(WaypointPtr wp)
 {
 #ifdef _AUG_MSC
-  TCHAR normalized_name[0x1000];
+  TCHAR* normalized = new TCHAR[wp->name.length() + 1];
 #else
-  TCHAR normalized_name[wp->name.length() + 1];
+  TCHAR normalized[wp->name.length() + 1];
 #endif
-//  TCHAR normalized_name[wp->name.length() + 1];
-  NormalizeSearchString(normalized_name, wp->name.c_str());
-  RadixTree<WaypointPtr>::Add(normalized_name, std::move(wp));
+  //  TCHAR normalized_name[wp->name.length() + 1];
+  NormalizeSearchString(normalized, wp->name.c_str());
+  RadixTree<WaypointPtr>::Add(normalized, std::move(wp));
+#ifdef _AUG_MSC
+  delete[] normalized;
+#endif
 }
 
 void
 Waypoints::WaypointNameTree::Remove(const WaypointPtr &wp)
 {
 #ifdef _AUG_MSC
-  TCHAR normalized_name[0x1000];
+  TCHAR* normalized = new TCHAR[wp->name.length() + 1];
 #else
-  TCHAR normalized_name[wp->name.length() + 1];
+  TCHAR normalized[wp->name.length() + 1];
 #endif
-  NormalizeSearchString(normalized_name, wp->name.c_str());
-  RadixTree<WaypointPtr>::Remove(normalized_name, wp);
+  NormalizeSearchString(normalized, wp->name.c_str());
+  RadixTree<WaypointPtr>::Remove(normalized, wp);
+#ifdef _AUG_MSC
+  delete[] normalized;
+#endif
 }
 
 Waypoints::Waypoints()

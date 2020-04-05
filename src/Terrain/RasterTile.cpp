@@ -52,7 +52,7 @@ RasterTile::LoadCache(FILE *file)
 }
 
 void
-#ifdef JAS_2_0_0
+#ifdef JAS_XCSOAR
 RasterTile::CopyFrom(const struct jas_matrix& m)
 #else
 RasterTile::CopyFrom(const jas_matrix_t& m)

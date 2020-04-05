@@ -328,8 +328,10 @@ MapWindow::RenderTerrainAbove(Canvas &canvas, bool working)
     buffer.SetBackgroundColor(COLOR_WHITE);
     buffer.SetTextColor(Color(0xd0, 0xd0, 0xd0));
 
+#ifdef HAVE_HATCHED_BRUSH
     // Paint the whole buffer canvas with a pattern brush (small dots)
     buffer.Clear(look.above_terrain_brush);
+#endif  // HAVE_HATCHED_BRUSH
 
     // Select the TerrainLine pen
     buffer.SelectHollowBrush();

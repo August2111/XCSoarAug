@@ -130,14 +130,19 @@ DataFieldFloat::SetFromCombo(int iDataFieldIndex, const TCHAR *sValue)
 void
 DataFieldFloat::AppendComboValue(ComboList &combo_list, double value) const
 {
-#ifdef _MSC_VER
-  TCHAR a[0x1000], b[0x1000];
+#ifdef _AUG_MSC
+  TCHAR* a = new TCHAR[edit_format.capacity()];
+  TCHAR* b = new TCHAR[display_format.capacity()];
 #else
   TCHAR a[edit_format.capacity()], b[display_format.capacity()];
 #endif
   _stprintf(a, edit_format, (double)value);
   _stprintf(b, display_format, (double)value, unit.c_str());
   combo_list.Append(a, b);
+#ifdef _MSC_VER
+  delete[] a;
+  delete[] b;
+#endif
 }
 
 ComboList

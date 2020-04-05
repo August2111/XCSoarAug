@@ -33,8 +33,8 @@ Copyright_License {
 #define HAVE_HATCHED_BRUSH
 
 /* AlphaBlend() is implemented since Windows 2000 */
-#if _WIN32_WINDOWS >= 0x500
+// aug: #if _WIN32_WINDOWS >= 0x500
 #define HAVE_ALPHA_BLEND
-#endif
+// aug: #endif
 
 #endif

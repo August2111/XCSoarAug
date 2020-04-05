@@ -71,7 +71,7 @@ OpenJasperZzipStream(struct zzip_dir *dir, const char *path)
     return nullptr;
 
   //TODO(aug): this has to be enabled with new jasper 2.0.14
-#if defined(JAS_2_0_0) || !defined(_AUG)  // _MSC)  // TODO(aug): check it on MinGW!
+#if defined(JAS_XCSOAR) || !defined(_AUG)  // _MSC)  // TODO(aug): check it on MinGW!
   jas_stream_t *stream = jas_stream_create();
   if (stream == nullptr) {
     zzip_file_close(f);

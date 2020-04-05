@@ -62,6 +62,15 @@ Copyright_License {
 
 #include <assert.h>
 
+#if _WIN32
+// because static CURL!
+#pragma comment(lib, "wldap32.lib")
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "winmm.lib")
+// #pragma comment(lib, "ssleay32.lib")
+// #pragma comment(lib, "openldap.lib")
+// #pragma comment(lib, "libeay32.lib")
+#endif
 static const char *const Usage = "\n"
   "  -datapath=      path to XCSoar data can be defined\n"
 #ifdef SIMULATOR_AVAILABLE

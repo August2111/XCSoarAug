@@ -27,7 +27,7 @@ extern "C" {
                            unsigned index,
                            unsigned start_x, unsigned start_y,
                            unsigned end_x, unsigned end_y,
-#ifdef JAS_2_0_0
+#ifdef JAS_XCSOAR
     const struct jas_matrix* data) {
 #else
     const jas_matrix_t* data) {
