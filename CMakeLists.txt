@@ -70,12 +70,16 @@ elseif(WIN32 AND MINGW)
       # set(LINK_LIBS "D:/link_libs")
       message(STATUS "+++ System = WIN32 / MinGW!")
       if(NOT TOOLCHAIN)
-        # set(TOOLCHAIN mgw73)
-        set(TOOLCHAIN mgw82)
+        set(TOOLCHAIN mgw73)
+        # set(TOOLCHAIN mgw82)
       endif()
 
       set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
-      include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
+      if (${TOOLCHAIN}  STREQUAL mgw82)
+        include_directories("D:/Programs/MinGW/include")
+      elseif(${TOOLCHAIN}  STREQUAL mgw73)
+        include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
+      endif()
       # LUA ist vermutlich besser im output ordner aufgehoben...
       # include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
       include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
@@ -167,8 +171,6 @@ if(NOT Boost_DIR)
 
   message(STATUS "!!!!  Boost_DIR ${Boost_DIR}")
 endif()
-#  message(FATAL_ERROR "!!!!  Boost_DIR ${Boost_DIR}")
-
 
 set(Boost_USE_STATIC_LIBS         ON)
 set(Boost_USE_MULTITHREADED       ON)
@@ -179,9 +181,10 @@ if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
     add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
 endif()
 set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
+message(STATUS "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 
-#    message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
+# message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 
 if(EXISTS "${Boost_ROOT}/include/boost-1_72/boost/version.hpp")
     set(Boost_INCLUDE_DIR "${Boost_ROOT}/include/boost-1_72")

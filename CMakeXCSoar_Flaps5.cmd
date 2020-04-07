@@ -10,6 +10,7 @@ set TARGET_PLATFORM=64
 set THIRD_PARTY=D:\Projects\3rd_Party
 set LINK_LIBS=D:\link_libs
 set COMPILER=VS2019
+set COMPILER=MinGW82
 set PROGRAM_DIR=D:\Programs
 REM set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\msvc2019
 set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0

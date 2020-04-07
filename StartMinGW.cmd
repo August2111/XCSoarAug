@@ -17,6 +17,7 @@ goto START_MINGW
 
 : MinGW_Flaps5
 
+REM goto MinGW_82
 goto MinGW_FromQt
 
 REM set PROGRAM_DIR=D:\Programs
@@ -34,12 +35,20 @@ echo CurrDir: %CD%
 
 goto START_MinGW
 
-PATH=D:\Programme\MinGW\bin;%PATH%
+: MinGW_82
+set MSYS=D:\Programs\msys\msys1.0.11
+set MINGW=D:\Programme\MinGW
+PATH=%MINGW%\bin;%PATH%
 
+REM mingw32-make.exe TARGET=PC
+REM mingw32-make.exe
+cd /D D:\Projects\Binaries\XCSoarAug_x64_MinGW
+echo CurrDir: %CD%
 
 : START_MINGW
 
-PATH=%MSYS%\bin;%MINGW%\bin;%PATH%
+REM  PATH=%MSYS%\bin;%MINGW%\bin;%PATH%
+PATH=%MINGW%\bin;%PATH%
 REM mingw32-make.exe TARGET=PC
 mingw32-make.exe
 goto END_MinGW

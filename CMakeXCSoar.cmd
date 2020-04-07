@@ -33,8 +33,7 @@ if exist Makefile del Makefile
 if exist CMakeFiles rmdir  CMakeFiles  /S /Q
 
 goto %COMPILER%
-:MinGW
-if not "%COMPILER%"=="MinGW"  goto VS2013
+:MinGW73
   echo Im Compiler 'MinGW-Pfad'
 REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\x%TARGET_PLATFORM%
 REM set MINGW_DIR=%PROGRAM_DIR%\MinGW
@@ -49,6 +48,24 @@ REM set MINGW_DIR=%PROGRAM_DIR%\MinGW
   set GENERATOR=MinGW Makefiles
   rem set GENERATOR=Eclipse CDT4 - MinGW Makefiles
   if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\mgw73
+goto CompilerEnd
+
+:MinGW
+:MinGW82
+  echo Im Compiler 'MinGW-Pfad'
+REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\x%TARGET_PLATFORM%
+REM set MINGW_DIR=%PROGRAM_DIR%\MinGW
+  set MINGW_DIR=%PROGRAM_DIR%\MinGW
+  set COMPILER_HOME=%MINGW_DIR%\bin
+  set MAKETOOL=mingw32-make
+  REM if "%PATH%" == "%PATH:mingw=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo CMake!!
+  PATH=%COMPILER_HOME%;%PATH%
+  PATH
+  pause
+  set GENERATOR=MinGW Makefiles
+  rem set GENERATOR=Eclipse CDT4 - MinGW Makefiles
+  REM if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\mgw73
+  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\mgw82
 goto CompilerEnd
 
 : VS2013
@@ -212,8 +229,18 @@ popd
 
 pause
 REM REM REM REM 
+if not "%COMPILER:~0,2%" == "VS" goto NOT_VS
+
 start cmake --open %BUILD_DIR%
 exit /B 0
+
+: NOT_VS
+echo Build Project 'XCSoar'
+call  cmake --build %BUILD_DIR%
+pause
+exit /B 0
+
+
 
 :CreationError
 echo %BUILD_DIR%\%SOLUTION_NAME%.sln not exist!?!
