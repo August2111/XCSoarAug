@@ -15,12 +15,13 @@ if not defined LINK_LIBS set LINK_LIBS=D:\link_libs
 if not defined COMPILER  set COMPILER=VS2019
 if not defined PROGRAM_DIR  set PROGRAM_DIR=D:\Programs
 if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%\qt
+if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0
 
 REM  echo %PATH:CMake=XXXX%
-if "%PATH%" == "%PATH:CMake=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo Added CMake to PATH!!
+rem if "%PATH%" == "%PATH:CMake=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo Added CMake to PATH!!
 REM echo %PATH%
 cmake --version
-echo CMake version & pause
+REM echo CMake version & pause
 
 REM if errorlevel 1 PATH = %PROGRAM_DIR%\CMake\bin;%PATH%
 REM cmake --version
@@ -34,43 +35,41 @@ if exist CMakeFiles rmdir  CMakeFiles  /S /Q
 
 goto %COMPILER%
 :MinGW73
-  echo Im Compiler 'MinGW-Pfad'
-REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\x%TARGET_PLATFORM%
-REM set MINGW_DIR=%PROGRAM_DIR%\MinGW
-  set MINGW_DIR=%THIRD_PARTY%\qt\Qt5.14.0\Tools\mingw730_64
-  if not exist %MINGW_DIR% set MINGW_DIR=%LINK_LIBS%\qt\Qt5.14.0\Tools\mingw730_64
+  echo Im Compiler 'MinGW-Pfad (version7.30)'
+  set TOOLCHAIN=mgw73
+  set MINGW_DIR=D:\Projects\3rd_Party\qt\Qt5.14.0\Tools\mingw730_64
+  REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\mgw73
   set COMPILER_HOME=%MINGW_DIR%\bin
   set MAKETOOL=mingw32-make
   REM if "%PATH%" == "%PATH:mingw=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo CMake!!
   PATH=%COMPILER_HOME%;%PATH%
-  PATH
-  pause
+  REM PATH & pause
   set GENERATOR=MinGW Makefiles
   rem set GENERATOR=Eclipse CDT4 - MinGW Makefiles
-  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\mgw73
+  REM set Boost_ROOT=%BOOST_ROOT%\mgw73
 goto CompilerEnd
 
 :MinGW
 :MinGW82
   echo Im Compiler 'MinGW-Pfad'
-REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\x%TARGET_PLATFORM%
-REM set MINGW_DIR=%PROGRAM_DIR%\MinGW
-  set MINGW_DIR=%PROGRAM_DIR%\MinGW
+  set TOOLCHAIN=mgw82
+  set MINGW_DIR=%PROGRAM_DIR%\MinGW\mgw82
   set COMPILER_HOME=%MINGW_DIR%\bin
   set MAKETOOL=mingw32-make
-  REM if "%PATH%" == "%PATH:mingw=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo CMake!!
   PATH=%COMPILER_HOME%;%PATH%
   PATH
-  pause
+  REM pause
   set GENERATOR=MinGW Makefiles
   rem set GENERATOR=Eclipse CDT4 - MinGW Makefiles
   REM if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\mgw73
-  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\mgw82
+  REM set Boost_ROOT=%BOOST_ROOT%\mgw82
+  set TOOLCHAIN=mgw82
 goto CompilerEnd
 
 : VS2013
 if not "%COMPILER%"=="VS2013"  goto VS2015
 echo Im Compiler 'VS2013-Pfad'
+  set TOOLCHAIN=mscv2013
   set VSCOMMONTOOLS=%VS120COMNTOOLS%
   set COMPILER_VERSION=12
   set MAKETOOL=jom
@@ -79,16 +78,18 @@ echo Im Compiler 'VS2013-Pfad'
 : VS2015   
 if not "%COMPILER%"=="VS2015"  goto NoCompiler
 echo Im Compiler 'VS2015-Pfad'
+  set TOOLCHAIN=mscv2015
   set VSCOMMONTOOLS=%VS140COMNTOOLS%
   set COMPILER_VERSION=14
   rem set MAKETOOL=jom
   set MAKETOOL=nmake
   set PATH=%PATH%;c:/Programs/Jom_1_0_14
-  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\msvc2015
+  set Boost_ROOT=%BOOST_ROOT%\msvc2015
   goto VisualStudio
   
 : VS2017
   REM set VSCOMMONTOOLS=%VS140COMNTOOLS%
+  set TOOLCHAIN=mscv2017
   set COMPILER_VERSION=15
   set MAKETOOL=jom
   REM set MAKETOOL=nmake
@@ -99,11 +100,12 @@ echo Im Compiler 'VS2015-Pfad'
   set GENERATOR=Visual Studio %COMPILER_VERSION% Win64
   SET VS_BATCH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvars64.bat
   set QT_COMPILER=msvc2017_64
-  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\msvc2017
+  REM set Boost_ROOT=%BOOST_ROOT%\msvc2017
   goto CallVSBatch
 
 : VS2019
   REM set VSCOMMONTOOLS=%VS140COMNTOOLS%
+  set TOOLCHAIN=mscv2019
   set COMPILER_VERSION=16
   set MAKETOOL=jom
   REM set MAKETOOL=nmake
@@ -114,7 +116,7 @@ echo Im Compiler 'VS2015-Pfad'
   set GENERATOR=Visual Studio %COMPILER_VERSION%
   SET VS_BATCH=C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvars64.bat
   set QT_COMPILER=msvc2017_64
-  if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\msvc2019
+  REM set Boost_ROOT=%BOOST_ROOT%\msvc2019
   goto CallVSBatch
 
 : VisualStudio  
@@ -139,8 +141,8 @@ goto CompilerEnd
   REM set PATH=%PATH%;B:/Programs/Jom_1_0_14
   
   set GENERATOR=Borland Makefiles
-  set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_CXX_COMPILER=C:/Programs/Embarcadero/BCC101/bin/bcc32c.exe 
-  set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_CXX_COMPILER=C:/Programs/Embarcadero/BCC101/bin/bcc32c.exe 
+  REM set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_C_COMPILER=C:/Programs/Embarcadero/BCC101/bin/bcc32c.exe 
+  REM set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_CXX_COMPILER=C:/Programs/Embarcadero/BCC101/bin/bcc32c.exe 
   goto CompilerEnd
 
 : NoCompiler
@@ -150,7 +152,8 @@ goto CompilerEnd
   exit 1
 
 : CompilerEnd
-echo CompilerEnd & pause
+REM echo CompilerEnd & pause
+echo CompilerEnd
 
 :: MySQL ist derzeit nicht aktiv!
 :: set PATH=%PATH%;Q:\MySQL32\lib\opt
@@ -179,6 +182,7 @@ if defined OpenCV_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DOpenCV_DIR=%OpenCV_DI
 if defined Boost_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DBoost_ROOT=%Boost_ROOT:\=/%
 if defined THIRD_PARTY set CMAKE_DEFINES=%CMAKE_DEFINES% -DTHIRD_PARTY=%THIRD_PARTY:\=/%
 if defined LINK_LIBS set CMAKE_DEFINES=%CMAKE_DEFINES% -DLINK_LIBS=%LINK_LIBS:\=/%
+if defined TOOLCHAIN set CMAKE_DEFINES=%CMAKE_DEFINES% -DTOOLCHAIN=%TOOLCHAIN%
 
 :::::::::::::::  Qt-Part ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 REM set Qtx_DIR=%QT_ROOT%/%QT_VERSION%/%QT_COMPILER%/lib
@@ -194,9 +198,11 @@ echo CURR_DIR   = %CD%
 REM set BUILD_DIR=%BINARY_DIR%\%SOLUTION_NAME%_x%TARGET_PLATFORM%
 set BUILD_DIR=%BINARY_DIR%\%PROJECT_NAME%_x%TARGET_PLATFORM%_%COMPILER%
 echo BUILD_DIR	= %BUILD_DIR%
-if exist %BUILD_DIR% rmdir %BUILD_DIR% /S /Q
 
-mkdir %BUILD_DIR%
+if exist %BUILD_DIR%/CMakeCache.txt del %BUILD_DIR%/CMakeCache.txt /Q
+REM if exist %BUILD_DIR% rmdir %BUILD_DIR% /S /Q
+
+if not exist %BUILD_DIR% mkdir %BUILD_DIR%
 pushd %BUILD_DIR%
 
   if NOT "%SOURCE_DIR%"=="%CD%" goto Create

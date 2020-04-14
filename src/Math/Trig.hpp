@@ -41,8 +41,15 @@ sin_cos(const double thetha)
   s = sin(thetha);
   c = cos(thetha);
   // sincos(thetha, &s, &c);
-#else
+#elif defined(CLANG)
   sincos(thetha, &s, &c);
+#else
+  //  sincos(thetha, &s, &c);
+// aug: neuerer GCC
+  // aug: geht auch nicht: sin_cos(thetha, &s, &c);
+  s = sin(thetha);
+  c = cos(thetha);
+
 #endif
   return std::make_pair(s, c);
 }

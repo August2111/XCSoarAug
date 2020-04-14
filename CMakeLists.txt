@@ -1,8 +1,13 @@
 # XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC
 cmake_minimum_required(VERSION 3.15)
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f.e. in Visual Studio
-
 message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
+
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f.e. in Visual Studio
+# Setting Area ===================================================
+include(ExternalProject)  # since 3.10
+
+# 3rd-party! 
+set(XCSOAR_LUA_VERSION "lua-5.3.5")
 
 set(ENABLE_OPENGL OFF)  # better outside????
 
@@ -10,17 +15,22 @@ set(XCSOAR_CURL_VERSION "curl-7.64.1")  # curl-git")
 # set(XCSOAR_CURL_VERSION "curl_git")  # curl-git")
 add_definitions(-DCURL_STATICLIB)
 
-set(XCSOAR_JASPER_VERSION "JasPer-2.0.14")
+# 3rd-party! 
+set(XCSOAR_JASPER_VERSION "jasper-2.0.16")
 # set(XCSOAR_JASPER_VERSION "JasPer-xcsoar)
 # add_definitions(-DJAS_XCSOAR)
 
 #  1>Terrain.lib(Loader.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "jas_stream_close" in Funktion ""bool __cdecl LoadTerrainOverview(struct zzip_dir *,char const *,char const *,class RasterTileCache &,bool,class OperationEnvironment &)" (?LoadTerrainOverview@@YA_NPEAUzzip_dir@@PEBD1AEAVRasterTileCache@@_NAEAVOperationEnvironment@@@Z)".
 # 1>Terrain.lib(Loader.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "jas_stream_length" in Funktion ""bool __cdecl LoadTerrainOverview(struct zzip_dir *,char const *,char const *,class RasterTileCache &,bool,class OperationEnvironment &)" (?LoadTerrainOverview@@YA_NPEAUzzip_dir@@PEBD1AEAVRasterTileCache@@_NAEAVOperationEnvironment@@@Z)".
 
-set(XCSOAR_LUA_VERSION "lua-5.3.5")
 set(XCSOAR_MAPSERVER_VERSION "mapserver-0.0.1")
+set(XCSOAR_MAPSERVER_VERSION "mapserver-xcsoar")
+# 3rd-party! 
+# set(XCSOAR_ZLIB_VERSION "zlib-1.2.10")
 set(XCSOAR_ZLIB_VERSION "zlib-1.2.11")
-set(XCSOAR_ZZIP_VERSION "zzip-0.0.1")
+# set(XCSOAR_ZZIP_VERSION "zzip-0.0.1")
+# set(XCSOAR_ZZIP_VERSION "zzip-0.36c")
+set(XCSOAR_ZZIP_VERSION "zzip-xcsoar")
 set(XCSOAR_LIBPNG_VERSION "libpng-1.6.37")
 
 set(ASIO_GROUPING ON)
@@ -39,6 +49,8 @@ set(SRC "${PROJECTGROUP_SOURCE_DIR}/src")
 include(CMakeSource.cmake)
 # message(FATAL_ERROR "Stop. !")
 
+file(GLOB_RECURSE SCRIPT_FILES "*.txt;*.cmake;*.md")
+
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
       if(NOT TOOLCHAIN)
@@ -48,6 +60,8 @@ if (WIN32 AND MSVC)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
       add_compile_definitions(_AUG_MSC=1)
 #      HAVE_HATCHED_BRUSH
+      set(LIB_EXTENSION "lib")
+      set(PRE_LIB "")
 
       # add_definitions("/ZW")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
@@ -66,23 +80,24 @@ if (WIN32 AND MSVC)
 
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
-      # set(THIRD_PARTY "D:/Projects/3rd_Party")
-      # set(LINK_LIBS "D:/link_libs")
-      message(STATUS "+++ System = WIN32 / MinGW!")
+      message(STATUS "+++ System = WIN32 / MinGW (${TOOLCHAIN})!")
       if(NOT TOOLCHAIN)
         set(TOOLCHAIN mgw73)
         # set(TOOLCHAIN mgw82)
+        message(FATAL_ERROR "No Toolchain!")
       endif()
+      set(LIB_EXTENSION "a")
+      set(PRE_LIB "lib")
 
       set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
-      if (${TOOLCHAIN}  STREQUAL mgw82)
-        include_directories("D:/Programs/MinGW/include")
-      elseif(${TOOLCHAIN}  STREQUAL mgw73)
-        include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
-      endif()
+      # if(${TOOLCHAIN}  STREQUAL mgw73)
+      #   # include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
+      #   add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
+      # endif()
+      include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
       # LUA ist vermutlich besser im output ordner aufgehoben...
       # include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
-      include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
+      # include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
       # include_directories("${THIRD_PARTY}/curl/${XCSOAR_CURL_VERSION}/include")
       # include_directories("${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include")
       # include_directories("${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/include")
@@ -99,15 +114,25 @@ else()
    message(FATAL_ERROR "+++ Unbekanntes System: !")
 endif()
 
+
+# 3rd Party !!!!
+# if(MSVC)  # not in MinGW yet????
+   add_subdirectory(3rd_party)
+# endif()
+
 # ALLE: ?
 # interneal Project
-      include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # internal lib
+#      include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # internal lib
+
 
 # external Projects
       include_directories("${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/include")
       include_directories("${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/include")
       include_directories("${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/include")
       include_directories("${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include") # for external
+      include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # for external
+
+# message(FATAL_ERROR "include_directories(${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include)")
 
       include_directories("${LINK_LIBS}/libpng/libpng-1.6.37/include")  # neu am 27.03 wg. einbinden der PNG-Bilder aus der Resource
 #      include_directories("${THIRD_PARTY}/glut/glut-3.7/include")  # neu am 27.03
@@ -270,11 +295,8 @@ add_subdirectory(src/Weather)
 add_subdirectory(src/Widget)
 add_subdirectory(src/XML)
 
-# 3rd Party !!!!
-add_subdirectory(3rd_party)
-
 if (MINGW)
-#    add_subdirectory(${THIRD_PARTY}/curl/${XCSOAR_CURL_VERSION}  3rd_party/curl)
+
 else()
   # TODO(aug) fuer MinGW erst einmal weglassen!
 endif()
@@ -320,7 +342,7 @@ endif()
 if (ANDROID)  # library!
    add_library(${TARGET_NAME} STATIC ${SOURCE_FILES})
 else()        # executable!
-   add_executable(${TARGET_NAME}     ${SOURCE_FILES})
+   add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES})
 endif()
 
 # preparing target_link_libraries!
@@ -347,7 +369,7 @@ set(XCSOAR_LINK_LIBRARIES
     Language
     Logger
     Look
-    Lua
+    xcsLua
     #  lua1
     Markers
     Math
@@ -394,31 +416,33 @@ endif()
 # Internal Libs
 list(APPEND XCSOAR_LINK_LIBRARIES
 #    zzip
-    MapServer
+#    MapServer
 #    lua1
 )
 # External Libs
 if (MSVC)
 list(APPEND XCSOAR_LINK_LIBRARIES
-   "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/msvc2019/zzip.lib"
-   "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/lib/msvc2019/lua.lib"
-#   "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/lib/msvc2019/jasper.lib"
-   "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/msvc2019/libcurlstatic.lib"
+   "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}lua.${LIB_EXTENSION}"
+   "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}jasper.${LIB_EXTENSION}"
+   "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libcurlstatic.${LIB_EXTENSION}"
 #     libcurl
-# 7.69.1:
-    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/msvc2019/libcurl.lib"
-    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/msvc2019/zlibstatic.lib"
-    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/msvc2019/libpng16_static.lib"   # libpng.lib"
+# 7.69.1:    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/libcurl.${LIB_EXTENSION}"
+    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
+   "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
+    "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}mapserver.${LIB_EXTENSION}"
+    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libpng16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
 )
 elseif(MINGW)
 list(APPEND XCSOAR_LINK_LIBRARIES
-
-#    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/jasperstatic.a"
-    "${LINK_LIBS}/jasper/{XCSOAR_JASPER_VERSION}/lib/${TOOLCHAIN}/libjasper.a"
-#    "${LINK_LIBS}/curl/curl-7.64.1/lib/${TOOLCHAIN}/libcurlstatic.a"
-    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/libcurl.a"
-#    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/zlibstatic.a"
-    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/libzlib.dll.a"
+   "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}lua.${LIB_EXTENSION}"
+#    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/jasperstatic.${LIB_EXTENSION}"
+    "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}jasper.dll.${LIB_EXTENSION}"  # now with dll only...
+    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}curl.${LIB_EXTENSION}"
+#    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/zlibstatic.${LIB_EXTENSION}"
+    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlib.dll.${LIB_EXTENSION}"  # now with dll only...
+   "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
+    "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}mapserver.${LIB_EXTENSION}"
+    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libpng16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
 )
 else()
 endif()
@@ -456,11 +480,11 @@ if(ENABLE_OPENGL)
         OpenGL:GLU # single colon!
         # GLUT::GLUT
         # FreeGLUT::FreeGLUT
-        ###${THIRD_PARTY}/glfw/glfw-3.3.2.bin.WIN64/lib-vc2019/glfw3.lib
-        ### ${LINK_LIBS}/glm/glm-0.9.9/lib/msvc2019/glm_static.lib
-        ###${LINK_LIBS}/glut/freeglut-3.2.1/lib/msvc2019/freeglut.lib   # libpng.lib"
+        ###${THIRD_PARTY}/glfw/glfw-3.3.2.bin.WIN64/lib-vc2019/glfw3.${LIB_EXTENSION}
+        ### ${LINK_LIBS}/glm/glm-0.9.9/lib/msvc2019/glm_static.${LIB_EXTENSION}
+        ###${LINK_LIBS}/glut/freeglut-3.2.1/lib/msvc2019/freeglut.${LIB_EXTENSION}   # libpng.${LIB_EXTENSION}"
     )
 endif()
 
-# add_dependencies(${TARGET_NAME} XCSoar Dialogs)
+add_dependencies(${TARGET_NAME} lua jasper zlib)   #XCSoar Dialogs)
 
