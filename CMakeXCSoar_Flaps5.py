@@ -18,8 +18,12 @@ import os, sys
 # REM Am 19.03.2020 aktuell!
 print('CMakeXCSoar_Flaps5.py')
 print(os.getcwd())
-
-os.chdir(sys.argv[1])              ## batch: cd /D %~dp0
+if len(sys.argv) > 1:
+	print(sys.argv[1])
+	os.chdir(sys.argv[1])              ## batch: cd /D %~dp0
+	print(os.getcwd())
+else:
+	print('No Parameter!')
 
 ## batch: set SOURCE_DIR=%CD%
 ## batch: set BINARY_DIR=D:\Projects\Binaries
