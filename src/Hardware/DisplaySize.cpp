@@ -26,7 +26,7 @@ Copyright_License {
 
 #ifdef _WIN32
 #include "Screen/GDI/RootDC.hpp"
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #elif defined(USE_X11)
 #include "Event/Globals.hpp"
 #include "Event/Queue.hpp"

@@ -27,7 +27,8 @@ Copyright_License {
 #include "Blackboard/InterfaceBlackboard.hpp"
 // #ifdef  AUGUST  // TODO(aug): was habe ich hier gemacht (und warum)?
 // #include "Thread/Debug.hpp"
-// #include "Util/Compiler.h"
+
+#include "Util/Compiler.h"
 // #else
 // class InterfaceBlackboard;
 //

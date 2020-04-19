@@ -28,7 +28,7 @@ Copyright_License {
 #include "Event/Globals.hpp"
 #include "Event/Queue.hpp"
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 ScreenGlobalInit::ScreenGlobalInit()
 {

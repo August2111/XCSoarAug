@@ -724,6 +724,8 @@ set(IO_SOURCES
         IO/ZipLineReader.cpp
         IO/ZipReader.cpp
         IO/ZlibError.cxx
+
+        IO/LogFile.cpp  # aug!
 )
 
 set(Job_SOURCES
@@ -1421,64 +1423,11 @@ set(XML_SOURCES
         XML/Writer.cpp
 )
 
-set(zzip_SOURCES
-        zzip/fetch.c
-        zzip/file.c
-        zzip/plugin.c
-        zzip/stat.c
-        zzip/zip.c
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# set(zzip_SOURCES
+#         zzip/fetch.c
+#         zzip/file.c
+#         zzip/plugin.c
+#         zzip/stat.c
+#         zzip/zip.c
+# )
 

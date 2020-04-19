@@ -26,7 +26,7 @@ Copyright_License {
 
 #include "Util/Compiler.h"
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 /**
  * This class wraps an OS specific trigger.  It is an object which one

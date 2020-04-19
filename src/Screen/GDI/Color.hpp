@@ -26,7 +26,7 @@ Copyright_License {
 
 #include "Screen/PortableColor.hpp"
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #include <stdint.h>
 
 /**

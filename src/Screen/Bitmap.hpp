@@ -39,7 +39,7 @@ Copyright_License {
 #endif
 
 #ifdef USE_GDI
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 #include <assert.h>

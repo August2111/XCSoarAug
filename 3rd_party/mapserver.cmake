@@ -1,7 +1,7 @@
 #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER 
 cmake_minimum_required(VERSION 3.15)
 
-set(TARGET_NAME                                       mapserver)
+set(TARGET_NAME                                  mapserver)
 #==========================================================
 string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
 # get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
@@ -20,10 +20,11 @@ message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET
      PREFIX  "${${TARGET_CNAME}_PREFIX}"
      BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
      INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
-   CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
+     CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
        "-DCMAKE_INSTALL_LIBDIR=lib/${TOOLCHAIN}"  # :PATH=<INSTALL_DIR>/lib/${TOOLCHAIN}"
        "-DCMAKE_INSTALL_INCLUDEDIR=include"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"
-)
+    BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+    BUILD_IN_SOURCE ${EP_BUILD_IN_SOURCE}
+  )
 # add_subdirectory(${THIRD_PARTY}/mapserver/${XCSOAR_MAPSERVER_VERSION}         mapserver)
 
-# add_subdirectory(${THIRD_PARTY}/zzip/zzip-0.0.1               zzip)

@@ -49,7 +49,7 @@ FormatSystemError(std::error_code code, const char *fmt,
 
 #ifdef _WIN32
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 static inline std::system_error
 MakeLastError(DWORD code, const char *msg) noexcept

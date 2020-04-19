@@ -34,7 +34,7 @@ Copyright_License {
 #include <unistd.h>
 #include <stdio.h>
 #else
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 namespace File

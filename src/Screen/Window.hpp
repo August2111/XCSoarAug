@@ -31,7 +31,7 @@ Copyright_License {
 #include <assert.h>
 
 #ifdef USE_WINUSER
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #else
 #include <boost/intrusive/list_hook.hpp>
 #endif

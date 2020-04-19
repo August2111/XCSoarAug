@@ -33,7 +33,7 @@ Copyright_License {
 #include "Util/Compiler.h"
 
 #include <assert.h>
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #include <tchar.h>
 
 class Angle;

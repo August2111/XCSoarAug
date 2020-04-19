@@ -40,7 +40,7 @@ Copyright_License {
 #include <utime.h>
 #include <time.h>
 #else
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 void

@@ -25,12 +25,15 @@ endforeach()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 # include_directories(${3rd_Party}/jasper/Jasper-2.0.0/src/jasper)
-include_directories(${3rd_Party}/_install/jasper/JasPer_2.0.0/include)
+# include_directories(${3rd_Party}/_install/jasper/JasPer_2.0.0/include)
 
-add_library(${TARGET_NAME} STATIC
+add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
 )
 # message(FATAL_ERROR "Stop!")
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
+
+add_dependencies(${TARGET_NAME} jasper zzip)   #XCSoar Dialogs)
+

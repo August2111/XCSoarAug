@@ -29,7 +29,7 @@ Copyright_License {
 #include <tchar.h>
 
 #ifndef HAVE_POSIX
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 #ifdef ANDROID

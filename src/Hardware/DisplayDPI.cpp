@@ -31,7 +31,7 @@ Copyright_License {
 #ifdef _WIN32
 #include "Screen/GDI/RootDC.hpp"
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 #ifdef USE_X11

@@ -18,12 +18,12 @@ foreach(source_file ${${PUR_TARGET_NAME}_SOURCES})
         string(REPLACE "/" "\\" src_path ${src_path})
     endif()
     source_group("Source\\${src_path}" FILES  ${source_file})
-    message(STATUS "### ${src_path}  --- ${source_file}")
+    # message(STATUS "### ${src_path}  --- ${source_file}")
 endforeach()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_library(${TARGET_NAME} STATIC
+add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}

@@ -26,7 +26,7 @@ Copyright_License {
 
 #ifdef USE_WINUSER
 #include "Util/Compiler.h"  // inserted: AUG_MSC
-// #include <windows.h>
+// #include "Util/Compiler.h"   // <windows.h>
 #else
 #include "Event/Timer.hpp"
 #endif

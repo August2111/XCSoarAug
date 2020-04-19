@@ -90,7 +90,8 @@ else()
          "-DZLIB_LIBRARY_DEBUG=${ZLIB_DIR}/lib/msvc2019/zlibstatic.lib"
          "-DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/msvc2019/zlibstatic.lib"
 
-     BUILD_ALWAYS ON
-     BUILD_IN_SOURCE OFF
+    BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+    BUILD_IN_SOURCE ${EP_BUILD_IN_SOURCE}
+    DEPENDS zlib
   )
 endif()

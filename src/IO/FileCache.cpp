@@ -34,7 +34,7 @@ Copyright_License {
 #endif
 
 #ifndef HAVE_POSIX
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 static constexpr unsigned FILE_CACHE_MAGIC = 0xab352f8a;

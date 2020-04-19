@@ -31,7 +31,7 @@ Copyright_License {
 #include <sys/time.h>
 #endif
 #else /* !HAVE_POSIX */
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif /* !HAVE_POSIX */
 
 unsigned

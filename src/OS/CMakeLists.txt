@@ -24,10 +24,14 @@ endforeach()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_library(${TARGET_NAME} STATIC
+add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
 )
 # message(FATAL_ERROR "Stop!")
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
+
+target_link_libraries(${TARGET_NAME} PUBLIC 
+  Util
+)

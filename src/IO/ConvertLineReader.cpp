@@ -27,7 +27,7 @@ Copyright_License {
 #include <string.h>
 
 #ifdef _UNICODE
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 ConvertLineReader::ConvertLineReader(std::unique_ptr<LineReader<char>> &&_source,

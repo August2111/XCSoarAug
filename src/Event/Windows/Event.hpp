@@ -24,7 +24,7 @@ Copyright_License {
 #ifndef XCSOAR_EVENT_WINDOWS_EVENT_HPP
 #define XCSOAR_EVENT_WINDOWS_EVENT_HPP
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #include <assert.h>
 
 struct Event {

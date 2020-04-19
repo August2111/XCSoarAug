@@ -36,7 +36,7 @@
 #include <tchar.h>
 
 #ifdef _WIN32
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 enum STATUS_t {

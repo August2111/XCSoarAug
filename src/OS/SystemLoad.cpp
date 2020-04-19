@@ -25,7 +25,7 @@
 
 #ifdef _WIN32
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #include <tlhelp32.h>
 #include <stdio.h>
 #include <stdint.h>

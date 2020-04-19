@@ -43,7 +43,7 @@ Copyright_License {
 #endif
 
 #ifdef _WIN32
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #include <string.h>
 #endif
 

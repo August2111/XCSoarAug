@@ -6,13 +6,18 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f
 # Setting Area ===================================================
 include(ExternalProject)  # since 3.10
 
+add_definitions(-DNDEBUG)  # wenn ohne Debug!!!!!!!!!!!!!!
+set(XCSOAR_LIB_TYPE SHARED)
+set(XCSOAR_LIB_TYPE STATIC)
+
+
 # 3rd-party! 
 set(XCSOAR_LUA_VERSION "lua-5.3.5")
 
 set(ENABLE_OPENGL OFF)  # better outside????
 
-set(XCSOAR_CURL_VERSION "curl-7.64.1")  # curl-git")
-# set(XCSOAR_CURL_VERSION "curl_git")  # curl-git")
+# set(XCSOAR_CURL_VERSION "curl-7.64.1")  # curl-git")
+set(XCSOAR_CURL_VERSION "curl-7.69.1")
 add_definitions(-DCURL_STATICLIB)
 
 # 3rd-party! 
@@ -23,7 +28,7 @@ set(XCSOAR_JASPER_VERSION "jasper-2.0.16")
 #  1>Terrain.lib(Loader.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "jas_stream_close" in Funktion ""bool __cdecl LoadTerrainOverview(struct zzip_dir *,char const *,char const *,class RasterTileCache &,bool,class OperationEnvironment &)" (?LoadTerrainOverview@@YA_NPEAUzzip_dir@@PEBD1AEAVRasterTileCache@@_NAEAVOperationEnvironment@@@Z)".
 # 1>Terrain.lib(Loader.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "jas_stream_length" in Funktion ""bool __cdecl LoadTerrainOverview(struct zzip_dir *,char const *,char const *,class RasterTileCache &,bool,class OperationEnvironment &)" (?LoadTerrainOverview@@YA_NPEAUzzip_dir@@PEBD1AEAVRasterTileCache@@_NAEAVOperationEnvironment@@@Z)".
 
-set(XCSOAR_MAPSERVER_VERSION "mapserver-0.0.1")
+# set(XCSOAR_MAPSERVER_VERSION "mapserver-0.0.1")
 set(XCSOAR_MAPSERVER_VERSION "mapserver-xcsoar")
 # 3rd-party! 
 # set(XCSOAR_ZLIB_VERSION "zlib-1.2.10")
@@ -33,7 +38,7 @@ set(XCSOAR_ZLIB_VERSION "zlib-1.2.11")
 set(XCSOAR_ZZIP_VERSION "zzip-xcsoar")
 set(XCSOAR_LIBPNG_VERSION "libpng-1.6.37")
 
-set(ASIO_GROUPING ON)
+# cleanup 19.04.20: set(ASIO_GROUPING ON)
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 
@@ -114,6 +119,7 @@ else()
    message(FATAL_ERROR "+++ Unbekanntes System: !")
 endif()
 
+    include_directories("    ${PROJECTGROUP_SOURCE_DIR}/src/IO")   # Util")  # nr wegen Logfile!
 
 # 3rd Party !!!!
 # if(MSVC)  # not in MinGW yet????
@@ -123,7 +129,6 @@ endif()
 # ALLE: ?
 # interneal Project
 #      include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # internal lib
-
 
 # external Projects
       include_directories("${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/include")
@@ -240,8 +245,6 @@ include_directories(
 
 # message(FATAL_ERROR "Test-Stop!")
 
-add_subdirectory(src)
-
 add_subdirectory(src/Airspace)
 add_subdirectory(src/Atmosphere)
 add_subdirectory(src/Audio)
@@ -301,31 +304,31 @@ else()
   # TODO(aug) fuer MinGW erst einmal weglassen!
 endif()
 
-if(ASIO_GROUPING)   # test ASIO: 
+# cleanup 19.04.20: if(ASIO_GROUPING)   # test ASIO: 
     add_subdirectory(src/Device)
     add_subdirectory(src/Dialogs)
     add_subdirectory(src/IO)
     add_subdirectory(src/MapWindow)
     add_subdirectory(src/Tracking)
-endif()
+# cleanup 19.04.20: endif()
 set(SOURCE_FILES )
-if (NOT ASIO_GROUPING)  #next test: ASIO
-    foreach(source_file
-          ${Device_SOURCES}
-          ${MapWindow_SOURCES}
-          ${Tracking_SOURCES}
-          ${Dialogs_SOURCES}
-          ${IO_SOURCES}
-    )
-        get_filename_component(src_path ${source_file} DIRECTORY)
-        if (src_path)
-            string(REPLACE "/" "\\" src_path ${src_path})
-        endif()
-        source_group("Source\\${src_path}" FILES  src/${source_file})
-        list(APPEND SOURCE_FILES src/${source_file})
-        message(STATUS "xxx ${src_path}  --- ${source_file}")
-    endforeach()
-endif()
+# cleanup 19.04.20: if (NOT ASIO_GROUPING)  #next test: ASIO
+# cleanup 19.04.20:     foreach(source_file
+# cleanup 19.04.20:           ${Device_SOURCES}
+# cleanup 19.04.20:           ${MapWindow_SOURCES}
+# cleanup 19.04.20:           ${Tracking_SOURCES}
+# cleanup 19.04.20:           ${Dialogs_SOURCES}
+# cleanup 19.04.20:           ${IO_SOURCES}
+# cleanup 19.04.20:     )
+# cleanup 19.04.20:         get_filename_component(src_path ${source_file} DIRECTORY)
+# cleanup 19.04.20:         if (src_path)
+# cleanup 19.04.20:             string(REPLACE "/" "\\" src_path ${src_path})
+# cleanup 19.04.20:         endif()
+# cleanup 19.04.20:         source_group("Source\\${src_path}" FILES  src/${source_file})
+# cleanup 19.04.20:         list(APPEND SOURCE_FILES src/${source_file})
+# cleanup 19.04.20:         message(STATUS "xxx ${src_path}  --- ${source_file}")
+# cleanup 19.04.20:     endforeach()
+# cleanup 19.04.20: endif()
 
 list(APPEND SOURCE_FILES "src/XCSoar.cpp")
 list(APPEND SOURCE_FILES "src/Version.cpp")
@@ -339,27 +342,33 @@ else()
 endif()
   list(APPEND SOURCE_FILES "CMakeSource.cmake")
 
-if (ANDROID)  # library!
-   add_library(${TARGET_NAME} STATIC ${SOURCE_FILES})
-else()        # executable!
-   add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES})
-endif()
+  #==========================================================
+  #==========================================================
+set(XCSOAR_LINK_LIBRARIES)  # -> empty
 
+# target_link_libraries(${TARGET_NAME}
+list(APPEND XCSOAR_LINK_LIBRARIES
+    ${Boost_LIBRARIES}
+) # Reihenfolge is very important!!!!
 # preparing target_link_libraries!
-set(XCSOAR_LINK_LIBRARIES
+list(APPEND XCSOAR_LINK_LIBRARIES
+    Computer
+    CrossSection
+    Gauge
+
     Airspace
     Atmosphere
     Audio
     Blackboard
-    Computer
-    CrossSection
+    # Computer
+    # CrossSection
     Dialogs
     Engine
     Event
     FLARM
     Form
     Formatter
-    Gauge
+    # Gauge
     Geo
     Hardware
     IGC
@@ -402,7 +411,7 @@ set(XCSOAR_LINK_LIBRARIES
     XML
 )
 
-if(ASIO_GROUPING)   # test ASIO: 
+# cleanup 19.04.20: if(ASIO_GROUPING)   # test ASIO: 
     list(APPEND XCSOAR_LINK_LIBRARIES
         Device
         Dialogs
@@ -410,7 +419,7 @@ if(ASIO_GROUPING)   # test ASIO:
         MapWindow
         Tracking
     )
-endif()
+# cleanup 19.04.20: endif()
 
 #3rd party XCSOAR_LINK_LIBRARIES:
 # Internal Libs
@@ -424,7 +433,8 @@ if (MSVC)
 list(APPEND XCSOAR_LINK_LIBRARIES
    "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}lua.${LIB_EXTENSION}"
    "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}jasper.${LIB_EXTENSION}"
-   "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libcurlstatic.${LIB_EXTENSION}"
+#   "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}curlstatic.${LIB_EXTENSION}"
+   "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libcurl.${LIB_EXTENSION}"
 #     libcurl
 # 7.69.1:    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/libcurl.${LIB_EXTENSION}"
     "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
@@ -442,24 +452,60 @@ list(APPEND XCSOAR_LINK_LIBRARIES
     "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlib.dll.${LIB_EXTENSION}"  # now with dll only...
    "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
     "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}mapserver.${LIB_EXTENSION}"
-    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libpng16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
+    # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libpng16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
+    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
 )
 else()
 endif()
 
 if (WIN32)  # Windows only:
-    list(APPEND XCSOAR_LINK_LIBRARIES
-    msimg32.lib  # Windows
-    Winmm.lib  # Windows!
+    if (MSVC)
+      list(APPEND XCSOAR_LINK_LIBRARIES
+        msimg32.lib  # Windows
+        Winmm.lib  # Windows!
     )
+    elseif (MINGW)
+      list(APPEND XCSOAR_LINK_LIBRARIES
+        # m
+        # dl
+        pthread
+        stdc++
+        user32
+        gdi32
+        msimg32
+        ws2_32  # MinGW!
+        mswsock
+        winmm
+        # android: intl
+        m
+        log
+        # not android , but linux! rt
+        kernel32
+        # ?? msvcrt32
+        shell32
+        gcc_s
+        # ldap32
+      )
+    endif()
 else()
-###  .. other OS!
+###  ..  other OS!
 endif()
+  #==========================================================
+  #==========================================================
+
+add_subdirectory(src)   # libXCSoar!
+
+if (ANDROID)  # library!
+   add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE} ${SOURCE_FILES})
+else()        # executable!
+   add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES})
+endif()
+
 
 # target_link_libraries(${TARGET_NAME}
 list(APPEND XCSOAR_LINK_LIBRARIES
-    ${Boost_LIBRARIES}
-    XCSoar
+#    ${Boost_LIBRARIES}
+    libXCSoar
 ) # Reihenfolge is very important!!!!
 
 target_link_libraries(${TARGET_NAME} PUBLIC ${XCSOAR_LINK_LIBRARIES})
@@ -486,5 +532,5 @@ if(ENABLE_OPENGL)
     )
 endif()
 
-add_dependencies(${TARGET_NAME} lua jasper zlib)   #XCSoar Dialogs)
+add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip)   #XCSoar Dialogs)
 

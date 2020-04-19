@@ -24,7 +24,7 @@ Copyright_License {
 #include "ConvertString.hpp"
 
 #ifdef _UNICODE
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 static TCHAR *
 ConvertToWide(const char *p, UINT codepage)

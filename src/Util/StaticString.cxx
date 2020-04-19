@@ -30,7 +30,7 @@
 #include "StaticString.hxx"
 
 #ifdef _UNICODE
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 bool

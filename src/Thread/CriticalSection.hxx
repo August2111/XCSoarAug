@@ -30,7 +30,7 @@
 #ifndef THREAD_CRITICAL_SECTION_HXX
 #define THREAD_CRITICAL_SECTION_HXX
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 /**
  * Wrapper for a CRITICAL_SECTION, backend for the Mutex class.

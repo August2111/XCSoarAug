@@ -37,8 +37,8 @@ goto %COMPILER%
 :MinGW73
   echo Im Compiler 'MinGW-Pfad (version7.30)'
   set TOOLCHAIN=mgw73
-  set MINGW_DIR=D:\Projects\3rd_Party\qt\Qt5.14.0\Tools\mingw730_64
-  REM set MINGW_DIR=%PROGRAM_DIR%\MinGW\mgw73
+  REM set MINGW_DIR=D:\Projects\3rd_Party\qt\Qt5.14.0\Tools\mingw730_64
+  set MINGW_DIR=%PROGRAM_DIR%\MinGW\mgw73
   set COMPILER_HOME=%MINGW_DIR%\bin
   set MAKETOOL=mingw32-make
   REM if "%PATH%" == "%PATH:mingw=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo CMake!!
@@ -219,7 +219,7 @@ REM pause
 set SOURCE_DIR=%SOURCE_DIR:\=/%
 
 if exist CMakeCache.txt del CMakeCache.txt
-set CMAKE_COMMAND=cmake "%SOURCE_DIR%" -G "%GENERATOR%"%CMAKE_DEFINES%
+set CMAKE_COMMAND=cmake "%SOURCE_DIR%" -G "%GENERATOR%" %CMAKE_DEFINES%
 echo %CMAKE_COMMAND%
 REM pause
 %CMAKE_COMMAND% 
@@ -233,10 +233,10 @@ popd
 
 :CreationOk
 
-pause
 REM REM REM REM 
 if not "%COMPILER:~0,2%" == "VS" goto NOT_VS
 
+pause
 start cmake --open %BUILD_DIR%
 exit /B 0
 
@@ -245,8 +245,6 @@ echo Build Project 'XCSoar'
 call  cmake --build %BUILD_DIR%
 pause
 exit /B 0
-
-
 
 :CreationError
 echo %BUILD_DIR%\%SOLUTION_NAME%.sln not exist!?!

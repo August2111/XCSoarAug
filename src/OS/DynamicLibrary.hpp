@@ -25,7 +25,7 @@ Copyright_License {
 #define XCSOAR_DYNAMIC_LIBRARY_HPP
 
 #include <tchar.h>
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 class DynamicLibrary {
 protected:

@@ -17,7 +17,7 @@
 #include <sys/mman.h>
 #define USE_POSIX_MMAP 1
 #elif defined ZZIP_HAVE_WINBASE_H || defined WIN32
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #define USE_WIN32_MMAP 1
 #else
 #undef _USE_MMAP

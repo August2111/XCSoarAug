@@ -25,7 +25,7 @@ Copyright_License {
 #define XCSOAR_SCREEN_BUSY_HPP
 
 #ifdef _WIN32
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 /**

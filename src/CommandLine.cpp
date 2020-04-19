@@ -34,7 +34,7 @@ Copyright_License {
 #include "Asset.hpp"
 
 #ifdef _WIN32
-#include <windows.h> /* for AllocConsole() */
+#include "Util/Compiler.h"   // <windows.h> /* for AllocConsole() */
 #endif
 
 namespace CommandLine {

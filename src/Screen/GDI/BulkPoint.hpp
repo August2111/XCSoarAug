@@ -26,7 +26,7 @@ Copyright_License {
 
 #include "Screen/Point.hpp"
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 /**
  * A point structure to be used in arrays.

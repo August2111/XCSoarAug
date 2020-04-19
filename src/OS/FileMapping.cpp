@@ -30,7 +30,7 @@ Copyright_License {
 #include <sys/mman.h>
 #include <sys/stat.h>
 #else
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 FileMapping::FileMapping(Path path)

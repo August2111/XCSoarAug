@@ -36,7 +36,7 @@ Copyright_License {
 #else
 
 #ifdef _UNICODE
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 #include "MOFile.hpp"

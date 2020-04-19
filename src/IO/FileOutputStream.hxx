@@ -42,7 +42,7 @@
 #include <stdint.h>
 
 #ifdef _WIN32
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 class Path;

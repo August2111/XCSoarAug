@@ -31,7 +31,7 @@ Copyright_License {
 
 #ifdef _WIN32
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 void
 LogLastError(const TCHAR *fmt, ...)

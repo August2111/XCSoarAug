@@ -38,13 +38,13 @@ ExternalProject_Add(
        "-DCMAKE_INSTALL_INCLUDEDIR=include"
 
          "-DZLIB_INCLUDE_DIR=${ZLIB_DIR}/include"
-         "-DZLIB_LIBRARY_DEBUG=${ZLIB_DIR}/lib/msvc2019/zlibstatic.lib"
-         "-DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/msvc2019/zlibstatic.lib"
+         "-DZLIB_LIBRARY_DEBUG=${ZLIB_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstaticd.${LIB_EXTENSION}"
+         "-DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
 
          "-DPNG_SHARED=OFF"
          "-DPNG_STATIC=ON"
          "-DPNG_TEST=OFF"
-   BUILD_ALWAYS ON
-   BUILD_IN_SOURCE OFF
+   BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+   BUILD_IN_SOURCE ${EP_BUILD_IN_SOURCE}
    DEPENDS zlib
 )

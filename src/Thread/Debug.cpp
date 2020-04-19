@@ -24,7 +24,7 @@ Copyright_License {
 #include "Thread/Debug.hpp"
 #include "Thread/Handle.hpp"
 
-#ifndef NDEBUG
+#ifdef _DEBUG
 
 #ifdef ANDROID
 /* on Android, XCSoar's "main" thread is different from the process
@@ -49,5 +49,17 @@ InMainThread()
 {
   return main_thread.IsInside();
 }
+
+#else  // 16.04.2020, aug: den else-Zweig habe ich aufgebaut, weil es InMainThread nicht gab????
+#ifdef ANDROID
+/* on Android, XCSoar's "main" thread is different from the process
+   main thread */
+static ThreadHandle main_thread;
+#else
+// aug! static ThreadHandle main_thread = ThreadHandle::GetCurrent();
+#endif
+
+
+bool InMainThread() {return true;}
 
 #endif /* !NDEBUG */

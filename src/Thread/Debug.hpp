@@ -47,6 +47,10 @@ LeaveDrawThread()
 
 #endif
 
+// aug am 16.04.2016!!!
+bool
+InMainThread();
+
 #else /* !NDEBUG */
 
 #ifdef ANDROID
@@ -75,6 +79,7 @@ EnterDrawThread();
  */
 void
 LeaveDrawThread();
+
 
 #endif
 

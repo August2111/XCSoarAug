@@ -37,7 +37,7 @@ set(BASIC_SOURCES
     ${SRC}/StatusMessage.cpp
     ${SRC}/PopupMessage.cpp
     ${SRC}/Message.cpp
-    ${SRC}/LogFile.cpp
+# move to IO:    ${SRC}/LogFile.cpp
     ${SRC}/DrawThread.cpp
    
     ${SRC}/UIReceiveBlackboard.cpp

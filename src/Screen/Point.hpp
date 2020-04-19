@@ -27,7 +27,7 @@ Copyright_License {
 #include "Math/Point2D.hpp"
 
 #ifdef USE_WINUSER
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif
 
 struct PixelPoint : IntPoint2D {

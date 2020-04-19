@@ -28,7 +28,7 @@ Copyright_License {
 
 #ifdef USE_WIN32_RESOURCES
 #include <string>
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 #define WITH_BOOST_GIL    1
 #if WITH_BOOST_GIL

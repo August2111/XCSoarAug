@@ -26,7 +26,7 @@ Copyright_License {
 
 #include "Util/Compiler.h"
 
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 
 struct Event;
 class EventQueue;

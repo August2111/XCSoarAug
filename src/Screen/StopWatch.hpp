@@ -33,7 +33,7 @@ Copyright_License {
 #include <time.h>
 #include <stdint.h>
 #else /* !HAVE_POSIX */
-#include <windows.h>
+#include "Util/Compiler.h"   // <windows.h>
 #endif /* !HAVE_POSIX */
 
 #endif /* STOP_WATCH */
