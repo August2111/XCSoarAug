@@ -6,6 +6,9 @@ set(TARGET_NAME libXCSoar)
 # add_subdirectory(Dialogs)
 include(CMakeSource.txt)
 
+if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
+  set(XCSOAR_LIB_TYPE STATIC)
+endif()
 
 # add_executable(${TARGET_NAME}
 add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}

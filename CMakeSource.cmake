@@ -819,6 +819,7 @@ set(Lua_SOURCES
         Lua/Tracking.cpp
         Lua/Wind.cpp
 )
+set(xcsLua_SOURCES ${Lua_SOURCES})
 
 set(MapWindow_SOURCES
         MapWindow/GlueMapWindow.cpp

@@ -101,8 +101,8 @@ enum {
 };
 #endif
 
-extern "C"
-{
+// extern "C"
+// {
   extern const uint8_t cs_mo[];
   extern const size_t cs_mo_size;
   extern const uint8_t da_mo[];
@@ -163,7 +163,7 @@ extern "C"
   extern const size_t zh_CN_mo_size;
   extern const uint8_t zh_Hant_mo[];
   extern const size_t zh_Hant_mo_size;
-}
+// }
 
 const BuiltinLanguage language_table[] = {
   { LANG_CHINESE, zh_CN_mo, zh_CN_mo_size, _T("zh_CN.mo"), _T("Simplified Chinese") },

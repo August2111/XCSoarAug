@@ -7,8 +7,10 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f
 include(ExternalProject)  # since 3.10
 
 add_definitions(-DNDEBUG)  # wenn ohne Debug!!!!!!!!!!!!!!
-set(XCSOAR_LIB_TYPE SHARED)
+
+# set(XCSOAR_LIB_TYPE SHARED)
 set(XCSOAR_LIB_TYPE STATIC)
+set(XCSOAR_LIB_TYPE WITHOUT)
 
 
 # 3rd-party! 
@@ -243,115 +245,7 @@ include_directories(
     ${LINK_LIBS}/glm/glm-0.9.9/include
 )
 
-# message(FATAL_ERROR "Test-Stop!")
-
-add_subdirectory(src/Airspace)
-add_subdirectory(src/Atmosphere)
-add_subdirectory(src/Audio)
-add_subdirectory(src/Blackboard)
-add_subdirectory(src/Computer)
-add_subdirectory(src/CrossSection)
-add_subdirectory(src/Engine)
-add_subdirectory(src/Event)
-add_subdirectory(src/FLARM)
-add_subdirectory(src/Form)
-add_subdirectory(src/Formatter)
-add_subdirectory(src/Gauge)
-add_subdirectory(src/Geo)
-add_subdirectory(src/Hardware)
-add_subdirectory(src/IGC)
-add_subdirectory(src/InfoBoxes)
-add_subdirectory(src/Input)
-add_subdirectory(src/Job)
-add_subdirectory(src/Language)
-add_subdirectory(src/Logger)
-add_subdirectory(src/Look)
-add_subdirectory(src/Lua)
-add_subdirectory(src/Markers)
-add_subdirectory(src/Math)
-add_subdirectory(src/Menu)
-add_subdirectory(src/Monitor)
-add_subdirectory(src/Net)
-add_subdirectory(src/NMEA)
-add_subdirectory(src/Operation)
-add_subdirectory(src/OS)
-add_subdirectory(src/Plane)
-add_subdirectory(src/Polar)
-add_subdirectory(src/Profile)
-add_subdirectory(src/Projection)
-add_subdirectory(src/Renderer)
-add_subdirectory(src/Replay)
-add_subdirectory(src/Repository)
-add_subdirectory(src/Screen)
-add_subdirectory(src/Task)
-add_subdirectory(src/TeamCode)
-add_subdirectory(src/Terrain)
-#  add_subdirectory(src/Terrain/jasper)
-add_subdirectory(src/Thread)
-add_subdirectory(src/Time)
-add_subdirectory(src/Topography)
-add_subdirectory(src/UIUtil)
-add_subdirectory(src/Units)
-add_subdirectory(src/Util)
-add_subdirectory(src/Waypoint)
-add_subdirectory(src/Weather)
-add_subdirectory(src/Widget)
-add_subdirectory(src/XML)
-
-if (MINGW)
-
-else()
-  # TODO(aug) fuer MinGW erst einmal weglassen!
-endif()
-
-# cleanup 19.04.20: if(ASIO_GROUPING)   # test ASIO: 
-    add_subdirectory(src/Device)
-    add_subdirectory(src/Dialogs)
-    add_subdirectory(src/IO)
-    add_subdirectory(src/MapWindow)
-    add_subdirectory(src/Tracking)
-# cleanup 19.04.20: endif()
-set(SOURCE_FILES )
-# cleanup 19.04.20: if (NOT ASIO_GROUPING)  #next test: ASIO
-# cleanup 19.04.20:     foreach(source_file
-# cleanup 19.04.20:           ${Device_SOURCES}
-# cleanup 19.04.20:           ${MapWindow_SOURCES}
-# cleanup 19.04.20:           ${Tracking_SOURCES}
-# cleanup 19.04.20:           ${Dialogs_SOURCES}
-# cleanup 19.04.20:           ${IO_SOURCES}
-# cleanup 19.04.20:     )
-# cleanup 19.04.20:         get_filename_component(src_path ${source_file} DIRECTORY)
-# cleanup 19.04.20:         if (src_path)
-# cleanup 19.04.20:             string(REPLACE "/" "\\" src_path ${src_path})
-# cleanup 19.04.20:         endif()
-# cleanup 19.04.20:         source_group("Source\\${src_path}" FILES  src/${source_file})
-# cleanup 19.04.20:         list(APPEND SOURCE_FILES src/${source_file})
-# cleanup 19.04.20:         message(STATUS "xxx ${src_path}  --- ${source_file}")
-# cleanup 19.04.20:     endforeach()
-# cleanup 19.04.20: endif()
-
-list(APPEND SOURCE_FILES "src/XCSoar.cpp")
-list(APPEND SOURCE_FILES "src/Version.cpp")
-if (MSVC)
-  list(APPEND SOURCE_FILES "Data/XCSoar.def")
-  list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
-elseif(MINGW)
-  list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
-else()
-  list(APPEND SOURCE_FILES "Data/XCSoar.rc")
-endif()
-  list(APPEND SOURCE_FILES "CMakeSource.cmake")
-
-  #==========================================================
-  #==========================================================
-set(XCSOAR_LINK_LIBRARIES)  # -> empty
-
-# target_link_libraries(${TARGET_NAME}
-list(APPEND XCSOAR_LINK_LIBRARIES
-    ${Boost_LIBRARIES}
-) # Reihenfolge is very important!!!!
-# preparing target_link_libraries!
-list(APPEND XCSOAR_LINK_LIBRARIES
+list(APPEND XCSOAR_SOURCE_LISTS
     Computer
     CrossSection
     Gauge
@@ -409,25 +303,137 @@ list(APPEND XCSOAR_LINK_LIBRARIES
     Weather
     Widget
     XML
-)
 
-# cleanup 19.04.20: if(ASIO_GROUPING)   # test ASIO: 
-    list(APPEND XCSOAR_LINK_LIBRARIES
         Device
         Dialogs
         IO
         MapWindow
         Tracking
     )
-# cleanup 19.04.20: endif()
 
-#3rd party XCSOAR_LINK_LIBRARIES:
-# Internal Libs
+
+set(SOURCE_FILES )
+
+# message(FATAL_ERROR "Test-Stop!")
+if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
+  include("src/CMakeSource.txt")
+  foreach(subfolder ${XCSOAR_SOURCE_LISTS})
+    foreach(subfile ${${subfolder}_SOURCES})
+      list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/src/${subfile}")
+    endforeach()
+  endforeach()
+  foreach(subfile ${BASIC_SOURCES})
+    list(APPEND SOURCE_FILES "${subfile}")
+  endforeach()
+   list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.cpp")
+   # set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
+
+
+
+    foreach(subfile ${SOURCE_FILES})
+      message(STATUS "+++ ${subfile}")
+    endforeach()
+
+  # add_subdirectory(src)   # libXCSoar! (NOCH!) 
+
+  # message(FATAL_ERROR "Stop!")
+else()
+  add_subdirectory(src/Airspace)
+  add_subdirectory(src/Atmosphere)
+  add_subdirectory(src/Audio)
+  add_subdirectory(src/Blackboard)
+  add_subdirectory(src/Computer)
+  add_subdirectory(src/CrossSection)
+  add_subdirectory(src/Engine)
+  add_subdirectory(src/Event)
+  add_subdirectory(src/FLARM)
+  add_subdirectory(src/Form)
+  add_subdirectory(src/Formatter)
+  add_subdirectory(src/Gauge)
+  add_subdirectory(src/Geo)
+  add_subdirectory(src/Hardware)
+  add_subdirectory(src/IGC)
+  add_subdirectory(src/InfoBoxes)
+  add_subdirectory(src/Input)
+  add_subdirectory(src/Job)
+  add_subdirectory(src/Language)
+  add_subdirectory(src/Logger)
+  add_subdirectory(src/Look)
+  add_subdirectory(src/Lua)
+  add_subdirectory(src/Markers)
+  add_subdirectory(src/Math)
+  add_subdirectory(src/Menu)
+  add_subdirectory(src/Monitor)
+  add_subdirectory(src/Net)
+  add_subdirectory(src/NMEA)
+  add_subdirectory(src/Operation)
+  add_subdirectory(src/OS)
+  add_subdirectory(src/Plane)
+  add_subdirectory(src/Polar)
+  add_subdirectory(src/Profile)
+  add_subdirectory(src/Projection)
+  add_subdirectory(src/Renderer)
+  add_subdirectory(src/Replay)
+  add_subdirectory(src/Repository)
+  add_subdirectory(src/Screen)
+  add_subdirectory(src/Task)
+  add_subdirectory(src/TeamCode)
+  add_subdirectory(src/Terrain)
+  #  add_subdirectory(src/Terrain/jasper)
+  add_subdirectory(src/Thread)
+  add_subdirectory(src/Time)
+  add_subdirectory(src/Topography)
+  add_subdirectory(src/UIUtil)
+  add_subdirectory(src/Units)
+  add_subdirectory(src/Util)
+  add_subdirectory(src/Waypoint)
+  add_subdirectory(src/Weather)
+  add_subdirectory(src/Widget)
+  add_subdirectory(src/XML)
+
+    add_subdirectory(src/Device)
+    add_subdirectory(src/Dialogs)
+    add_subdirectory(src/IO)
+    add_subdirectory(src/MapWindow)
+    add_subdirectory(src/Tracking)
+
+  add_subdirectory(src)   # libXCSoar!
+endif()
+
+if (MINGW)
+
+else()
+  # TODO(aug) fuer MinGW erst einmal weglassen!
+endif()
+
+
+list(APPEND SOURCE_FILES "src/XCSoar.cpp")
+list(APPEND SOURCE_FILES "src/Version.cpp")
+if (MSVC)
+  list(APPEND SOURCE_FILES "Data/XCSoar.def")
+  list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
+elseif(MINGW)
+  list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
+else()
+  list(APPEND SOURCE_FILES "Data/XCSoar.rc")
+endif()
+  list(APPEND SOURCE_FILES "CMakeSource.cmake")
+
+  #==========================================================
+  #==========================================================
+set(XCSOAR_LINK_LIBRARIES)  # -> empty
+
+# preparing target_link_libraries!
+
 list(APPEND XCSOAR_LINK_LIBRARIES
-#    zzip
-#    MapServer
-#    lua1
+    ${Boost_LIBRARIES}
 )
+if (NOT ${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
+    list(APPEND XCSOAR_LINK_LIBRARIES
+        ${XCSOAR_SOURCE_LISTS}
+    )
+endif()
+
 # External Libs
 if (MSVC)
 list(APPEND XCSOAR_LINK_LIBRARIES
@@ -493,10 +499,8 @@ endif()
   #==========================================================
   #==========================================================
 
-add_subdirectory(src)   # libXCSoar!
-
 if (ANDROID)  # library!
-   add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE} ${SOURCE_FILES})
+   add_library(${TARGET_NAME} STATIC ${SOURCE_FILES})
 else()        # executable!
    add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES})
 endif()
@@ -505,7 +509,7 @@ endif()
 # target_link_libraries(${TARGET_NAME}
 list(APPEND XCSOAR_LINK_LIBRARIES
 #    ${Boost_LIBRARIES}
-    libXCSoar
+#    libXCSoar
 ) # Reihenfolge is very important!!!!
 
 target_link_libraries(${TARGET_NAME} PUBLIC ${XCSOAR_LINK_LIBRARIES})
