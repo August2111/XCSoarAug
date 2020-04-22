@@ -17,8 +17,12 @@ if not defined PROGRAM_DIR  set PROGRAM_DIR=D:\Programs
 if not defined QT_ROOT set QT_ROOT=%THIRD_PARTY%\qt
 if not defined Boost_ROOT set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0
 
+REM PATH=%PROGRAM_DIR%\CMake\bin;%PATH%
+REM echo %PATH%
+REM cmake --version
+
 REM  echo %PATH:CMake=XXXX%
-rem if "%PATH%" == "%PATH:CMake=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo Added CMake to PATH!!
+if "%PATH%" == "%PATH:CMake=XXXX%" PATH=%PROGRAM_DIR%\CMake\bin;%PATH% & echo Added CMake to PATH!!
 REM echo %PATH%
 cmake --version
 REM echo CMake version & pause
@@ -172,7 +176,7 @@ rem set CMAKE_DEFINES=%CMAKE_DEFINES% -DCMAKE_PREFIX_PATH=%QT_DIR:\=/%/%QT_COMPI
 set CMAKE_PREFIX_PATH=%Boost_ROOT:\=/%
 REM  if defined CMAKE_PREFIX_PATH set CMAKE_PREFIX_PATH=D:\link_libs\boost\boost-1_70_0-win-x86_64-msc_19.1-all
 
-REM if defined Boost_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DBoost_DIR=%Boost_ROOT%/lib/cmake/Boost-1.70.0
+if defined Boost_DIR set CMAKE_DEFINES=%CMAKE_DEFINES% -DBoost_DIR=%Boost_DIR:\=/%
 REM if defined Boost_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DBOOST_ROOT=%Boost_ROOT%
 REM if defined GoogleTest_DIR set CMAKE_DEFINES=%CMAKE_DEFINES% -DGoogleTest_DIR=%GoogleTest_DIR%
 if defined GTest_ROOT set CMAKE_DEFINES=%CMAKE_DEFINES% -DGTest_ROOT=%GTest_ROOT:\=/%
@@ -254,9 +258,6 @@ exit /B 0
 
 :CMakeFoundError
 echo Error: CMake not found?
-PATH=%PROGRAM_DIR%\CMake\bin;%PATH%
-echo %PATH%
-cmake --version
 REM if errorlevel 1 PATH = %PROGRAM_DIR%\CMake\bin;%PATH%
 REM cmake --version
 pause
