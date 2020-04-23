@@ -15,20 +15,32 @@ import os, sys, subprocess
 # my_env = []  # global!
 # my_env = os.environ.copy()
 
+prev_batch = None
+cmake_generator = None
+
 def mingw(toolchain, env_path):
-  env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
+  global cmake_generator
+  if toolchain == 'ninja':
+    env_path = 'D:\\Programs\\MinGW\\mgw73\\bin;' + env_path
+  else:
+    env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
+  cmake_generator ='MinGW Makefiles'
   # print(env_path)
   return env_path
   # my_env['PATH'] = 'D:\\Programs\\MinGW\\' + toolchain +';' + my_env['PATH']
   # print(my_env['PATH'])
 
 def visual_studio(toolchain, env_path):
-  env_path = 'D:\\Programs\\MinGW\\' + toolchain +';' + env_path
 
+  global prev_batch, cmake_generator
+  prev_batch = 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Auxiliary/Build/vcvars64.bat'
+  cmake_generator ='Visual Studio 16'
+  return env_path
   # map the inputs to the function blocks
 compiler_setup = {
            'mgw73' : mingw,
            'mgw82' : mingw,
+           'ninja' : mingw,
            'msvc2019' : visual_studio,
 }
 
@@ -66,17 +78,22 @@ def create_xcsoar(args):
   # not necessary ?! install_bindir = 'bin'
   src_dir = start_dir
   with_call = 1
-  creation = 2
+  creation = 15
   toolset = None
 
   myprocess = subprocess.Popen(['python', '--version'], env = my_env)
   myprocess.wait()
 
   cmake_exe = 'cmake'
+
   try:
     myprocess = subprocess.Popen([cmake_exe, '--version'], env = my_env)
   except:
     pass
+
+  if not os.path.exists(build_dir):
+    os.makedirs(build_dir)
+    creation = creation | 1
 
   my_env['PATH'] = compiler_setup[toolchain](toolchain, my_env['PATH'])
   print(my_env['PATH'])
@@ -84,9 +101,13 @@ def create_xcsoar(args):
   #  compiler_setup[args[1]](args[1], test)
   #  print(test)
 
+  print(prev_batch)
   #========================================================================
   if creation & 1:
     arguments = []
+    if prev_batch:
+       arguments.append(prev_batch)
+       arguments.append(' & ')
     arguments.append(cmake_exe)  # 'cmake')
     arguments.append('-S')
     arguments.append(src_dir)  # curr_dir.replace('\\', '/'))
@@ -96,7 +117,7 @@ def create_xcsoar(args):
     ### arguments.append('"' + toolchain['cmake_generator'] + '"') 
     # ? arguments.append('"MinGW Makefiles"') 
     # arguments.append('-G "Ninja"') 
-    arguments.append('-G "MinGW Makefiles"') 
+    arguments.append('-G "' + cmake_generator + '"') 
 
     arguments.append('-DTOOLCHAIN=' + toolchain)
     arguments.append('-DBoost_ROOT=' + link_libs + '/boost/boost_1_72_0')
@@ -164,6 +185,24 @@ def create_xcsoar(args):
         my_cmd = my_cmd + arg + ' '
       print(my_cmd)
       myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+    else:
+      myprocess = subprocess.Popen(arguments, env = my_env, shell = False)
+      myprocess.wait()
+
+  #========================================================================
+  if creation & 0x08:
+    # Run
+    # arguments = []
+    # my_cwd = build_dir
+    arguments = [build_dir + '/XCSoarAug.exe', '-1200x800']
+    # arguments = ['XCSoarAug.exe', '-120x800']
+    if with_call:
+      my_cmd = ''
+      for arg in arguments:
+        my_cmd = my_cmd + arg + ' '
+      print(my_cmd, ' in ', build_dir)
+
+      myprocess = subprocess.call(my_cmd, env = my_env, cwd = build_dir, shell = False)
     else:
       myprocess = subprocess.Popen(arguments, env = my_env, shell = False)
       myprocess.wait()

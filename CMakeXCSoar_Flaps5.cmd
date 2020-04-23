@@ -17,4 +17,11 @@ REM set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\msvc2019
 set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0
 set QT_ROOT=%THIRD_PARTY%\qt
 
-call CMakeXCSoar.cmd
+REM  call CMakeXCSoar.cmd
+D:\python.exe --version
+
+set BUILD_CMD=python CMakeXCSoar_Flaps5.py
+echo %BUILD_CMD%
+%BUILD_CMD%
+pause
+exit /B 0

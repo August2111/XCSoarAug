@@ -53,7 +53,7 @@ AsioThread::Run() noexcept
 }
 
 
-#if !_AUG_MSC
+#if  0  && !_AUG_MSC  // 0 wegen MinGW!
 #include "GlobalAsioThread.hpp"
 // #include "AsioThread.hpp"
 

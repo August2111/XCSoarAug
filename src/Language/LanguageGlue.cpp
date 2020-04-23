@@ -101,8 +101,12 @@ enum {
 };
 #endif
 
-// extern "C"
-// {
+#define WITH_C  1
+
+#if WITH_C
+extern "C"
+{
+#endif
   extern const uint8_t cs_mo[];
   extern const size_t cs_mo_size;
   extern const uint8_t da_mo[];
@@ -163,7 +167,9 @@ enum {
   extern const size_t zh_CN_mo_size;
   extern const uint8_t zh_Hant_mo[];
   extern const size_t zh_Hant_mo_size;
-// }
+#if WITH_C
+}
+#endif
 
 const BuiltinLanguage language_table[] = {
   { LANG_CHINESE, zh_CN_mo, zh_CN_mo_size, _T("zh_CN.mo"), _T("Simplified Chinese") },
