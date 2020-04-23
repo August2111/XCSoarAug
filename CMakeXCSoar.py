@@ -20,15 +20,17 @@ cmake_generator = None
 
 def mingw(toolchain, env_path):
   global cmake_generator
-  if toolchain == 'ninja':
-    env_path = 'D:\\Programs\\MinGW\\mgw73\\bin;' + env_path
+  if sys.platform.startswith('win'):
+      if toolchain == 'ninja':
+        env_path = 'D:\\Programs\\MinGW\\mgw73\\bin;' + env_path
+      else:
+        env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
+      cmake_generator ='MinGW Makefiles'
   else:
-    env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
-  cmake_generator ='MinGW Makefiles'
+      # cmake_generator ='Unix Makefiles'
+      cmake_generator ='Ninja'
   # print(env_path)
   return env_path
-  # my_env['PATH'] = 'D:\\Programs\\MinGW\\' + toolchain +';' + my_env['PATH']
-  # print(my_env['PATH'])
 
 def visual_studio(toolchain, env_path):
 
