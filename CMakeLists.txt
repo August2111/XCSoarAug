@@ -1,5 +1,5 @@
 # XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.10)
 message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f.e. in Visual Studio
@@ -46,9 +46,11 @@ set(XCSOAR_LIBPNG_VERSION "libpng-1.6.37")
 
   project(${TARGET_NAME} C CXX) # Your project name
 
+if (WIN32)
 if (${TOOLCHAIN} STREQUAL "ninja")
   message(STATUS "Ninja!")
   set(TOOLCHAIN "mgw73")
+endif()
 endif()
 
 get_filename_component(PROJECTGROUP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR} ABSOLUTE)
@@ -126,6 +128,22 @@ elseif(WIN32 AND MINGW)
 set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -static-libstdc++ -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive -v")
 
+elseif(UNIX)
+      message(STATUS "+++ System = LINUX / GCC(?) (${TOOLCHAIN})!")
+      
+      set(LIB_EXTENSION "a")
+      set(PRE_LIB "lib")
+
+      # set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
+      # include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
+
+      set(Boost_DIR "/home/august/Projects/link_libs/boost/boost_1_72_0/stage/lib/gcc/cmake/Boost-1.72.0")   
+      add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
+
+      set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
+      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -static-libstdc++ -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive -v")
+      # message(FATAL_ERROR "+++ Jetzt bin ich im Linux: !")
 
 elseif(ANDROID)
     message(STATUS "+++ System = ANDROID / ${ANDROID_ABI}!")
@@ -225,11 +243,13 @@ set(Boost_DEBUG                   OFF)
 if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
     add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
 endif()
-set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
+# set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
+set(BOOST_COMPONENTS date_time)  #  network)
 message(STATUS "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 
 # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
+
 
 if(EXISTS "${Boost_ROOT}/include/boost-1_72/boost/version.hpp")
     set(Boost_INCLUDE_DIR "${Boost_ROOT}/include/boost-1_72")
@@ -347,9 +367,9 @@ else()
 endif()
 
 
-    foreach(subfile ${SOURCE_FILES})
-      message(STATUS "+++ ${subfile}")
-    endforeach()
+  #  foreach(subfile ${SOURCE_FILES})
+  #    message(STATUS "+++ ${subfile}")
+  #  endforeach()
 
   # add_subdirectory(src)   # libXCSoar! (NOCH!) 
 

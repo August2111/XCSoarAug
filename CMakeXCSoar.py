@@ -50,6 +50,9 @@ def create_xcsoar(args):
   #Current directory:
   filename = sys.argv[0]
   start_dir = os.path.dirname(filename)
+  if len(start_dir) == 0:
+     # start_dir = ''
+     start_dir = os.getcwd()
   # print('Filename: ', filename)  # 'CMakeXCSoar_Flaps5.py')
   print('Start CMake Creation of ', args[0])
   print('====================================\n')
@@ -67,23 +70,33 @@ def create_xcsoar(args):
       os.system("pause")
 
   toolchain = args[1]
-  #build_dir = 'D:/Projects/Binaries/XCSoarAug_x64_MinGW73'
-  # build_dir = 'D:/Projects/Binaries/XCSoarAug/MinGW73'
-  # build_dir = 'D:/Projects/Binaries/XCSoarAug/ninja'
-  build_dir = 'D:/Projects/Binaries/XCSoarAug/' + toolchain
-  # build_dir = 'D:/Projects/Binaries/XCSoarAug/MinGW73_32'
+  if sys.platform.startswith('win'):
+    # not necessary ?! install_bindir = 'bin'
+    src_dir = start_dir
+    #build_dir = 'D:/Projects/Binaries/XCSoarAug_x64_MinGW73'
+    # build_dir = 'D:/Projects/Binaries/XCSoarAug/MinGW73'
+    # build_dir = 'D:/Projects/Binaries/XCSoarAug/ninja'
+    build_dir = 'D:/Projects/Binaries/XCSoarAug/' + toolchain
+    # build_dir = 'D:/Projects/Binaries/XCSoarAug/MinGW73_32'
 
-  link_libs = 'D:/link_libs'  # Windows!
-  third_party = 'D:/Projects/3rd_Party'  # Windows!
-  install_dir = 'D:/Programs/Install/XCSoar'
+    link_libs = 'D:/link_libs'  # Windows!
+    third_party = 'D:/Projects/3rd_Party'  # Windows!
+    install_dir = 'D:/Programs/Install/XCSoar'
+  else:
+    src_dir = start_dir
+    build_dir = '/home/august/Projects/Binaries/XCSoarAug/' + toolchain
+    link_libs = '/home/august/Projects/link_libs'  
+    third_party = '/home/august/Projects/3rd_Party'
+    install_dir = '/home/august/Projects/Install/XCSoar'
 
-  # not necessary ?! install_bindir = 'bin'
-  src_dir = start_dir
   with_call = 1
   creation = 15
   toolset = None
 
   myprocess = subprocess.Popen(['python', '--version'], env = my_env)
+  myprocess.wait()
+
+  myprocess = subprocess.Popen(['python3', '--version'], env = my_env)
   myprocess.wait()
 
   cmake_exe = 'cmake'
@@ -103,7 +116,8 @@ def create_xcsoar(args):
   #  compiler_setup[args[1]](args[1], test)
   #  print(test)
 
-  print(prev_batch)
+  if prev_batch:
+    print(prev_batch)
   #========================================================================
   if creation & 1:
     arguments = []
@@ -150,6 +164,7 @@ def create_xcsoar(args):
       for arg in arguments:
         my_cmd = my_cmd + arg + ' '
       print(my_cmd)
+      print('========================================================================')
       myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
     else:
       myprocess = subprocess.Popen(arguments, env = my_env, shell = False)

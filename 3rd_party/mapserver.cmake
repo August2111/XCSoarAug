@@ -16,15 +16,18 @@ message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET
   # ------------------
   ExternalProject_Add(
      ${TARGET_NAME}
-     URL "file://D:/Projects/3rd_Party/mapserver/mapserver-xcsoar"
+# sonst:     URL "file://${THIRD_PARTY}/mapserver/mapserver-xcsoar"
+     URL "file:///home/august/Projects/Gliding/Download/mapserver-xcsoar.7z"
      PREFIX  "${${TARGET_CNAME}_PREFIX}"
      BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
      INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
      CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
        "-DCMAKE_INSTALL_LIBDIR=lib/${TOOLCHAIN}"  # :PATH=<INSTALL_DIR>/lib/${TOOLCHAIN}"
        "-DCMAKE_INSTALL_INCLUDEDIR=include"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"
+       "-DXCSOAR_DIR=${PROJECTGROUP_SOURCE_DIR}/src"
     BUILD_ALWAYS ${EP_BUILD_ALWAYS}
     BUILD_IN_SOURCE ${EP_BUILD_IN_SOURCE}
-  )
+    DEPENDS zlib zzip
+)
 # add_subdirectory(${THIRD_PARTY}/mapserver/${XCSOAR_MAPSERVER_VERSION}         mapserver)
 
