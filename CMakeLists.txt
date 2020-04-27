@@ -49,7 +49,7 @@ set(XCSOAR_LIBPNG_VERSION "libpng-1.6.37")
 if (WIN32)
 if (${TOOLCHAIN} STREQUAL "ninja")
   message(STATUS "Ninja!")
-  set(TOOLCHAIN "mgw73")
+#  set(TOOLCHAIN "mgw73")
 endif()
 endif()
 
@@ -175,14 +175,6 @@ endif()
       include_directories("${LINK_LIBS}/libpng/libpng-1.6.37/include")  # neu am 27.03 wg. einbinden der PNG-Bilder aus der Resource
 #      include_directories("${THIRD_PARTY}/glut/glut-3.7/include")  # neu am 27.03
 
-## if (NOT Boost_ROOT)
-##     set(Boost_ROOT $ENV{Boost_ROOT})
-## endif()
-## #  if (NOT Boost_ROOT)
-#      set(Boost_ROOT "D:/link_libs/boost/boost_1_72_0")  # Flaps5!
-#  endif()
-###string(REPLACE "\\" "/" Boost_ROOT ${Boost_ROOT})
-# message(FATAL_ERROR "+++ Boost_ROOT: ${Boost_ROOT} vs. $ENV{Boost_ROOT}!")
 #####################################################################################
 #####################################################################################
 # add_compile_definitions(USE_MEMORY_CANVAS)
@@ -246,8 +238,12 @@ endif()
 # set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
 set(BOOST_COMPONENTS date_time)  #  network)
 message(STATUS "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
-find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
-
+if (BOOST_COMPONENTS)
+  find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
+  # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
+else()
+  find_package(Boost 1.60 REQUIRED)
+endif()
 # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 
 

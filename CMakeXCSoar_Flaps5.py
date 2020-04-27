@@ -13,8 +13,8 @@ class ComputerDirectories(object):
 
 arguments = []
 arguments.append('XCSoarAug')  # 'cmake')
-# arguments.append('mgw73')
-arguments.append('ninja')
+arguments.append('mgw73')
+# arguments.append('ninja')
 # arguments.append('msvc2019')
 arguments.append('Arg2')
 arguments.append('Arg3')

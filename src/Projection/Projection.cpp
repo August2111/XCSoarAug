@@ -60,8 +60,7 @@ Projection::ScreenToGeo(int x, int y) const
 }
 
 PixelPoint
-Projection::GeoToScreen(const GeoPoint &g) const
-{
+Projection::GeoToScreen(const GeoPoint& g) const {
   assert(IsValid());
 
   const GeoPoint d = geo_location-g;

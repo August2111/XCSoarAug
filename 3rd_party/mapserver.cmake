@@ -12,12 +12,14 @@ message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET
   set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
   set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-#  set(CONFIGURE_COMMAND "PATH=%PATH%;D:\\Programs\\msys\\msys1.0.11\\bin")
+  set(${TARGET_CNAME}_URL "file://${THIRD_PARTY}/mapserver/mapserver-xcsoar")
+  if (UNIX)  # only temporarily
+      set(${TARGET_CNAME}_URL "file:///home/august/Projects/Gliding/Download/mapserver-xcsoar.7z")
+  endif()
   # ------------------
   ExternalProject_Add(
      ${TARGET_NAME}
-# sonst:     URL "file://${THIRD_PARTY}/mapserver/mapserver-xcsoar"
-     URL "file:///home/august/Projects/Gliding/Download/mapserver-xcsoar.7z"
+     URL "${${TARGET_CNAME}_URL}"
      PREFIX  "${${TARGET_CNAME}_PREFIX}"
      BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
      INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"

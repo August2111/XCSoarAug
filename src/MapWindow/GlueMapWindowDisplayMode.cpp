@@ -368,11 +368,18 @@ GlueMapWindow::UpdateProjection()
   } else if (basic.location_available)
     // Pan is off
     SetLocationLazy(basic.location);
-  else if (!visible_projection.IsValid() && terrain != nullptr)
+  else if (!visible_projection.IsValid() && terrain != nullptr) {
     /* if there's no GPS fix yet and no home waypoint, start at the
        map center, to avoid showing a fully white map, which confuses
        users */
-    SetLocation(terrain->GetTerrainCenter());
+    // SetLocation(terrain->GetTerrainCenter());
+    Angle lat = Angle::Native(0.25);
+    Angle lng = Angle::Native(0.907);
+  
+    GeoPoint g(lat, lng);  // = { 0.25, 0.907 };
+    // g.latitude = (Angle)(0.25);
+    SetLocation(g);
+  }
 
   OnProjectionModified();
 }

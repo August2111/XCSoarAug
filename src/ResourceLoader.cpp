@@ -103,6 +103,8 @@ ResourceLoader::Load(ResourceId id)
 #endif
 
 #ifdef USE_WIN32_RESOURCES
+
+#if defined(_MSC_VER)  && 0
 /*
 inline
 bool CGdiPlusBitmapResource::Load(LPCTSTR pName, LPCTSTR pType,
@@ -316,4 +318,10 @@ ResourceLoader::LoadBitmap2(ResourceId id)
   }
   return bitmap;
 }
+#else
+HBITMAP
+ResourceLoader::LoadBitmap2(ResourceId id) {
+  return ::LoadBitmap(ResourceLoaderInstance, MAKEINTRESOURCE((unsigned)id));
+}
+#endif
 #endif
