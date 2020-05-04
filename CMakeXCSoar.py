@@ -18,9 +18,11 @@ import os, sys, subprocess
 prev_batch = None
 cmake_generator = None
 
-def mingw(toolchain, env_path):
+def mingw(toolchain, env):
   global cmake_generator
   global prev_batch
+  
+  env_path = env['PATH']
   if sys.platform.startswith('win'):
       if toolchain == 'ninja':
         prev_batch = 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Auxiliary/Build/vcvars64.bat'
@@ -30,7 +32,10 @@ def mingw(toolchain, env_path):
         env_path = 'D:\\Programs\\llvm\\bin;' + env_path
         cmake_generator ='Ninja'
       else:
-        env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
+        if env['COMPUTERNAME'] == 'FLAPS5':
+          env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
+        elif env['COMPUTERNAME'] == 'PCDERAD0781':
+          env_path = 'D:\\link_libs\\Qt\\Qt5.14.0\\Tools\\mingw730_64\\bin;'  + env_path
         cmake_generator ='MinGW Makefiles'
   else:
       # cmake_generator ='Unix Makefiles'
@@ -39,12 +44,12 @@ def mingw(toolchain, env_path):
   # print(env_path)
   return env_path
 
-def visual_studio(toolchain, env_path):
+def visual_studio(toolchain, env):
 
   global prev_batch, cmake_generator
   prev_batch = 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Auxiliary/Build/vcvars64.bat'
   cmake_generator ='Visual Studio 16'
-  return env_path
+  return env['PATH']
   # map the inputs to the function blocks
 compiler_setup = {
            'mgw73' : mingw,
@@ -89,6 +94,7 @@ def create_xcsoar(args):
     link_libs = 'D:/link_libs'  # Windows!
     third_party = 'D:/Projects/3rd_Party'  # Windows!
     install_dir = 'D:/Programs/Install/XCSoar'
+    program_dir = 'D:/Programs'
   else:
     src_dir = start_dir
     build_dir = '/home/august/Projects/Binaries/XCSoarAug/' + toolchain
@@ -102,22 +108,27 @@ def create_xcsoar(args):
 
   myprocess = subprocess.Popen(['python', '--version'], env = my_env)
   myprocess.wait()
+  try:
+    myprocess = subprocess.Popen(['python3', '--version'], env = my_env)
+    myprocess.wait()
+  except:
+    print('"python3" not callable')
 
-  myprocess = subprocess.Popen(['python3', '--version'], env = my_env)
-  myprocess.wait()
-
-  cmake_exe = 'cmake'
+  cmake_exe = (program_dir  + '/CMake/bin/') + 'cmake.exe'
+  if sys.platform.startswith('win'):
+    my_env['PATH'] =  (program_dir  + '/CMake/bin;').replace('/', '\\') + my_env['PATH']
 
   try:
     myprocess = subprocess.Popen([cmake_exe, '--version'], env = my_env)
   except:
-    pass
+    print('"cmake" not callable!')
+    creation = 0
 
   if not os.path.exists(build_dir):
     os.makedirs(build_dir)
     creation = creation | 1
 
-  my_env['PATH'] = compiler_setup[toolchain](toolchain, my_env['PATH'])
+  my_env['PATH'] = compiler_setup[toolchain](toolchain, my_env)
   print(my_env['PATH'])
   #  test = my_env['PATH']
   #  compiler_setup[args[1]](args[1], test)
@@ -187,7 +198,10 @@ def create_xcsoar(args):
         my_cmd = my_cmd + arg + ' '
       print(my_cmd)
       print('========================================================================')
-      myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      try:
+        myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      except:
+        print('error on "subprocess.call"')
     else:
       myprocess = subprocess.Popen(arguments, env = my_env, shell = False)
       myprocess.wait()

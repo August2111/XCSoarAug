@@ -7,11 +7,11 @@ cd /D %~dp0
 set SOURCE_DIR=%CD%
 set BINARY_DIR=D:\Projects\Binaries
 set TARGET_PLATFORM=64
-set THIRD_PARTY=D:\Projects\3rdParty
+set THIRD_PARTY=D:\Projects\3rd_Party
 set LINK_LIBS=D:\link_libs
 set COMPILER=MinGW
-set COMPILER=VS2019
-set PROGRAM_DIR=D:\Programme
+REM set COMPILER=VS2019
+set PROGRAM_DIR=D:\Programs
 REM set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0\mgw73
 set Boost_ROOT=%LINK_LIBS%\boost\boost_1_72_0
 set Boost_DIR=%Boost_ROOT%\msvc2019\lib\cmake\Boost-1.72.0
