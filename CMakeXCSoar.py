@@ -22,39 +22,50 @@ def mingw(toolchain, env):
   global cmake_generator
   global prev_batch
   
-  env_path = env['PATH']
+  # env_path = env['PATH']
+  # if sys.platform.startswith('win'):
+  #     if toolchain == 'ninja':
+  #       prev_batch = 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Auxiliary/Build/vcvars64.bat'
+  #       # env_path = 'D:\\Programs\\MinGW\\mgw73\\bin;' + env_path
+  #       # env_path = 'D:\\Programs\\Android\\SDK\\ndk\\21.0.6113669\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin;' + env_path
+  #       # env_path = 'D:\\Programs\\Android\\SDK\\ndk\\21.0.6113669\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin;' + env_path
+  #       env_path = 'D:\\Programs\\llvm\\bin;' + env_path
+  #       cmake_generator ='Ninja'
+  #     else:
+  #       if env['COMPUTERNAME'] == 'FLAPS5':
+  #         env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
+  #       elif env['COMPUTERNAME'] == 'PCDERAD0781':
+  #         env_path = 'D:\\link_libs\\Qt\\Qt5.14.0\\Tools\\mingw730_64\\bin;'  + env_path
+  #       cmake_generator ='MinGW Makefiles'
+  #    env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
+  #    cmake_generator ='MinGW Makefiles'
+  # else:
+  #     # cmake_generator ='Unix Makefiles'
+  #     cmake_generator ='Ninja'
+  cmake_generator ='MinGW Makefiles'
+  return 'D:\\Programs\\MinGW\\' + toolchain + '\\bin;' + env['PATH']
+
+def clang(toolchain, env):
+  global cmake_generator
   if sys.platform.startswith('win'):
-      if toolchain == 'ninja':
-        prev_batch = 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Auxiliary/Build/vcvars64.bat'
-        # env_path = 'D:\\Programs\\MinGW\\mgw73\\bin;' + env_path
-        # env_path = 'D:\\Programs\\Android\\SDK\\ndk\\21.0.6113669\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin;' + env_path
-        # env_path = 'D:\\Programs\\Android\\SDK\\ndk\\21.0.6113669\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin;' + env_path
-        env_path = 'D:\\Programs\\llvm\\bin;' + env_path
-        cmake_generator ='Ninja'
-      else:
-        if env['COMPUTERNAME'] == 'FLAPS5':
-          env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
-        elif env['COMPUTERNAME'] == 'PCDERAD0781':
-          env_path = 'D:\\link_libs\\Qt\\Qt5.14.0\\Tools\\mingw730_64\\bin;'  + env_path
-        cmake_generator ='MinGW Makefiles'
-  else:
+      env_path = 'D:\\Programs\\llvm\\bin;'
+  # else:
       # cmake_generator ='Unix Makefiles'
-      prev_batch = 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Auxiliary/Build/vcvars64.bat'
-      cmake_generator ='Ninja'
-  # print(env_path)
-  return env_path
+  cmake_generator ='Ninja'
+  return 'D:\\Programs\\llvm\\bin;' + env['PATH']
 
 def visual_studio(toolchain, env):
-
   global prev_batch, cmake_generator
   prev_batch = 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Auxiliary/Build/vcvars64.bat'
   cmake_generator ='Visual Studio 16'
   return env['PATH']
+
   # map the inputs to the function blocks
 compiler_setup = {
            'mgw73' : mingw,
            'mgw82' : mingw,
            'ninja' : mingw,
+           'clang10' : clang,
            'msvc2019' : visual_studio,
 }
 
@@ -85,11 +96,7 @@ def create_xcsoar(args):
   if sys.platform.startswith('win'):
     # not necessary ?! install_bindir = 'bin'
     src_dir = start_dir
-    #build_dir = 'D:/Projects/Binaries/XCSoarAug_x64_MinGW73'
-    # build_dir = 'D:/Projects/Binaries/XCSoarAug/MinGW73'
-    # build_dir = 'D:/Projects/Binaries/XCSoarAug/ninja'
     build_dir = 'D:/Projects/Binaries/XCSoarAug/' + toolchain
-    # build_dir = 'D:/Projects/Binaries/XCSoarAug/MinGW73_32'
 
     link_libs = 'D:/link_libs'  # Windows!
     third_party = 'D:/Projects/3rd_Party'  # Windows!
@@ -145,11 +152,9 @@ def create_xcsoar(args):
        # arguments.append(prev_batch)
        # arguments.append(' & ')
     arguments.append(cmake_exe)  # 'cmake')                         ## Clang!
-    if toolchain == 'ninja':                                          ## Clang!
-      arguments.append('-E env LDFLAGS="-fuse-ld=lld-link"')          ## Clang!
-      arguments.append('PATH="D:\\Programs\\CMake\\bin"')          ## Clang!
-      my_env['PATH'] = 'D:/Programs/llvm/bin;' + my_env['PATH']          ## Clang!
-      my_env['PATH'] = 'D:/Programs/CMake/bin'  #  + my_env['PATH']          ## Clang!
+    if toolchain == 'clang10':                                          ## Clang!
+      my_env['PATH'] = 'D:/Programs/llvm/bin;'          ## Clang!
+      my_env['PATH'] = my_env['PATH'] + 'D:/Programs/CMake/bin;'      ## Clang!
       arguments.append(cmake_exe)  # 'cmake')
       arguments.append('-H.')  ## Clang!
     arguments.append('-S')
@@ -167,12 +172,9 @@ def create_xcsoar(args):
       arguments.append('-DCMAKE_CXX_COMPILER=D:/Programs/llvm/bin/clang++.exe')
 
     arguments.append('-DTOOLCHAIN=' + toolchain)
-    arguments.append('-DBoost_ROOT=' + link_libs + '/boost/boost_1_72_0')
+    arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_73_0')
     arguments.append('-DTHIRD_PARTY=' + third_party)
     arguments.append('-DLINK_LIBS=' + link_libs)
-    # arguments.append('-DCMAKE_C_COMPILER_ID="Clang"')  ## Clang!
-    # arguments.append('-DCMAKE_CXX_COMPILER_ID="Clang"')  ## Clang!
-    # arguments.append('-DCMAKE_SYSTEM_NAME="Generic"')  ## Clang!
     if 0:
       arguments.append('-DGTest_ROOT=')
       arguments.append('-DMySQL_DIR=')
@@ -202,6 +204,9 @@ def create_xcsoar(args):
         myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
       except:
         print('error on "subprocess.call"')
+      if myprocess != 0:
+        creation = 0
+        print('cmd with failure!')
     else:
       myprocess = subprocess.Popen(arguments, env = my_env, shell = False)
       myprocess.wait()
@@ -220,7 +225,15 @@ def create_xcsoar(args):
       for arg in arguments:
         my_cmd = my_cmd + arg + ' '
       print(my_cmd)
+      print('========================================')
+      print('========================================')
+      print(my_env['PATH'])
+      print('========================================')
+      print('========================================')
       myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      if myprocess != 0:
+        creation = 0
+        print('cmd with failure!')
     else:
       myprocess = subprocess.Popen(arguments, env = my_env, shell = False)
       myprocess.wait()
@@ -238,6 +251,9 @@ def create_xcsoar(args):
         my_cmd = my_cmd + arg + ' '
       print(my_cmd)
       myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      if myprocess != 0:
+        creation = 0
+        print('cmd with failure!')
     else:
       myprocess = subprocess.Popen(arguments, env = my_env, shell = False)
       myprocess.wait()
@@ -253,6 +269,9 @@ def create_xcsoar(args):
       print(my_cmd, ' in ', build_dir)
 
       myprocess = subprocess.call(my_cmd, env = my_env, cwd = build_dir, shell = False)
+      if myprocess != 0:
+        creation = 0
+        print('cmd with failure!')
     else:
       myprocess = subprocess.Popen(arguments, env = my_env, shell = False)
       myprocess.wait()

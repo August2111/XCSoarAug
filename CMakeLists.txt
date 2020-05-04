@@ -104,6 +104,8 @@ elseif(WIN32 AND MINGW)
       set(PRE_LIB "lib")
 
       set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
+      set(Boost_COMPILER "mgw7")  # necessary: changed mgw as boost compiler to mgw73!
+
       # if(${TOOLCHAIN}  STREQUAL mgw73)
       #   # include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
       #   add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
@@ -119,6 +121,7 @@ elseif(WIN32 AND MINGW)
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
+      add_compile_definitions(_UNICODE)
 #      set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
 #      set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
@@ -128,6 +131,29 @@ elseif(WIN32 AND MINGW)
 set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -static-libstdc++ -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive -v")
 
+elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
+      message(STATUS "+++ System = WIN32 / Clang!")
+      if(NOT TOOLCHAIN)
+        set(TOOLCHAIN clang)
+      endif()
+      add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
+      # add_compile_definitions(_AUG_MSC=1)
+      set(LIB_EXTENSION "lib")
+      set(PRE_LIB "")
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
+      if (ON OR WIN64)  # momentan kein Flag verfügbar!
+          add_compile_definitions(_AMD64_)
+      else()
+          message(FATAL_ERROR "Error: WIN32 not implemented?")
+      endif()
+      set(Boost_DIR "${BOOST_ROOT}/lib/clang10/cmake/Boost-1.73.0")
+    set(Boost_COMPILER "clang10")  # necessary: changed clang8 as boost compiler to clang!
+
+
+elseif(WIN32 AND CLANG)
+   message(FATAL_ERROR "+++ Unbekanntes System: CLANG!")
+elseif(WIN32 AND NINJA)
+   message(FATAL_ERROR "+++ Unbekanntes System: NINJA!")
 elseif(UNIX)
       message(STATUS "+++ System = LINUX / GCC(?) (${TOOLCHAIN})!")
       
@@ -138,7 +164,7 @@ elseif(UNIX)
       # include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
-      set(Boost_DIR "/home/august/Projects/link_libs/boost/boost_1_72_0/stage/lib/gcc/cmake/Boost-1.72.0")   
+      set(Boost_DIR "/home/august/Projects/link_libs/boost/boost_1_73_0/stage/lib/gcc/cmake/Boost-1.73.0")   
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
 
       set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
@@ -149,7 +175,7 @@ elseif(ANDROID)
     message(STATUS "+++ System = ANDROID / ${ANDROID_ABI}!")
     set(Boost_COMPILER "clang")  # necessary: changed clang8 as boost compiler to clang!
 else()
-   message(FATAL_ERROR "+++ Unbekanntes System: !")
+   message(FATAL_ERROR "+++ Unbekanntes System: ${CMAKE_SYSTEM}!")
 endif()
 
     include_directories("    ${PROJECTGROUP_SOURCE_DIR}/src/IO")   # Util")  # nr wegen Logfile!
@@ -219,10 +245,15 @@ endif()
 
 #####################################################################################
 #####################################################################################
+  if (NOT BOOST_ROOT)
+    set(BOOST_ROOT ${Boost_ROOT})  # only temporarely
+    set(Boost_ROOT)
+
+  endif()
 
 if(NOT Boost_DIR)
-  # set(Boost_DIR "${Boost_ROOT}/lib/cmake/Boost-1.72.0")
-  set(Boost_DIR "${Boost_ROOT}/lib/${TOOLCHAIN}/cmake/Boost-1.72.0")
+  # set(Boost_DIR "${BOOST_ROOT}/lib/cmake/Boost-1.73.0")
+  set(Boost_DIR "${BOOST_ROOT}/lib/${TOOLCHAIN}/cmake/Boost-1.73.0")
 
   message(STATUS "!!!!  Boost_DIR ${Boost_DIR}")
 endif()
@@ -247,15 +278,18 @@ endif()
 # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 
 
-if(EXISTS "${Boost_ROOT}/include/boost-1_72/boost/version.hpp")
-    set(Boost_INCLUDE_DIR "${Boost_ROOT}/include/boost-1_72")
-elseif(EXISTS "${Boost_ROOT}/include/boost/version.hpp")
-    set(Boost_INCLUDE_DIR "${Boost_ROOT}/include")
-else()
-    message(FATAL_ERROR "!!! Boost: include directories not found! (Boost_ROOT = ${Boost_ROOT})")
+if (NOT Boost_INCLUDE_DIR)
+   message(FATAL_ERROR "!!! Boost_INCLUDE_DIR is EMPTY")
+  if(EXISTS "${BOOST_ROOT}/include/boost-1_73/boost/version.hpp")
+      set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include/boost-1_73")
+  elseif(EXISTS "${BOOST_ROOT}/include/boost/version.hpp")
+      set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include")
+  else()
+      message(FATAL_ERROR "!!! Boost: include directories not found! (BOOST_ROOT = ${BOOST_ROOT})")
+  endif()
 endif()
 include_directories( ${Boost_INCLUDE_DIR})
-link_directories(${Boost_ROOT}/lib)
+link_directories(${BOOST_ROOT}/lib)
 
 include_directories(
     ${PROJECTGROUP_SOURCE_DIR}/src
@@ -349,6 +383,11 @@ if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
   foreach(subfolder ${XCSOAR_SOURCE_LISTS})
     foreach(subfile ${${subfolder}_SOURCES})
       list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/src/${subfile}")
+
+      get_filename_component(src_path ${subfile} DIRECTORY)
+      string(REPLACE "/" "\\" src_path ${src_path})
+      source_group("Source Files\\${src_path}" FILES  ${PROJECTGROUP_SOURCE_DIR}/src/${subfile})
+
     endforeach()
   endforeach()
   foreach(subfile ${BASIC_SOURCES})
@@ -358,10 +397,15 @@ if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
 if(OFF)
    list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.cpp")
 else()
+    if(NOT MSVC)
+      list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/de.mo.c")
+    endif()
    list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
    set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
 endif()
 
+
+file(GLOB EXT_PROJ "3rd_Party/*.cmake")
 
   #  foreach(subfile ${SOURCE_FILES})
   #    message(STATUS "+++ ${subfile}")
@@ -446,7 +490,7 @@ if (MSVC)
   list(APPEND SOURCE_FILES "Data/XCSoar.def")
   list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
 elseif(MINGW)
-  list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
+  list(APPEND SOURCE_FILES "Data/XCSoar.rc")
 else()
   list(APPEND SOURCE_FILES "Data/XCSoar.rc")
 endif()
@@ -535,7 +579,7 @@ endif()
 if (ANDROID)  # library!
    add_library(${TARGET_NAME} STATIC ${SOURCE_FILES})
 else()        # executable!
-   add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES})
+   add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES} ${EXT_PROJ})
 endif()
 
 

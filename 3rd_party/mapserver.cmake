@@ -12,10 +12,13 @@ message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET
   set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
   set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-  set(${TARGET_CNAME}_URL "file://${THIRD_PARTY}/mapserver/mapserver-xcsoar")
+  set(${TARGET_CNAME}_FILE "${THIRD_PARTY}/mapserver/mapserver-xcsoar.zip")
   if (UNIX)  # only temporarily
-      set(${TARGET_CNAME}_URL "file:///home/august/Projects/Gliding/Download/mapserver-xcsoar.7z")
+      set(${TARGET_CNAME}_FILE "/home/august/Projects/Gliding/Download/mapserver-xcsoar.7z")
   endif()
+  if(EXISTS      "${${TARGET_CNAME}_FILE}")
+     set(${TARGET_CNAME}_URL "file://${${TARGET_CNAME}_FILE}")
+#  if (EXIST      "${${TARGET_CNAME}_URL}")
   # ------------------
   ExternalProject_Add(
      ${TARGET_NAME}
@@ -28,8 +31,12 @@ message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET
        "-DCMAKE_INSTALL_INCLUDEDIR=include"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"
        "-DXCSOAR_DIR=${PROJECTGROUP_SOURCE_DIR}/src"
     BUILD_ALWAYS ${EP_BUILD_ALWAYS}
-    BUILD_IN_SOURCE ${EP_BUILD_IN_SOURCE}
+    # BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+    BUILD_ALWAYS OFF
     DEPENDS zlib zzip
 )
+  else()
+    message(STATUS "!!! ZZIP-XCSOAR DON'T EXISTS !!!!!!!!!!!!!!!!!!!!!!!")
+  endif()
 # add_subdirectory(${THIRD_PARTY}/mapserver/${XCSOAR_MAPSERVER_VERSION}         mapserver)
 
