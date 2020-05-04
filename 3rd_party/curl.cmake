@@ -13,7 +13,7 @@ set(ZLIB_DIR ${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION})
 ### option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${TARGET_NAME}?" OFF)
 ### option(USE_DRAHEIM "Should we use the draheim (or the BBDE) system?" OFF)
 
-  set(${TARGET_CNAME}_VERSION "7.68.0")
+#  set(${TARGET_CNAME}_VERSION "7.68.0")
   set(${TARGET_CNAME}_VERSION "7.69.1")
   string(REPLACE "." "_" GIT_TAG ${TARGET_NAME}-${${TARGET_CNAME}_VERSION})
   # message(FATAL_ERROR "### GIT_TAG = ${GIT_TAG}")
@@ -41,7 +41,8 @@ set(ZLIB_DIR ${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION})
          "-DZLIB_INCLUDE_DIR=${ZLIB_DIR}/include"
          "-DZLIB_LIBRARY_DEBUG=${ZLIB_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstaticd.${LIB_EXTENSION}"
          "-DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
-    BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+    # BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+    BUILD_ALWAYS OFF
     BUILD_IN_SOURCE ${EP_BUILD_IN_SOURCE}
     DEPENDS zlib
 )

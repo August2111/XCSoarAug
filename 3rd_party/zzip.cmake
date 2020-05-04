@@ -37,7 +37,8 @@ if (OFF)   # USE_DRAHEIM)
      "-DINSTALL_LIB_DIR:PATH=<INSTALL_DIR>/lib/${TOOLCHAIN}"
      "-DZZIP_PACKAGE_NAME=\"${TARGET_CNAME}\""
      "-DZZIP_PACKAGE_VERSION=\"${TARGET_CNAME}_VERSION\""
-     BUILD_ALWAYS ON
+     # BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+     BUILD_ALWAYS OFF
      BUILD_IN_SOURCE OFF
   )
 #-------------------
@@ -62,8 +63,8 @@ elseif(USE_DDEBIN)
          "-DCMAKE_INSTALL_COMPONENT=bin/${TOOLCHAIN}"  # :PATH=<INSTALL_DIR>/lib/${TOOLCHAIN}"
          "-DCMAKE_INSTALL_INCLUDEDIR=include"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"
          "-DZLIB_INCLUDEDIR=${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include"
-         "-DZLIB_LIBRARY_DEBUG=${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/msvc2019/zlibstatic.lib"
-         "-DZLIB_LIBRARY_RELEASE=${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/msvc2019/zlibstatic.lib"
+         "-DZLIB_LIBRARY_DEBUG=${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/zlibstatic.lib"
+         "-DZLIB_LIBRARY_RELEASE=${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/zlibstatic.lib"
      BUILD_ALWAYS ON
      BUILD_IN_SOURCE OFF
   )
@@ -75,7 +76,7 @@ else()
   set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   ExternalProject_Add(
      ${TARGET_NAME}
-     URL "file://D:/Projects/3rd_Party/zzip/zzip-xcsoar/zzip-xcsoar.zip"
+     URL "file://D:/Projects/3rd_Party/zzip/zzip-xcsoar.zip"
      PREFIX  "${${TARGET_CNAME}_PREFIX}"
      BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
      INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
@@ -87,8 +88,8 @@ else()
          "-DCMAKE_INSTALL_INCLUDEDIR=include"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"
 
          "-DZLIB_INCLUDE_DIR=${ZLIB_DIR}/include"
-         "-DZLIB_LIBRARY_DEBUG=${ZLIB_DIR}/lib/msvc2019/zlibstatic.lib"
-         "-DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/msvc2019/zlibstatic.lib"
+         "-DZLIB_LIBRARY_DEBUG=${ZLIB_DIR}/lib/${TOOLCHAIN}/zlibstatic.lib"
+         "-DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/${TOOLCHAIN}/zlibstatic.lib"
 
     BUILD_ALWAYS ${EP_BUILD_ALWAYS}
     BUILD_IN_SOURCE ${EP_BUILD_IN_SOURCE}

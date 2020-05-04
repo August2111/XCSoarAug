@@ -11,11 +11,14 @@ class ComputerDirectories(object):
         self.program_dir = directories["program_dir"]
         self.link_libs = directories["link_libs"]
 
+toolchain = 'mgw73'
+# toolchain = 'ninja'
+# toolchain = 'clang10'
+# toolchain = 'msvc2019'
+
 arguments = []
 arguments.append('XCSoarAug')  # 'cmake')
-arguments.append('mgw73')
-# arguments.append('ninja')
-# arguments.append('msvc2019')
+arguments.append(toolchain)
 arguments.append('Arg2')
 arguments.append('Arg3')
 arguments.append('Arg4')
