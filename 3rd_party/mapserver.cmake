@@ -16,8 +16,10 @@ message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET
   if (UNIX)  # only temporarily
       set(${TARGET_CNAME}_FILE "/home/august/Projects/Gliding/Download/mapserver-xcsoar.7z")
   endif()
-  if(EXISTS      "${${TARGET_CNAME}_FILE}")
+#  if(EXISTS      "${${TARGET_CNAME}_FILE}")
      set(${TARGET_CNAME}_URL "file://${${TARGET_CNAME}_FILE}")
+  if(ON)
+     set(${TARGET_CNAME}_URL "http://www.FlapsOnline.de/XCSoarAug/mapserver-xcsoar.zip")
 #  if (EXIST      "${${TARGET_CNAME}_URL}")
   # ------------------
   ExternalProject_Add(

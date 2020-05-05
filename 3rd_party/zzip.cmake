@@ -77,8 +77,10 @@ else()
   set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   set(${TARGET_CNAME}_FILE "${THIRD_PARTY}/zzip/zzip-xcsoar.zip")
-  if(EXISTS      "${${TARGET_CNAME}_FILE}")
-     set(${TARGET_CNAME}_URL "file://${${TARGET_CNAME}_FILE}")
+#  if(EXISTS      "${${TARGET_CNAME}_FILE}")
+#     set(${TARGET_CNAME}_URL "file://${${TARGET_CNAME}_FILE}")
+  if(ON)
+     set(${TARGET_CNAME}_URL "http://www.FlapsOnline.de/XCSoarAug/zzip-xcsoar.zip")
   ExternalProject_Add(
      ${TARGET_NAME}
      URL "${${TARGET_CNAME}_URL}"
