@@ -173,6 +173,7 @@ def create_xcsoar(args):
 
     arguments.append('-DTOOLCHAIN=' + toolchain)
     arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_73_0')
+    # arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_72_0/' + toolchain)  # PCDERAD0781
     arguments.append('-DTHIRD_PARTY=' + third_party)
     arguments.append('-DLINK_LIBS=' + link_libs)
     if 0:

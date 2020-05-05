@@ -246,14 +246,16 @@ endif()
 #####################################################################################
 #####################################################################################
   if (NOT BOOST_ROOT)
-    set(BOOST_ROOT ${Boost_ROOT})  # only temporarely
+    set(BOOST_ROOT ${Boost_ROOT})  # only temporarily
     set(Boost_ROOT)
 
   endif()
 
 if(NOT Boost_DIR)
   # set(Boost_DIR "${BOOST_ROOT}/lib/cmake/Boost-1.73.0")
+  
   set(Boost_DIR "${BOOST_ROOT}/lib/${TOOLCHAIN}/cmake/Boost-1.73.0")
+  # set(Boost_DIR "${BOOST_ROOT}/lib/cmake/Boost-1.72.0")
 
   message(STATUS "!!!!  Boost_DIR ${Boost_DIR}")
 endif()
@@ -375,6 +377,7 @@ list(APPEND XCSOAR_SOURCE_LISTS
     )
 
 
+
 set(SOURCE_FILES )
 
 # message(FATAL_ERROR "Test-Stop!")
@@ -394,15 +397,10 @@ if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
     list(APPEND SOURCE_FILES "${subfile}")
   endforeach()
 
-if(OFF)
-   list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.cpp")
-else()
-    if(NOT MSVC)
-      list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/de.mo.c")
-    endif()
-   list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
-   set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
-endif()
+# Translation Group
+set (TRANSLATIONS de)
+list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
+set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
 
 
 file(GLOB EXT_PROJ "3rd_Party/*.cmake")
@@ -612,6 +610,20 @@ if(ENABLE_OPENGL)
         ###${LINK_LIBS}/glut/freeglut-3.2.1/lib/msvc2019/freeglut.${LIB_EXTENSION}   # libpng.${LIB_EXTENSION}"
     )
 endif()
+
+        # add_custom_target(translation_copy    COMMAND  "${CMAKE_COMMAND}" -E copy_if_different
+        add_custom_command(TARGET ${TARGET_NAME} PRE_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory ${directory} ${CMAKE_CURRENT_BINARY_DIR}/output/po
+        )
+
+foreach(translation ${TRANSLATIONS})
+        add_custom_command(TARGET ${TARGET_NAME} PRE_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/output/po/${translation}.mo ${CMAKE_CURRENT_BINARY_DIR}/output/po/${translation}.mo
+        )
+    if(NOT MSVC)
+            list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
+    endif()
+endforeach()
 
 add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip)   #XCSoar Dialogs)
 
