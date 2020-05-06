@@ -401,6 +401,11 @@ if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
 set (TRANSLATIONS de)
 list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
 set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
+foreach(translation ${TRANSLATIONS})
+    if(NOT MSVC)
+            list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
+    endif()
+endforeach()
 
 
 file(GLOB EXT_PROJ "3rd_Party/*.cmake")
@@ -613,16 +618,16 @@ endif()
 
         # add_custom_target(translation_copy    COMMAND  "${CMAKE_COMMAND}" -E copy_if_different
         add_custom_command(TARGET ${TARGET_NAME} PRE_BUILD
-            COMMAND ${CMAKE_COMMAND} -E make_directory ${directory} ${CMAKE_CURRENT_BINARY_DIR}/output/po
+            COMMAND ${CMAKE_COMMAND} -E make_directory ${directory} ${CMAKE_CURRENT_BINARY_DIR}/po
         )
 
 foreach(translation ${TRANSLATIONS})
         add_custom_command(TARGET ${TARGET_NAME} PRE_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/output/po/${translation}.mo ${CMAKE_CURRENT_BINARY_DIR}/output/po/${translation}.mo
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/output/po/${translation}.mo ${CMAKE_CURRENT_BINARY_DIR}/po/${translation}.mo
         )
-    if(NOT MSVC)
-            list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
-    endif()
+#    if(NOT MSVC)
+#            list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
+#    endif()
 endforeach()
 
 add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip)   #XCSoar Dialogs)
