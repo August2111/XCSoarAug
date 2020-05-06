@@ -6,39 +6,15 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f
 # Setting Area ===================================================
 include(ExternalProject)  # since 3.10
 
-add_definitions(-DNDEBUG)  # wenn ohne Debug!!!!!!!!!!!!!!
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # only by Makefile or Ninja generators: export compile commands
+# add_definitions(-DNDEBUG)  # wenn ohne Debug!!!!!!!!!!!!!!
 
 # set(XCSOAR_LIB_TYPE SHARED)
 set(XCSOAR_LIB_TYPE STATIC)
 set(XCSOAR_LIB_TYPE WITHOUT)
 
 
-# 3rd-party! 
-set(XCSOAR_LUA_VERSION "lua-5.3.5")
-
 set(ENABLE_OPENGL OFF)  # better outside????
-
-# set(XCSOAR_CURL_VERSION "curl-7.64.1")  # curl-git")
-set(XCSOAR_CURL_VERSION "curl-7.69.1")
-add_definitions(-DCURL_STATICLIB)
-
-# 3rd-party! 
-set(XCSOAR_JASPER_VERSION "jasper-2.0.16")
-# set(XCSOAR_JASPER_VERSION "JasPer-xcsoar)
-# add_definitions(-DJAS_XCSOAR)
-
-#  1>Terrain.lib(Loader.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "jas_stream_close" in Funktion ""bool __cdecl LoadTerrainOverview(struct zzip_dir *,char const *,char const *,class RasterTileCache &,bool,class OperationEnvironment &)" (?LoadTerrainOverview@@YA_NPEAUzzip_dir@@PEBD1AEAVRasterTileCache@@_NAEAVOperationEnvironment@@@Z)".
-# 1>Terrain.lib(Loader.obj) : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "jas_stream_length" in Funktion ""bool __cdecl LoadTerrainOverview(struct zzip_dir *,char const *,char const *,class RasterTileCache &,bool,class OperationEnvironment &)" (?LoadTerrainOverview@@YA_NPEAUzzip_dir@@PEBD1AEAVRasterTileCache@@_NAEAVOperationEnvironment@@@Z)".
-
-# set(XCSOAR_MAPSERVER_VERSION "mapserver-0.0.1")
-set(XCSOAR_MAPSERVER_VERSION "mapserver-xcsoar")
-# 3rd-party! 
-# set(XCSOAR_ZLIB_VERSION "zlib-1.2.10")
-set(XCSOAR_ZLIB_VERSION "zlib-1.2.11")
-# set(XCSOAR_ZZIP_VERSION "zzip-0.0.1")
-# set(XCSOAR_ZZIP_VERSION "zzip-0.36c")
-set(XCSOAR_ZZIP_VERSION "zzip-xcsoar")
-set(XCSOAR_LIBPNG_VERSION "libpng-1.6.37")
 
 # cleanup 19.04.20: set(ASIO_GROUPING ON)
 
@@ -58,6 +34,9 @@ get_filename_component(PROJECTGROUP_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} ABSOL
 
 message(STATUS "*** PROJECTGROUP_SOURCE_DIR = '${PROJECTGROUP_SOURCE_DIR}'")
 message(STATUS "*** PROJECTGROUP_BINARY_DIR = '${PROJECTGROUP_BINARY_DIR}'")
+
+# 3rd-party!
+include(${PROJECTGROUP_SOURCE_DIR}/3rd_party/3rd_party.cmake)
 
 set(SRC "${PROJECTGROUP_SOURCE_DIR}/src")
 include(CMakeSource.cmake)
@@ -146,8 +125,8 @@ elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
       else()
           message(FATAL_ERROR "Error: WIN32 not implemented?")
       endif()
-      set(Boost_DIR "${BOOST_ROOT}/lib/clang10/cmake/Boost-1.73.0")
     set(Boost_COMPILER "clang10")  # necessary: changed clang8 as boost compiler to clang!
+    set(Boost_DIR "${BOOST_ROOT}/lib/${Boost_COMPILER}/cmake/Boost-1.73.0")
 
 
 elseif(WIN32 AND CLANG)
@@ -186,7 +165,7 @@ endif()
 # endif()
 
 # ALLE: ?
-# interneal Project
+# internal Project
 #      include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # internal lib
 
 # external Projects
@@ -245,17 +224,13 @@ endif()
 
 #####################################################################################
 #####################################################################################
-  if (NOT BOOST_ROOT)
-    set(BOOST_ROOT ${Boost_ROOT})  # only temporarily
-    set(Boost_ROOT)
-
-  endif()
 
 if(NOT Boost_DIR)
-  # set(Boost_DIR "${BOOST_ROOT}/lib/cmake/Boost-1.73.0")
-  
-  set(Boost_DIR "${BOOST_ROOT}/lib/${TOOLCHAIN}/cmake/Boost-1.73.0")
-  # set(Boost_DIR "${BOOST_ROOT}/lib/cmake/Boost-1.72.0")
+# if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
+#     set(Boost_DIR "${BOOST_ROOT}/lib/cmake/Boost-1.72.0")
+# else()
+    set(Boost_DIR "${BOOST_ROOT}/lib/${TOOLCHAIN}/cmake/Boost-1.73.0")
+# endif()
 
   message(STATUS "!!!!  Boost_DIR ${Boost_DIR}")
 endif()
@@ -266,13 +241,14 @@ set(Boost_USE_STATIC_RUNTIME      OFF)
 # set(Boost_DEBUG                   ON)
 set(Boost_DEBUG                   OFF)
 if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
-    add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
+###    add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
 endif()
 # set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
 set(BOOST_COMPONENTS date_time)  #  network)
 message(STATUS "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 if (BOOST_COMPONENTS)
-  find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
+  # find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
+  find_package(Boost 1.60 COMPONENTS ${BOOST_COMPONENTS})
   # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 else()
   find_package(Boost 1.60 REQUIRED)
@@ -282,11 +258,12 @@ endif()
 
 if (NOT Boost_INCLUDE_DIR)
    message(FATAL_ERROR "!!! Boost_INCLUDE_DIR is EMPTY")
-  if(EXISTS "${BOOST_ROOT}/include/boost-1_73/boost/version.hpp")
-      set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include/boost-1_73")
-  elseif(EXISTS "${BOOST_ROOT}/include/boost/version.hpp")
-      set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include")
-  else()
+#  if(EXISTS "${BOOST_ROOT}/include/boost-1_73/boost/version.hpp")
+       set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include/boost-1_73")
+#  elseif(EXISTS "${BOOST_ROOT}/include/boost/version.hpp")
+#      set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include")
+#  else()
+  if(NOT EXISTS "${Boost_INCLUDE_DIR}/boost/version.hpp")
       message(FATAL_ERROR "!!! Boost: include directories not found! (BOOST_ROOT = ${BOOST_ROOT})")
   endif()
 endif()
@@ -630,5 +607,6 @@ foreach(translation ${TRANSLATIONS})
 #    endif()
 endforeach()
 
-add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip)   #XCSoar Dialogs)
+# add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip boost googletest)   #XCSoar Dialogs)
+add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip googletest)   # missing: boost
 
