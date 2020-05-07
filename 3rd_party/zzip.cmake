@@ -1,11 +1,12 @@
-# ZZIP # ZZIP # ZZIP # ZZIP # ZZIP # ZZIP # ZZIP # ZZIP # ZZIP # ZZIP 
+set(TARGET_STRING "# ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP          ")
 cmake_minimum_required(VERSION 3.15)
 
 set(TARGET_NAME                                       zzip)
 #==========================================================
 string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
 # get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
+# message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
+message(STATUS "${TARGET_STRING}")
 
 set(ZLIB_DIR ${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION})
 

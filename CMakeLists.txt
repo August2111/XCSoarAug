@@ -230,6 +230,7 @@ if(NOT Boost_DIR)
 #     set(Boost_DIR "${BOOST_ROOT}/lib/cmake/Boost-1.72.0")
 # else()
     set(Boost_DIR "${BOOST_ROOT}/lib/${TOOLCHAIN}/cmake/Boost-1.73.0")
+    # set(Boost_DIR "${BOOST_ROOT}/lib/${TOOLCHAIN}/cmake/Boost_1_73_0")
 # endif()
 
   message(STATUS "!!!!  Boost_DIR ${Boost_DIR}")
@@ -608,5 +609,5 @@ foreach(translation ${TRANSLATIONS})
 endforeach()
 
 # add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip boost googletest)   #XCSoar Dialogs)
-add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip googletest)   # missing: boost
+add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip googletest )   # missing: boost xmlparser
 

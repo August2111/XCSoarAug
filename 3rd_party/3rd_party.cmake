@@ -26,6 +26,7 @@ set(XCSOAR_LIBPNG_VERSION "libpng-1.6.37")
 set(XCSOAR_BOOST_VERSION "boost-1.73.0")
 # if (NOT BOOST_ROOT)  # now always!!!!
     set(BOOST_ROOT ${LINK_LIBS}/boost/${XCSOAR_BOOST_VERSION})  # only temporarily
+    set(BOOST_ROOT ${LINK_LIBS}/boost/boost_1_73_0)  # only temporarily
     set(Boost_ROOT)  # 0 clearing!
 # endif()
 

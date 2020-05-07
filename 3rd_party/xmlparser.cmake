@@ -1,14 +1,15 @@
-# ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB 
+set(TARGET_STRING  "# XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     ")
 cmake_minimum_required(VERSION 3.15)
 
 if (OFF)
   # noch ohne XML-Parser
-set(TARGET_NAME                                       xml)
+set(TARGET_NAME  xmlparser)
 #==========================================================
 string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
 # get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 string(LENGTH 15 ${TARGET_CNAME} TARGET_CNAME15)
-message(STATUS "# ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} ")
+# message(STATUS "# ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} ")
+message(STATUS "${TARGET_STRING}")
 
 # ---------------------------------------------------------------------------
 option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${TARGET_NAME}?" OFF)

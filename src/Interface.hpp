@@ -61,7 +61,8 @@ namespace CommonInterface {
 #ifdef _MSC_VER
 #   define MY_ASSERT(expression) ((void)0)
 #else  // _MSC_VER
-#   define MY_ASSERT assert
+#   define MY_ASSERT(expression) ((void)0)
+// #   define MY_ASSERT assert
 #endif  // _MSC_VER
 
   // TODO: make this protected
