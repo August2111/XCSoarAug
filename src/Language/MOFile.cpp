@@ -50,16 +50,20 @@ MOFile::MOFile(const void *_data, size_t _size)
     (const void *)(data + import_uint32(header->original_table_offset));
   for (unsigned i = 0; i < n; ++i) {
     strings[i].original = get_string(entry++);
+#if 0
     if (strings[i].original == NULL)
       return;
+#endif
   }
 
   entry = (const struct mo_table_entry *)(const void *)
     (data + import_uint32(header->translation_table_offset));
   for (unsigned i = 0; i < n; ++i) {
     strings[i].translation = get_string(entry++);
+#if 0
     if (strings[i].translation == NULL)
       return;
+#endif
   }
 
   count = n;

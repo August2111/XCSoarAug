@@ -424,7 +424,7 @@ File::ReadString(Path path, char *buffer, size_t size)
   assert(buffer != nullptr);
   assert(size > 0);
 
-#if _AUG_MSC  // TODO(aug) file operations has to be better organized!
+#if _AUG_MSC  || 1// TODO(aug) file operations has to be better organized!
 // #include "corecrt_io.h"
 // #include <xlocmes>
   auto fd = fopen(path.c_str(), "r");
@@ -463,7 +463,7 @@ File::WriteExisting(Path path, const char *value)
   assert(path != nullptr);
   assert(value != nullptr);
 
-#if _AUG_MSC  // TODO(aug) file operations has to be better organized!
+#if _AUG_MSC  || 1// TODO(aug) file operations has to be better organized!
   auto fd = fopen(path.c_str(), "w");
   if (fd == nullptr)
     return false;
@@ -493,7 +493,7 @@ File::CreateExclusive(Path path)
 {
   assert(path != nullptr);
 
-#if _AUG_MSC  // TODO(aug) file operations has to be better organized!
+#if _AUG_MSC  || 1  // TODO(aug) file operations has to be better organized!
   auto fd = fopen(path.c_str(), "w");
   if (fd == nullptr)
     return false;

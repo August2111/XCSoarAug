@@ -903,6 +903,7 @@ static constexpr MetaData meta_data[] = {
   {
     N_("Altitude (Auto)"),
     N_("Alt Auto"),
+//    N_("HöheAug"),
     N_("This is the barometric altitude obtained from a device equipped with a pressure sensor or the GPS altitude if the barometric altitude is not available."),
     UpdateInfoBoxAltitudeNav,
     altitude_infobox_panels,
