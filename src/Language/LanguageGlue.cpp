@@ -43,6 +43,9 @@ Copyright_License {
 
 #ifdef _WIN32
 #include "Util/Compiler.h"   // <windows.h>
+
+#include <direct.h> // _getcwd
+
 #endif
 
 #ifdef __APPLE__
@@ -58,6 +61,13 @@ Copyright_License {
 static MOLoader *mo_loader;
 
 #endif
+
+// ---------------------
+// aug:
+#include "boost/filesystem.hpp"
+#include <fstream>
+// #include <ifstream>
+//----------------------
 
 #ifdef HAVE_BUILTIN_LANGUAGES
 
@@ -338,18 +348,41 @@ DetectLanguage()
 }
 
 static bool
-ReadBuiltinLanguage(const BuiltinLanguage &language)
-{
+ReadBuiltinLanguage(const BuiltinLanguage& language) {
   LogFormat(_T("Language: loading resource '%s'"), language.resource);
 
   // Load MO file from resource
   delete mo_loader;
   mo_loader = new MOLoader(language.begin, (size_t)language.size);
+
+
+  char* cwd = _getcwd(nullptr, 0);
   if (mo_loader->error()) {
-    LogFormat(_T("Language: could not load resource '%s'"), language.resource);
-    delete mo_loader;
-    mo_loader = NULL;
-    return false;
+    // ---------------------
+
+      // ---------------------
+    // aug:
+  //  std::ifstream ifsX("D:\\Projects\\BuildLog.txt", std::ios::binary);
+  //  std::fstream  file("D:\\Projects\\BuildLog.txt", std::fstream::in | std::fstream::binary);
+    // boost::filesystem::
+  //  std::ifstream ifs(language.resource, std::ios::binary);
+    std::ifstream ifs("D:\\Projects\\Binaries\\XCSoarAug\\msvc2019\\Debug\\de.mo", std::ios::binary);
+    // std::ifstream ifs("de.mo", std::ios::binary);
+    bool is_error = true;
+    if (ifs.is_open()) {
+      char* p = new char[language.size];
+      ifs.read(p, language.size);
+      mo_loader = new MOLoader(p, language.size);
+      is_error = mo_loader->error();
+    }
+
+      if (is_error) {
+        LogFormat(_T("Language: could not load resource '%s'"), language.resource);
+        delete mo_loader;
+        mo_loader = NULL;
+        return false;
+    }
+      //----------------------
   }
 
   LogFormat(_T("Loaded translations from resource '%s'"), language.resource);

@@ -7,7 +7,6 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f
 include(ExternalProject)  # since 3.10
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # only by Makefile or Ninja generators: export compile commands
-# add_definitions(-DNDEBUG)  # wenn ohne Debug!!!!!!!!!!!!!!
 
 # set(XCSOAR_LIB_TYPE SHARED)
 set(XCSOAR_LIB_TYPE STATIC)
@@ -46,6 +45,11 @@ file(GLOB_RECURSE SCRIPT_FILES "*.txt;*.cmake;*.md")
 
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
+
+      add_definitions(-DNDEBUG)  # ansonsten erhalte ich im VS im Debug-Mode eine Menge Assertions bezüglich der 
+      # fehlenden PNG-Bitmaps - und ich kann das Programm gar nicht debuggen ;-()
+
+
       if(NOT TOOLCHAIN)
         set(TOOLCHAIN msvc2019)
       endif()
@@ -384,6 +388,11 @@ foreach(translation ${TRANSLATIONS})
             list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
     endif()
 endforeach()
+
+    if(MSVC)
+            list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c")
+            set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c PROPERTIES LANGUAGE C)
+    endif()
 
 
 file(GLOB EXT_PROJ "3rd_Party/*.cmake")
