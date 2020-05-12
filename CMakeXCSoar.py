@@ -48,11 +48,12 @@ def mingw(toolchain, env):
 def clang(toolchain, env):
   global cmake_generator
   if sys.platform.startswith('win'):
-      env_path = 'D:\\Programs\\llvm\\bin;'
+      env_path = 'D:\\Programs\\llvm\\bin;D:\\Programs\\CMake\\bin;'
   # else:
       # cmake_generator ='Unix Makefiles'
   cmake_generator ='Ninja'
-  return 'D:\\Programs\\llvm\\bin;' + env['PATH']
+  #  return 'D:\\Programs\\llvm\\bin;' + env['PATH']
+  return env_path
 
 def visual_studio(toolchain, env):
   global prev_batch, cmake_generator
@@ -151,12 +152,12 @@ def create_xcsoar(args):
     # if prev_batch:
        # arguments.append(prev_batch)
        # arguments.append(' & ')
-    arguments.append(cmake_exe)  # 'cmake')                         ## Clang!
-    if toolchain == 'clang10':                                          ## Clang!
-      my_env['PATH'] = 'D:/Programs/llvm/bin;'          ## Clang!
-      my_env['PATH'] = my_env['PATH'] + 'D:/Programs/CMake/bin;'      ## Clang!
-      arguments.append(cmake_exe)  # 'cmake')
-      arguments.append('-H.')  ## Clang!
+    arguments.append(cmake_exe)
+    # if toolchain in ['clang10']:                                          ## Clang!
+    #   my_env['PATH'] = 'D:/Programs/llvm/bin;'          ## Clang!
+    #   my_env['PATH'] = my_env['PATH'] + 'D:/Programs/CMake/bin;'      ## Clang!
+    #   arguments.append(cmake_exe)  # 'cmake')
+    #   arguments.append('-H.')  ## Clang!
     arguments.append('-S')
     arguments.append(src_dir)  # curr_dir.replace('\\', '/'))
     arguments.append('-B')
@@ -167,7 +168,7 @@ def create_xcsoar(args):
     # arguments.append('-G "Ninja"') 
     arguments.append('-G "' + cmake_generator + '"') 
 
-    if toolchain == 'ninja':
+    if toolchain in ['ninja']:
       arguments.append('-DCMAKE_C_COMPILER=D:/Programs/llvm/bin/clang.exe')
       arguments.append('-DCMAKE_CXX_COMPILER=D:/Programs/llvm/bin/clang++.exe')
 
@@ -176,10 +177,10 @@ def create_xcsoar(args):
     # arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_72_0/' + toolchain)  # PCDERAD0781
     arguments.append('-DTHIRD_PARTY=' + third_party)
     arguments.append('-DLINK_LIBS=' + link_libs)
-    if 0:
-      arguments.append('-DGTest_ROOT=')
-      arguments.append('-DMySQL_DIR=')
-      arguments.append('-DOpenCV_DIR=')
+    ### if 0:
+    ###   arguments.append('-DGTest_ROOT=')
+    ###   arguments.append('-DMySQL_DIR=')
+    ###   arguments.append('-DOpenCV_DIR=')
 
     arguments.append('-Wno-dev')
 
