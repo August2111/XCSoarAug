@@ -57,6 +57,11 @@ if (WIN32 AND MSVC)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
       add_compile_definitions(_UNICODE)
       add_compile_definitions(_AUG_MSC=1)
+
+       # warning C4996: 'xxx': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsdup. See online help for details.
+       # xxx: wcscpy, wcsdup, strtok, strcpy, strdup, ....
+      add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
+
       # add_definitions(/Zc:wchar_t)
 #      HAVE_HATCHED_BRUSH
       set(LIB_EXTENSION "lib")
@@ -396,8 +401,10 @@ foreach(translation ${TRANSLATIONS})
 endforeach()
 
     if(MSVC)
+      if (FLAPS5)
             list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c")
             set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c PROPERTIES LANGUAGE C)
+      endif()
     endif()
 
 

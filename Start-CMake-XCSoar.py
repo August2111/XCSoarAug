@@ -13,7 +13,7 @@ class ComputerDirectories(object):
 
 toolchain = 'mgw73'
 # toolchain = 'ninja'
-# toolchain = 'clang10'
+toolchain = 'clang10'
 # toolchain = 'msvc2019'
 
 arguments = []

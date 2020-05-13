@@ -97,7 +97,10 @@ def create_xcsoar(args):
   if sys.platform.startswith('win'):
     # not necessary ?! install_bindir = 'bin'
     src_dir = start_dir
-    build_dir = 'D:/Projects/Binaries/XCSoarAug/' + toolchain
+    if my_env['COMPUTERNAME'] == 'PCDERAD0781':
+       build_dir = 'D:/build_ws/XCSoarAug/' + toolchain
+    else:
+       build_dir = 'D:/Projects/Binaries/XCSoarAug/' + toolchain
 
     link_libs = 'D:/link_libs'  # Windows!
     third_party = 'D:/Projects/3rd_Party'  # Windows!
@@ -167,16 +170,21 @@ def create_xcsoar(args):
     # ? arguments.append('"MinGW Makefiles"') 
     # arguments.append('-G "Ninja"') 
     arguments.append('-G "' + cmake_generator + '"') 
+    arguments.append('--debug-trycompile')
 
-    if toolchain in ['ninja']:
+    if toolchain in ['ninja', 'clang10']:
       arguments.append('-DCMAKE_C_COMPILER=D:/Programs/llvm/bin/clang.exe')
       arguments.append('-DCMAKE_CXX_COMPILER=D:/Programs/llvm/bin/clang++.exe')
+      arguments.append('-DCMAKE_C_COMPILER_ID=clang')
+      arguments.append('-DCMAKE_CXX_COMPILER_ID=clang')
 
     arguments.append('-DTOOLCHAIN=' + toolchain)
     arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_73_0')
     # arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_72_0/' + toolchain)  # PCDERAD0781
     arguments.append('-DTHIRD_PARTY=' + third_party)
     arguments.append('-DLINK_LIBS=' + link_libs)
+
+    # MinGW fehler: arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=D:/toolchain.cmake')
     ### if 0:
     ###   arguments.append('-DGTest_ROOT=')
     ###   arguments.append('-DMySQL_DIR=')
