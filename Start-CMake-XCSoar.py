@@ -13,15 +13,15 @@ class ComputerDirectories(object):
 
 toolchain = 'mgw73'
 # toolchain = 'ninja'
-toolchain = 'clang10'
+# toolchain = 'clang10'
 # toolchain = 'msvc2019'
 
 arguments = []
 arguments.append('XCSoarAug')  # 'cmake')
 arguments.append(toolchain)
-arguments.append('Arg2')
-arguments.append('Arg3')
-arguments.append('Arg4')
+# arguments.append('Arg2')
+# arguments.append('Arg3')
+# arguments.append('Arg4')
 
 print('Jetzt gehts los: ', arguments)
 create_xcsoar(arguments)

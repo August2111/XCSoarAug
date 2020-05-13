@@ -111,8 +111,14 @@ elseif(WIN32 AND MINGW)
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
-### ???
-      add_compile_definitions(_UNICODE)
+
+      # sequence from 'targets.mk' 
+      if (0)
+        add_compile_definitions(HAVE_MSVCRT)
+        add_compile_definitions(_UNICODE)
+        add_compile_definitions(UNICODE)
+        add_compile_definitions(STRICT)
+      endif()
 #      set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
 #      set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 

@@ -17,38 +17,19 @@ import os, sys, subprocess
 
 prev_batch = None
 cmake_generator = None
+program_dir = None
 
 def mingw(toolchain, env):
   global cmake_generator
   global prev_batch
-  
-  # env_path = env['PATH']
-  # if sys.platform.startswith('win'):
-  #     if toolchain == 'ninja':
-  #       prev_batch = 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/VC/Auxiliary/Build/vcvars64.bat'
-  #       # env_path = 'D:\\Programs\\MinGW\\mgw73\\bin;' + env_path
-  #       # env_path = 'D:\\Programs\\Android\\SDK\\ndk\\21.0.6113669\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin;' + env_path
-  #       # env_path = 'D:\\Programs\\Android\\SDK\\ndk\\21.0.6113669\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin;' + env_path
-  #       env_path = 'D:\\Programs\\llvm\\bin;' + env_path
-  #       cmake_generator ='Ninja'
-  #     else:
-  #       if env['COMPUTERNAME'] == 'FLAPS5':
-  #         env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
-  #       elif env['COMPUTERNAME'] == 'PCDERAD0781':
-  #         env_path = 'D:\\link_libs\\Qt\\Qt5.14.0\\Tools\\mingw730_64\\bin;'  + env_path
-  #       cmake_generator ='MinGW Makefiles'
-  #    env_path = 'D:\\Programs\\MinGW\\' + toolchain +'\\bin;' + env_path
-  #    cmake_generator ='MinGW Makefiles'
-  # else:
-  #     # cmake_generator ='Unix Makefiles'
-  #     cmake_generator ='Ninja'
+  global program_dir
   cmake_generator ='MinGW Makefiles'
-  return 'D:\\Programs\\MinGW\\' + toolchain + '\\bin;' + env['PATH']
+  return program_dir.replace('/', '\\') + '\\MinGW\\' + toolchain + '\\bin;' + env['PATH']
 
 def clang(toolchain, env):
   global cmake_generator
   if sys.platform.startswith('win'):
-      env_path = 'D:\\Programs\\llvm\\bin;D:\\Programs\\CMake\\bin;'
+      env_path = program_dir.replace('/', '\\') + '\\llvm\\bin;' + program_dir.replace('/', '\\') + '\\CMake\\bin;'
   # else:
       # cmake_generator ='Unix Makefiles'
   cmake_generator ='Ninja'
@@ -72,6 +53,8 @@ compiler_setup = {
 
 def create_xcsoar(args):
   #Current directory:
+  global program_dir
+
   filename = sys.argv[0]
   start_dir = os.path.dirname(filename)
   if len(start_dir) == 0:
@@ -175,15 +158,16 @@ def create_xcsoar(args):
     if toolchain in ['ninja', 'clang10']:
       arguments.append('-DCMAKE_C_COMPILER=D:/Programs/llvm/bin/clang.exe')
       arguments.append('-DCMAKE_CXX_COMPILER=D:/Programs/llvm/bin/clang++.exe')
-      arguments.append('-DCMAKE_C_COMPILER_ID=clang')
-      arguments.append('-DCMAKE_CXX_COMPILER_ID=clang')
+      # arguments.append('-DCMAKE_C_COMPILER_ID=clang')
+      # arguments.append('-DCMAKE_CXX_COMPILER_ID=clang')
+      # arguments.append('-DCMAKE_C_COMPILER_FORCED=1')    # don't test the compiler ???
+      # arguments.append('-DCMAKE_CXX_COMPILER_FORCED=1')    # don't test the compiler ???
 
     arguments.append('-DTOOLCHAIN=' + toolchain)
     arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_73_0')
     # arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_72_0/' + toolchain)  # PCDERAD0781
     arguments.append('-DTHIRD_PARTY=' + third_party)
     arguments.append('-DLINK_LIBS=' + link_libs)
-
     # MinGW fehler: arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=D:/toolchain.cmake')
     ### if 0:
     ###   arguments.append('-DGTest_ROOT=')

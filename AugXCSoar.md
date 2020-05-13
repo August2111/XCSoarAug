@@ -10,6 +10,13 @@
 * Abgleich XCSoarAug mit XCSoar, um fehlerhafte Implementierungen von mir wieder zu beseitigen...
 * Merge mit dem neuesten XCSoar-Stand von Kellermann!
 
+## 13.05.2020
+* PC0781 MinGW ist durchcompiliert, aber mit den Defines für Unicode gibt es beim Start eine Assert-Exception(NullPtr), Versuch noch einmal ohne UNICODE... das geht, aber natürlich mit verhunzten Deutschtexten
+* PC0781 VS2019 funktionierte richtig, allerdings ohne de.mo (fehlt hier noch, auch das Konvertierungs-Tool ist ja nicht da) und ohne PNG-Resourcen (Luftraumdarstellung)
+* PC0633 Ubuntu1804 bekamich mit Ninja gar nicht zum Laufen, mit Generator 'Unix Makefiles' stoppte es wegen CMake 3.13 statt cmake 3.15
+* PC0633 Ubuntu1804 begonnen, cmake 3.17.2 zu bauen und zu installieren! Da fehlte erst einmal OpenSSL, das kann man entweder bauen oder in cmake disablen,  ich baue die Version 1.0.2o ;-)
+* PC0633 Ubuntu1804 cmake ließ sich trotzdem nicht richtig bauen, obwohl eigentlich deinstalliert, war immer noch die 3.13 am Start - und nicht die 3.17.2, die sich aber auch nicht richtig bauen ließ ;-(
+
 ## 12.05.2020
 * auf dem PC0781 hatte ich schon aufgeräumt (Beseitigung der alten und überflüssigene Dateien im Root-Verzeichnis - hier klappt es aber irgend wie nicht...
 * Flaps5-msvc: Einschalten des Defines '_UNICODE' im VS-Compile
