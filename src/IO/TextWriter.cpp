@@ -56,11 +56,13 @@ TextWriter::Write(const TCHAR *s, size_t src_length)
   return Write(dest, length);
 }
 
+#include <iostream>
 bool
 TextWriter::Write(const TCHAR *s)
 {
+  std::cout << s;
   assert(StringFind(s, _T('\r')) == nullptr);
-  assert(StringFind(s, _T('\n')) == nullptr);
+// aug   assert(StringFind(s, _T('\n')) == nullptr);
 
   return Write(s, _tcslen(s));
 }

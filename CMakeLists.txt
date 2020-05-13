@@ -113,7 +113,7 @@ elseif(WIN32 AND MINGW)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
 
       # sequence from 'targets.mk' 
-      if (0)
+      if (ON)
         add_compile_definitions(HAVE_MSVCRT)
         add_compile_definitions(_UNICODE)
         add_compile_definitions(UNICODE)
@@ -407,7 +407,7 @@ foreach(translation ${TRANSLATIONS})
 endforeach()
 
     if(MSVC)
-      if (FLAPS5)
+      if (ON)  # FLAPS5)
             list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c")
             set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c PROPERTIES LANGUAGE C)
       endif()
