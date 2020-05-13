@@ -130,19 +130,16 @@ DataFieldFloat::SetFromCombo(int iDataFieldIndex, const TCHAR *sValue)
 void
 DataFieldFloat::AppendComboValue(ComboList &combo_list, double value) const
 {
-#ifdef _AUG_MSC
-  TCHAR* a = new TCHAR[edit_format.capacity()];
-  TCHAR* b = new TCHAR[display_format.capacity()];
+#ifdef _AUG
+  // aug: with vector it is the more clean solution!
+  std::vector<TCHAR> a(edit_format.capacity());
+  std::vector<TCHAR> b(display_format.capacity());
 #else
   TCHAR a[edit_format.capacity()], b[display_format.capacity()];
 #endif
-  _stprintf(a, edit_format, (double)value);
-  _stprintf(b, display_format, (double)value, unit.c_str());
-  combo_list.Append(a, b);
-#ifdef _MSC_VER
-  delete[] a;
-  delete[] b;
-#endif
+  _stprintf(&a[0], edit_format, (double)value);
+  _stprintf(&b[0], display_format, (double)value, unit.c_str());
+  combo_list.Append(&a[0], &b[0]);
 }
 
 ComboList

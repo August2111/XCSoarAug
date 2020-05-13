@@ -22,6 +22,8 @@ Copyright_License {
 
 */
 
+#include <vector>
+
 #include "Language/Language.hpp"
 #include "Util/StringCompare.hxx"
 #include "Util/UTF8.hpp"
@@ -105,28 +107,32 @@ gettext(const TCHAR* text)
 
   // Convert the english TCHAR string to char
   size_t wide_length = _tcslen(text);
-  char original[wide_length * 4 + 1];
+  size_t buflen = wide_length * 4 + 1;
+  //  char original[wide_length * 4 + 1];
+  std::vector<char> original(buflen);
 
   // If the conversion failed -> use the english original string
   if (::WideCharToMultiByte(CP_UTF8, 0, text, -1,
-                            original, sizeof(original), NULL, NULL) <= 0)
+                            &original[0], buflen, NULL, NULL) <= 0)
     return text;
 
   // Lookup the converted english char string in the MO file
-  const char *translation = mo_file->lookup(original);
+  const char *translation = mo_file->lookup(&original[0]);
   // If the lookup failed -> use the english original string
   if (translation == NULL || *translation == 0 ||
-      strcmp(original, translation) == 0)
+      strcmp(&original[0], translation) == 0)
     return text;
 
   // Convert the translated char string to TCHAR
-  TCHAR translation2[strlen(translation) + 1];
-  if (::MultiByteToWideChar(CP_UTF8, 0, translation, -1, translation2,
+  // TCHAR translation2[strlen(translation) + 1];
+  size_t buflen2 = strlen(translation) + 1;
+  std::vector<TCHAR> translation2(buflen2);
+  if (::MultiByteToWideChar(CP_UTF8, 0, translation, -1, &translation2[0],
                             ARRAY_SIZE(translation2)) <= 0)
     return text;
 
   // Add the translated TCHAR string to the cache map for the next time
-  translations[text2] = translation2;
+  translations[text2] = &translation2[0];
 
   // Return the translated TCHAR string
   return translations[text2].c_str();

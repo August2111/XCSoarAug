@@ -45,6 +45,7 @@ Copyright_License {
 
 #include <stdint.h>
 
+
 struct Waypoint;
 
 // control of calculations, these only changed by user interface

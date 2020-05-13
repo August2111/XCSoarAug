@@ -20,6 +20,7 @@ Copyright_License {
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 */
+#include <vector>
 
 #include "Integer.hpp"
 #include "ComboList.hpp"
@@ -117,17 +118,13 @@ DataFieldInteger::SpeedUp(bool keyup)
 void
 DataFieldInteger::AppendComboValue(ComboList &combo_list, int value) const
 {
-#if _AUG_MSC  // only MSCV!
-   static const int nmConst1 = 0x1000;  //  edit_format.capacity();
-   static const int nmConst2 = 0x1000;  // display_format.capacity();
- 
-   TCHAR a[nmConst1], b[nmConst2];
-#else
-  TCHAR a[edit_format.capacity()], b[display_format.capacity()];
-#endif
-  _stprintf(a, edit_format, value);
-  _stprintf(b, display_format, value);
-  combo_list.Append(combo_list.size(), a, b);
+  // aug: with vector it is the more clean solution!
+  std::vector<TCHAR> a(edit_format.capacity());
+  std::vector<TCHAR> b(display_format.capacity());
+
+  _stprintf(&a[0], edit_format, value);
+  _stprintf(&b[0], display_format, value);
+  combo_list.Append(combo_list.size(), &a[0], &b[0]);
 }
 
 ComboList

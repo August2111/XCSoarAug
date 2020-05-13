@@ -194,18 +194,17 @@ TeamCodeWidget::OnFlarmLockClicked()
   TeamCodeSettings &settings =
     CommonInterface::SetComputerSettings().team_code;
 
-#ifdef _MSC_VER  // aug
-  TCHAR newTeamFlarmCNTarget[100];  // settings.team_flarm_callsign.capacity()];
-  _tcscpy(newTeamFlarmCNTarget, settings.team_flarm_callsign.c_str());
+#ifdef _AUG
+  std::vector<TCHAR> newTeamFlarmCNTarget(settings.team_flarm_callsign.capacity());
 #else
   TCHAR newTeamFlarmCNTarget[settings.team_flarm_callsign.capacity()];
-  _tcscpy(newTeamFlarmCNTarget, settings.team_flarm_callsign.c_str());
 #endif
+  _tcscpy(&newTeamFlarmCNTarget[0], settings.team_flarm_callsign.c_str());
 
-  if (!TextEntryDialog(newTeamFlarmCNTarget, 4))
+  if (!TextEntryDialog(&newTeamFlarmCNTarget[0], 4))
     return;
 
-  if (StringIsEmpty(newTeamFlarmCNTarget)) {
+  if (StringIsEmpty(&newTeamFlarmCNTarget[0])) {
     settings.team_flarm_id.Clear();
     settings.team_flarm_callsign.clear();
     return;
@@ -215,7 +214,7 @@ TeamCodeWidget::OnFlarmLockClicked()
 
   FlarmId ids[30];
   unsigned count =
-    FlarmDetails::FindIdsByCallSign(newTeamFlarmCNTarget, ids, 30);
+    FlarmDetails::FindIdsByCallSign(&newTeamFlarmCNTarget[0], ids, 30);
 
   if (count == 0) {
     ShowMessageBox(_("Unknown Competition Number"),
@@ -227,7 +226,7 @@ TeamCodeWidget::OnFlarmLockClicked()
   if (!id.IsDefined())
     return;
 
-  TeamActions::TrackFlarm(id, newTeamFlarmCNTarget);
+  TeamActions::TrackFlarm(id, &newTeamFlarmCNTarget[0]);
 }
 
 void
