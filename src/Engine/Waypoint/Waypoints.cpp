@@ -19,6 +19,7 @@
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
  */
+#include <vector>
 
 #include "Waypoints.hpp"
 #include "WaypointVisitor.hpp"
@@ -128,32 +129,25 @@ Waypoints::WaypointNameTree::SuggestNormalisedPrefix(const TCHAR *prefix,
 void
 Waypoints::WaypointNameTree::Add(WaypointPtr wp)
 {
-#ifdef _AUG_MSC
-  TCHAR* normalized = new TCHAR[wp->name.length() + 1];
+#ifdef _AUG
+  std::vector<TCHAR> normalized(wp->name.length() + 1);
 #else
   TCHAR normalized[wp->name.length() + 1];
 #endif
-  //  TCHAR normalized_name[wp->name.length() + 1];
-  NormalizeSearchString(normalized, wp->name.c_str());
-  RadixTree<WaypointPtr>::Add(normalized, std::move(wp));
-#ifdef _AUG_MSC
-  delete[] normalized;
-#endif
+  NormalizeSearchString(&normalized[0], wp->name.c_str());
+  RadixTree<WaypointPtr>::Add(&normalized[0], std::move(wp));
 }
 
 void
 Waypoints::WaypointNameTree::Remove(const WaypointPtr &wp)
 {
-#ifdef _AUG_MSC
-  TCHAR* normalized = new TCHAR[wp->name.length() + 1];
+#ifdef _AUG
+  std::vector<TCHAR> normalized(wp->name.length() + 1);
 #else
   TCHAR normalized[wp->name.length() + 1];
 #endif
-  NormalizeSearchString(normalized, wp->name.c_str());
-  RadixTree<WaypointPtr>::Remove(normalized, wp);
-#ifdef _AUG_MSC
-  delete[] normalized;
-#endif
+  NormalizeSearchString(&normalized[0], wp->name.c_str());
+  RadixTree<WaypointPtr>::Remove(&normalized[0], wp);
 }
 
 Waypoints::Waypoints()

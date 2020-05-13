@@ -370,6 +370,14 @@ public:
 		return (StaticString<max> &)Base::operator +=(ch);
 	}
 
+#ifdef _AUG
+	StaticString<max> &operator =(const TCHAR* str) {
+    static StaticString<max> s;
+    return s;   // (StaticString<max>&)Base::operator +=(ch);
+	}
+#endif
+
+
 	void CropIncompleteUTF8() {
 		/* this is a wchar_t string, it's not multi-byte,
 		   therefore we have no incomplete sequences */

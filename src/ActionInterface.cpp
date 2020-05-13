@@ -327,6 +327,7 @@ ActionInterface::SetStandbyFrequency(const RadioFrequency & freq, const TCHAR * 
   SetComputerSettings().radio.standby_frequency = freq;
   if(freq_name != nullptr) {
     SetComputerSettings().radio.standby_name = freq_name;
+
   }
   else {
     SetComputerSettings().radio.standby_name.clear();

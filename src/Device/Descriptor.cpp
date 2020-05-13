@@ -21,6 +21,8 @@ Copyright_License {
 }
 */
 
+#include <vector>
+
 #include "Descriptor.hpp"
 #include "Driver.hpp"
 #include "Parser.hpp"
@@ -797,19 +799,23 @@ DeviceDescriptor::WriteNMEA(const char *line, OperationEnvironment &env)
 
 #ifdef _UNICODE
 bool
-DeviceDescriptor::WriteNMEA(const TCHAR *line, OperationEnvironment &env)
-{
+DeviceDescriptor::WriteNMEA(const TCHAR* line, OperationEnvironment& env) {
   assert(line != nullptr);
 
   if (port == nullptr)
     return false;
 
-  char buffer[_tcslen(line) * 4 + 1];
-  if (::WideCharToMultiByte(CP_ACP, 0, line, -1, buffer, sizeof(buffer),
+  // char buffer[_tcslen(line) * 4 + 1];
+  // char* buffer = new char[_tcslen(line) * 4 + 1];
+  size_t buflen = _tcslen(line) * 4 + 1;
+  std::vector<char> buffer(buflen);
+
+  if (::WideCharToMultiByte(CP_ACP, 0, line, -1, &buffer[0], buflen,
                             nullptr, nullptr) <= 0)
     return false;
 
-  return WriteNMEA(buffer, env);
+  return WriteNMEA(&buffer[0], env);
+//  delete[] buffer;
 }
 #endif
 

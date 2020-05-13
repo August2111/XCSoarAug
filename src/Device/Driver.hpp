@@ -230,7 +230,7 @@ public:
  * This class implements all #Device methods.  You may use it as a
  * base class for specific device drivers.
  */
-class AbstractDevice : public Device {
+class AbstractDevice : public Device  {
 public:
   void LinkTimeout() override;
   bool EnableNMEA(OperationEnvironment &env) override;

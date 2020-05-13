@@ -20,6 +20,7 @@ Copyright_License {
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 */
+#include <vector>
 
 #include "Device/Driver/AltairPro.hpp"
 #include "Device/Driver.hpp"
@@ -268,20 +269,28 @@ bool
 AltairProDevice::PropertySetGet(TCHAR *s, size_t size,
                                 OperationEnvironment &env)
 {
+  bool result = true;
   assert(s != nullptr);
 
-  char buffer[_tcslen(s) * 4 + 1];
-  if (::WideCharToMultiByte(CP_ACP, 0, s, -1, buffer, sizeof(buffer),
+  // char buffer[_tcslen(s) * 4 + 1];
+  // char* buffer = new char[_tcslen(s) * 4 + 1];
+  size_t buflen = _tcslen(s) * 4 + 1;
+  std::vector<char> buffer(buflen);
+
+  if (::WideCharToMultiByte(CP_ACP, 0, s, -1, &buffer[0], buflen,
                                nullptr, nullptr) <= 0)
-    return false;
+    result = false;
 
-  if (!PropertySetGet(buffer, _tcslen(s) * 4 + 1, env))
-    return false;
+  if (result)
+    if (!PropertySetGet(&buffer[0], buflen, env))
+      result = false;
 
-  if (::MultiByteToWideChar(CP_ACP, 0, buffer, -1, s, size) <= 0)
-    return false;
+  if (result)
+    if (::MultiByteToWideChar(CP_ACP, 0, &buffer[0], -1, s, size) <= 0)
+      result  = false;
 
-  return true;
+  // delete[] buffer;
+  return result;
 
 }
 #endif

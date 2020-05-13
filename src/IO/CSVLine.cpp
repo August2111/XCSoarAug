@@ -20,6 +20,7 @@ Copyright_License {
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 */
+#include <vector>
 
 #include "CSVLine.hpp"
 #include "Util/StringAPI.hxx"
@@ -80,14 +81,12 @@ CSVLine::Read(char *dest, size_t size)
 bool
 CSVLine::ReadCompare(const char *value)
 {
-#ifdef _MSC_VER
-  // aug: I think this better generally
+#ifdef _AUG
+  // aug: with vector it is the more clean solution!
   size_t length = strlen(value);
-  char* buffer = new char[length + 2];
-  Read(buffer, length + 2);
-  bool is_equal = StringIsEqual(buffer, value);
-  delete[] buffer;
-  return is_equal;
+  std::vector<char> buffer(length + 2);
+  Read(&buffer[0], length + 2);
+  return StringIsEqual(&buffer[0], value);
 #else
   size_t length = strlen(value);
   char buffer[length + 2];

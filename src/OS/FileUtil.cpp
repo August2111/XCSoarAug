@@ -427,6 +427,8 @@ File::ReadString(Path path, char *buffer, size_t size)
 #if _AUG_MSC  || 1// TODO(aug) file operations has to be better organized!
 // #include "corecrt_io.h"
 // #include <xlocmes>
+
+#ifdef UNICODE_CASE
   auto fd = fopen(path.c_str(), "r");
   if (fd < 0)
     return false;
@@ -435,6 +437,7 @@ File::ReadString(Path path, char *buffer, size_t size)
   if (nbytes < 0)
     return false;
   buffer[nbytes] = '\0'; 
+#endif  //  UNICODE_CASE
   return true;
 #else
   int flags = O_RDONLY;
@@ -464,12 +467,17 @@ File::WriteExisting(Path path, const char *value)
   assert(value != nullptr);
 
 #if _AUG_MSC  || 1// TODO(aug) file operations has to be better organized!
+#ifdef UNICODE_CASE  // das ist noch völlig falsch!
   auto fd = fopen(path.c_str(), "w");
   if (fd == nullptr)
     return false;
   const size_t length = strlen(value);
   size_t nbytes = fwrite( value, 1, length, fd);
   return fclose(fd) == 0 && nbytes == (size_t)length;
+#else UNICODE_CASE
+  return false;
+#endif UNICODE_CASE
+
 #else  // _AUG_MSC
   int flags = O_WRONLY;
 #ifdef O_NOCTTY
@@ -494,10 +502,12 @@ File::CreateExclusive(Path path)
   assert(path != nullptr);
 
 #if _AUG_MSC  || 1  // TODO(aug) file operations has to be better organized!
+#ifdef UNICODE_CASE  // das ist noch völlig falsch!
   auto fd = fopen(path.c_str(), "w");
   if (fd == nullptr)
     return false;
   fclose(fd);
+#endif  // UNICODE_CASE  // das ist noch völlig falsch!
 #else  // _AUG_MSC
   int flags = O_WRONLY | O_CREAT | O_EXCL;
 #ifdef O_NOCTTY

@@ -72,6 +72,16 @@ struct flat_gesture_map {
   const TCHAR *data;
 };
 
+#if _AUG
+#ifndef AppendMenu
+# ifdef _UNICODE
+#   define  AppendMenu AppendMenuW
+#else
+#   define  AppendMenu AppendMenuA
+# endif
+#endif
+#endif
+
 // Make a new label (add to the end each time)
 // NOTE: String must already be copied (allows us to use literals
 // without taking up more data - but when loading from file must copy string
@@ -80,16 +90,16 @@ makeLabel(InputConfig &input_config,
           InputEvents::Mode mode_id, const TCHAR* label,
           unsigned location, unsigned event_id)
 {
-#if _AUG_MSC  // TODO(aug): Warum nicht?
-  // location = location;
-#   pragma message("Input: makeLabel (MSVC)!")
-  input_config.AppendMenuA(mode_id, label, location, event_id);
-#elif _AUG || MINGW
-#   pragma message("Input: makeLabel (MINGW)!")
-  input_config.AppendMenuA(mode_id, label, location, event_id);
-#else
+// #if _AUG_MSC  // TODO(aug): Warum nicht?
+//   // location = location;
+// #   pragma message("Input: makeLabel (MSVC)!")
+//   input_config.AppendMenu(mode_id, label, location, event_id);
+// #elif _AUG || MINGW
+// #   pragma message("Input: makeLabel (MINGW)!")
+//   input_config.AppendMenuA(mode_id, label, location, event_id);
+// #else
   input_config.AppendMenu(mode_id, label, location, event_id);
-#endif
+// #endif
 }
 
 static void

@@ -55,7 +55,9 @@ if (WIN32 AND MSVC)
       endif()
       # add_compile_definitions(BOOST_ASIO_WORKAROUND=1)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
+      add_compile_definitions(_UNICODE)
       add_compile_definitions(_AUG_MSC=1)
+      # add_definitions(/Zc:wchar_t)
 #      HAVE_HATCHED_BRUSH
       set(LIB_EXTENSION "lib")
       set(PRE_LIB "")
@@ -104,7 +106,8 @@ elseif(WIN32 AND MINGW)
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
-### ???      add_compile_definitions(_UNICODE)
+### ???
+      add_compile_definitions(_UNICODE)
 #      set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
 #      set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
 
@@ -121,8 +124,9 @@ elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
       endif()
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
       add_compile_definitions(_AUG_MSC=1)  ### really???  ###
+      add_compile_definitions(_UNICODE)
 # add_compile_definitions(std:c++11) ### Only a test on 11.05.2020
-add_definitions(-std=c++14) ### Only a test on 11.05.2020
+add_definitions(-std=c++17) ### Only a test on 11.05.2020
       set(LIB_EXTENSION "lib")
       set(PRE_LIB "")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
