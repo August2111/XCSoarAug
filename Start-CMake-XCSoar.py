@@ -11,11 +11,14 @@ class ComputerDirectories(object):
         self.program_dir = directories["program_dir"]
         self.link_libs = directories["link_libs"]
 
-toolchain = 'mgw73'
-toolchain = 'unix'
-# toolchain = 'ninja'
-# toolchain = 'clang10'
-# toolchain = 'msvc2019'
+
+if sys.platform.startswith('win'):
+    toolchain = 'mgw73'
+    # toolchain = 'ninja'
+    # toolchain = 'clang10'
+    # toolchain = 'msvc2019'
+else:
+    toolchain = 'unix'
 
 arguments = []
 arguments.append('XCSoarAug')  # 'cmake')

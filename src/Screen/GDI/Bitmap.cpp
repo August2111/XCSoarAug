@@ -53,11 +53,72 @@ Bitmap::Bitmap(Bitmap&& src)
 #endif
 
 
+#ifdef _AUG  // Eingeführt, weil unter Windows LoadResource nicht geht ;-(
+#define WITH_BOOST_GIL    1
+#if WITH_BOOST_GIL
+#   include <iostream>
+#   include "boost/gil/extension/io/png.hpp"
+#   include "boost/gil.hpp"
+#   include "boost/gil/io/base.hpp"
+#endif
+
+HBITMAP
+test_gil(std::string filename) {
+    HBITMAP oBitmap = nullptr;
+    DIBSECTION d;
+    /*  geht nicht !!!!!!!!!!!!!!!!!!!!!!! */
+#if WITH_BOOST_GIL
+    boost::gil::rgb8_image_t image;
+    try {
+        boost::gil::read_image(filename, image, boost::gil::png_tag());
+    }
+    catch (...) {
+//        LogFormat(_T("boost exception!"));
+    }
+
+    if (image.width() > 0) {
+        BITMAPINFO bi24BitInfo; //testing, populate to match rgb8_image_t
+        memset(&bi24BitInfo, 0, sizeof(BITMAPINFO));
+        bi24BitInfo.bmiHeader.biSize = sizeof(bi24BitInfo.bmiHeader);
+        bi24BitInfo.bmiHeader.biBitCount = 24; // rgb 8 bytes for each  component(3)
+        bi24BitInfo.bmiHeader.biCompression = BI_RGB;// rgb = 3 components
+        bi24BitInfo.bmiHeader.biPlanes = 1;
+        bi24BitInfo.bmiHeader.biWidth = image.width(); // = d.dsBm.bmWidth
+        bi24BitInfo.bmiHeader.biHeight = image.height();  //  = d.dsBm.bmHeight
+
+        oBitmap = ::CreateDIBSection(NULL, &bi24BitInfo,
+            DIB_RGB_COLORS, 0, 0, 0);
+
+        uint32_t nBytes = ::GetObject(oBitmap, sizeof(DIBSECTION), &d);
+
+
+#if 1
+        memcpy(d.dsBm.bmBits, &image, d.dsBmih.biSizeImage);
+#else
+        for (size_t l = image.height(); l-- > 0; ) {
+            memcpy((char*)d.dsBm.bmBits + l * d.dsBmih.biBitCount * image.width(),
+                &image, d.dsBmih.biBitCount * image.width());
+        }
+#endif
+    }
+#endif  // WITH_BOOST_GIL
+
+    return oBitmap;
+}
+
+bool Bitmap::LoadFile(Path path) {
+    std::string png_filename = (char*)path.c_str();  //.ToUTF8();
+
+    bitmap = test_gil("D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\airspace0.png");
+    return bitmap;
+}
+#else _AUG
 bool
 Bitmap::LoadFile(Path path)
 {
   return false;
 }
+#endif
 
 void
 Bitmap::Reset()

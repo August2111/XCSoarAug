@@ -60,9 +60,8 @@ TextWriter::Write(const TCHAR *s, size_t src_length)
 bool
 TextWriter::Write(const TCHAR *s)
 {
-  std::cout << s;
-  assert(StringFind(s, _T('\r')) == nullptr);
-// aug   assert(StringFind(s, _T('\n')) == nullptr);
+  assert(StringFind(s, _T('\r')) == nullptr);  // no CR expected!
+  assert(StringFind(s, _T('\n')) == nullptr);  // no LF expected!
 
   return Write(s, _tcslen(s));
 }
@@ -72,8 +71,8 @@ TextWriter::Format(const TCHAR *fmt, ...)
 {
   assert(IsOpen());
   assert(fmt != nullptr);
-  assert(StringFind(fmt, _T('\r')) == nullptr);
-  assert(StringFind(fmt, _T('\n')) == nullptr);
+  assert(StringFind(fmt, _T('\r')) == nullptr);  // no CR expected!
+  assert(StringFind(fmt, _T('\n')) == nullptr);  // no LF expected!
 
   /* assume 4 kB is enough for one line */
   size_t buffer_size = 4096;

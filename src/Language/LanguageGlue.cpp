@@ -122,7 +122,7 @@ extern "C"
   extern const uint8_t da_mo[];
   extern const size_t da_mo_size;
   extern const uint8_t de_mo[];
-  extern const size_t de_mo_size;
+  extern const unsigned long de_mo_size;
   extern const uint8_t el_mo[];
   extern const size_t el_mo_size;
   extern const uint8_t es_mo[];

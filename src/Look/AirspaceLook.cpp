@@ -60,12 +60,48 @@ AirspaceClassLook::Initialise(const AirspaceClassRendererSettings &settings)
                       Color(settings.border_color));
 }
 
+#include <vector>
+#include <cstring>
+std::vector<unsigned char> ToPixels(HBITMAP BitmapHandle, int& width, int& height) {
+    BITMAP Bmp = { 0 };
+    BITMAPINFO Info = { 0 };
+    std::vector<unsigned char> Pixels = std::vector<unsigned char>();
+
+    HDC DC = CreateCompatibleDC(NULL);
+    std::memset(&Info, 0, sizeof(BITMAPINFO)); //not necessary really..
+    HBITMAP OldBitmap = (HBITMAP)SelectObject(DC, BitmapHandle);
+    GetObject(BitmapHandle, sizeof(Bmp), &Bmp);
+
+    Info.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+    Info.bmiHeader.biWidth = width = Bmp.bmWidth;
+    Info.bmiHeader.biHeight = height = Bmp.bmHeight;
+    Info.bmiHeader.biPlanes = 1;
+    Info.bmiHeader.biBitCount = Bmp.bmBitsPixel;
+    Info.bmiHeader.biCompression = BI_RGB;
+    Info.bmiHeader.biSizeImage = ((width * Bmp.bmBitsPixel + 31) / 32) * 4 * height;
+
+    Pixels.resize(Info.bmiHeader.biSizeImage);
+    GetDIBits(DC, BitmapHandle, 0, height, &Pixels[0], &Info, DIB_RGB_COLORS);
+    SelectObject(DC, OldBitmap);
+
+    height = std::abs(height);
+    DeleteDC(DC);
+    return Pixels;
+}
+
 void
 AirspaceLook::Reinitialise(const AirspaceRendererSettings &settings)
 {
   for (unsigned i = 0; i < AIRSPACECLASSCOUNT; ++i)
     classes[i].Initialise(settings.classes[i]);
 }
+
+#if _AUG
+//#   include <filesystem>  // C++17
+// #   include <boost/filesystem.hpp>  // C++17
+#   include <fstream>
+#   include "OS/Path.hpp"
+#endif
 
 void
 AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
@@ -75,8 +111,58 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
 
   // airspace brushes and colors
 #ifdef HAVE_HATCHED_BRUSH
-  bitmaps[0].Load(IDB_AIRSPACE0);
-  bitmaps[1].Load(IDB_AIRSPACE1);
+
+#if _AUG
+  // if (bitmaps[0].Load(IDB_AIRSPACE0)) {
+  Path mypath(reinterpret_cast< Path::const_pointer>(_T("D:\\Projects\\Gliding\\XCSoarAug\\Data\\bitmaps\\airspace0.bmp")));
+  if (bitmaps[0].LoadFile(mypath)) {
+      Bitmap bm = bitmaps[0];
+      HBITMAP hbm = bm.GetNative();
+      std::fstream myfile;
+      myfile = std::fstream("D:\\Airspace0.dat", std::ios::out | std::ios::binary);
+      int64_t i = bm.GetWidth();
+      myfile.write((char*)&i, 8);
+      // myfile.write((char*)bm.GetNative(), bm.GetWidth() * bm.GetHeight());
+      i = bm.GetHeight();
+      myfile.write((char*)&i, 8);
+      // Here would be some error handling
+      myfile.write("Airspace0", 9);
+
+      int w = 4;
+      int h = 4;
+      // std::vector<unsigned char> test = ToPixels(hbm, w, h);
+      // myfile.write((char*)&test[0], 64);  // bm.GetWidth() * bm.GetHeight());
+      myfile.write((char*)&hbm, 64);  // bm.GetWidth() * bm.GetHeight());
+      
+      myfile.close();
+  } else {
+      std::fstream myfile;
+      myfile = std::fstream("D:\\Airspace0.dat", std::ios::out | std::ios::binary);
+      myfile.write("Airspace0 is not defined!", 25);
+      myfile.close();
+  }
+#endif
+
+#if _AUG
+  if (bitmaps[1].Load(IDB_AIRSPACE1)) {
+      Bitmap bm = bitmaps[1];
+      std::fstream myfile;
+      myfile = std::fstream("D:\\Airspace1.dat", std::ios::out | std::ios::binary);
+      // Here would be some error handling
+      myfile.write("Airspace1", 9);
+      int64_t i = bm.GetWidth();
+      myfile.write((char*)&i, 8);
+      // myfile.write((char*)bm.GetNative(), bm.GetWidth() * bm.GetHeight());
+      i = bm.GetHeight();
+      myfile.write((char*)&i, 8);
+      myfile.close();
+  } else {
+      std::fstream myfile;
+      myfile = std::fstream("D:\\Airspace1.dat", std::ios::out | std::ios::binary);
+      myfile.write("Airspace1 is not defined!", 25);
+      myfile.close();
+  }
+#endif
   bitmaps[2].Load(IDB_AIRSPACE2);
   bitmaps[3].Load(IDB_AIRSPACE3);
   bitmaps[4].Load(IDB_AIRSPACE4);

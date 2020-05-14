@@ -226,6 +226,9 @@ def create_xcsoar(args):
     arguments.append(build_dir)
     arguments.append('--config')
     arguments.append('Release') 
+    arguments.append('--')  # nachfolgende Befehle werden zum Build tool durchgereicht
+    arguments.append('-j')
+    arguments.append('8')  # jobs...
     if with_call:
       my_cmd = ''
       for arg in arguments:

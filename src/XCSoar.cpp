@@ -114,7 +114,6 @@ Main()
 
   AllowLanguage();
   InitLanguage();
-  LogFormat(_T("### AUG: Init abgeschlossen\n"));
 
   ScopeGlobalAsioThread global_asio_thread;
 
@@ -125,7 +124,6 @@ Main()
   // Perform application initialization and run loop
   int ret = EXIT_FAILURE;
   if (Startup()) {
-    LogFormat(_T("### AUG: Startup war OK!\n"));
     ret = CommonInterface::main_window->RunEventLoop();
   }
   Shutdown();
@@ -162,7 +160,7 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
   StartupLogFreeRamAndStorage();
 
   // Write startup note + version to logfile
-  LogFormat(_T("Starting XCSoar %s\n"), XCSoar_ProductToken);
+  LogFormat(_T("Starting XCSoar %s"), XCSoar_ProductToken);
 
   // Read options from the command line
   {

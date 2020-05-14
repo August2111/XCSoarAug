@@ -127,8 +127,8 @@ public:
    */
   bool Write(const char *s, size_t length) {
     assert(file.IsOpen());
-    assert(memchr(s, '\r', length) == nullptr);
-// aug    assert(memchr(s, '\n', length) == nullptr);
+    assert(memchr(s, '\r', length) == nullptr);  // no CR expected!
+    assert(memchr(s, '\n', length) == nullptr);  // no LF expected!
 
     return file.Write(s, sizeof(*s), length) == length;
   }
@@ -138,8 +138,8 @@ public:
    */
   bool Write(const char *s) {
     assert(file.IsOpen());
-    assert(strchr(s, '\r') == nullptr);
-// aug    assert(strchr(s, '\n') == nullptr);
+    assert(strchr(s, '\r') == nullptr);  // no CR expected!
+    assert(strchr(s, '\n') == nullptr);  // no LF expected!
 
     return file.Write(s) >= 0;
   }

@@ -177,7 +177,7 @@ test_gil(std::string filename) {
     boost::gil::read_image(filename, image, boost::gil::png_tag());
   }
   catch (...) {
-    std::cout << "boost exception!" << std::endl;
+      LogFormat(_T("boost exception!"));
   }
 
   if (image.width() > 0) {
