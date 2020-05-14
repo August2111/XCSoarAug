@@ -19,12 +19,17 @@ prev_batch = None
 cmake_generator = None
 program_dir = None
 
-def mingw(toolchain, env):
+def gcc(toolchain, env):
   global cmake_generator
   global prev_batch
   global program_dir
-  cmake_generator ='MinGW Makefiles'
-  return program_dir.replace('/', '\\') + '\\MinGW\\' + toolchain + '\\bin;' + env['PATH']
+  if sys.platform.startswith('win'):
+     cmake_generator ='MinGW Makefiles'
+     return program_dir.replace('/', '\\') + '\\MinGW\\' + toolchain + '\\bin;' + env['PATH']
+  else:
+     cmake_generator ='Unix Makefiles'
+     env_path = env['PATH']
+  return env_path
 
 def clang(toolchain, env):
   global cmake_generator
@@ -44,9 +49,10 @@ def visual_studio(toolchain, env):
 
   # map the inputs to the function blocks
 compiler_setup = {
-           'mgw73' : mingw,
-           'mgw82' : mingw,
-           'ninja' : mingw,
+           'mgw73' : gcc,
+           'mgw82' : gcc,
+           'ninja' : gcc,
+           'unix' : gcc,
            'clang10' : clang,
            'msvc2019' : visual_studio,
 }
@@ -91,10 +97,12 @@ def create_xcsoar(args):
     program_dir = 'D:/Programs'
   else:
     src_dir = start_dir
-    build_dir = '/home/august/Projects/Binaries/XCSoarAug/' + toolchain
-    link_libs = '/home/august/Projects/link_libs'  
-    third_party = '/home/august/Projects/3rd_Party'
-    install_dir = '/home/august/Projects/Install/XCSoar'
+    build_dir = '~/august/Projects/Binaries/XCSoarAug/' + toolchain
+    link_libs = '~/august/Projects/link_libs'  
+    third_party = '~/august/Projects/3rd_Party'
+    install_dir = '~/august/Projects/Install/XCSoar'
+    # program_dir = '/usr/bin'
+    program_dir = '/usr/local/bin'
 
   with_call = 1
   creation = 15
@@ -108,10 +116,12 @@ def create_xcsoar(args):
   except:
     print('"python3" not callable')
 
-  cmake_exe = (program_dir  + '/CMake/bin/') + 'cmake.exe'
   if sys.platform.startswith('win'):
+    cmake_exe = (program_dir  + '/CMake/bin/') + 'cmake.exe'
     my_env['PATH'] =  (program_dir  + '/CMake/bin;').replace('/', '\\') + my_env['PATH']
-
+  else:
+    cmake_exe = program_dir  + '/cmake'
+  
   try:
     myprocess = subprocess.Popen([cmake_exe, '--version'], env = my_env)
   except:
@@ -128,10 +138,12 @@ def create_xcsoar(args):
   #  compiler_setup[args[1]](args[1], test)
   #  print(test)
 
+  print('Creation-Flag: ', creation)
   if prev_batch:
     print(prev_batch)
   #========================================================================
   if creation & 1:
+    print('... and now starts with cmake')
     if os.path.isfile(build_dir+ '/CMakeCache.txt'):
       os.remove(build_dir+ '/CMakeCache.txt')
     arguments = []

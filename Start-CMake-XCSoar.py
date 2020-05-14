@@ -12,6 +12,7 @@ class ComputerDirectories(object):
         self.link_libs = directories["link_libs"]
 
 toolchain = 'mgw73'
+toolchain = 'unix'
 # toolchain = 'ninja'
 # toolchain = 'clang10'
 # toolchain = 'msvc2019'
