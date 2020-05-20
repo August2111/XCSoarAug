@@ -97,10 +97,12 @@ def create_xcsoar(args):
     program_dir = 'D:/Programs'
   else:
     src_dir = start_dir
-    build_dir = '~/august/Projects/Binaries/XCSoarAug/' + toolchain
-    link_libs = '~/august/Projects/link_libs'  
-    third_party = '~/august/Projects/3rd_Party'
-    install_dir = '~/august/Projects/Install/XCSoar'
+    root_dir = '/home/pcderad0633'
+    proj_dir = root_dir + '/Projects'
+    build_dir = proj_dir + '/Binaries/XCSoarAug/' + toolchain
+    link_libs = proj_dir + '/link_libs'  
+    third_party = proj_dir + '/3rd_Party'
+    install_dir = proj_dir + '/Install/XCSoar'
     # program_dir = '/usr/bin'
     program_dir = '/usr/local/bin'
 
@@ -207,7 +209,9 @@ def create_xcsoar(args):
       print(my_cmd)
       print('========================================================================')
       try:
-        myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+        # myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+        os.system(my_cmd)
+        # myprocess = subprocess.call(my_cmd)
       except:
         print('error on "subprocess.call"')
       if myprocess != 0:

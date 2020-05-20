@@ -160,11 +160,21 @@ elseif(UNIX)
       set(LIB_EXTENSION "a")
       set(PRE_LIB "lib")
 
+      if (ON) # 2020-05-20: inserted on pcderad0633 regarding missing 'tchar.h'
+        add_compile_definitions(HAVE_MSVCRT)
+        add_compile_definitions(_UNICODE)
+        add_compile_definitions(UNICODE)
+        add_compile_definitions(STRICT)
+      endif()
+
+
       # set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
       # include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
-      set(Boost_DIR "/home/august/Projects/link_libs/boost/boost_1_73_0/stage/lib/gcc/cmake/Boost-1.73.0")   
+      set(Boost_DIR "/home/pcderad0633/Projects/link_libs/boost/boost_1_73_0/stage/lib/gcc/cmake/Boost-1.73.0") 
+      set(Boost_DIR "/home/pcderad0633/Projects/link_libs/boost/boost-1.73.0/lib/unix/cmake/Boost-1.73.0") 
+  
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
 
       set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
@@ -398,13 +408,15 @@ if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
 
 # Translation Group
 set (TRANSLATIONS de)
-list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
-set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
+if (NOT UNIX)
+  list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
+  set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
 foreach(translation ${TRANSLATIONS})
     if(NOT MSVC)
             list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
     endif()
 endforeach()
+endif()
 
     if(MSVC)
       if (ON)  # FLAPS5)

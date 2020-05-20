@@ -10,6 +10,31 @@
 * Abgleich XCSoarAug mit XCSoar, um fehlerhafte Implementierungen von mir wieder zu beseitigen...
 * Merge mit dem neuesten XCSoar-Stand von Kellermann!
 
+
+## 20.05.2020
+* Versuch, XCSoarAug auf PCDERAD0633 (Ubuntu 1604) mit CMake zu kompilieren, gescheitert an TCHAR
+  * tchar.h ist ein Windows-Header-File, was ich wahrscheinlich nur über die Source-Zusammenstellung für das WIN-Programm mir 'eingefangen' habe, Linux/Unix hat wahrscheinlich eine andere Source-CPP-Liste...
+  * Aber vorher war ein weiter Weg:
+    - Boost wird über das CMake als 'Required Component' gesucht, auch wenn es als externes Project eingebunden wird, scheitert es quasi **vor** dem Build!
+    - Deshalb erst einmal die Boost manuell erstellt - in dem erwarteten 'cmake'-Ordner
+    - git clone --recursive "https://github.com/boostorg/boost.git" boost  , '--recursive' ist wichtig, sonst fehlt der größte Teil!
+    - git tag --list
+    - git checkout boost-1.73.0
+    - ./bootstrap.sh
+    - ./b2- Befehl. kopiert aus 3rd_party/boost.cmake (laufen lassen und aus dem Terminal mit den richtigen Optionen kopiert)
+    - Achtung: Die CMake-Option Boost_DIR stand noch auf dem falschen Verzeichnis -> das muss natürlich stimmen!
+
+    - Der 'mapserver' hat noch ein paar Abhängigkeiten zu verschiedenen Headern: Util.Compiler.h und ein paar zzip/*.h, das habe ich mal kurzfristig gelöst, indem ich diese Dateien in den MapServer-Source-Folder entsprechend zur Verfügung gestellt habe ;-(
+    - Danach gingen alle 3rd-Party Tools durch - und fing an die 
+* Versuch, XCSoar auf PCDERAD0633 (Ubuntu 1604) mit Makefile zu kompilieren, gescheitert an 'Missing Targets for MapFile.hpp' (HPP?) 
+  * Zuerst 'git pull' und 'git checkout v6.8.14'  (die (in-)offiziell releasede XCSoar Version (auf Download-Seite ist das noch die 6.8.13, mein Android holte aber schon die 6.8.14 ...)
+  * Warum das MapFile.hpp als Target auftaucht
+* Versuch, XCSoar auf PCDERAD0633 (Ubuntu 1604) mit Makefile zu kompilieren, gescheitert an 'Missing Targets for MapFile.hpp' (HPP?) 
+  *
+
+## 19.05.2020
+* Versuch, auf AUGUST01 mit CMake zu kompilieren gescheitert an ???
+
 ## 13.05.2020
 * PC0781 MinGW ist durchcompiliert, aber mit den Defines für Unicode gibt es beim Start eine Assert-Exception(NullPtr), Versuch noch einmal ohne UNICODE... das geht, aber natürlich mit verhunzten Deutschtexten
 * PC0781 VS2019 funktionierte richtig, allerdings ohne de.mo (fehlt hier noch, auch das Konvertierungs-Tool ist ja nicht da) und ohne PNG-Resourcen (Luftraumdarstellung)
