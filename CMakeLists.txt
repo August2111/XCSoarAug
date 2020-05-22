@@ -391,7 +391,7 @@ set(SOURCE_FILES )
 
 # message(FATAL_ERROR "Test-Stop!")
 if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
-  include("src/CMakeSource.txt")
+  include("src/CMakeSource.cmake")
   foreach(subfolder ${XCSOAR_SOURCE_LISTS})
     foreach(subfile ${${subfolder}_SOURCES})
       list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/src/${subfile}")

@@ -44,7 +44,7 @@ Copyright_License {
 #ifdef _WIN32
 #include "Util/Compiler.h"   // <windows.h>
 
-#include <direct.h> // _getcwd
+//  #include <direct.h> // _getcwd
 
 #endif
 
@@ -356,11 +356,10 @@ ReadBuiltinLanguage(const BuiltinLanguage& language) {
   mo_loader = new MOLoader(language.begin, (size_t)language.size);
 
 
-  char* cwd = _getcwd(nullptr, 0);
   if (mo_loader->error()) {
+#if 0 && _AUG
+    char* cwd = _getcwd(nullptr, 0);
     // ---------------------
-
-      // ---------------------
     // aug:
   //  std::ifstream ifsX("D:\\Projects\\BuildLog.txt", std::ios::binary);
   //  std::fstream  file("D:\\Projects\\BuildLog.txt", std::fstream::in | std::fstream::binary);
@@ -375,13 +374,15 @@ ReadBuiltinLanguage(const BuiltinLanguage& language) {
       mo_loader = new MOLoader(p, language.size);
       is_error = mo_loader->error();
     }
-
       if (is_error) {
+#endif
         LogFormat(_T("Language: could not load resource '%s'"), language.resource);
         delete mo_loader;
         mo_loader = NULL;
         return false;
-    }
+#if 0
+  }
+#endif
       //----------------------
   }
 

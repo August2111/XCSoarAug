@@ -71,6 +71,7 @@ test_gil(std::string filename) {
     boost::gil::rgb8_image_t image;
     try {
         boost::gil::read_image(filename, image, boost::gil::png_tag());
+      // boost::gil::read_image(filename, image, boost::gil::png_tag());
     }
     catch (...) {
 //        LogFormat(_T("boost exception!"));
@@ -107,9 +108,14 @@ test_gil(std::string filename) {
 }
 
 bool Bitmap::LoadFile(Path path) {
-    std::string png_filename = (char*)path.c_str();  //.ToUTF8();
+    std::string img_filename = path.ToUTF8();
+//    img_filename = "D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\airspace0.png";
+//    img_filename = "D:\\Projects\\Gliding\\XCSoarAug\\Data\\bitmaps\\airspace0.bmp";
+        // HBITMAP   hBMP = (HBITMAP)LoadImageA(nullptr, img_filename.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    bitmap = (HBITMAP)LoadImageA(nullptr, img_filename.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
-    bitmap = test_gil("D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\airspace0.png");
+    // bitmap = test_gil();
+//    bitmap = test_gil("D:\\Projects\\Gliding\\XCSoarAug\\Data\\bitmaps\\airspace0.bmp");
     return bitmap;
 }
 #else _AUG

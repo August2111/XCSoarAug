@@ -112,10 +112,10 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
   // airspace brushes and colors
 #ifdef HAVE_HATCHED_BRUSH
 
-#if _AUG
+#if _AUG_TEST
   // if (bitmaps[0].Load(IDB_AIRSPACE0)) {
-  Path mypath(reinterpret_cast< Path::const_pointer>(_T("D:\\Projects\\Gliding\\XCSoarAug\\Data\\bitmaps\\airspace0.bmp")));
-  if (bitmaps[0].LoadFile(mypath)) {
+  Path mypath(reinterpret_cast< Path::const_pointer>(_T("D:\\Projects\\Gliding\\XCSoarAug\\Data\\bitmaps\\")));
+  if (bitmaps[0].LoadFile(mypath + _T("airspace0.bmp"))) {
       Bitmap bm = bitmaps[0];
       HBITMAP hbm = bm.GetNative();
       std::fstream myfile;
@@ -143,7 +143,7 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
   }
 #endif
 
-#if _AUG
+#if _AUG__
   if (bitmaps[1].Load(IDB_AIRSPACE1)) {
       Bitmap bm = bitmaps[1];
       std::fstream myfile;
@@ -163,13 +163,30 @@ AirspaceLook::Initialise(const AirspaceRendererSettings &settings,
       myfile.close();
   }
 #endif
+
+#if _AUGX
+//  for (int i = 1; i < 8; i++) {
+//    if (bitmaps[0].LoadFile(mypath + _T("airspace") + std::to_wstring(i) + ".bmp").c_str()))) {}
+//  }
+    if (bitmaps[0].LoadFile(mypath + _T("airspace0.bmp"))) {}
+    if (bitmaps[1].LoadFile(mypath + _T("airspace1.bmp"))) {}
+    if (bitmaps[2].LoadFile(mypath + _T("airspace2.bmp"))) {}
+    if (bitmaps[3].LoadFile(mypath + _T("airspace3.bmp"))) {}
+    if (bitmaps[4].LoadFile(mypath + _T("airspace4.bmp"))) {}
+    if (bitmaps[5].LoadFile(mypath + _T("airspace5.bmp"))) {}
+    if (bitmaps[6].LoadFile(mypath + _T("airspace6.bmp"))) {}
+    if (bitmaps[7].LoadFile(mypath + _T("airspace7.bmp"))) {}
+
+#else
+  bitmaps[0].Load(IDB_AIRSPACE0);
+  bitmaps[1].Load(IDB_AIRSPACE1);
   bitmaps[2].Load(IDB_AIRSPACE2);
   bitmaps[3].Load(IDB_AIRSPACE3);
   bitmaps[4].Load(IDB_AIRSPACE4);
   bitmaps[5].Load(IDB_AIRSPACE5);
   bitmaps[6].Load(IDB_AIRSPACE6);
   bitmaps[7].Load(IDB_AIRSPACE7);
-
+#endif
 #if 0 // _AUG_MSC  // zur zeit nicht möglich!
   AirspaceRendererSettings s = settings;  // only as placeholder (_AUG)
   // TODO(aug)   // das BRUSH::Create geht nicht weil bitmaps == nullptr;

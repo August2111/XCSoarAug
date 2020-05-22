@@ -209,8 +209,10 @@ def create_xcsoar(args):
       print(my_cmd)
       print('========================================================================')
       try:
-        # myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
-        os.system(my_cmd)
+          if sys.platform.startswith('win'):
+            myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+          else:
+            myprocess = os.system(my_cmd)
         # myprocess = subprocess.call(my_cmd)
       except:
         print('error on "subprocess.call"')
@@ -243,7 +245,11 @@ def create_xcsoar(args):
       print(my_env['PATH'])
       print('========================================')
       print('========================================')
-      myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      # myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      if sys.platform.startswith('win'):
+        myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      else:
+        myprocess = os.system(my_cmd)
       if myprocess != 0:
         creation = 0
         print('cmd with failure!')
@@ -263,7 +269,11 @@ def create_xcsoar(args):
       for arg in arguments:
         my_cmd = my_cmd + arg + ' '
       print(my_cmd)
-      myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      # myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      if sys.platform.startswith('win'):
+        myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      else:
+        myprocess = os.system(my_cmd)
       if myprocess != 0:
         creation = 0
         print('cmd with failure!')
@@ -281,7 +291,11 @@ def create_xcsoar(args):
         my_cmd = my_cmd + arg + ' '
       print(my_cmd, ' in ', build_dir)
 
-      myprocess = subprocess.call(my_cmd, env = my_env, cwd = build_dir, shell = False)
+      # myprocess = subprocess.call(my_cmd, env = my_env, cwd = build_dir, shell = False)
+      if sys.platform.startswith('win'):
+        myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
+      else:
+        myprocess = os.system(my_cmd)
       if myprocess != 0:
         creation = 0
         print('cmd with failure!')

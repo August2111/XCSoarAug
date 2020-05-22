@@ -2,14 +2,38 @@
 * Bereinigen der char-Array-Deklarationen, ab jetzt mit   std::vector<char> buffer(buflen);... und Zugriff  statt buffer mit &buffer[0]
 * Drei externe Projekte sind noch zu sehr mit XCSoar verwoben, so dass sie nicht eigenständig compiliert werden können (xml, mapserver und ?zzip?)
 * msvc lässt den Resourcen-Import der PNG-Dateien nicht zu!!!!
-* mingw kann noch nicht UNICODE
 * ANDROID!!!!!
 * KOBO!
 * Linux
-* Übersetzung der externen 3rd Party-Pojekte nur bei richtiger Änderung (nicht immer)
+* Übersetzung der externen 3rd Party-Pojekte nur bei richtiger Änderung (nicht mehr immer)
 * Abgleich XCSoarAug mit XCSoar, um fehlerhafte Implementierungen von mir wieder zu beseitigen...
 * Merge mit dem neuesten XCSoar-Stand von Kellermann!
+* VS2019-Compilat hat noch keinen Ton!
+* RC-Resourcen-Mechanismen zwischen MinGW und MSVC abgleichen!
 
+## Hauptaufgaben
+**Diese Aufgaben betreffen die generellen Planungen, was ich mit XCSoarAug vorhabe!**
+* Integration Wetterdaten
+* Integration GliderTracker
+* Integration Luftraum-Daten (PL, CZ,...)
+
+Erledigt:
+---------
+* ~~'mingw kann noch nicht UNICODE'~~
+
+|System___|SubSystem_____|OS____|
+|---------|--------------|------|
+| vs2019  |              | win  |
+| mgw73   |              | win  |
+| mgw82   |              | win  |
+| clang   |              | win  |
+| clang10 |              | win  |
+| android | x86          | and  |
+| android | x86_64       | and  |
+| android | armeable_v7b | and  |
+| android | arm64_v8b    | and  |
+| kobo    | ?            | kobo |
+| gcc     | ?            | unix |
 
 ## 20.05.2020
 * Versuch, XCSoarAug auf PCDERAD0633 (Ubuntu 1604) mit CMake zu kompilieren, gescheitert an TCHAR
@@ -23,7 +47,6 @@
     - ./bootstrap.sh
     - ./b2- Befehl. kopiert aus 3rd_party/boost.cmake (laufen lassen und aus dem Terminal mit den richtigen Optionen kopiert)
     - Achtung: Die CMake-Option Boost_DIR stand noch auf dem falschen Verzeichnis -> das muss natürlich stimmen!
-
     - Der 'mapserver' hat noch ein paar Abhängigkeiten zu verschiedenen Headern: Util.Compiler.h und ein paar zzip/*.h, das habe ich mal kurzfristig gelöst, indem ich diese Dateien in den MapServer-Source-Folder entsprechend zur Verfügung gestellt habe ;-(
     - Danach gingen alle 3rd-Party Tools durch - und fing an die 
 * Versuch, XCSoar auf PCDERAD0633 (Ubuntu 1604) mit Makefile zu kompilieren, gescheitert an 'Missing Targets for MapFile.hpp' (HPP?) 
@@ -34,6 +57,32 @@
 
 ## 19.05.2020
 * Versuch, auf AUGUST01 mit CMake zu kompilieren gescheitert an ???
+
+
+## 15.05.2020
+* FLAPS5 MinGW
+    * läuft prinzipiell
+* FLAPS5 VS2019
+    * zurück auf Resource-PNG: Aispace-Anzeige wieder ohne Deko
+    * kein Audio-Ton?
+
+## 14.05.2020
+- Aufgabe ~~'mingw kann noch nicht UNICODE'~~ erledigt!
+* PC0633 Ubuntu1804 
+    * CMake jetzt installiert (manuell übersetzt) auf 3.17.2 + SSL (klappte jetzt)
+    * Mit -G "Unix Makefile" kam ich aber nicht weit, bereits beim CMake blieb er hängen mit '???'
+* PC0781 MinGW
+    * ist durchcompiliert und läuft jetzt ordentlich mit UNICODE!!!
+    * die fälschlichen CR habe ich entfernt (störten im LogFile mit asserts)
+    * leider war es nicht möglich, die Bitmap abzuspeichern!
+* PC0781 VS2019
+    * **läuft** und ist debugfähig
+    * begonnen, wieder mit den PNG zu experimentieren
+    * Das Szenario: Bitmap (z.B. 'airspace0.bmp') wird durch ein externes Tool in ein PNG umgewandelt - und die dann per Resource geladen
+    * Das ist für die Transparenz, kann aber m.E. auch direkt geladen werden - und innnerhalb der Bitmap wird die Transparenz definiert!
+  FLAPS5 MinGW
+    * Gleiches Problem wie beim PC0781: Bitmap lässt sich über das Programm nicht speichern (aus Vergleichsgründen mit VS2019)
+
 
 ## 13.05.2020
 * PC0781 MinGW ist durchcompiliert, aber mit den Defines für Unicode gibt es beim Start eine Assert-Exception(NullPtr), Versuch noch einmal ohne UNICODE... das geht, aber natürlich mit verhunzten Deutschtexten
