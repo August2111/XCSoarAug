@@ -157,4 +157,4 @@ set(DIALOG_SOURCES
 # endif
 
 set(SOURCE_FILES ${DIALOG_SOURCES} )
-set(SCRIPT_FILES CMakeSource.txt)
+set(SCRIPT_FILES CMakeSource.cmake)

@@ -6,7 +6,7 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
   project(${TARGET_NAME} CXX) # Your project name
 
-# include(../../CMakeSource.txt)
+# include(../../CMakeSource.cmake)
 # organize the files in subdirectories
 
 

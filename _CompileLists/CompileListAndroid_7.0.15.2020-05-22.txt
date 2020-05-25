@@ -1,0 +1,2683 @@
+Hier mit Fehler
+
+august@August01:~/Projects/Gliding/XCSoar$ make TARGET=ANDROID
+./build/thirdparty.py ./output/ANDROID ANDROID arm-linux-androideabi arm-linux-androideabi "-march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as" "-I./output/ANDROID/include -DHAVE_POSIX -DHAVE_STDINT_H -DHAVE_UNISTD_H -DHAVE_VASPRINTF -DANDROID -isystem ./output/ANDROID/lib/arm-linux-androideabi/root/include -DEYE_CANDY -DTESTING -DBIONIC -DLIBCPP_NO_IOSTREAM " "-Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind" /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar "rcs" /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+Wende Patch /home/august/Projects/Gliding/XCSoar/lib/curl/patches/no_netrc an
+patching file lib/url.c
+Hunk #1 succeeded at 2746 (offset -311 lines).
+Hunk #2 succeeded at 2779 (offset -312 lines).
+
+Jetzt in Patch /home/august/Projects/Gliding/XCSoar/lib/curl/patches/no_netrc
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking whether make supports nested variables... yes
+checking whether to enable debug build options... no
+checking whether to enable compiler optimizer... (assumed) yes
+checking whether to enable strict compiler warnings... no
+checking whether to enable compiler warnings as errors... no
+checking whether to enable curl debug memory tracking... no
+checking whether to enable hiding of library internal symbols... yes
+checking whether to enable c-ares for DNS lookups... no
+checking whether to disable dependency on -lrt... (assumed no)
+checking whether to enable ESNI support... no
+checking for path separator... :
+checking for sed... /bin/sed
+checking for grep... /bin/grep
+checking for egrep... /bin/grep -E
+configure: using LDFLAGS: -L/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib -Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind 
+configure: LDFLAGS note: LDFLAGS should only be used to specify linker flags, not libraries. Use LIBS for: -lunwind
+configure: WARNING: Continuing even with errors mentioned immediately above this line.
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for arm-linux-androideabi-gcc... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang accepts -g... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to accept ISO C89... none needed
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang understands -c and -o together... yes
+checking how to run the C preprocessor... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -E
+checking for a sed that does not truncate output... (cached) /bin/sed
+checking for code coverage support... no
+checking whether build environment is sane... yes
+checking for arm-linux-androideabi-strip... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... gcc3
+checking curl version... 7.70.0
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... arm-unknown-linux-androideabi
+checking for grep that handles long lines and -e... (cached) /bin/grep
+checking for egrep... /bin/grep -E
+checking if OS is AIX (to define _ALL_SOURCE)... no
+checking if _THREAD_SAFE is already defined... no
+checking if _THREAD_SAFE is actually needed... no
+checking if _THREAD_SAFE is onwards defined... no
+checking if _REENTRANT is already defined... no
+checking if _REENTRANT is actually needed... no
+checking if _REENTRANT is onwards defined... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... 64
+checking how to print strings... printf
+checking for a sed that does not truncate output... (cached) /bin/sed
+checking for fgrep... /bin/grep -F
+checking for ld used by /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... no
+checking for arm-linux-androideabi-dumpbin... no
+checking for arm-linux-androideabi-link... no
+checking for dumpbin... no
+checking for link... link -dump
+configure: WARNING: using cross tools not prefixed with host triplet
+checking the name lister (nm) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to arm-unknown-linux-androideabi format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for arm-linux-androideabi-objdump... no
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for arm-linux-androideabi-dlltool... no
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for arm-linux-androideabi-ar... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar
+checking for archiver @FILE support... @
+checking for arm-linux-androideabi-strip... (cached) /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for arm-linux-androideabi-ranlib... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib
+checking command to parse nm output from /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for arm-linux-androideabi-mt... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -fno-rtti -fno-exceptions... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to produce PIC... -fPIC -DPIC
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang PIC flag -fPIC -DPIC works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang static flag -static works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -c -o file.o... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -c -o file.o... (cached) yes
+checking whether the /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... Android linker
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking whether to build shared libraries with -version-info... no
+checking whether to build shared libraries with -no-undefined... no
+checking whether to build shared libraries with -mimpure-text... no
+checking whether to build shared libraries with PIC... yes
+checking whether to build static libraries with PIC... no
+checking whether to build shared libraries only... no
+checking whether to build static libraries only... yes
+checking for inline... inline
+checking if cpp -P is needed... no
+checking if compiler is DEC/Compaq/HP C... no
+checking if compiler is HP-UX C... no
+checking if compiler is IBM C... no
+checking if compiler is Intel C... no
+checking if compiler is clang... yes
+checking if compiler is xlclang... no
+checking if compiler is GNU C... no
+checking if compiler is LCC... no
+checking if compiler is SGI MIPSpro C... no
+checking if compiler is SGI MIPS C... no
+checking if compiler is SunPro C... no
+checking if compiler is Tiny C... no
+checking if compiler is Watcom C... no
+checking if compiler accepts some basic options... yes
+configure: compiler options added: -Qunused-arguments 
+checking if compiler accepts debug disabling options... yes
+configure: compiler options added: 
+checking if compiler optimizer assumed setting might be used... no
+checking if compiler halts on compilation errors... yes
+checking if compiler halts on negative sized arrays... yes
+checking if compiler halts on function prototype mismatch... yes
+checking if compiler supports hiding library internal symbols... yes
+checking for windows.h... no
+checking whether build target is a native Windows one... no
+checking whether build target supports WIN32 file API... no
+checking for good-to-use Mac CFLAGS... no
+checking to see if the compiler supports __builtin_available()... yes
+checking whether to support http... yes
+checking whether to support ftp... yes
+checking whether to support file... no
+checking whether to support ldap... no
+checking whether to support ldaps... no
+checking whether to support rtsp... no
+checking whether to support proxies... no
+checking whether to support dict... no
+checking whether to support telnet... no
+checking whether to support tftp... no
+checking whether to support pop3... no
+checking whether to support imap... no
+checking whether to support smb... no
+checking whether to support smtp... no
+checking whether to support gopher... no
+checking whether to support mqtt... no
+checking whether to provide built-in manual... no
+checking whether to enable generation of C code... yes
+checking whether to use libgcc... no
+checking if X/Open network library is required... no
+checking for gethostbyname... yes
+checking for windows.h... (cached) no
+checking for winsock.h... (cached) no
+checking for winsock2.h... (cached) no
+checking for proto/bsdsocket.h... no
+checking for connect in libraries... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking for sys/types.h... (cached) yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking time.h usability... yes
+checking time.h presence... yes
+checking for time.h... yes
+checking for monotonic clock_gettime... yes
+checking for clock_gettime in libraries... no additional lib required
+checking for arm-linux-androideabi-pkg-config... no
+checking for pkg-config... /usr/bin/pkg-config
+checking for zlib options with pkg-config... no
+checking for inflateEnd in -lz... yes
+checking zlib.h usability... yes
+checking zlib.h presence... yes
+checking for zlib.h... yes
+configure: found both libz and libz.h header
+checking for BrotliDecoderDecompress in -lbrotlidec... no
+checking brotli/decode.h usability... no
+checking brotli/decode.h presence... no
+checking for brotli/decode.h... no
+checking whether to enable IPv6... yes
+checking if struct sockaddr_in6 has sin6_scope_id member... yes
+checking if argv can be written to... no
+configure: WARNING: the previous check could not be made default was used
+checking if GSS-API support is requested... no
+checking whether to enable Windows native SSL/TLS (Windows native builds only)... no
+checking whether to enable Secure Transport... no
+checking whether to enable Amiga native SSL/TLS (AmiSSL)... no
+configure: WARNING: SSL disabled, you will not be able to use HTTPS, FTPS, NTLM and more.
+configure: WARNING: Use --with-ssl, --with-gnutls, --with-wolfssl, --with-mbedtls, --with-nss, --with-schannel, --with-secure-transport, --with-mesalink, --with-amissl or --with-bearssl to address this.
+checking for library containing psl_builtin... no
+configure: WARNING: libpsl was not found
+checking for RTMP_Init in -lrtmp... no
+checking whether versioned symbols are wanted... no
+checking whether to enable Windows native IDN (Windows native builds only)... no
+checking whether to build with libidn2... (assumed) yes
+checking for arm-linux-androideabi-pkg-config... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for libidn2 options with pkg-config... no
+configure: IDN_LIBS: "-lidn2"
+configure: IDN_LDFLAGS: ""
+configure: IDN_CPPFLAGS: ""
+configure: IDN_DIR: ""
+checking if idn2_lookup_ul can be linked... no
+checking idn2.h usability... no
+checking idn2.h presence... no
+checking for idn2.h... no
+configure: WARNING: Cannot find libraries for IDN support: IDN disabled
+checking for arm-linux-androideabi-pkg-config... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for libnghttp2 options with pkg-config... no
+checking for arm-linux-androideabi-pkg-config... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for libngtcp2 options with pkg-config... no
+checking for arm-linux-androideabi-pkg-config... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for quiche options with pkg-config... no
+checking for arm-linux-androideabi-pkg-config... no
+checking for pkg-config... (cached) /usr/bin/pkg-config
+checking for fish options with pkg-config... no
+checking for ANSI C header files... (cached) yes
+checking for malloc.h... yes
+checking for memory.h... yes
+checking for sys/types.h... (cached) yes
+checking for sys/time.h... (cached) yes
+checking for sys/select.h... yes
+checking for sys/socket.h... yes
+checking for sys/ioctl.h... yes
+checking for sys/uio.h... yes
+checking for assert.h... yes
+checking for unistd.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking for arpa/inet.h... yes
+checking for net/if.h... yes
+checking for netinet/in.h... yes
+checking for netinet/in6.h... yes
+checking for sys/un.h... yes
+checking for linux/tcp.h... yes
+checking for netinet/tcp.h... yes
+checking for netdb.h... yes
+checking for sys/sockio.h... no
+checking for sys/stat.h... (cached) yes
+checking for sys/param.h... yes
+checking for termios.h... yes
+checking for termio.h... yes
+checking for sgtty.h... no
+checking for fcntl.h... yes
+checking for alloca.h... yes
+checking for time.h... (cached) yes
+checking for io.h... no
+checking for pwd.h... yes
+checking for utime.h... yes
+checking for sys/utime.h... no
+checking for sys/poll.h... yes
+checking for poll.h... yes
+checking for socket.h... no
+checking for sys/resource.h... yes
+checking for libgen.h... yes
+checking for locale.h... yes
+checking for errno.h... yes
+checking for stdbool.h... yes
+checking for arpa/tftp.h... yes
+checking for sys/filio.h... no
+checking for sys/wait.h... yes
+checking for setjmp.h... yes
+checking for an ANSI C-conforming const... yes
+checking for compiler support of C99 variadic macro style... yes
+checking for compiler support of old gcc variadic macro style... yes
+checking for size_t... yes
+checking whether time.h and sys/time.h may both be included... (cached) yes
+checking for sys/types.h... (cached) yes
+checking for sys/time.h... (cached) yes
+checking for time.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking for struct timeval... yes
+checking size of size_t... 4
+checking size of long... 4
+checking size of int... 4
+checking size of short... 2
+checking size of time_t... 4
+checking size of off_t... 8
+checking size of curl_off_t... 8
+checking for long long... yes
+checking if numberLL works... yes
+checking for ssize_t... yes
+checking for bool... yes
+checking for sa_family_t... yes
+checking if time_t is unsigned... no
+checking for sys/types.h... (cached) yes
+checking for poll.h... (cached) yes
+checking for sys/poll.h... (cached) yes
+checking for in_addr_t... yes
+checking for struct sockaddr_storage... yes
+checking signal.h usability... yes
+checking signal.h presence... yes
+checking for signal.h... yes
+checking for sig_atomic_t... yes
+checking if sig_atomic_t is already defined as volatile... no
+checking return type of signal handlers... void
+checking for sys/select.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking for select... yes
+checking types of args and return type for select... int,fd_set *,struct timeval *,int
+checking for sys/types.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking for recv... yes
+checking types of args and return type for recv... int,void *,size_t,int,int
+checking for sys/types.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking for send... yes
+checking types of args and return type for send... int,const void *,size_t,int,int
+checking for sys/types.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking for MSG_NOSIGNAL... yes
+checking for sys/types.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking if alarm can be linked... yes
+checking if alarm is prototyped... yes
+checking if alarm is compilable... yes
+checking if alarm usage allowed... yes
+checking if alarm might be used... yes
+checking for sys/types.h... (cached) yes
+checking for string.h... (cached) yes
+checking for strings.h... (cached) yes
+checking for sys/types.h... (cached) yes
+checking for libgen.h... (cached) yes
+checking if basename can be linked... yes
+checking if basename is prototyped... yes
+checking if basename is compilable... yes
+checking if basename usage allowed... yes
+checking if basename might be used... yes
+checking for sys/types.h... (cached) yes
+checking for socket.h... (cached) no
+checking if closesocket can be linked... no
+checking if closesocket might be used... no
+checking for sys/types.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking if CloseSocket can be linked... no
+checking if CloseSocket might be used... no
+checking if connect can be linked... yes
+checking if connect is prototyped... yes
+checking if connect is compilable... yes
+checking if connect usage allowed... yes
+checking if connect might be used... yes
+checking for sys/types.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for fcntl.h... (cached) yes
+checking if fcntl can be linked... yes
+checking if fcntl is prototyped... yes
+checking if fcntl is compilable... yes
+checking if fcntl usage allowed... yes
+checking if fcntl might be used... yes
+checking if fcntl O_NONBLOCK is compilable... yes
+checking if fcntl O_NONBLOCK usage allowed... yes
+checking if fcntl O_NONBLOCK might be used... yes
+checking for windows.h... (cached) no
+checking for winsock2.h... (cached) no
+checking for ws2tcpip.h... (cached) no
+checking for sys/types.h... (cached) yes
+checking for netdb.h... (cached) yes
+checking if freeaddrinfo can be linked... yes
+checking if freeaddrinfo is prototyped... yes
+checking if freeaddrinfo is compilable... yes
+checking if freeaddrinfo usage allowed... yes
+checking if freeaddrinfo might be used... yes
+checking for sys/types.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking for netinet/in.h... (cached) yes
+checking for ifaddrs.h... yes
+checking if freeifaddrs can be linked... no
+checking if freeifaddrs might be used... no
+checking for sys/types.h... (cached) yes
+checking for sys/xattr.h... yes
+checking if fsetxattr can be linked... yes
+checking if fsetxattr is prototyped... yes
+checking if fsetxattr takes 5 args.... yes
+checking if fsetxattr is compilable... yes
+checking if fsetxattr usage allowed... yes
+checking if fsetxattr might be used... yes
+checking if ftruncate can be linked... yes
+checking if ftruncate is prototyped... yes
+checking if ftruncate is compilable... yes
+checking if ftruncate usage allowed... yes
+checking if ftruncate might be used... yes
+checking for sys/types.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking if getaddrinfo can be linked... yes
+checking if getaddrinfo is prototyped... yes
+checking if getaddrinfo is compilable... yes
+checking if getaddrinfo usage allowed... yes
+checking if getaddrinfo might be used... yes
+checking if getaddrinfo is threadsafe... yes
+checking if gai_strerror can be linked... yes
+checking if gai_strerror is prototyped... yes
+checking if gai_strerror is compilable... yes
+checking if gai_strerror usage allowed... yes
+checking if gai_strerror might be used... yes
+checking if gethostbyaddr can be linked... yes
+checking if gethostbyaddr is prototyped... yes
+checking if gethostbyaddr is compilable... yes
+checking if gethostbyaddr usage allowed... yes
+checking if gethostbyaddr might be used... yes
+checking if gethostbyaddr_r can be linked... no
+checking if gethostbyaddr_r might be used... no
+checking if gethostbyname can be linked... yes
+checking if gethostbyname is prototyped... yes
+checking if gethostbyname is compilable... yes
+checking if gethostbyname usage allowed... yes
+checking if gethostbyname might be used... yes
+checking if gethostbyname_r can be linked... yes
+checking if gethostbyname_r is prototyped... yes
+checking if gethostbyname_r takes 3 args.... no
+checking if gethostbyname_r takes 5 args.... no
+checking if gethostbyname_r takes 6 args.... yes
+checking if gethostbyname_r is compilable... yes
+checking if gethostbyname_r usage allowed... yes
+checking if gethostbyname_r might be used... yes
+checking if gethostname can be linked... yes
+checking if gethostname is prototyped... yes
+checking if gethostname is compilable... yes
+checking for gethostname arg 2 data type... unsigned int
+checking if gethostname usage allowed... yes
+checking if gethostname might be used... yes
+checking if getpeername can be linked... yes
+checking if getpeername is prototyped... yes
+checking if getpeername is compilable... yes
+checking if getpeername usage allowed... yes
+checking if getpeername might be used... yes
+checking if getsockname can be linked... yes
+checking if getsockname is prototyped... yes
+checking if getsockname is compilable... yes
+checking if getsockname usage allowed... yes
+checking if getsockname might be used... yes
+checking for net/if.h... (cached) yes
+checking if if_nametoindex can be linked... yes
+checking if if_nametoindex is prototyped... yes
+checking if if_nametoindex is compilable... yes
+checking if if_nametoindex usage allowed... yes
+checking if if_nametoindex might be used... yes
+checking if getifaddrs can be linked... no
+checking if getifaddrs might be used... no
+checking if getservbyport_r can be linked... no
+checking if getservbyport_r might be used... no
+checking for sys/types.h... (cached) yes
+checking for sys/time.h... (cached) yes
+checking for time.h... (cached) yes
+checking if gmtime_r can be linked... yes
+checking if gmtime_r is prototyped... yes
+checking if gmtime_r is compilable... yes
+checking if gmtime_r usage allowed... yes
+checking if gmtime_r might be used... yes
+checking for sys/types.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking for netinet/in.h... (cached) yes
+checking for arpa/inet.h... (cached) yes
+checking if inet_ntoa_r can be linked... no
+checking if inet_ntoa_r might be used... no
+checking if inet_ntop can be linked... yes
+checking if inet_ntop is prototyped... yes
+checking if inet_ntop is compilable... yes
+checking if inet_ntop usage allowed... yes
+checking if inet_ntop might be used... yes
+checking if inet_pton can be linked... yes
+checking if inet_pton is prototyped... yes
+checking if inet_pton is compilable... yes
+checking if inet_pton usage allowed... yes
+checking if inet_pton might be used... yes
+checking for sys/types.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for sys/socket.h... (cached) yes
+checking for sys/ioctl.h... (cached) yes
+checking for stropts.h... no
+checking if ioctl can be linked... yes
+checking if ioctl is prototyped... yes
+checking if ioctl is compilable... yes
+checking if ioctl usage allowed... yes
+checking if ioctl might be used... yes
+checking if ioctl FIONBIO is compilable... yes
+checking if ioctl FIONBIO usage allowed... yes
+checking if ioctl FIONBIO might be used... yes
+checking if ioctl SIOCGIFADDR is compilable... yes
+checking if ioctl SIOCGIFADDR usage allowed... yes
+checking if ioctl SIOCGIFADDR might be used... yes
+checking if ioctlsocket can be linked... no
+checking if ioctlsocket might be used... no
+checking if IoctlSocket can be linked... no
+checking if IoctlSocket might be used... no
+checking if localtime_r can be linked... yes
+checking if localtime_r is prototyped... yes
+checking if localtime_r is compilable... yes
+checking if localtime_r usage allowed... yes
+checking if localtime_r might be used... yes
+checking if memrchr can be linked... yes
+checking if memrchr is prototyped... no
+checking if memrchr might be used... no
+checking if poll can be linked... yes
+checking if poll is prototyped... yes
+checking if poll is compilable... yes
+checking if poll usage allowed... yes
+checking if poll might be used... yes
+checking if setsockopt can be linked... yes
+checking if setsockopt is prototyped... yes
+checking if setsockopt is compilable... yes
+checking if setsockopt usage allowed... yes
+checking if setsockopt might be used... yes
+checking if setsockopt SO_NONBLOCK is compilable... no
+checking if setsockopt SO_NONBLOCK might be used... no
+checking for sys/types.h... (cached) yes
+checking for signal.h... (cached) yes
+checking if sigaction can be linked... yes
+checking if sigaction is prototyped... yes
+checking if sigaction is compilable... yes
+checking if sigaction usage allowed... yes
+checking if sigaction might be used... yes
+checking if siginterrupt can be linked... yes
+checking if siginterrupt is prototyped... yes
+checking if siginterrupt is compilable... yes
+checking if siginterrupt usage allowed... yes
+checking if siginterrupt might be used... yes
+checking if signal can be linked... yes
+checking if signal is prototyped... yes
+checking if signal is compilable... yes
+checking if signal usage allowed... yes
+checking if signal might be used... yes
+checking for sys/types.h... (cached) yes
+checking for setjmp.h... (cached) yes
+checking if sigsetjmp can be linked... yes
+checking if sigsetjmp is prototyped... yes
+checking if sigsetjmp is compilable... yes
+checking if sigsetjmp usage allowed... yes
+checking if sigsetjmp might be used... yes
+checking if socket can be linked... yes
+checking if socket is prototyped... yes
+checking if socket is compilable... yes
+checking if socket usage allowed... yes
+checking if socket might be used... yes
+checking if socketpair can be linked... yes
+checking if socketpair is prototyped... yes
+checking if socketpair is compilable... yes
+checking if socketpair usage allowed... yes
+checking if socketpair might be used... yes
+checking if strcasecmp can be linked... yes
+checking if strcasecmp is prototyped... yes
+checking if strcasecmp is compilable... yes
+checking if strcasecmp usage allowed... yes
+checking if strcasecmp might be used... yes
+checking if strcmpi can be linked... no
+checking if strcmpi might be used... no
+checking if strdup can be linked... yes
+checking if strdup is prototyped... yes
+checking if strdup is compilable... yes
+checking if strdup usage allowed... yes
+checking if strdup might be used... yes
+checking if strerror_r can be linked... yes
+checking if strerror_r is prototyped... yes
+checking if strerror_r is compilable... yes
+checking if strerror_r is glibc like... no
+checking if strerror_r is POSIX like... yes
+checking if strerror_r usage allowed... yes
+checking if strerror_r might be used... yes
+checking if stricmp can be linked... no
+checking if stricmp might be used... no
+checking if strncasecmp can be linked... yes
+checking if strncasecmp is prototyped... yes
+checking if strncasecmp is compilable... yes
+checking if strncasecmp usage allowed... yes
+checking if strncasecmp might be used... yes
+checking if strncmpi can be linked... no
+checking if strncmpi might be used... no
+checking if strnicmp can be linked... no
+checking if strnicmp might be used... no
+checking if strstr can be linked... yes
+checking if strstr is prototyped... yes
+checking if strstr is compilable... yes
+checking if strstr usage allowed... yes
+checking if strstr might be used... yes
+checking if strtok_r can be linked... yes
+checking if strtok_r is prototyped... yes
+checking if strtok_r is compilable... yes
+checking if strtok_r usage allowed... yes
+checking if strtok_r might be used... yes
+checking if strtoll can be linked... yes
+checking if strtoll is prototyped... yes
+checking if strtoll is compilable... yes
+checking if strtoll usage allowed... yes
+checking if strtoll might be used... yes
+checking for sys/types.h... (cached) yes
+checking for sys/uio.h... (cached) yes
+checking if writev can be linked... yes
+checking if writev is prototyped... yes
+checking if writev is compilable... yes
+checking if writev usage allowed... yes
+checking if writev might be used... yes
+checking whether getpwuid_r is declared... yes
+checking for fnmatch... yes
+checking for geteuid... yes
+checking for getpass_r... no
+checking deeper for getpass_r... but still no
+checking for getppid... yes
+checking for getpwuid... yes
+checking for getpwuid_r... yes
+checking for getrlimit... yes
+checking for gettimeofday... yes
+checking for if_nametoindex... yes
+checking for mach_absolute_time... no
+checking deeper for mach_absolute_time... but still no
+checking for pipe... yes
+checking for setlocale... yes
+checking for setmode... no
+checking deeper for setmode... but still no
+checking for setrlimit... yes
+checking for usleep... yes
+checking for utime... yes
+checking for utimes... yes
+checking how to set a socket into non-blocking mode... fcntl O_NONBLOCK
+checking for perl... /usr/bin/perl
+checking for gnroff... no
+checking for nroff... /usr/bin/nroff
+checking how to use *nroff to get plain text from man pages... -man
+checking whether to enable the threaded resolver... no
+checking whether to use POSIX threads for threaded resolver... auto
+checking convert -I options to -isystem... yes
+checking whether to enable verbose strings... no
+checking whether to enable SSPI support (Windows native builds only)... no
+checking whether to enable cryptographic authentication methods... no
+checking whether to enable NTLM delegation to winbind's helper... no
+checking whether to enable TLS-SRP authentication... no
+checking whether to enable Unix domain sockets... auto
+checking for struct sockaddr_un.sun_path... yes
+checking whether to support cookies... no
+checking whether to support HTTP authentication... yes
+checking whether to support DoH... yes
+checking whether to support the MIME API... yes
+checking whether to support date parsing... yes
+checking whether to support netrc parsing... yes
+checking whether to support progress-meter... yes
+checking whether to support DNS shuffling... yes
+checking whether to support alt-svc... no
+checking whether hiding of library internal symbols will actually happen... yes
+configure: using LDFLAGS: -L/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib -Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind
+configure: LDFLAGS note: LDFLAGS should only be used to specify linker flags, not libraries. Use LIBS for: -lunwind
+configure: WARNING: Continuing even with errors mentioned immediately above this line.
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating docs/Makefile
+config.status: creating docs/examples/Makefile
+config.status: creating docs/libcurl/Makefile
+config.status: creating docs/libcurl/opts/Makefile
+config.status: creating docs/cmdline-opts/Makefile
+config.status: creating include/Makefile
+config.status: creating include/curl/Makefile
+config.status: creating src/Makefile
+config.status: creating lib/Makefile
+config.status: creating scripts/Makefile
+config.status: creating lib/libcurl.vers
+config.status: creating tests/Makefile
+config.status: creating tests/certs/Makefile
+config.status: creating tests/certs/scripts/Makefile
+config.status: creating tests/data/Makefile
+config.status: creating tests/server/Makefile
+config.status: creating tests/libtest/Makefile
+config.status: creating tests/unit/Makefile
+config.status: creating packages/Makefile
+config.status: creating packages/vms/Makefile
+config.status: creating curl-config
+config.status: creating libcurl.pc
+config.status: creating lib/curl_config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+configure: amending lib/Makefile
+configure: amending src/Makefile
+configure: amending tests/unit/Makefile
+configure: amending tests/server/Makefile
+configure: amending tests/libtest/Makefile
+configure: amending docs/examples/Makefile
+configure: Configured to build curl/libcurl:
+
+  Host setup:       arm-unknown-linux-androideabi
+  Install prefix:   /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root
+  Compiler:         /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+   CFLAGS:          -Os -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as -Qunused-arguments
+   CPPFLAGS:        -isystem /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include -DNDEBUG -isystem ./output/ANDROID/include -DHAVE_POSIX -DHAVE_STDINT_H -DHAVE_UNISTD_H -DHAVE_VASPRINTF -DANDROID -isystem ./output/ANDROID/lib/arm-linux-androideabi/root/include -DEYE_CANDY -DTESTING -DBIONIC -DLIBCPP_NO_IOSTREAM
+   LDFLAGS:         -L/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib -Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind
+   LIBS:            -lz
+
+  curl version:     7.70.0
+  SSL:              no      (--with-{ssl,gnutls,nss,mbedtls,wolfssl,schannel,secure-transport,mesalink,amissl,bearssl} )
+  SSH:              no      (--with-{libssh,libssh2})
+  zlib:             enabled
+  brotli:           no      (--with-brotli)
+  GSS-API:          no      (--with-gssapi)
+  TLS-SRP:          no      (--enable-tls-srp)
+  resolver:         default (--enable-ares / --enable-threaded-resolver)
+  IPv6:             enabled
+  Unix sockets:     enabled
+  IDN:              no      (--with-{libidn2,winidn})
+  Build libcurl:    Shared=no, Static=yes
+  Built-in manual:  no      (--enable-manual)
+  --libcurl option: enabled (--disable-libcurl-option)
+  Verbose errors:   no
+  Code coverage:    disabled
+  SSPI:             no      (--enable-sspi)
+  ca cert bundle:   no
+  ca cert path:     
+  ca fallback:      
+  LDAP:             no      (--enable-ldap / --with-ldap-lib / --with-lber-lib)
+  LDAPS:            no      (--enable-ldaps)
+  RTSP:             no      (--enable-rtsp)
+  RTMP:             no      (--with-librtmp)
+  Metalink:         no      (--with-libmetalink)
+  PSL:              no      (libpsl not found)
+  Alt-svc:          no      (--enable-alt-svc)
+  HTTP2:            disabled (--with-nghttp2)
+  HTTP3:            disabled (--with-ngtcp2, --with-quiche)
+  ESNI:             no      (--enable-esni)
+  Protocols:        FTP HTTP
+  Features:         IPv6 UnixSockets libz
+
+Making all in lib
+  CC       libcurl_la-asyn-ares.lo
+  CC       libcurl_la-altsvc.lo
+  CC       libcurl_la-asyn-thread.lo
+  CC       libcurl_la-amigaos.lo
+  CC       libcurl_la-base64.lo
+  CC       libcurl_la-connect.lo
+  CC       libcurl_la-conncache.lo
+  CC       libcurl_la-content_encoding.lo
+  CC       libcurl_la-cookie.lo
+  CC       libcurl_la-curl_addrinfo.lo
+  CC       libcurl_la-curl_ctype.lo
+  CC       libcurl_la-curl_des.lo
+  CC       libcurl_la-curl_endian.lo
+  CC       libcurl_la-curl_fnmatch.lo
+  CC       libcurl_la-curl_get_line.lo
+  CC       libcurl_la-curl_gethostname.lo
+  CC       libcurl_la-curl_gssapi.lo
+  CC       libcurl_la-curl_multibyte.lo
+  CC       libcurl_la-curl_memrchr.lo
+  CC       libcurl_la-curl_ntlm_core.lo
+  CC       libcurl_la-curl_ntlm_wb.lo
+  CC       libcurl_la-curl_path.lo
+  CC       libcurl_la-curl_range.lo
+  CC       libcurl_la-curl_rtmp.lo
+  CC       libcurl_la-curl_sasl.lo
+  CC       libcurl_la-curl_sspi.lo
+  CC       libcurl_la-curl_threads.lo
+  CC       libcurl_la-dict.lo
+  CC       libcurl_la-dotdot.lo
+  CC       libcurl_la-easy.lo
+  CC       libcurl_la-escape.lo
+  CC       libcurl_la-file.lo
+  CC       libcurl_la-fileinfo.lo
+  CC       libcurl_la-formdata.lo
+  CC       libcurl_la-ftp.lo
+  CC       libcurl_la-url.lo
+  CC       libcurl_la-ftplistparser.lo
+  CC       libcurl_la-getenv.lo
+  CC       libcurl_la-getinfo.lo
+  CC       libcurl_la-gopher.lo
+  CC       libcurl_la-hash.lo
+  CC       libcurl_la-hmac.lo
+  CC       libcurl_la-hostasyn.lo
+  CC       libcurl_la-hostcheck.lo
+  CC       libcurl_la-hostip.lo
+  CC       libcurl_la-hostip4.lo
+  CC       libcurl_la-hostip6.lo
+  CC       libcurl_la-hostsyn.lo
+  CC       libcurl_la-http.lo
+  CC       libcurl_la-http2.lo
+  CC       libcurl_la-http_chunks.lo
+  CC       libcurl_la-http_digest.lo
+  CC       libcurl_la-http_negotiate.lo
+  CC       libcurl_la-http_ntlm.lo
+  CC       libcurl_la-http_proxy.lo
+  CC       libcurl_la-idn_win32.lo
+  CC       libcurl_la-if2ip.lo
+  CC       libcurl_la-imap.lo
+  CC       libcurl_la-inet_ntop.lo
+  CC       libcurl_la-inet_pton.lo
+  CC       libcurl_la-krb5.lo
+  CC       libcurl_la-ldap.lo
+  CC       libcurl_la-llist.lo
+  CC       libcurl_la-md4.lo
+  CC       libcurl_la-md5.lo
+  CC       libcurl_la-memdebug.lo
+  CC       libcurl_la-mime.lo
+  CC       libcurl_la-mprintf.lo
+  CC       libcurl_la-mqtt.lo
+  CC       libcurl_la-multi.lo
+  CC       libcurl_la-netrc.lo
+  CC       libcurl_la-non-ascii.lo
+  CC       libcurl_la-nonblock.lo
+  CC       libcurl_la-openldap.lo
+  CC       libcurl_la-parsedate.lo
+  CC       libcurl_la-pingpong.lo
+  CC       libcurl_la-pop3.lo
+  CC       libcurl_la-progress.lo
+  CC       libcurl_la-psl.lo
+  CC       libcurl_la-doh.lo
+  CC       libcurl_la-rand.lo
+  CC       libcurl_la-rename.lo
+  CC       libcurl_la-rtsp.lo
+  CC       libcurl_la-security.lo
+  CC       libcurl_la-sendf.lo
+  CC       libcurl_la-select.lo
+  CC       libcurl_la-setopt.lo
+  CC       libcurl_la-sha256.lo
+  CC       libcurl_la-share.lo
+  CC       libcurl_la-slist.lo
+  CC       libcurl_la-smb.lo
+  CC       libcurl_la-smtp.lo
+  CC       libcurl_la-socketpair.lo
+  CC       libcurl_la-socks.lo
+  CC       libcurl_la-socks_gssapi.lo
+  CC       libcurl_la-socks_sspi.lo
+  CC       libcurl_la-speedcheck.lo
+  CC       libcurl_la-splay.lo
+  CC       libcurl_la-strcase.lo
+  CC       libcurl_la-strdup.lo
+  CC       libcurl_la-strerror.lo
+  CC       libcurl_la-strtok.lo
+  CC       libcurl_la-strtoofft.lo
+  CC       libcurl_la-system_win32.lo
+  CC       libcurl_la-telnet.lo
+  CC       libcurl_la-tftp.lo
+  CC       libcurl_la-timeval.lo
+  CC       libcurl_la-transfer.lo
+  CC       libcurl_la-urlapi.lo
+  CC       libcurl_la-version.lo
+  CC       libcurl_la-warnless.lo
+  CC       libcurl_la-wildcard.lo
+  CC       libcurl_la-x509asn1.lo
+  CC       vauth/libcurl_la-cleartext.lo
+  CC       vauth/libcurl_la-cram.lo
+  CC       vauth/libcurl_la-digest.lo
+  CC       vauth/libcurl_la-digest_sspi.lo
+  CC       vauth/libcurl_la-krb5_gssapi.lo
+  CC       vauth/libcurl_la-krb5_sspi.lo
+  CC       vauth/libcurl_la-ntlm.lo
+  CC       vauth/libcurl_la-ntlm_sspi.lo
+  CC       vauth/libcurl_la-oauth2.lo
+  CC       vauth/libcurl_la-spnego_gssapi.lo
+  CC       vauth/libcurl_la-spnego_sspi.lo
+  CC       vauth/libcurl_la-vauth.lo
+  CC       vtls/libcurl_la-bearssl.lo
+  CC       vtls/libcurl_la-gskit.lo
+  CC       vtls/libcurl_la-gtls.lo
+  CC       vtls/libcurl_la-mbedtls.lo
+  CC       vtls/libcurl_la-mesalink.lo
+  CC       vtls/libcurl_la-mbedtls_threadlock.lo
+  CC       vtls/libcurl_la-nss.lo
+  CC       vtls/libcurl_la-openssl.lo
+  CC       vtls/libcurl_la-schannel.lo
+  CC       vtls/libcurl_la-schannel_verify.lo
+  CC       vtls/libcurl_la-sectransp.lo
+  CC       vtls/libcurl_la-vtls.lo
+  CC       vtls/libcurl_la-wolfssl.lo
+  CC       vquic/libcurl_la-ngtcp2.lo
+  CC       vquic/libcurl_la-quiche.lo
+  CC       vssh/libcurl_la-libssh.lo
+  CC       vssh/libcurl_la-libssh2.lo
+  CC       vssh/libcurl_la-wolfssh.lo
+  CCLD     libcurl.la
+Making all in src
+Making all in ../docs
+Making all in .
+Making all in cmdline-opts
+  CC       curl-tool_bname.o
+  CC       curl-slist_wc.o
+  CC       curl-tool_cb_dbg.o
+  CC       curl-tool_binmode.o
+  CC       curl-tool_cb_hdr.o
+  CC       curl-tool_cb_prg.o
+  CC       curl-tool_cb_rea.o
+  CC       curl-tool_cb_see.o
+  CC       curl-tool_cb_wrt.o
+  CC       curl-tool_convert.o
+  CC       curl-tool_cfgable.o
+  CC       curl-tool_dirhie.o
+  CC       curl-tool_doswin.o
+  CC       curl-tool_easysrc.o
+  CC       curl-tool_filetime.o
+  CC       curl-tool_formparse.o
+  CC       curl-tool_getparam.o
+  CC       curl-tool_getpass.o
+  CC       curl-tool_help.o
+  CC       curl-tool_helpers.o
+  CC       curl-tool_homedir.o
+  CC       curl-tool_hugehelp.o
+  CC       curl-tool_libinfo.o
+  CC       curl-tool_main.o
+  CC       curl-tool_metalink.o
+  CC       curl-tool_msgs.o
+  CC       curl-tool_operate.o
+  CC       curl-tool_operhlp.o
+  CC       curl-tool_panykey.o
+  CC       curl-tool_paramhlp.o
+  CC       curl-tool_parsecfg.o
+  CC       curl-tool_progress.o
+  CC       curl-tool_strdup.o
+  CC       curl-tool_setopt.o
+  CC       curl-tool_sleep.o
+  CC       curl-tool_urlglob.o
+  CC       curl-tool_util.o
+  CC       curl-tool_vms.o
+  CC       curl-tool_writeout.o
+  CC       curl-tool_writeout_json.o
+  CC       curl-tool_xattr.o
+  CC       ../lib/curl-warnless.o
+  CC       ../lib/curl-nonblock.o
+  CC       ../lib/curl-strtoofft.o
+  CC       ../lib/curl-curl_ctype.o
+  CCLD     curl
+Making install in lib
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libcurl.la '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib'
+libtool: install: /usr/bin/install -c .libs/libcurl.lai /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libcurl.la
+libtool: install: /usr/bin/install -c .libs/libcurl.a /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libcurl.a
+libtool: install: chmod 644 /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libcurl.a
+libtool: install: /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libcurl.a
+Making install in src
+Making install in ../docs
+Making install in .
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man1'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/curl-config.1 /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/build/curl-7.70.0/docs/curl.1 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man1'
+Making install in cmdline-opts
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/bin'
+  /bin/bash ../libtool   --mode=install /usr/bin/install -c curl '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/bin'
+libtool: install: /usr/bin/install -c curl /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/bin/curl
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/bin'
+ /usr/bin/install -c curl-config '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/bin'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/pkgconfig'
+ /usr/bin/install -c -m 644 libcurl.pc '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/pkgconfig'
+Making install in curl
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include/curl'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/curl.h /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/curlver.h /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/easy.h /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/mprintf.h /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/stdcheaders.h /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/multi.h /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/typecheck-gcc.h /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/system.h /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/include/curl/urlapi.h '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include/curl'
+Making install in .
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man1'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/curl-config.1 /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/build/curl-7.70.0/docs/curl.1 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man1'
+Making install in cmdline-opts
+Making install in opts
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_ACTIVESOCKET.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_APPCONNECT_TIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_APPCONNECT_TIME_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CERTINFO.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CONDITION_UNMET.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CONNECT_TIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CONNECT_TIME_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CONTENT_LENGTH_DOWNLOAD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CONTENT_LENGTH_DOWNLOAD_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CONTENT_LENGTH_UPLOAD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CONTENT_LENGTH_UPLOAD_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_CONTENT_TYPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_COOKIELIST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_EFFECTIVE_URL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_FILETIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_FILETIME_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_FTP_ENTRY_PATH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_HEADER_SIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_HTTPAUTH_AVAIL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_HTTP_CONNECTCODE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_HTTP_VERSION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_LASTSOCKET.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_LOCAL_IP.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_LOCAL_PORT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_NAMELOOKUP_TIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_NAMELOOKUP_TIME_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_NUM_CONNECTS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_OS_ERRNO.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_PRETRANSFER_TIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_PRETRANSFER_TIME_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_PRIMARY_IP.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_PRIMARY_PORT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_PRIVATE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_PROTOCOL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_PROXYAUTH_AVAIL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_PROXY_SSL_VERIFYRESULT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_REDIRECT_COUNT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_REDIRECT_TIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_REDIRECT_TIME_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_REDIRECT_URL.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_REQUEST_SIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_RESPONSE_CODE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_RETRY_AFTER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_RTSP_CLIENT_CSEQ.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_RTSP_CSEQ_RECV.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_RTSP_SERVER_CSEQ.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_RTSP_SESSION_ID.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SCHEME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SIZE_DOWNLOAD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SIZE_DOWNLOAD_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SIZE_UPLOAD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SIZE_UPLOAD_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SPEED_DOWNLOAD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SPEED_DOWNLOAD_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SPEED_UPLOAD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SPEED_UPLOAD_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SSL_ENGINES.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_SSL_VERIFYRESULT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_STARTTRANSFER_TIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_STARTTRANSFER_TIME_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_TLS_SESSION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_TLS_SSL_PTR.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_TOTAL_TIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLINFO_TOTAL_TIME_T.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_CHUNK_LENGTH_PENALTY_SIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_CONTENT_LENGTH_PENALTY_SIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_MAXCONNECTS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_MAX_CONCURRENT_STREAMS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_MAX_HOST_CONNECTIONS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_MAX_PIPELINE_LENGTH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_MAX_TOTAL_CONNECTIONS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_PIPELINING.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_PIPELINING_SERVER_BL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_PIPELINING_SITE_BL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_PUSHDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_PUSHFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_SOCKETDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_SOCKETFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_TIMERDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLMOPT_TIMERFUNCTION.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_ABSTRACT_UNIX_SOCKET.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_ACCEPTTIMEOUT_MS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_ACCEPT_ENCODING.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_ADDRESS_SCOPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_ALTSVC.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_ALTSVC_CTRL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_APPEND.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_AUTOREFERER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_BUFFERSIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CAINFO.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CAPATH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CERTINFO.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CHUNK_BGN_FUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CHUNK_DATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CHUNK_END_FUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CLOSESOCKETDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CLOSESOCKETFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CONNECTTIMEOUT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CONNECTTIMEOUT_MS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CONNECT_ONLY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CONNECT_TO.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CONV_FROM_NETWORK_FUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CONV_FROM_UTF8_FUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CONV_TO_NETWORK_FUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_COOKIE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_COOKIEFILE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_COOKIEJAR.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_COOKIELIST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_COOKIESESSION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_COPYPOSTFIELDS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CRLF.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CRLFILE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CURLU.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_CUSTOMREQUEST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DEBUGDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DEBUGFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DEFAULT_PROTOCOL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DIRLISTONLY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DISALLOW_USERNAME_IN_URL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DNS_CACHE_TIMEOUT.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DNS_INTERFACE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DNS_LOCAL_IP4.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DNS_LOCAL_IP6.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DNS_SERVERS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DNS_SHUFFLE_ADDRESSES.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DNS_USE_GLOBAL_CACHE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_DOH_URL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_EGDSOCKET.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_ERRORBUFFER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_EXPECT_100_TIMEOUT_MS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FAILONERROR.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FILETIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FNMATCH_DATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FNMATCH_FUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FOLLOWLOCATION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FORBID_REUSE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FRESH_CONNECT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTPPORT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTPSSLAUTH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_ACCOUNT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_ALTERNATIVE_TO_USER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_CREATE_MISSING_DIRS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_FILEMETHOD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_RESPONSE_TIMEOUT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_SKIP_PASV_IP.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_SSL_CCC.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_USE_EPRT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_USE_EPSV.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_FTP_USE_PRET.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_GSSAPI_DELEGATION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HAPPY_EYEBALLS_TIMEOUT_MS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HAPROXYPROTOCOL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HEADER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HEADERDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HEADERFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HEADEROPT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTP09_ALLOWED.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTP200ALIASES.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTPAUTH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTPGET.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTPHEADER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTPPOST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTPPROXYTUNNEL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTP_CONTENT_DECODING.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTP_TRANSFER_DECODING.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_HTTP_VERSION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_IGNORE_CONTENT_LENGTH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_INFILESIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_INFILESIZE_LARGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_INTERFACE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_INTERLEAVEDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_INTERLEAVEFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_IOCTLDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_IOCTLFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_IPRESOLVE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_ISSUERCERT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_KEEP_SENDING_ON_ERROR.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_KEYPASSWD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_KRBLEVEL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_LOCALPORT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_LOCALPORTRANGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_LOGIN_OPTIONS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_LOW_SPEED_LIMIT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_LOW_SPEED_TIME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAIL_AUTH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAIL_FROM.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAIL_RCPT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAIL_RCPT_ALLLOWFAILS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAXAGE_CONN.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAXCONNECTS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAXFILESIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAXFILESIZE_LARGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAXREDIRS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAX_RECV_SPEED_LARGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MAX_SEND_SPEED_LARGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_MIMEPOST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_NETRC.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_NETRC_FILE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_NEW_DIRECTORY_PERMS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_NEW_FILE_PERMS.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_NOBODY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_NOPROGRESS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_NOPROXY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_NOSIGNAL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_OPENSOCKETDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_OPENSOCKETFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PASSWORD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PATH_AS_IS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PINNEDPUBLICKEY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PIPEWAIT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PORT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_POST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_POSTFIELDS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_POSTFIELDSIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_POSTFIELDSIZE_LARGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_POSTQUOTE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_POSTREDIR.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PREQUOTE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PRE_PROXY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PRIVATE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROGRESSDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROGRESSFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROTOCOLS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXYAUTH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXYHEADER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXYPASSWORD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXYPORT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXYTYPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXYUSERNAME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXYUSERPWD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_CAINFO.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_CAPATH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_CRLFILE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_KEYPASSWD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_PINNEDPUBLICKEY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SERVICE_NAME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSLCERT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSLCERTTYPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSLKEY.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSLKEYTYPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSLVERSION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSL_CIPHER_LIST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSL_OPTIONS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSL_VERIFYHOST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_SSL_VERIFYPEER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_TLS13_CIPHERS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_TLSAUTH_PASSWORD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_TLSAUTH_TYPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_TLSAUTH_USERNAME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PROXY_TRANSFER_MODE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_PUT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_QUOTE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RANDOM_FILE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RANGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_READDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_READFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_REDIR_PROTOCOLS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_REFERER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_REQUEST_TARGET.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RESOLVE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RESOLVER_START_DATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RESOLVER_START_FUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RESUME_FROM.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RESUME_FROM_LARGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RTSP_CLIENT_CSEQ.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RTSP_REQUEST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RTSP_SERVER_CSEQ.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RTSP_SESSION_ID.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RTSP_STREAM_URI.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_RTSP_TRANSPORT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SASL_AUTHZID.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SASL_IR.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SEEKDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SEEKFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SERVICE_NAME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SHARE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SOCKOPTDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SOCKOPTFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SOCKS5_AUTH.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SOCKS5_GSSAPI_NEC.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SOCKS5_GSSAPI_SERVICE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSH_AUTH_TYPES.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSH_COMPRESSION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSH_HOST_PUBLIC_KEY_MD5.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSH_KEYDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSH_KEYFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSH_KNOWNHOSTS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSH_PRIVATE_KEYFILE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSH_PUBLIC_KEYFILE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSLCERT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSLCERTTYPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSLENGINE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSLENGINE_DEFAULT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSLKEY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSLKEYTYPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSLVERSION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_CIPHER_LIST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_CTX_DATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_CTX_FUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_ENABLE_ALPN.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_ENABLE_NPN.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_FALSESTART.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_OPTIONS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_SESSIONID_CACHE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_VERIFYHOST.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_VERIFYPEER.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SSL_VERIFYSTATUS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_STDERR.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_STREAM_DEPENDS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_STREAM_DEPENDS_E.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_STREAM_WEIGHT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_SUPPRESS_CONNECT_HEADERS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TCP_FASTOPEN.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TCP_KEEPALIVE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TCP_KEEPIDLE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TCP_KEEPINTVL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TCP_NODELAY.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TELNETOPTIONS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TFTP_BLKSIZE.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TFTP_NO_OPTIONS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TIMECONDITION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TIMEOUT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TIMEOUT_MS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TIMEVALUE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TIMEVALUE_LARGE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TLS13_CIPHERS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TLSAUTH_PASSWORD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TLSAUTH_TYPE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TLSAUTH_USERNAME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TRAILERDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TRAILERFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TRANSFERTEXT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_TRANSFER_ENCODING.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_UNIX_SOCKET_PATH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_UNRESTRICTED_AUTH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_UPKEEP_INTERVAL_MS.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_UPLOAD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_UPLOAD_BUFFERSIZE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_URL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_USERAGENT.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_USERNAME.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_USERPWD.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_USE_SSL.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_VERBOSE.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_WILDCARDMATCH.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_WRITEDATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_WRITEFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_XFERINFODATA.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_XFERINFOFUNCTION.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/opts/CURLOPT_XOAUTH2_BEARER.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/aclocal'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl.m4 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/aclocal'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_cleanup.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_duphandle.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_escape.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_getinfo.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_init.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_pause.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_perform.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_recv.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_reset.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_send.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_setopt.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_strerror.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_unescape.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_easy_upkeep.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_escape.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_formadd.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_formfree.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_formget.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_free.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_getdate.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_getenv.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_global_cleanup.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_global_init.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_global_init_mem.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_global_sslset.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_addpart.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_data.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_data_cb.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_encoder.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_filedata.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_filename.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_free.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_headers.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_init.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_name.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_subparts.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mime_type.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_mprintf.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_add_handle.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_assign.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_cleanup.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_fdset.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_info_read.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_init.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_perform.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_poll.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_remove_handle.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_setopt.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_socket.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_socket_action.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_socket_all.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_strerror.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_timeout.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_wakeup.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_multi_wait.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_share_cleanup.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_share_init.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_share_setopt.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_share_strerror.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_slist_append.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_slist_free_all.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_strequal.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_strnequal.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_unescape.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_url.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_url_cleanup.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_url_dup.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_url_get.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_url_set.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_version.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/curl_version_info.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-easy.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-env.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-errors.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-multi.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-security.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-share.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-symbols.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-thread.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-tutorial.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl-url.3 /home/august/Projects/Gliding/XCSoar/output/src/curl-7.70.0/docs/libcurl/libcurl.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+download http://www.lua.org/ftp/lua-5.3.5.tar.gz
+Wende Patch /home/august/Projects/Gliding/XCSoar/lib/lua/patches/bionic.diff an
+patching file src/lmathlib.c
+
+Wende Patch /home/august/Projects/Gliding/XCSoar/lib/lua/patches/ios_no_system.diff an
+patching file src/loslib.c
+Hunk #4 succeeded at 392 (offset 2 lines).
+Hunk #5 succeeded at 413 (offset 2 lines).
+
+Jetzt in Patch /home/august/Projects/Gliding/XCSoar/lib/lua/patches/ios_no_system.diff
+lundump.c:237:33: warning: adding 'int' to a string does not append to the string [-Wstring-plus-int]
+  checkliteral(S, LUA_SIGNATURE + 1, "not a");  /* 1st char already checked */
+                  ~~~~~~~~~~~~~~^~~
+lundump.c:237:33: note: use array indexing to silence this warning
+  checkliteral(S, LUA_SIGNATURE + 1, "not a");  /* 1st char already checked */
+                                ^
+                  &             [  ]
+1 warning generated.
+loslib.c:174:3: warning: 'tmpnam' is deprecated: tempnam is unsafe, use mkstemp or tmpfile instead [-Wdeprecated-declarations]
+  lua_tmpnam(buff, err);
+  ^
+loslib.c:134:33: note: expanded from macro 'lua_tmpnam'
+#define lua_tmpnam(b,e)         { e = (tmpnam(b) == NULL); }
+                                       ^
+/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/stdio.h:167:5: note: 'tmpnam' has been explicitly marked deprecated here
+    __warnattr("tempnam is unsafe, use mkstemp or tmpfile instead");
+    ^
+/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/sys/cdefs.h:131:40: note: expanded from macro '__warnattr'
+#define __warnattr(msg) __attribute__((deprecated(msg)))
+                                       ^
+1 warning generated.
+download http://download.osgeo.org/proj/proj-5.1.0.tar.gz
+Wende Patch /home/august/Projects/Gliding/XCSoar/lib/proj/patches/no_programs.diff an
+patching file src/Makefile.am
+Hunk #1 succeeded at 1 with fuzz 2.
+
+Jetzt in Patch /home/august/Projects/Gliding/XCSoar/lib/proj/patches/no_programs.diff
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, '.'.
+libtoolize: linking file './ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: linking file 'm4/libtool.m4'
+libtoolize: linking file 'm4/ltoptions.m4'
+libtoolize: linking file 'm4/ltsugar.m4'
+libtoolize: linking file 'm4/ltversion.m4'
+libtoolize: linking file 'm4/lt~obsolete.m4'
+configure.ac:14: installing './compile'
+configure.ac:10: installing './missing'
+src/Makefile.am: installing './depcomp'
+src/Makefile.am:21: warning: variable 'cct_SOURCES' is defined but no program or
+src/Makefile.am:21: library has 'cct' as canonical name (possible typo)
+src/Makefile.am:20: warning: variable 'cs2cs_SOURCES' is defined but no program or
+src/Makefile.am:20: library has 'cs2cs' as canonical name (possible typo)
+src/Makefile.am:23: warning: variable 'geod_SOURCES' is defined but no program or
+src/Makefile.am:23: library has 'geod' as canonical name (possible typo)
+src/Makefile.am:25: warning: variable 'gie_SOURCES' is defined but no program or
+src/Makefile.am:25: library has 'gie' as canonical name (possible typo)
+src/Makefile.am:26: warning: variable 'multistresstest_SOURCES' is defined but no program or
+src/Makefile.am:26: library has 'multistresstest' as canonical name (possible typo)
+src/Makefile.am:22: warning: variable 'nad2bin_SOURCES' is defined but no program or
+src/Makefile.am:22: library has 'nad2bin' as canonical name (possible typo)
+src/Makefile.am:19: warning: variable 'proj_SOURCES' is defined but no program or
+src/Makefile.am:19: library has 'proj' as canonical name (possible typo)
+src/Makefile.am:27: warning: variable 'test228_SOURCES' is defined but no program or
+src/Makefile.am:27: library has 'test228' as canonical name (possible typo)
+src/Makefile.am:30: warning: variable 'cct_LDADD' is defined but no program or
+src/Makefile.am:30: library has 'cct' as canonical name (possible typo)
+src/Makefile.am:31: warning: variable 'cs2cs_LDADD' is defined but no program or
+src/Makefile.am:31: library has 'cs2cs' as canonical name (possible typo)
+src/Makefile.am:32: warning: variable 'geod_LDADD' is defined but no program or
+src/Makefile.am:32: library has 'geod' as canonical name (possible typo)
+src/Makefile.am:36: warning: variable 'gie_LDADD' is defined but no program or
+src/Makefile.am:36: library has 'gie' as canonical name (possible typo)
+src/Makefile.am:37: warning: variable 'multistresstest_LDADD' is defined but no program or
+src/Makefile.am:37: library has 'multistresstest' as canonical name (possible typo)
+src/Makefile.am:34: warning: variable 'nad2bin_LDADD' is defined but no program or
+src/Makefile.am:34: library has 'nad2bin' as canonical name (possible typo)
+src/Makefile.am:33: warning: variable 'proj_LDADD' is defined but no program or
+src/Makefile.am:33: library has 'proj' as canonical name (possible typo)
+src/Makefile.am:38: warning: variable 'test228_LDADD' is defined but no program or
+src/Makefile.am:38: library has 'test228' as canonical name (possible typo)
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for arm-linux-androideabi-strip... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for style of include used by make... GNU
+checking for arm-linux-androideabi-gcc... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang accepts -g... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to accept ISO C89... none needed
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang understands -c and -o together... yes
+checking dependency style of /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... gcc3
+checking C_WFLAGS for maximum warnings... -Wall -Wdeclaration-after-statement
+checking for arm-linux-androideabi-gcc... (cached) /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang accepts -g... (cached) yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to accept ISO C89... (cached) none needed
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang understands -c and -o together... (cached) yes
+checking dependency style of /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... (cached) gcc3
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... (cached) yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... arm-unknown-linux-androideabi
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... no
+checking for arm-linux-androideabi-dumpbin... no
+checking for arm-linux-androideabi-link... no
+checking for dumpbin... no
+checking for link... link -dump
+configure: WARNING: using cross tools not prefixed with host triplet
+checking the name lister (nm) interface... BSD nm
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to arm-unknown-linux-androideabi format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for arm-linux-androideabi-objdump... no
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for arm-linux-androideabi-dlltool... no
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for arm-linux-androideabi-ar... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar
+checking for archiver @FILE support... @
+checking for arm-linux-androideabi-strip... (cached) /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for arm-linux-androideabi-ranlib... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib
+checking command to parse nm output from /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for arm-linux-androideabi-mt... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -fno-rtti -fno-exceptions... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to produce PIC... -fPIC -DPIC
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang PIC flag -fPIC -DPIC works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang static flag -static works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -c -o file.o... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -c -o file.o... (cached) yes
+checking whether the /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... Android linker
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking for exp in -lm... yes
+checking for ANSI C header files... (cached) yes
+checking whether C compiler accepts -fp-model precise... no
+checking for C99 math functions... no
+checking for library containing sqrt... none required
+checking for localeconv... yes
+checking jni.h usability... yes
+checking jni.h presence... no
+configure: WARNING: jni.h: accepted by the compiler, rejected by the preprocessor!
+configure: WARNING: jni.h: proceeding with the compiler's result
+checking for jni.h... yes
+checking whether to enable Java/JNI support... enabled
+checking for mutexes... disabled by user
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating cmake/Makefile
+config.status: creating src/Makefile
+config.status: creating test/Makefile
+config.status: creating test/gie/Makefile
+config.status: creating test/gigs/Makefile
+config.status: creating man/Makefile
+config.status: creating man/man1/Makefile
+config.status: creating man/man3/Makefile
+config.status: creating nad/Makefile
+config.status: creating jniwrap/Makefile
+config.status: creating jniwrap/org.osgeo.proj/Makefile
+config.status: creating jniwrap/org.osgeo.proj/org/Makefile
+config.status: creating jniwrap/org.osgeo.proj/org/proj4/Makefile
+config.status: creating nad/install
+config.status: creating proj.pc
+config.status: creating src/proj_config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+Making all in src
+config.status: creating src/proj_config.h
+  CC       PJ_gnom.lo
+  CC       PJ_mod_ster.lo
+  CC       PJ_laea.lo
+  CC       PJ_aeqd.lo
+  CC       PJ_nsper.lo
+  CC       PJ_nzmg.lo
+  CC       PJ_ortho.lo
+  CC       PJ_stere.lo
+  CC       PJ_sterea.lo
+  CC       PJ_aea.lo
+  CC       PJ_bipc.lo
+  CC       PJ_bonne.lo
+  CC       PJ_eqdc.lo
+  CC       PJ_isea.lo
+  CC       PJ_ccon.lo
+  CC       PJ_imw_p.lo
+  CC       PJ_krovak.lo
+  CC       PJ_lcc.lo
+  CC       PJ_poly.lo
+  CC       PJ_rpoly.lo
+  CC       PJ_sconics.lo
+  CC       proj_rouss.lo
+  CC       PJ_cass.lo
+  CC       PJ_cc.lo
+  CC       PJ_cea.lo
+  CC       PJ_eqc.lo
+  CC       PJ_gall.lo
+  CC       PJ_geoc.lo
+  CC       PJ_labrd.lo
+  CC       PJ_lsat.lo
+  CC       PJ_misrsom.lo
+  CC       PJ_merc.lo
+  CC       PJ_mill.lo
+  CC       PJ_ocea.lo
+  CC       PJ_omerc.lo
+  CC       PJ_somerc.lo
+  CC       PJ_tcc.lo
+  CC       PJ_tcea.lo
+  CC       PJ_times.lo
+  CC       PJ_tmerc.lo
+  CC       PJ_airy.lo
+  CC       PJ_aitoff.lo
+  CC       PJ_august.lo
+  CC       PJ_bacon.lo
+  CC       PJ_chamb.lo
+  CC       PJ_hammer.lo
+  CC       PJ_lagrng.lo
+  CC       PJ_larr.lo
+  CC       PJ_lask.lo
+  CC       PJ_latlong.lo
+  CC       PJ_nocol.lo
+  CC       PJ_ob_tran.lo
+  CC       PJ_oea.lo
+  CC       PJ_tpeqd.lo
+  CC       PJ_vandg.lo
+  CC       PJ_vandg2.lo
+  CC       PJ_vandg4.lo
+  CC       PJ_lcca.lo
+  CC       PJ_wag7.lo
+  CC       PJ_geos.lo
+  CC       proj_etmerc.lo
+  CC       PJ_boggs.lo
+  CC       PJ_collg.lo
+  CC       PJ_comill.lo
+  CC       PJ_crast.lo
+  CC       PJ_denoy.lo
+  CC       PJ_eck1.lo
+  CC       PJ_eck2.lo
+  CC       PJ_eck3.lo
+  CC       PJ_eck4.lo
+  CC       PJ_eck5.lo
+  CC       PJ_fahey.lo
+  CC       PJ_fouc_s.lo
+  CC       PJ_gins8.lo
+  CC       PJ_gstmerc.lo
+  CC       PJ_gn_sinu.lo
+  CC       PJ_goode.lo
+  CC       PJ_igh.lo
+  CC       PJ_hatano.lo
+  CC       PJ_loxim.lo
+  CC       PJ_mbt_fps.lo
+  CC       PJ_mbtfpp.lo
+  CC       PJ_mbtfpq.lo
+  CC       PJ_moll.lo
+  CC       PJ_nell.lo
+  CC       PJ_nell_h.lo
+  CC       PJ_patterson.lo
+  CC       PJ_putp2.lo
+  CC       PJ_putp3.lo
+  CC       PJ_putp4p.lo
+  CC       PJ_putp5.lo
+  CC       PJ_putp6.lo
+  CC       PJ_qsc.lo
+  CC       PJ_robin.lo
+  CC       PJ_sch.lo
+  CC       PJ_sts.lo
+  CC       PJ_urm5.lo
+  CC       PJ_urmfps.lo
+  CC       PJ_wag2.lo
+  CC       PJ_wag3.lo
+  CC       PJ_wink1.lo
+  CC       PJ_wink2.lo
+  CC       pj_geocent.lo
+  CC       aasincos.lo
+  CC       adjlon.lo
+  CC       bch2bps.lo
+  CC       bchgen.lo
+  CC       biveval.lo
+  CC       dmstor.lo
+  CC       mk_cheby.lo
+  CC       pj_auth.lo
+  CC       pj_deriv.lo
+  CC       pj_ell_set.lo
+  CC       pj_ellps.lo
+  CC       pj_errno.lo
+  CC       pj_factors.lo
+  CC       pj_fwd.lo
+  CC       pj_init.lo
+  CC       pj_inv.lo
+  CC       pj_list.lo
+  CC       pj_malloc.lo
+  CC       pj_mlfn.lo
+  CC       pj_msfn.lo
+  CC       proj_mdist.lo
+  CC       pj_open_lib.lo
+  CC       pj_param.lo
+  CC       pj_phi2.lo
+  CC       pj_pr_list.lo
+  CC       pj_qsfn.lo
+  CC       pj_strerrno.lo
+  CC       pj_tsfn.lo
+  CC       pj_units.lo
+  CC       pj_ctx.lo
+  CC       pj_log.lo
+  CC       pj_zpoly1.lo
+  CC       rtodms.lo
+  CC       vector1.lo
+  CC       pj_release.lo
+  CC       pj_gauss.lo
+  CC       PJ_healpix.lo
+  CC       PJ_natearth.lo
+  CC       PJ_natearth2.lo
+  CC       PJ_calcofi.lo
+  CC       pj_fileapi.lo
+  CC       pj_gc_reader.lo
+  CC       pj_gridcatalog.lo
+  CC       nad_cvt.lo
+  CC       nad_init.lo
+  CC       nad_intr.lo
+  CC       emess.lo
+  CC       pj_apply_gridshift.lo
+  CC       pj_datums.lo
+  CC       pj_datum_set.lo
+  CC       pj_transform.lo
+  CC       geocent.lo
+  CC       pj_utils.lo
+  CC       pj_gridinfo.lo
+  CC       pj_gridlist.lo
+  CC       jniproj.lo
+  CC       pj_mutex.lo
+  CC       pj_initcache.lo
+  CC       pj_apply_vgridshift.lo
+  CC       geodesic.lo
+  CC       pj_strtod.lo
+  CC       pj_math.lo
+  CC       proj_4D_api.lo
+  CC       PJ_cart.lo
+  CC       PJ_pipeline.lo
+  CC       PJ_horner.lo
+  CC       PJ_helmert.lo
+  CC       PJ_vgridshift.lo
+  CC       PJ_hgridshift.lo
+  CC       PJ_unitconvert.lo
+  CC       PJ_molodensky.lo
+  CC       PJ_deformation.lo
+  CC       pj_internal.lo
+  CC       PJ_axisswap.lo
+  CCLD     libproj.la
+Making all in man
+Making all in man1
+Making all in man3
+Making all in nad
+Making all in jniwrap
+Making all in org.osgeo.proj
+Making all in org
+Making all in proj4
+Making all in cmake
+Making all in test
+Making all in gie
+Making all in gigs
+Making install in src
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libproj.la '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib'
+libtool: install: /usr/bin/install -c .libs/libproj.lai /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libproj.la
+libtool: install: /usr/bin/install -c .libs/libproj.a /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libproj.a
+libtool: install: chmod 644 /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libproj.a
+libtool: install: /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libproj.a
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/src/proj.h /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/src/proj_api.h /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/src/projects.h /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/src/geodesic.h /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/src/org_proj4_PJ.h '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+Making install in man
+Making install in man1
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man1'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/man/man1/geod.1 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/man/man1/proj.1 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/man/man1/cs2cs.1 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/man/man1/cct.1 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/man/man1/gie.1 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man1'
+Making install in man3
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/man/man3/pj_init.3 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/man/man3/geodesic.3 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/man/man3'
+Making install in nad
+nad2nad NADCON source files not present
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/proj'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/GL27 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/nad.lst /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/proj_def.dat /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/nad27 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/nad83 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/world /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/epsg /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/esri /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/esri.extra /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/other.extra /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/CH /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/IGNF /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/ITRF2000 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/ITRF2008 /home/august/Projects/Gliding/XCSoar/output/src/proj-5.1.0/nad/ITRF2014 '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/proj'
+config.status: creating nad/install
+Making install in jniwrap
+Making install in org.osgeo.proj
+Making install in org
+Making install in proj4
+In jniwrap
+Making install in cmake
+Making install in test
+Making install in gie
+Making install in gigs
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/pkgconfig'
+ /usr/bin/install -c -m 644 proj.pc '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/pkgconfig'
+download http://download.osgeo.org/libtiff/tiff-4.0.10.tar.gz
+Wende Patch /home/august/Projects/Gliding/XCSoar/lib/libtiff/patches/no_programs.diff an
+patching file libtiff/Makefile.am
+Hunk #1 succeeded at 147 (offset 2 lines).
+patching file Makefile.am
+Hunk #1 succeeded at 60 (offset -1 lines).
+
+Jetzt in Patch /home/august/Projects/Gliding/XCSoar/lib/libtiff/patches/no_programs.diff
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'config'.
+libtoolize: linking file 'config/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: linking file 'm4/libtool.m4'
+libtoolize: linking file 'm4/ltoptions.m4'
+libtoolize: linking file 'm4/ltsugar.m4'
+libtoolize: linking file 'm4/ltversion.m4'
+libtoolize: linking file 'm4/lt~obsolete.m4'
+configure.ac:106: installing 'config/compile'
+configure.ac:36: installing 'config/missing'
+contrib/addtiffo/Makefile.am: installing 'config/depcomp'
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... arm-unknown-linux-androideabi
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for arm-linux-androideabi-strip... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking how to create a pax tar archive... gnutar
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for arm-linux-androideabi-gcc... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang accepts -g... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to accept ISO C89... none needed
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... gcc3
+checking for C compiler warning flags... -Wall -W
+checking whether ln -s works... yes
+checking for cmake... /usr/local/bin/cmake
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... no
+checking for arm-linux-androideabi-dumpbin... no
+checking for arm-linux-androideabi-link... no
+checking for dumpbin... no
+checking for link... link -dump
+configure: WARNING: using cross tools not prefixed with host triplet
+checking the name lister (nm) interface... BSD nm
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to arm-unknown-linux-androideabi format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for arm-linux-androideabi-objdump... no
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for arm-linux-androideabi-dlltool... no
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for arm-linux-androideabi-ar... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar
+checking for archiver @FILE support... @
+checking for arm-linux-androideabi-strip... (cached) /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for arm-linux-androideabi-ranlib... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib
+checking command to parse nm output from /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for arm-linux-androideabi-mt... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -fno-rtti -fno-exceptions... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to produce PIC... -fPIC -DPIC
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang PIC flag -fPIC -DPIC works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang static flag -static works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -c -o file.o... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -c -o file.o... (cached) yes
+checking whether the /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... Android linker
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking whether we are using the GNU C++ compiler... yes
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ accepts -g... yes
+checking dependency style of /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++... gcc3
+checking how to run the C++ preprocessor... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ -E
+checking for ld used by /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking whether the /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ linker (/usr/bin/ld) supports shared libraries... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ option to produce PIC... -fPIC -DPIC
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ PIC flag -fPIC -DPIC works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ static flag -static works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ supports -c -o file.o... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ supports -c -o file.o... (cached) yes
+checking whether the /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... Android linker
+checking how to hardcode library paths into programs... immediate
+checking whether make supports nested variables... (cached) yes
+checking for sin in -lm... yes
+checking assert.h usability... yes
+checking assert.h presence... yes
+checking for assert.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking io.h usability... no
+checking io.h presence... no
+checking for io.h... no
+checking search.h usability... yes
+checking search.h presence... yes
+checking for search.h... yes
+checking for unistd.h... (cached) yes
+checking for an ANSI C-conforming const... yes
+checking for inline... inline
+checking whether byte ordering is bigendian... no
+checking for off_t... yes
+checking for size_t... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking whether optarg is declared... yes
+checking size of signed int... 4
+checking size of unsigned int... 4
+checking size of signed long... 4
+checking size of unsigned long... 4
+checking size of signed long long... 8
+checking size of unsigned long long... 8
+checking size of unsigned char *... 4
+checking size of size_t... 4
+checking for signed 8-bit type... signed char
+checking for unsigned 8-bit type... unsigned char
+checking for signed 16-bit type... signed short
+checking for unsigned 16-bit type... unsigned short
+checking for signed 32-bit type... signed int
+checking for unsigned 32-bit type... unsigned int
+checking for signed 64-bit type... signed long long
+checking for unsigned 64-bit type... unsigned long long
+checking for 'size_t' format specifier... "%u"
+checking for signed size type... signed int
+checking for ptrdiff_t... yes
+checking for pointer difference type... ptrdiff_t
+checking for mmap... yes
+checking for setmode... no
+checking for snprintf... yes
+checking for getopt... yes
+checking for snprintf... (cached) yes
+checking for strcasecmp... yes
+checking for strtol... yes
+checking for strtoll... yes
+checking for strtoul... yes
+checking for strtoull... yes
+checking for lfind... yes
+checking native cpu bit order... msb2lsb
+checking for inflateEnd in -lz... yes
+checking zlib.h usability... yes
+checking zlib.h presence... yes
+checking for zlib.h... yes
+checking for ZSTD_decompressStream in -lzstd... no
+checking zstd.h usability... no
+checking zstd.h presence... no
+checking for zstd.h... no
+checking for WebPDecode in -lwebp... no
+checking webp/decode.h usability... no
+checking webp/decode.h presence... no
+checking for webp/decode.h... no
+checking for X... no
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking whether we are using the Microsoft C compiler... no
+checking GL/gl.h usability... no
+checking GL/gl.h presence... yes
+configure: WARNING: GL/gl.h: present but cannot be compiled
+configure: WARNING: GL/gl.h:     check for missing prerequisite headers?
+configure: WARNING: GL/gl.h: see the Autoconf documentation
+configure: WARNING: GL/gl.h:     section "Present But Cannot Be Compiled"
+configure: WARNING: GL/gl.h: proceeding with the compiler's result
+configure: WARNING:     ## -------------------------------------- ##
+configure: WARNING:     ## Report this to tiff@lists.maptools.org ##
+configure: WARNING:     ## -------------------------------------- ##
+checking for GL/gl.h... no
+checking OpenGL/gl.h usability... no
+checking OpenGL/gl.h presence... no
+checking for OpenGL/gl.h... no
+checking windows.h usability... no
+checking windows.h presence... no
+checking for windows.h... no
+checking for OpenGL library... no
+checking GL/glu.h usability... no
+checking GL/glu.h presence... yes
+configure: WARNING: GL/glu.h: present but cannot be compiled
+configure: WARNING: GL/glu.h:     check for missing prerequisite headers?
+configure: WARNING: GL/glu.h: see the Autoconf documentation
+configure: WARNING: GL/glu.h:     section "Present But Cannot Be Compiled"
+configure: WARNING: GL/glu.h: proceeding with the compiler's result
+configure: WARNING:     ## -------------------------------------- ##
+configure: WARNING:     ## Report this to tiff@lists.maptools.org ##
+configure: WARNING:     ## -------------------------------------- ##
+checking for GL/glu.h... no
+checking OpenGL/glu.h usability... no
+checking OpenGL/glu.h presence... no
+checking for OpenGL/glu.h... no
+checking for OpenGL Utility library... no
+checking GL/glut.h usability... no
+checking GL/glut.h presence... yes
+configure: WARNING: GL/glut.h: present but cannot be compiled
+configure: WARNING: GL/glut.h:     check for missing prerequisite headers?
+configure: WARNING: GL/glut.h: see the Autoconf documentation
+configure: WARNING: GL/glut.h:     section "Present But Cannot Be Compiled"
+configure: WARNING: GL/glut.h: proceeding with the compiler's result
+configure: WARNING:     ## -------------------------------------- ##
+configure: WARNING:     ## Report this to tiff@lists.maptools.org ##
+configure: WARNING:     ## -------------------------------------- ##
+checking for GL/glut.h... no
+checking GLUT/glut.h usability... no
+checking GLUT/glut.h presence... no
+checking for GLUT/glut.h... no
+checking for GLUT library... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating build/Makefile
+config.status: creating contrib/Makefile
+config.status: creating contrib/addtiffo/Makefile
+config.status: creating contrib/dbs/Makefile
+config.status: creating contrib/dbs/xtiff/Makefile
+config.status: creating contrib/iptcutil/Makefile
+config.status: creating contrib/mfs/Makefile
+config.status: creating contrib/pds/Makefile
+config.status: creating contrib/ras/Makefile
+config.status: creating contrib/stream/Makefile
+config.status: creating contrib/tags/Makefile
+config.status: creating contrib/win_dib/Makefile
+config.status: creating html/Makefile
+config.status: creating html/images/Makefile
+config.status: creating html/man/Makefile
+config.status: creating libtiff-4.pc
+config.status: creating libtiff/Makefile
+config.status: creating man/Makefile
+config.status: creating port/Makefile
+config.status: creating test/Makefile
+config.status: creating tools/Makefile
+config.status: creating libtiff/tif_config.h
+config.status: creating libtiff/tiffconf.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+
+Libtiff is now configured for arm-unknown-linux-androideabi
+
+  Installation directory:             /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root
+  Documentation directory:            ${prefix}/share/doc/tiff-4.0.10
+  C compiler:                         /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -Os -g -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as -Wall -W
+  C++ compiler:                       /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ -Os -g -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as
+  Enable runtime linker paths:        no
+  Enable linker symbol versioning:    no
+  Support Microsoft Document Imaging: no
+  Use win32 IO:                       no
+
+ Support for internal codecs:
+  CCITT Group 3 & 4 algorithms:       no
+  Macintosh PackBits algorithm:       no
+  LZW algorithm:                      no
+  ThunderScan 4-bit RLE algorithm:    no
+  NeXT 2-bit RLE algorithm:           no
+  LogLuv high dynamic range encoding: no
+
+ Support for external codecs:
+  ZLIB support:                       yes
+  Pixar log-format algorithm:         no
+  JPEG support:                       no
+  Old JPEG support:                   no
+  JPEG 8/12 bit dual mode:            no
+  ISO JBIG support:                   no
+  LZMA2 support:                      no
+  ZSTD support:                       no
+  WEBP support:                       no
+
+  C++ support:                        no
+
+  OpenGL support:                     no
+
+Making all in port
+  CC       dummy.lo
+  CCLD     libport.la
+Making all in libtiff
+  CC       tif_aux.lo
+  CC       tif_codec.lo
+  CC       tif_color.lo
+  CC       tif_close.lo
+  CC       tif_compress.lo
+  CC       tif_dirinfo.lo
+  CC       tif_dir.lo
+  CC       tif_dirread.lo
+  CC       tif_dirwrite.lo
+  CC       tif_dumpmode.lo
+  CC       tif_error.lo
+  CC       tif_extension.lo
+  CC       tif_fax3.lo
+  CC       tif_fax3sm.lo
+  CC       tif_flush.lo
+  CC       tif_getimage.lo
+  CC       tif_jbig.lo
+  CC       tif_jpeg.lo
+  CC       tif_jpeg_12.lo
+  CC       tif_lzma.lo
+  CC       tif_luv.lo
+  CC       tif_lzw.lo
+  CC       tif_next.lo
+  CC       tif_ojpeg.lo
+  CC       tif_open.lo
+  CC       tif_packbits.lo
+  CC       tif_pixarlog.lo
+  CC       tif_predict.lo
+  CC       tif_print.lo
+  CC       tif_read.lo
+  CC       tif_strip.lo
+  CC       tif_swab.lo
+  CC       tif_thunder.lo
+  CC       tif_tile.lo
+  CC       tif_version.lo
+  CC       tif_warning.lo
+  CC       tif_webp.lo
+  CC       tif_write.lo
+  CC       tif_zip.lo
+  CC       tif_zstd.lo
+  CC       tif_unix.lo
+/home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/libtiff/tif_zip.c:398:28: warning: unused parameter 'scheme' [-Wunused-parameter]
+TIFFInitZIP(TIFF* tif, int scheme)
+                           ^
+1 warning generated.
+  CCLD     libtiff.la
+Making install in port
+Making install in libtiff
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libtiff.la '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib'
+libtool: install: /usr/bin/install -c .libs/libtiff.lai /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libtiff.la
+libtool: install: /usr/bin/install -c .libs/libtiff.a /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libtiff.a
+libtool: install: chmod 644 /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libtiff.a
+libtool: install: /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libtiff.a
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/libtiff/tiff.h /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/libtiff/tiffio.h /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/libtiff/tiffvers.h '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /usr/bin/install -c -m 644 tiffconf.h '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/doc/tiff-4.0.10'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/COPYRIGHT /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/ChangeLog /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/README.md /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/RELEASE-DATE /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/TODO /home/august/Projects/Gliding/XCSoar/output/src/tiff-4.0.10/VERSION '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/doc/tiff-4.0.10'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/pkgconfig'
+ /usr/bin/install -c -m 644 libtiff-4.pc '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/pkgconfig'
+download http://download.osgeo.org/geotiff/libgeotiff/libgeotiff-1.4.2.tar.gz
+Wende Patch /home/august/Projects/Gliding/XCSoar/lib/libgeotiff/patches/out_of_tree_build.diff an
+patching file libxtiff/Makefile.am
+patching file Makefile.am
+
+Wende Patch /home/august/Projects/Gliding/XCSoar/lib/libgeotiff/patches/no_atof.diff an
+patching file geo_strtod.c
+Hunk #1 succeeded at 153 (offset 1 line).
+
+Wende Patch /home/august/Projects/Gliding/XCSoar/lib/libgeotiff/patches/no_programs.diff an
+patching file Makefile.am
+Hunk #1 succeeded at 1 with fuzz 2.
+
+Jetzt in Patch /home/august/Projects/Gliding/XCSoar/lib/libgeotiff/patches/no_programs.diff
+libtoolize: putting auxiliary files in '.'.
+libtoolize: linking file './ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: linking file 'm4/libtool.m4'
+libtoolize: linking file 'm4/ltoptions.m4'
+libtoolize: linking file 'm4/ltsugar.m4'
+libtoolize: linking file 'm4/ltversion.m4'
+libtoolize: linking file 'm4/lt~obsolete.m4'
+configure.ac:27: installing './compile'
+configure.ac:25: installing './missing'
+Makefile.am: installing './depcomp'
+checking build system type... x86_64-pc-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for arm-linux-androideabi-strip... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for arm-linux-androideabi-gcc... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang accepts -g... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to accept ISO C89... none needed
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... gcc3
+checking whether we are using the GNU C++ compiler... yes
+checking whether /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ accepts -g... yes
+checking dependency style of /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++... gcc3
+checking how to run the C++ preprocessor... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ -E
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... (cached) yes
+checking host system type... arm-unknown-linux-androideabi
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... no
+checking for arm-linux-androideabi-dumpbin... no
+checking for arm-linux-androideabi-link... no
+checking for dumpbin... no
+checking for link... link -dump
+configure: WARNING: using cross tools not prefixed with host triplet
+checking the name lister (nm) interface... BSD nm
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to arm-unknown-linux-androideabi format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for arm-linux-androideabi-objdump... no
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for arm-linux-androideabi-dlltool... no
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for arm-linux-androideabi-ar... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar
+checking for archiver @FILE support... @
+checking for arm-linux-androideabi-strip... (cached) /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for arm-linux-androideabi-ranlib... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib
+checking command to parse nm output from /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for arm-linux-androideabi-mt... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -fno-rtti -fno-exceptions... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang option to produce PIC... -fPIC -DPIC
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang PIC flag -fPIC -DPIC works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang static flag -static works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -c -o file.o... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang supports -c -o file.o... (cached) yes
+checking whether the /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... Android linker
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking how to run the C++ preprocessor... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ -E
+checking for ld used by /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking whether the /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ linker (/usr/bin/ld) supports shared libraries... yes
+checking for /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ option to produce PIC... -fPIC -DPIC
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ PIC flag -fPIC -DPIC works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ static flag -static works... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ supports -c -o file.o... yes
+checking if /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ supports -c -o file.o... (cached) yes
+checking whether the /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... Android linker
+checking how to hardcode library paths into programs... immediate
+checking for string.h... (cached) yes
+checking stdio.h usability... yes
+checking stdio.h presence... yes
+checking for stdio.h... yes
+checking for stdlib.h... (cached) yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking for debug enabled... no
+checking for exp in -lm... yes
+checking for zlib... no
+checking for jpeg... no
+checking for TIFFOpen in -ltiff... yes
+checking for TIFFMergeFieldInfo in -ltiff... yes
+checking for pj_init in -lproj... yes
+checking proj_api.h usability... yes
+checking proj_api.h presence... yes
+checking for proj_api.h... yes
+checking if EPSG tables will be read from .csv files... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating libxtiff/Makefile
+config.status: creating bin/Makefile
+config.status: creating man/Makefile
+config.status: creating man/man1/Makefile
+config.status: creating cmake/Makefile
+config.status: creating geo_config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+
+libgeotiff configuration summary:
+
+  Version..................: 1.4.2
+  Installation directory...: /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root
+  C compiler...............: /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -Os -g -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as -O3 -DNDEBUG
+  C++ compiler.............: /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ -Os -g -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as -O3 -DNDEBUG
+  Debugging support........: 
+
+  zlib support......: no
+  jpeg support......: no
+  TIFF support......: yes
+    -INCLUDE .......: 
+    -PREFIX ........: 
+  PROJ support......: yes
+    -INCLUDE .......: 
+    -PREFIX ........: 
+  Incode CSV support: no
+  LIBS.....................: -lproj -lm -L/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib -Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind   -lz -ltiff
+
+  libgeotiff - http://trac.osgeo.org/geotiff
+
+Making all in libxtiff
+  CC       xtiff.lo
+  CCLD     libxtiff.la
+  CC       geo_extra.lo
+  CC       cpl_serv.lo
+  CC       cpl_csv.lo
+  CC       geo_free.lo
+  CC       geo_get.lo
+  CC       geo_names.lo
+  CC       geo_new.lo
+  CC       geo_normalize.lo
+  CC       geo_print.lo
+  CC       geo_set.lo
+  CC       geo_simpletags.lo
+  CC       geo_tiffp.lo
+  CC       geo_trans.lo
+  CC       geo_write.lo
+  CC       geo_strtod.lo
+  CC       geotiff_proj4.lo
+  CCLD     libgeotiff.la
+Making install in libxtiff
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/libxtiff/xtiffio.h '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib'
+ /bin/bash ./libtool   --mode=install /usr/bin/install -c   libgeotiff.la '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib'
+libtool: install: /usr/bin/install -c .libs/libgeotiff.lai /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libgeotiff.la
+libtool: install: /usr/bin/install -c .libs/libgeotiff.a /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libgeotiff.a
+libtool: install: chmod 644 /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libgeotiff.a
+libtool: install: /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib /home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib/libgeotiff.a
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/epsg_csv'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/alias.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/area.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/change.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/compdcs.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_axis.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_axis_name.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_operation.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_operation_method.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_operation_parameter.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_operation_parameter_value.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_operation_path.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_reference_system.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/coordinate_system.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/csv2c.py /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/csv_tools.py /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/datum.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/datum_shift.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/datum_shift_pref.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/deprecation.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/ellipsoid.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/esri_datum_override.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/gcs.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/gcs.override.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/geoccs.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/naming_system.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/pcs.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/pcs.override.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/prime_meridian.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/projop_wparm.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/stateplane.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/supersession.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/unit_of_measure.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/version_history.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/vertcs.csv /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/csv/vertcs.override.csv '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/share/epsg_csv'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /usr/bin/install -c -m 644 /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geotiff.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geotiffio.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geovalues.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geonames.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geokeys.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geo_tiffp.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geo_keyp.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geo_normalize.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/cpl_serv.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geo_simpletags.h /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/epsg_datum.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/epsg_gcs.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/epsg_pm.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/epsg_units.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geo_ctrans.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/epsg_ellipse.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/epsg_pcs.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/epsg_proj.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/epsg_vertcs.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geokeys.inc /home/august/Projects/Gliding/XCSoar/output/src/libgeotiff-1.4.2/geo_incode_defs.h '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /bin/mkdir -p '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+ /usr/bin/install -c -m 644 geo_config.h '/home/august/Projects/Gliding/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include'
+touch output/ANDROID/lib/arm-linux-androideabi/stamp
+  CXX     output/ANDROID/dbg/src/IO/MapFile.o
+  CXX     output/ANDROID/dbg/src/IO/ConfiguredFile.o
+  CXX     output/ANDROID/dbg/src/IO/DataFile.o
+  CXX     output/ANDROID/dbg/src/Airspace/ProtectedAirspaceWarningManager.o
+  CXX     output/ANDROID/dbg/src/Airspace/ActivePredicate.o
+  CXX     output/ANDROID/dbg/src/Task/Serialiser.o
+  CXX     output/ANDROID/dbg/src/Task/Deserialiser.o
+  CXX     output/ANDROID/dbg/src/Task/SaveFile.o
+  CXX     output/ANDROID/dbg/src/Task/LoadFile.o
+  CXX     output/ANDROID/dbg/src/Task/TaskFile.o
+  CXX     output/ANDROID/dbg/src/Task/TaskFileXCSoar.o
+  CXX     output/ANDROID/dbg/src/Task/TaskFileIGC.o
+  CXX     output/ANDROID/dbg/src/Task/TaskFileSeeYou.o
+  CXX     output/ANDROID/dbg/src/Task/DefaultTask.o
+  CXX     output/ANDROID/dbg/src/Task/MapTaskManager.o
+  CXX     output/ANDROID/dbg/src/Task/ProtectedTaskManager.o
+  CXX     output/ANDROID/dbg/src/Task/FileProtectedTaskManager.o
+  CXX     output/ANDROID/dbg/src/Task/RoutePlannerGlue.o
+  CXX     output/ANDROID/dbg/src/Task/ProtectedRoutePlanner.o
+  CXX     output/ANDROID/dbg/src/Task/TaskStore.o
+  CXX     output/ANDROID/dbg/src/Task/TypeStrings.o
+  CXX     output/ANDROID/dbg/src/Task/ValidationErrorStrings.o
+  CXX     output/ANDROID/dbg/src/RadioFrequency.o
+  CXX     output/ANDROID/dbg/src/Engine/Navigation/TraceHistory.o
+  CXX     output/ANDROID/dbg/src/Engine/Navigation/Aircraft.o
+  CXX     output/ANDROID/dbg/src/Engine/Trace/Point.o
+  CXX     output/ANDROID/dbg/src/Engine/Trace/Trace.o
+  CXX     output/ANDROID/dbg/src/Engine/Trace/Vector.o
+  CXX     output/ANDROID/dbg/src/Engine/Util/Gradient.o
+  CXX     output/ANDROID/dbg/src/Engine/ThermalBand/ThermalBand.o
+  CXX     output/ANDROID/dbg/src/Engine/ThermalBand/ThermalSlice.o
+  CXX     output/ANDROID/dbg/src/Engine/ThermalBand/ThermalEncounterBand.o
+  CXX     output/ANDROID/dbg/src/Engine/ThermalBand/ThermalEncounterCollection.o
+  CXX     output/ANDROID/dbg/src/HorizonWidget.o
+  CXX     output/ANDROID/dbg/src/Renderer/TextRowRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TwoTextRowsRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/HorizonRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/GradientRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/GlassRenderer.o
+In file included from src/Renderer/GlassRenderer.cpp:29:
+In file included from ./src/Screen/OpenGL/Scissor.hpp:28:
+./src/Screen/OpenGL/Globals.hpp:37:10: fatal error: 'glm/fwd.hpp' file not found
+#include <glm/fwd.hpp>
+
+Sollte ich installieren:
+sudo apt-get install libglm-dev
+
+
+1 error generated.
+build/compile.mk:107: recipe for target 'output/ANDROID/dbg/src/Renderer/GlassRenderer.o' failed
+make: *** [output/ANDROID/dbg/src/Renderer/GlassRenderer.o] Error 1
+august@August01:~/Projects/Gliding/XCSoar$ make TARGET=ANDROID
+  CXX     output/ANDROID/dbg/src/Renderer/GlassRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TransparentRendererCache.o
+  CXX     output/ANDROID/dbg/src/Renderer/LabelBlock.o
+  CXX     output/ANDROID/dbg/src/Renderer/TextInBox.o
+  CXX     output/ANDROID/dbg/src/Renderer/TraceHistoryRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/ThermalBandRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TaskProgressRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/ClimbPercentRenderer.o
+  CXX     output/ANDROID/dbg/src/Airspace/AirspaceGlue.o
+  CXX     output/ANDROID/dbg/src/Airspace/AirspaceParser.o
+  CXX     output/ANDROID/dbg/src/Airspace/AirspaceVisibility.o
+  CXX     output/ANDROID/dbg/src/Airspace/AirspaceComputerSettings.o
+  CXX     output/ANDROID/dbg/src/Airspace/NearestAirspace.o
+  CXX     output/ANDROID/dbg/src/Renderer/AirspaceRendererSettings.o
+  CXX     output/ANDROID/dbg/src/Renderer/GeoBitmapRenderer.o
+  CXX     output/ANDROID/dbg/src/Operation/Operation.o
+  CXX     output/ANDROID/dbg/src/Operation/ProxyOperationEnvironment.o
+  CXX     output/ANDROID/dbg/src/Operation/NoCancelOperationEnvironment.o
+  CXX     output/ANDROID/dbg/src/Operation/PopupOperationEnvironment.o
+  CXX     output/ANDROID/dbg/src/Operation/MessageOperationEnvironment.o
+  CXX     output/ANDROID/dbg/src/Operation/ThreadedOperationEnvironment.o
+  CXX     output/ANDROID/dbg/src/Operation/VerboseOperationEnvironment.o
+  CXX     output/ANDROID/dbg/src/Atmosphere/Pressure.o
+  CXX     output/ANDROID/dbg/src/Atmosphere/AirDensity.o
+  CXX     output/ANDROID/dbg/src/Atmosphere/CuSonde.o
+  CXX     output/ANDROID/dbg/src/Computer/ClimbAverageCalculator.o
+  CXX     output/ANDROID/dbg/src/Computer/ConditionMonitor/ConditionMonitor.o
+  CXX     output/ANDROID/dbg/src/Computer/ConditionMonitor/ConditionMonitorAATTime.o
+  CXX     output/ANDROID/dbg/src/Computer/ConditionMonitor/ConditionMonitorFinalGlide.o
+  CXX     output/ANDROID/dbg/src/Computer/ConditionMonitor/ConditionMonitorGlideTerrain.o
+  CXX     output/ANDROID/dbg/src/Computer/ConditionMonitor/ConditionMonitorLandableReachable.o
+  CXX     output/ANDROID/dbg/src/Computer/ConditionMonitor/ConditionMonitorSunset.o
+  CXX     output/ANDROID/dbg/src/Computer/ConditionMonitor/ConditionMonitorWind.o
+  CXX     output/ANDROID/dbg/src/Computer/ConditionMonitor/ConditionMonitors.o
+  CXX     output/ANDROID/dbg/src/Plane/PlaneGlue.o
+  CXX     output/ANDROID/dbg/src/Plane/PlaneFileGlue.o
+  CXX     output/ANDROID/dbg/src/FLARM/FlarmId.o
+  CXX     output/ANDROID/dbg/src/FLARM/Error.o
+  CXX     output/ANDROID/dbg/src/FLARM/List.o
+  CXX     output/ANDROID/dbg/src/FLARM/FlarmNetRecord.o
+  CXX     output/ANDROID/dbg/src/FLARM/FlarmNetDatabase.o
+  CXX     output/ANDROID/dbg/src/FLARM/FlarmNetReader.o
+  CXX     output/ANDROID/dbg/src/FLARM/Traffic.o
+  CXX     output/ANDROID/dbg/src/FLARM/FlarmCalculations.o
+  CXX     output/ANDROID/dbg/src/FLARM/Friends.o
+  CXX     output/ANDROID/dbg/src/FLARM/FlarmComputer.o
+  CXX     output/ANDROID/dbg/src/FLARM/Global.o
+  CXX     output/ANDROID/dbg/src/FLARM/Glue.o
+  CXX     output/ANDROID/dbg/src/Computer/CuComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/FlyingComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/CirclingComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/ThermalBandComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/Wind/Computer.o
+  CXX     output/ANDROID/dbg/src/Computer/ContestComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/TraceComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/WarningComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/ThermalLocator.o
+  CXX     output/ANDROID/dbg/src/Computer/ThermalBase.o
+  CXX     output/ANDROID/dbg/src/Computer/LiftDatabaseComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/LogComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/AverageVarioComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/GlideRatioCalculator.o
+  CXX     output/ANDROID/dbg/src/Computer/GlideRatioComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/GlideComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/GlideComputerBlackboard.o
+  CXX     output/ANDROID/dbg/src/Computer/GlideComputerAirData.o
+  CXX     output/ANDROID/dbg/src/Computer/WaveComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/StatsComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/RouteComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/TaskComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/GlideComputerInterface.o
+  CXX     output/ANDROID/dbg/src/Computer/Events.o
+  CXX     output/ANDROID/dbg/src/BallastDumpManager.o
+  CXX     output/ANDROID/dbg/src/Logger/Settings.o
+  CXX     output/ANDROID/dbg/src/Logger/Logger.o
+  CXX     output/ANDROID/dbg/src/Logger/LoggerFRecord.o
+  CXX     output/ANDROID/dbg/src/Logger/GRecord.o
+  CXX     output/ANDROID/dbg/src/Logger/LoggerEPE.o
+  CXX     output/ANDROID/dbg/src/Logger/LoggerImpl.o
+  CXX     output/ANDROID/dbg/src/Logger/IGCFileCleanup.o
+  CXX     output/ANDROID/dbg/src/IGC/IGCFix.o
+  CXX     output/ANDROID/dbg/src/IGC/IGCWriter.o
+  CXX     output/ANDROID/dbg/src/IGC/IGCString.o
+  CXX     output/ANDROID/dbg/src/IGC/Generator.o
+  CXX     output/ANDROID/dbg/src/Logger/MD5.o
+  CXX     output/ANDROID/dbg/src/Logger/NMEALogger.o
+  CXX     output/ANDROID/dbg/src/Logger/ExternalLogger.o
+  CXX     output/ANDROID/dbg/src/Logger/FlightLogger.o
+  CXX     output/ANDROID/dbg/src/Logger/GlueFlightLogger.o
+  CXX     output/ANDROID/dbg/src/NMEA/Info.o
+  CXX     output/ANDROID/dbg/src/NMEA/MoreData.o
+  CXX     output/ANDROID/dbg/src/NMEA/GPSState.o
+  CXX     output/ANDROID/dbg/src/NMEA/Acceleration.o
+  CXX     output/ANDROID/dbg/src/NMEA/Attitude.o
+  CXX     output/ANDROID/dbg/src/NMEA/ExternalSettings.o
+  CXX     output/ANDROID/dbg/src/NMEA/FlyingState.o
+  CXX     output/ANDROID/dbg/src/NMEA/Derived.o
+  CXX     output/ANDROID/dbg/src/NMEA/VarioInfo.o
+  CXX     output/ANDROID/dbg/src/NMEA/ClimbInfo.o
+  CXX     output/ANDROID/dbg/src/NMEA/CirclingInfo.o
+  CXX     output/ANDROID/dbg/src/NMEA/ThermalLocator.o
+  CXX     output/ANDROID/dbg/src/NMEA/ClimbHistory.o
+  CXX     output/ANDROID/dbg/src/NMEA/SwitchState.o
+  CXX     output/ANDROID/dbg/src/NMEA/InputLine.o
+  CXX     output/ANDROID/dbg/src/NMEA/Checksum.o
+  CXX     output/ANDROID/dbg/src/NMEA/Aircraft.o
+  CXX     output/ANDROID/dbg/src/Replay/Replay.o
+  CXX     output/ANDROID/dbg/src/IGC/IGCParser.o
+  CXX     output/ANDROID/dbg/src/Replay/IgcReplay.o
+  CXX     output/ANDROID/dbg/src/Replay/NmeaReplay.o
+  CXX     output/ANDROID/dbg/src/Replay/DemoReplay.o
+  CXX     output/ANDROID/dbg/src/Replay/DemoReplayGlue.o
+  CXX     output/ANDROID/dbg/src/Replay/TaskAutoPilot.o
+  CXX     output/ANDROID/dbg/src/Replay/AircraftSim.o
+  CXX     output/ANDROID/dbg/src/TeamCode/TeamCode.o
+  CXX     output/ANDROID/dbg/src/TeamCode/Settings.o
+  CXX     output/ANDROID/dbg/src/TeamActions.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointList.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointListBuilder.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointFilter.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointGlue.o
+  CXX     output/ANDROID/dbg/src/Waypoint/SaveGlue.o
+  CXX     output/ANDROID/dbg/src/Waypoint/LastUsed.o
+  CXX     output/ANDROID/dbg/src/Waypoint/HomeGlue.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointFileType.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointReader.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointReaderBase.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointReaderOzi.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointReaderFS.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointReaderWinPilot.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointReaderSeeYou.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointReaderZander.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointReaderCompeGPS.o
+  CXX     output/ANDROID/dbg/src/Waypoint/CupWriter.o
+  CXX     output/ANDROID/dbg/src/Waypoint/Factory.o
+  CXX     output/ANDROID/dbg/src/Computer/Wind/CirclingWind.o
+  CXX     output/ANDROID/dbg/src/Computer/Wind/MeasurementList.o
+  CXX     output/ANDROID/dbg/src/Computer/Wind/Store.o
+  CXX     output/ANDROID/dbg/src/Computer/Wind/WindEKF.o
+  CXX     output/ANDROID/dbg/src/Computer/Wind/WindEKFGlue.o
+  CXX     output/ANDROID/dbg/src/Computer/Wind/Settings.o
+  CXX     output/ANDROID/dbg/src/CrossSection/AirspaceXSRenderer.o
+  CXX     output/ANDROID/dbg/src/CrossSection/TerrainXSRenderer.o
+  CXX     output/ANDROID/dbg/src/CrossSection/CrossSectionRenderer.o
+  CXX     output/ANDROID/dbg/src/CrossSection/CrossSectionWindow.o
+  CXX     output/ANDROID/dbg/src/CrossSection/CrossSectionWidget.o
+  CXX     output/ANDROID/dbg/src/Gauge/ThermalAssistantRenderer.o
+  CXX     output/ANDROID/dbg/src/Gauge/ThermalAssistantWindow.o
+  CXX     output/ANDROID/dbg/src/Gauge/BigThermalAssistantWindow.o
+  CXX     output/ANDROID/dbg/src/Gauge/BigThermalAssistantWidget.o
+  CXX     output/ANDROID/dbg/src/Gauge/FlarmTrafficWindow.o
+  CXX     output/ANDROID/dbg/src/Gauge/BigTrafficWidget.o
+  CXX     output/ANDROID/dbg/src/Gauge/GaugeFLARM.o
+  CXX     output/ANDROID/dbg/src/Gauge/GaugeThermalAssistant.o
+  CXX     output/ANDROID/dbg/src/Gauge/VarioSettings.o
+  CXX     output/ANDROID/dbg/src/Gauge/TrafficSettings.o
+  CXX     output/ANDROID/dbg/src/Gauge/GaugeVario.o
+  CXX     output/ANDROID/dbg/src/Gauge/GlueGaugeVario.o
+  CXX     output/ANDROID/dbg/src/Gauge/TaskView.o
+  CXX     output/ANDROID/dbg/src/Gauge/LogoView.o
+  CXX     output/ANDROID/dbg/src/Waypoint/WaypointDetailsReader.o
+  CXX     output/ANDROID/dbg/src/Menu/MenuData.o
+  CXX     output/ANDROID/dbg/src/Menu/MenuBar.o
+  CXX     output/ANDROID/dbg/src/Menu/ButtonLabel.o
+  CXX     output/ANDROID/dbg/src/Menu/ExpandMacros.o
+  CXX     output/ANDROID/dbg/src/Menu/ShowMenuButton.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Factory.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Alternate.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Base.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Altitude.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Direction.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Glide.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/MacCready.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Other.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Speed.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Task.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Places.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Contest.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Team.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Terrain.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Thermal.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Time.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Trace.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Weather.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Airspace.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Content/Radio.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Data.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Format.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Units.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/InfoBoxSettings.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/InfoBoxWindow.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/InfoBoxLayout.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/InfoBoxManager.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Panel/AltitudeInfo.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Panel/AltitudeSimulator.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Panel/AltitudeSetup.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Panel/MacCreadyEdit.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Panel/MacCreadySetup.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Panel/WindEdit.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Panel/ATCReference.o
+  CXX     output/ANDROID/dbg/src/InfoBoxes/Panel/RadioEdit.o
+  CXX     output/ANDROID/dbg/src/Pan.o
+  CXX     output/ANDROID/dbg/src/Input/InputConfig.o
+  CXX     output/ANDROID/dbg/src/Input/InputDefaults.o
+  CXX     output/ANDROID/dbg/src/Input/InputEvents.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsActions.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsDevice.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsVega.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsMap.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsPage.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsAirspace.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsTask.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsSettings.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsThermalAssistant.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsTraffic.o
+  CXX     output/ANDROID/dbg/src/Input/InputEventsLua.o
+  CXX     output/ANDROID/dbg/src/Input/InputQueue.o
+  CXX     output/ANDROID/dbg/src/Input/InputLookup.o
+  CXX     output/ANDROID/dbg/src/Input/InputKeys.o
+  CXX     output/ANDROID/dbg/src/Input/InputParser.o
+  CXX     output/ANDROID/dbg/src/Input/TaskEventObserver.o
+  CXX     output/ANDROID/dbg/src/PageSettings.o
+  CXX     output/ANDROID/dbg/src/PageState.o
+  CXX     output/ANDROID/dbg/src/PageActions.o
+  CXX     output/ANDROID/dbg/src/StatusMessage.o
+  CXX     output/ANDROID/dbg/src/PopupMessage.o
+  CXX     output/ANDROID/dbg/src/Message.o
+  CXX     output/ANDROID/dbg/src/LogFile.o
+  CXX     output/ANDROID/dbg/src/Geo/Geoid.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapCanvas.o
+  CXX     output/ANDROID/dbg/src/MapWindow/StencilMapCanvas.o
+  CXX     output/ANDROID/dbg/src/Projection/Projection.o
+  CXX     output/ANDROID/dbg/src/Projection/WindowProjection.o
+  CXX     output/ANDROID/dbg/src/Projection/CompareProjection.o
+  CXX     output/ANDROID/dbg/src/Renderer/ChartRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/BackgroundRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/FAITriangleAreaRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/OZRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TaskPointRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TaskRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/AircraftRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/AirspaceRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/AirspaceRendererGL.o
+  CXX     output/ANDROID/dbg/src/Renderer/AirspaceRendererOther.o
+  CXX     output/ANDROID/dbg/src/Renderer/AirspaceLabelList.o
+  CXX     output/ANDROID/dbg/src/Renderer/AirspaceLabelRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/AirspaceListRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/AirspacePreviewRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/BestCruiseArrowRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/CompassRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/FinalGlideBarRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/VarioBarRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/MapItemListRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/OZPreviewRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TrackLineRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TrafficRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TrailRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/UnitSymbolRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/WaypointListRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/WaypointIconRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/WaypointRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/WaypointRendererSettings.o
+  CXX     output/ANDROID/dbg/src/Renderer/WaypointLabelList.o
+  CXX     output/ANDROID/dbg/src/Renderer/WindArrowRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/NextArrowRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/WaveRenderer.o
+  CXX     output/ANDROID/dbg/src/Projection/ChartProjection.o
+  CXX     output/ANDROID/dbg/src/MapWindow/Items/MapItem.o
+  CXX     output/ANDROID/dbg/src/MapWindow/Items/OverlayMapItem.o
+  CXX     output/ANDROID/dbg/src/MapWindow/Items/List.o
+  CXX     output/ANDROID/dbg/src/MapWindow/Items/Builder.o
+  CXX     output/ANDROID/dbg/src/MapWindow/Items/AirspaceBuilder.o
+  CXX     output/ANDROID/dbg/src/MapWindow/Items/TrafficBuilder.o
+  CXX     output/ANDROID/dbg/src/MapWindow/Items/WeatherBuilder.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindow.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowEvents.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowGlideRange.o
+  CXX     output/ANDROID/dbg/src/Projection/MapWindowProjection.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowRender.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowSymbols.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowContest.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowTask.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowThermal.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowTraffic.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowTrail.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowWaypoints.o
+  CXX     output/ANDROID/dbg/src/MapWindow/GlueMapWindow.o
+  CXX     output/ANDROID/dbg/src/MapWindow/GlueMapWindowItems.o
+  CXX     output/ANDROID/dbg/src/MapWindow/GlueMapWindowEvents.o
+  CXX     output/ANDROID/dbg/src/MapWindow/GlueMapWindowOverlays.o
+  CXX     output/ANDROID/dbg/src/MapWindow/GlueMapWindowDisplayMode.o
+  CXX     output/ANDROID/dbg/src/MapWindow/TargetMapWindow.o
+  CXX     output/ANDROID/dbg/src/MapWindow/TargetMapWindowEvents.o
+  CXX     output/ANDROID/dbg/src/MapWindow/TargetMapWindowDrag.o
+  CXX     output/ANDROID/dbg/src/UIUtil/GestureManager.o
+  CXX     output/ANDROID/dbg/src/UIUtil/TrackingGestureManager.o
+  CXX     output/ANDROID/dbg/src/DrawThread.o
+  CXX     output/ANDROID/dbg/src/Weather/Rasp/RaspStore.o
+  CXX     output/ANDROID/dbg/src/Weather/Rasp/RaspCache.o
+  CXX     output/ANDROID/dbg/src/Weather/Rasp/RaspRenderer.o
+  CXX     output/ANDROID/dbg/src/Weather/Rasp/RaspStyle.o
+  CXX     output/ANDROID/dbg/src/Weather/Rasp/Providers.o
+  CXX     output/ANDROID/dbg/src/Computer/BasicComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/GroundSpeedComputer.o
+  CXX     output/ANDROID/dbg/src/Computer/AutoQNH.o
+  CXX     output/ANDROID/dbg/src/Blackboard/BlackboardListener.o
+  CXX     output/ANDROID/dbg/src/Blackboard/ProxyBlackboardListener.o
+  CXX     output/ANDROID/dbg/src/Blackboard/RateLimitedBlackboardListener.o
+  CXX     output/ANDROID/dbg/src/Blackboard/LiveBlackboard.o
+  CXX     output/ANDROID/dbg/src/Blackboard/InterfaceBlackboard.o
+  CXX     output/ANDROID/dbg/src/Blackboard/ScopeGPSListener.o
+  CXX     output/ANDROID/dbg/src/Blackboard/ScopeCalculatedListener.o
+  CXX     output/ANDROID/dbg/src/Blackboard/DeviceBlackboard.o
+  CXX     output/ANDROID/dbg/src/MapWindow/MapWindowBlackboard.o
+  CXX     output/ANDROID/dbg/src/Dialogs/DialogSettings.o
+  CXX     output/ANDROID/dbg/src/UIReceiveBlackboard.o
+  CXX     output/ANDROID/dbg/src/UIGlobals.o
+  CXX     output/ANDROID/dbg/src/UIState.o
+  CXX     output/ANDROID/dbg/src/UISettings.o
+  CXX     output/ANDROID/dbg/src/DisplaySettings.o
+  CXX     output/ANDROID/dbg/src/MapSettings.o
+  CXX     output/ANDROID/dbg/src/SystemSettings.o
+  CXX     output/ANDROID/dbg/src/Audio/Settings.o
+  CXX     output/ANDROID/dbg/src/Audio/VarioSettings.o
+  CXX     output/ANDROID/dbg/src/Computer/Settings.o
+  CXX     output/ANDROID/dbg/src/MergeThread.o
+  CXX     output/ANDROID/dbg/src/CalculationThread.o
+  CXX     output/ANDROID/dbg/src/DisplayMode.o
+  CXX     output/ANDROID/dbg/src/Topography/TopographyFile.o
+  CXX     output/ANDROID/dbg/src/Topography/TopographyStore.o
+  CXX     output/ANDROID/dbg/src/Topography/TopographyFileRenderer.o
+  CXX     output/ANDROID/dbg/src/Topography/TopographyRenderer.o
+  CXX     output/ANDROID/dbg/src/Topography/Thread.o
+  CXX     output/ANDROID/dbg/src/Topography/TopographyGlue.o
+  CXX     output/ANDROID/dbg/src/Topography/XShape.o
+  CXX     output/ANDROID/dbg/src/Topography/CachedTopographyRenderer.o
+  CXX     output/ANDROID/dbg/src/Markers/Markers.o
+  CXX     output/ANDROID/dbg/src/FlightStatistics.o
+  CXX     output/ANDROID/dbg/src/FlightInfo.o
+  CXX     output/ANDROID/dbg/src/Renderer/FlightStatisticsRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/BarographRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/ClimbChartRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/GlidePolarRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/GlidePolarInfoRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/WindChartRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/CuRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/MacCreadyRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/VarioHistogramRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TaskLegRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/TaskSpeedRenderer.o
+  CXX     output/ANDROID/dbg/src/Renderer/MapScaleRenderer.o
+  CXX     output/ANDROID/dbg/src/Simulator.o
+  CXX     output/ANDROID/dbg/src/Asset.o
+  CXX     output/ANDROID/dbg/src/Hardware/CPU.o
+  CXX     output/ANDROID/dbg/src/Hardware/RotateDisplay.o
+  CXX     output/ANDROID/dbg/src/Hardware/DisplayDPI.o
+  CXX     output/ANDROID/dbg/src/Hardware/DisplaySize.o
+  CXX     output/ANDROID/dbg/src/Hardware/DisplayGlue.o
+  CXX     output/ANDROID/dbg/src/Hardware/Vibrator.o
+  CXX     output/ANDROID/dbg/src/Language/MOFile.o
+  CXX     output/ANDROID/dbg/src/Language/Language.o
+  CXX     output/ANDROID/dbg/src/Language/LanguageGlue.o
+  CXX     output/ANDROID/dbg/src/LocalPath.o
+  CXX     output/ANDROID/dbg/src/UIActions.o
+  CXX     output/ANDROID/dbg/src/Interface.o
+  CXX     output/ANDROID/dbg/src/ActionInterface.o
+  CXX     output/ANDROID/dbg/src/ProgressWindow.o
+  CXX     output/ANDROID/dbg/src/ProgressGlue.o
+  CXX     output/ANDROID/dbg/src/Units/Units.o
+  CXX     output/ANDROID/dbg/src/Units/UnitsGlue.o
+  CXX     output/ANDROID/dbg/src/Units/UnitsStore.o
+  CXX     output/ANDROID/dbg/src/Formatter/Units.o
+  CXX     output/ANDROID/dbg/src/Formatter/UserUnits.o
+  CXX     output/ANDROID/dbg/src/Formatter/HexColor.o
+  CXX     output/ANDROID/dbg/src/Formatter/GlideRatioFormatter.o
+  CXX     output/ANDROID/dbg/src/Formatter/GeoPointFormatter.o
+  CXX     output/ANDROID/dbg/src/Formatter/ByteSizeFormatter.o
+  CXX     output/ANDROID/dbg/src/Formatter/UserGeoPointFormatter.o
+  CXX     output/ANDROID/dbg/src/Formatter/TimeFormatter.o
+  CXX     output/ANDROID/dbg/src/Formatter/LocalTimeFormatter.o
+  CXX     output/ANDROID/dbg/src/Formatter/IGCFilenameFormatter.o
+  CXX     output/ANDROID/dbg/src/Formatter/AirspaceFormatter.o
+  CXX     output/ANDROID/dbg/src/Formatter/AirspaceUserUnitsFormatter.o
+  CXX     output/ANDROID/dbg/src/Units/Descriptor.o
+  CXX     output/ANDROID/dbg/src/Units/System.o
+  CXX     output/ANDROID/dbg/src/Units/Settings.o
+  CXX     output/ANDROID/dbg/src/Units/Temperature.o
+  CXX     output/ANDROID/dbg/src/Formatter/AngleFormatter.o
+  CXX     output/ANDROID/dbg/src/FLARM/FlarmDetails.o
+  CXX     output/ANDROID/dbg/src/FLARM/NameDatabase.o
+  CXX     output/ANDROID/dbg/src/FLARM/NameFile.o
+  CXX     output/ANDROID/dbg/src/FLARM/TrafficDatabases.o
+  CXX     output/ANDROID/dbg/src/UtilsSettings.o
+  CXX     output/ANDROID/dbg/src/UtilsSystem.o
+  CXX     output/ANDROID/dbg/src/OS/LogError.o
+  CXX     output/ANDROID/dbg/src/Version.o
+  CXX     output/ANDROID/dbg/src/Audio/Sound.o
+  CC      output/ANDROID/dbg/src/Compatibility/fmode.o
+  CXX     output/ANDROID/dbg/src/Profile/Profile.o
+  CXX     output/ANDROID/dbg/src/Profile/Screen.o
+  CXX     output/ANDROID/dbg/src/Profile/TrackingProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/WeatherProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/SystemProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/ComputerProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/RouteProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/ContestProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/TaskProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/MapProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/PageProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/UIProfile.o
+  CXX     output/ANDROID/dbg/src/Profile/Settings.o
+  CXX     output/ANDROID/dbg/src/Profile/UnitsConfig.o
+  CXX     output/ANDROID/dbg/src/Profile/DeviceConfig.o
+  CXX     output/ANDROID/dbg/src/Profile/InfoBoxConfig.o
+  CXX     output/ANDROID/dbg/src/Profile/AirspaceConfig.o
+  CXX     output/ANDROID/dbg/src/Profile/TerrainConfig.o
+  CXX     output/ANDROID/dbg/src/Profile/FlarmProfile.o
+  CXX     output/ANDROID/dbg/src/XML/Node.o
+  CXX     output/ANDROID/dbg/src/XML/Parser.o
+  CXX     output/ANDROID/dbg/src/XML/Writer.o
+  CXX     output/ANDROID/dbg/src/XML/DataNode.o
+  CXX     output/ANDROID/dbg/src/XML/DataNodeXML.o
+  CXX     output/ANDROID/dbg/src/Repository/FileRepository.o
+  CXX     output/ANDROID/dbg/src/Repository/Parser.o
+  CXX     output/ANDROID/dbg/src/Job/Thread.o
+  CXX     output/ANDROID/dbg/src/Job/Async.o
+  CXX     output/ANDROID/dbg/src/RateLimiter.o
+  CXX     output/ANDROID/dbg/src/Math/Screen.o
+  CXX     output/ANDROID/dbg/src/Math/SunEphemeris.o
+  CXX     output/ANDROID/dbg/src/Screen/Layout.o
+  CXX     output/ANDROID/dbg/src/Screen/Ramp.o
+  CXX     output/ANDROID/dbg/src/Screen/TerminalWindow.o
+  CXX     output/ANDROID/dbg/src/Look/FontDescription.o
+  CXX     output/ANDROID/dbg/src/Look/GlobalFonts.o
+  CXX     output/ANDROID/dbg/src/Look/DefaultFonts.o
+  CXX     output/ANDROID/dbg/src/Polar/PolarGlue.o
+  CXX     output/ANDROID/dbg/src/Polar/PolarFileGlue.o
+  CXX     output/ANDROID/dbg/src/Polar/Shape.o
+  CXX     output/ANDROID/dbg/src/Polar/Polar.o
+  CXX     output/ANDROID/dbg/src/Polar/Parser.o
+  CXX     output/ANDROID/dbg/src/Polar/PolarStore.o
+  CXX     output/ANDROID/dbg/src/Protection.o
+  CXX     output/ANDROID/dbg/src/BatteryTimer.o
+  CXX     output/ANDROID/dbg/src/ProcessTimer.o
+  CXX     output/ANDROID/dbg/src/ApplyExternalSettings.o
+  CXX     output/ANDROID/dbg/src/ApplyVegaSwitches.o
+  CXX     output/ANDROID/dbg/src/MainWindow.o
+  CXX     output/ANDROID/dbg/src/Startup.o
+  CXX     output/ANDROID/dbg/src/Components.o
+  CXX     output/ANDROID/dbg/src/DataGlobals.o
+  CXX     output/ANDROID/dbg/src/Device/Declaration.o
+  CXX     output/ANDROID/dbg/src/Device/MultipleDevices.o
+  CXX     output/ANDROID/dbg/src/Device/device.o
+  CXX     output/ANDROID/dbg/src/Device/Port/ConfiguredPort.o
+  CXX     output/ANDROID/dbg/src/Device/Descriptor.o
+  CXX     output/ANDROID/dbg/src/Device/Dispatcher.o
+  CXX     output/ANDROID/dbg/src/Device/Parser.o
+  CXX     output/ANDROID/dbg/src/Device/Simulator.o
+  CXX     output/ANDROID/dbg/src/Device/Util/LineSplitter.o
+  CXX     output/ANDROID/dbg/src/Device/Util/NMEAWriter.o
+  CXX     output/ANDROID/dbg/src/Device/Util/NMEAReader.o
+  CXX     output/ANDROID/dbg/src/Device/Config.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Inflate.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Message.o
+  CXX     output/ANDROID/dbg/src/Dialogs/LockScreen.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Error.o
+  CXX     output/ANDROID/dbg/src/Dialogs/ListPicker.o
+  CXX     output/ANDROID/dbg/src/Dialogs/ProgressDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/JobDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/WidgetDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/FileManager.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/DeviceEditWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/DeviceListDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/PortMonitor.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/ManageCAI302Dialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/CAI302/UnitsEditor.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/CAI302/WaypointUploader.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/ManageFlarmDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/BlueFly/BlueFlyConfigurationDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/LX/ManageV7Dialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/LX/V7ConfigWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/LX/ManageNanoDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/LX/NanoConfigWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/LX/ManageLX16xxDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/Vega/VegaParametersWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/Vega/VegaConfigurationDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/Vega/VegaDemoDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/Vega/SwitchesDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/FLARM/ConfigWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/MapItemListDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/MapItemListSettingsDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/MapItemListSettingsPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/ColorListDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Airspace/dlgAirspace.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Airspace/dlgAirspacePatterns.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Airspace/dlgAirspaceDetails.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Airspace/AirspaceList.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Airspace/AirspaceCRendererSettingsDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Airspace/AirspaceCRendererSettingsPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Airspace/dlgAirspaceWarnings.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/WindSettingsPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/WindSettingsDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/dlgBasicSettings.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/dlgConfiguration.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/dlgConfigInfoboxes.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Traffic/TrafficList.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Traffic/FlarmTrafficDetails.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Traffic/TeamCodeDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/dlgAnalysis.o
+  CXX     output/ANDROID/dbg/src/Dialogs/dlgChecklist.o
+  CXX     output/ANDROID/dbg/src/Dialogs/ProfileListDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Plane/PlaneListDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Plane/PlaneDetailsDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Plane/PlanePolarDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Plane/PolarShapeEditWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/DataField.o
+  CXX     output/ANDROID/dbg/src/Dialogs/ComboPicker.o
+  CXX     output/ANDROID/dbg/src/Dialogs/FilePicker.o
+  CXX     output/ANDROID/dbg/src/Dialogs/HelpDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/dlgInfoBoxAccess.o
+  CXX     output/ANDROID/dbg/src/Dialogs/ReplayDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/dlgSimulatorPrompt.o
+  CXX     output/ANDROID/dbg/src/Dialogs/SimulatorPromptWindow.o
+  CXX     output/ANDROID/dbg/src/Dialogs/StartupDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/ProfilePasswordDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/dlgStatus.o
+  CXX     output/ANDROID/dbg/src/Dialogs/StatusPanels/StatusPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/StatusPanels/FlightStatusPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/StatusPanels/SystemStatusPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/StatusPanels/TaskStatusPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/StatusPanels/RulesStatusPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/StatusPanels/TimesStatusPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Waypoint/WaypointInfoWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Waypoint/WaypointCommandsWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Waypoint/dlgWaypointDetails.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Waypoint/Manager.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Waypoint/dlgWaypointEdit.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Waypoint/WaypointList.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Waypoint/NearestWaypoint.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/AirspaceConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/GaugesConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/VarioConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/GlideComputerConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/WindConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/InfoBoxesConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/InterfaceConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/LayoutConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/LoggerConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/MapDisplayConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/PagesConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/RouteConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/SafetyFactorsConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/SiteConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/SymbolsConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/TaskRulesConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/TaskDefaultsConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/ScoringConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/TerrainDisplayConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/UnitsConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/TimeConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/WaypointDisplayConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/TrackingConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/CloudConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/WeatherConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Widgets/ObservationZoneEditWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Widgets/CylinderZoneEditWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Widgets/LineSectorZoneEditWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Widgets/SectorZoneEditWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Widgets/KeyholeZoneEditWidget.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Manager/TaskMapButtonRenderer.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Manager/TaskManagerDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Manager/TaskClosePanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Manager/TaskEditPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Manager/TaskPropertiesPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Manager/TaskMiscPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Manager/TaskActionsPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/Manager/TaskListPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/OptionalStartsDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/TaskPointDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/MutateTaskPointDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/dlgTaskHelpers.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/TargetDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Task/AlternatesListDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Tracking/CloudEnableDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/NumberEntry.o
+  CXX     output/ANDROID/dbg/src/Dialogs/TextEntry.o
+  CXX     output/ANDROID/dbg/src/Dialogs/KnobTextEntry.o
+  CXX     output/ANDROID/dbg/src/Dialogs/TouchTextEntry.o
+  CXX     output/ANDROID/dbg/src/Dialogs/TimeEntry.o
+  CXX     output/ANDROID/dbg/src/Dialogs/GeoPointEntry.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Weather/WeatherDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Weather/RASPDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/dlgCredits.o
+  CXX     output/ANDROID/dbg/src/Dialogs/dlgQuickMenu.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/AudioVarioConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Settings/Panels/AudioConfigPanel.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Weather/PCMetDialog.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Weather/NOAAList.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Weather/NOAADetails.o
+  CXX     output/ANDROID/dbg/src/Monitor/WindMonitor.o
+  CXX     output/ANDROID/dbg/src/Monitor/AirspaceWarningMonitor.o
+  CXX     output/ANDROID/dbg/src/Monitor/TaskConstraintsMonitor.o
+  CXX     output/ANDROID/dbg/src/Monitor/TaskAdvanceMonitor.o
+  CXX     output/ANDROID/dbg/src/Monitor/MatTaskMonitor.o
+  CXX     output/ANDROID/dbg/src/Monitor/AllMonitors.o
+  CXX     output/ANDROID/dbg/src/Hardware/Battery.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Weather/MapOverlayWidget.o
+  CXX     output/ANDROID/dbg/src/MapWindow/OverlayBitmap.o
+  CXX     output/ANDROID/dbg/src/Dialogs/Device/ScanBluetoothLeDialog.o
+  CXX     output/ANDROID/dbg/src/Java/Global.o
+  CXX     output/ANDROID/dbg/src/Java/Object.o
+  CXX     output/ANDROID/dbg/src/Java/String.o
+  CXX     output/ANDROID/dbg/src/Java/Exception.o
+  CXX     output/ANDROID/dbg/src/Java/File.o
+  CXX     output/ANDROID/dbg/src/Java/InputStream.o
+  CXX     output/ANDROID/dbg/src/Java/URL.o
+  CXX     output/ANDROID/dbg/src/Device/Port/AndroidPort.o
+  CXX     output/ANDROID/dbg/src/Device/Port/AndroidBluetoothPort.o
+  CXX     output/ANDROID/dbg/src/Device/Port/AndroidIOIOUartPort.o
+  CXX     output/ANDROID/dbg/src/Android/NativeView.o
+  CXX     output/ANDROID/dbg/src/Android/Environment.o
+  CXX     output/ANDROID/dbg/src/Android/Bitmap.o
+  CXX     output/ANDROID/dbg/src/Android/Product.o
+  CXX     output/ANDROID/dbg/src/Android/Nook.o
+make: *** Keine Regel vorhanden, um das Ziel „android/ioio/software/IOIOLib/target/android/src/ioio/lib/util/android/ContextWrapperDependent.java“, 
+  benötigt von „output/ANDROID/dbg/build/classes.dex“, zu erstellen.  Schluss.
+august@August01:~/Projects/Gliding/XCSoar$ 
+
+Auch hier fehlt die JAVA-Regel...
+
+make: *** Keine Regel vorhanden, um das Ziel java dex zu erstellen
+

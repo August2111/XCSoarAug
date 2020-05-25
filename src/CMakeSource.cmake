@@ -84,4 +84,4 @@ set(BASIC_SOURCES
 
 
 set(SOURCE_FILES ${BASIC_SOURCES} )
-set(SCRIPT_FILES CMakeSource.txt)
+set(SCRIPT_FILES CMakeSource.cmake)

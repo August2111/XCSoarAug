@@ -10,7 +10,7 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
 #   set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
 
-# include(../../CMakeSource.txt)
+# include(../../CMakeSource.cmake)
 
 # add_compile_definitions(_WINSOCKAPI_)
 # organize the files in subdirectories

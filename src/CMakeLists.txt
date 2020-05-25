@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.9.3)
 
-message(STATUS "## ${CMAKE_CURRENT_BINARY_DIR}/CMakelist.txt")
+message(STATUS "## ${CMAKE_CURRENT_BINARY_DIR}/CMakeLists.txt")
 
 set(TARGET_NAME libXCSoar)
 # add_subdirectory(Dialogs)
-include(CMakeSource.txt)
+include(CMakeSource.cmake)
 
 if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
   set(XCSOAR_LIB_TYPE STATIC)

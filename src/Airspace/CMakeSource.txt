@@ -59,4 +59,4 @@ set(MAP_SOURCES
 
 set(SOURCE_FILES ${MAP_SOURCES})
 
-set(SCRIPT_FILES CMakeSource.txt)
+set(SCRIPT_FILES CMakeSource.cmake)

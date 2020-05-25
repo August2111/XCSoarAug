@@ -7,4 +7,4 @@ set(GEO_SOURCES  #!
 file(GLOB_RECURSE SOURCE_FILES *.cpp)
 file(GLOB_RECURSE HEADER_FILES *.h*)
 
-set(SCRIPT_FILES CMakeSource.txt)
+set(SCRIPT_FILES CMakeSource.cmake)

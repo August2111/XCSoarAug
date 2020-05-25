@@ -10,4 +10,4 @@ set(SOURCE_FILES  #!
 )
 file(GLOB_RECURSE HEADER_FILES *.h*)
 
-set(SCRIPT_FILES CMakeSource.txt)
+set(SCRIPT_FILES CMakeSource.cmake)

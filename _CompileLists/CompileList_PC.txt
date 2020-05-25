@@ -1,0 +1,2148 @@
+CompileListPC_7.0._15 2020-05-24 VM Flaps5.txt
+----------------------------------------------
+  CXX     output/TARGET/dbg/src/IO/MapFile.o
+  CXX     output/TARGET/dbg/src/IO/ConfiguredFile.o
+  CXX     output/TARGET/dbg/src/IO/DataFile.o
+  CXX     output/TARGET/dbg/src/Airspace/ProtectedAirspaceWarningManager.o
+  CXX     output/TARGET/dbg/src/Airspace/ActivePredicate.o
+  CXX     output/TARGET/dbg/src/Task/Serialiser.o
+  CXX     output/TARGET/dbg/src/Task/Deserialiser.o
+  CXX     output/TARGET/dbg/src/Task/SaveFile.o
+  CXX     output/TARGET/dbg/src/Task/LoadFile.o
+  CXX     output/TARGET/dbg/src/Task/TaskFile.o
+  CXX     output/TARGET/dbg/src/Task/TaskFileXCSoar.o
+  CXX     output/TARGET/dbg/src/Task/TaskFileIGC.o
+  CXX     output/TARGET/dbg/src/Task/TaskFileSeeYou.o
+  CXX     output/TARGET/dbg/src/Task/DefaultTask.o
+  CXX     output/TARGET/dbg/src/Task/MapTaskManager.o
+  CXX     output/TARGET/dbg/src/Task/ProtectedTaskManager.o
+  CXX     output/TARGET/dbg/src/Task/FileProtectedTaskManager.o
+  CXX     output/TARGET/dbg/src/Task/RoutePlannerGlue.o
+  CXX     output/TARGET/dbg/src/Task/ProtectedRoutePlanner.o
+  CXX     output/TARGET/dbg/src/Task/TaskStore.o
+  CXX     output/TARGET/dbg/src/Task/TypeStrings.o
+  CXX     output/TARGET/dbg/src/Task/ValidationErrorStrings.o
+  CXX     output/TARGET/dbg/src/RadioFrequency.o
+  CXX     output/TARGET/dbg/src/Engine/Navigation/TraceHistory.o
+  CXX     output/TARGET/dbg/src/Engine/Navigation/Aircraft.o
+  CXX     output/TARGET/dbg/src/Engine/Trace/Point.o
+  CXX     output/TARGET/dbg/src/Engine/Trace/Trace.o
+  CXX     output/TARGET/dbg/src/Engine/Trace/Vector.o
+  CXX     output/TARGET/dbg/src/Engine/Util/Gradient.o
+  CXX     output/TARGET/dbg/src/Engine/ThermalBand/ThermalBand.o
+  CXX     output/TARGET/dbg/src/Engine/ThermalBand/ThermalSlice.o
+  CXX     output/TARGET/dbg/src/Engine/ThermalBand/ThermalEncounterBand.o
+  CXX     output/TARGET/dbg/src/Engine/ThermalBand/ThermalEncounterCollection.o
+  CXX     output/TARGET/dbg/src/HorizonWidget.o
+  CXX     output/TARGET/dbg/src/Renderer/TextRowRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TwoTextRowsRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/HorizonRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/GradientRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/GlassRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TransparentRendererCache.o
+  CXX     output/TARGET/dbg/src/Renderer/LabelBlock.o
+  CXX     output/TARGET/dbg/src/Renderer/TextInBox.o
+  CXX     output/TARGET/dbg/src/Renderer/TraceHistoryRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/ThermalBandRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TaskProgressRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/ClimbPercentRenderer.o
+  CXX     output/TARGET/dbg/src/Airspace/AirspaceGlue.o
+  CXX     output/TARGET/dbg/src/Airspace/AirspaceParser.o
+  CXX     output/TARGET/dbg/src/Airspace/AirspaceVisibility.o
+  CXX     output/TARGET/dbg/src/Airspace/AirspaceComputerSettings.o
+  CXX     output/TARGET/dbg/src/Airspace/NearestAirspace.o
+  CXX     output/TARGET/dbg/src/Renderer/AirspaceRendererSettings.o
+  CXX     output/TARGET/dbg/src/Renderer/GeoBitmapRenderer.o
+  CXX     output/TARGET/dbg/src/Operation/Operation.o
+  CXX     output/TARGET/dbg/src/Operation/ProxyOperationEnvironment.o
+  CXX     output/TARGET/dbg/src/Operation/NoCancelOperationEnvironment.o
+  CXX     output/TARGET/dbg/src/Operation/PopupOperationEnvironment.o
+  CXX     output/TARGET/dbg/src/Operation/MessageOperationEnvironment.o
+  CXX     output/TARGET/dbg/src/Operation/ThreadedOperationEnvironment.o
+  CXX     output/TARGET/dbg/src/Operation/VerboseOperationEnvironment.o
+  CXX     output/TARGET/dbg/src/Atmosphere/Pressure.o
+  CXX     output/TARGET/dbg/src/Atmosphere/AirDensity.o
+  CXX     output/TARGET/dbg/src/Atmosphere/CuSonde.o
+  CXX     output/TARGET/dbg/src/Computer/ClimbAverageCalculator.o
+  CXX     output/TARGET/dbg/src/Computer/ConditionMonitor/ConditionMonitor.o
+  CXX     output/TARGET/dbg/src/Computer/ConditionMonitor/ConditionMonitorAATTime.o
+  CXX     output/TARGET/dbg/src/Computer/ConditionMonitor/ConditionMonitorFinalGlide.o
+  CXX     output/TARGET/dbg/src/Computer/ConditionMonitor/ConditionMonitorGlideTerrain.o
+  CXX     output/TARGET/dbg/src/Computer/ConditionMonitor/ConditionMonitorLandableReachable.o
+  CXX     output/TARGET/dbg/src/Computer/ConditionMonitor/ConditionMonitorSunset.o
+  CXX     output/TARGET/dbg/src/Computer/ConditionMonitor/ConditionMonitorWind.o
+  CXX     output/TARGET/dbg/src/Computer/ConditionMonitor/ConditionMonitors.o
+  CXX     output/TARGET/dbg/src/Plane/PlaneGlue.o
+  CXX     output/TARGET/dbg/src/Plane/PlaneFileGlue.o
+  CXX     output/TARGET/dbg/src/FLARM/FlarmId.o
+  CXX     output/TARGET/dbg/src/FLARM/Error.o
+  CXX     output/TARGET/dbg/src/FLARM/List.o
+  CXX     output/TARGET/dbg/src/FLARM/FlarmNetRecord.o
+  CXX     output/TARGET/dbg/src/FLARM/FlarmNetDatabase.o
+  CXX     output/TARGET/dbg/src/FLARM/FlarmNetReader.o
+  CXX     output/TARGET/dbg/src/FLARM/Traffic.o
+  CXX     output/TARGET/dbg/src/FLARM/FlarmCalculations.o
+  CXX     output/TARGET/dbg/src/FLARM/Friends.o
+  CXX     output/TARGET/dbg/src/FLARM/FlarmComputer.o
+  CXX     output/TARGET/dbg/src/FLARM/Global.o
+  CXX     output/TARGET/dbg/src/FLARM/Glue.o
+  CXX     output/TARGET/dbg/src/Computer/CuComputer.o
+  CXX     output/TARGET/dbg/src/Computer/FlyingComputer.o
+  CXX     output/TARGET/dbg/src/Computer/CirclingComputer.o
+  CXX     output/TARGET/dbg/src/Computer/ThermalBandComputer.o
+  CXX     output/TARGET/dbg/src/Computer/Wind/Computer.o
+  CXX     output/TARGET/dbg/src/Computer/ContestComputer.o
+  CXX     output/TARGET/dbg/src/Computer/TraceComputer.o
+  CXX     output/TARGET/dbg/src/Computer/WarningComputer.o
+  CXX     output/TARGET/dbg/src/Computer/ThermalLocator.o
+  CXX     output/TARGET/dbg/src/Computer/ThermalBase.o
+  CXX     output/TARGET/dbg/src/Computer/LiftDatabaseComputer.o
+  CXX     output/TARGET/dbg/src/Computer/LogComputer.o
+  CXX     output/TARGET/dbg/src/Computer/AverageVarioComputer.o
+  CXX     output/TARGET/dbg/src/Computer/GlideRatioCalculator.o
+  CXX     output/TARGET/dbg/src/Computer/GlideRatioComputer.o
+  CXX     output/TARGET/dbg/src/Computer/GlideComputer.o
+  CXX     output/TARGET/dbg/src/Computer/GlideComputerBlackboard.o
+  CXX     output/TARGET/dbg/src/Computer/GlideComputerAirData.o
+  CXX     output/TARGET/dbg/src/Computer/WaveComputer.o
+  CXX     output/TARGET/dbg/src/Computer/StatsComputer.o
+  CXX     output/TARGET/dbg/src/Computer/RouteComputer.o
+  CXX     output/TARGET/dbg/src/Computer/TaskComputer.o
+  CXX     output/TARGET/dbg/src/Computer/GlideComputerInterface.o
+  CXX     output/TARGET/dbg/src/Computer/Events.o
+  CXX     output/TARGET/dbg/src/BallastDumpManager.o
+  CXX     output/TARGET/dbg/src/Logger/Settings.o
+  CXX     output/TARGET/dbg/src/Logger/Logger.o
+  CXX     output/TARGET/dbg/src/Logger/LoggerFRecord.o
+  CXX     output/TARGET/dbg/src/Logger/GRecord.o
+  CXX     output/TARGET/dbg/src/Logger/LoggerEPE.o
+  CXX     output/TARGET/dbg/src/Logger/LoggerImpl.o
+  CXX     output/TARGET/dbg/src/Logger/IGCFileCleanup.o
+  CXX     output/TARGET/dbg/src/IGC/IGCFix.o
+  CXX     output/TARGET/dbg/src/IGC/IGCWriter.o
+  CXX     output/TARGET/dbg/src/IGC/IGCString.o
+  CXX     output/TARGET/dbg/src/IGC/Generator.o
+  CXX     output/TARGET/dbg/src/Util/MD5.o
+  CXX     output/TARGET/dbg/src/Logger/NMEALogger.o
+  CXX     output/TARGET/dbg/src/Logger/ExternalLogger.o
+  CXX     output/TARGET/dbg/src/Logger/FlightLogger.o
+  CXX     output/TARGET/dbg/src/Logger/GlueFlightLogger.o
+  CXX     output/TARGET/dbg/src/NMEA/Info.o
+  CXX     output/TARGET/dbg/src/NMEA/MoreData.o
+  CXX     output/TARGET/dbg/src/NMEA/GPSState.o
+  CXX     output/TARGET/dbg/src/NMEA/Acceleration.o
+  CXX     output/TARGET/dbg/src/NMEA/Attitude.o
+  CXX     output/TARGET/dbg/src/NMEA/ExternalSettings.o
+  CXX     output/TARGET/dbg/src/NMEA/FlyingState.o
+  CXX     output/TARGET/dbg/src/NMEA/Derived.o
+  CXX     output/TARGET/dbg/src/NMEA/VarioInfo.o
+  CXX     output/TARGET/dbg/src/NMEA/ClimbInfo.o
+  CXX     output/TARGET/dbg/src/NMEA/CirclingInfo.o
+  CXX     output/TARGET/dbg/src/NMEA/ThermalLocator.o
+  CXX     output/TARGET/dbg/src/NMEA/ClimbHistory.o
+  CXX     output/TARGET/dbg/src/NMEA/SwitchState.o
+  CXX     output/TARGET/dbg/src/NMEA/InputLine.o
+  CXX     output/TARGET/dbg/src/NMEA/Checksum.o
+  CXX     output/TARGET/dbg/src/NMEA/Aircraft.o
+  CXX     output/TARGET/dbg/src/Replay/Replay.o
+  CXX     output/TARGET/dbg/src/IGC/IGCParser.o
+  CXX     output/TARGET/dbg/src/Replay/IgcReplay.o
+  CXX     output/TARGET/dbg/src/Replay/NmeaReplay.o
+  CXX     output/TARGET/dbg/src/Replay/DemoReplay.o
+  CXX     output/TARGET/dbg/src/Replay/DemoReplayGlue.o
+  CXX     output/TARGET/dbg/src/Replay/TaskAutoPilot.o
+  CXX     output/TARGET/dbg/src/Replay/AircraftSim.o
+  CXX     output/TARGET/dbg/src/TeamCode/TeamCode.o
+  CXX     output/TARGET/dbg/src/TeamCode/Settings.o
+  CXX     output/TARGET/dbg/src/TeamActions.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointList.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointListBuilder.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointFilter.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointGlue.o
+  CXX     output/TARGET/dbg/src/Waypoint/SaveGlue.o
+  CXX     output/TARGET/dbg/src/Waypoint/LastUsed.o
+  CXX     output/TARGET/dbg/src/Waypoint/HomeGlue.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointFileType.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointReader.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointReaderBase.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointReaderOzi.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointReaderFS.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointReaderWinPilot.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointReaderSeeYou.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointReaderZander.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointReaderCompeGPS.o
+  CXX     output/TARGET/dbg/src/Waypoint/CupWriter.o
+  CXX     output/TARGET/dbg/src/Waypoint/Factory.o
+  CXX     output/TARGET/dbg/src/Computer/Wind/CirclingWind.o
+  CXX     output/TARGET/dbg/src/Computer/Wind/MeasurementList.o
+  CXX     output/TARGET/dbg/src/Computer/Wind/Store.o
+  CXX     output/TARGET/dbg/src/Computer/Wind/WindEKF.o
+  CXX     output/TARGET/dbg/src/Computer/Wind/WindEKFGlue.o
+  CXX     output/TARGET/dbg/src/Computer/Wind/Settings.o
+  CXX     output/TARGET/dbg/src/CrossSection/AirspaceXSRenderer.o
+  CXX     output/TARGET/dbg/src/CrossSection/TerrainXSRenderer.o
+  CXX     output/TARGET/dbg/src/CrossSection/CrossSectionRenderer.o
+  CXX     output/TARGET/dbg/src/CrossSection/CrossSectionWindow.o
+  CXX     output/TARGET/dbg/src/CrossSection/CrossSectionWidget.o
+  CXX     output/TARGET/dbg/src/Gauge/ThermalAssistantRenderer.o
+  CXX     output/TARGET/dbg/src/Gauge/ThermalAssistantWindow.o
+  CXX     output/TARGET/dbg/src/Gauge/BigThermalAssistantWindow.o
+  CXX     output/TARGET/dbg/src/Gauge/BigThermalAssistantWidget.o
+  CXX     output/TARGET/dbg/src/Gauge/FlarmTrafficWindow.o
+  CXX     output/TARGET/dbg/src/Gauge/BigTrafficWidget.o
+  CXX     output/TARGET/dbg/src/Gauge/GaugeFLARM.o
+  CXX     output/TARGET/dbg/src/Gauge/GaugeThermalAssistant.o
+  CXX     output/TARGET/dbg/src/Gauge/VarioSettings.o
+  CXX     output/TARGET/dbg/src/Gauge/TrafficSettings.o
+  CXX     output/TARGET/dbg/src/Gauge/GaugeVario.o
+  CXX     output/TARGET/dbg/src/Gauge/GlueGaugeVario.o
+  CXX     output/TARGET/dbg/src/Gauge/TaskView.o
+  CXX     output/TARGET/dbg/src/Gauge/LogoView.o
+  CXX     output/TARGET/dbg/src/Waypoint/WaypointDetailsReader.o
+  CXX     output/TARGET/dbg/src/Menu/MenuData.o
+  CXX     output/TARGET/dbg/src/Menu/MenuBar.o
+  CXX     output/TARGET/dbg/src/Menu/ButtonLabel.o
+  CXX     output/TARGET/dbg/src/Menu/ExpandMacros.o
+  CXX     output/TARGET/dbg/src/Menu/ShowMenuButton.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Factory.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Alternate.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Base.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Altitude.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Direction.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Glide.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/MacCready.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Other.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Speed.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Task.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Places.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Contest.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Team.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Terrain.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Thermal.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Time.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Trace.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Weather.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Airspace.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Content/Radio.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Data.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Format.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Units.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/InfoBoxSettings.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/InfoBoxWindow.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/InfoBoxLayout.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/InfoBoxManager.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Panel/AltitudeInfo.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Panel/AltitudeSimulator.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Panel/AltitudeSetup.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Panel/MacCreadyEdit.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Panel/MacCreadySetup.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Panel/WindEdit.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Panel/ATCReference.o
+  CXX     output/TARGET/dbg/src/InfoBoxes/Panel/RadioEdit.o
+  CXX     output/TARGET/dbg/src/Pan.o
+  CXX     output/TARGET/dbg/src/Input/InputConfig.o
+  CXX     output/TARGET/dbg/src/Input/InputDefaults.o
+  CXX     output/TARGET/dbg/src/Input/InputEvents.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsActions.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsDevice.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsVega.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsMap.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsPage.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsAirspace.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsTask.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsSettings.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsThermalAssistant.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsTraffic.o
+  CXX     output/TARGET/dbg/src/Input/InputEventsLua.o
+  CXX     output/TARGET/dbg/src/Input/InputQueue.o
+  CXX     output/TARGET/dbg/src/Input/InputLookup.o
+  CXX     output/TARGET/dbg/src/Input/InputKeys.o
+  CXX     output/TARGET/dbg/src/Input/InputParser.o
+  CXX     output/TARGET/dbg/src/Input/TaskEventObserver.o
+  CXX     output/TARGET/dbg/src/PageSettings.o
+  CXX     output/TARGET/dbg/src/PageState.o
+  CXX     output/TARGET/dbg/src/PageActions.o
+  CXX     output/TARGET/dbg/src/StatusMessage.o
+  CXX     output/TARGET/dbg/src/PopupMessage.o
+  CXX     output/TARGET/dbg/src/Message.o
+  CXX     output/TARGET/dbg/src/LogFile.o
+  CXX     output/TARGET/dbg/src/Geo/Geoid.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapCanvas.o
+  CXX     output/TARGET/dbg/src/MapWindow/StencilMapCanvas.o
+  CXX     output/TARGET/dbg/src/Projection/Projection.o
+  CXX     output/TARGET/dbg/src/Projection/WindowProjection.o
+  CXX     output/TARGET/dbg/src/Projection/CompareProjection.o
+  CXX     output/TARGET/dbg/src/Renderer/ChartRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/BackgroundRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/FAITriangleAreaRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/OZRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TaskPointRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TaskRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/AircraftRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/AirspaceRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/AirspaceRendererGL.o
+  CXX     output/TARGET/dbg/src/Renderer/AirspaceRendererOther.o
+  CXX     output/TARGET/dbg/src/Renderer/AirspaceLabelList.o
+  CXX     output/TARGET/dbg/src/Renderer/AirspaceLabelRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/AirspaceListRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/AirspacePreviewRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/BestCruiseArrowRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/CompassRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/FinalGlideBarRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/VarioBarRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/MapItemListRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/OZPreviewRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TrackLineRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TrafficRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TrailRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/UnitSymbolRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/WaypointListRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/WaypointIconRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/WaypointRenderer.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Renderer/WaypointRenderer.cpp:43:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Renderer/WaypointRenderer.cpp:43:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Renderer/WaypointRendererSettings.o
+  CXX     output/TARGET/dbg/src/Renderer/WaypointLabelList.o
+  CXX     output/TARGET/dbg/src/Renderer/WindArrowRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/NextArrowRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/WaveRenderer.o
+  CXX     output/TARGET/dbg/src/Projection/ChartProjection.o
+  CXX     output/TARGET/dbg/src/MapWindow/Items/MapItem.o
+  CXX     output/TARGET/dbg/src/MapWindow/Items/OverlayMapItem.o
+  CXX     output/TARGET/dbg/src/MapWindow/Items/List.o
+  CXX     output/TARGET/dbg/src/MapWindow/Items/Builder.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/MapWindow/Items/Builder.cpp:35:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/MapWindow/Items/Builder.cpp:35:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/MapWindow/Items/AirspaceBuilder.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/MapWindow/Items/AirspaceBuilder.cpp:30:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/MapWindow/Items/AirspaceBuilder.cpp:30:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/MapWindow/Items/TrafficBuilder.o
+  CXX     output/TARGET/dbg/src/MapWindow/Items/WeatherBuilder.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindow.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/MapWindow/MapWindow.cpp:30:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/MapWindow/MapWindow.cpp:30:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowEvents.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowGlideRange.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/MapWindow/MapWindowGlideRange.cpp:27:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/MapWindow/MapWindowGlideRange.cpp:27:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Projection/MapWindowProjection.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowRender.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowSymbols.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowContest.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowTask.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowThermal.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowTraffic.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowTrail.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/MapWindow/MapWindowTrail.cpp:26:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/MapWindow/MapWindowTrail.cpp:26:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowWaypoints.o
+  CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindow.o
+  CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindowItems.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/MapWindow/GlueMapWindowItems.cpp:32:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/MapWindow/GlueMapWindowItems.cpp:32:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindowEvents.o
+  CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindowOverlays.o
+  CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindowDisplayMode.o
+  CXX     output/TARGET/dbg/src/MapWindow/TargetMapWindow.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/MapWindow/TargetMapWindow.cpp:33:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/MapWindow/TargetMapWindow.cpp:33:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/MapWindow/TargetMapWindowEvents.o
+  CXX     output/TARGET/dbg/src/MapWindow/TargetMapWindowDrag.o
+  CXX     output/TARGET/dbg/src/UIUtil/GestureManager.o
+  CXX     output/TARGET/dbg/src/UIUtil/TrackingGestureManager.o
+  CXX     output/TARGET/dbg/src/DrawThread.o
+  CXX     output/TARGET/dbg/src/Weather/Rasp/RaspStore.o
+  CXX     output/TARGET/dbg/src/Weather/Rasp/RaspCache.o
+  CXX     output/TARGET/dbg/src/Weather/Rasp/RaspRenderer.o
+  CXX     output/TARGET/dbg/src/Weather/Rasp/RaspStyle.o
+  CXX     output/TARGET/dbg/src/Weather/Rasp/Providers.o
+  CXX     output/TARGET/dbg/src/Computer/BasicComputer.o
+  CXX     output/TARGET/dbg/src/Computer/GroundSpeedComputer.o
+  CXX     output/TARGET/dbg/src/Computer/AutoQNH.o
+  CXX     output/TARGET/dbg/src/Blackboard/BlackboardListener.o
+  CXX     output/TARGET/dbg/src/Blackboard/ProxyBlackboardListener.o
+  CXX     output/TARGET/dbg/src/Blackboard/RateLimitedBlackboardListener.o
+  CXX     output/TARGET/dbg/src/Blackboard/LiveBlackboard.o
+  CXX     output/TARGET/dbg/src/Blackboard/InterfaceBlackboard.o
+  CXX     output/TARGET/dbg/src/Blackboard/ScopeGPSListener.o
+  CXX     output/TARGET/dbg/src/Blackboard/ScopeCalculatedListener.o
+  CXX     output/TARGET/dbg/src/Blackboard/DeviceBlackboard.o
+  CXX     output/TARGET/dbg/src/MapWindow/MapWindowBlackboard.o
+  CXX     output/TARGET/dbg/src/Dialogs/DialogSettings.o
+  CXX     output/TARGET/dbg/src/UIReceiveBlackboard.o
+  CXX     output/TARGET/dbg/src/UIGlobals.o
+  CXX     output/TARGET/dbg/src/UIState.o
+  CXX     output/TARGET/dbg/src/UISettings.o
+  CXX     output/TARGET/dbg/src/DisplaySettings.o
+  CXX     output/TARGET/dbg/src/MapSettings.o
+  CXX     output/TARGET/dbg/src/SystemSettings.o
+  CXX     output/TARGET/dbg/src/Audio/Settings.o
+  CXX     output/TARGET/dbg/src/Audio/VarioSettings.o
+  CXX     output/TARGET/dbg/src/Computer/Settings.o
+  CXX     output/TARGET/dbg/src/MergeThread.o
+  CXX     output/TARGET/dbg/src/CalculationThread.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Computer/RouteComputer.hpp:27,
+                 from src/Computer/TaskComputer.hpp:27,
+                 from src/Computer/GlideComputer.hpp:32,
+                 from src/CalculationThread.cpp:25:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Computer/RouteComputer.hpp:27,
+                 from src/Computer/TaskComputer.hpp:27,
+                 from src/Computer/GlideComputer.hpp:32,
+                 from src/CalculationThread.cpp:25:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/DisplayMode.o
+  CXX     output/TARGET/dbg/src/Topography/TopographyFile.o
+  CXX     output/TARGET/dbg/src/Topography/TopographyStore.o
+  CXX     output/TARGET/dbg/src/Topography/TopographyFileRenderer.o
+  CXX     output/TARGET/dbg/src/Topography/TopographyRenderer.o
+  CXX     output/TARGET/dbg/src/Topography/Thread.o
+  CXX     output/TARGET/dbg/src/Topography/TopographyGlue.o
+  CXX     output/TARGET/dbg/src/Topography/XShape.o
+  CXX     output/TARGET/dbg/src/Topography/CachedTopographyRenderer.o
+  CXX     output/TARGET/dbg/src/Markers/Markers.o
+  CXX     output/TARGET/dbg/src/FlightStatistics.o
+  CXX     output/TARGET/dbg/src/FlightInfo.o
+  CXX     output/TARGET/dbg/src/Renderer/FlightStatisticsRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/BarographRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/ClimbChartRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/GlidePolarRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/GlidePolarInfoRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/WindChartRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/CuRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/MacCreadyRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/VarioHistogramRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TaskLegRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TaskSpeedRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/MapScaleRenderer.o
+  CXX     output/TARGET/dbg/src/Simulator.o
+  CXX     output/TARGET/dbg/src/Asset.o
+  CXX     output/TARGET/dbg/src/Hardware/CPU.o
+  CXX     output/TARGET/dbg/src/Hardware/RotateDisplay.o
+  CXX     output/TARGET/dbg/src/Hardware/DisplayDPI.o
+  CXX     output/TARGET/dbg/src/Hardware/DisplaySize.o
+  CXX     output/TARGET/dbg/src/Hardware/DisplayGlue.o
+  CXX     output/TARGET/dbg/src/Hardware/Vibrator.o
+  CXX     output/TARGET/dbg/src/Language/MOFile.o
+  CXX     output/TARGET/dbg/src/Language/Language.o
+  CXX     output/TARGET/dbg/src/Language/LanguageGlue.o
+  CXX     output/TARGET/dbg/src/LocalPath.o
+  CXX     output/TARGET/dbg/src/UIActions.o
+  CXX     output/TARGET/dbg/src/Interface.o
+  CXX     output/TARGET/dbg/src/ActionInterface.o
+  CXX     output/TARGET/dbg/src/ProgressWindow.o
+  CXX     output/TARGET/dbg/src/ProgressGlue.o
+  CXX     output/TARGET/dbg/src/Units/Units.o
+  CXX     output/TARGET/dbg/src/Units/UnitsGlue.o
+  CXX     output/TARGET/dbg/src/Units/UnitsStore.o
+  CXX     output/TARGET/dbg/src/Formatter/Units.o
+  CXX     output/TARGET/dbg/src/Formatter/UserUnits.o
+  CXX     output/TARGET/dbg/src/Formatter/HexColor.o
+  CXX     output/TARGET/dbg/src/Formatter/GlideRatioFormatter.o
+  CXX     output/TARGET/dbg/src/Formatter/GeoPointFormatter.o
+  CXX     output/TARGET/dbg/src/Formatter/ByteSizeFormatter.o
+  CXX     output/TARGET/dbg/src/Formatter/UserGeoPointFormatter.o
+  CXX     output/TARGET/dbg/src/Formatter/TimeFormatter.o
+  CXX     output/TARGET/dbg/src/Formatter/LocalTimeFormatter.o
+  CXX     output/TARGET/dbg/src/Formatter/IGCFilenameFormatter.o
+  CXX     output/TARGET/dbg/src/Formatter/AirspaceFormatter.o
+  CXX     output/TARGET/dbg/src/Formatter/AirspaceUserUnitsFormatter.o
+  CXX     output/TARGET/dbg/src/Units/Descriptor.o
+  CXX     output/TARGET/dbg/src/Units/System.o
+  CXX     output/TARGET/dbg/src/Units/Settings.o
+  CXX     output/TARGET/dbg/src/Units/Temperature.o
+  CXX     output/TARGET/dbg/src/Formatter/AngleFormatter.o
+  CXX     output/TARGET/dbg/src/FLARM/FlarmDetails.o
+  CXX     output/TARGET/dbg/src/FLARM/NameDatabase.o
+  CXX     output/TARGET/dbg/src/FLARM/NameFile.o
+  CXX     output/TARGET/dbg/src/FLARM/TrafficDatabases.o
+  CXX     output/TARGET/dbg/src/UtilsSettings.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/UtilsSettings.cpp:45:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/UtilsSettings.cpp:45:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/UtilsSystem.o
+  CXX     output/TARGET/dbg/src/OS/LogError.o
+  CXX     output/TARGET/dbg/src/Version.o
+  CXX     output/TARGET/dbg/src/Audio/Sound.o
+  CC      output/TARGET/dbg/src/Compatibility/fmode.o
+  CXX     output/TARGET/dbg/src/Profile/Profile.o
+  CXX     output/TARGET/dbg/src/Profile/Screen.o
+  CXX     output/TARGET/dbg/src/Profile/TrackingProfile.o
+  CXX     output/TARGET/dbg/src/Profile/WeatherProfile.o
+  CXX     output/TARGET/dbg/src/Profile/SystemProfile.o
+  CXX     output/TARGET/dbg/src/Profile/ComputerProfile.o
+  CXX     output/TARGET/dbg/src/Profile/RouteProfile.o
+  CXX     output/TARGET/dbg/src/Profile/ContestProfile.o
+  CXX     output/TARGET/dbg/src/Profile/TaskProfile.o
+  CXX     output/TARGET/dbg/src/Profile/MapProfile.o
+  CXX     output/TARGET/dbg/src/Profile/PageProfile.o
+  CXX     output/TARGET/dbg/src/Profile/UIProfile.o
+  CXX     output/TARGET/dbg/src/Profile/Settings.o
+  CXX     output/TARGET/dbg/src/Profile/UnitsConfig.o
+  CXX     output/TARGET/dbg/src/Profile/DeviceConfig.o
+  CXX     output/TARGET/dbg/src/Profile/InfoBoxConfig.o
+  CXX     output/TARGET/dbg/src/Profile/AirspaceConfig.o
+  CXX     output/TARGET/dbg/src/Profile/TerrainConfig.o
+  CXX     output/TARGET/dbg/src/Profile/FlarmProfile.o
+  CXX     output/TARGET/dbg/src/XML/Node.o
+  CXX     output/TARGET/dbg/src/XML/Parser.o
+  CXX     output/TARGET/dbg/src/XML/Writer.o
+  CXX     output/TARGET/dbg/src/XML/DataNode.o
+  CXX     output/TARGET/dbg/src/XML/DataNodeXML.o
+  CXX     output/TARGET/dbg/src/Repository/FileRepository.o
+  CXX     output/TARGET/dbg/src/Repository/Parser.o
+  CXX     output/TARGET/dbg/src/Job/Thread.o
+  CXX     output/TARGET/dbg/src/Job/Async.o
+  CXX     output/TARGET/dbg/src/RateLimiter.o
+  CXX     output/TARGET/dbg/src/Math/Screen.o
+  CXX     output/TARGET/dbg/src/Math/SunEphemeris.o
+  CXX     output/TARGET/dbg/src/Screen/Layout.o
+  CXX     output/TARGET/dbg/src/Screen/Ramp.o
+  CXX     output/TARGET/dbg/src/Screen/TerminalWindow.o
+  CXX     output/TARGET/dbg/src/Look/FontDescription.o
+  CXX     output/TARGET/dbg/src/Look/GlobalFonts.o
+  CXX     output/TARGET/dbg/src/Look/DefaultFonts.o
+  CXX     output/TARGET/dbg/src/Polar/PolarGlue.o
+  CXX     output/TARGET/dbg/src/Polar/PolarFileGlue.o
+  CXX     output/TARGET/dbg/src/Polar/Shape.o
+  CXX     output/TARGET/dbg/src/Polar/Polar.o
+  CXX     output/TARGET/dbg/src/Polar/Parser.o
+  CXX     output/TARGET/dbg/src/Polar/PolarStore.o
+  CXX     output/TARGET/dbg/src/Protection.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Computer/RouteComputer.hpp:27,
+                 from src/Computer/TaskComputer.hpp:27,
+                 from src/Computer/GlideComputer.hpp:32,
+                 from src/Protection.cpp:28:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Computer/RouteComputer.hpp:27,
+                 from src/Computer/TaskComputer.hpp:27,
+                 from src/Computer/GlideComputer.hpp:32,
+                 from src/Protection.cpp:28:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/BatteryTimer.o
+  CXX     output/TARGET/dbg/src/ProcessTimer.o
+  CXX     output/TARGET/dbg/src/ApplyExternalSettings.o
+  CXX     output/TARGET/dbg/src/ApplyVegaSwitches.o
+  CXX     output/TARGET/dbg/src/MainWindow.o
+  CXX     output/TARGET/dbg/src/Startup.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Computer/RouteComputer.hpp:27,
+                 from src/Computer/TaskComputer.hpp:27,
+                 from src/Computer/GlideComputer.hpp:32,
+                 from src/Startup.cpp:62:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Computer/RouteComputer.hpp:27,
+                 from src/Computer/TaskComputer.hpp:27,
+                 from src/Computer/GlideComputer.hpp:32,
+                 from src/Startup.cpp:62:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Components.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Computer/RouteComputer.hpp:27,
+                 from src/Computer/TaskComputer.hpp:27,
+                 from src/Computer/GlideComputer.hpp:32,
+                 from src/Components.cpp:25:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from src/Computer/RouteComputer.hpp:27,
+                 from src/Computer/TaskComputer.hpp:27,
+                 from src/Computer/GlideComputer.hpp:32,
+                 from src/Components.cpp:25:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/DataGlobals.o
+  CXX     output/TARGET/dbg/src/Device/Declaration.o
+  CXX     output/TARGET/dbg/src/Device/MultipleDevices.o
+  CXX     output/TARGET/dbg/src/Device/device.o
+  CXX     output/TARGET/dbg/src/Device/Port/ConfiguredPort.o
+  CXX     output/TARGET/dbg/src/Device/Descriptor.o
+  CXX     output/TARGET/dbg/src/Device/Dispatcher.o
+  CXX     output/TARGET/dbg/src/Device/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Simulator.o
+  CXX     output/TARGET/dbg/src/Device/Util/LineSplitter.o
+  CXX     output/TARGET/dbg/src/Device/Util/NMEAWriter.o
+  CXX     output/TARGET/dbg/src/Device/Util/NMEAReader.o
+  CXX     output/TARGET/dbg/src/Device/Config.o
+  CXX     output/TARGET/dbg/src/Dialogs/Inflate.o
+  CXX     output/TARGET/dbg/src/Dialogs/Message.o
+  CXX     output/TARGET/dbg/src/Dialogs/LockScreen.o
+  CXX     output/TARGET/dbg/src/Dialogs/Error.o
+  CXX     output/TARGET/dbg/src/Dialogs/ListPicker.o
+  CXX     output/TARGET/dbg/src/Dialogs/ProgressDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/JobDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/WidgetDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/FileManager.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/DeviceEditWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/DeviceListDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/PortMonitor.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/ManageCAI302Dialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/CAI302/UnitsEditor.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/CAI302/WaypointUploader.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/ManageFlarmDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/BlueFly/BlueFlyConfigurationDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/LX/ManageV7Dialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/LX/V7ConfigWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/LX/ManageNanoDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/LX/NanoConfigWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/LX/ManageLX16xxDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/Vega/VegaParametersWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/Vega/VegaConfigurationDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/Vega/VegaDemoDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/Vega/SwitchesDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Device/FLARM/ConfigWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/MapItemListDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/MapItemListSettingsDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/MapItemListSettingsPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/ColorListDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Airspace/dlgAirspace.o
+  CXX     output/TARGET/dbg/src/Dialogs/Airspace/dlgAirspacePatterns.o
+  CXX     output/TARGET/dbg/src/Dialogs/Airspace/dlgAirspaceDetails.o
+  CXX     output/TARGET/dbg/src/Dialogs/Airspace/AirspaceList.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Dialogs/Airspace/AirspaceList.cpp:35:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Dialogs/Airspace/AirspaceList.cpp:35:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Dialogs/Airspace/AirspaceCRendererSettingsDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Airspace/AirspaceCRendererSettingsPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Airspace/dlgAirspaceWarnings.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/WindSettingsPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/WindSettingsDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/dlgBasicSettings.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/dlgConfiguration.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/dlgConfigInfoboxes.o
+  CXX     output/TARGET/dbg/src/Dialogs/Traffic/TrafficList.o
+  CXX     output/TARGET/dbg/src/Dialogs/Traffic/FlarmTrafficDetails.o
+  CXX     output/TARGET/dbg/src/Dialogs/Traffic/TeamCodeDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/dlgAnalysis.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/Dialogs/dlgAnalysis.cpp:39:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/Dialogs/dlgAnalysis.cpp:39:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Dialogs/dlgChecklist.o
+  CXX     output/TARGET/dbg/src/Dialogs/ProfileListDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Plane/PlaneListDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Plane/PlaneDetailsDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Plane/PlanePolarDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Plane/PolarShapeEditWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/DataField.o
+  CXX     output/TARGET/dbg/src/Dialogs/ComboPicker.o
+  CXX     output/TARGET/dbg/src/Dialogs/FilePicker.o
+  CXX     output/TARGET/dbg/src/Dialogs/HelpDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/dlgInfoBoxAccess.o
+  CXX     output/TARGET/dbg/src/Dialogs/ReplayDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/dlgSimulatorPrompt.o
+  CXX     output/TARGET/dbg/src/Dialogs/SimulatorPromptWindow.o
+  CXX     output/TARGET/dbg/src/Dialogs/StartupDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/ProfilePasswordDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/dlgStatus.o
+  CXX     output/TARGET/dbg/src/Dialogs/StatusPanels/StatusPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/StatusPanels/FlightStatusPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/StatusPanels/SystemStatusPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/StatusPanels/TaskStatusPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/StatusPanels/RulesStatusPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/StatusPanels/TimesStatusPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Waypoint/WaypointInfoWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Waypoint/WaypointCommandsWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Waypoint/dlgWaypointDetails.o
+  CXX     output/TARGET/dbg/src/Dialogs/Waypoint/Manager.o
+  CXX     output/TARGET/dbg/src/Dialogs/Waypoint/dlgWaypointEdit.o
+  CXX     output/TARGET/dbg/src/Dialogs/Waypoint/WaypointList.o
+  CXX     output/TARGET/dbg/src/Dialogs/Waypoint/NearestWaypoint.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/AirspaceConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/GaugesConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/VarioConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/GlideComputerConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/WindConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/InfoBoxesConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/InterfaceConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/LayoutConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/LoggerConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/MapDisplayConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/PagesConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/RouteConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/SafetyFactorsConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/SiteConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/SymbolsConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/TaskRulesConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/TaskDefaultsConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/ScoringConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/TerrainDisplayConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/UnitsConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/TimeConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/WaypointDisplayConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/TrackingConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/CloudConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Settings/Panels/WeatherConfigPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Widgets/ObservationZoneEditWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Widgets/CylinderZoneEditWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Widgets/LineSectorZoneEditWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Widgets/SectorZoneEditWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Widgets/KeyholeZoneEditWidget.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Manager/TaskMapButtonRenderer.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Manager/TaskManagerDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Manager/TaskClosePanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Manager/TaskEditPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Manager/TaskPropertiesPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Manager/TaskMiscPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Manager/TaskActionsPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/Manager/TaskListPanel.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/OptionalStartsDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/TaskPointDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/MutateTaskPointDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/dlgTaskHelpers.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/TargetDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Task/AlternatesListDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Tracking/CloudEnableDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/NumberEntry.o
+  CXX     output/TARGET/dbg/src/Dialogs/TextEntry.o
+  CXX     output/TARGET/dbg/src/Dialogs/KnobTextEntry.o
+  CXX     output/TARGET/dbg/src/Dialogs/TouchTextEntry.o
+  CXX     output/TARGET/dbg/src/Dialogs/TimeEntry.o
+  CXX     output/TARGET/dbg/src/Dialogs/GeoPointEntry.o
+  CXX     output/TARGET/dbg/src/Dialogs/Weather/WeatherDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Weather/RASPDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/dlgCredits.o
+  CXX     output/TARGET/dbg/src/Dialogs/dlgQuickMenu.o
+  CXX     output/TARGET/dbg/src/Dialogs/Weather/PCMetDialog.o
+  CXX     output/TARGET/dbg/src/Dialogs/Weather/NOAAList.o
+  CXX     output/TARGET/dbg/src/Dialogs/Weather/NOAADetails.o
+  CXX     output/TARGET/dbg/src/Monitor/WindMonitor.o
+  CXX     output/TARGET/dbg/src/Monitor/AirspaceWarningMonitor.o
+  CXX     output/TARGET/dbg/src/Monitor/TaskConstraintsMonitor.o
+  CXX     output/TARGET/dbg/src/Monitor/TaskAdvanceMonitor.o
+  CXX     output/TARGET/dbg/src/Monitor/MatTaskMonitor.o
+  CXX     output/TARGET/dbg/src/Monitor/AllMonitors.o
+  CXX     output/TARGET/dbg/src/Hardware/Battery.o
+  CXX     output/TARGET/dbg/src/CommandLine.o
+  CXX     output/TARGET/dbg/src/XCSoar.o
+  CXX     output/TARGET/dbg/src/Dialogs/DownloadFilePicker.o
+  CXX     output/TARGET/dbg/src/Repository/Glue.o
+  CXX     output/TARGET/dbg/src/Renderer/NOAAListRenderer.o
+  CXX     output/TARGET/dbg/src/Weather/PCMet/Images.o
+  CXX     output/TARGET/dbg/src/Weather/PCMet/Overlays.o
+  CXX     output/TARGET/dbg/src/Weather/NOAAGlue.o
+  CXX     output/TARGET/dbg/src/Weather/METARParser.o
+  CXX     output/TARGET/dbg/src/Weather/NOAAFormatter.o
+  CXX     output/TARGET/dbg/src/Weather/NOAADownloader.o
+  CXX     output/TARGET/dbg/src/Weather/NOAAStore.o
+  CXX     output/TARGET/dbg/src/Weather/NOAAUpdater.o
+  CXX     output/TARGET/dbg/src/Tracking/LiveTrack24.o
+  CXX     output/TARGET/dbg/src/Tracking/SkyLines/Client.o
+  CXX     output/TARGET/dbg/src/Tracking/SkyLines/Assemble.o
+  CXX     output/TARGET/dbg/src/Tracking/SkyLines/Key.o
+  CXX     output/TARGET/dbg/src/Tracking/SkyLines/Glue.o
+  CXX     output/TARGET/dbg/src/Tracking/TrackingGlue.o
+  CXX     output/TARGET/dbg/src/Profile/File.o
+  CXX     output/TARGET/dbg/src/Profile/Current.o
+  CXX     output/TARGET/dbg/src/Profile/Map.o
+  CXX     output/TARGET/dbg/src/Profile/StringValue.o
+  CXX     output/TARGET/dbg/src/Profile/NumericValue.o
+  CXX     output/TARGET/dbg/src/Profile/PathValue.o
+  CXX     output/TARGET/dbg/src/Profile/GeoValue.o
+  CXX     output/TARGET/dbg/src/Profile/ProfileKeys.o
+  CXX     output/TARGET/dbg/src/Profile/ProfileMap.o
+  AR      output/TARGET/dbg/profile.a
+  CXX     output/TARGET/dbg/src/Terrain/RasterBuffer.o
+  CXX     output/TARGET/dbg/src/Terrain/RasterProjection.o
+  CXX     output/TARGET/dbg/src/Terrain/RasterMap.o
+  CXX     output/TARGET/dbg/src/Terrain/RasterTile.o
+  CXX     output/TARGET/dbg/src/Terrain/RasterTileCache.o
+  CXX     output/TARGET/dbg/src/Terrain/ZzipStream.o
+  CXX     output/TARGET/dbg/src/Terrain/Loader.o
+  CXX     output/TARGET/dbg/src/Terrain/WorldFile.o
+  CXX     output/TARGET/dbg/src/Terrain/Intersection.o
+  CXX     output/TARGET/dbg/src/Terrain/ScanLine.o
+  CXX     output/TARGET/dbg/src/Terrain/RasterTerrain.o
+  CXX     output/TARGET/dbg/src/Terrain/Thread.o
+  CXX     output/TARGET/dbg/src/Terrain/HeightMatrix.o
+  CXX     output/TARGET/dbg/src/Terrain/RasterRenderer.o
+  CXX     output/TARGET/dbg/src/Terrain/TerrainRenderer.o
+  CXX     output/TARGET/dbg/src/Terrain/TerrainSettings.o
+  AR      output/TARGET/dbg/libterrain.a
+  CC      output/TARGET/dbg/src/Terrain/jasper/base/jas_malloc.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/base/jas_seq.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/base/jas_stream.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/base/jas_string.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/base/jas_tvp.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jp2/jp2_cod.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_bs.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_cs.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_dec.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_math.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_mqdec.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_mqcod.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_qmfb.o
+  CXX     output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_rtc.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_t1dec.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_t1cod.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_t2dec.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_t2cod.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_tagtree.o
+  CC      output/TARGET/dbg/src/Terrain/jasper/jpc/jpc_tsfb.o
+  AR      output/TARGET/dbg/jasper.a
+  CXX     output/TARGET/dbg/src/Widget/Widget.o
+  CXX     output/TARGET/dbg/src/Widget/ActionWidget.o
+  CXX     output/TARGET/dbg/src/Widget/CallbackWidget.o
+  CXX     output/TARGET/dbg/src/Widget/WindowWidget.o
+  CXX     output/TARGET/dbg/src/Widget/CreateWindowWidget.o
+  CXX     output/TARGET/dbg/src/Widget/ListWidget.o
+  CXX     output/TARGET/dbg/src/Widget/TextListWidget.o
+  CXX     output/TARGET/dbg/src/Widget/ContainerWidget.o
+  CXX     output/TARGET/dbg/src/Widget/SolidWidget.o
+  CXX     output/TARGET/dbg/src/Widget/PanelWidget.o
+  CXX     output/TARGET/dbg/src/Widget/TabWidget.o
+  CXX     output/TARGET/dbg/src/Widget/TextWidget.o
+  CXX     output/TARGET/dbg/src/Widget/LargeTextWidget.o
+  CXX     output/TARGET/dbg/src/Widget/OverlappedWidget.o
+  CXX     output/TARGET/dbg/src/Widget/TwoWidgets.o
+  CXX     output/TARGET/dbg/src/Widget/RowFormWidget.o
+  CXX     output/TARGET/dbg/src/Widget/EditRowFormWidget.o
+  CXX     output/TARGET/dbg/src/Widget/ProfileRowFormWidget.o
+  CXX     output/TARGET/dbg/src/Widget/UnitRowFormWidget.o
+  CXX     output/TARGET/dbg/src/Widget/ManagedWidget.o
+  CXX     output/TARGET/dbg/src/Widget/PagerWidget.o
+  CXX     output/TARGET/dbg/src/Widget/ArrowPagerWidget.o
+  CXX     output/TARGET/dbg/src/Widget/OffsetButtonsWidget.o
+  CXX     output/TARGET/dbg/src/Widget/ButtonPanelWidget.o
+  CXX     output/TARGET/dbg/src/Widget/ButtonWidget.o
+  CXX     output/TARGET/dbg/src/Widget/QuestionWidget.o
+  CXX     output/TARGET/dbg/src/Widget/KeyboardWidget.o
+  CXX     output/TARGET/dbg/src/Widget/ViewImageWidget.o
+  CXX     output/TARGET/dbg/src/Widget/DockWindow.o
+  AR      output/TARGET/dbg/libwidget.a
+  CXX     output/TARGET/dbg/src/UIUtil/KineticManager.o
+  CXX     output/TARGET/dbg/src/Renderer/TextRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TabRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/ButtonRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/TextButtonRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/SymbolRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/SymbolButtonRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/BitmapButtonRenderer.o
+  CXX     output/TARGET/dbg/src/Renderer/ColorButtonRenderer.o
+  CXX     output/TARGET/dbg/src/Form/Control.o
+  CXX     output/TARGET/dbg/src/Form/Panel.o
+  CXX     output/TARGET/dbg/src/Form/Form.o
+  CXX     output/TARGET/dbg/src/Form/Button.o
+  CXX     output/TARGET/dbg/src/Form/ButtonPanel.o
+  CXX     output/TARGET/dbg/src/Form/CheckBox.o
+  CXX     output/TARGET/dbg/src/Form/Frame.o
+  CXX     output/TARGET/dbg/src/Form/Draw.o
+  CXX     output/TARGET/dbg/src/Form/List.o
+  CXX     output/TARGET/dbg/src/Form/ScrollBar.o
+  CXX     output/TARGET/dbg/src/Form/Edit.o
+  CXX     output/TARGET/dbg/src/Form/DigitEntry.o
+  CXX     output/TARGET/dbg/src/Form/TabDisplay.o
+  CXX     output/TARGET/dbg/src/Form/TabMenuDisplay.o
+  CXX     output/TARGET/dbg/src/Form/CharacterButton.o
+  CXX     output/TARGET/dbg/src/Form/GridView.o
+  CXX     output/TARGET/dbg/src/Form/HLine.o
+  AR      output/TARGET/dbg/form.a
+  CXX     output/TARGET/dbg/src/Form/DataField/Base.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Boolean.o
+  CXX     output/TARGET/dbg/src/Form/DataField/ComboList.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Enum.o
+  CXX     output/TARGET/dbg/src/Form/DataField/File.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Number.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Float.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Angle.o
+  CXX     output/TARGET/dbg/src/Form/DataField/GeoPoint.o
+  CXX     output/TARGET/dbg/src/Form/DataField/RoughTime.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Time.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Integer.o
+  CXX     output/TARGET/dbg/src/Form/DataField/String.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Prefix.o
+  CXX     output/TARGET/dbg/src/Form/DataField/Password.o
+  AR      output/TARGET/dbg/datafield.a
+  CXX     output/TARGET/dbg/src/Look/AutoFont.o
+  CXX     output/TARGET/dbg/src/Look/Look.o
+  CXX     output/TARGET/dbg/src/Look/DialogLook.o
+  CXX     output/TARGET/dbg/src/Look/ButtonLook.o
+  CXX     output/TARGET/dbg/src/Look/CheckBoxLook.o
+  CXX     output/TARGET/dbg/src/Look/TerminalLook.o
+  CXX     output/TARGET/dbg/src/Look/VarioLook.o
+  CXX     output/TARGET/dbg/src/Look/ChartLook.o
+  CXX     output/TARGET/dbg/src/Look/MapLook.o
+  CXX     output/TARGET/dbg/src/Look/OverlayLook.o
+  CXX     output/TARGET/dbg/src/Look/TopographyLook.o
+  CXX     output/TARGET/dbg/src/Look/WindArrowLook.o
+  CXX     output/TARGET/dbg/src/Look/ThermalBandLook.o
+  CXX     output/TARGET/dbg/src/Look/TraceHistoryLook.o
+  CXX     output/TARGET/dbg/src/Look/AirspaceLook.o
+  CXX     output/TARGET/dbg/src/Look/TrailLook.o
+  CXX     output/TARGET/dbg/src/Look/CrossSectionLook.o
+  CXX     output/TARGET/dbg/src/Look/GestureLook.o
+  CXX     output/TARGET/dbg/src/Look/HorizonLook.o
+  CXX     output/TARGET/dbg/src/Look/TaskLook.o
+  CXX     output/TARGET/dbg/src/Look/TrafficLook.o
+  CXX     output/TARGET/dbg/src/Look/InfoBoxLook.o
+  CXX     output/TARGET/dbg/src/Look/WaypointLook.o
+  CXX     output/TARGET/dbg/src/Look/AircraftLook.o
+  CXX     output/TARGET/dbg/src/Look/NOAALook.o
+  CXX     output/TARGET/dbg/src/Look/FinalGlideBarLook.o
+  CXX     output/TARGET/dbg/src/Look/FlarmTrafficLook.o
+  CXX     output/TARGET/dbg/src/Look/VarioBarLook.o
+  CXX     output/TARGET/dbg/src/Look/IconLook.o
+  CXX     output/TARGET/dbg/src/Look/ThermalAssistantLook.o
+  CXX     output/TARGET/dbg/src/Look/WaveLook.o
+  CXX     output/TARGET/dbg/src/Look/ClimbPercentLook.o
+  AR      output/TARGET/dbg/liblook.a
+  CXX     output/TARGET/dbg/src/Screen/Debug.o
+  CXX     output/TARGET/dbg/src/Screen/ProgressBar.o
+  CXX     output/TARGET/dbg/src/Screen/Util.o
+  CXX     output/TARGET/dbg/src/Screen/Icon.o
+  CXX     output/TARGET/dbg/src/Screen/Canvas.o
+  CXX     output/TARGET/dbg/src/Screen/Color.o
+  CXX     output/TARGET/dbg/src/Screen/BufferCanvas.o
+  CXX     output/TARGET/dbg/src/Screen/Window.o
+  CXX     output/TARGET/dbg/src/Screen/SolidContainerWindow.o
+  CXX     output/TARGET/dbg/src/Screen/BufferWindow.o
+  CXX     output/TARGET/dbg/src/Screen/DoubleBufferWindow.o
+  CXX     output/TARGET/dbg/src/Screen/SingleWindow.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/WindowCanvas.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/VirtualCanvas.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/Init.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/Font.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/Window.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/PaintWindow.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/ContainerWindow.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/LargeTextWindow.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/SingleWindow.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/TopWindow.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/Pen.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/Brush.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/Bitmap.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/ResourceBitmap.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/RawBitmap.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/Canvas.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/BufferCanvas.o
+  CXX     output/TARGET/dbg/src/Screen/GDI/PaintCanvas.o
+  AR      output/TARGET/dbg/screen.a
+  CXX     output/TARGET/dbg/src/Event/Globals.o
+  CXX     output/TARGET/dbg/src/Event/Idle.o
+  CXX     output/TARGET/dbg/src/Event/DelayedNotify.o
+  CXX     output/TARGET/dbg/src/Event/Notify.o
+  CXX     output/TARGET/dbg/src/Event/Shared/Timer.o
+  CXX     output/TARGET/dbg/src/Event/Shared/TimerQueue.o
+  CXX     output/TARGET/dbg/src/Event/Windows/Loop.o
+  CXX     output/TARGET/dbg/src/Event/Windows/Queue.o
+  AR      output/TARGET/dbg/libevent.a
+  CXX     output/TARGET/dbg/src/ResourceLoader.o
+  AR      output/TARGET/dbg/libresource.a
+  BMP     output/data/graphics/launcher_224_dll_1.bmp
+  BMP     output/data/graphics/launcher_224_dll_2.bmp
+  BMP     output/data/graphics/launcher_red_224_dll_1.bmp
+  BMP     output/data/graphics/launcher_red_224_dll_2.bmp
+  WINDRES output/PC/XCSoar.rsc
+  CC      output/TARGET/dbg/output/data/ko.mo.o
+  CC      output/TARGET/dbg/output/data/pl.mo.o
+  CC      output/TARGET/dbg/output/data/ja.mo.o
+  CC      output/TARGET/dbg/output/data/he.mo.o
+  CC      output/TARGET/dbg/output/data/tr.mo.o
+  CC      output/TARGET/dbg/output/data/fr.mo.o
+  CC      output/TARGET/dbg/output/data/sr.mo.o
+  CC      output/TARGET/dbg/output/data/vi.mo.o
+  CC      output/TARGET/dbg/output/data/da.mo.o
+  CC      output/TARGET/dbg/output/data/ca.mo.o
+  CC      output/TARGET/dbg/output/data/lt.mo.o
+  CC      output/TARGET/dbg/output/data/de.mo.o
+  CC      output/TARGET/dbg/output/data/nb.mo.o
+  CC      output/TARGET/dbg/output/data/fi.mo.o
+  CC      output/TARGET/dbg/output/data/es.mo.o
+  CC      output/TARGET/dbg/output/data/hr.mo.o
+  CC      output/TARGET/dbg/output/data/sv.mo.o
+  CC      output/TARGET/dbg/output/data/sl.mo.o
+  CC      output/TARGET/dbg/output/data/cs.mo.o
+  CC      output/TARGET/dbg/output/data/hu.mo.o
+  CC      output/TARGET/dbg/output/data/it.mo.o
+  CC      output/TARGET/dbg/output/data/uk.mo.o
+  CC      output/TARGET/dbg/output/data/pt_BR.mo.o
+  CC      output/TARGET/dbg/output/data/ro.mo.o
+  CC      output/TARGET/dbg/output/data/nl.mo.o
+  CC      output/TARGET/dbg/output/data/ru.mo.o
+  CC      output/TARGET/dbg/output/data/zh_CN.mo.o
+  CC      output/TARGET/dbg/output/data/sk.mo.o
+  CC      output/TARGET/dbg/output/data/pt.mo.o
+  CC      output/TARGET/dbg/output/data/zh_Hant.mo.o
+  CC      output/TARGET/dbg/output/data/el.mo.o
+  CC      output/TARGET/dbg/output/data/COPYING.gz.o
+  CC      output/TARGET/dbg/output/data/AUTHORS.gz.o
+  CC      output/TARGET/dbg/output/data/egm96s.dem.o
+  AR      output/TARGET/dbg/libdata.a
+  CXX     output/TARGET/dbg/src/Device/Driver.o
+  CXX     output/TARGET/dbg/src/Device/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/Protocol.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/Declare.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/Database.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/Util.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/dbbconv.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/grecord.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/vlapi2.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/vlapihlp.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/vlconv.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Volkslogger/Logger.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/Protocol.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/PocketNav.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/Mode.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/Settings.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/Declare.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/Logger.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/Manage.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CAI302/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Protocol/MessageParser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Protocol/Communication.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Protocol/Checksum.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Protocol/Conversion.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Protocol/IGC.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Protocol/Protocol.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Declare.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Internal.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Logger.o
+  CXX     output/TARGET/dbg/src/Device/Driver/IMI/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/NanoLogger.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/NanoDeclare.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/Protocol.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/Mode.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/Settings.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/Declare.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/Logger.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/Convert.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/LXN.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LX/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/Device.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/Mode.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/StaticParser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/Settings.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/Declare.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/Logger.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/CRC16.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/BinaryProtocol.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FLARM/TextProtocol.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Flytec/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Flytec/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Flytec/Logger.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Vega/Misc.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Vega/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Vega/Settings.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Vega/Volatile.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Vega/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/BlueFly/Misc.o
+  CXX     output/TARGET/dbg/src/Device/Driver/BlueFly/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/BlueFly/Settings.o
+  CXX     output/TARGET/dbg/src/Device/Driver/BlueFly/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/XCTracer/Parser.o
+  CXX     output/TARGET/dbg/src/Device/Driver/XCTracer/Register.o
+  CXX     output/TARGET/dbg/src/Device/Driver/ThermalExpress/Driver.o
+  CXX     output/TARGET/dbg/src/Device/Driver/AltairPro.o
+  CXX     output/TARGET/dbg/src/Device/Driver/BorgeltB50.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CaiGpsNav.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CaiLNav.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Condor.o
+  CXX     output/TARGET/dbg/src/Device/Driver/CProbe.o
+  CXX     output/TARGET/dbg/src/Device/Driver/EW.o
+  CXX     output/TARGET/dbg/src/Device/Driver/EWMicroRecorder.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Eye.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FlymasterF1.o
+  CXX     output/TARGET/dbg/src/Device/Driver/FlyNet.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Generic.o
+  CXX     output/TARGET/dbg/src/Device/Driver/LevilAHRS_G.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Leonardo.o
+  CXX     output/TARGET/dbg/src/Device/Driver/NmeaOut.o
+  CXX     output/TARGET/dbg/src/Device/Driver/OpenVario.o
+  CXX     output/TARGET/dbg/src/Device/Driver/PosiGraph.o
+  CXX     output/TARGET/dbg/src/Device/Driver/XCOM760.o
+  CXX     output/TARGET/dbg/src/Device/Driver/ILEC.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Westerboer.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Zander.o
+  CXX     output/TARGET/dbg/src/Device/Driver/Vaulter.o
+  CXX     output/TARGET/dbg/src/Device/Driver/KRT2.o
+  CXX     output/TARGET/dbg/src/Device/Driver/AirControlDisplay.o
+  CXX     output/TARGET/dbg/src/Device/Driver/ATR833.o
+  AR      output/TARGET/dbg/driver.a
+  CXX     output/TARGET/dbg/src/Device/Port/Port.o
+  CXX     output/TARGET/dbg/src/Device/Port/BufferedPort.o
+  CXX     output/TARGET/dbg/src/Device/Port/UDPPort.o
+  CXX     output/TARGET/dbg/src/Device/Port/TCPPort.o
+  CXX     output/TARGET/dbg/src/Device/Port/K6BtPort.o
+  CXX     output/TARGET/dbg/src/Device/Port/DumpPort.o
+  CXX     output/TARGET/dbg/src/Device/Port/NullPort.o
+  CXX     output/TARGET/dbg/src/Device/Port/SerialPort.o
+  CXX     output/TARGET/dbg/src/Device/Port/TCPClientPort.o
+  AR      output/TARGET/dbg/port.a
+  CXX     output/TARGET/dbg/src/IO/BufferedReader.o
+  CXX     output/TARGET/dbg/src/IO/FileReader.o
+  CXX     output/TARGET/dbg/src/IO/BufferedOutputStream.o
+  CXX     output/TARGET/dbg/src/IO/FileOutputStream.o
+  CXX     output/TARGET/dbg/src/IO/GunzipReader.o
+  CXX     output/TARGET/dbg/src/IO/ZlibError.o
+  CXX     output/TARGET/dbg/src/IO/FileTransaction.o
+  CXX     output/TARGET/dbg/src/IO/FileCache.o
+  CXX     output/TARGET/dbg/src/IO/ZipArchive.o
+  CXX     output/TARGET/dbg/src/IO/ZipReader.o
+  CXX     output/TARGET/dbg/src/IO/ConvertLineReader.o
+  CXX     output/TARGET/dbg/src/IO/FileLineReader.o
+  CXX     output/TARGET/dbg/src/IO/KeyValueFileReader.o
+  CXX     output/TARGET/dbg/src/IO/KeyValueFileWriter.o
+  CXX     output/TARGET/dbg/src/IO/ZipLineReader.o
+  CXX     output/TARGET/dbg/src/IO/CSVLine.o
+  CXX     output/TARGET/dbg/src/IO/TextWriter.o
+  AR      output/TARGET/dbg/io.a
+  CXX     output/TARGET/dbg/src/IO/Async/AsioThread.o
+  CXX     output/TARGET/dbg/src/IO/Async/GlobalAsioThread.o
+  AR      output/TARGET/dbg/async.a
+  CXX     output/TARGET/dbg/src/Thread/Thread.o
+  CXX     output/TARGET/dbg/src/Thread/SuspensibleThread.o
+  CXX     output/TARGET/dbg/src/Thread/RecursivelySuspensibleThread.o
+  CXX     output/TARGET/dbg/src/Thread/WorkerThread.o
+  CXX     output/TARGET/dbg/src/Thread/StandbyThread.o
+  CXX     output/TARGET/dbg/src/Thread/Debug.o
+  AR      output/TARGET/dbg/libthread.a
+  CXX     output/TARGET/dbg/src/Engine/Task/Shapes/FAITriangleSettings.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Shapes/FAITriangleRules.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Shapes/FAITriangleArea.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Shapes/FAITriangleTask.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Shapes/FAITrianglePointValidator.o
+  CXX     output/TARGET/dbg/src/Engine/Task/TaskBehaviour.o
+  CXX     output/TARGET/dbg/src/Engine/Task/TaskManager.o
+  CXX     output/TARGET/dbg/src/Engine/Task/AbstractTask.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/StartConstraints.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/FinishConstraints.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/Settings.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/OrderedTask.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/TaskAdvance.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/SmartTaskAdvance.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/Points/IntermediatePoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/Points/OrderedTaskPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/Points/StartPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/Points/FinishPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/Points/ASTPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/Points/AATPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/AATIsoline.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Ordered/AATIsolineSegment.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Unordered/UnorderedTask.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Unordered/UnorderedTaskPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Unordered/GotoTask.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Unordered/AbortTask.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Unordered/AlternateTask.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/AbstractTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/RTTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/FAITaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/FAITriangleTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/FAIORTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/FAIGoalTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/AATTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/MatTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/MixedTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/TouringTaskFactory.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Factory/Create.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Points/TaskPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Points/SampledTaskPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Points/ScoredTaskPoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Points/TaskLeg.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/Boundary.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/ObservationZoneClient.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/ObservationZonePoint.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/CylinderZone.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/SectorZone.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/LineSectorZone.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/SymmetricSectorZone.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/KeyholeZone.o
+  CXX     output/TARGET/dbg/src/Engine/Task/ObservationZones/AnnularSectorZone.o
+  CXX     output/TARGET/dbg/src/Engine/Task/PathSolvers/TaskDijkstra.o
+  CXX     output/TARGET/dbg/src/Engine/Task/PathSolvers/TaskDijkstraMin.o
+  CXX     output/TARGET/dbg/src/Engine/Task/PathSolvers/TaskDijkstraMax.o
+  CXX     output/TARGET/dbg/src/Engine/Task/PathSolvers/IsolineCrossingFinder.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskMacCready.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskMacCreadyTravelled.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskMacCreadyRemaining.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskMacCreadyTotal.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskBestMc.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskSolveTravelled.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskCruiseEfficiency.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskEffectiveMacCready.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskMinTarget.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskOptTarget.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskGlideRequired.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Solvers/TaskSolution.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Computer/ElementStatComputer.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Computer/DistanceStatComputer.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Computer/IncrementalSpeedComputer.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Computer/TaskVarioComputer.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Computer/TaskStatsComputer.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Computer/WindowStatsComputer.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Stats/CommonStats.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Stats/ElementStat.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Stats/TaskStats.o
+  CXX     output/TARGET/dbg/src/Engine/Task/Stats/StartStats.o
+  AR      output/TARGET/dbg/libtask.a
+  CXX     output/TARGET/dbg/src/Engine/Contest/Settings.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/ContestManager.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/Contests.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/AbstractContest.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/TraceManager.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/ContestDijkstra.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/DMStQuad.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/OLCLeague.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/OLCSprint.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/OLCClassic.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/OLCTriangle.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/OLCFAI.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/OLCPlus.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/XContestFree.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/XContestTriangle.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/OLCSISAT.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/NetCoupe.o
+  CXX     output/TARGET/dbg/src/Engine/Contest/Solvers/Retrospective.o
+  AR      output/TARGET/dbg/libcontest.a
+  CXX     output/TARGET/dbg/src/Engine/Route/Config.o
+  CXX     output/TARGET/dbg/src/Engine/Route/RoutePlanner.o
+  CXX     output/TARGET/dbg/src/Engine/Route/AirspaceRoute.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Route/AirspaceRoute.hpp:27,
+                 from src/Engine/Route/AirspaceRoute.cpp:23:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Route/AirspaceRoute.hpp:27,
+                 from src/Engine/Route/AirspaceRoute.cpp:23:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Engine/Route/TerrainRoute.o
+  CXX     output/TARGET/dbg/src/Engine/Route/RouteLink.o
+  CXX     output/TARGET/dbg/src/Engine/Route/RoutePolar.o
+  CXX     output/TARGET/dbg/src/Engine/Route/RoutePolars.o
+  CXX     output/TARGET/dbg/src/Engine/Route/FlatTriangleFan.o
+  CXX     output/TARGET/dbg/src/Engine/Route/FlatTriangleFanTree.o
+  CXX     output/TARGET/dbg/src/Engine/Route/ReachFan.o
+  AR      output/TARGET/dbg/libroute.a
+  CXX     output/TARGET/dbg/src/Engine/GlideSolvers/GlideSettings.o
+  CXX     output/TARGET/dbg/src/Engine/GlideSolvers/GlideState.o
+  CXX     output/TARGET/dbg/src/Engine/GlideSolvers/GlueGlideState.o
+  CXX     output/TARGET/dbg/src/Engine/GlideSolvers/GlidePolar.o
+  CXX     output/TARGET/dbg/src/Engine/GlideSolvers/PolarCoefficients.o
+  CXX     output/TARGET/dbg/src/Engine/GlideSolvers/GlideResult.o
+  CXX     output/TARGET/dbg/src/Engine/GlideSolvers/MacCready.o
+  CXX     output/TARGET/dbg/src/Engine/GlideSolvers/InstantSpeed.o
+  AR      output/TARGET/dbg/libglide.a
+  CXX     output/TARGET/dbg/src/Engine/Waypoint/WaypointVisitor.o
+  CXX     output/TARGET/dbg/src/Engine/Waypoint/Waypoints.o
+  CXX     output/TARGET/dbg/src/Engine/Waypoint/Waypoint.o
+  AR      output/TARGET/dbg/libwaypoint.a
+  CXX     output/TARGET/dbg/src/Engine/Util/AircraftStateFilter.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspacesTerrain.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/AirspacesTerrain.cpp:23:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/AirspacesTerrain.cpp:23:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Engine/Airspace/Airspace.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceAltitude.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceAircraftPerformance.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AbstractAirspace.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceCircle.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspacePolygon.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/Airspaces.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/Airspaces.cpp:23:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/Airspaces.cpp:23:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceIntersectSort.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/SoonestAirspace.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/Minimum.hpp:27,
+                 from src/Engine/Airspace/SoonestAirspace.cpp:28:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/Minimum.hpp:27,
+                 from src/Engine/Airspace/SoonestAirspace.cpp:28:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Engine/Airspace/Predicate/AirspacePredicate.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/Predicate/AirspacePredicateHeightRange.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/Predicate/OutsideAirspacePredicate.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceIntersectionVisitor.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceWarningConfig.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceWarningManager.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/AirspaceWarningManager.cpp:25:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/AirspaceWarningManager.cpp:25:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceWarning.o
+  CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceSorter.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/AirspaceSorter.cpp:2:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from src/Engine/Airspace/AirspaceSorter.cpp:2:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  AR      output/TARGET/dbg/libairspace.a
+  CXX     output/TARGET/dbg/src/Lua/Ptr.o
+  CXX     output/TARGET/dbg/src/Lua/Error.o
+  CXX     output/TARGET/dbg/src/Lua/Catch.o
+  CXX     output/TARGET/dbg/src/Lua/Persistent.o
+  CXX     output/TARGET/dbg/src/Lua/Background.o
+  CXX     output/TARGET/dbg/src/Lua/Associate.o
+  CXX     output/TARGET/dbg/src/Lua/RunFile.o
+  CXX     output/TARGET/dbg/src/Lua/StartFile.o
+  CXX     output/TARGET/dbg/src/Lua/Log.o
+  CXX     output/TARGET/dbg/src/Lua/Timer.o
+  CXX     output/TARGET/dbg/src/Lua/Geo.o
+  CXX     output/TARGET/dbg/src/Lua/Map.o
+  CXX     output/TARGET/dbg/src/Lua/Blackboard.o
+  CXX     output/TARGET/dbg/src/Lua/Airspace.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/Lua/Airspace.cpp:30:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
+                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
+                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
+                 from ./src/Engine/Airspace/Airspaces.hpp:26,
+                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
+                 from ./src/Task/RoutePlannerGlue.hpp:26,
+                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
+                 from ./src/Computer/RouteComputer.hpp:27,
+                 from ./src/Computer/TaskComputer.hpp:27,
+                 from ./src/Computer/GlideComputer.hpp:32,
+                 from src/Lua/Airspace.cpp:30:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Lua/Dialogs.o
+  CXX     output/TARGET/dbg/src/Lua/Legacy.o
+  CXX     output/TARGET/dbg/src/Lua/Full.o
+  CXX     output/TARGET/dbg/src/Lua/Basic.o
+  CXX     output/TARGET/dbg/src/Lua/Task.o
+  CXX     output/TARGET/dbg/src/Lua/Settings.o
+  CXX     output/TARGET/dbg/src/Lua/Wind.o
+  CXX     output/TARGET/dbg/src/Lua/Logger.o
+  CXX     output/TARGET/dbg/src/Lua/Tracking.o
+  CXX     output/TARGET/dbg/src/Lua/Replay.o
+  CXX     output/TARGET/dbg/src/Lua/InputEvent.o
+  AR      output/TARGET/dbg/liblua.a
+  CC      output/TARGET/dbg/src/Topography/shapelib/mapalloc.o
+  CC      output/TARGET/dbg/src/Topography/shapelib/mapstring.o
+  CC      output/TARGET/dbg/src/Topography/shapelib/mapbits.o
+  CC      output/TARGET/dbg/src/Topography/shapelib/mapprimitive.o
+  CC      output/TARGET/dbg/src/Topography/shapelib/mapsearch.o
+  CC      output/TARGET/dbg/src/Topography/shapelib/mapshape.o
+  CC      output/TARGET/dbg/src/Topography/shapelib/maptree.o
+  CC      output/TARGET/dbg/src/Topography/shapelib/mapxbase.o
+  AR      output/TARGET/dbg/shapelib.a
+  CC      output/TARGET/dbg/src/zzip/fetch.o
+  CC      output/TARGET/dbg/src/zzip/file.o
+  CC      output/TARGET/dbg/src/zzip/plugin.o
+  CC      output/TARGET/dbg/src/zzip/zip.o
+  CC      output/TARGET/dbg/src/zzip/stat.o
+  AR      output/TARGET/dbg/zzip.a
+  CXX     output/TARGET/dbg/src/Net/State.o
+  CXX     output/TARGET/dbg/src/Net/IPv4Address.o
+  CXX     output/TARGET/dbg/src/Net/IPv6Address.o
+  CXX     output/TARGET/dbg/src/Net/StaticSocketAddress.o
+  CXX     output/TARGET/dbg/src/Net/AllocatedSocketAddress.o
+  CXX     output/TARGET/dbg/src/Net/SocketAddress.o
+  CXX     output/TARGET/dbg/src/Net/SocketDescriptor.o
+  CXX     output/TARGET/dbg/src/Net/HTTP/Multi.o
+  CXX     output/TARGET/dbg/src/Net/HTTP/Session.o
+  CXX     output/TARGET/dbg/src/Net/HTTP/Request.o
+  CXX     output/TARGET/dbg/src/Net/HTTP/FormData.o
+  CXX     output/TARGET/dbg/src/Net/HTTP/Init.o
+  CXX     output/TARGET/dbg/src/Net/HTTP/DownloadManager.o
+  CXX     output/TARGET/dbg/src/Net/HTTP/ToFile.o
+  CXX     output/TARGET/dbg/src/Net/HTTP/ToBuffer.o
+  AR      output/TARGET/dbg/libnet.a
+  CXX     output/TARGET/dbg/src/Time/DeltaTime.o
+  CXX     output/TARGET/dbg/src/Time/WrapClock.o
+  CXX     output/TARGET/dbg/src/Time/LocalTime.o
+  CXX     output/TARGET/dbg/src/Time/BrokenTime.o
+  CXX     output/TARGET/dbg/src/Time/BrokenDate.o
+  CXX     output/TARGET/dbg/src/Time/BrokenDateTime.o
+  AR      output/TARGET/dbg/time.a
+  CXX     output/TARGET/dbg/src/OS/Clock.o
+  CXX     output/TARGET/dbg/src/OS/FileDescriptor.o
+  CXX     output/TARGET/dbg/src/OS/FileMapping.o
+  CXX     output/TARGET/dbg/src/OS/FileUtil.o
+  CXX     output/TARGET/dbg/src/OS/RunFile.o
+  CXX     output/TARGET/dbg/src/OS/Path.o
+  CXX     output/TARGET/dbg/src/OS/PathName.o
+  CXX     output/TARGET/dbg/src/OS/Process.o
+  CXX     output/TARGET/dbg/src/OS/SystemLoad.o
+  AR      output/TARGET/dbg/libos.a
+  CXX     output/TARGET/dbg/src/Util/Exception.o
+  CXX     output/TARGET/dbg/src/Util/PrintException.o
+  CXX     output/TARGET/dbg/src/Util/Base64.o
+  CXX     output/TARGET/dbg/src/Util/CRC.o
+  CXX     output/TARGET/dbg/src/Util/tstring.o
+  CXX     output/TARGET/dbg/src/Util/UTF8.o
+  CXX     output/TARGET/dbg/src/Util/ASCII.o
+  CXX     output/TARGET/dbg/src/Util/TruncateString.o
+  CXX     output/TARGET/dbg/src/Util/EscapeBackslash.o
+  CXX     output/TARGET/dbg/src/Util/ExtractParameters.o
+  CXX     output/TARGET/dbg/src/Util/ConvertString.o
+  CXX     output/TARGET/dbg/src/Util/StaticString.o
+  CXX     output/TARGET/dbg/src/Util/StringView.o
+  CXX     output/TARGET/dbg/src/Util/StringCompare.o
+  CXX     output/TARGET/dbg/src/Util/StringStrip.o
+  CXX     output/TARGET/dbg/src/Util/StringUtil.o
+  CXX     output/TARGET/dbg/src/Util/WASCII.o
+  CXX     output/TARGET/dbg/src/Util/WStringCompare.o
+  CXX     output/TARGET/dbg/src/Util/WStringStrip.o
+  CXX     output/TARGET/dbg/src/Util/WStringUtil.o
+  AR      output/TARGET/dbg/util.a
+  CXX     output/TARGET/dbg/src/Geo/Boost/RangeBox.o
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/is_inverse_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/assign_values.hpp:42,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/assign_box_corners.hpp:21,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/convert.hpp:38,
+                 from ./output/src/boost_1_73_0/boost/geometry/geometries/box.hpp:22,
+                 from src/Geo/Boost/RangeBox.hpp:29,
+                 from src/Geo/Boost/RangeBox.cpp:24:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
+ BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
+                                                                                        ^
+In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
+                 from ./output/src/boost_1_73_0/boost/geometry/util/is_inverse_spheroidal_coordinates.hpp:19,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/assign_values.hpp:42,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/assign_box_corners.hpp:21,
+                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/convert.hpp:38,
+                 from ./output/src/boost_1_73_0/boost/geometry/geometries/box.hpp:22,
+                 from src/Geo/Boost/RangeBox.hpp:29,
+                 from src/Geo/Boost/RangeBox.cpp:24:
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
+                                                                                                                                           ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
+ BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
+                                                                                                          ^
+./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
+ BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
+                                                                                                            ^
+  CXX     output/TARGET/dbg/src/Geo/ConvexHull/GrahamScan.o
+  CXX     output/TARGET/dbg/src/Geo/ConvexHull/PolygonInterior.o
+  CXX     output/TARGET/dbg/src/Geo/Memento/DistanceMemento.o
+  CXX     output/TARGET/dbg/src/Geo/Memento/GeoVectorMemento.o
+  CXX     output/TARGET/dbg/src/Geo/Flat/FlatProjection.o
+  CXX     output/TARGET/dbg/src/Geo/Flat/TaskProjection.o
+  CXX     output/TARGET/dbg/src/Geo/Flat/FlatBoundingBox.o
+  CXX     output/TARGET/dbg/src/Geo/Flat/FlatGeoPoint.o
+  CXX     output/TARGET/dbg/src/Geo/Flat/FlatRay.o
+  CXX     output/TARGET/dbg/src/Geo/Flat/FlatPoint.o
+  CXX     output/TARGET/dbg/src/Geo/Flat/FlatEllipse.o
+  CXX     output/TARGET/dbg/src/Geo/Flat/FlatLine.o
+  CXX     output/TARGET/dbg/src/Geo/Math.o
+  CXX     output/TARGET/dbg/src/Geo/SimplifiedMath.o
+  CXX     output/TARGET/dbg/src/Geo/Quadrilateral.o
+  CXX     output/TARGET/dbg/src/Geo/GeoPoint.o
+  CXX     output/TARGET/dbg/src/Geo/GeoVector.o
+  CXX     output/TARGET/dbg/src/Geo/GeoBounds.o
+  CXX     output/TARGET/dbg/src/Geo/GeoClip.o
+  CXX     output/TARGET/dbg/src/Geo/SearchPoint.o
+  CXX     output/TARGET/dbg/src/Geo/SearchPointVector.o
+  CXX     output/TARGET/dbg/src/Geo/GeoEllipse.o
+  CXX     output/TARGET/dbg/src/Geo/UTM.o
+  AR      output/TARGET/dbg/libgeo.a
+  CXX     output/TARGET/dbg/src/Math/Angle.o
+  CXX     output/TARGET/dbg/src/Math/ARange.o
+  CXX     output/TARGET/dbg/src/Math/FastMath.o
+  CXX     output/TARGET/dbg/src/Math/FastTrig.o
+  CXX     output/TARGET/dbg/src/Math/FastRotation.o
+  CXX     output/TARGET/dbg/src/Math/LeastSquares.o
+  CXX     output/TARGET/dbg/src/Math/DiffFilter.o
+  CXX     output/TARGET/dbg/src/Math/Filter.o
+  CXX     output/TARGET/dbg/src/Math/ZeroFinder.o
+  CXX     output/TARGET/dbg/src/Math/KalmanFilter1d.o
+  CXX     output/TARGET/dbg/src/Math/SelfTimingKalmanFilter1d.o
+  CXX     output/TARGET/dbg/src/Math/XYDataStore.o
+  CXX     output/TARGET/dbg/src/Math/ConvexFilter.o
+  CXX     output/TARGET/dbg/src/Math/Histogram.o
+  AR      output/TARGET/dbg/math.a
+  LINK    output/PC/bin/XCSoar-ns.exe
+  STRIP   output/PC/bin/XCSoar.exe
+  CXX     output/TARGET/dbg/src/VALI-XCS.o
+  LINK    output/PC/bin/vali-xcs-ns.exe
+  STRIP   output/PC/bin/vali-xcs.exe
+rm output/TARGET/dbg/src/Device/Driver/../dirstamp
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ 

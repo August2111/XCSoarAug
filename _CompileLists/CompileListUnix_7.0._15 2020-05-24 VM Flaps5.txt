@@ -1,0 +1,2822 @@
+august@august-virtual-machine:~/work/XCSoar$ make TARGET=ANDROID
+make: /home/august/opt/android-ndk-r20b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++: Command not found
+./build/thirdparty.py ./output/ANDROID ANDROID arm-linux-androideabi arm-linux-androideabi "-march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as" "-I./output/ANDROID/include -DHAVE_POSIX -DHAVE_STDINT_H -DHAVE_UNISTD_H -DHAVE_VASPRINTF -DANDROID -isystem ./output/ANDROID/lib/arm-linux-androideabi/root/include -DEYE_CANDY -DTESTING -DBIONIC -DLIBCPP_NO_IOSTREAM " "-Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind" /home/august/opt/android-ndk-r20b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang /home/august/opt/android-ndk-r20b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ /home/august/opt/android-ndk-r20b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar "rcs" /home/august/opt/android-ndk-r20b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib /home/august/opt/android-ndk-r20b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+Traceback (most recent call last):
+  File "./build/thirdparty.py", line 140, in <module>
+    x.build(toolchain)
+  File "/home/august/work/XCSoar/build/python/build/autotools.py", line 99, in build
+    build = self.configure(toolchain)
+  File "/home/august/work/XCSoar/build/python/build/curl.py", line 9, in configure
+    return AutotoolsProject.configure(self, toolchain)
+  File "/home/august/work/XCSoar/build/python/build/autotools.py", line 41, in configure
+    src = self.unpack(toolchain)
+  File "/home/august/work/XCSoar/build/python/build/project.py", line 52, in unpack
+    path = untar(self.download(toolchain), parent_path, self.base)
+  File "/home/august/work/XCSoar/build/python/build/tar.py", line 6, in untar
+    shutil.rmtree(path)
+  File "/usr/lib/python3.6/shutil.py", line 486, in rmtree
+    _rmtree_safe_fd(fd, path, onerror)
+  File "/usr/lib/python3.6/shutil.py", line 424, in _rmtree_safe_fd
+    _rmtree_safe_fd(dirfd, fullname, onerror)
+  File "/usr/lib/python3.6/shutil.py", line 444, in _rmtree_safe_fd
+    onerror(os.unlink, fullname, sys.exc_info())
+  File "/usr/lib/python3.6/shutil.py", line 442, in _rmtree_safe_fd
+    os.unlink(name, dir_fd=topfd)
+PermissionError: [Errno 13] Permission denied: '.quilt_series'
+build/thirdparty.mk:45: recipe for target 'output/ANDROID/lib/arm-linux-androideabi/stamp' failed
+make: *** [output/ANDROID/lib/arm-linux-androideabi/stamp] Error 1
+august@august-virtual-machine:~/work/XCSoar$ git pull
+remote: Enumerating objects: 2124, done.
+remote: Counting objects: 100% (2124/2124), done.
+remote: Compressing objects: 100% (98/98), done.
+remote: Total 2717 (delta 2052), reused 2085 (delta 2022), pack-reused 593
+Receiving objects: 100% (2717/2717), 607.84 KiB | 2.76 MiB/s, done.
+Resolving deltas: 100% (2292/2292), completed with 1018 local objects.
+From git://github.com/XCSoar/XCSoar
+   72ba7ac89f..48b435a81c  master     -> origin/master
+   5d222b98d8..b634269f68  v6.8.x     -> origin/v6.8.x
+ * [new tag]               v6.8.13        -> v6.8.13
+ * [new tag]               v6.8.13b       -> v6.8.13b
+ * [new tag]               v6.8.14        -> v6.8.14
+ * [new tag]               v7.0_preview15 -> v7.0_preview15
+Updating 72ba7ac89f..48b435a81c
+Fast-forward
+ .circleci/config.yml                               |   28 +-
+ .github/ISSUE_TEMPLATE/Bug.md                      |   67 +
+ .github/ISSUE_TEMPLATE/Feature.md                  |   42 +
+ .github/ISSUE_TEMPLATE/config.yml                  |    4 +
+ .github/PULL_REQUEST_TEMPLATE.md                   |   35 +
+ .gitlab-ci.yml                                     |    8 +-
+ Makefile                                           |    3 +-
+ NEWS.txt                                           |   25 +-
+ VERSION.txt                                        |    2 +-
+ android/AndroidManifest.xml                        |   11 +-
+ android/src/XCSoar.java                            |   45 +-
+ android/testing/AndroidManifest.xml                |   11 +-
+ build/libasync.mk                                  |    2 +
+ build/libboost.mk                                  |    6 +-
+ build/libcrypto.mk                                 |    3 +
+ build/libutil.mk                                   |    1 -
+ build/main.mk                                      |    2 +-
+ build/python/build/libs.py                         |   26 +-
+ build/screen.mk                                    |    2 -
+ build/targets.mk                                   |   15 +-
+ build/test.mk                                      |   28 +-
+ build/thirdparty.py                                |    6 +
+ build/vali.mk                                      |    2 +-
+ build/version.mk                                   |    6 +-
+ debian/changelog                                   |   12 +
+ debian/control                                     |    1 +
+ doc/manual/en/ch07_airspace_and_flarm.tex          |   18 +-
+ doc/manual/en/ch08_avionics_and_airframe.tex       |   12 +-
+ doc/manual/en/ch12_data_files.tex                  |    4 +-
+ doc/manual/en/compiling.tex                        |    9 +-
+ doc/manual/en/developsetuplinux.tex                |    8 +-
+ doc/manual/en/input_events.tex                     |    2 +-
+ doc/manual/en/lua.tex                              |  158 +-
+ doc/manual/fr/ch07_airspace_and_flarm.tex          |  257 ++-
+ doc/manual/fr/ch08_avionics_and_airframe.tex       |  160 ++
+ ide/docker/bin/xcsoar-compile                      |    6 +-
+ ide/provisioning/add-debian-unstable.sh            |    5 +
+ ide/provisioning/install-android-tools.sh          |    2 +-
+ ide/provisioning/install-debian-packages.sh        |    1 +
+ ide/vagrant/Vagrantfile                            |    6 +-
+ lib/boost/patches/no_TRUE_FALSE.diff               |   72 +-
+ po/es.po                                           | 2333 ++++++++++++--------
+ python/src/Flight.cpp                              |    2 +-
+ python/src/Flight/DebugReplayVector.hpp            |    2 +-
+ src/ActionInterface.cpp                            |   15 +-
+ src/ActionInterface.hpp                            |    6 +
+ src/Android/Assert.cpp                             |    2 +-
+ src/Android/Bitmap.hpp                             |    2 +-
+ src/Android/Environment.hpp                        |    2 +-
+ src/Android/Main.cpp                               |   11 +-
+ src/Android/NativeBMP085Listener.cpp               |    2 +-
+ src/Android/NativeI2CbaroListener.cpp              |    2 +-
+ src/Android/NativeInputListener.cpp                |    2 +-
+ src/Android/NativeLeScanCallback.cpp               |   10 +-
+ src/Android/NativeNunchuckListener.cpp             |    2 +-
+ src/Android/NativePortListener.cpp                 |    2 +-
+ src/Android/NativeView.hpp                         |    2 +-
+ src/Android/NativeVoltageListener.cpp              |    2 +-
+ src/Android/PortBridge.hpp                         |    2 +-
+ src/ApplyExternalSettings.cpp                      |   15 +-
+ src/Audio/ALSAEnv.cpp                              |    2 +-
+ src/Audio/ALSAPCMPlayer.hpp                        |    6 +-
+ src/Audio/AudioAlgorithms.hpp                      |    6 +-
+ src/Audio/GlobalPCMResourcePlayer.cpp              |    2 +-
+ src/Audio/GlobalVolumeController.cpp               |    2 +-
+ src/Audio/PCMBufferDataSource.hpp                  |    3 +-
+ src/Audio/PCMDataSource.hpp                        |    4 +-
+ src/Audio/PCMMixerDataSource.cpp                   |    2 +-
+ src/Audio/PCMPlayer.cpp                            |    2 +-
+ src/Audio/PCMPlayer.hpp                            |    4 +-
+ src/Audio/PCMSynthesiser.hpp                       |    4 +-
+ src/Audio/SDLPCMPlayer.cpp                         |    2 +-
+ src/Audio/SLES/Init.cpp                            |    4 +-
+ src/Audio/Settings.hpp                             |    3 +-
+ src/Audio/ToneSynthesiser.cpp                      |    2 +-
+ src/Audio/VarioGlue.cpp                            |    2 +-
+ src/Audio/VarioSettings.hpp                        |    3 +-
+ src/Audio/VarioSynthesiser.cpp                     |    2 +-
+ src/Audio/VolumeController.cpp                     |    2 +-
+ src/Blackboard/LiveBlackboard.cpp                  |    2 +-
+ src/Blackboard/ScopeCalculatedListener.hpp         |    2 +-
+ src/Blackboard/ScopeGPSListener.hpp                |    2 +-
+ src/Computer/ClimbAverageCalculator.cpp            |    2 +-
+ src/Computer/GlideRatioCalculator.cpp              |    2 +-
+ src/Computer/LogComputer.hpp                       |    2 +-
+ src/Computer/Settings.hpp                          |    3 +-
+ src/Computer/StateClock.hpp                        |    2 +-
+ src/Computer/ThermalLocator.cpp                    |    2 +-
+ src/Computer/Wind/WindEKF.cpp                      |    8 +-
+ .../AllocatedString.cxx => Crypto/SHA256.hxx}      |   52 +-
+ src/Device/Config.hpp                              |    3 +-
+ src/Device/Declaration.cpp                         |    1 +
+ src/Device/Declaration.hpp                         |    1 +
+ src/Device/Descriptor.cpp                          |    6 +-
+ src/Device/Descriptor.hpp                          |    9 +-
+ src/Device/Driver.hpp                              |    2 +-
+ src/Device/Driver/AltairPro.cpp                    |    2 +-
+ src/Device/Driver/BlueFly/Internal.hpp             |    2 +-
+ src/Device/Driver/CAI302/Internal.hpp              |    2 +-
+ src/Device/Driver/CAI302/Protocol.cpp              |    2 +-
+ src/Device/Driver/CAI302/Protocol.hpp              |    3 +-
+ src/Device/Driver/CProbe.cpp                       |    2 +-
+ src/Device/Driver/EWMicroRecorder.cpp              |    2 +-
+ src/Device/Driver/FLARM/BinaryProtocol.hpp         |    4 +-
+ src/Device/Driver/FLARM/CRC16.cpp                  |    2 +-
+ src/Device/Driver/FLARM/CRC16.hpp                  |    4 +-
+ src/Device/Driver/FLARM/Device.hpp                 |    3 +-
+ src/Device/Driver/FLARM/TextProtocol.cpp           |    2 +-
+ src/Device/Driver/IMI/Protocol/Types.hpp           |    4 +-
+ src/Device/Driver/KRT2.cpp                         |   12 +-
+ src/Device/Driver/LX/Convert.cpp                   |   44 +-
+ src/Device/Driver/LX/Convert.hpp                   |    2 +-
+ src/Device/Driver/LX/Internal.hpp                  |    2 +-
+ src/Device/Driver/LX/LX1600.hpp                    |    4 +-
+ src/Device/Driver/LX/LXN.hpp                       |    3 +-
+ src/Device/Driver/LX/NanoDeclare.cpp               |    3 +-
+ src/Device/Driver/LX/Protocol.cpp                  |    2 +-
+ src/Device/Driver/LX/Protocol.hpp                  |    4 +-
+ src/Device/Driver/OpenVario.cpp                    |  229 +-
+ src/Device/Driver/Volkslogger/Database.hpp         |    2 +-
+ src/Device/Driver/Volkslogger/Protocol.hpp         |    4 +-
+ src/Device/Driver/Volkslogger/Util.cpp             |    2 +-
+ src/Device/Driver/Volkslogger/dbbconv.cpp          |    2 +-
+ src/Device/Driver/Volkslogger/vlconv.cpp           |    2 +-
+ src/Device/Port/AndroidBluetoothPort.cpp           |    2 +-
+ src/Device/Port/AndroidIOIOUartPort.cpp            |    2 +-
+ src/Device/Port/AndroidPort.cpp                    |    2 +-
+ src/Device/Port/BufferedPort.cpp                   |    2 +-
+ src/Device/Port/BufferedPort.hpp                   |    2 +-
+ src/Device/Port/DumpPort.cpp                       |    2 +-
+ src/Device/Port/K6BtPort.hpp                       |    2 +-
+ src/Device/Port/Port.hpp                           |    2 +-
+ src/Device/Port/SerialPort.cpp                     |    2 +-
+ src/Device/Port/TTYPort.cpp                        |    2 +-
+ src/Device/RecordedFlight.hpp                      |    2 +-
+ src/Device/Register.cpp                            |    2 +-
+ src/Device/Util/NMEAWriter.cpp                     |    2 +-
+ .../Airspace/AirspaceCRendererSettingsDialog.cpp   |    8 +-
+ .../Airspace/AirspaceCRendererSettingsPanel.cpp    |    2 +-
+ src/Dialogs/Airspace/AirspaceList.cpp              |   21 +-
+ src/Dialogs/Airspace/dlgAirspace.cpp               |   19 +-
+ src/Dialogs/Airspace/dlgAirspaceDetails.cpp        |    7 +-
+ src/Dialogs/Airspace/dlgAirspacePatterns.cpp       |    4 +-
+ src/Dialogs/Airspace/dlgAirspaceWarnings.cpp       |   43 +-
+ src/Dialogs/ColorListDialog.cpp                    |    4 +-
+ src/Dialogs/ComboPicker.cpp                        |    7 +-
+ .../Device/BlueFly/BlueFlyConfigurationDialog.cpp  |    8 +-
+ src/Dialogs/Device/DeviceEditWidget.hpp            |    2 +-
+ src/Dialogs/Device/DeviceListDialog.cpp            |   31 +-
+ src/Dialogs/Device/LX/ManageLX16xxDialog.cpp       |    9 +-
+ src/Dialogs/Device/LX/ManageNanoDialog.cpp         |    9 +-
+ src/Dialogs/Device/LX/ManageV7Dialog.cpp           |   11 +-
+ src/Dialogs/Device/ManageCAI302Dialog.cpp          |    7 +-
+ src/Dialogs/Device/ManageFlarmDialog.cpp           |    9 +-
+ src/Dialogs/Device/PortMonitor.cpp                 |   17 +-
+ src/Dialogs/Device/ScanBluetoothLeDialog.cpp       |   25 +-
+ src/Dialogs/Device/Vega/SwitchesDialog.cpp         |    6 +-
+ .../Device/Vega/VegaConfigurationDialog.cpp        |    6 +-
+ src/Dialogs/Device/Vega/VegaDemoDialog.cpp         |    4 +-
+ src/Dialogs/Device/Vega/VegaParametersWidget.cpp   |    2 +-
+ src/Dialogs/DialogSettings.hpp                     |    2 +-
+ src/Dialogs/DownloadFilePicker.cpp                 |   50 +-
+ src/Dialogs/FileManager.cpp                        |  142 +-
+ src/Dialogs/GeoPointEntry.cpp                      |    4 +-
+ src/Dialogs/GeoPointEntry.hpp                      |    2 +-
+ src/Dialogs/HelpDialog.cpp                         |    7 +-
+ src/Dialogs/Inflate.cpp                            |    4 +-
+ src/Dialogs/Inflate.hpp                            |    2 +-
+ src/Dialogs/KnobTextEntry.cpp                      |    4 +-
+ src/Dialogs/ListPicker.cpp                         |   59 +-
+ src/Dialogs/LockScreen.cpp                         |    2 +-
+ src/Dialogs/MapItemListDialog.cpp                  |   28 +-
+ src/Dialogs/MapItemListSettingsDialog.cpp          |    7 +-
+ src/Dialogs/Message.cpp                            |    4 +-
+ src/Dialogs/NumberEntry.cpp                        |   12 +-
+ src/Dialogs/Plane/PlaneDetailsDialog.cpp           |    5 +-
+ src/Dialogs/Plane/PlaneListDialog.cpp              |   19 +-
+ src/Dialogs/Plane/PlanePolarDialog.cpp             |    4 +-
+ src/Dialogs/Plane/PolarShapeEditWidget.cpp         |    2 +-
+ src/Dialogs/ProfileListDialog.cpp                  |   18 +-
+ src/Dialogs/ProgressDialog.cpp                     |    2 +-
+ src/Dialogs/ReplayDialog.cpp                       |    4 +-
+ src/Dialogs/Settings/Panels/LayoutConfigPanel.cpp  |    2 +
+ src/Dialogs/Settings/Panels/LoggerConfigPanel.cpp  |    6 +
+ src/Dialogs/Settings/Panels/PagesConfigPanel.cpp   |   17 +-
+ src/Dialogs/Settings/Panels/SiteConfigPanel.cpp    |    3 +-
+ src/Dialogs/Settings/Panels/VarioConfigPanel.cpp   |   10 +
+ .../Settings/Panels/WaypointDisplayConfigPanel.cpp |    4 +
+ src/Dialogs/Settings/WindSettingsDialog.cpp        |    5 +-
+ src/Dialogs/Settings/dlgBasicSettings.cpp          |   19 +-
+ src/Dialogs/Settings/dlgConfigInfoboxes.cpp        |    7 +-
+ src/Dialogs/Settings/dlgConfiguration.cpp          |   10 +-
+ src/Dialogs/StartupDialog.cpp                      |    5 +-
+ src/Dialogs/Task/AlternatesListDialog.cpp          |   12 +-
+ src/Dialogs/Task/Manager/TaskEditPanel.cpp         |   19 +-
+ src/Dialogs/Task/Manager/TaskListPanel.cpp         |   13 +-
+ src/Dialogs/Task/Manager/TaskManagerDialog.cpp     |    6 +-
+ src/Dialogs/Task/MutateTaskPointDialog.cpp         |    7 +-
+ src/Dialogs/Task/OptionalStartsDialog.cpp          |   19 +-
+ src/Dialogs/Task/TargetDialog.cpp                  |    5 +-
+ src/Dialogs/Task/TaskPointDialog.cpp               |    9 +-
+ .../Task/Widgets/ObservationZoneEditWidget.hpp     |    2 +-
+ src/Dialogs/Task/dlgTaskHelpers.cpp                |    2 +-
+ src/Dialogs/Task/dlgTaskHelpers.hpp                |    2 +-
+ src/Dialogs/TimeEntry.cpp                          |    4 +-
+ src/Dialogs/TouchTextEntry.cpp                     |    3 +-
+ src/Dialogs/Traffic/FlarmTrafficDetails.cpp        |    6 +-
+ src/Dialogs/Traffic/TeamCodeDialog.cpp             |    4 +-
+ src/Dialogs/Traffic/TrafficList.cpp                |   23 +-
+ src/Dialogs/Waypoint/Manager.cpp                   |   15 +-
+ src/Dialogs/Waypoint/WaypointList.cpp              |   17 +-
+ src/Dialogs/Waypoint/dlgWaypointDetails.cpp        |   17 +-
+ src/Dialogs/Waypoint/dlgWaypointEdit.cpp           |    4 +-
+ src/Dialogs/Weather/MapOverlayWidget.cpp           |   11 +-
+ src/Dialogs/Weather/NOAADetails.cpp                |    5 +-
+ src/Dialogs/Weather/NOAAList.cpp                   |   13 +-
+ src/Dialogs/Weather/PCMetDialog.cpp                |   19 +-
+ src/Dialogs/Weather/RASPDialog.cpp                 |    4 +-
+ src/Dialogs/Weather/WeatherDialog.cpp              |    6 +-
+ src/Dialogs/WidgetDialog.cpp                       |   75 +-
+ src/Dialogs/WidgetDialog.hpp                       |   39 +-
+ src/Dialogs/dlgAnalysis.cpp                        |   20 +-
+ src/Dialogs/dlgChecklist.cpp                       |    5 +-
+ src/Dialogs/dlgCredits.cpp                         |    5 +-
+ src/Dialogs/dlgInfoBoxAccess.cpp                   |   11 +-
+ src/Dialogs/dlgQuickMenu.cpp                       |    5 +-
+ src/Dialogs/dlgSimulatorPrompt.cpp                 |    5 +-
+ src/Dialogs/dlgStatus.cpp                          |    6 +-
+ src/DisplayMode.hpp                                |    2 +-
+ src/DisplayOrientation.hpp                         |    2 +-
+ src/Engine/Airspace/AbstractAirspace.cpp           |    2 +-
+ .../Airspace/AirspaceAircraftPerformance.hpp       |    2 +-
+ src/Engine/Airspace/AirspaceAltitude.hpp           |    2 +-
+ src/Engine/Airspace/AirspaceClass.hpp              |    2 +-
+ src/Engine/Airspace/AirspaceWarning.hpp            |    2 +-
+ src/Engine/Airspace/AirspaceWarningConfig.hpp      |    2 +-
+ src/Engine/Contest/Settings.hpp                    |    2 +-
+ src/Engine/Contest/Solvers/AbstractContest.hpp     |    2 +-
+ src/Engine/Contest/Solvers/ContestDijkstra.cpp     |    2 +-
+ src/Engine/Contest/Solvers/ContestDijkstra.hpp     |    2 +-
+ src/Engine/Contest/Solvers/Contests.hpp            |    2 +-
+ src/Engine/Contest/Solvers/TraceManager.cpp        |    2 +-
+ src/Engine/GlideSolvers/GlidePolar.cpp             |    2 +-
+ src/Engine/GlideSolvers/GlidePolar.hpp             |    2 +-
+ src/Engine/GlideSolvers/GlideResult.cpp            |    2 +-
+ src/Engine/GlideSolvers/GlideResult.hpp            |    2 +-
+ src/Engine/GlideSolvers/GlueGlideState.cpp         |    2 +-
+ src/Engine/GlideSolvers/MacCready.cpp              |    2 +-
+ src/Engine/PathSolvers/NavDijkstra.hpp             |    2 +-
+ src/Engine/PathSolvers/ScanTaskPoint.hpp           |    2 +-
+ src/Engine/Route/FlatTriangleFan.cpp               |    2 +-
+ src/Engine/Route/ReachResult.hpp                   |    2 +-
+ src/Engine/Route/RouteLink.cpp                     |    2 +-
+ src/Engine/Task/Factory/AbstractTaskFactory.hpp    |    2 +-
+ src/Engine/Task/Factory/TaskFactoryType.hpp        |    2 +-
+ src/Engine/Task/Factory/TaskPointFactoryType.hpp   |    2 +-
+ src/Engine/Task/Factory/ValidationError.hpp        |    2 +-
+ src/Engine/Task/ObservationZones/CylinderZone.hpp  |    2 +-
+ .../Task/ObservationZones/ObservationZone.hpp      |    2 +-
+ src/Engine/Task/Ordered/OrderedTask.hpp            |    4 +-
+ src/Engine/Task/Ordered/Points/FinishPoint.cpp     |    2 +-
+ .../Task/Ordered/Points/OrderedTaskPoint.cpp       |    2 +-
+ src/Engine/Task/Ordered/Points/StartPoint.cpp      |    2 +-
+ src/Engine/Task/PathSolvers/TaskDijkstra.hpp       |    2 +-
+ src/Engine/Task/Points/TaskLeg.cpp                 |    2 +-
+ src/Engine/Task/Points/Type.hpp                    |    2 +-
+ src/Engine/Task/Shapes/FAITriangleArea.cpp         |    2 +-
+ src/Engine/Task/Shapes/FAITriangleSettings.cpp     |    2 +-
+ src/Engine/Task/Shapes/FAITriangleSettings.hpp     |    2 +-
+ src/Engine/Task/Stats/DistanceStat.hpp             |    2 +-
+ src/Engine/Task/TaskType.hpp                       |    2 +-
+ src/Engine/Task/Unordered/AbortTask.hpp            |    2 +-
+ src/Engine/ThermalBand/ThermalBand.cpp             |    2 +-
+ src/Engine/ThermalBand/ThermalEncounterBand.cpp    |    2 +-
+ .../ThermalBand/ThermalEncounterCollection.cpp     |    2 +-
+ src/Engine/ThermalBand/ThermalSlice.cpp            |    2 +-
+ src/Engine/Trace/Point.hpp                         |    4 +-
+ src/Engine/Trace/Trace.hpp                         |    2 +-
+ src/Engine/Util/AircraftStateFilter.cpp            |    2 +-
+ src/Engine/Waypoint/Origin.hpp                     |    2 +-
+ src/Engine/Waypoint/Runway.hpp                     |    2 +-
+ src/Event/Android/Loop.cpp                         |    5 +-
+ src/Event/Android/Queue.cpp                        |   12 -
+ src/Event/Android/Queue.hpp                        |    3 -
+ src/Event/DelayedNotify.cpp                        |    7 -
+ src/Event/DelayedNotify.hpp                        |   42 +-
+ src/Event/LambdaTimer.hpp                          |   62 -
+ src/Event/Notify.cpp                               |    6 +-
+ src/Event/Notify.hpp                               |   20 +-
+ src/{Screen/Timer.hpp => Event/PeriodicTimer.hpp}  |   92 +-
+ src/Event/Poll/InputQueue.hpp                      |    2 +-
+ src/Event/Poll/LibInput/LibInputHandler.hpp        |    2 +-
+ src/Event/Poll/LibInput/UdevContext.cpp            |    2 +-
+ src/Event/Poll/Linux/MergeMouse.hpp                |    2 +-
+ src/Event/Poll/Loop.cpp                            |    5 +-
+ src/Event/Poll/Queue.cpp                           |   12 -
+ src/Event/Poll/Queue.hpp                           |    4 +-
+ src/Event/Poll/Timer.cpp                           |   34 +-
+ src/Event/Poll/WaylandQueue.hpp                    |    2 +-
+ src/Event/SDL/Event.hpp                            |    9 +-
+ src/Event/SDL/Loop.cpp                             |    5 +-
+ src/Event/SDL/Queue.cpp                            |   14 -
+ src/Event/SDL/Queue.hpp                            |    7 -
+ src/Event/Shared/Event.hpp                         |    4 +-
+ src/Event/Shared/Timer.cpp                         |   24 +-
+ src/Event/Shared/TimerQueue.hpp                    |    2 +-
+ src/Event/Timer.hpp                                |   66 +-
+ src/Event/Windows/Event.hpp                        |    2 +-
+ src/FLARM/Color.hpp                                |    2 +-
+ src/FLARM/ColorDatabase.hpp                        |    2 +-
+ src/FLARM/Error.hpp                                |    2 +-
+ src/FLARM/FlarmDetails.cpp                         |    2 +-
+ src/FLARM/FlarmId.hpp                              |    2 +-
+ src/FLARM/FlarmNetDatabase.cpp                     |    2 +-
+ src/FLARM/NameDatabase.hpp                         |    2 +-
+ src/Form/ButtonPanel.hpp                           |    2 +-
+ src/Form/CharacterButton.cpp                       |    2 +-
+ src/Form/Control.cpp                               |   21 +-
+ src/Form/Control.hpp                               |   23 +-
+ src/Form/DataField/Base.hpp                        |    4 +-
+ src/Form/DataField/ComboList.cpp                   |    8 +-
+ src/Form/DataField/ComboList.hpp                   |    8 +-
+ src/Form/DataField/File.cpp                        |    2 +-
+ src/Form/DigitEntry.hpp                            |    4 +-
+ src/Form/Edit.cpp                                  |   38 +-
+ src/Form/Edit.hpp                                  |   42 +-
+ src/Form/Form.cpp                                  |   15 +-
+ src/Form/Form.hpp                                  |    8 +-
+ src/Form/Frame.cpp                                 |   19 +-
+ src/Form/Frame.hpp                                 |   27 +-
+ src/Form/List.cpp                                  |   86 +-
+ src/Form/List.hpp                                  |   95 +-
+ src/Form/ScrollBar.cpp                             |    2 +-
+ src/Form/TabMenuDisplay.cpp                        |    2 +-
+ src/Formatter/AngleFormatter.cpp                   |    2 +-
+ src/Formatter/AngleFormatter.hpp                   |    2 +-
+ src/Formatter/ByteSizeFormatter.cpp                |    2 +-
+ src/Formatter/ByteSizeFormatter.hpp                |    2 +-
+ src/Formatter/GeoPointFormatter.hpp                |    2 +-
+ src/Formatter/GlideRatioFormatter.cpp              |    2 +-
+ src/Formatter/GlideRatioFormatter.hpp              |    2 +-
+ src/Formatter/HexColor.cpp                         |    2 +-
+ src/Formatter/HexColor.hpp                         |    2 +-
+ src/Formatter/IGCFilenameFormatter.cpp             |    2 +-
+ src/Formatter/UserGeoPointFormatter.hpp            |    2 +-
+ src/Gauge/FlarmTrafficWindow.cpp                   |    2 +-
+ src/Gauge/GaugeVario.cpp                           |  529 +++--
+ src/Gauge/GaugeVario.hpp                           |  132 +-
+ src/Gauge/TrafficSettings.hpp                      |    2 +-
+ src/Gauge/VarioSettings.cpp                        |    1 +
+ src/Gauge/VarioSettings.hpp                        |    1 +
+ src/Geo/AltitudeReference.hpp                      |    2 +-
+ src/Geo/CoordinateFormat.hpp                       |    2 +-
+ src/Geo/Flat/FlatEllipse.cpp                       |    2 +-
+ src/Geo/GeoClip.cpp                                |    2 +-
+ src/Geo/Geoid.cpp                                  |    2 +-
+ src/Geo/Math.cpp                                   |    2 +-
+ src/Geo/SearchPoint.hpp                            |    2 +-
+ src/Geo/SimplifiedMath.cpp                         |    2 +-
+ src/GliderLink/GliderLinkId.hpp                    |    2 +-
+ src/Hardware/RotateDisplay.hpp                     |    2 +-
+ src/HexDump.hpp                                    |    2 +-
+ src/IGC/Generator.cpp                              |    2 +-
+ src/IGC/IGCExtensions.hpp                          |    2 +-
+ src/IGC/IGCParser.cpp                              |    7 +
+ src/IGC/IGCString.cpp                              |    2 +-
+ src/IGC/IGCWriter.cpp                              |    8 +-
+ src/IGC/IGCWriter.hpp                              |    4 +-
+ src/IO/BufferedOutputStream.hxx                    |    2 +-
+ src/IO/BufferedReader.cxx                          |    2 +-
+ src/IO/BufferedReader.hxx                          |    2 +-
+ src/IO/CSVLine.cpp                                 |    2 +-
+ src/IO/CSVLine.hpp                                 |    2 +-
+ src/IO/ConfiguredFile.cpp                          |    2 +-
+ src/IO/ConvertLineReader.cpp                       |    1 +
+ src/IO/DataFile.cpp                                |    2 +-
+ src/IO/DataHandler.hpp                             |    2 +-
+ src/IO/FileCache.cpp                               |    2 +-
+ src/IO/FileHandle.hpp                              |    4 +-
+ src/IO/FileOutputStream.hxx                        |    4 +-
+ src/IO/FileReader.cxx                              |    2 +-
+ src/IO/FileTransaction.cpp                         |    2 +-
+ src/IO/GunzipReader.hxx                            |    6 +-
+ src/IO/KeyValueFileWriter.cpp                      |    2 +-
+ src/IO/OutputStream.hxx                            |    2 +-
+ src/IO/Reader.hxx                                  |    2 +-
+ src/IO/TextWriter.hpp                              |    4 +-
+ src/IO/ZipReader.hpp                               |    2 +-
+ src/InfoBoxes/Content/Factory.cpp                  |   10 +-
+ src/InfoBoxes/Content/Factory.hpp                  |    4 +-
+ src/InfoBoxes/InfoBoxLayout.cpp                    |   62 +-
+ src/InfoBoxes/InfoBoxSettings.hpp                  |    4 +-
+ src/InfoBoxes/InfoBoxWindow.cpp                    |   56 +-
+ src/InfoBoxes/InfoBoxWindow.hpp                    |   27 +-
+ src/Input/InputConfig.hpp                          |    2 +-
+ src/Input/InputDefaults.cpp                        |    2 +-
+ src/Input/InputEvents.cpp                          |   16 +-
+ src/Input/InputEventsActions.cpp                   |    2 +-
+ src/Input/InputEventsDevice.cpp                    |    2 +-
+ src/Input/InputParser.cpp                          |    2 +-
+ src/Input/InputQueue.cpp                           |    2 +-
+ src/JSON/Writer.hpp                                |    2 +-
+ src/Java/Class.hxx                                 |    2 +-
+ src/Java/InputStream.hxx                           |    4 +-
+ src/Java/Object.hxx                                |    2 +-
+ src/Java/Ref.hxx                                   |    3 +-
+ src/Java/String.hxx                                |    5 +-
+ src/Java/URL.hxx                                   |    2 +-
+ src/Job/Async.hpp                                  |    2 +-
+ src/Kobo/KoboMenu.cpp                              |    5 +-
+ src/Kobo/NetworkDialog.cpp                         |    4 +-
+ src/Kobo/SystemDialog.cpp                          |    4 +-
+ src/Kobo/ToolsDialog.cpp                           |    4 +-
+ src/Kobo/WifiDialog.cpp                            |   24 +-
+ src/Language/Language.cpp                          |    2 +-
+ src/Language/LanguageGlue.hpp                      |    2 +-
+ src/Language/MOFile.cpp                            |    2 +-
+ src/Language/MOFile.hpp                            |    2 +-
+ src/LocalPath.cpp                                  |    2 +-
+ src/Logger/GRecord.cpp                             |    2 +-
+ src/Logger/GRecord.hpp                             |    3 +-
+ src/Logger/LoggerImpl.cpp                          |    2 +-
+ src/Logger/Settings.cpp                            |    1 +
+ src/Logger/Settings.hpp                            |    4 +-
+ src/Look/ChartLook.hpp                             |    2 +-
+ src/Lua/Assert.hxx                                 |    2 +-
+ src/Lua/Background.cpp                             |    2 +-
+ src/Lua/Class.hxx                                  |    6 +-
+ src/Lua/Error.cxx                                  |    2 +-
+ src/Lua/InputEvent.cpp                             |    2 +-
+ src/Lua/Ptr.hpp                                    |    2 +-
+ src/Lua/Replay.cpp                                 |    2 +-
+ src/Lua/Timer.cpp                                  |   18 +-
+ src/Lua/Util.hxx                                   |   50 +-
+ src/MainWindow.cpp                                 |   71 +-
+ src/MainWindow.hpp                                 |   88 +-
+ src/MapSettings.hpp                                |    2 +-
+ src/MapWindow/GlueMapWindow.cpp                    |   34 +-
+ src/MapWindow/GlueMapWindow.hpp                    |   33 +-
+ src/MapWindow/GlueMapWindowEvents.cpp              |   56 +-
+ src/MapWindow/GlueMapWindowOverlays.cpp            |   30 +-
+ src/Math/Angle.cpp                                 |   22 +-
+ src/Math/Filter.cpp                                |    2 +-
+ src/Math/KalmanFilter1d.cpp                        |    2 +-
+ src/Math/LeastSquares.hpp                          |    2 +-
+ src/Math/Point2D.hpp                               |   47 +-
+ src/Math/Quadratic.hpp                             |    2 +-
+ src/Math/SelfTimingKalmanFilter1d.hpp              |    2 +-
+ src/Math/ZeroFinder.hpp                            |    2 +-
+ src/Menu/ButtonLabel.hpp                           |    2 +-
+ src/Menu/MenuBar.cpp                               |    4 +-
+ src/Menu/MenuBar.hpp                               |    5 +
+ src/Menu/MenuData.cpp                              |    2 +-
+ src/NMEA/Checksum.cpp                              |    2 +-
+ src/NMEA/Checksum.hpp                              |    2 +-
+ src/NMEA/CirclingInfo.hpp                          |    2 +-
+ src/NMEA/ClimbHistory.hpp                          |    2 +-
+ src/NMEA/ExternalSettings.cpp                      |   17 +-
+ src/NMEA/ExternalSettings.hpp                      |    7 +-
+ src/NMEA/GPSState.hpp                              |    2 +-
+ src/NMEA/SwitchState.hpp                           |    2 +-
+ src/NMEA/Validity.hpp                              |    4 +-
+ src/Net/HTTP/DownloadManager.hpp                   |    2 +-
+ src/Net/HTTP/Handler.hpp                           |    2 +-
+ src/Net/HTTP/Multi.cpp                             |    2 +-
+ src/Net/HTTP/Request.hpp                           |    4 +-
+ src/Net/HTTP/ToBuffer.cpp                          |    2 +-
+ src/Net/HTTP/ToBuffer.hpp                          |    2 +-
+ src/Net/HTTP/ToFile.cpp                            |    4 +-
+ src/Net/IPv4Address.cxx                            |    2 +-
+ src/Net/IPv4Address.hxx                            |    6 +-
+ src/Net/IPv6Address.cxx                            |    3 +-
+ src/Net/IPv6Address.hxx                            |    2 +-
+ src/Net/SocketAddress.cxx                          |   18 +-
+ src/Net/SocketAddress.hxx                          |    7 +
+ src/Net/SocketDescriptor.cxx                       |    5 +-
+ src/Net/StaticSocketAddress.hxx                    |   15 +-
+ src/OS/Args.hpp                                    |    4 +-
+ src/OS/ByteOrder.hpp                               |    2 +-
+ src/OS/Clock.hpp                                   |    2 +-
+ src/OS/Error.hxx                                   |   17 +-
+ src/OS/EventPipe.cpp                               |    4 +-
+ src/OS/FileDescriptor.cxx                          |   30 +-
+ src/OS/FileDescriptor.hxx                          |   14 +-
+ src/OS/FileMapping.hpp                             |    2 +-
+ src/OS/FileUtil.cpp                                |    2 +-
+ src/OS/FileUtil.hpp                                |    2 +-
+ src/OS/Path.cpp                                    |    2 +-
+ src/OS/Path.hpp                                    |    2 +-
+ src/OS/Process.cpp                                 |    2 +-
+ src/OS/SystemLoad.cpp                              |    2 +-
+ src/OS/UniqueFileDescriptor.hxx                    |    3 +-
+ src/Operation/ThreadedOperationEnvironment.cpp     |   10 +-
+ src/Operation/ThreadedOperationEnvironment.hpp     |   15 +-
+ src/PageSettings.hpp                               |    2 +-
+ src/Pan.cpp                                        |    2 +-
+ src/Polar/Parser.hpp                               |    2 +-
+ src/Polar/PolarStore.cpp                           |    2 +-
+ src/Profile/ComputerProfile.cpp                    |    1 +
+ src/Profile/InfoBoxConfig.cpp                      |    1 +
+ src/Profile/Map.hpp                                |    2 +-
+ src/Profile/Profile.cpp                            |    2 +-
+ src/Profile/ProfileKeys.cpp                        |    2 +
+ src/Profile/ProfileKeys.hpp                        |    2 +
+ src/Profile/ProfileMap.hpp                         |    2 +-
+ src/Profile/UIProfile.cpp                          |    1 +
+ src/Projection/MapWindowProjection.cpp             |    2 +-
+ src/Projection/Projection.hpp                      |    2 +-
+ src/Projection/WindowProjection.hpp                |    2 +-
+ src/Protection.cpp                                 |    2 +-
+ src/RadioFrequency.hpp                             |   27 +-
+ src/RateLimiter.cpp                                |    8 +-
+ src/RateLimiter.hpp                                |   18 +-
+ src/Renderer/AirspaceRendererSettings.hpp          |    2 +-
+ src/Renderer/ChartRenderer.cpp                     |    2 +-
+ src/Renderer/LabelShape.hpp                        |    2 +-
+ src/Renderer/RotatedPolygonRenderer.hpp            |    2 +-
+ src/Renderer/TransparentRendererCache.hpp          |    2 +-
+ src/Renderer/UnitSymbolRenderer.cpp                |   37 +-
+ src/Renderer/UnitSymbolRenderer.hpp                |   14 +-
+ src/Renderer/WaypointRenderer.cpp                  |   14 +-
+ src/Renderer/WaypointRendererSettings.hpp          |    3 +-
+ src/Replay/CatmullRomInterpolator.hpp              |    2 +-
+ src/Replay/Replay.cpp                              |    8 +-
+ src/Replay/Replay.hpp                              |    5 +-
+ src/Repository/AvailableFile.hpp                   |    4 +
+ src/Repository/FileType.hpp                        |    3 +-
+ src/Repository/Parser.cpp                          |    6 +
+ src/ResourceLoader.cpp                             |    2 +-
+ src/Resources.hpp                                  |    4 +-
+ src/Rough/RoughAngle.hpp                           |    2 +-
+ src/Rough/RoughDistance.hpp                        |    2 +-
+ src/Rough/RoughSpeed.hpp                           |    2 +-
+ src/Rough/RoughVSpeed.hpp                          |    2 +-
+ src/Screen/Android/Font.cpp                        |    2 +-
+ src/Screen/Android/SingleWindow.cpp                |    2 +-
+ src/Screen/Android/TopWindow.cpp                   |   25 +-
+ src/Screen/Android/Window.cpp                      |    8 -
+ src/Screen/Apple/Font.cpp                          |    2 +-
+ src/Screen/Apple/ImageDecoder.hpp                  |    2 +-
+ src/Screen/Bitmap.hpp                              |    2 +-
+ src/Screen/Brush.hpp                               |    2 +-
+ src/Screen/BufferWindow.hpp                        |    6 +-
+ src/Screen/ContainerWindow.hpp                     |   44 +-
+ src/Screen/Custom/Cache.cpp                        |    2 +-
+ src/Screen/Custom/ContainerWindow.cpp              |   40 +-
+ src/Screen/Custom/LibJPEG.cpp                      |    4 +-
+ src/Screen/Custom/LibPNG.cpp                       |    2 +-
+ src/Screen/Custom/LibPNG.hpp                       |    2 +-
+ src/Screen/Custom/MoreCanvas.cpp                   |    2 +-
+ src/Screen/Custom/Pen.cpp                          |    2 +-
+ src/Screen/Custom/SingleWindow.cpp                 |    4 +-
+ src/Screen/Custom/Timer.cpp                        |   31 -
+ src/Screen/Custom/TopCanvas.hpp                    |    2 +-
+ src/Screen/Custom/TopWindow.cpp                    |   18 +-
+ src/Screen/Custom/UncompressedImage.hpp            |    2 +-
+ src/Screen/Custom/WList.hpp                        |    2 +-
+ src/Screen/Custom/Window.cpp                       |   34 +-
+ src/Screen/Debug.cpp                               |    2 +-
+ src/Screen/DoubleBufferWindow.cpp                  |   12 +-
+ src/Screen/DoubleBufferWindow.hpp                  |    4 +-
+ src/Screen/FB/SingleWindow.cpp                     |    2 +-
+ src/Screen/FB/TopCanvas.cpp                        |    2 +-
+ src/Screen/FB/TopWindow.cpp                        |    9 +-
+ src/Screen/FB/Window.cpp                           |    9 -
+ src/Screen/FreeType/Font.cpp                       |    4 +-
+ src/Screen/GDI/Bitmap.cpp                          |    2 +-
+ src/Screen/GDI/Brush.cpp                           |    2 +-
+ src/Screen/GDI/BufferCanvas.cpp                    |    2 +-
+ src/Screen/GDI/Canvas.hpp                          |    2 +-
+ src/Screen/GDI/Color.hpp                           |    2 +-
+ src/Screen/GDI/ContainerWindow.cpp                 |    6 +-
+ src/Screen/GDI/Font.cpp                            |    2 +-
+ src/Screen/GDI/PaintWindow.cpp                     |    5 +-
+ src/Screen/GDI/Pen.cpp                             |    2 +-
+ src/Screen/GDI/RawBitmap.cpp                       |    2 +-
+ src/Screen/GDI/ResourceBitmap.cpp                  |    2 +-
+ src/Screen/GDI/SingleWindow.cpp                    |    4 +-
+ src/Screen/GDI/Timer.cpp                           |   43 -
+ src/Screen/GDI/TopWindow.cpp                       |   18 +-
+ src/Screen/GDI/VirtualCanvas.cpp                   |    2 +-
+ src/Screen/GDI/Window.cpp                          |   33 +-
+ src/Screen/Memory/Bitmap.cpp                       |    2 +-
+ src/Screen/Memory/Canvas.cpp                       |    2 +-
+ src/Screen/Memory/Color.hpp                        |    2 +-
+ src/Screen/Memory/Dither.hpp                       |    2 +-
+ src/Screen/Memory/Export.cpp                       |    2 +-
+ src/Screen/Memory/Murphy.hpp                       |    2 +-
+ src/Screen/Memory/PixelTraits.hpp                  |    5 +-
+ src/Screen/Memory/RasterCanvas.hpp                 |    2 +-
+ src/Screen/Memory/RawBitmap.cpp                    |    2 +-
+ src/Screen/Memory/VirtualCanvas.cpp                |    2 +-
+ src/Screen/OpenGL/Buffer.hpp                       |    2 +-
+ src/Screen/OpenGL/BufferCanvas.cpp                 |    2 +-
+ src/Screen/OpenGL/BufferCanvas.hpp                 |    2 +-
+ src/Screen/OpenGL/Canvas.cpp                       |    2 +-
+ src/Screen/OpenGL/Color.hpp                        |    2 +-
+ src/Screen/OpenGL/FBO.cpp                          |    2 +-
+ src/Screen/OpenGL/Globals.hpp                      |    2 +-
+ src/Screen/OpenGL/Init.cpp                         |   15 +-
+ src/Screen/OpenGL/Init.hpp                         |    2 +-
+ src/Screen/OpenGL/RawBitmap.cpp                    |    2 +-
+ src/Screen/OpenGL/Shapes.cpp                       |    2 +-
+ src/Screen/OpenGL/Texture.cpp                      |    2 +-
+ src/Screen/OpenGL/Texture.hpp                      |    2 +-
+ src/Screen/OpenGL/Triangulate.cpp                  |    2 +-
+ src/Screen/PaintWindow.hpp                         |   18 +-
+ src/Screen/Pen.hpp                                 |    2 +-
+ src/Screen/Point.hpp                               |   78 +-
+ src/Screen/PortableColor.hpp                       |    2 +-
+ src/Screen/Ramp.cpp                                |    2 +-
+ src/Screen/RawBitmap.hpp                           |    2 +-
+ src/Screen/SDL/SingleWindow.cpp                    |    2 +-
+ src/Screen/SDL/TopCanvas.cpp                       |    2 +-
+ src/Screen/SDL/TopWindow.cpp                       |   13 +-
+ src/Screen/SDL/Window.cpp                          |   13 -
+ src/Screen/SingleWindow.cpp                        |    8 +-
+ src/Screen/SingleWindow.hpp                        |   28 +-
+ src/Screen/StopWatch.hpp                           |    2 +-
+ src/Screen/TTY/TopCanvas.cpp                       |    2 +-
+ src/Screen/TopWindow.hpp                           |   75 +-
+ src/Screen/Util.cpp                                |   19 +-
+ src/Screen/Util.hpp                                |   10 +-
+ src/Screen/Wayland/TopWindow.cpp                   |   14 +-
+ src/Screen/Window.cpp                              |   26 +-
+ src/Screen/Window.hpp                              |  224 +-
+ src/Screen/X11/TopWindow.cpp                       |    8 +-
+ src/StatusMessage.cpp                              |    2 +-
+ src/Task/Serialiser.cpp                            |    2 +-
+ src/Task/TaskFileIGC.cpp                           |    2 +-
+ src/Task/TaskFileXCSoar.cpp                        |    2 +-
+ src/Task/TypeStrings.hpp                           |    2 +-
+ src/Terrain/Height.hpp                             |    2 +-
+ src/Terrain/HeightMatrix.cpp                       |    2 +-
+ src/Terrain/RasterBuffer.cpp                       |    2 +-
+ src/Terrain/RasterBuffer.hpp                       |    2 +-
+ src/Terrain/RasterMap.cpp                          |    2 +-
+ src/Terrain/RasterProjection.cpp                   |    2 +-
+ src/Terrain/RasterRenderer.cpp                     |    4 +-
+ src/Terrain/RasterTileCache.hpp                    |    4 +-
+ src/Terrain/TerrainRenderer.cpp                    |    2 +-
+ src/Terrain/TerrainSettings.hpp                    |    2 +-
+ src/Terrain/jasper/jpc/jpc_t1cod.c                 |    3 +
+ src/Thread/CriticalSection.hxx                     |    4 +-
+ src/Thread/Mutex.hxx                               |    2 +-
+ src/Thread/RecursivelySuspensibleThread.cpp        |    2 +-
+ src/Thread/SuspensibleThread.cpp                   |    2 +-
+ src/Thread/Thread.cpp                              |    2 +-
+ src/Thread/Thread.hpp                              |    2 +-
+ src/Time/BrokenDate.cpp                            |    2 +-
+ src/Time/BrokenDate.hpp                            |    2 +-
+ src/Time/BrokenDateTime.cpp                        |    2 +-
+ src/Time/BrokenDateTime.hpp                        |    2 +-
+ src/Time/BrokenTime.cpp                            |    2 +-
+ src/Time/BrokenTime.hpp                            |    2 +-
+ src/Time/DeltaTime.cpp                             |    2 +-
+ src/Time/RoughTime.hpp                             |    4 +-
+ src/Topography/ShapeRenderer.hpp                   |    2 +-
+ src/Topography/TopographyFile.hpp                  |    2 +-
+ src/Topography/TopographyStore.cpp                 |    2 +-
+ src/Topography/XShape.hpp                          |    2 +-
+ src/Topography/shapelib/mapprimitive.c             |  438 ++--
+ src/Topography/shapelib/mapserver.h                |  157 +-
+ src/Topography/shapelib/mapshape.c                 |  242 +-
+ src/Topography/shapelib/mapshape.h                 |   15 +-
+ src/Topography/shapelib/mapstring.c                |  148 +-
+ src/Topography/shapelib/maptree.c                  |   71 +-
+ src/Topography/shapelib/maptree.h                  |    2 +-
+ src/Topography/shapelib/mapxbase.c                 |  103 +-
+ src/Tracking/LiveTrack24.cpp                       |    2 +-
+ src/Tracking/LiveTrack24.hpp                       |    2 +-
+ src/Tracking/SkyLines/Assemble.hpp                 |    2 +-
+ src/Tracking/SkyLines/Client.hpp                   |    2 +-
+ src/Tracking/SkyLines/CloudSettings.hpp            |    2 +-
+ src/Tracking/SkyLines/Data.hpp                     |    2 +-
+ src/Tracking/SkyLines/Glue.cpp                     |    2 +-
+ src/Tracking/SkyLines/Handler.hpp                  |    2 +-
+ src/Tracking/SkyLines/Key.hpp                      |    2 +-
+ src/Tracking/SkyLines/Protocol.hpp                 |    2 +-
+ src/Tracking/SkyLines/Queue.hpp                    |    2 +-
+ src/Tracking/SkyLines/Server.hpp                   |    2 +-
+ src/Tracking/SkyLines/Settings.hpp                 |    2 +-
+ src/UISettings.hpp                                 |    2 +-
+ src/UIUtil/TrackingGestureManager.cpp              |    2 +-
+ src/Units/Descriptor.cpp                           |    4 +-
+ src/Units/Group.hpp                                |    2 +-
+ src/Units/Unit.hpp                                 |    2 +-
+ src/Units/UnitsStore.cpp                           |    2 +-
+ src/Util/ASCII.cxx                                 |    2 +-
+ src/Util/ASCII.hxx                                 |    2 +-
+ src/Util/AllocatedArray.hxx                        |   13 +-
+ src/Util/AllocatedGrid.hxx                         |    2 +-
+ src/Util/AllocatedString.hxx                       |   71 +-
+ src/Util/Base64.hxx                                |    2 +-
+ src/Util/CRC.hpp                                   |    4 +-
+ src/Util/Cache.hxx                                 |    2 +-
+ src/Util/Cast.hxx                                  |    2 +-
+ src/Util/CharUtil.hxx                              |   10 +-
+ src/Util/Compiler.h                                |    2 +-
+ src/Util/ConstBuffer.hxx                           |   28 +-
+ src/Util/ContainerCast.hxx                         |    2 +-
+ src/Util/ConvertString.hpp                         |    2 +-
+ src/Util/DereferenceIterator.hpp                   |  144 --
+ src/Util/DereferenceIterator.hxx                   |  164 ++
+ src/Util/EnumBitSet.hpp                            |    2 +-
+ src/Util/EnumCast.hpp                              |    2 +-
+ src/Util/Exception.cxx                             |    9 +-
+ src/Util/Exception.hxx                             |    8 +-
+ src/Util/ExtractParameters.cpp                     |    2 +-
+ src/Util/ExtractParameters.hpp                     |    2 +-
+ src/Util/ForeignFifoBuffer.hxx                     |    6 +-
+ src/{Logger => Util}/MD5.cpp                       |    2 +-
+ src/{Logger => Util}/MD5.hpp                       |    4 +-
+ src/Util/Manual.hxx                                |    3 +-
+ src/Util/NumberParser.hpp                          |    4 +-
+ src/Util/OffsetPointer.hxx                         |    2 +-
+ src/Util/QuadTree.hpp                              |    2 +-
+ src/Util/RadixTree.hpp                             |    2 +-
+ src/Util/SliceAllocator.hpp                        |    2 +-
+ src/Util/StaticFifoBuffer.hxx                      |    5 +-
+ src/Util/StaticString.hxx                          |    4 +-
+ src/Util/StringBuffer.hxx                          |   12 +-
+ src/Util/StringBuilder.hxx                         |    2 +-
+ src/Util/StringCompare.cxx                         |    2 +-
+ src/Util/StringCompare.hxx                         |   44 +-
+ src/Util/StringPointer.hxx                         |   20 +-
+ src/Util/StringStrip.hxx                           |    2 +-
+ src/Util/StringUtil.hpp                            |    2 +-
+ src/Util/StringView.hxx                            |   59 +-
+ src/Util/TriState.hpp                              |    2 +-
+ src/Util/TrivialArray.hxx                          |    4 +-
+ src/Util/TruncateString.cpp                        |    2 +-
+ src/Util/TruncateString.hpp                        |    2 +-
+ src/Util/UTF8.cpp                                  |   60 +-
+ src/Util/UTF8.hpp                                  |   24 +-
+ src/Util/WASCII.cxx                                |    2 +-
+ src/Util/WASCII.hxx                                |    2 +-
+ src/Util/WStringCompare.cxx                        |    2 +-
+ src/Util/WStringCompare.hxx                        |   28 +-
+ src/Util/WritableBuffer.hxx                        |   28 +-
+ src/Waypoint/WaypointFileType.hpp                  |    2 +-
+ src/Waypoint/WaypointFilter.hpp                    |    2 +-
+ src/Waypoint/WaypointReader.hpp                    |    2 +-
+ src/Weather/ParsedMETAR.hpp                        |    2 +-
+ src/Weather/Rasp/RaspCache.cpp                     |    2 +-
+ src/Weather/Rasp/RaspStore.cpp                     |    2 +-
+ src/Weather/Rasp/RaspStore.hpp                     |    2 +-
+ src/Widget/ArrowPagerWidget.hpp                    |    2 +-
+ src/Widget/ButtonPanelWidget.cpp                   |    2 +-
+ src/Widget/ButtonPanelWidget.hpp                   |    2 +-
+ src/Widget/EditRowFormWidget.cpp                   |    2 +-
+ src/Widget/KeyboardWidget.cpp                      |    2 +-
+ src/Widget/ManagedWidget.cpp                       |    2 +-
+ src/Widget/ManagedWidget.hpp                       |   16 +-
+ src/Widget/PagerWidget.cpp                         |    2 +-
+ src/Widget/RowFormWidget.cpp                       |    2 +-
+ src/Widget/RowFormWidget.hpp                       |    4 +-
+ src/Widget/TabWidget.hpp                           |    2 +-
+ src/Widget/TextListWidget.cpp                      |    3 +-
+ src/Widget/TextListWidget.hpp                      |    5 +-
+ src/Widget/TextWidget.cpp                          |    2 +-
+ src/Widget/TwoWidgets.hpp                          |    2 +-
+ src/Widget/UnitRowFormWidget.cpp                   |    2 +-
+ src/Widget/WindowWidget.hpp                        |    2 +-
+ src/XCSoar.cpp                                     |    2 +-
+ src/XML/Node.cpp                                   |    2 +-
+ src/XML/Node.hpp                                   |    2 +-
+ src/XML/Parser.cpp                                 |    2 +-
+ src/zzip/__debug.h                                 |   79 +-
+ src/zzip/__hints.h                                 |    2 +-
+ src/zzip/__mmap.h                                  |   16 +-
+ src/zzip/fetch.c                                   |    2 +-
+ src/zzip/file.c                                    |   47 +-
+ src/zzip/format.h                                  |   12 +-
+ src/zzip/lib.h                                     |    3 +-
+ src/zzip/plugin.c                                  |    6 +-
+ src/zzip/stat.c                                    |    6 +-
+ src/zzip/stdint.h                                  |   13 +-
+ src/zzip/zip.c                                     |   94 +-
+ src/zzip/zzip.h                                    |    2 +-
+ test/src/FaultInjectionPort.hpp                    |    2 +-
+ test/src/NearestWaypoints.cpp                      |    2 +-
+ test/src/RunChartRenderer.cpp                      |    6 +-
+ test/src/RunFinalGlideBarRenderer.cpp              |   44 +-
+ test/src/RunFlightListRenderer.cpp                 |    1 -
+ test/src/RunHorizonRenderer.cpp                    |   20 +-
+ test/src/RunIGCWriter.cpp                          |    2 +-
+ test/src/RunMD5.cpp                                |   47 +-
+ test/src/RunOLCAnalysis.cpp                        |    2 +-
+ test/src/RunRenderOZ.cpp                           |    6 +-
+ test/src/RunSHA256.cpp                             |   77 +
+ test/src/RunTerminal.cpp                           |   27 +-
+ test/src/RunWindArrowRenderer.cpp                  |   20 +-
+ test/src/TestByteOrder.cpp                         |    2 +-
+ test/src/TestByteOrder2.cpp                        |    2 +-
+ test/src/TestIGCParser.cpp                         |   20 +-
+ test/src/TestLogger.cpp                            |    7 +-
+ test/src/TestNotify.cpp                            |   11 +-
+ test/src/TestTrace.cpp                             |    2 +-
+ test/src/TestUTF8.cpp                              |    2 +-
+ 800 files changed, 6964 insertions(+), 5013 deletions(-)
+ create mode 100644 .github/ISSUE_TEMPLATE/Bug.md
+ create mode 100644 .github/ISSUE_TEMPLATE/Feature.md
+ create mode 100644 .github/ISSUE_TEMPLATE/config.yml
+ create mode 100644 .github/PULL_REQUEST_TEMPLATE.md
+ create mode 100644 build/libcrypto.mk
+ create mode 100644 doc/manual/fr/ch08_avionics_and_airframe.tex
+ create mode 100755 ide/provisioning/add-debian-unstable.sh
+ rename src/{Util/AllocatedString.cxx => Crypto/SHA256.hxx} (63%)
+ delete mode 100644 src/Event/LambdaTimer.hpp
+ rename src/{Screen/Timer.hpp => Event/PeriodicTimer.hpp} (51%)
+ delete mode 100644 src/Screen/Custom/Timer.cpp
+ delete mode 100644 src/Screen/GDI/Timer.cpp
+ delete mode 100644 src/Util/DereferenceIterator.hpp
+ create mode 100644 src/Util/DereferenceIterator.hxx
+ rename src/{Logger => Util}/MD5.cpp (99%)
+ rename src/{Logger => Util}/MD5.hpp (97%)
+ create mode 100644 test/src/RunSHA256.cpp
+august@august-virtual-machine:~/work/XCSoar$ make TARGET=ANDROID
+make: /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++: Command not found
+./build/thirdparty.py ./output/ANDROID ANDROID arm-linux-androideabi arm-linux-androideabi "-march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as" "-I./output/ANDROID/include -DHAVE_POSIX -DHAVE_STDINT_H -DHAVE_UNISTD_H -DHAVE_VASPRINTF -DANDROID -isystem ./output/ANDROID/lib/arm-linux-androideabi/root/include -DEYE_CANDY -DTESTING -DBIONIC -DLIBCPP_NO_IOSTREAM " "-Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind" /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar "rcs" /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+download https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... arm-unknown-linux-androideabi
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for arm-linux-androideabi-strip... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether UID '1000' is supported by ustar format... yes
+checking whether GID '1000' is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking whether make supports nested variables... (cached) yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking whether make supports the include directive... yes (GNU style)
+checking for arm-linux-androideabi-gcc... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+checking whether the C compiler works... no
+configure: error: in `/home/august/work/XCSoar/output/ANDROID/lib/arm-linux-androideabi/build/libsodium-1.0.18':
+configure: error: C compiler cannot create executables
+See `config.log' for more details
+Traceback (most recent call last):
+  File "./build/thirdparty.py", line 146, in <module>
+    x.build(toolchain)
+  File "/home/august/work/XCSoar/build/python/build/autotools.py", line 99, in build
+    build = self.configure(toolchain)
+  File "/home/august/work/XCSoar/build/python/build/autotools.py", line 86, in configure
+    subprocess.check_call(configure, cwd=build, env=toolchain.env)
+  File "/usr/lib/python3.6/subprocess.py", line 311, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['/home/august/work/XCSoar/output/src/libsodium-1.0.18/configure', 'CC=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang', 'CXX=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++', 'CFLAGS=-Os -g -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as', 'CXXFLAGS=-Os -g -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as', 'CPPFLAGS=-isystem /home/august/work/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include -DNDEBUG -I./output/ANDROID/include -DHAVE_POSIX -DHAVE_STDINT_H -DHAVE_UNISTD_H -DHAVE_VASPRINTF -DANDROID -isystem ./output/ANDROID/lib/arm-linux-androideabi/root/include -DEYE_CANDY -DTESTING -DBIONIC -DLIBCPP_NO_IOSTREAM  ', 'LDFLAGS=-L/home/august/work/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib -Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind ', 'LIBS= ', 'AR=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar', 'ARFLAGS=rcs', 'RANLIB=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib', 'STRIP=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip', '--host=arm-linux-androideabi', '--prefix=/home/august/work/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root', '--enable-silent-rules', '--disable-shared', '--enable-static']' returned non-zero exit status 77.
+build/thirdparty.mk:45: recipe for target 'output/ANDROID/lib/arm-linux-androideabi/stamp' failed
+make: *** [output/ANDROID/lib/arm-linux-androideabi/stamp] Error 1
+august@august-virtual-machine:~/work/XCSoar$ git checkout HEAD
+M	src/Screen/Custom/LibTiff.cpp
+Your branch is up to date with 'origin/master'.
+august@august-virtual-machine:~/work/XCSoar$ make TARGET=ANDROID
+make: /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++: Command not found
+./build/thirdparty.py ./output/ANDROID ANDROID arm-linux-androideabi arm-linux-androideabi "-march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as" "-I./output/ANDROID/include -DHAVE_POSIX -DHAVE_STDINT_H -DHAVE_UNISTD_H -DHAVE_VASPRINTF -DANDROID -isystem ./output/ANDROID/lib/arm-linux-androideabi/root/include -DEYE_CANDY -DTESTING -DBIONIC -DLIBCPP_NO_IOSTREAM " "-Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind" /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar "rcs" /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... arm-unknown-linux-androideabi
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for arm-linux-androideabi-strip... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether UID '1000' is supported by ustar format... yes
+checking whether GID '1000' is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking whether make supports nested variables... (cached) yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking whether make supports the include directive... yes (GNU style)
+checking for arm-linux-androideabi-gcc... /home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+checking whether the C compiler works... no
+configure: error: in `/home/august/work/XCSoar/output/ANDROID/lib/arm-linux-androideabi/build/libsodium-1.0.18':
+configure: error: C compiler cannot create executables
+See `config.log' for more details
+Traceback (most recent call last):
+  File "./build/thirdparty.py", line 146, in <module>
+    x.build(toolchain)
+  File "/home/august/work/XCSoar/build/python/build/autotools.py", line 99, in build
+    build = self.configure(toolchain)
+  File "/home/august/work/XCSoar/build/python/build/autotools.py", line 86, in configure
+    subprocess.check_call(configure, cwd=build, env=toolchain.env)
+  File "/usr/lib/python3.6/subprocess.py", line 311, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['/home/august/work/XCSoar/output/src/libsodium-1.0.18/configure', 'CC=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang', 'CXX=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++', 'CFLAGS=-Os -g -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as', 'CXXFLAGS=-Os -g -ffunction-sections -fdata-sections -fvisibility=hidden -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fpic -funwind-tables -target armv7a-linux-androideabi21 -integrated-as', 'CPPFLAGS=-isystem /home/august/work/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/include -DNDEBUG -I./output/ANDROID/include -DHAVE_POSIX -DHAVE_STDINT_H -DHAVE_UNISTD_H -DHAVE_VASPRINTF -DANDROID -isystem ./output/ANDROID/lib/arm-linux-androideabi/root/include -DEYE_CANDY -DTESTING -DBIONIC -DLIBCPP_NO_IOSTREAM  ', 'LDFLAGS=-L/home/august/work/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root/lib -Wl,--no-undefined -Wl,--fix-cortex-a8 -Wl,--no-warn-mismatch -static-libstdc++ -lunwind ', 'LIBS= ', 'AR=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar', 'ARFLAGS=rcs', 'RANLIB=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib', 'STRIP=/home/august/opt/android-ndk-r21b/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-strip', '--host=arm-linux-androideabi', '--prefix=/home/august/work/XCSoar/output/ANDROID/lib/arm-linux-androideabi/root', '--enable-silent-rules', '--disable-shared', '--enable-static']' returned non-zero exit status 77.
+build/thirdparty.mk:45: recipe for target 'output/ANDROID/lib/arm-linux-androideabi/stamp' failed
+make: *** [output/ANDROID/lib/arm-linux-androideabi/stamp] Error 1
+august@august-virtual-machine:~/work/XCSoar$ make TARGET=PC
+make: i686-w64-mingw32-g++: Command not found
+./build/thirdparty.py ./output/PC PC i686-w64-mingw32 i686-w64-mingw32 " -march=i586 -mwin32 -mwindows -mms-bitfields" "-I./output/PC/include -DWINVER=0x0600 -D_WIN32_WINDOWS=0x0600 -D_WIN32_WINNT=0x0600 -D_WIN32_IE=0x0600 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DHAVE_STRUCT_POLLFD -DHAVE_MSVCRT -DUNICODE -D_UNICODE -DSTRICT -isystem ./output/PC/lib/i686-w64-mingw32/root/include -DEYE_CANDY -DTESTING -DUSE_WIN32_RESOURCES " "-Wl,--major-subsystem-version=5 -Wl,--minor-subsystem-version=00 -Wl,-subsystem,console -static-libstdc++ -static-libgcc" i686-w64-mingw32-gcc i686-w64-mingw32-g++ i686-w64-mingw32-ar "rcs" i686-w64-mingw32-ranlib i686-w64-mingw32-strip
+download http://zlib.net/zlib-1.2.11.tar.xz
+Checking for gcc...
+Building static library libz.a version 1.2.11 with gcc.
+Checking for size_t... Yes.
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+Checking for strerror... Yes.
+Checking for unistd.h... Yes.
+Checking for stdarg.h... Yes.
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+Checking for vsnprintf() in stdio.h... Yes.
+Checking for return value of vsnprintf()... Yes.
+Checking for attribute(visibility) support... Yes.
+make[1]: i686-w64-mingw32-gcc: Command not found
+Makefile:163: recipe for target 'crc32.o' failed
+make[1]: *** [crc32.o] Error 127
+make[1]: *** Waiting for unfinished jobs....
+make[1]: i686-w64-mingw32-gcc: Command not found
+Makefile:160: recipe for target 'adler32.o' failed
+make[1]: *** [adler32.o] Error 127
+Traceback (most recent call last):
+  File "./build/thirdparty.py", line 146, in <module>
+    x.build(toolchain)
+  File "/home/august/work/XCSoar/build/python/build/zlib.py", line 32, in build
+    MakeProject.build(self, toolchain, src)
+  File "/home/august/work/XCSoar/build/python/build/makeproject.py", line 31, in build
+    self.make(toolchain, wd, self.get_make_args(toolchain))
+  File "/home/august/work/XCSoar/build/python/build/makeproject.py", line 28, in make
+    cwd=wd, env=toolchain.env)
+  File "/usr/lib/python3.6/subprocess.py", line 311, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['make', '--quiet', '-j2', 'CC=i686-w64-mingw32-gcc -isystem /home/august/work/XCSoar/output/PC/lib/i686-w64-mingw32/root/include -DNDEBUG -I./output/PC/include -DWINVER=0x0600 -D_WIN32_WINDOWS=0x0600 -D_WIN32_WINNT=0x0600 -D_WIN32_IE=0x0600 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DHAVE_STRUCT_POLLFD -DHAVE_MSVCRT -DUNICODE -D_UNICODE -DSTRICT -isystem ./output/PC/lib/i686-w64-mingw32/root/include -DEYE_CANDY -DTESTING -DUSE_WIN32_RESOURCES  -Os -g -ffunction-sections -fdata-sections -fvisibility=hidden  -march=i586 -mwin32 -mwindows -mms-bitfields', 'CPP=i686-w64-mingw32-gcc -E -isystem /home/august/work/XCSoar/output/PC/lib/i686-w64-mingw32/root/include -DNDEBUG -I./output/PC/include -DWINVER=0x0600 -D_WIN32_WINDOWS=0x0600 -D_WIN32_WINNT=0x0600 -D_WIN32_IE=0x0600 -DWIN32_LEAN_AND_MEAN -DNOMINMAX -DHAVE_STRUCT_POLLFD -DHAVE_MSVCRT -DUNICODE -D_UNICODE -DSTRICT -isystem ./output/PC/lib/i686-w64-mingw32/root/include -DEYE_CANDY -DTESTING -DUSE_WIN32_RESOURCES ', 'AR=i686-w64-mingw32-ar', 'ARFLAGS=rcs', 'RANLIB=i686-w64-mingw32-ranlib', 'LDSHARED=i686-w64-mingw32-gcc -shared', 'libz.a']' returned non-zero exit status 2.
+build/thirdparty.mk:45: recipe for target 'output/PC/lib/i686-w64-mingw32/stamp' failed
+make: *** [output/PC/lib/i686-w64-mingw32/stamp] Error 1
+august@august-virtual-machine:~/work/XCSoar$ cd ..
+august@august-virtual-machine:~/work$ git clone git://github.com/XCSoar/XCSoar XCSoar_7.0_15
+Cloning into 'XCSoar_7.0_15'...
+remote: Enumerating objects: 230, done.
+remote: Counting objects: 100% (230/230), done.
+remote: Compressing objects: 100% (140/140), done.
+remote: Total 326579 (delta 126), reused 143 (delta 86), pack-reused 326349
+Receiving objects: 100% (326579/326579), 122.07 MiB | 5.92 MiB/s, done.
+Resolving deltas: 100% (267671/267671), done.
+Checking out files: 100% (4301/4301), done.
+august@august-virtual-machine:~/work$ https://github.com/August2111/XCSoar.git XCSoarAug
+bash: https://github.com/August2111/XCSoar.git: No such file or directory
+august@august-virtual-machine:~/work$ git clone https://github.com/August2111/XCSoar.git XCSoarAug
+Cloning into 'XCSoarAug'...
+remote: Enumerating objects: 325248, done.
+remote: Total 325248 (delta 0), reused 0 (delta 0), pack-reused 325248
+Receiving objects: 100% (325248/325248), 121.95 MiB | 5.72 MiB/s, done.
+Resolving deltas: 100% (266614/266614), done.
+august@august-virtual-machine:~/work$ cd XCSoar_7.0_15/
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ make
+  GET     output/download/boost_1_73_0.tar.bz2
+download https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.bz2
+  UNTAR   boost_1_73_0.tar.bz2
+Applying patch /home/august/work/XCSoar_7.0_15/lib/boost/patches/no_locale.diff
+Applying patch /home/august/work/XCSoar_7.0_15/lib/boost/patches/ublas_no_serialization.patch
+Applying patch /home/august/work/XCSoar_7.0_15/lib/boost/patches/no_TRUE_FALSE.diff
+Applying patch /home/august/work/XCSoar_7.0_15/lib/boost/patches/no_math_throw
+Now at patch /home/august/work/XCSoar_7.0_15/lib/boost/patches/no_math_throw
+  CXX     output/UNIX/dbg/src/IO/MapFile.o
+  CXX     output/UNIX/dbg/src/IO/ConfiguredFile.o
+  CXX     output/UNIX/dbg/src/IO/DataFile.o
+  CXX     output/UNIX/dbg/src/Airspace/ProtectedAirspaceWarningManager.o
+  CXX     output/UNIX/dbg/src/Airspace/ActivePredicate.o
+  CXX     output/UNIX/dbg/src/Task/Serialiser.o
+  CXX     output/UNIX/dbg/src/Task/Deserialiser.o
+  CXX     output/UNIX/dbg/src/Task/SaveFile.o
+  CXX     output/UNIX/dbg/src/Task/LoadFile.o
+  CXX     output/UNIX/dbg/src/Task/TaskFile.o
+  CXX     output/UNIX/dbg/src/Task/TaskFileXCSoar.o
+  CXX     output/UNIX/dbg/src/Task/TaskFileIGC.o
+  CXX     output/UNIX/dbg/src/Task/TaskFileSeeYou.o
+  CXX     output/UNIX/dbg/src/Task/DefaultTask.o
+  CXX     output/UNIX/dbg/src/Task/MapTaskManager.o
+  CXX     output/UNIX/dbg/src/Task/ProtectedTaskManager.o
+  CXX     output/UNIX/dbg/src/Task/FileProtectedTaskManager.o
+  CXX     output/UNIX/dbg/src/Task/RoutePlannerGlue.o
+  CXX     output/UNIX/dbg/src/Task/ProtectedRoutePlanner.o
+  CXX     output/UNIX/dbg/src/Task/TaskStore.o
+  CXX     output/UNIX/dbg/src/Task/TypeStrings.o
+  CXX     output/UNIX/dbg/src/Task/ValidationErrorStrings.o
+  CXX     output/UNIX/dbg/src/RadioFrequency.o
+  CXX     output/UNIX/dbg/src/Engine/Navigation/TraceHistory.o
+  CXX     output/UNIX/dbg/src/Engine/Navigation/Aircraft.o
+  CXX     output/UNIX/dbg/src/Engine/Trace/Point.o
+  CXX     output/UNIX/dbg/src/Engine/Trace/Trace.o
+  CXX     output/UNIX/dbg/src/Engine/Trace/Vector.o
+  CXX     output/UNIX/dbg/src/Engine/Util/Gradient.o
+  CXX     output/UNIX/dbg/src/Engine/ThermalBand/ThermalBand.o
+  CXX     output/UNIX/dbg/src/Engine/ThermalBand/ThermalSlice.o
+  CXX     output/UNIX/dbg/src/Engine/ThermalBand/ThermalEncounterBand.o
+  CXX     output/UNIX/dbg/src/Engine/ThermalBand/ThermalEncounterCollection.o
+  CXX     output/UNIX/dbg/src/HorizonWidget.o
+  CXX     output/UNIX/dbg/src/Renderer/TextRowRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TwoTextRowsRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/HorizonRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/GradientRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/GlassRenderer.o
+In file included from ./src/Screen/OpenGL/Scissor.hpp:28:0,
+                 from src/Renderer/GlassRenderer.cpp:29:
+./src/Screen/OpenGL/Globals.hpp:37:10: fatal error: glm/fwd.hpp: No such file or directory
+ #include <glm/fwd.hpp>
+          ^~~~~~~~~~~~~
+compilation terminated.
+build/compile.mk:107: recipe for target 'output/UNIX/dbg/src/Renderer/GlassRenderer.o' failed
+make: *** [output/UNIX/dbg/src/Renderer/GlassRenderer.o] Error 1
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ 
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ sudo apt-get install libglm-dev
+[sudo] password for august: 
+E: Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ sudo apt-get install libglm-dev
+E: Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ sudo rm /var/lib/apt/lists/lock
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ sudo apt-get install libglm-dev
+E: Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ sudo rm /var/lib/dpkg/lock
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ sudo dpkg --configure -a
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ sudo apt-get install libglm-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  libglm-dev
+0 upgraded, 1 newly installed, 0 to remove and 73 not upgraded.
+Need to get 163 kB of archives.
+After this operation, 1,977 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu bionic/main amd64 libglm-dev all 0.9.9~a2-2 [163 kB]
+Fetched 163 kB in 1s (222 kB/s)
+Selecting previously unselected package libglm-dev.
+(Reading database ... 177685 files and directories currently installed.)
+Preparing to unpack .../libglm-dev_0.9.9~a2-2_all.deb ...
+Unpacking libglm-dev (0.9.9~a2-2) ...
+Setting up libglm-dev (0.9.9~a2-2) ...
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ make
+  CXX     output/UNIX/dbg/src/Renderer/GlassRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TransparentRendererCache.o
+  CXX     output/UNIX/dbg/src/Renderer/LabelBlock.o
+  CXX     output/UNIX/dbg/src/Renderer/TextInBox.o
+  CXX     output/UNIX/dbg/src/Renderer/TraceHistoryRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/ThermalBandRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TaskProgressRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/ClimbPercentRenderer.o
+  CXX     output/UNIX/dbg/src/Airspace/AirspaceGlue.o
+  CXX     output/UNIX/dbg/src/Airspace/AirspaceParser.o
+  CXX     output/UNIX/dbg/src/Airspace/AirspaceVisibility.o
+  CXX     output/UNIX/dbg/src/Airspace/AirspaceComputerSettings.o
+  CXX     output/UNIX/dbg/src/Airspace/NearestAirspace.o
+  CXX     output/UNIX/dbg/src/Renderer/AirspaceRendererSettings.o
+  CXX     output/UNIX/dbg/src/Renderer/GeoBitmapRenderer.o
+  CXX     output/UNIX/dbg/src/Operation/Operation.o
+  CXX     output/UNIX/dbg/src/Operation/ProxyOperationEnvironment.o
+  CXX     output/UNIX/dbg/src/Operation/NoCancelOperationEnvironment.o
+  CXX     output/UNIX/dbg/src/Operation/PopupOperationEnvironment.o
+  CXX     output/UNIX/dbg/src/Operation/MessageOperationEnvironment.o
+  CXX     output/UNIX/dbg/src/Operation/ThreadedOperationEnvironment.o
+  CXX     output/UNIX/dbg/src/Operation/VerboseOperationEnvironment.o
+  CXX     output/UNIX/dbg/src/Atmosphere/Pressure.o
+  CXX     output/UNIX/dbg/src/Atmosphere/AirDensity.o
+  CXX     output/UNIX/dbg/src/Atmosphere/CuSonde.o
+  CXX     output/UNIX/dbg/src/Computer/ClimbAverageCalculator.o
+  CXX     output/UNIX/dbg/src/Computer/ConditionMonitor/ConditionMonitor.o
+  CXX     output/UNIX/dbg/src/Computer/ConditionMonitor/ConditionMonitorAATTime.o
+  CXX     output/UNIX/dbg/src/Computer/ConditionMonitor/ConditionMonitorFinalGlide.o
+  CXX     output/UNIX/dbg/src/Computer/ConditionMonitor/ConditionMonitorGlideTerrain.o
+  CXX     output/UNIX/dbg/src/Computer/ConditionMonitor/ConditionMonitorLandableReachable.o
+  CXX     output/UNIX/dbg/src/Computer/ConditionMonitor/ConditionMonitorSunset.o
+  CXX     output/UNIX/dbg/src/Computer/ConditionMonitor/ConditionMonitorWind.o
+  CXX     output/UNIX/dbg/src/Computer/ConditionMonitor/ConditionMonitors.o
+  CXX     output/UNIX/dbg/src/Plane/PlaneGlue.o
+  CXX     output/UNIX/dbg/src/Plane/PlaneFileGlue.o
+  CXX     output/UNIX/dbg/src/FLARM/FlarmId.o
+  CXX     output/UNIX/dbg/src/FLARM/Error.o
+  CXX     output/UNIX/dbg/src/FLARM/List.o
+  CXX     output/UNIX/dbg/src/FLARM/FlarmNetRecord.o
+  CXX     output/UNIX/dbg/src/FLARM/FlarmNetDatabase.o
+  CXX     output/UNIX/dbg/src/FLARM/FlarmNetReader.o
+  CXX     output/UNIX/dbg/src/FLARM/Traffic.o
+  CXX     output/UNIX/dbg/src/FLARM/FlarmCalculations.o
+  CXX     output/UNIX/dbg/src/FLARM/Friends.o
+  CXX     output/UNIX/dbg/src/FLARM/FlarmComputer.o
+  CXX     output/UNIX/dbg/src/FLARM/Global.o
+  CXX     output/UNIX/dbg/src/FLARM/Glue.o
+  CXX     output/UNIX/dbg/src/Computer/CuComputer.o
+  CXX     output/UNIX/dbg/src/Computer/FlyingComputer.o
+  CXX     output/UNIX/dbg/src/Computer/CirclingComputer.o
+  CXX     output/UNIX/dbg/src/Computer/ThermalBandComputer.o
+  CXX     output/UNIX/dbg/src/Computer/Wind/Computer.o
+  CXX     output/UNIX/dbg/src/Computer/ContestComputer.o
+  CXX     output/UNIX/dbg/src/Computer/TraceComputer.o
+  CXX     output/UNIX/dbg/src/Computer/WarningComputer.o
+  CXX     output/UNIX/dbg/src/Computer/ThermalLocator.o
+  CXX     output/UNIX/dbg/src/Computer/ThermalBase.o
+  CXX     output/UNIX/dbg/src/Computer/LiftDatabaseComputer.o
+  CXX     output/UNIX/dbg/src/Computer/LogComputer.o
+  CXX     output/UNIX/dbg/src/Computer/AverageVarioComputer.o
+  CXX     output/UNIX/dbg/src/Computer/GlideRatioCalculator.o
+  CXX     output/UNIX/dbg/src/Computer/GlideRatioComputer.o
+  CXX     output/UNIX/dbg/src/Computer/GlideComputer.o
+  CXX     output/UNIX/dbg/src/Computer/GlideComputerBlackboard.o
+  CXX     output/UNIX/dbg/src/Computer/GlideComputerAirData.o
+  CXX     output/UNIX/dbg/src/Computer/WaveComputer.o
+  CXX     output/UNIX/dbg/src/Computer/StatsComputer.o
+  CXX     output/UNIX/dbg/src/Computer/RouteComputer.o
+  CXX     output/UNIX/dbg/src/Computer/TaskComputer.o
+  CXX     output/UNIX/dbg/src/Computer/GlideComputerInterface.o
+  CXX     output/UNIX/dbg/src/Computer/Events.o
+  CXX     output/UNIX/dbg/src/BallastDumpManager.o
+  CXX     output/UNIX/dbg/src/Logger/Settings.o
+  CXX     output/UNIX/dbg/src/Logger/Logger.o
+  CXX     output/UNIX/dbg/src/Logger/LoggerFRecord.o
+  CXX     output/UNIX/dbg/src/Logger/GRecord.o
+  CXX     output/UNIX/dbg/src/Logger/LoggerEPE.o
+  CXX     output/UNIX/dbg/src/Logger/LoggerImpl.o
+  CXX     output/UNIX/dbg/src/Logger/IGCFileCleanup.o
+  CXX     output/UNIX/dbg/src/IGC/IGCFix.o
+  CXX     output/UNIX/dbg/src/IGC/IGCWriter.o
+  CXX     output/UNIX/dbg/src/IGC/IGCString.o
+  CXX     output/UNIX/dbg/src/IGC/Generator.o
+  CXX     output/UNIX/dbg/src/Util/MD5.o
+  CXX     output/UNIX/dbg/src/Logger/NMEALogger.o
+  CXX     output/UNIX/dbg/src/Logger/ExternalLogger.o
+  CXX     output/UNIX/dbg/src/Logger/FlightLogger.o
+  CXX     output/UNIX/dbg/src/Logger/GlueFlightLogger.o
+  CXX     output/UNIX/dbg/src/NMEA/Info.o
+  CXX     output/UNIX/dbg/src/NMEA/MoreData.o
+  CXX     output/UNIX/dbg/src/NMEA/GPSState.o
+  CXX     output/UNIX/dbg/src/NMEA/Acceleration.o
+  CXX     output/UNIX/dbg/src/NMEA/Attitude.o
+  CXX     output/UNIX/dbg/src/NMEA/ExternalSettings.o
+  CXX     output/UNIX/dbg/src/NMEA/FlyingState.o
+  CXX     output/UNIX/dbg/src/NMEA/Derived.o
+  CXX     output/UNIX/dbg/src/NMEA/VarioInfo.o
+  CXX     output/UNIX/dbg/src/NMEA/ClimbInfo.o
+  CXX     output/UNIX/dbg/src/NMEA/CirclingInfo.o
+  CXX     output/UNIX/dbg/src/NMEA/ThermalLocator.o
+  CXX     output/UNIX/dbg/src/NMEA/ClimbHistory.o
+  CXX     output/UNIX/dbg/src/NMEA/SwitchState.o
+  CXX     output/UNIX/dbg/src/NMEA/InputLine.o
+  CXX     output/UNIX/dbg/src/NMEA/Checksum.o
+  CXX     output/UNIX/dbg/src/NMEA/Aircraft.o
+  CXX     output/UNIX/dbg/src/Replay/Replay.o
+  CXX     output/UNIX/dbg/src/IGC/IGCParser.o
+  CXX     output/UNIX/dbg/src/Replay/IgcReplay.o
+  CXX     output/UNIX/dbg/src/Replay/NmeaReplay.o
+  CXX     output/UNIX/dbg/src/Replay/DemoReplay.o
+  CXX     output/UNIX/dbg/src/Replay/DemoReplayGlue.o
+  CXX     output/UNIX/dbg/src/Replay/TaskAutoPilot.o
+  CXX     output/UNIX/dbg/src/Replay/AircraftSim.o
+  CXX     output/UNIX/dbg/src/TeamCode/TeamCode.o
+  CXX     output/UNIX/dbg/src/TeamCode/Settings.o
+  CXX     output/UNIX/dbg/src/TeamActions.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointList.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointListBuilder.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointFilter.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointGlue.o
+  CXX     output/UNIX/dbg/src/Waypoint/SaveGlue.o
+  CXX     output/UNIX/dbg/src/Waypoint/LastUsed.o
+  CXX     output/UNIX/dbg/src/Waypoint/HomeGlue.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointFileType.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointReader.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointReaderBase.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointReaderOzi.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointReaderFS.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointReaderWinPilot.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointReaderSeeYou.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointReaderZander.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointReaderCompeGPS.o
+  CXX     output/UNIX/dbg/src/Waypoint/CupWriter.o
+  CXX     output/UNIX/dbg/src/Waypoint/Factory.o
+  CXX     output/UNIX/dbg/src/Computer/Wind/CirclingWind.o
+  CXX     output/UNIX/dbg/src/Computer/Wind/MeasurementList.o
+  CXX     output/UNIX/dbg/src/Computer/Wind/Store.o
+  CXX     output/UNIX/dbg/src/Computer/Wind/WindEKF.o
+  CXX     output/UNIX/dbg/src/Computer/Wind/WindEKFGlue.o
+  CXX     output/UNIX/dbg/src/Computer/Wind/Settings.o
+  CXX     output/UNIX/dbg/src/CrossSection/AirspaceXSRenderer.o
+  CXX     output/UNIX/dbg/src/CrossSection/TerrainXSRenderer.o
+  CXX     output/UNIX/dbg/src/CrossSection/CrossSectionRenderer.o
+  CXX     output/UNIX/dbg/src/CrossSection/CrossSectionWindow.o
+  CXX     output/UNIX/dbg/src/CrossSection/CrossSectionWidget.o
+  CXX     output/UNIX/dbg/src/Gauge/ThermalAssistantRenderer.o
+  CXX     output/UNIX/dbg/src/Gauge/ThermalAssistantWindow.o
+  CXX     output/UNIX/dbg/src/Gauge/BigThermalAssistantWindow.o
+  CXX     output/UNIX/dbg/src/Gauge/BigThermalAssistantWidget.o
+  CXX     output/UNIX/dbg/src/Gauge/FlarmTrafficWindow.o
+  CXX     output/UNIX/dbg/src/Gauge/BigTrafficWidget.o
+  CXX     output/UNIX/dbg/src/Gauge/GaugeFLARM.o
+  CXX     output/UNIX/dbg/src/Gauge/GaugeThermalAssistant.o
+  CXX     output/UNIX/dbg/src/Gauge/VarioSettings.o
+  CXX     output/UNIX/dbg/src/Gauge/TrafficSettings.o
+  CXX     output/UNIX/dbg/src/Gauge/GaugeVario.o
+  CXX     output/UNIX/dbg/src/Gauge/GlueGaugeVario.o
+  CXX     output/UNIX/dbg/src/Gauge/TaskView.o
+  CXX     output/UNIX/dbg/src/Gauge/LogoView.o
+  CXX     output/UNIX/dbg/src/Waypoint/WaypointDetailsReader.o
+  CXX     output/UNIX/dbg/src/Menu/MenuData.o
+  CXX     output/UNIX/dbg/src/Menu/MenuBar.o
+  CXX     output/UNIX/dbg/src/Menu/ButtonLabel.o
+  CXX     output/UNIX/dbg/src/Menu/ExpandMacros.o
+  CXX     output/UNIX/dbg/src/Menu/ShowMenuButton.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Factory.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Alternate.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Base.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Altitude.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Direction.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Glide.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/MacCready.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Other.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Speed.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Task.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Places.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Contest.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Team.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Terrain.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Thermal.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Time.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Trace.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Weather.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Airspace.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Content/Radio.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Data.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Format.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Units.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/InfoBoxSettings.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/InfoBoxWindow.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/InfoBoxLayout.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/InfoBoxManager.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Panel/AltitudeInfo.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Panel/AltitudeSimulator.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Panel/AltitudeSetup.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Panel/MacCreadyEdit.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Panel/MacCreadySetup.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Panel/WindEdit.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Panel/ATCReference.o
+  CXX     output/UNIX/dbg/src/InfoBoxes/Panel/RadioEdit.o
+  CXX     output/UNIX/dbg/src/Pan.o
+  CXX     output/UNIX/dbg/src/Input/InputConfig.o
+  GEN     output/include/InputEvents_default.cpp
+  CXX     output/UNIX/dbg/src/Input/InputDefaults.o
+  CXX     output/UNIX/dbg/src/Input/InputEvents.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsActions.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsDevice.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsVega.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsMap.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsPage.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsAirspace.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsTask.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsSettings.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsThermalAssistant.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsTraffic.o
+  CXX     output/UNIX/dbg/src/Input/InputEventsLua.o
+  CXX     output/UNIX/dbg/src/Input/InputQueue.o
+  GEN     output/include/InputEvents_Text2Event.cpp
+  GEN     output/include/InputEvents_Text2GCE.cpp
+  GEN     output/include/InputEvents_Text2NE.cpp
+  CXX     output/UNIX/dbg/src/Input/InputLookup.o
+  CXX     output/UNIX/dbg/src/Input/InputKeys.o
+  CXX     output/UNIX/dbg/src/Input/InputParser.o
+  CXX     output/UNIX/dbg/src/Input/TaskEventObserver.o
+  CXX     output/UNIX/dbg/src/PageSettings.o
+  CXX     output/UNIX/dbg/src/PageState.o
+  CXX     output/UNIX/dbg/src/PageActions.o
+  GEN     output/include/Status_defaults.cpp
+  CXX     output/UNIX/dbg/src/StatusMessage.o
+  CXX     output/UNIX/dbg/src/PopupMessage.o
+  CXX     output/UNIX/dbg/src/Message.o
+  CXX     output/UNIX/dbg/src/LogFile.o
+  CXX     output/UNIX/dbg/src/Geo/Geoid.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapCanvas.o
+  CXX     output/UNIX/dbg/src/MapWindow/StencilMapCanvas.o
+  CXX     output/UNIX/dbg/src/Projection/Projection.o
+  CXX     output/UNIX/dbg/src/Projection/WindowProjection.o
+  CXX     output/UNIX/dbg/src/Projection/CompareProjection.o
+  CXX     output/UNIX/dbg/src/Renderer/ChartRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/BackgroundRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/FAITriangleAreaRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/OZRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TaskPointRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TaskRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/AircraftRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/AirspaceRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/AirspaceRendererGL.o
+  CXX     output/UNIX/dbg/src/Renderer/AirspaceRendererOther.o
+  CXX     output/UNIX/dbg/src/Renderer/AirspaceLabelList.o
+  CXX     output/UNIX/dbg/src/Renderer/AirspaceLabelRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/AirspaceListRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/AirspacePreviewRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/BestCruiseArrowRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/CompassRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/FinalGlideBarRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/VarioBarRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/MapItemListRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/OZPreviewRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TrackLineRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TrafficRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TrailRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/UnitSymbolRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/WaypointListRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/WaypointIconRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/WaypointRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/WaypointRendererSettings.o
+  CXX     output/UNIX/dbg/src/Renderer/WaypointLabelList.o
+  CXX     output/UNIX/dbg/src/Renderer/WindArrowRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/NextArrowRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/WaveRenderer.o
+  CXX     output/UNIX/dbg/src/Projection/ChartProjection.o
+  CXX     output/UNIX/dbg/src/MapWindow/Items/MapItem.o
+  CXX     output/UNIX/dbg/src/MapWindow/Items/OverlayMapItem.o
+  CXX     output/UNIX/dbg/src/MapWindow/Items/List.o
+  CXX     output/UNIX/dbg/src/MapWindow/Items/Builder.o
+  CXX     output/UNIX/dbg/src/MapWindow/Items/AirspaceBuilder.o
+  CXX     output/UNIX/dbg/src/MapWindow/Items/TrafficBuilder.o
+  CXX     output/UNIX/dbg/src/MapWindow/Items/WeatherBuilder.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindow.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowEvents.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowGlideRange.o
+  CXX     output/UNIX/dbg/src/Projection/MapWindowProjection.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowRender.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowSymbols.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowContest.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowTask.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowThermal.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowTraffic.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowTrail.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowWaypoints.o
+  CXX     output/UNIX/dbg/src/MapWindow/GlueMapWindow.o
+  CXX     output/UNIX/dbg/src/MapWindow/GlueMapWindowItems.o
+  CXX     output/UNIX/dbg/src/MapWindow/GlueMapWindowEvents.o
+  CXX     output/UNIX/dbg/src/MapWindow/GlueMapWindowOverlays.o
+  CXX     output/UNIX/dbg/src/MapWindow/GlueMapWindowDisplayMode.o
+  CXX     output/UNIX/dbg/src/MapWindow/TargetMapWindow.o
+  CXX     output/UNIX/dbg/src/MapWindow/TargetMapWindowEvents.o
+  CXX     output/UNIX/dbg/src/MapWindow/TargetMapWindowDrag.o
+  CXX     output/UNIX/dbg/src/UIUtil/GestureManager.o
+  CXX     output/UNIX/dbg/src/UIUtil/TrackingGestureManager.o
+  CXX     output/UNIX/dbg/src/DrawThread.o
+  CXX     output/UNIX/dbg/src/Weather/Rasp/RaspStore.o
+  CXX     output/UNIX/dbg/src/Weather/Rasp/RaspCache.o
+  CXX     output/UNIX/dbg/src/Weather/Rasp/RaspRenderer.o
+  CXX     output/UNIX/dbg/src/Weather/Rasp/RaspStyle.o
+  CXX     output/UNIX/dbg/src/Weather/Rasp/Providers.o
+  CXX     output/UNIX/dbg/src/Computer/BasicComputer.o
+  CXX     output/UNIX/dbg/src/Computer/GroundSpeedComputer.o
+  CXX     output/UNIX/dbg/src/Computer/AutoQNH.o
+  CXX     output/UNIX/dbg/src/Blackboard/BlackboardListener.o
+  CXX     output/UNIX/dbg/src/Blackboard/ProxyBlackboardListener.o
+  CXX     output/UNIX/dbg/src/Blackboard/RateLimitedBlackboardListener.o
+  CXX     output/UNIX/dbg/src/Blackboard/LiveBlackboard.o
+  CXX     output/UNIX/dbg/src/Blackboard/InterfaceBlackboard.o
+  CXX     output/UNIX/dbg/src/Blackboard/ScopeGPSListener.o
+  CXX     output/UNIX/dbg/src/Blackboard/ScopeCalculatedListener.o
+  CXX     output/UNIX/dbg/src/Blackboard/DeviceBlackboard.o
+  CXX     output/UNIX/dbg/src/MapWindow/MapWindowBlackboard.o
+  CXX     output/UNIX/dbg/src/Dialogs/DialogSettings.o
+  CXX     output/UNIX/dbg/src/UIReceiveBlackboard.o
+  CXX     output/UNIX/dbg/src/UIGlobals.o
+  CXX     output/UNIX/dbg/src/UIState.o
+  CXX     output/UNIX/dbg/src/UISettings.o
+  CXX     output/UNIX/dbg/src/DisplaySettings.o
+  CXX     output/UNIX/dbg/src/MapSettings.o
+  CXX     output/UNIX/dbg/src/SystemSettings.o
+  CXX     output/UNIX/dbg/src/Audio/Settings.o
+  CXX     output/UNIX/dbg/src/Audio/VarioSettings.o
+  CXX     output/UNIX/dbg/src/Computer/Settings.o
+  CXX     output/UNIX/dbg/src/MergeThread.o
+  CXX     output/UNIX/dbg/src/CalculationThread.o
+  CXX     output/UNIX/dbg/src/DisplayMode.o
+  CXX     output/UNIX/dbg/src/Topography/TopographyFile.o
+  CXX     output/UNIX/dbg/src/Topography/TopographyStore.o
+  CXX     output/UNIX/dbg/src/Topography/TopographyFileRenderer.o
+  CXX     output/UNIX/dbg/src/Topography/TopographyRenderer.o
+  CXX     output/UNIX/dbg/src/Topography/Thread.o
+  CXX     output/UNIX/dbg/src/Topography/TopographyGlue.o
+  CXX     output/UNIX/dbg/src/Topography/XShape.o
+  CXX     output/UNIX/dbg/src/Topography/CachedTopographyRenderer.o
+  CXX     output/UNIX/dbg/src/Markers/Markers.o
+  CXX     output/UNIX/dbg/src/FlightStatistics.o
+  CXX     output/UNIX/dbg/src/FlightInfo.o
+  CXX     output/UNIX/dbg/src/Renderer/FlightStatisticsRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/BarographRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/ClimbChartRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/GlidePolarRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/GlidePolarInfoRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/WindChartRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/CuRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/MacCreadyRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/VarioHistogramRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TaskLegRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TaskSpeedRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/MapScaleRenderer.o
+  CXX     output/UNIX/dbg/src/Simulator.o
+  CXX     output/UNIX/dbg/src/Asset.o
+  CXX     output/UNIX/dbg/src/Hardware/CPU.o
+  CXX     output/UNIX/dbg/src/Hardware/RotateDisplay.o
+  CXX     output/UNIX/dbg/src/Hardware/DisplayDPI.o
+  CXX     output/UNIX/dbg/src/Hardware/DisplaySize.o
+  CXX     output/UNIX/dbg/src/Hardware/DisplayGlue.o
+  CXX     output/UNIX/dbg/src/Hardware/Vibrator.o
+  CXX     output/UNIX/dbg/src/Language/MOFile.o
+  CXX     output/UNIX/dbg/src/Language/Language.o
+  CXX     output/UNIX/dbg/src/Language/LanguageGlue.o
+  CXX     output/UNIX/dbg/src/LocalPath.o
+  CXX     output/UNIX/dbg/src/UIActions.o
+  CXX     output/UNIX/dbg/src/Interface.o
+  CXX     output/UNIX/dbg/src/ActionInterface.o
+  CXX     output/UNIX/dbg/src/ProgressWindow.o
+  CXX     output/UNIX/dbg/src/ProgressGlue.o
+  CXX     output/UNIX/dbg/src/Units/Units.o
+  CXX     output/UNIX/dbg/src/Units/UnitsGlue.o
+  CXX     output/UNIX/dbg/src/Units/UnitsStore.o
+  CXX     output/UNIX/dbg/src/Formatter/Units.o
+  CXX     output/UNIX/dbg/src/Formatter/UserUnits.o
+  CXX     output/UNIX/dbg/src/Formatter/HexColor.o
+  CXX     output/UNIX/dbg/src/Formatter/GlideRatioFormatter.o
+  CXX     output/UNIX/dbg/src/Formatter/GeoPointFormatter.o
+  CXX     output/UNIX/dbg/src/Formatter/ByteSizeFormatter.o
+  CXX     output/UNIX/dbg/src/Formatter/UserGeoPointFormatter.o
+  CXX     output/UNIX/dbg/src/Formatter/TimeFormatter.o
+  CXX     output/UNIX/dbg/src/Formatter/LocalTimeFormatter.o
+  CXX     output/UNIX/dbg/src/Formatter/IGCFilenameFormatter.o
+  CXX     output/UNIX/dbg/src/Formatter/AirspaceFormatter.o
+  CXX     output/UNIX/dbg/src/Formatter/AirspaceUserUnitsFormatter.o
+  CXX     output/UNIX/dbg/src/Units/Descriptor.o
+  CXX     output/UNIX/dbg/src/Units/System.o
+  CXX     output/UNIX/dbg/src/Units/Settings.o
+  CXX     output/UNIX/dbg/src/Units/Temperature.o
+  CXX     output/UNIX/dbg/src/Formatter/AngleFormatter.o
+  CXX     output/UNIX/dbg/src/FLARM/FlarmDetails.o
+  CXX     output/UNIX/dbg/src/FLARM/NameDatabase.o
+  CXX     output/UNIX/dbg/src/FLARM/NameFile.o
+  CXX     output/UNIX/dbg/src/FLARM/TrafficDatabases.o
+  CXX     output/UNIX/dbg/src/UtilsSettings.o
+  CXX     output/UNIX/dbg/src/UtilsSystem.o
+  CXX     output/UNIX/dbg/src/OS/LogError.o
+  CXX     output/UNIX/dbg/src/Version.o
+  CXX     output/UNIX/dbg/src/Audio/Sound.o
+  CC      output/UNIX/dbg/src/Compatibility/fmode.o
+  CXX     output/UNIX/dbg/src/Profile/Profile.o
+  CXX     output/UNIX/dbg/src/Profile/Screen.o
+  CXX     output/UNIX/dbg/src/Profile/TrackingProfile.o
+  CXX     output/UNIX/dbg/src/Profile/WeatherProfile.o
+  CXX     output/UNIX/dbg/src/Profile/SystemProfile.o
+  CXX     output/UNIX/dbg/src/Profile/ComputerProfile.o
+  CXX     output/UNIX/dbg/src/Profile/RouteProfile.o
+  CXX     output/UNIX/dbg/src/Profile/ContestProfile.o
+  CXX     output/UNIX/dbg/src/Profile/TaskProfile.o
+  CXX     output/UNIX/dbg/src/Profile/MapProfile.o
+  CXX     output/UNIX/dbg/src/Profile/PageProfile.o
+  CXX     output/UNIX/dbg/src/Profile/UIProfile.o
+  CXX     output/UNIX/dbg/src/Profile/Settings.o
+  CXX     output/UNIX/dbg/src/Profile/UnitsConfig.o
+  CXX     output/UNIX/dbg/src/Profile/DeviceConfig.o
+  CXX     output/UNIX/dbg/src/Profile/InfoBoxConfig.o
+  CXX     output/UNIX/dbg/src/Profile/AirspaceConfig.o
+  CXX     output/UNIX/dbg/src/Profile/TerrainConfig.o
+  CXX     output/UNIX/dbg/src/Profile/FlarmProfile.o
+  CXX     output/UNIX/dbg/src/XML/Node.o
+  CXX     output/UNIX/dbg/src/XML/Parser.o
+  CXX     output/UNIX/dbg/src/XML/Writer.o
+  CXX     output/UNIX/dbg/src/XML/DataNode.o
+  CXX     output/UNIX/dbg/src/XML/DataNodeXML.o
+  CXX     output/UNIX/dbg/src/Repository/FileRepository.o
+  CXX     output/UNIX/dbg/src/Repository/Parser.o
+  CXX     output/UNIX/dbg/src/Job/Thread.o
+  CXX     output/UNIX/dbg/src/Job/Async.o
+  CXX     output/UNIX/dbg/src/RateLimiter.o
+  CXX     output/UNIX/dbg/src/Math/Screen.o
+  CXX     output/UNIX/dbg/src/Math/SunEphemeris.o
+  CXX     output/UNIX/dbg/src/Screen/Layout.o
+  CXX     output/UNIX/dbg/src/Screen/Ramp.o
+  CXX     output/UNIX/dbg/src/Screen/TerminalWindow.o
+  CXX     output/UNIX/dbg/src/Look/FontDescription.o
+  CXX     output/UNIX/dbg/src/Look/GlobalFonts.o
+  CXX     output/UNIX/dbg/src/Look/DefaultFonts.o
+  CXX     output/UNIX/dbg/src/Polar/PolarGlue.o
+  CXX     output/UNIX/dbg/src/Polar/PolarFileGlue.o
+  CXX     output/UNIX/dbg/src/Polar/Shape.o
+  CXX     output/UNIX/dbg/src/Polar/Polar.o
+  CXX     output/UNIX/dbg/src/Polar/Parser.o
+  CXX     output/UNIX/dbg/src/Polar/PolarStore.o
+  CXX     output/UNIX/dbg/src/Protection.o
+  CXX     output/UNIX/dbg/src/BatteryTimer.o
+  CXX     output/UNIX/dbg/src/ProcessTimer.o
+  CXX     output/UNIX/dbg/src/ApplyExternalSettings.o
+  CXX     output/UNIX/dbg/src/ApplyVegaSwitches.o
+  CXX     output/UNIX/dbg/src/MainWindow.o
+  CXX     output/UNIX/dbg/src/Startup.o
+  CXX     output/UNIX/dbg/src/Components.o
+  CXX     output/UNIX/dbg/src/DataGlobals.o
+  CXX     output/UNIX/dbg/src/Device/Declaration.o
+  CXX     output/UNIX/dbg/src/Device/MultipleDevices.o
+  CXX     output/UNIX/dbg/src/Device/device.o
+  CXX     output/UNIX/dbg/src/Device/Port/ConfiguredPort.o
+  CXX     output/UNIX/dbg/src/Device/Descriptor.o
+  CXX     output/UNIX/dbg/src/Device/Dispatcher.o
+  CXX     output/UNIX/dbg/src/Device/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Simulator.o
+  CXX     output/UNIX/dbg/src/Device/Util/LineSplitter.o
+  CXX     output/UNIX/dbg/src/Device/Util/NMEAWriter.o
+  CXX     output/UNIX/dbg/src/Device/Util/NMEAReader.o
+  CXX     output/UNIX/dbg/src/Device/Config.o
+  CXX     output/UNIX/dbg/src/Dialogs/Inflate.o
+  CXX     output/UNIX/dbg/src/Dialogs/Message.o
+  CXX     output/UNIX/dbg/src/Dialogs/LockScreen.o
+  CXX     output/UNIX/dbg/src/Dialogs/Error.o
+  CXX     output/UNIX/dbg/src/Dialogs/ListPicker.o
+  CXX     output/UNIX/dbg/src/Dialogs/ProgressDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/JobDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/WidgetDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/FileManager.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/DeviceEditWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/DeviceListDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/PortMonitor.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/ManageCAI302Dialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/CAI302/UnitsEditor.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/CAI302/WaypointUploader.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/ManageFlarmDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/BlueFly/BlueFlyConfigurationDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/LX/ManageV7Dialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/LX/V7ConfigWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/LX/ManageNanoDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/LX/NanoConfigWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/LX/ManageLX16xxDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/Vega/VegaParametersWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/Vega/VegaConfigurationDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/Vega/VegaDemoDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/Vega/SwitchesDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Device/FLARM/ConfigWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/MapItemListDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/MapItemListSettingsDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/MapItemListSettingsPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/ColorListDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Airspace/dlgAirspace.o
+  CXX     output/UNIX/dbg/src/Dialogs/Airspace/dlgAirspacePatterns.o
+  CXX     output/UNIX/dbg/src/Dialogs/Airspace/dlgAirspaceDetails.o
+  CXX     output/UNIX/dbg/src/Dialogs/Airspace/AirspaceList.o
+  CXX     output/UNIX/dbg/src/Dialogs/Airspace/AirspaceCRendererSettingsDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Airspace/AirspaceCRendererSettingsPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Airspace/dlgAirspaceWarnings.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/WindSettingsPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/WindSettingsDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/dlgBasicSettings.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/dlgConfiguration.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/dlgConfigInfoboxes.o
+  CXX     output/UNIX/dbg/src/Dialogs/Traffic/TrafficList.o
+  CXX     output/UNIX/dbg/src/Dialogs/Traffic/FlarmTrafficDetails.o
+  CXX     output/UNIX/dbg/src/Dialogs/Traffic/TeamCodeDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/dlgAnalysis.o
+  CXX     output/UNIX/dbg/src/Dialogs/dlgChecklist.o
+  CXX     output/UNIX/dbg/src/Dialogs/ProfileListDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Plane/PlaneListDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Plane/PlaneDetailsDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Plane/PlanePolarDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Plane/PolarShapeEditWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/DataField.o
+  CXX     output/UNIX/dbg/src/Dialogs/ComboPicker.o
+  CXX     output/UNIX/dbg/src/Dialogs/FilePicker.o
+  CXX     output/UNIX/dbg/src/Dialogs/HelpDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/dlgInfoBoxAccess.o
+  CXX     output/UNIX/dbg/src/Dialogs/ReplayDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/dlgSimulatorPrompt.o
+  CXX     output/UNIX/dbg/src/Dialogs/SimulatorPromptWindow.o
+  CXX     output/UNIX/dbg/src/Dialogs/StartupDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/ProfilePasswordDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/dlgStatus.o
+  CXX     output/UNIX/dbg/src/Dialogs/StatusPanels/StatusPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/StatusPanels/FlightStatusPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/StatusPanels/SystemStatusPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/StatusPanels/TaskStatusPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/StatusPanels/RulesStatusPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/StatusPanels/TimesStatusPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Waypoint/WaypointInfoWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Waypoint/WaypointCommandsWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Waypoint/dlgWaypointDetails.o
+  CXX     output/UNIX/dbg/src/Dialogs/Waypoint/Manager.o
+  CXX     output/UNIX/dbg/src/Dialogs/Waypoint/dlgWaypointEdit.o
+  CXX     output/UNIX/dbg/src/Dialogs/Waypoint/WaypointList.o
+  CXX     output/UNIX/dbg/src/Dialogs/Waypoint/NearestWaypoint.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/AirspaceConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/GaugesConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/VarioConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/GlideComputerConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/WindConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/InfoBoxesConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/InterfaceConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/LayoutConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/LoggerConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/MapDisplayConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/PagesConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/RouteConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/SafetyFactorsConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/SiteConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/SymbolsConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/TaskRulesConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/TaskDefaultsConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/ScoringConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/TerrainDisplayConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/UnitsConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/TimeConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/WaypointDisplayConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/TrackingConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/CloudConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/WeatherConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Widgets/ObservationZoneEditWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Widgets/CylinderZoneEditWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Widgets/LineSectorZoneEditWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Widgets/SectorZoneEditWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Widgets/KeyholeZoneEditWidget.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Manager/TaskMapButtonRenderer.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Manager/TaskManagerDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Manager/TaskClosePanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Manager/TaskEditPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Manager/TaskPropertiesPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Manager/TaskMiscPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Manager/TaskActionsPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/Manager/TaskListPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/OptionalStartsDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/TaskPointDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/MutateTaskPointDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/dlgTaskHelpers.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/TargetDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Task/AlternatesListDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Tracking/CloudEnableDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/NumberEntry.o
+  CXX     output/UNIX/dbg/src/Dialogs/TextEntry.o
+  CXX     output/UNIX/dbg/src/Dialogs/KnobTextEntry.o
+  CXX     output/UNIX/dbg/src/Dialogs/TouchTextEntry.o
+  CXX     output/UNIX/dbg/src/Dialogs/TimeEntry.o
+  CXX     output/UNIX/dbg/src/Dialogs/GeoPointEntry.o
+  CXX     output/UNIX/dbg/src/Dialogs/Weather/WeatherDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Weather/RASPDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/dlgCredits.o
+  CXX     output/UNIX/dbg/src/Dialogs/dlgQuickMenu.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/AudioVarioConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Settings/Panels/AudioConfigPanel.o
+  CXX     output/UNIX/dbg/src/Dialogs/Weather/PCMetDialog.o
+  CXX     output/UNIX/dbg/src/Dialogs/Weather/NOAAList.o
+  CXX     output/UNIX/dbg/src/Dialogs/Weather/NOAADetails.o
+  CXX     output/UNIX/dbg/src/Monitor/WindMonitor.o
+  CXX     output/UNIX/dbg/src/Monitor/AirspaceWarningMonitor.o
+  CXX     output/UNIX/dbg/src/Monitor/TaskConstraintsMonitor.o
+  CXX     output/UNIX/dbg/src/Monitor/TaskAdvanceMonitor.o
+  CXX     output/UNIX/dbg/src/Monitor/MatTaskMonitor.o
+  CXX     output/UNIX/dbg/src/Monitor/AllMonitors.o
+  CXX     output/UNIX/dbg/src/Hardware/Battery.o
+  CXX     output/UNIX/dbg/src/Dialogs/Weather/MapOverlayWidget.o
+  CXX     output/UNIX/dbg/src/MapWindow/OverlayBitmap.o
+  CXX     output/UNIX/dbg/src/CommandLine.o
+  CXX     output/UNIX/dbg/src/XCSoar.o
+  CXX     output/UNIX/dbg/src/Dialogs/DownloadFilePicker.o
+  CXX     output/UNIX/dbg/src/Repository/Glue.o
+  CXX     output/UNIX/dbg/src/Renderer/NOAAListRenderer.o
+  CXX     output/UNIX/dbg/src/Weather/PCMet/Images.o
+  CXX     output/UNIX/dbg/src/Weather/PCMet/Overlays.o
+  CXX     output/UNIX/dbg/src/Weather/NOAAGlue.o
+  CXX     output/UNIX/dbg/src/Weather/METARParser.o
+  CXX     output/UNIX/dbg/src/Weather/NOAAFormatter.o
+  CXX     output/UNIX/dbg/src/Weather/NOAADownloader.o
+  CXX     output/UNIX/dbg/src/Weather/NOAAStore.o
+  CXX     output/UNIX/dbg/src/Weather/NOAAUpdater.o
+  CXX     output/UNIX/dbg/src/Tracking/LiveTrack24.o
+  CXX     output/UNIX/dbg/src/Tracking/SkyLines/Client.o
+  CXX     output/UNIX/dbg/src/Tracking/SkyLines/Assemble.o
+  CXX     output/UNIX/dbg/src/Tracking/SkyLines/Key.o
+  CXX     output/UNIX/dbg/src/Tracking/SkyLines/Glue.o
+  CXX     output/UNIX/dbg/src/Tracking/TrackingGlue.o
+  CXX     output/UNIX/dbg/src/Audio/VarioGlue.o
+  CXX     output/UNIX/dbg/src/Profile/File.o
+  CXX     output/UNIX/dbg/src/Profile/Current.o
+  CXX     output/UNIX/dbg/src/Profile/Map.o
+  CXX     output/UNIX/dbg/src/Profile/StringValue.o
+  CXX     output/UNIX/dbg/src/Profile/NumericValue.o
+  CXX     output/UNIX/dbg/src/Profile/PathValue.o
+  CXX     output/UNIX/dbg/src/Profile/GeoValue.o
+  CXX     output/UNIX/dbg/src/Profile/ProfileKeys.o
+  CXX     output/UNIX/dbg/src/Profile/ProfileMap.o
+  AR      output/UNIX/dbg/profile.a
+  CXX     output/UNIX/dbg/src/Terrain/RasterBuffer.o
+  CXX     output/UNIX/dbg/src/Terrain/RasterProjection.o
+  CXX     output/UNIX/dbg/src/Terrain/RasterMap.o
+  CXX     output/UNIX/dbg/src/Terrain/RasterTile.o
+  CXX     output/UNIX/dbg/src/Terrain/RasterTileCache.o
+  CXX     output/UNIX/dbg/src/Terrain/ZzipStream.o
+  CXX     output/UNIX/dbg/src/Terrain/Loader.o
+  CXX     output/UNIX/dbg/src/Terrain/WorldFile.o
+  CXX     output/UNIX/dbg/src/Terrain/Intersection.o
+  CXX     output/UNIX/dbg/src/Terrain/ScanLine.o
+  CXX     output/UNIX/dbg/src/Terrain/RasterTerrain.o
+  CXX     output/UNIX/dbg/src/Terrain/Thread.o
+  CXX     output/UNIX/dbg/src/Terrain/HeightMatrix.o
+  CXX     output/UNIX/dbg/src/Terrain/RasterRenderer.o
+  CXX     output/UNIX/dbg/src/Terrain/TerrainRenderer.o
+  CXX     output/UNIX/dbg/src/Terrain/TerrainSettings.o
+  AR      output/UNIX/dbg/libterrain.a
+  CC      output/UNIX/dbg/src/Terrain/jasper/base/jas_malloc.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/base/jas_seq.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/base/jas_stream.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/base/jas_string.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/base/jas_tvp.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jp2/jp2_cod.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_bs.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_cs.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_dec.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_math.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_mqdec.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_mqcod.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_qmfb.o
+  CXX     output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_rtc.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_t1dec.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_t1cod.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_t2dec.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_t2cod.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_tagtree.o
+  CC      output/UNIX/dbg/src/Terrain/jasper/jpc/jpc_tsfb.o
+  AR      output/UNIX/dbg/jasper.a
+  CXX     output/UNIX/dbg/src/Widget/Widget.o
+  CXX     output/UNIX/dbg/src/Widget/ActionWidget.o
+  CXX     output/UNIX/dbg/src/Widget/CallbackWidget.o
+  CXX     output/UNIX/dbg/src/Widget/WindowWidget.o
+  CXX     output/UNIX/dbg/src/Widget/CreateWindowWidget.o
+  CXX     output/UNIX/dbg/src/Widget/ListWidget.o
+  CXX     output/UNIX/dbg/src/Widget/TextListWidget.o
+  CXX     output/UNIX/dbg/src/Widget/ContainerWidget.o
+  CXX     output/UNIX/dbg/src/Widget/SolidWidget.o
+  CXX     output/UNIX/dbg/src/Widget/PanelWidget.o
+  CXX     output/UNIX/dbg/src/Widget/TabWidget.o
+  CXX     output/UNIX/dbg/src/Widget/TextWidget.o
+  CXX     output/UNIX/dbg/src/Widget/LargeTextWidget.o
+  CXX     output/UNIX/dbg/src/Widget/OverlappedWidget.o
+  CXX     output/UNIX/dbg/src/Widget/TwoWidgets.o
+  CXX     output/UNIX/dbg/src/Widget/RowFormWidget.o
+  CXX     output/UNIX/dbg/src/Widget/EditRowFormWidget.o
+  CXX     output/UNIX/dbg/src/Widget/ProfileRowFormWidget.o
+  CXX     output/UNIX/dbg/src/Widget/UnitRowFormWidget.o
+  CXX     output/UNIX/dbg/src/Widget/ManagedWidget.o
+  CXX     output/UNIX/dbg/src/Widget/PagerWidget.o
+  CXX     output/UNIX/dbg/src/Widget/ArrowPagerWidget.o
+  CXX     output/UNIX/dbg/src/Widget/OffsetButtonsWidget.o
+  CXX     output/UNIX/dbg/src/Widget/ButtonPanelWidget.o
+  CXX     output/UNIX/dbg/src/Widget/ButtonWidget.o
+  CXX     output/UNIX/dbg/src/Widget/QuestionWidget.o
+  CXX     output/UNIX/dbg/src/Widget/KeyboardWidget.o
+  CXX     output/UNIX/dbg/src/Widget/ViewImageWidget.o
+  CXX     output/UNIX/dbg/src/Widget/DockWindow.o
+  AR      output/UNIX/dbg/libwidget.a
+  CXX     output/UNIX/dbg/src/UIUtil/KineticManager.o
+  CXX     output/UNIX/dbg/src/Renderer/TextRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TabRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/ButtonRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/TextButtonRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/SymbolRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/SymbolButtonRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/BitmapButtonRenderer.o
+  CXX     output/UNIX/dbg/src/Renderer/ColorButtonRenderer.o
+  CXX     output/UNIX/dbg/src/Form/Control.o
+  CXX     output/UNIX/dbg/src/Form/Panel.o
+  CXX     output/UNIX/dbg/src/Form/Form.o
+  CXX     output/UNIX/dbg/src/Form/Button.o
+  CXX     output/UNIX/dbg/src/Form/ButtonPanel.o
+  CXX     output/UNIX/dbg/src/Form/CheckBox.o
+  CXX     output/UNIX/dbg/src/Form/Frame.o
+  CXX     output/UNIX/dbg/src/Form/Draw.o
+  CXX     output/UNIX/dbg/src/Form/List.o
+  CXX     output/UNIX/dbg/src/Form/ScrollBar.o
+  CXX     output/UNIX/dbg/src/Form/Edit.o
+  CXX     output/UNIX/dbg/src/Form/DigitEntry.o
+  CXX     output/UNIX/dbg/src/Form/TabDisplay.o
+  CXX     output/UNIX/dbg/src/Form/TabMenuDisplay.o
+  CXX     output/UNIX/dbg/src/Form/CharacterButton.o
+  CXX     output/UNIX/dbg/src/Form/GridView.o
+  CXX     output/UNIX/dbg/src/Form/HLine.o
+  AR      output/UNIX/dbg/form.a
+  CXX     output/UNIX/dbg/src/Form/DataField/Base.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Boolean.o
+  CXX     output/UNIX/dbg/src/Form/DataField/ComboList.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Enum.o
+  CXX     output/UNIX/dbg/src/Form/DataField/File.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Number.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Float.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Angle.o
+  CXX     output/UNIX/dbg/src/Form/DataField/GeoPoint.o
+  CXX     output/UNIX/dbg/src/Form/DataField/RoughTime.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Time.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Integer.o
+  CXX     output/UNIX/dbg/src/Form/DataField/String.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Prefix.o
+  CXX     output/UNIX/dbg/src/Form/DataField/Password.o
+  AR      output/UNIX/dbg/datafield.a
+  CXX     output/UNIX/dbg/src/Look/AutoFont.o
+  CXX     output/UNIX/dbg/src/Look/Look.o
+  CXX     output/UNIX/dbg/src/Look/DialogLook.o
+  CXX     output/UNIX/dbg/src/Look/ButtonLook.o
+  CXX     output/UNIX/dbg/src/Look/CheckBoxLook.o
+  CXX     output/UNIX/dbg/src/Look/TerminalLook.o
+  CXX     output/UNIX/dbg/src/Look/VarioLook.o
+  CXX     output/UNIX/dbg/src/Look/ChartLook.o
+  CXX     output/UNIX/dbg/src/Look/MapLook.o
+  CXX     output/UNIX/dbg/src/Look/OverlayLook.o
+  CXX     output/UNIX/dbg/src/Look/TopographyLook.o
+  CXX     output/UNIX/dbg/src/Look/WindArrowLook.o
+  CXX     output/UNIX/dbg/src/Look/ThermalBandLook.o
+  CXX     output/UNIX/dbg/src/Look/TraceHistoryLook.o
+  CXX     output/UNIX/dbg/src/Look/AirspaceLook.o
+  CXX     output/UNIX/dbg/src/Look/TrailLook.o
+  CXX     output/UNIX/dbg/src/Look/CrossSectionLook.o
+  CXX     output/UNIX/dbg/src/Look/GestureLook.o
+  CXX     output/UNIX/dbg/src/Look/HorizonLook.o
+  CXX     output/UNIX/dbg/src/Look/TaskLook.o
+  CXX     output/UNIX/dbg/src/Look/TrafficLook.o
+  CXX     output/UNIX/dbg/src/Look/InfoBoxLook.o
+  CXX     output/UNIX/dbg/src/Look/WaypointLook.o
+  CXX     output/UNIX/dbg/src/Look/AircraftLook.o
+  CXX     output/UNIX/dbg/src/Look/NOAALook.o
+  CXX     output/UNIX/dbg/src/Look/FinalGlideBarLook.o
+  CXX     output/UNIX/dbg/src/Look/FlarmTrafficLook.o
+  CXX     output/UNIX/dbg/src/Look/VarioBarLook.o
+  CXX     output/UNIX/dbg/src/Look/IconLook.o
+  CXX     output/UNIX/dbg/src/Look/ThermalAssistantLook.o
+  CXX     output/UNIX/dbg/src/Look/WaveLook.o
+  CXX     output/UNIX/dbg/src/Look/ClimbPercentLook.o
+  AR      output/UNIX/dbg/liblook.a
+  CXX     output/UNIX/dbg/src/Audio/ToneSynthesiser.o
+  CXX     output/UNIX/dbg/src/Audio/VarioSynthesiser.o
+  CXX     output/UNIX/dbg/src/Audio/PCMPlayer.o
+  CXX     output/UNIX/dbg/src/Audio/GlobalPCMResourcePlayer.o
+  CXX     output/UNIX/dbg/src/Audio/GlobalPCMMixer.o
+  CXX     output/UNIX/dbg/src/Audio/GlobalVolumeController.o
+  CXX     output/UNIX/dbg/src/Audio/MixerPCMPlayer.o
+  CXX     output/UNIX/dbg/src/Audio/PCMBufferDataSource.o
+  CXX     output/UNIX/dbg/src/Audio/PCMMixerDataSource.o
+  CXX     output/UNIX/dbg/src/Audio/PCMMixer.o
+  CXX     output/UNIX/dbg/src/Audio/PCMResourcePlayer.o
+  CXX     output/UNIX/dbg/src/Audio/VolumeController.o
+  CXX     output/UNIX/dbg/src/Audio/ALSAEnv.o
+  CXX     output/UNIX/dbg/src/Audio/ALSAPCMPlayer.o
+  AR      output/UNIX/dbg/libaudio.a
+  CXX     output/UNIX/dbg/src/Screen/Debug.o
+  CXX     output/UNIX/dbg/src/Screen/ProgressBar.o
+  CXX     output/UNIX/dbg/src/Screen/Util.o
+  CXX     output/UNIX/dbg/src/Screen/Icon.o
+  CXX     output/UNIX/dbg/src/Screen/Canvas.o
+  CXX     output/UNIX/dbg/src/Screen/Color.o
+  CXX     output/UNIX/dbg/src/Screen/BufferCanvas.o
+  CXX     output/UNIX/dbg/src/Screen/Window.o
+  CXX     output/UNIX/dbg/src/Screen/SolidContainerWindow.o
+  CXX     output/UNIX/dbg/src/Screen/BufferWindow.o
+  CXX     output/UNIX/dbg/src/Screen/DoubleBufferWindow.o
+  CXX     output/UNIX/dbg/src/Screen/SingleWindow.o
+  CXX     output/UNIX/dbg/src/Screen/FreeType/Font.o
+In file included from /usr/include/freetype2/freetype/fttypes.h:26:0,
+                 from /usr/include/freetype2/freetype/freetype.h:34,
+                 from src/Screen/FreeType/Font.cpp:47:
+src/Screen/FreeType/Font.cpp: In instantiation of ‘ForEachGlyph(FT_Face, unsigned int, T&&, F&&)::<lambda(unsigned int)> [with T = const char*&; F = Font::TextSize(const TCHAR*) const::<lambda(int, int, FT_GlyphSlot)>]’:
+src/Screen/FreeType/Font.cpp:263:21:   required from ‘struct ForEachGlyph(FT_Face, unsigned int, T&&, F&&) [with T = const char*&; F = Font::TextSize(const TCHAR*) const::<lambda(int, int, FT_GlyphSlot)>; FT_Face = FT_FaceRec_*]::<lambda(unsigned int)>’
+src/Screen/FreeType/Font.cpp:261:14:   required from ‘void ForEachGlyph(FT_Face, unsigned int, T&&, F&&) [with T = const char*&; F = Font::TextSize(const TCHAR*) const::<lambda(int, int, FT_GlyphSlot)>; FT_Face = FT_FaceRec_*]’
+src/Screen/FreeType/Font.cpp:308:6:   required from here
+/usr/include/freetype2/freetype/ftimage.h:74:19: note: ‘FT_Vector {aka struct FT_Vector_}’ has no user-provided default constructor
+   typedef struct  FT_Vector_
+                   ^~~~~~~~~~
+/usr/include/freetype2/freetype/ftimage.h:76:13: note: and the implicitly-defined constructor does not initialize ‘FT_Pos FT_Vector_::x’
+     FT_Pos  x;
+             ^
+src/Screen/FreeType/Font.cpp: In instantiation of ‘ForEachGlyph(FT_Face, unsigned int, T&&, F&&)::<lambda(unsigned int)> [with T = const char*&; F = Font::Render(const TCHAR*, PixelSize, void*) const::<lambda(int, int, FT_GlyphSlot)>]’:
+src/Screen/FreeType/Font.cpp:263:21:   required from ‘struct ForEachGlyph(FT_Face, unsigned int, T&&, F&&) [with T = const char*&; F = Font::Render(const TCHAR*, PixelSize, void*) const::<lambda(int, int, FT_GlyphSlot)>; FT_Face = FT_FaceRec_*]::<lambda(unsigned int)>’
+src/Screen/FreeType/Font.cpp:261:14:   required from ‘void ForEachGlyph(FT_Face, unsigned int, T&&, F&&) [with T = const char*&; F = Font::Render(const TCHAR*, PixelSize, void*) const::<lambda(int, int, FT_GlyphSlot)>; FT_Face = FT_FaceRec_*]’
+src/Screen/FreeType/Font.cpp:413:6:   required from here
+/usr/include/freetype2/freetype/ftimage.h:74:19: note: ‘FT_Vector {aka struct FT_Vector_}’ has no user-provided default constructor
+   typedef struct  FT_Vector_
+                   ^~~~~~~~~~
+/usr/include/freetype2/freetype/ftimage.h:76:13: note: and the implicitly-defined constructor does not initialize ‘FT_Pos FT_Vector_::x’
+     FT_Pos  x;
+             ^
+  CXX     output/UNIX/dbg/src/Screen/FreeType/Init.o
+  CXX     output/UNIX/dbg/src/Screen/X11/TopWindow.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/Cache.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Init.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Dynamic.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Rotate.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Geo.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Globals.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Extension.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/FBO.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/VertexArray.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/ConstantAlpha.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Bitmap.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/RawBitmap.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Canvas.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/BufferCanvas.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/TopCanvas.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/SubCanvas.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Texture.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/UncompressedImage.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Buffer.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Shapes.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Surface.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Shaders.o
+  CXX     output/UNIX/dbg/src/Screen/OpenGL/Triangulate.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/LibPNG.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/LibJPEG.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/LibTiff.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/DoubleClick.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/GeoBitmap.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/Pen.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/LargeTextWindow.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/Window.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/WList.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/ContainerWindow.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/TopWindow.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/SingleWindow.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/MoreCanvas.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/Files.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/Bitmap.o
+  CXX     output/UNIX/dbg/src/Screen/Custom/ResourceBitmap.o
+  CXX     output/UNIX/dbg/src/Screen/GLX/Init.o
+  CXX     output/UNIX/dbg/src/Screen/GLX/TopCanvas.o
+  CXX     output/UNIX/dbg/src/Screen/FB/Window.o
+  CXX     output/UNIX/dbg/src/Screen/FB/TopWindow.o
+  CXX     output/UNIX/dbg/src/Screen/FB/SingleWindow.o
+  AR      output/UNIX/dbg/screen.a
+  CXX     output/UNIX/dbg/src/Event/Globals.o
+  CXX     output/UNIX/dbg/src/Event/Idle.o
+  CXX     output/UNIX/dbg/src/Event/DelayedNotify.o
+  CXX     output/UNIX/dbg/src/Event/Notify.o
+  CXX     output/UNIX/dbg/src/Event/Poll/Timer.o
+  CXX     output/UNIX/dbg/src/Event/Poll/Loop.o
+  CXX     output/UNIX/dbg/src/Event/Poll/Queue.o
+  CXX     output/UNIX/dbg/src/Event/Poll/X11Queue.o
+  AR      output/UNIX/dbg/libevent.a
+  GEN     output/include/resource.h
+  CPP     output/UNIX/XCSoar.rc
+  GZIP    output/data/AUTHORS.gz
+  GZIP    output/data/COPYING.gz
+  XSLT    output/data/icons/device.svg
+  SVG     output/data/icons/device.png
+  BMP     output/data/icons/device.bmp
+  XSLT    output/data/icons/alt_landable_field.svg
+  SVG     output/data/icons/alt_landable_field.png
+  BMP     output/data/icons/alt_landable_field.bmp
+  XSLT    output/data/icons/winpilot_landable.svg
+  SVG     output/data/icons/winpilot_landable.png
+  BMP     output/data/icons/winpilot_landable.bmp
+  XSLT    output/data/icons/map_thermal_hotspot.svg
+  SVG     output/data/icons/map_thermal_hotspot.png
+  BMP     output/data/icons/map_thermal_hotspot.bmp
+  XSLT    output/data/icons/map_teammate.svg
+  SVG     output/data/icons/map_teammate.png
+  BMP     output/data/icons/map_teammate.bmp
+  XSLT    output/data/icons/map_flag.svg
+  SVG     output/data/icons/map_flag.png
+  BMP     output/data/icons/map_flag.bmp
+  XSLT    output/data/icons/mode_cruise.svg
+  SVG     output/data/icons/mode_cruise.png
+  BMP     output/data/icons/mode_cruise.bmp
+  XSLT    output/data/icons/folder.svg
+  SVG     output/data/icons/folder.png
+  BMP     output/data/icons/folder.bmp
+  XSLT    output/data/icons/instrument_vario2.svg
+  SVG     output/data/icons/instrument_vario2.png
+  BMP     output/data/icons/instrument_vario2.bmp
+  XSLT    output/data/icons/alt_reachable_airport.svg
+  SVG     output/data/icons/alt_reachable_airport.png
+  BMP     output/data/icons/alt_reachable_airport.bmp
+  XSLT    output/data/icons/vario1.svg
+  SVG     output/data/icons/vario1.png
+  BMP     output/data/icons/vario1.bmp
+  XSLT    output/data/icons/map_turnpoint.svg
+  SVG     output/data/icons/map_turnpoint.png
+  BMP     output/data/icons/map_turnpoint.bmp
+  XSLT    output/data/icons/alt_reachable_field.svg
+  SVG     output/data/icons/alt_reachable_field.png
+  BMP     output/data/icons/alt_reachable_field.bmp
+  XSLT    output/data/icons/map_target.svg
+  SVG     output/data/icons/map_target.png
+  BMP     output/data/icons/map_target.bmp
+  XSLT    output/data/icons/alt2_landable_airport.svg
+  SVG     output/data/icons/alt2_landable_airport.png
+  BMP     output/data/icons/alt2_landable_airport.bmp
+  XSLT    output/data/icons/map_mountain_top.svg
+  SVG     output/data/icons/map_mountain_top.png
+  BMP     output/data/icons/map_mountain_top.bmp
+  XSLT    output/data/icons/winpilot_reachable.svg
+  SVG     output/data/icons/winpilot_reachable.png
+  BMP     output/data/icons/winpilot_reachable.bmp
+  XSLT    output/data/icons/instrument_vario1.svg
+  SVG     output/data/icons/instrument_vario1.png
+  BMP     output/data/icons/instrument_vario1.bmp
+  XSLT    output/data/icons/airspace_intercept.svg
+  SVG     output/data/icons/airspace_intercept.png
+  BMP     output/data/icons/airspace_intercept.bmp
+  XSLT    output/data/icons/gps_acquiring.svg
+  SVG     output/data/icons/gps_acquiring.png
+  BMP     output/data/icons/gps_acquiring.bmp
+  XSLT    output/data/icons/scalearrow_right.svg
+  SVG     output/data/icons/scalearrow_right.png
+  BMP     output/data/icons/scalearrow_right.bmp
+  XSLT    output/data/icons/map_thermal_source.svg
+  SVG     output/data/icons/map_thermal_source.png
+  BMP     output/data/icons/map_thermal_source.bmp
+  XSLT    output/data/icons/alt2_landable_field.svg
+  SVG     output/data/icons/alt2_landable_field.png
+  BMP     output/data/icons/alt2_landable_field.bmp
+  XSLT    output/data/icons/map_terrainw.svg
+  SVG     output/data/icons/map_terrainw.png
+  BMP     output/data/icons/map_terrainw.bmp
+  XSLT    output/data/icons/map_bridge.svg
+  SVG     output/data/icons/map_bridge.png
+  BMP     output/data/icons/map_bridge.bmp
+  XSLT    output/data/icons/map_town.svg
+  SVG     output/data/icons/map_town.png
+  BMP     output/data/icons/map_town.bmp
+  XSLT    output/data/icons/alt_marginal_airport.svg
+  SVG     output/data/icons/alt_marginal_airport.png
+  BMP     output/data/icons/alt_marginal_airport.bmp
+  XSLT    output/data/icons/map_weather_station.svg
+  SVG     output/data/icons/map_weather_station.png
+  BMP     output/data/icons/map_weather_station.bmp
+  XSLT    output/data/icons/settings.svg
+  SVG     output/data/icons/settings.png
+  BMP     output/data/icons/settings.bmp
+  XSLT    output/data/icons/map_obstacle.svg
+  SVG     output/data/icons/map_obstacle.png
+  BMP     output/data/icons/map_obstacle.bmp
+  XSLT    output/data/icons/map_power_plant.svg
+  SVG     output/data/icons/map_power_plant.png
+  BMP     output/data/icons/map_power_plant.bmp
+  XSLT    output/data/icons/map_tower.svg
+  SVG     output/data/icons/map_tower.png
+  BMP     output/data/icons/map_tower.bmp
+  XSLT    output/data/icons/gps_disconnected.svg
+  SVG     output/data/icons/gps_disconnected.png
+  BMP     output/data/icons/gps_disconnected.bmp
+  XSLT    output/data/icons/mode_climb.svg
+  SVG     output/data/icons/mode_climb.png
+  BMP     output/data/icons/mode_climb.bmp
+  XSLT    output/data/icons/map_pass.svg
+  SVG     output/data/icons/map_pass.png
+  BMP     output/data/icons/map_pass.bmp
+  XSLT    output/data/icons/winpilot_marginal.svg
+  SVG     output/data/icons/winpilot_marginal.png
+  BMP     output/data/icons/winpilot_marginal.bmp
+  XSLT    output/data/icons/scalearrow_left.svg
+  SVG     output/data/icons/scalearrow_left.png
+  BMP     output/data/icons/scalearrow_left.bmp
+  XSLT    output/data/icons/flarm_warning.svg
+  SVG     output/data/icons/flarm_warning.png
+  BMP     output/data/icons/flarm_warning.bmp
+  XSLT    output/data/icons/mode_abort.svg
+  SVG     output/data/icons/mode_abort.png
+  BMP     output/data/icons/mode_abort.bmp
+  XSLT    output/data/icons/map_small.svg
+  SVG     output/data/icons/map_small.png
+  BMP     output/data/icons/map_small.bmp
+  XSLT    output/data/icons/wrench.svg
+  SVG     output/data/icons/wrench.png
+  BMP     output/data/icons/wrench.bmp
+  XSLT    output/data/icons/flarm_traffic.svg
+  SVG     output/data/icons/flarm_traffic.png
+  BMP     output/data/icons/flarm_traffic.bmp
+  XSLT    output/data/icons/globe.svg
+  SVG     output/data/icons/globe.png
+  BMP     output/data/icons/globe.bmp
+  XSLT    output/data/icons/gps_lowsignal.svg
+  SVG     output/data/icons/gps_lowsignal.png
+  BMP     output/data/icons/gps_lowsignal.bmp
+  XSLT    output/data/icons/alt2_marginal_airport.svg
+  SVG     output/data/icons/alt2_marginal_airport.png
+  BMP     output/data/icons/alt2_marginal_airport.bmp
+  XSLT    output/data/icons/clock.svg
+  SVG     output/data/icons/clock.png
+  BMP     output/data/icons/clock.bmp
+  XSLT    output/data/icons/rules.svg
+  SVG     output/data/icons/rules.png
+  BMP     output/data/icons/rules.bmp
+  XSLT    output/data/icons/flarm_alarm.svg
+  SVG     output/data/icons/flarm_alarm.png
+  BMP     output/data/icons/flarm_alarm.bmp
+  XSLT    output/data/icons/alt_marginal_field.svg
+  SVG     output/data/icons/alt_marginal_field.png
+  BMP     output/data/icons/alt_marginal_field.bmp
+  XSLT    output/data/icons/alt_landable_airport.svg
+  SVG     output/data/icons/alt_landable_airport.png
+  BMP     output/data/icons/alt_landable_airport.bmp
+  XSLT    output/data/icons/mode_finalglide.svg
+  SVG     output/data/icons/mode_finalglide.png
+  BMP     output/data/icons/mode_finalglide.bmp
+  XSLT    output/data/icons/task.svg
+  SVG     output/data/icons/task.png
+  BMP     output/data/icons/task.bmp
+  XSLT    output/data/icons/map_taskturnpoint.svg
+  SVG     output/data/icons/map_taskturnpoint.png
+  BMP     output/data/icons/map_taskturnpoint.bmp
+  XSLT    output/data/icons/calculator.svg
+  SVG     output/data/icons/calculator.png
+  BMP     output/data/icons/calculator.bmp
+  XSLT    output/data/icons/map_tunnel.svg
+  SVG     output/data/icons/map_tunnel.png
+  BMP     output/data/icons/map_tunnel.bmp
+  XSLT    output/data/icons/alt2_marginal_field.svg
+  SVG     output/data/icons/alt2_marginal_field.png
+  BMP     output/data/icons/alt2_marginal_field.bmp
+  SVG     output/data/icons/device_160.png
+  BMP     output/data/icons/device_160.bmp
+  SVG     output/data/icons/alt_landable_field_160.png
+  BMP     output/data/icons/alt_landable_field_160.bmp
+  SVG     output/data/icons/winpilot_landable_160.png
+  BMP     output/data/icons/winpilot_landable_160.bmp
+  SVG     output/data/icons/map_thermal_hotspot_160.png
+  BMP     output/data/icons/map_thermal_hotspot_160.bmp
+  SVG     output/data/icons/map_teammate_160.png
+  BMP     output/data/icons/map_teammate_160.bmp
+  SVG     output/data/icons/map_flag_160.png
+  BMP     output/data/icons/map_flag_160.bmp
+  SVG     output/data/icons/mode_cruise_160.png
+  BMP     output/data/icons/mode_cruise_160.bmp
+  SVG     output/data/icons/folder_160.png
+  BMP     output/data/icons/folder_160.bmp
+  SVG     output/data/icons/instrument_vario2_160.png
+  BMP     output/data/icons/instrument_vario2_160.bmp
+  SVG     output/data/icons/alt_reachable_airport_160.png
+  BMP     output/data/icons/alt_reachable_airport_160.bmp
+  SVG     output/data/icons/vario1_160.png
+  BMP     output/data/icons/vario1_160.bmp
+  SVG     output/data/icons/map_turnpoint_160.png
+  BMP     output/data/icons/map_turnpoint_160.bmp
+  SVG     output/data/icons/alt_reachable_field_160.png
+  BMP     output/data/icons/alt_reachable_field_160.bmp
+  SVG     output/data/icons/map_target_160.png
+  BMP     output/data/icons/map_target_160.bmp
+  SVG     output/data/icons/alt2_landable_airport_160.png
+  BMP     output/data/icons/alt2_landable_airport_160.bmp
+  SVG     output/data/icons/map_mountain_top_160.png
+  BMP     output/data/icons/map_mountain_top_160.bmp
+  SVG     output/data/icons/winpilot_reachable_160.png
+  BMP     output/data/icons/winpilot_reachable_160.bmp
+  SVG     output/data/icons/instrument_vario1_160.png
+  BMP     output/data/icons/instrument_vario1_160.bmp
+  SVG     output/data/icons/airspace_intercept_160.png
+  BMP     output/data/icons/airspace_intercept_160.bmp
+  SVG     output/data/icons/gps_acquiring_160.png
+  BMP     output/data/icons/gps_acquiring_160.bmp
+  SVG     output/data/icons/scalearrow_right_160.png
+  BMP     output/data/icons/scalearrow_right_160.bmp
+  SVG     output/data/icons/map_thermal_source_160.png
+  BMP     output/data/icons/map_thermal_source_160.bmp
+  SVG     output/data/icons/alt2_landable_field_160.png
+  BMP     output/data/icons/alt2_landable_field_160.bmp
+  SVG     output/data/icons/map_terrainw_160.png
+  BMP     output/data/icons/map_terrainw_160.bmp
+  SVG     output/data/icons/map_bridge_160.png
+  BMP     output/data/icons/map_bridge_160.bmp
+  SVG     output/data/icons/map_town_160.png
+  BMP     output/data/icons/map_town_160.bmp
+  SVG     output/data/icons/alt_marginal_airport_160.png
+  BMP     output/data/icons/alt_marginal_airport_160.bmp
+  SVG     output/data/icons/map_weather_station_160.png
+  BMP     output/data/icons/map_weather_station_160.bmp
+  SVG     output/data/icons/settings_160.png
+  BMP     output/data/icons/settings_160.bmp
+  SVG     output/data/icons/map_obstacle_160.png
+  BMP     output/data/icons/map_obstacle_160.bmp
+  SVG     output/data/icons/map_power_plant_160.png
+  BMP     output/data/icons/map_power_plant_160.bmp
+  SVG     output/data/icons/map_tower_160.png
+  BMP     output/data/icons/map_tower_160.bmp
+  SVG     output/data/icons/gps_disconnected_160.png
+  BMP     output/data/icons/gps_disconnected_160.bmp
+  SVG     output/data/icons/mode_climb_160.png
+  BMP     output/data/icons/mode_climb_160.bmp
+  SVG     output/data/icons/map_pass_160.png
+  BMP     output/data/icons/map_pass_160.bmp
+  SVG     output/data/icons/winpilot_marginal_160.png
+  BMP     output/data/icons/winpilot_marginal_160.bmp
+  SVG     output/data/icons/scalearrow_left_160.png
+  BMP     output/data/icons/scalearrow_left_160.bmp
+  SVG     output/data/icons/flarm_warning_160.png
+  BMP     output/data/icons/flarm_warning_160.bmp
+  SVG     output/data/icons/mode_abort_160.png
+  BMP     output/data/icons/mode_abort_160.bmp
+  SVG     output/data/icons/map_small_160.png
+  BMP     output/data/icons/map_small_160.bmp
+  SVG     output/data/icons/wrench_160.png
+  BMP     output/data/icons/wrench_160.bmp
+  SVG     output/data/icons/flarm_traffic_160.png
+  BMP     output/data/icons/flarm_traffic_160.bmp
+  SVG     output/data/icons/globe_160.png
+  BMP     output/data/icons/globe_160.bmp
+  SVG     output/data/icons/gps_lowsignal_160.png
+  BMP     output/data/icons/gps_lowsignal_160.bmp
+  SVG     output/data/icons/alt2_marginal_airport_160.png
+  BMP     output/data/icons/alt2_marginal_airport_160.bmp
+  SVG     output/data/icons/clock_160.png
+  BMP     output/data/icons/clock_160.bmp
+  SVG     output/data/icons/rules_160.png
+  BMP     output/data/icons/rules_160.bmp
+  SVG     output/data/icons/flarm_alarm_160.png
+  BMP     output/data/icons/flarm_alarm_160.bmp
+  SVG     output/data/icons/alt_marginal_field_160.png
+  BMP     output/data/icons/alt_marginal_field_160.bmp
+  SVG     output/data/icons/alt_landable_airport_160.png
+  BMP     output/data/icons/alt_landable_airport_160.bmp
+  SVG     output/data/icons/mode_finalglide_160.png
+  BMP     output/data/icons/mode_finalglide_160.bmp
+  SVG     output/data/icons/task_160.png
+  BMP     output/data/icons/task_160.bmp
+  SVG     output/data/icons/map_taskturnpoint_160.png
+  BMP     output/data/icons/map_taskturnpoint_160.bmp
+  SVG     output/data/icons/calculator_160.png
+  BMP     output/data/icons/calculator_160.bmp
+  SVG     output/data/icons/map_tunnel_160.png
+  BMP     output/data/icons/map_tunnel_160.bmp
+  SVG     output/data/icons/alt2_marginal_field_160.png
+  BMP     output/data/icons/alt2_marginal_field_160.bmp
+  SVG     output/data/graphics/logo_160.png
+  BMP     output/data/graphics/logo_160.bmp
+  SVG     output/data/graphics/logo_red_160.png
+  BMP     output/data/graphics/logo_red_160.bmp
+  SVG     output/data/graphics/logo_80.png
+  BMP     output/data/graphics/logo_80.bmp
+  SVG     output/data/graphics/logo_red_80.png
+  BMP     output/data/graphics/logo_red_80.bmp
+  SVG     output/data/graphics/dialog_title.png
+  BMP     output/data/graphics/dialog_title.bmp
+  SVG     output/data/graphics/dialog_title_red.png
+  BMP     output/data/graphics/dialog_title_red.bmp
+  SVG     output/data/graphics/progress_border.png
+  BMP     output/data/graphics/progress_border.bmp
+  SVG     output/data/graphics/progress_border_red.png
+  BMP     output/data/graphics/progress_border_red.bmp
+  SVG     output/data/graphics/title_320.png
+  BMP     output/data/graphics/title_320.bmp
+  SVG     output/data/graphics/title_red_320.png
+  BMP     output/data/graphics/title_red_320.bmp
+  SVG     output/data/graphics/title_110.png
+  BMP     output/data/graphics/title_110.bmp
+  SVG     output/data/graphics/title_red_110.png
+  BMP     output/data/graphics/title_red_110.bmp
+  SVG     output/data/graphics/launcher_224.png
+  BMP     output/data/graphics/launcher_224_1.bmp
+  BMP     output/data/graphics/launcher_224_2.bmp
+  SVG     output/data/graphics/launcher_red_224.png
+  BMP     output/data/graphics/launcher_red_224_1.bmp
+  BMP     output/data/graphics/launcher_red_224_2.bmp
+  FFMPEG    output/data/sound/fail.raw
+  FFMPEG    output/data/sound/remove.raw
+  FFMPEG    output/data/sound/beep_drip.raw
+  FFMPEG    output/data/sound/beep_bweep.raw
+  FFMPEG    output/data/sound/beep_clear.raw
+  FFMPEG    output/data/sound/insert.raw
+  GEN     output/UNIX/include/resource_data.h
+  CXX     output/UNIX/dbg/src/ResourceLoader.o
+  AR      output/UNIX/dbg/libresource.a
+  GEN     output/UNIX/resources.c
+  CC      output/UNIX/dbg/output/UNIX/resources.o
+  AR      output/UNIX/dbg/resources.a
+  GEN     output/po/ko.mo
+  GEN     output/data/ko.mo.c
+  CC      output/UNIX/dbg/output/data/ko.mo.o
+  GEN     output/po/pl.mo
+  GEN     output/data/pl.mo.c
+  CC      output/UNIX/dbg/output/data/pl.mo.o
+  GEN     output/po/ja.mo
+  GEN     output/data/ja.mo.c
+  CC      output/UNIX/dbg/output/data/ja.mo.o
+  GEN     output/po/he.mo
+  GEN     output/data/he.mo.c
+  CC      output/UNIX/dbg/output/data/he.mo.o
+  GEN     output/po/tr.mo
+  GEN     output/data/tr.mo.c
+  CC      output/UNIX/dbg/output/data/tr.mo.o
+  GEN     output/po/fr.mo
+  GEN     output/data/fr.mo.c
+  CC      output/UNIX/dbg/output/data/fr.mo.o
+  GEN     output/po/sr.mo
+  GEN     output/data/sr.mo.c
+  CC      output/UNIX/dbg/output/data/sr.mo.o
+  GEN     output/po/vi.mo
+po/vi.po:7: warning: header field 'Language' missing in header
+  GEN     output/data/vi.mo.c
+  CC      output/UNIX/dbg/output/data/vi.mo.o
+  GEN     output/po/da.mo
+  GEN     output/data/da.mo.c
+  CC      output/UNIX/dbg/output/data/da.mo.o
+  GEN     output/po/ca.mo
+  GEN     output/data/ca.mo.c
+  CC      output/UNIX/dbg/output/data/ca.mo.o
+  GEN     output/po/lt.mo
+  GEN     output/data/lt.mo.c
+  CC      output/UNIX/dbg/output/data/lt.mo.o
+  GEN     output/po/de.mo
+  GEN     output/data/de.mo.c
+  CC      output/UNIX/dbg/output/data/de.mo.o
+  GEN     output/po/nb.mo
+  GEN     output/data/nb.mo.c
+  CC      output/UNIX/dbg/output/data/nb.mo.o
+  GEN     output/po/fi.mo
+  GEN     output/data/fi.mo.c
+  CC      output/UNIX/dbg/output/data/fi.mo.o
+  GEN     output/po/es.mo
+  GEN     output/data/es.mo.c
+  CC      output/UNIX/dbg/output/data/es.mo.o
+  GEN     output/po/hr.mo
+  GEN     output/data/hr.mo.c
+  CC      output/UNIX/dbg/output/data/hr.mo.o
+  GEN     output/po/sv.mo
+  GEN     output/data/sv.mo.c
+  CC      output/UNIX/dbg/output/data/sv.mo.o
+  GEN     output/po/sl.mo
+  GEN     output/data/sl.mo.c
+  CC      output/UNIX/dbg/output/data/sl.mo.o
+  GEN     output/po/cs.mo
+  GEN     output/data/cs.mo.c
+  CC      output/UNIX/dbg/output/data/cs.mo.o
+  GEN     output/po/hu.mo
+  GEN     output/data/hu.mo.c
+  CC      output/UNIX/dbg/output/data/hu.mo.o
+  GEN     output/po/it.mo
+  GEN     output/data/it.mo.c
+  CC      output/UNIX/dbg/output/data/it.mo.o
+  GEN     output/po/uk.mo
+  GEN     output/data/uk.mo.c
+  CC      output/UNIX/dbg/output/data/uk.mo.o
+  GEN     output/po/pt_BR.mo
+  GEN     output/data/pt_BR.mo.c
+  CC      output/UNIX/dbg/output/data/pt_BR.mo.o
+  GEN     output/po/ro.mo
+  GEN     output/data/ro.mo.c
+  CC      output/UNIX/dbg/output/data/ro.mo.o
+  GEN     output/po/nl.mo
+  GEN     output/data/nl.mo.c
+  CC      output/UNIX/dbg/output/data/nl.mo.o
+  GEN     output/po/ru.mo
+  GEN     output/data/ru.mo.c
+  CC      output/UNIX/dbg/output/data/ru.mo.o
+  GEN     output/po/zh_CN.mo
+  GEN     output/data/zh_CN.mo.c
+  CC      output/UNIX/dbg/output/data/zh_CN.mo.o
+  GEN     output/po/sk.mo
+  GEN     output/data/sk.mo.c
+  CC      output/UNIX/dbg/output/data/sk.mo.o
+  GEN     output/po/pt.mo
+  GEN     output/data/pt.mo.c
+  CC      output/UNIX/dbg/output/data/pt.mo.o
+  GEN     output/po/zh_Hant.mo
+po/zh_Hant.po:7: warning: header field 'Project-Id-Version' still has the initial default value
+  GEN     output/data/zh_Hant.mo.c
+  CC      output/UNIX/dbg/output/data/zh_Hant.mo.o
+  GEN     output/po/el.mo
+  GEN     output/data/el.mo.c
+  CC      output/UNIX/dbg/output/data/el.mo.o
+  GEN     output/data/COPYING.gz.c
+  CC      output/UNIX/dbg/output/data/COPYING.gz.o
+  GEN     output/data/AUTHORS.gz.c
+  CC      output/UNIX/dbg/output/data/AUTHORS.gz.o
+  GEN     output/data/egm96s.dem.c
+  CC      output/UNIX/dbg/output/data/egm96s.dem.o
+  AR      output/UNIX/dbg/libdata.a
+  CXX     output/UNIX/dbg/src/Device/Driver.o
+  CXX     output/UNIX/dbg/src/Device/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/Protocol.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/Declare.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/Database.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/Util.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/dbbconv.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/grecord.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/vlapi2.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/vlapihlp.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/vlconv.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Volkslogger/Logger.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/Protocol.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/PocketNav.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/Mode.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/Settings.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/Declare.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/Logger.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/Manage.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CAI302/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Protocol/MessageParser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Protocol/Communication.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Protocol/Checksum.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Protocol/Conversion.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Protocol/IGC.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Protocol/Protocol.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Declare.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Internal.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Logger.o
+  CXX     output/UNIX/dbg/src/Device/Driver/IMI/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/NanoLogger.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/NanoDeclare.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/Protocol.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/Mode.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/Settings.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/Declare.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/Logger.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/Convert.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/LXN.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LX/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/Device.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/Mode.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/StaticParser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/Settings.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/Declare.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/Logger.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/CRC16.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/BinaryProtocol.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FLARM/TextProtocol.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Flytec/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Flytec/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Flytec/Logger.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Vega/Misc.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Vega/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Vega/Settings.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Vega/Volatile.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Vega/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/BlueFly/Misc.o
+  CXX     output/UNIX/dbg/src/Device/Driver/BlueFly/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/BlueFly/Settings.o
+  CXX     output/UNIX/dbg/src/Device/Driver/BlueFly/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/XCTracer/Parser.o
+  CXX     output/UNIX/dbg/src/Device/Driver/XCTracer/Register.o
+  CXX     output/UNIX/dbg/src/Device/Driver/ThermalExpress/Driver.o
+  CXX     output/UNIX/dbg/src/Device/Driver/AltairPro.o
+  CXX     output/UNIX/dbg/src/Device/Driver/BorgeltB50.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CaiGpsNav.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CaiLNav.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Condor.o
+  CXX     output/UNIX/dbg/src/Device/Driver/CProbe.o
+  CXX     output/UNIX/dbg/src/Device/Driver/EW.o
+  CXX     output/UNIX/dbg/src/Device/Driver/EWMicroRecorder.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Eye.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FlymasterF1.o
+  CXX     output/UNIX/dbg/src/Device/Driver/FlyNet.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Generic.o
+  CXX     output/UNIX/dbg/src/Device/Driver/LevilAHRS_G.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Leonardo.o
+  CXX     output/UNIX/dbg/src/Device/Driver/NmeaOut.o
+  CXX     output/UNIX/dbg/src/Device/Driver/OpenVario.o
+  CXX     output/UNIX/dbg/src/Device/Driver/PosiGraph.o
+  CXX     output/UNIX/dbg/src/Device/Driver/XCOM760.o
+  CXX     output/UNIX/dbg/src/Device/Driver/ILEC.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Westerboer.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Zander.o
+  CXX     output/UNIX/dbg/src/Device/Driver/Vaulter.o
+  CXX     output/UNIX/dbg/src/Device/Driver/KRT2.o
+  CXX     output/UNIX/dbg/src/Device/Driver/AirControlDisplay.o
+  CXX     output/UNIX/dbg/src/Device/Driver/ATR833.o
+  AR      output/UNIX/dbg/driver.a
+  CXX     output/UNIX/dbg/src/Device/Port/Port.o
+  CXX     output/UNIX/dbg/src/Device/Port/BufferedPort.o
+  CXX     output/UNIX/dbg/src/Device/Port/UDPPort.o
+  CXX     output/UNIX/dbg/src/Device/Port/TCPPort.o
+  CXX     output/UNIX/dbg/src/Device/Port/K6BtPort.o
+  CXX     output/UNIX/dbg/src/Device/Port/DumpPort.o
+  CXX     output/UNIX/dbg/src/Device/Port/NullPort.o
+  CXX     output/UNIX/dbg/src/Device/Port/TTYEnumerator.o
+  CXX     output/UNIX/dbg/src/Device/Port/TTYPort.o
+  CXX     output/UNIX/dbg/src/Device/Port/TCPClientPort.o
+  AR      output/UNIX/dbg/port.a
+  CXX     output/UNIX/dbg/src/IO/BufferedReader.o
+  CXX     output/UNIX/dbg/src/IO/FileReader.o
+  CXX     output/UNIX/dbg/src/IO/BufferedOutputStream.o
+  CXX     output/UNIX/dbg/src/IO/FileOutputStream.o
+  CXX     output/UNIX/dbg/src/IO/GunzipReader.o
+  CXX     output/UNIX/dbg/src/IO/ZlibError.o
+  CXX     output/UNIX/dbg/src/IO/FileTransaction.o
+  CXX     output/UNIX/dbg/src/IO/FileCache.o
+  CXX     output/UNIX/dbg/src/IO/ZipArchive.o
+  CXX     output/UNIX/dbg/src/IO/ZipReader.o
+  CXX     output/UNIX/dbg/src/IO/ConvertLineReader.o
+  CXX     output/UNIX/dbg/src/IO/FileLineReader.o
+  CXX     output/UNIX/dbg/src/IO/KeyValueFileReader.o
+  CXX     output/UNIX/dbg/src/IO/KeyValueFileWriter.o
+  CXX     output/UNIX/dbg/src/IO/ZipLineReader.o
+  CXX     output/UNIX/dbg/src/IO/CSVLine.o
+  CXX     output/UNIX/dbg/src/IO/TextWriter.o
+  AR      output/UNIX/dbg/io.a
+  CXX     output/UNIX/dbg/src/IO/Async/AsioThread.o
+  CXX     output/UNIX/dbg/src/IO/Async/GlobalAsioThread.o
+  CXX     output/UNIX/dbg/src/IO/Async/SignalListener.o
+  AR      output/UNIX/dbg/async.a
+  CXX     output/UNIX/dbg/src/Thread/Thread.o
+  CXX     output/UNIX/dbg/src/Thread/SuspensibleThread.o
+  CXX     output/UNIX/dbg/src/Thread/RecursivelySuspensibleThread.o
+  CXX     output/UNIX/dbg/src/Thread/WorkerThread.o
+  CXX     output/UNIX/dbg/src/Thread/StandbyThread.o
+  CXX     output/UNIX/dbg/src/Thread/Debug.o
+  AR      output/UNIX/dbg/libthread.a
+  CXX     output/UNIX/dbg/src/Engine/Task/Shapes/FAITriangleSettings.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Shapes/FAITriangleRules.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Shapes/FAITriangleArea.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Shapes/FAITriangleTask.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Shapes/FAITrianglePointValidator.o
+  CXX     output/UNIX/dbg/src/Engine/Task/TaskBehaviour.o
+  CXX     output/UNIX/dbg/src/Engine/Task/TaskManager.o
+  CXX     output/UNIX/dbg/src/Engine/Task/AbstractTask.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/StartConstraints.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/FinishConstraints.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/Settings.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/OrderedTask.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/TaskAdvance.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/SmartTaskAdvance.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/Points/IntermediatePoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/Points/OrderedTaskPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/Points/StartPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/Points/FinishPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/Points/ASTPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/Points/AATPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/AATIsoline.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Ordered/AATIsolineSegment.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Unordered/UnorderedTask.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Unordered/UnorderedTaskPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Unordered/GotoTask.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Unordered/AbortTask.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Unordered/AlternateTask.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/AbstractTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/RTTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/FAITaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/FAITriangleTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/FAIORTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/FAIGoalTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/AATTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/MatTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/MixedTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/TouringTaskFactory.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Factory/Create.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Points/TaskPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Points/SampledTaskPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Points/ScoredTaskPoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Points/TaskLeg.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/Boundary.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/ObservationZoneClient.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/ObservationZonePoint.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/CylinderZone.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/SectorZone.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/LineSectorZone.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/SymmetricSectorZone.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/KeyholeZone.o
+  CXX     output/UNIX/dbg/src/Engine/Task/ObservationZones/AnnularSectorZone.o
+  CXX     output/UNIX/dbg/src/Engine/Task/PathSolvers/TaskDijkstra.o
+  CXX     output/UNIX/dbg/src/Engine/Task/PathSolvers/TaskDijkstraMin.o
+  CXX     output/UNIX/dbg/src/Engine/Task/PathSolvers/TaskDijkstraMax.o
+  CXX     output/UNIX/dbg/src/Engine/Task/PathSolvers/IsolineCrossingFinder.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskMacCready.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskMacCreadyTravelled.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskMacCreadyRemaining.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskMacCreadyTotal.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskBestMc.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskSolveTravelled.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskCruiseEfficiency.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskEffectiveMacCready.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskMinTarget.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskOptTarget.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskGlideRequired.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Solvers/TaskSolution.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Computer/ElementStatComputer.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Computer/DistanceStatComputer.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Computer/IncrementalSpeedComputer.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Computer/TaskVarioComputer.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Computer/TaskStatsComputer.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Computer/WindowStatsComputer.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Stats/CommonStats.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Stats/ElementStat.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Stats/TaskStats.o
+  CXX     output/UNIX/dbg/src/Engine/Task/Stats/StartStats.o
+  AR      output/UNIX/dbg/libtask.a
+  CXX     output/UNIX/dbg/src/Engine/Contest/Settings.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/ContestManager.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/Contests.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/AbstractContest.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/TraceManager.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/ContestDijkstra.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/DMStQuad.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/OLCLeague.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/OLCSprint.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/OLCClassic.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/OLCTriangle.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/OLCFAI.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/OLCPlus.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/XContestFree.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/XContestTriangle.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/OLCSISAT.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/NetCoupe.o
+  CXX     output/UNIX/dbg/src/Engine/Contest/Solvers/Retrospective.o
+  AR      output/UNIX/dbg/libcontest.a
+  CXX     output/UNIX/dbg/src/Engine/Route/Config.o
+  CXX     output/UNIX/dbg/src/Engine/Route/RoutePlanner.o
+  CXX     output/UNIX/dbg/src/Engine/Route/AirspaceRoute.o
+  CXX     output/UNIX/dbg/src/Engine/Route/TerrainRoute.o
+  CXX     output/UNIX/dbg/src/Engine/Route/RouteLink.o
+  CXX     output/UNIX/dbg/src/Engine/Route/RoutePolar.o
+  CXX     output/UNIX/dbg/src/Engine/Route/RoutePolars.o
+  CXX     output/UNIX/dbg/src/Engine/Route/FlatTriangleFan.o
+  CXX     output/UNIX/dbg/src/Engine/Route/FlatTriangleFanTree.o
+  CXX     output/UNIX/dbg/src/Engine/Route/ReachFan.o
+  AR      output/UNIX/dbg/libroute.a
+  CXX     output/UNIX/dbg/src/Engine/GlideSolvers/GlideSettings.o
+  CXX     output/UNIX/dbg/src/Engine/GlideSolvers/GlideState.o
+  CXX     output/UNIX/dbg/src/Engine/GlideSolvers/GlueGlideState.o
+  CXX     output/UNIX/dbg/src/Engine/GlideSolvers/GlidePolar.o
+  CXX     output/UNIX/dbg/src/Engine/GlideSolvers/PolarCoefficients.o
+  CXX     output/UNIX/dbg/src/Engine/GlideSolvers/GlideResult.o
+  CXX     output/UNIX/dbg/src/Engine/GlideSolvers/MacCready.o
+  CXX     output/UNIX/dbg/src/Engine/GlideSolvers/InstantSpeed.o
+  AR      output/UNIX/dbg/libglide.a
+  CXX     output/UNIX/dbg/src/Engine/Waypoint/WaypointVisitor.o
+  CXX     output/UNIX/dbg/src/Engine/Waypoint/Waypoints.o
+  CXX     output/UNIX/dbg/src/Engine/Waypoint/Waypoint.o
+  AR      output/UNIX/dbg/libwaypoint.a
+  CXX     output/UNIX/dbg/src/Engine/Util/AircraftStateFilter.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspacesTerrain.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/Airspace.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceAltitude.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceAircraftPerformance.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AbstractAirspace.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceCircle.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspacePolygon.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/Airspaces.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceIntersectSort.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/SoonestAirspace.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/Predicate/AirspacePredicate.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/Predicate/AirspacePredicateHeightRange.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/Predicate/OutsideAirspacePredicate.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceIntersectionVisitor.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceWarningConfig.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceWarningManager.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceWarning.o
+  CXX     output/UNIX/dbg/src/Engine/Airspace/AirspaceSorter.o
+  AR      output/UNIX/dbg/libairspace.a
+  CXX     output/UNIX/dbg/src/Lua/Ptr.o
+  CXX     output/UNIX/dbg/src/Lua/Error.o
+  CXX     output/UNIX/dbg/src/Lua/Catch.o
+  CXX     output/UNIX/dbg/src/Lua/Persistent.o
+  CXX     output/UNIX/dbg/src/Lua/Background.o
+  CXX     output/UNIX/dbg/src/Lua/Associate.o
+  CXX     output/UNIX/dbg/src/Lua/RunFile.o
+  CXX     output/UNIX/dbg/src/Lua/StartFile.o
+  CXX     output/UNIX/dbg/src/Lua/Log.o
+  CXX     output/UNIX/dbg/src/Lua/Timer.o
+  CXX     output/UNIX/dbg/src/Lua/Geo.o
+  CXX     output/UNIX/dbg/src/Lua/Map.o
+  CXX     output/UNIX/dbg/src/Lua/Blackboard.o
+  CXX     output/UNIX/dbg/src/Lua/Airspace.o
+  CXX     output/UNIX/dbg/src/Lua/Dialogs.o
+  CXX     output/UNIX/dbg/src/Lua/Legacy.o
+  CXX     output/UNIX/dbg/src/Lua/Full.o
+  CXX     output/UNIX/dbg/src/Lua/Basic.o
+  CXX     output/UNIX/dbg/src/Lua/Task.o
+  CXX     output/UNIX/dbg/src/Lua/Settings.o
+  CXX     output/UNIX/dbg/src/Lua/Wind.o
+  CXX     output/UNIX/dbg/src/Lua/Logger.o
+  CXX     output/UNIX/dbg/src/Lua/Tracking.o
+  CXX     output/UNIX/dbg/src/Lua/Replay.o
+  GEN     output/include/InputEvents_Char2GCE.cpp
+  GEN     output/include/InputEvents_Char2NE.cpp
+  CXX     output/UNIX/dbg/src/Lua/InputEvent.o
+  AR      output/UNIX/dbg/liblua.a
+  CC      output/UNIX/dbg/src/Topography/shapelib/mapalloc.o
+  CC      output/UNIX/dbg/src/Topography/shapelib/mapstring.o
+  CC      output/UNIX/dbg/src/Topography/shapelib/mapbits.o
+  CC      output/UNIX/dbg/src/Topography/shapelib/mapprimitive.o
+  CC      output/UNIX/dbg/src/Topography/shapelib/mapsearch.o
+  CC      output/UNIX/dbg/src/Topography/shapelib/mapshape.o
+  CC      output/UNIX/dbg/src/Topography/shapelib/maptree.o
+  CC      output/UNIX/dbg/src/Topography/shapelib/mapxbase.o
+  AR      output/UNIX/dbg/shapelib.a
+  CC      output/UNIX/dbg/src/zzip/fetch.o
+  CC      output/UNIX/dbg/src/zzip/file.o
+  CC      output/UNIX/dbg/src/zzip/plugin.o
+  CC      output/UNIX/dbg/src/zzip/zip.o
+  CC      output/UNIX/dbg/src/zzip/stat.o
+  AR      output/UNIX/dbg/zzip.a
+  CXX     output/UNIX/dbg/src/Net/State.o
+  CXX     output/UNIX/dbg/src/Net/IPv4Address.o
+  CXX     output/UNIX/dbg/src/Net/IPv6Address.o
+  CXX     output/UNIX/dbg/src/Net/StaticSocketAddress.o
+  CXX     output/UNIX/dbg/src/Net/AllocatedSocketAddress.o
+  CXX     output/UNIX/dbg/src/Net/SocketAddress.o
+  CXX     output/UNIX/dbg/src/Net/SocketDescriptor.o
+  CXX     output/UNIX/dbg/src/Net/HTTP/Multi.o
+  CXX     output/UNIX/dbg/src/Net/HTTP/Session.o
+  CXX     output/UNIX/dbg/src/Net/HTTP/Request.o
+  CXX     output/UNIX/dbg/src/Net/HTTP/FormData.o
+  CXX     output/UNIX/dbg/src/Net/HTTP/Init.o
+  CXX     output/UNIX/dbg/src/Net/HTTP/DownloadManager.o
+  CXX     output/UNIX/dbg/src/Net/HTTP/ToFile.o
+  CXX     output/UNIX/dbg/src/Net/HTTP/ToBuffer.o
+  AR      output/UNIX/dbg/libnet.a
+  CXX     output/UNIX/dbg/src/Time/DeltaTime.o
+  CXX     output/UNIX/dbg/src/Time/WrapClock.o
+  CXX     output/UNIX/dbg/src/Time/LocalTime.o
+  CXX     output/UNIX/dbg/src/Time/BrokenTime.o
+  CXX     output/UNIX/dbg/src/Time/BrokenDate.o
+  CXX     output/UNIX/dbg/src/Time/BrokenDateTime.o
+  AR      output/UNIX/dbg/time.a
+  CXX     output/UNIX/dbg/src/OS/Clock.o
+  CXX     output/UNIX/dbg/src/OS/FileDescriptor.o
+  CXX     output/UNIX/dbg/src/OS/FileMapping.o
+  CXX     output/UNIX/dbg/src/OS/FileUtil.o
+  CXX     output/UNIX/dbg/src/OS/RunFile.o
+  CXX     output/UNIX/dbg/src/OS/Path.o
+  CXX     output/UNIX/dbg/src/OS/PathName.o
+  CXX     output/UNIX/dbg/src/OS/Process.o
+  CXX     output/UNIX/dbg/src/OS/SystemLoad.o
+  CXX     output/UNIX/dbg/src/OS/EventPipe.o
+  AR      output/UNIX/dbg/libos.a
+  CXX     output/UNIX/dbg/src/Util/Exception.o
+  CXX     output/UNIX/dbg/src/Util/PrintException.o
+  CXX     output/UNIX/dbg/src/Util/Base64.o
+  CXX     output/UNIX/dbg/src/Util/CRC.o
+  CXX     output/UNIX/dbg/src/Util/tstring.o
+  CXX     output/UNIX/dbg/src/Util/UTF8.o
+  CXX     output/UNIX/dbg/src/Util/ASCII.o
+  CXX     output/UNIX/dbg/src/Util/TruncateString.o
+  CXX     output/UNIX/dbg/src/Util/EscapeBackslash.o
+  CXX     output/UNIX/dbg/src/Util/ExtractParameters.o
+  CXX     output/UNIX/dbg/src/Util/ConvertString.o
+  CXX     output/UNIX/dbg/src/Util/StaticString.o
+  CXX     output/UNIX/dbg/src/Util/StringView.o
+  CXX     output/UNIX/dbg/src/Util/StringCompare.o
+  CXX     output/UNIX/dbg/src/Util/StringStrip.o
+  CXX     output/UNIX/dbg/src/Util/StringUtil.o
+  AR      output/UNIX/dbg/util.a
+  CXX     output/UNIX/dbg/src/Geo/Boost/RangeBox.o
+  CXX     output/UNIX/dbg/src/Geo/ConvexHull/GrahamScan.o
+  CXX     output/UNIX/dbg/src/Geo/ConvexHull/PolygonInterior.o
+  CXX     output/UNIX/dbg/src/Geo/Memento/DistanceMemento.o
+  CXX     output/UNIX/dbg/src/Geo/Memento/GeoVectorMemento.o
+  CXX     output/UNIX/dbg/src/Geo/Flat/FlatProjection.o
+  CXX     output/UNIX/dbg/src/Geo/Flat/TaskProjection.o
+  CXX     output/UNIX/dbg/src/Geo/Flat/FlatBoundingBox.o
+  CXX     output/UNIX/dbg/src/Geo/Flat/FlatGeoPoint.o
+  CXX     output/UNIX/dbg/src/Geo/Flat/FlatRay.o
+  CXX     output/UNIX/dbg/src/Geo/Flat/FlatPoint.o
+  CXX     output/UNIX/dbg/src/Geo/Flat/FlatEllipse.o
+  CXX     output/UNIX/dbg/src/Geo/Flat/FlatLine.o
+  CXX     output/UNIX/dbg/src/Geo/Math.o
+  CXX     output/UNIX/dbg/src/Geo/SimplifiedMath.o
+  CXX     output/UNIX/dbg/src/Geo/Quadrilateral.o
+  CXX     output/UNIX/dbg/src/Geo/GeoPoint.o
+  CXX     output/UNIX/dbg/src/Geo/GeoVector.o
+  CXX     output/UNIX/dbg/src/Geo/GeoBounds.o
+  CXX     output/UNIX/dbg/src/Geo/GeoClip.o
+  CXX     output/UNIX/dbg/src/Geo/SearchPoint.o
+  CXX     output/UNIX/dbg/src/Geo/SearchPointVector.o
+  CXX     output/UNIX/dbg/src/Geo/GeoEllipse.o
+  CXX     output/UNIX/dbg/src/Geo/UTM.o
+  AR      output/UNIX/dbg/libgeo.a
+  CXX     output/UNIX/dbg/src/Math/Angle.o
+  CXX     output/UNIX/dbg/src/Math/ARange.o
+  HOSTCXX output/host/tools/GenerateSineTables.o
+  HOSTLD  output/host/tools/GenerateSineTables
+  GEN     output/include/MathTables.h
+  CXX     output/UNIX/dbg/src/Math/FastMath.o
+  CXX     output/UNIX/dbg/src/Math/FastTrig.o
+  CXX     output/UNIX/dbg/src/Math/FastRotation.o
+  CXX     output/UNIX/dbg/src/Math/LeastSquares.o
+  CXX     output/UNIX/dbg/src/Math/DiffFilter.o
+  CXX     output/UNIX/dbg/src/Math/Filter.o
+  CXX     output/UNIX/dbg/src/Math/ZeroFinder.o
+  CXX     output/UNIX/dbg/src/Math/KalmanFilter1d.o
+  CXX     output/UNIX/dbg/src/Math/SelfTimingKalmanFilter1d.o
+  CXX     output/UNIX/dbg/src/Math/XYDataStore.o
+  CXX     output/UNIX/dbg/src/Math/ConvexFilter.o
+  CXX     output/UNIX/dbg/src/Math/Histogram.o
+  AR      output/UNIX/dbg/math.a
+  LINK    output/UNIX/bin/xcsoar
+  CXX     output/UNIX/dbg/src/VALI-XCS.o
+  LINK    output/UNIX/bin/vali-xcs
+rm output/data/icons/gps_lowsignal_rgb.png output/data/icons/alt_marginal_airport_160_alpha.png output/data/icons/map_mountain_top_160_alpha.png output/data/icons/map_terrainw_rgb.png output/data/icons/mode_climb_160_alpha.png output/data/icons/map_power_plant_alpha.png output/data/icons/scalearrow_right_160_rgb.png output/data/icons/map_obstacle_alpha.png output/data/icons/gps_acquiring_rgb.png output/data/icons/map_tower_alpha.png output/data/icons/rules_alpha.png output/data/icons/alt_reachable_field_alpha.png output/host/tools/GenerateSineTables.o output/data/icons/map_pass_160_rgb.png output/data/icons/flarm_warning_rgb.png output/data/icons/winpilot_landable_160_alpha.png output/data/icons/flarm_traffic_rgb.png output/data/icons/gps_lowsignal_alpha.png output/data/icons/alt2_landable_field_160_rgb.png output/data/icons/map_thermal_hotspot_160_rgb.png output/data/icons/map_terrainw_alpha.png output/data/icons/vario1_alpha.png output/data/icons/mode_finalglide_rgb.png output/data/icons/instrument_vario1_160_rgb.png output/data/icons/scalearrow_right_160_alpha.png output/data/icons/folder_rgb.png output/data/icons/alt_marginal_field_rgb.png output/data/icons/calculator_rgb.png output/data/icons/alt_landable_field_160_alpha.png output/host/tools/GenerateSineTables/../dirstampmake: unlink: output/host/tools/GenerateSineTables/../dirstamp: Not a directory
+ output/data/icons/map_target_alpha.png output/data/icons/map_obstacle_160_rgb.png output/data/icons/scalearrow_left_rgb.png output/data/icons/map_pass_160_alpha.png output/data/icons/winpilot_marginal_alpha.png output/data/icons/map_target_rgb.png output/data/icons/flarm_traffic_alpha.png output/data/icons/map_thermal_hotspot_160_alpha.png output/data/icons/map_power_plant_160_rgb.png output/data/icons/instrument_vario1_160_alpha.png output/data/icons/map_taskturnpoint_rgb.png output/data/icons/settings_rgb.png output/data/icons/instrument_vario2_160_alpha.png output/data/icons/vario1_160_rgb.png output/data/icons/calculator_alpha.png output/data/icons/mode_finalglide_160_rgb.png output/data/icons/alt2_marginal_airport_160_alpha.png output/data/icons/flarm_alarm_rgb.png output/data/icons/map_obstacle_160_alpha.png output/data/icons/mode_cruise_rgb.png output/data/icons/gps_acquiring_160_rgb.png output/data/icons/scalearrow_left_alpha.png output/data/icons/map_tower_160_alpha.png output/data/icons/rules_160_alpha.png output/data/icons/map_target_160_rgb.png output/data/icons/alt_reachable_airport_rgb.png output/data/icons/settings_160_rgb.png output/data/icons/winpilot_marginal_160_rgb.png output/data/icons/mode_abort_alpha.png output/data/icons/airspace_intercept_rgb.png output/data/icons/map_power_plant_160_alpha.png output/data/icons/winpilot_marginal_rgb.png output/data/icons/flarm_traffic_160_rgb.png output/data/icons/alt_reachable_field_rgb.png output/data/icons/map_tower_rgb.png output/data/icons/map_taskturnpoint_alpha.png output/data/icons/settings_alpha.png output/data/icons/map_terrainw_160_alpha.png output/data/icons/vario1_160_alpha.png output/data/icons/alt_landable_field_rgb.png output/data/icons/flarm_alarm_alpha.png output/data/icons/winpilot_reachable_rgb.png output/data/icons/mode_cruise_alpha.png output/data/icons/alt_reachable_airport_160_alpha.png output/data/icons/gps_acquiring_160_alpha.png output/data/icons/calculator_160_rgb.png output/data/icons/flarm_warning_alpha.png output/data/icons/alt_landable_field_alpha.png output/data/icons/map_target_160_alpha.png output/data/icons/scalearrow_left_160_rgb.png output/data/icons/winpilot_marginal_160_alpha.png output/data/icons/map_flag_rgb.png output/data/icons/airspace_intercept_alpha.png output/data/icons/flarm_traffic_160_alpha.png output/data/icons/map_turnpoint_alpha.png output/data/icons/instrument_vario2_160_rgb.png output/data/icons/mode_abort_160_rgb.png output/data/icons/map_teammate_rgb.png output/data/icons/mode_finalglide_160_alpha.png output/data/icons/folder_alpha.png output/data/icons/map_taskturnpoint_160_rgb.png output/data/icons/winpilot_landable_160_rgb.png output/data/icons/clock_rgb.png output/data/icons/mode_abort_rgb.png output/data/icons/map_bridge_rgb.png output/data/icons/calculator_160_alpha.png output/data/icons/alt2_landable_field_alpha.png output/data/icons/wrench_rgb.png output/data/icons/alt2_landable_airport_rgb.png output/data/icons/scalearrow_left_160_alpha.png output/data/icons/wrench_160_rgb.png output/data/icons/scalearrow_right_alpha.png output/data/icons/map_flag_alpha.png output/data/icons/gps_disconnected_160_alpha.png output/data/icons/alt_reachable_airport_alpha.png output/data/icons/map_bridge_160_rgb.png output/data/icons/mode_abort_160_alpha.png output/data/icons/map_teammate_alpha.png output/data/icons/airspace_intercept_160_rgb.png output/data/icons/map_tunnel_alpha.png output/data/icons/alt_reachable_field_160_rgb.png output/data/icons/map_taskturnpoint_160_alpha.png output/data/icons/gps_lowsignal_160_rgb.png output/data/icons/settings_160_alpha.png output/data/icons/clock_alpha.png output/data/icons/map_tunnel_rgb.png output/data/icons/alt_landable_field_160_rgb.png output/data/icons/alt2_landable_airport_alpha.png output/data/icons/flarm_alarm_160_alpha.png output/data/icons/mode_cruise_160_alpha.png output/data/icons/map_small_rgb.png output/data/icons/globe_rgb.png output/data/icons/map_turnpoint_rgb.png output/data/icons/alt_landable_airport_rgb.png output/data/icons/instrument_vario1_rgb.png output/data/icons/map_flag_160_rgb.png output/data/icons/alt_reachable_field_160_alpha.png output/data/icons/alt_reachable_airport_160_rgb.png output/data/icons/rules_160_rgb.png output/data/icons/map_teammate_160_rgb.png output/data/icons/alt2_landable_field_rgb.png output/data/icons/alt_landable_airport_160_rgb.png output/data/icons/clock_160_rgb.png output/data/icons/winpilot_landable_rgb.png output/data/icons/alt2_marginal_field_rgb.png output/data/icons/map_small_alpha.png output/data/icons/alt2_landable_airport_160_rgb.png output/data/icons/globe_alpha.png output/data/icons/gps_disconnected_rgb.png output/data/icons/map_teammate_160_alpha.png output/data/icons/map_flag_160_alpha.png output/data/icons/folder_160_rgb.png output/data/icons/map_weather_station_rgb.png output/data/icons/map_town_rgb.png output/data/icons/alt_marginal_field_alpha.png output/data/icons/task_rgb.png output/data/icons/alt_marginal_airport_rgb.png output/data/icons/map_mountain_top_rgb.png output/data/icons/alt_landable_airport_160_alpha.png output/data/icons/clock_160_alpha.png output/data/icons/mode_climb_rgb.png output/data/icons/mode_finalglide_alpha.png output/data/icons/alt2_landable_field_160_alpha.png output/data/icons/globe_160_alpha.png output/data/icons/map_tunnel_160_rgb.png output/data/icons/alt2_marginal_field_alpha.png output/data/icons/alt2_marginal_airport_rgb.png output/data/icons/winpilot_reachable_160_alpha.png output/data/icons/map_thermal_source_rgb.png output/data/icons/alt2_landable_airport_160_alpha.png output/data/icons/wrench_160_alpha.png output/data/icons/gps_disconnected_alpha.png output/data/icons/map_terrainw_160_rgb.png output/data/icons/map_small_160_rgb.png output/data/icons/map_weather_station_160_alpha.png output/data/icons/globe_160_rgb.png output/data/icons/map_thermal_source_alpha.png output/data/icons/map_bridge_160_alpha.png output/data/icons/folder_160_alpha.png output/data/icons/device_rgb.png output/data/icons/map_town_alpha.png output/data/icons/mode_cruise_160_rgb.png output/data/icons/gps_lowsignal_160_alpha.png output/data/icons/task_alpha.png output/data/icons/alt_marginal_airport_alpha.png output/data/icons/map_mountain_top_alpha.png output/data/icons/mode_climb_alpha.png output/data/icons/vario1_rgb.png output/data/icons/alt_marginal_field_160_rgb.png output/data/icons/scalearrow_right_rgb.png output/data/icons/map_tunnel_160_alpha.png output/data/icons/alt2_marginal_airport_alpha.png output/data/icons/alt2_marginal_field_160_rgb.png output/data/icons/map_weather_station_alpha.png output/data/icons/map_small_160_alpha.png output/data/icons/alt_landable_airport_alpha.png output/data/icons/flarm_warning_160_rgb.png output/data/icons/instrument_vario1_alpha.png output/data/icons/map_pass_rgb.png output/data/icons/winpilot_reachable_alpha.png output/data/icons/gps_disconnected_160_rgb.png output/data/icons/map_tower_160_rgb.png output/data/icons/map_turnpoint_160_rgb.png output/data/icons/device_alpha.png output/data/icons/map_thermal_source_160_rgb.png output/data/icons/device_160_alpha.png output/data/icons/instrument_vario2_alpha.png output/data/icons/map_thermal_hotspot_rgb.png output/data/icons/map_town_160_rgb.png output/data/icons/airspace_intercept_160_alpha.png output/data/icons/alt_marginal_field_160_alpha.png output/data/icons/task_160_rgb.png output/data/icons/alt_marginal_airport_160_rgb.png output/data/icons/winpilot_landable_alpha.png output/data/icons/map_mountain_top_160_rgb.png output/data/icons/instrument_vario2_rgb.png output/data/icons/mode_climb_160_rgb.png output/data/icons/alt2_marginal_field_160_alpha.png output/data/icons/alt2_marginal_airport_160_rgb.png output/data/icons/map_obstacle_rgb.png output/data/icons/wrench_alpha.png output/data/icons/map_pass_alpha.png output/data/icons/map_weather_station_160_rgb.png output/data/icons/rules_rgb.png output/data/icons/flarm_warning_160_alpha.png output/data/icons/map_turnpoint_160_alpha.png output/data/icons/map_thermal_source_160_alpha.png output/data/icons/winpilot_reachable_160_rgb.png output/UNIX/dbg/src/Device/Driver/../dirstamp output/data/icons/gps_acquiring_alpha.png output/data/icons/map_bridge_alpha.png output/data/icons/flarm_alarm_160_rgb.png output/data/icons/map_thermal_hotspot_alpha.png output/data/icons/device_160_rgb.png output/data/icons/map_power_plant_rgb.png output/data/icons/map_town_160_alpha.png output/data/icons/task_160_alpha.png
+august@august-virtual-machine:~/work/XCSoar_7.0_15$ 

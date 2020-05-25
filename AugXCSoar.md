@@ -35,6 +35,36 @@ Erledigt:
 | kobo    | ?            | kobo |
 | gcc     | ?            | unix |
 
+## 24.05.2020
+* VM-Flaps5-Ubuntu 1804: Umschalten des Hypernate Befehls:
+  * ``bcdedit /set hypervisorlaunchtype off`` - und **Reboot**    Danach ist aber Docker nicht mehr lauffähig,, da mus wieder auf 'on' geschalten werden (und reboot!)
+  * ``git clone git://github.com/XCSoar/XCSoar XCSoar_7.0_15''
+  * ``git clone https://github.com/August2111/XCSoar.git XCSoarAug''
+  * ``make TARGET=UNIX``   on XCSoar_7.0_15
+     * fatal error: glm/fwd.hpp: No such file or directory
+     * sudo apt-get install libglm-dev
+     * Danach komplettes Build!
+     * Log-Output: 
+  * ``make TARGET=PC``   on XCSoar_7.0_15
+     * make: i686-w64-mingw32-g++: Command not found
+     * sudo apt-get install gcc-mingw-w64  - das gin nicht!?!
+     * ``sudo apt-get install mingw-w64``!!!!  **DAS WAR GANZ WICHTIG!** Danach konnte ich die Windows-Builds auf Ubuntu Crosscompilieren!
+     * Natürlich kann man auch die mingw-Sourcen herunterladen und compilieren, oder das deb-File istallieren bzw das *-tar.gz-File auspacken und einrichten, aber am einfachsten ging es für mich über apt-get...
+  * ``make TARGET=CUBIE``   on XCSoar_7.0_15
+     * Es fehlte das g++ für arm... 
+     * ``sudo apt-get install g++-arm-linux-gnueabihf``
+* AUGUST01 (Ubuntu 1604): Das '``sudo apt-get install mingw-w64``' habe ich hier auch gleich ausprobiert und TARGET=WIN64 gestartet: Das lief auch erst einmal problemlos an!
+
+
+## 23.05.2020
+* AUGUST01 (Ubuntu 1604): Compiliert habe ich im Ordner XCSoar, danach habe ich ihn umgenannt in XCSour_6_8_14b ( ohne 'b' gabs schon)
+## 22.05.2020
+* AUGUST01 (Ubuntu 1604): Compiliert habe ich im Ordner XCSoar, danach habe ich ihn umgenannt in XCSour_6_8_14b ( ohne 'b' gabs schon)
+  * Nach einigem Hin- und her ließ sich die Unix-Version  - mit Tag v6.8.14 - builden, auch hier habe ich eine CompileListUnix angelegt
+  * ANDROID Build ging nicht, weil Android SDK 15b fehlte
+  * WIN64 bzw. PC-Build ging nicht, weil er irgendwie keinen Boost-Zugriff bekam - wie vorher auch des Unix-Build, das aber nach einem 'sudo apt-get install libboost-dev' dann doch ging, bei WIN64 fehlte es trotzdem...!
+    * bei 'src/Engine/Trace/Trace.cpp' findet er 'boost/intrusive/list.hpp' nicht
+
 ## 20.05.2020
 * Versuch, XCSoarAug auf PCDERAD0633 (Ubuntu 1604) mit CMake zu kompilieren, gescheitert an TCHAR
   * tchar.h ist ein Windows-Header-File, was ich wahrscheinlich nur über die Source-Zusammenstellung für das WIN-Programm mir 'eingefangen' habe, Linux/Unix hat wahrscheinlich eine andere Source-CPP-Liste...
