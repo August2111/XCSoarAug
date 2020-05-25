@@ -81,7 +81,7 @@ if (WIN32 AND MSVC)
           message(FATAL_ERROR "Error: WIN32 not implemented?")
       endif()
       # LUA ist vermutlich besser im output ordner aufgehoben...
-
+      set(BOOST_ROOT D:/link_libs/boost/boost-1.73.0)
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
       message(STATUS "+++ System = WIN32 / MinGW (${TOOLCHAIN})!")
@@ -265,6 +265,7 @@ if(NOT Boost_DIR)
 # endif()
 
   message(STATUS "!!!!  Boost_DIR ${Boost_DIR}")
+#  message(FATAL_ERROR "!!!!  BOOST_ROOT ${BOOST_ROOT}")
 endif()
 
 set(Boost_USE_STATIC_LIBS         ON)
@@ -276,7 +277,7 @@ if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
 ###    add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
 endif()
 # set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
-set(BOOST_COMPONENTS date_time filesystem regex)  #  network)
+set(BOOST_COMPONENTS date_time  filesystem)  #  network)
 message(STATUS "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 if (BOOST_COMPONENTS)
   # find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})

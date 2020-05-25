@@ -24,7 +24,7 @@ Copyright_License {
 #include "Hardware/DisplayDPI.hpp"
 
 #ifdef _WIN32
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #endif
 
 #include <cstdio>

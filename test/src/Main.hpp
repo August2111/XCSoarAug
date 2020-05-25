@@ -72,7 +72,7 @@
 #endif
 
 #ifdef _WIN32
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #endif
 
 #include <stdexcept>

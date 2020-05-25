@@ -42,8 +42,6 @@ libs: $(THIRDPARTY_LIBS_DIR)/stamp
 
 compile-depends += $(THIRDPARTY_LIBS_DIR)/stamp
 $(THIRDPARTY_LIBS_DIR)/stamp:
-	pwd
-	chmod 777 ./output
 	./build/thirdparty.py $(TARGET_OUTPUT_DIR) $(TARGET) $(HOST_TRIPLET) $(ACTUAL_HOST_TRIPLET) "$(TARGET_ARCH)" "$(TARGET_CPPFLAGS)" "$(filter-out $(THIRDPARTY_LDFLAGS_FILTER_OUT),$(TARGET_LDFLAGS))" $(CC) $(CXX) $(AR) "$(ARFLAGS)" $(RANLIB) $(STRIP)
 	touch $@
 

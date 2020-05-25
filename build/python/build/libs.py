@@ -89,6 +89,16 @@ openssh = AutotoolsProject(
     use_destdir=True,
 )
 
+libsodium = AutotoolsProject(
+    'https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz',
+    "https://github.com/jedisct1/libsodium/releases/download/1.0.18-RELEASE/libsodium-1.0.18.tar.gz",
+    '6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1',
+    'include/sodium/crypto_hash_sha256.h',
+    [
+        '--disable-shared', '--enable-static',
+    ],
+)
+
 zlib = ZlibProject(
     'http://zlib.net/zlib-1.2.11.tar.xz',
     'http://downloads.sourceforge.net/project/libpng/zlib/1.2.11/zlib-1.2.11.tar.xz',
@@ -108,10 +118,10 @@ freetype = FreeTypeProject(
     ],
 )
 
-curl = CurlProject(
-    'http://curl.haxx.se/download/curl-7.64.1.tar.xz',
-    'https://github.com/curl/curl/releases/download/curl-7_64_1/curl-7.64.1.tar.xz',
-    '9252332a7f871ce37bfa7f78bdd0a0e3924d8187cc27cb57c76c9474a7168fb3',
+curl = AutotoolsProject(
+    'http://curl.haxx.se/download/curl-7.70.0.tar.xz',
+    'https://github.com/curl/curl/releases/download/curl-7_69_1/curl-7.70.0.tar.xz',
+    '032f43f2674008c761af19bf536374128c16241fb234699a55f9fb603fcfbae7',
     'lib/libcurl.a',
     [
         '--disable-shared', '--enable-static',
@@ -145,10 +155,10 @@ proj = AutotoolsProject(
     autogen=True,
 )
 
-libpng = LibPNGProject(
-    'ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-1.6.36.tar.xz',
-    'http://downloads.sourceforge.net/project/libpng/libpng16/1.6.36/libpng-1.6.36.tar.xz',
-    'eceb924c1fa6b79172fdfd008d335f0e59172a86a66481e09d4089df872aa319',
+libpng = AutotoolsProject(
+    'ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng16/libpng-1.6.37.tar.xz',
+    'http://downloads.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.xz',
+    '505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca',
     'lib/libpng.a',
     [
         '--disable-shared', '--enable-static',

@@ -19,12 +19,7 @@ sudo apt-get install git
 Download the source code of \xc by executing \texttt{git} in the following way in
 your project directory:
 \begin{verbatim}
-git clone git://github.com/XCSoar/XCSoar
-
-# download submodule
-cd xcsoar
-git submodule init
-git submodule update
+git clone --recurse-submodules git://github.com/XCSoar/XCSoar
 \end{verbatim}
 
 \section{Use provisioning scripts}
@@ -35,6 +30,7 @@ dependencies for various \xc target platforms.
 
 \begin{verbatim}
 cd ide/provisioning
+sudo ./add-debian-unstable.sh
 sudo ./install-debian-packages.sh
 ./install-android-tools.sh
 \end{verbatim}

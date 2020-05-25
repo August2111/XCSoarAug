@@ -178,7 +178,8 @@ def create_xcsoar(args):
       # arguments.append('-DCMAKE_CXX_COMPILER_FORCED=1')    # don't test the compiler ???
 
     arguments.append('-DTOOLCHAIN=' + toolchain)
-    arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_73_0')
+    # arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_73_0')
+    arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost-1.73.0') # the new one (25.05.2020)
     # arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_72_0/' + toolchain)  # PCDERAD0781
     arguments.append('-DTHIRD_PARTY=' + third_party)
     arguments.append('-DLINK_LIBS=' + link_libs)
@@ -230,11 +231,12 @@ def create_xcsoar(args):
     arguments.append(cmake_exe)  # 'cmake')
     arguments.append('--build')
     arguments.append(build_dir)
-    arguments.append('--config')
-    arguments.append('Release') 
-    arguments.append('--')  # nachfolgende Befehle werden zum Build tool durchgereicht
-    arguments.append('-j')
-    arguments.append('8')  # jobs...
+    if False:  # toolchain MinGW/GCC...
+        arguments.append('--config')
+        arguments.append('Release') 
+        arguments.append('--')  # nachfolgende Befehle werden zum Build tool durchgereicht
+        arguments.append('-j')
+        arguments.append('8')  # jobs...
     if with_call:
       my_cmd = ''
       for arg in arguments:

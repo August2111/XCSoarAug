@@ -55,7 +55,7 @@ Display::Rotate(DisplayOrientation orientation)
 #if defined(USE_EGL) || defined(USE_GLX)
 /* avoid TopWindow.cpp from being linked, as it brings some heavy
    dependencies */
-void TopWindow::Refresh() {}
+void TopWindow::Refresh() noexcept {}
 #endif
 
 #ifdef USE_POLL_EVENT
@@ -78,13 +78,6 @@ protected:
   }
 };
 
-class TestNotify : public Notify {
-protected:
-  virtual void OnNotification() {
-    quit = true;
-  }
-};
-
 int main(int argc, char **argv)
 {
   plan_tests(1);
@@ -94,7 +87,7 @@ int main(int argc, char **argv)
   EventLoop loop(*event_queue);
   Event event;
 
-  TestNotify notify;
+  Notify notify{[]{ quit = true; }};
   TestThread thread(notify);
   thread.Start();
 
