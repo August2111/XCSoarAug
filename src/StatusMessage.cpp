@@ -28,7 +28,9 @@ Copyright_License {
 #include <assert.h>
 
 static constexpr StatusMessage default_status_messages[] = {
-#include "Status_defaults.cpp"
+// #if 0  // TODO(aug): hat es in Linux/MinGW nicht gefunden (ist aber vorhanden)???
+  #include "Status_defaults.cpp"
+// #endif
 };
 
 gcc_pure

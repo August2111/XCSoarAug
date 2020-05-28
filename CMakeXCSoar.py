@@ -61,7 +61,9 @@ compiler_setup = {
 def create_xcsoar(args):
   #Current directory:
   global program_dir
-
+  global is_windows
+  is_windows = False
+  
   filename = sys.argv[0]
   start_dir = os.path.dirname(filename)
   if len(start_dir) == 0:
@@ -181,10 +183,12 @@ def create_xcsoar(args):
 
     # if not is_windows:
     arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/LinuxMinGW.toolchain\"')
-    arguments.append('-DCMAKE_C_COMPILER=\"i586-mingw32msvc-gcc\"')
-    arguments.append('-DCMAKE_CXX_COMPILER=\"i586-mingw32msvc-g++\"')
-    arguments.append('-DCMAKE_RC_COMPILER=i586-mingw32msvc-windres')
-    arguments.append('-DCMAKE_SYSTEM_NAME="windows')
+    # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + root_dir.replace('\\','/') + '/opt/android-ndk-r21b/build/cmake/android.toolchain.cmake\"')
+
+    #    arguments.append('-DCMAKE_C_COMPILER=\"i686-w64-mingw32-gcc\"')
+    # arguments.append('-DCMAKE_CXX_COMPILER=\"i686-w64-mingw32-g++\"')
+    # arguments.append('-DCMAKE_RC_COMPILER=i686-w64-mingw32-windres')
+    # arguments.append('-DCMAKE_SYSTEM_NAME=windows')
 
     # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/LinuxMinGW.cmake\"')
     # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/mscv2019.cmake\"')

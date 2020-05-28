@@ -14,12 +14,10 @@ set(XCSOAR_LIB_TYPE STATIC)
 
 if (CMAKE_TOOLCHAIN_FILE)
   message(STATUS "CMAKE_TOOLCHAIN_FILE = '${CMAKE_TOOLCHAIN_FILE}'")
-  message(STATUS "CMAKE_SYSTEM_NAME = '${CMAKE_SYSTEM_NAME}'")
-  message(STATUS "CMAKE_CXX_COMPILER = '${CMAKE_CXX_COMPILER}'")
-  # message(STATUS "EXAMPLE_TEST = '${EXAMPLE_TEST}'")
-
-
-  message(STATUS "CMAKE_C_COMPILER = '${CMAKE_C_COMPILER}'")
+  # Die Variablen aus dem Toolchain-File Sind zwar hier nicht abrufbar, aber wirken auf Compiler uww.??? 
+  # message(STATUS "CMAKE_SYSTEM_NAME = '${CMAKE_SYSTEM_NAME}'")
+  # message(STATUS "CMAKE_CXX_COMPILER = '${CMAKE_CXX_COMPILER}'")
+  # message(STATUS "CMAKE_C_COMPILER = '${CMAKE_C_COMPILER}'")
 endif()
 
 set(ENABLE_OPENGL OFF)  # better outside????
@@ -179,7 +177,12 @@ elseif(UNIX)
 
       # no lib structure, this is failing on GCC  (serial order)???
       set(XCSOAR_LIB_TYPE WITHOUT)
-      set(ENABLE_OPENGL ON)  # better outside????
+      if(MINGW)
+         set(ENABLE_OPENGL OFF)  # das ist hier MinGWCrossCompiling für Windows! 
+         message(FATAL_ERROR "Stop MinGW")
+      else()
+         set(ENABLE_OPENGL OFF)
+      endif()   
 
       if (ON) # 2020-05-20: inserted on pcderad0633 regarding missing 'tchar.h'
         add_compile_definitions(HAVE_MSVCRT)
@@ -190,9 +193,10 @@ elseif(UNIX)
 
 
       # set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
+      set(Boost_COMPILER "gcc7")  # necessary: ??
       # include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
-      include_directories("${PROJECTGROUP_SOURCE_DIR}/src/unix")  # temporory data!
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/src/unix")   # temporory data!
 
       set(Boost_DIR "$ENV{HOME}/Projects/link_libs/boost/boost-1.73.0/lib/unix/cmake/Boost-1.73.0") 
   
@@ -311,9 +315,10 @@ endif()
 
 
 if (NOT Boost_INCLUDE_DIR)
-   message(FATAL_ERROR "!!! Boost_INCLUDE_DIR is EMPTY")
+   # message(FATAL_ERROR "!!! Boost_INCLUDE_DIR is EMPTY")
 #  if(EXISTS "${BOOST_ROOT}/include/boost-1_73/boost/version.hpp")
-       set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include/boost-1_73")
+       set(Boost_INCLUDE_DIR  "${BOOST_ROOT}/include/boost-1_73")
+       set(Boost_INCLUDE_DIR "/home/august/Projects/link_libs/boost/boost-1.73.0/include/boost-1_73")
 #  elseif(EXISTS "${BOOST_ROOT}/include/boost/version.hpp")
 #      set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include")
 #  else()
@@ -529,7 +534,7 @@ if (NOT UNIX)
     set (TRANSLATIONS de)
     foreach(translation ${TRANSLATIONS})
         if(NOT MSVC)
-                list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
+   # ??             list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
         endif()
     endforeach()
 endif()
@@ -592,6 +597,7 @@ list(APPEND XCSOAR_LINK_LIBRARIES
     "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libpng16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
 )
 elseif(MINGW)
+###  message(FATAL_ERROR "Ich bin in MinGW!")
 list(APPEND XCSOAR_LINK_LIBRARIES
    "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}lua.${LIB_EXTENSION}"
 #    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/jasperstatic.${LIB_EXTENSION}"
@@ -600,7 +606,8 @@ list(APPEND XCSOAR_LINK_LIBRARIES
    # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
     "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
     # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
-    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
+    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}z.${LIB_EXTENSION}"
+# geht nict in Linux    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
 #    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlib.dll.${LIB_EXTENSION}"  # now with dll only...
    "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
     "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}mapserver.${LIB_EXTENSION}"
@@ -628,7 +635,7 @@ if (WIN32)  # Windows only:
         winmm
         # android: intl
         m
-        log
+        # nicht in Linux: log
         # not android , but linux! rt
         kernel32
         # ?? msvcrt32
@@ -672,7 +679,7 @@ if(ENABLE_OPENGL)
         PRIVATE   # PUBLIC
         OpenGL::GL
         OpenGL:GLU # single colon!
-        # GLUT::GLUT
+        GLUT::GLUT
         # FreeGLUT::FreeGLUT
         ###${THIRD_PARTY}/glfw/glfw-3.3.2.bin.WIN64/lib-vc2019/glfw3.${LIB_EXTENSION}
         ### ${LINK_LIBS}/glm/glm-0.9.9/lib/msvc2019/glm_static.${LIB_EXTENSION}
