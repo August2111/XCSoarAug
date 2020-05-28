@@ -1,0 +1,15 @@
+ 	Device type 	Device ID 	Aircraft type 	Regist. 	CN 	Tracking 	Ident.
+Flarm 	243C14	ASK-21 	D-1165 			
+Flarm 	D00AAC	DG-100 	D-0023 	YZ 		
+Flarm 	DD85C0	SZD-23 Bocian 2 	D--3540 	Boc 		
+Flarm 	DD954A	SZD-30 Pirat 	D-2866 			
+Flarm 	DD9917	FK9 Mark 2 	D-MELJ 			
+Flarm 	DD9F88	Astir CS 	D-6137 	37 		
+Flarm 	DDA4A3	SF-27 	D-KNAM 			
+Flarm 	DDA770	Twin Astir II 	D-4881 	Twi 		
+Flarm 	DDA9FE	PZL-104 Wilga 	D-EDDZ 			
+Flarm 	DDAA91	SZD-50 Puchacz 	D-3684 	Puc 		
+Flarm 	DDAA9C	Astir CS 	D-3501 	01 		
+Flarm 	DF0A23	LS-7 	D-1674 	JD 		
+Flarm 	DF0A2B	LS-4 	D-6041 	H2 		
+Flarm 	DF0A92	LS-4 	D-0494 	YC 		

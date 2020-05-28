@@ -97,10 +97,10 @@ def create_xcsoar(args):
     program_dir = 'D:/Programs'
   else:
     src_dir = start_dir
-    root_dir = '/home/pcderad0633'
+    root_dir = my_env['HOME']
     proj_dir = root_dir + '/Projects'
     build_dir = proj_dir + '/Binaries/XCSoarAug/' + toolchain
-    link_libs = proj_dir + '/link_libs'  
+    link_libs = proj_dir + '/link_libs'
     third_party = proj_dir + '/3rd_Party'
     install_dir = proj_dir + '/Install/XCSoar'
     # program_dir = '/usr/bin'

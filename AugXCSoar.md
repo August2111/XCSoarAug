@@ -35,6 +35,10 @@ Erledigt:
 | kobo    | ?            | kobo |
 | gcc     | ?            | unix |
 
+## 25.05.2020
+* Manuelles Merging mit XCSoar 7.0-preview 15 bzw 6.8.14 (mit BCompare)
+
+
 ## 24.05.2020
 * VM-Flaps5-Ubuntu 1804: Umschalten des Hypernate Befehls:
   * ``bcdedit /set hypervisorlaunchtype off`` - und **Reboot**    Danach ist aber Docker nicht mehr lauffähig,, da mus wieder auf 'on' geschalten werden (und reboot!)

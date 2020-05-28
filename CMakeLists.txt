@@ -21,12 +21,12 @@ set(ENABLE_OPENGL OFF)  # better outside????
 
   project(${TARGET_NAME} C CXX) # Your project name
 
-if (WIN32)
-if (${TOOLCHAIN} STREQUAL "ninja")
-  message(STATUS "Ninja!")
-#  set(TOOLCHAIN "mgw73")
-endif()
-endif()
+# # # if (WIN32)
+# # # if (${TOOLCHAIN} STREQUAL "ninja")
+# # #   message(STATUS "Ninja!")
+# # # #  set(TOOLCHAIN "mgw73")
+# # # endif()
+# # # endif()
 
 get_filename_component(PROJECTGROUP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR} ABSOLUTE)
 get_filename_component(PROJECTGROUP_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} ABSOLUTE)
@@ -42,6 +42,11 @@ include(CMakeSource.cmake)
 # message(FATAL_ERROR "Stop. !")
 
 file(GLOB_RECURSE SCRIPT_FILES "*.txt;*.cmake;*.md")
+
+if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
+else()
+    include_directories("${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/include")
+endif()
 
 if (WIN32 AND MSVC)
       message(STATUS "+++ System = WIN32 / MSVC!")
@@ -92,6 +97,9 @@ elseif(WIN32 AND MINGW)
       endif()
       set(LIB_EXTENSION "a")
       set(PRE_LIB "lib")
+
+      # no lib structure, this is failing on GCC  (serial order)???
+      set(XCSOAR_LIB_TYPE WITHOUT)
 
       set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
       set(Boost_COMPILER "mgw7")  # necessary: changed mgw as boost compiler to mgw73!
@@ -160,6 +168,9 @@ elseif(UNIX)
       set(LIB_EXTENSION "a")
       set(PRE_LIB "lib")
 
+      # no lib structure, this is failing on GCC  (serial order)???
+      set(XCSOAR_LIB_TYPE WITHOUT)
+
       if (ON) # 2020-05-20: inserted on pcderad0633 regarding missing 'tchar.h'
         add_compile_definitions(HAVE_MSVCRT)
         add_compile_definitions(_UNICODE)
@@ -172,8 +183,7 @@ elseif(UNIX)
       # include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
-      set(Boost_DIR "/home/pcderad0633/Projects/link_libs/boost/boost_1_73_0/stage/lib/gcc/cmake/Boost-1.73.0") 
-      set(Boost_DIR "/home/pcderad0633/Projects/link_libs/boost/boost-1.73.0/lib/unix/cmake/Boost-1.73.0") 
+      set(Boost_DIR "$ENV{HOME}/Projects/link_libs/boost/boost-1.73.0/lib/unix/cmake/Boost-1.73.0") 
   
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
 
@@ -277,7 +287,7 @@ if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
 ###    add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
 endif()
 # set(BOOST_COMPONENTS system regex filesystem thread chrono date_time serialization)  #  network)
-set(BOOST_COMPONENTS date_time  filesystem)  #  network)
+set(BOOST_COMPONENTS date_time  filesystem regex)  #  network)
 message(STATUS "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 if (BOOST_COMPONENTS)
   # find_package(Boost 1.60 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
@@ -321,11 +331,41 @@ include_directories(
 )
 
 list(APPEND XCSOAR_SOURCE_LISTS
+    Profile  # profile.a
+    Terrain   # libterrain.a
+    Widget    # libwidget.a
+    Form      # form.a
+    # AR      output/UNIX/dbg/datafield.a
+    Look      # liblook.a
+    Screen    # screen.a
+    Event     # libevent.a
+    # AR      output/UNIX/dbg/libresource.a
+    # AR      output/UNIX/dbg/resources.a
+    # AR      output/UNIX/dbg/libdata.a
+    # AR      output/UNIX/dbg/driver.a
+    # AR      output/UNIX/dbg/port.a
+    IO        # io.a
+    # AR      output/UNIX/dbg/async.a
+    Task  # libtask
+    # AR      output/UNIX/dbg/libcontest.a
+    # AR      output/UNIX/dbg/libroute.a
+    # AR      output/UNIX/dbg/libglide.a
+    # AR      output/UNIX/dbg/libwaypoint.a
+    Airspace  # AR      output/UNIX/dbg/libairspace.a
+    Net     
+    Time    
+    OS      
+    Thread  
+    Util    
+    Geo     
+    Math    
+
+
     Computer
     CrossSection
     Gauge
 
-    Airspace
+    # Airspace
     Atmosphere
     Audio
     Blackboard
@@ -333,12 +373,12 @@ list(APPEND XCSOAR_SOURCE_LISTS
     # CrossSection
     Dialogs
     Engine
-    Event
+    # Event
     FLARM
-    Form
+    # Form
     Formatter
     # Gauge
-    Geo
+    # Geo
     Hardware
     IGC
     InfoBoxes
@@ -346,42 +386,42 @@ list(APPEND XCSOAR_SOURCE_LISTS
     Job
     Language
     Logger
-    Look
+    # Look
     xcsLua
     #  lua1
     Markers
-    Math
+    # Math
     Menu
     Monitor
-    Net
+    # Net
     NMEA
     Operation
-    OS
+    # OS
     Plane
     Polar
-    Profile
+    # Profile
     Projection
     Renderer
     Replay
     Repository
-    Screen
-    Task
+    # Screen
+    # Task
     TeamCode
-    Terrain
-    Thread
-    Time
+    # Terrain
+    # Thread
+    # Time
     Topography
     UIUtil
     Units
-    Util
+    # Util
     Waypoint
     Weather
-    Widget
+    # Widget
     XML
 
     Device
     Dialogs
-    IO
+    # IO
     MapWindow
     Tracking
 )
@@ -546,12 +586,13 @@ list(APPEND XCSOAR_LINK_LIBRARIES
 #    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/jasperstatic.${LIB_EXTENSION}"
     "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}jasper.${LIB_EXTENSION}"  # now with dll only...
     "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}curl.${LIB_EXTENSION}"
-    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
+   # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
+    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
+    # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
     "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
 #    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlib.dll.${LIB_EXTENSION}"  # now with dll only...
    "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
     "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}mapserver.${LIB_EXTENSION}"
-    # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libpng16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
 )
 else()
 endif()
