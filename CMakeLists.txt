@@ -12,6 +12,15 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # only by Makefile or Ninja generators: ex
 set(XCSOAR_LIB_TYPE STATIC)
 # set(XCSOAR_LIB_TYPE WITHOUT)
 
+if (CMAKE_TOOLCHAIN_FILE)
+  message(STATUS "CMAKE_TOOLCHAIN_FILE = '${CMAKE_TOOLCHAIN_FILE}'")
+  message(STATUS "CMAKE_SYSTEM_NAME = '${CMAKE_SYSTEM_NAME}'")
+  message(STATUS "CMAKE_CXX_COMPILER = '${CMAKE_CXX_COMPILER}'")
+  # message(STATUS "EXAMPLE_TEST = '${EXAMPLE_TEST}'")
+
+
+  message(STATUS "CMAKE_C_COMPILER = '${CMAKE_C_COMPILER}'")
+endif()
 
 set(ENABLE_OPENGL OFF)  # better outside????
 
@@ -170,6 +179,7 @@ elseif(UNIX)
 
       # no lib structure, this is failing on GCC  (serial order)???
       set(XCSOAR_LIB_TYPE WITHOUT)
+      set(ENABLE_OPENGL ON)  # better outside????
 
       if (ON) # 2020-05-20: inserted on pcderad0633 regarding missing 'tchar.h'
         add_compile_definitions(HAVE_MSVCRT)
@@ -182,6 +192,7 @@ elseif(UNIX)
       # set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
       # include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/src/unix")  # temporory data!
 
       set(Boost_DIR "$ENV{HOME}/Projects/link_libs/boost/boost-1.73.0/lib/unix/cmake/Boost-1.73.0") 
   

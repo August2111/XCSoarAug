@@ -18,6 +18,7 @@ import os, sys, subprocess
 prev_batch = None
 cmake_generator = None
 program_dir = None
+is_windows = False
 
 def gcc(toolchain, env):
   global cmake_generator
@@ -84,6 +85,7 @@ def create_xcsoar(args):
 
   toolchain = args[1]
   if sys.platform.startswith('win'):
+    is_windows = True
     # not necessary ?! install_bindir = 'bin'
     src_dir = start_dir
     if my_env['COMPUTERNAME'] == 'PCDERAD0781':
@@ -169,7 +171,7 @@ def create_xcsoar(args):
     arguments.append('-G "' + cmake_generator + '"') 
     arguments.append('--debug-trycompile')
 
-    if toolchain in ['ninja', 'clang10']:
+    if is_windows and toolchain in ['ninja', 'clang10']:
       arguments.append('-DCMAKE_C_COMPILER=D:/Programs/llvm/bin/clang.exe')
       arguments.append('-DCMAKE_CXX_COMPILER=D:/Programs/llvm/bin/clang++.exe')
       # arguments.append('-DCMAKE_C_COMPILER_ID=clang')
@@ -177,6 +179,15 @@ def create_xcsoar(args):
       # arguments.append('-DCMAKE_C_COMPILER_FORCED=1')    # don't test the compiler ???
       # arguments.append('-DCMAKE_CXX_COMPILER_FORCED=1')    # don't test the compiler ???
 
+    # if not is_windows:
+    arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/LinuxMinGW.toolchain\"')
+    arguments.append('-DCMAKE_C_COMPILER=\"i586-mingw32msvc-gcc\"')
+    arguments.append('-DCMAKE_CXX_COMPILER=\"i586-mingw32msvc-g++\"')
+    arguments.append('-DCMAKE_RC_COMPILER=i586-mingw32msvc-windres')
+    arguments.append('-DCMAKE_SYSTEM_NAME="windows')
+
+    # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/LinuxMinGW.cmake\"')
+    # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/mscv2019.cmake\"')
     arguments.append('-DTOOLCHAIN=' + toolchain)
     # arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_73_0')
     arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost-1.73.0') # the new one (25.05.2020)
