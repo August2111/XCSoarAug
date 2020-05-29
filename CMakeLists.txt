@@ -35,6 +35,9 @@ set(ENABLE_OPENGL OFF)  # better outside????
 # # # endif()
 # # # endif()
 
+message(STATUS "CMAKE_HOST_SYSTEM_NAME = ${CMAKE_HOST_SYSTEM_NAME} vs. CMAKE_SYSTEM_NAME = ${CMAKE_SYSTEM_NAME} ")
+
+
 get_filename_component(PROJECTGROUP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR} ABSOLUTE)
 get_filename_component(PROJECTGROUP_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} ABSOLUTE)
 
@@ -110,22 +113,20 @@ elseif(WIN32 AND MINGW)
 
       set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
       set(Boost_COMPILER "mgw7")  # necessary: changed mgw as boost compiler to mgw73!
-
+    
       # if(${TOOLCHAIN}  STREQUAL mgw73)
       #   # include_directories("${THIRD_PARTY}/qt/Qt5.14.0/Tools/mingw730_64/x86_64-w64-mingw32/include")
       #   add_definitions(-DBOOST_AUTO_LINK_SYSTEM)         # -DBOOST_AUTO_LINK_VERSIONED)
       # endif()
-      include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
-      # LUA ist vermutlich besser im output ordner aufgehoben...
-      # include_directories("${THIRD_PARTY}/lua/lua-5.3.5/src")
-      # include_directories("${THIRD_PARTY}/mapserver/mapserver-0")
-      # include_directories("${THIRD_PARTY}/curl/${XCSOAR_CURL_VERSION}/include")
-      # include_directories("${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include")
-      # include_directories("${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/include")
+      if (${CMAKE_HOST_SYSTEM_NAME} STREQUAL Windows)
+         include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
+      endif()
 
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
+      # disable WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+      add_compile_definitions(BOOST_MATH_DISABLE_DEPRECATED_03_WARNING=ON)     
 
       # sequence from 'targets.mk' 
       if (ON)
@@ -191,7 +192,7 @@ elseif(UNIX)
         add_compile_definitions(STRICT)
       endif()
 
-
+      add_compile_definitions(BOOST_MATH_DISABLE_DEPRECATED_03_WARNING=ON) 
       # set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
       set(Boost_COMPILER "gcc7")  # necessary: ??
       # include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
@@ -527,17 +528,17 @@ else(${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
   add_subdirectory(src)   # libXCSoar!
 endif(${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
 
-# Translation Group
-if (NOT UNIX)
-    set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
-    list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
-    set (TRANSLATIONS de)
-    foreach(translation ${TRANSLATIONS})
-        if(NOT MSVC)
-             list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
-        endif()
-    endforeach()
-endif()
+### Translation Group
+ if (NOT UNIX)
+     set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
+     list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
+     set (TRANSLATIONS de)
+     foreach(translation ${TRANSLATIONS})
+         if(NOT MSVC)
+              list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
+         endif()
+     endforeach()
+ endif()
 
 if(MSVC)
   if (ON)  # FLAPS5)
@@ -607,11 +608,12 @@ list(APPEND XCSOAR_LINK_LIBRARIES
     "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
     # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
 )
-    if(WIN32)  # MinGW at Windows
+    if(${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Windows")     #WIN32)  # MinGW at Windows
       list(APPEND XCSOAR_LINK_LIBRARIES
             "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
       )
-    elseif(UNIX)  # MinGW at Linux
+    else()
+      # elseif(UNIX)  # MinGW at Linux
       list(APPEND XCSOAR_LINK_LIBRARIES
             # message(FATAL_ERROR "Ich bin in MinGW/UNIX!")
             "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}z.${LIB_EXTENSION}"
