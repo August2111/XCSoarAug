@@ -114,11 +114,17 @@ def create_xcsoar(args):
   creation = 15
   toolset = None
 
-  myprocess = subprocess.Popen(['python', '--version'], env = my_env)
-  myprocess.wait()
+  python_exe = ''
+  try:
+    myprocess = subprocess.Popen(['python', '--version'], env = my_env)
+    myprocess.wait()
+    python_exe = 'python'
+  except:
+    print('"python" not callable')
   try:
     myprocess = subprocess.Popen(['python3', '--version'], env = my_env)
     myprocess.wait()
+    python_exe = 'python3'
   except:
     print('"python3" not callable')
 
@@ -126,7 +132,9 @@ def create_xcsoar(args):
     cmake_exe = (program_dir  + '/CMake/bin/') + 'cmake.exe'
     my_env['PATH'] =  (program_dir  + '/CMake/bin;').replace('/', '\\') + my_env['PATH']
   else:
-    cmake_exe = program_dir  + '/cmake'
+    cmake_exe = 'cmake'
+
+  # wget https://github.com/Kitware/CMake/releases/download/v3.17.2/cmake-3.17.2.tar.gz
   
   try:
     myprocess = subprocess.Popen([cmake_exe, '--version'], env = my_env)
