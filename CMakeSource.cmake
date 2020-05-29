@@ -1,4 +1,3 @@
-
 set(Airspace_SOURCES
         Airspace/ActivePredicate.cpp
         Airspace/AirspaceComputerSettings.cpp
@@ -20,6 +19,25 @@ set(Audio_SOURCES
         Audio/Sound.cpp
         Audio/VarioSettings.cpp
 )
+if(UNIX)
+  list(APPEND Audio_SOURCES
+        Audio/VarioGlue.cpp
+        Audio/ToneSynthesiser.cpp
+        Audio/VarioSynthesiser.cpp
+        Audio/PCMPlayer.cpp
+        Audio/GlobalPCMResourcePlayer.cpp
+        Audio/GlobalPCMMixer.cpp
+        Audio/GlobalVolumeController.cpp
+        Audio/MixerPCMPlayer.cpp
+        Audio/PCMBufferDataSource.cpp
+        Audio/PCMMixerDataSource.cpp
+        Audio/PCMMixer.cpp
+        Audio/PCMResourcePlayer.cpp
+        Audio/VolumeController.cpp
+        Audio/ALSAEnv.cpp
+        Audio/ALSAPCMPlayer.cpp
+  )
+endif()
 
 set(Blackboard_SOURCES
         Blackboard/BlackboardListener.cpp
@@ -198,7 +216,7 @@ set(Device_SOURCES
         Device/Port/K6BtPort.cpp
         Device/Port/NullPort.cpp
         Device/Port/Port.cpp
-        Device/Port/SerialPort.cpp
+        # Device/Port/SerialPort.cpp
         Device/Port/TCPClientPort.cpp
         Device/Port/TCPPort.cpp
         Device/Port/UDPPort.cpp
@@ -208,6 +226,17 @@ set(Device_SOURCES
         Device/Util/NMEAReader.cpp
         Device/Util/NMEAWriter.cpp
 )
+if(UNIX)
+  list(APPEND Device_SOURCES
+        Device/Port/TTYEnumerator.cpp
+        Device/Port/TTYPort.cpp
+  )
+elseif(WIN32)
+  list(APPEND Device_SOURCES
+        Device/Port/SerialPort.cpp
+  )
+endif()
+
 
 set(Dialogs_SOURCES
         Dialogs/Airspace/AirspaceCRendererSettingsDialog.cpp
@@ -348,6 +377,14 @@ set(Dialogs_SOURCES
         Dialogs/Weather/WeatherDialog.cpp
         Dialogs/WidgetDialog.cpp
 )
+if(UNIX)
+  list(APPEND Dialogs_SOURCES
+        Dialogs/Settings/Panels/AudioVarioConfigPanel.cpp
+        Dialogs/Settings/Panels/AudioConfigPanel.cpp
+
+        Dialogs/Weather/MapOverlayWidget.cpp
+  )
+endif()
 
 set(Engine_SOURCES
         Engine/Airspace/AbstractAirspace.cpp
@@ -502,11 +539,22 @@ set(Event_SOURCES
         Event/Globals.cpp
         Event/Idle.cpp
         Event/Notify.cpp
-        Event/Shared/Timer.cpp
-        Event/Shared/TimerQueue.cpp
-        Event/Windows/Loop.cpp
-        Event/Windows/Queue.cpp
 )
+if(UNIX)
+  list(APPEND Event_SOURCES
+          Event/Poll/Timer.cpp
+          Event/Poll/Loop.cpp
+          Event/Poll/Queue.cpp
+          Event/Poll/X11Queue.cpp
+  )
+elseif(WIN32)
+  list(APPEND Event_SOURCES
+          Event/Shared/Timer.cpp
+          Event/Shared/TimerQueue.cpp
+          Event/Windows/Loop.cpp
+          Event/Windows/Queue.cpp
+  )
+endif()
 
 set(FLARM_SOURCES
         FLARM/Error.cpp
@@ -727,6 +775,11 @@ set(IO_SOURCES
 
         IO/LogFile.cpp  # aug!
 )
+if(UNIX)
+  list(APPEND IO_SOURCES
+        IO/Async/SignalListener.cpp
+  )
+endif()
 
 set(Job_SOURCES
         Job/Async.cpp
@@ -852,6 +905,11 @@ set(MapWindow_SOURCES
         MapWindow/TargetMapWindowDrag.cpp
         MapWindow/TargetMapWindowEvents.cpp
 )
+if(UNIX)
+  list(APPEND MapWindow_SOURCES
+        MapWindow/OverlayBitmap.cpp
+  )
+endif()
 
 set(Markers_SOURCES
         Markers/Markers.cpp
@@ -953,6 +1011,11 @@ set(OS_SOURCES
         OS/RunFile.cpp
         OS/SystemLoad.cpp
 )
+if(UNIX)
+  list(APPEND OS_SOURCES
+        OS/EventPipe.cpp
+  )
+endif()
 
 set(Plane_SOURCES
         Plane/PlaneFileGlue.cpp
@@ -1110,8 +1173,59 @@ set(Screen_SOURCES
         Screen/Util.cpp
         Screen/Window.cpp
 )
-if (NOT ENABLE_OPENGL)  # USE_GDI
- list(APPEND Screen_SOURCES
+
+if(UNIX)  # OpenGL
+  list(APPEND Screen_SOURCES
+        Screen/FreeType/Font.cpp
+        Screen/FreeType/Init.cpp
+        Screen/X11/TopWindow.cpp
+        Screen/Custom/Cache.cpp
+        Screen/OpenGL/Init.cpp
+        Screen/OpenGL/Dynamic.cpp
+        Screen/OpenGL/Rotate.cpp
+        Screen/OpenGL/Geo.cpp
+        Screen/OpenGL/Globals.cpp
+        Screen/OpenGL/Extension.cpp
+        Screen/OpenGL/FBO.cpp
+        Screen/OpenGL/VertexArray.cpp
+        Screen/OpenGL/ConstantAlpha.cpp
+        Screen/OpenGL/Bitmap.cpp
+        Screen/OpenGL/RawBitmap.cpp
+        Screen/OpenGL/Canvas.cpp
+        Screen/OpenGL/BufferCanvas.cpp
+        Screen/OpenGL/TopCanvas.cpp
+        Screen/OpenGL/SubCanvas.cpp
+        Screen/OpenGL/Texture.cpp
+        Screen/OpenGL/UncompressedImage.cpp
+        Screen/OpenGL/Buffer.cpp
+        Screen/OpenGL/Shapes.cpp
+        Screen/OpenGL/Surface.cpp
+        Screen/OpenGL/Shaders.cpp
+        Screen/OpenGL/Triangulate.cpp
+        Screen/Custom/LibPNG.cpp
+        Screen/Custom/LibJPEG.cpp
+        Screen/Custom/LibTiff.cpp
+        Screen/Custom/DoubleClick.cpp
+        Screen/Custom/GeoBitmap.cpp
+        Screen/Custom/Pen.cpp
+        Screen/Custom/LargeTextWindow.cpp
+        Screen/Custom/Window.cpp
+        Screen/Custom/WList.cpp
+        Screen/Custom/ContainerWindow.cpp
+        Screen/Custom/TopWindow.cpp
+        Screen/Custom/SingleWindow.cpp
+        Screen/Custom/MoreCanvas.cpp
+        Screen/Custom/Files.cpp
+        Screen/Custom/Bitmap.cpp
+        Screen/Custom/ResourceBitmap.cpp
+        Screen/GLX/Init.cpp
+        Screen/GLX/TopCanvas.cpp
+        Screen/FB/Window.cpp
+        Screen/FB/TopWindow.cpp
+        Screen/FB/SingleWindow.cpp
+  )
+elseif(WIN32)  # GDI
+  list(APPEND Screen_SOURCES
         Screen/GDI/Bitmap.cpp
         Screen/GDI/Brush.cpp
         Screen/GDI/BufferCanvas.cpp
@@ -1132,33 +1246,8 @@ if (NOT ENABLE_OPENGL)  # USE_GDI
         Screen/GDI/Window.cpp
         Screen/GDI/WindowCanvas.cpp
   )
-elseif(ENABLE_OPENGL)
-  list(APPEND Screen_SOURCES
-        Screen/OpenGL/Bitmap.cpp
-        Screen/OpenGL/Buffer.cpp
-        Screen/OpenGL/BufferCanvas.cpp
-        Screen/OpenGL/Canvas.cpp
-        Screen/OpenGL/ConstantAlpha.cpp
-        Screen/OpenGL/Dynamic.cpp
-        Screen/OpenGL/Extension.cpp
-        Screen/OpenGL/FBO.cpp
-        Screen/OpenGL/Geo.cpp
-        Screen/OpenGL/Globals.cpp
-        Screen/OpenGL/Init.cpp
-        Screen/OpenGL/RawBitmap.cpp
-        Screen/OpenGL/Rotate.cpp
-        Screen/OpenGL/Shaders.cpp
-        Screen/OpenGL/Shapes.cpp
-        Screen/OpenGL/SubCanvas.cpp
-        Screen/OpenGL/Surface.cpp
-        Screen/OpenGL/Texture.cpp
-        Screen/OpenGL/TopCanvas.cpp
-        Screen/OpenGL/Triangulate.cpp
-        Screen/OpenGL/UncompressedImage.cpp
-        Screen/OpenGL/VertexArray.cpp
-  )
-
 endif()
+
 
 set(Task_SOURCES
         Task/DefaultTask.cpp
@@ -1340,11 +1429,16 @@ set(Util_SOURCES
         Util/TruncateString.cpp
         Util/tstring.cpp
         Util/UTF8.cpp
+)
+if(WIN32)
+  list(APPEND Util_SOURCES
         Util/WASCII.cxx
         Util/WStringCompare.cxx
         Util/WStringStrip.cxx
         Util/WStringUtil.cpp
-)
+  )
+endif()
+
 
 set(Waypoint_SOURCES
         Waypoint/CupWriter.cpp

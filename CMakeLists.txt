@@ -534,7 +534,7 @@ if (NOT UNIX)
     set (TRANSLATIONS de)
     foreach(translation ${TRANSLATIONS})
         if(NOT MSVC)
-   # ??             list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
+             list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
         endif()
     endforeach()
 endif()
@@ -606,8 +606,19 @@ list(APPEND XCSOAR_LINK_LIBRARIES
    # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
     "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
     # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
-    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}z.${LIB_EXTENSION}"
-# geht nict in Linux    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
+)
+    if(WIN32)  # MinGW at Windows
+      list(APPEND XCSOAR_LINK_LIBRARIES
+            "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
+      )
+    elseif(UNIX)  # MinGW at Linux
+      list(APPEND XCSOAR_LINK_LIBRARIES
+            # message(FATAL_ERROR "Ich bin in MinGW/UNIX!")
+            "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}z.${LIB_EXTENSION}"
+      )
+    endif()
+    list(APPEND XCSOAR_LINK_LIBRARIES
+
 #    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlib.dll.${LIB_EXTENSION}"  # now with dll only...
    "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
     "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}mapserver.${LIB_EXTENSION}"
@@ -663,6 +674,9 @@ list(APPEND XCSOAR_LINK_LIBRARIES
 #    libXCSoar
 ) # Reihenfolge is very important!!!!
 
+foreach(lib ${XCSOAR_LINK_LIBRARIES})
+   message(STATUS "--- XCSOAR_LINK_LIB: ${lib}")
+endforeach()
 target_link_libraries(${TARGET_NAME} PUBLIC ${XCSOAR_LINK_LIBRARIES})
 if(MSVC)
   target_link_options(${TARGET_NAME} PUBLIC "/SUBSYSTEM:WINDOWS")
@@ -702,5 +716,7 @@ foreach(translation ${TRANSLATIONS})
 endforeach()
 
 # add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip boost googletest)   #XCSoar Dialogs)
-add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip googletest )   # missing: boost xmlparser
+add_dependencies(${TARGET_NAME} curl lua jasper libpng)
+add_dependencies(${TARGET_NAME} zlib)
+add_dependencies(${TARGET_NAME} mapserver zzip googletest )   # missing: boost xmlparser
 
