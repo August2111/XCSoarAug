@@ -10,7 +10,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # only by Makefile or Ninja generators: ex
 
 # set(XCSOAR_LIB_TYPE SHARED)
 set(XCSOAR_LIB_TYPE STATIC)
-# set(XCSOAR_LIB_TYPE WITHOUT)
 
 if (CMAKE_TOOLCHAIN_FILE)
   message(STATUS "CMAKE_TOOLCHAIN_FILE = '${CMAKE_TOOLCHAIN_FILE}'")
@@ -25,6 +24,7 @@ set(ENABLE_OPENGL OFF)  # better outside????
 # cleanup 19.04.20: set(ASIO_GROUPING ON)
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
+  # set(TARGET_NAME XCSoarAugMinGW)
 
   project(${TARGET_NAME} C CXX) # Your project name
 
@@ -44,18 +44,20 @@ get_filename_component(PROJECTGROUP_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} ABSOL
 message(STATUS "*** PROJECTGROUP_SOURCE_DIR = '${PROJECTGROUP_SOURCE_DIR}'")
 message(STATUS "*** PROJECTGROUP_BINARY_DIR = '${PROJECTGROUP_BINARY_DIR}'")
 
+# if(NOT CMAKE_EXTERNALS_INCLUDE)
 # 3rd-party!
-include(${PROJECTGROUP_SOURCE_DIR}/3rd_party/3rd_party.cmake)
+  include(${PROJECTGROUP_SOURCE_DIR}/3rd_party/3rd_party.cmake)
+# endif()
 
 set(SRC "${PROJECTGROUP_SOURCE_DIR}/src")
 include(CMakeSource.cmake)
 # message(FATAL_ERROR "Stop. !")
 
 file(GLOB_RECURSE SCRIPT_FILES "*.txt;*.cmake;*.md")
+# file(GLOB_RECURSE SCRIPT_FILES "*.txt;*.md")
 
 if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
 else()
-    include_directories("${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/include")
 endif()
 
 if (WIN32 AND MSVC)
@@ -109,7 +111,7 @@ elseif(WIN32 AND MINGW)
       set(PRE_LIB "lib")
 
       # no lib structure, this is failing on GCC  (serial order)???
-      set(XCSOAR_LIB_TYPE WITHOUT)
+# ??? #      set(XCSOAR_LIB_TYPE WITHOUT)
 
       set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
       set(Boost_COMPILER "mgw7")  # necessary: changed mgw as boost compiler to mgw73!
@@ -217,9 +219,9 @@ endif()
     include_directories("    ${PROJECTGROUP_SOURCE_DIR}/src/IO")   # Util")  # nr wegen Logfile!
 
 # 3rd Party !!!!
-# if(MSVC)  # not in MinGW yet????
+# # # if(NOT CMAKE_EXTERNALS_INCLUDE)
    add_subdirectory(3rd_party)
-# endif()
+# # # endif()
 
 # ALLE: ?
 # internal Project
@@ -231,6 +233,7 @@ endif()
       include_directories("${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/include")
       include_directories("${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include") # for external
       include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # for external
+      include_directories("${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/include")
 
 # message(FATAL_ERROR "include_directories(${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include)")
 
@@ -446,26 +449,6 @@ list(APPEND XCSOAR_SOURCE_LISTS
 set(SOURCE_FILES )
 
 # message(FATAL_ERROR "Test-Stop!")
-if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
-    include("src/CMakeSource.cmake")
-    foreach(subfolder ${XCSOAR_SOURCE_LISTS})
-      foreach(subfile ${${subfolder}_SOURCES})
-        list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/src/${subfile}")
-  
-        get_filename_component(src_path ${subfile} DIRECTORY)
-        string(REPLACE "/" "\\" src_path ${src_path})
-        source_group("Source Files\\${src_path}" FILES  ${PROJECTGROUP_SOURCE_DIR}/src/${subfile})
-  
-      endforeach()
-    endforeach()
-    foreach(subfile ${BASIC_SOURCES})
-      list(APPEND SOURCE_FILES "${subfile}")
-    endforeach()
-
-
-    file(GLOB EXT_PROJ "3rd_Party/*.cmake")
-
-else(${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
     add_subdirectory(src/Airspace)
     add_subdirectory(src/Atmosphere)
     add_subdirectory(src/Audio)
@@ -526,7 +509,6 @@ else(${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
     add_subdirectory(src/Tracking)
 
   add_subdirectory(src)   # libXCSoar!
-endif(${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
 
 ### Translation Group
  if (NOT UNIX)
@@ -566,22 +548,27 @@ elseif(MINGW)
 else()
   list(APPEND SOURCE_FILES "Data/XCSoar.rc")
 endif()
+
   list(APPEND SOURCE_FILES "CMakeSource.cmake")
 
+# foreach(cpp_file ${Math_SOURCES})
+#   list(APPEND SOURCE_FILES  src/${cpp_file})
+# endforeach()
+
   #==========================================================
   #==========================================================
-set(XCSOAR_LINK_LIBRARIES)  # -> empty
+# set(XCSOAR_LINK_LIBRARIES)  # -> empty
 
 # preparing target_link_libraries!
+
+    list(APPEND XCSOAR_LINK_LIBRARIES
+        libXCSoar
+        ${XCSOAR_SOURCE_LISTS}
+    )
 
 list(APPEND XCSOAR_LINK_LIBRARIES
     ${Boost_LIBRARIES}
 )
-if (NOT ${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
-    list(APPEND XCSOAR_LINK_LIBRARIES
-        ${XCSOAR_SOURCE_LISTS}
-    )
-endif()
 
 # External Libs
 if (MSVC)
@@ -631,21 +618,20 @@ endif()
 if (WIN32)  # Windows only:
     if (MSVC)
       list(APPEND XCSOAR_LINK_LIBRARIES
-        msimg32.lib  # Windows
-        Winmm.lib  # Windows!
+        msimg32.lib
+        winmm.lib
     )
     elseif (MINGW)
       list(APPEND XCSOAR_LINK_LIBRARIES
-        # m
+        msimg32
+        winmm
         # dl
         pthread
         stdc++
         user32
         gdi32
-        msimg32
         ws2_32  # MinGW!
         mswsock
-        winmm
         # android: intl
         m
         # nicht in Linux: log
@@ -665,6 +651,8 @@ endif()
 
 if (ANDROID)  # library!
    add_library(${TARGET_NAME} STATIC ${SOURCE_FILES})
+elseif(MINGW)
+   add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES} ${EXT_PROJ}) #  ${XCSOAR_LINK_LIBRARIES})
 else()        # executable!
    add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES} ${EXT_PROJ})
 endif()
@@ -679,6 +667,7 @@ list(APPEND XCSOAR_LINK_LIBRARIES
 foreach(lib ${XCSOAR_LINK_LIBRARIES})
    message(STATUS "--- XCSOAR_LINK_LIB: ${lib}")
 endforeach()
+
 target_link_libraries(${TARGET_NAME} PUBLIC ${XCSOAR_LINK_LIBRARIES})
 if(MSVC)
   target_link_options(${TARGET_NAME} PUBLIC "/SUBSYSTEM:WINDOWS")
@@ -720,5 +709,8 @@ endforeach()
 # add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip boost googletest)   #XCSoar Dialogs)
 add_dependencies(${TARGET_NAME} curl lua jasper libpng)
 add_dependencies(${TARGET_NAME} zlib)
-add_dependencies(${TARGET_NAME} mapserver zzip googletest )   # missing: boost xmlparser
+add_dependencies(${TARGET_NAME} mapserver zzip)   # missing: boost xmlparser
+add_dependencies(${TARGET_NAME} googletest )   # missing: boost xmlparser
+# missing: add_dependencies(${TARGET_NAME} boost)
+# missing: add_dependencies(${TARGET_NAME} xmlparser)
 

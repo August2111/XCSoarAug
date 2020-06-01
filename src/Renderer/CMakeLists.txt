@@ -22,6 +22,17 @@ foreach(source_file ${${TARGET_NAME}_SOURCES})
     # message(STATUS "### ${src_path}  --- ${source_file}")
 endforeach()
 
+# # # !!! # ATTENTION Terrain inside Renderer!
+# # # !!! foreach(cpp_file  ${Terrain_SOURCES})
+# # # !!!   list(APPEND SOURCE_FILES  ${PROJECTGROUP_SOURCE_DIR}/src/${cpp_file})
+# # # !!! endforeach()
+# # # !!! 
+# # # !!! # ATTENTION Engine inside Renderer!
+# # # !!! foreach(cpp_file  ${Engine_SOURCES})
+# # # !!!   list(APPEND SOURCE_FILES  ${PROJECTGROUP_SOURCE_DIR}/src/${cpp_file})
+# # # !!! endforeach()
+
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
@@ -31,3 +42,7 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
 )
 # message(FATAL_ERROR "Stop!")
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
+# add_dependencies(${TARGET_NAME} Terrain)
+
+target_link_libraries(${TARGET_NAME} Projection Engine Terrain)
+add_dependencies(${TARGET_NAME} Projection Engine Terrain)

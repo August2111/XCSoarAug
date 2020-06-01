@@ -1,0 +1,19 @@
+set(Terrain_SOURCES
+        Terrain/HeightMatrix.cpp
+        Terrain/Intersection.cpp
+        Terrain/Loader.cpp
+        Terrain/RasterBuffer.cpp
+        Terrain/RasterMap.cpp
+        Terrain/RasterProjection.cpp
+        Terrain/RasterRenderer.cpp
+        Terrain/RasterTerrain.cpp
+        Terrain/RasterTile.cpp
+        Terrain/RasterTileCache.cpp
+        Terrain/ScanLine.cpp
+        Terrain/TerrainRenderer.cpp
+        Terrain/TerrainSettings.cpp
+        Terrain/Thread.cpp
+        Terrain/WorldFile.cpp
+        Terrain/ZzipStream.cpp
+)
+

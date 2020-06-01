@@ -299,42 +299,6 @@ CompileListPC_7.0._15 2020-05-24 VM Flaps5.txt
   CXX     output/TARGET/dbg/src/Renderer/WaypointListRenderer.o
   CXX     output/TARGET/dbg/src/Renderer/WaypointIconRenderer.o
   CXX     output/TARGET/dbg/src/Renderer/WaypointRenderer.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Renderer/WaypointRenderer.cpp:43:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Renderer/WaypointRenderer.cpp:43:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Renderer/WaypointRendererSettings.o
   CXX     output/TARGET/dbg/src/Renderer/WaypointLabelList.o
   CXX     output/TARGET/dbg/src/Renderer/WindArrowRenderer.o
@@ -345,156 +309,12 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/MapWindow/Items/OverlayMapItem.o
   CXX     output/TARGET/dbg/src/MapWindow/Items/List.o
   CXX     output/TARGET/dbg/src/MapWindow/Items/Builder.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/MapWindow/Items/Builder.cpp:35:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/MapWindow/Items/Builder.cpp:35:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/MapWindow/Items/AirspaceBuilder.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/MapWindow/Items/AirspaceBuilder.cpp:30:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/MapWindow/Items/AirspaceBuilder.cpp:30:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/MapWindow/Items/TrafficBuilder.o
   CXX     output/TARGET/dbg/src/MapWindow/Items/WeatherBuilder.o
   CXX     output/TARGET/dbg/src/MapWindow/MapWindow.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/MapWindow/MapWindow.cpp:30:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/MapWindow/MapWindow.cpp:30:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/MapWindow/MapWindowEvents.o
   CXX     output/TARGET/dbg/src/MapWindow/MapWindowGlideRange.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/MapWindow/MapWindowGlideRange.cpp:27:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/MapWindow/MapWindowGlideRange.cpp:27:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Projection/MapWindowProjection.o
   CXX     output/TARGET/dbg/src/MapWindow/MapWindowRender.o
   CXX     output/TARGET/dbg/src/MapWindow/MapWindowSymbols.o
@@ -503,139 +323,13 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/MapWindow/MapWindowThermal.o
   CXX     output/TARGET/dbg/src/MapWindow/MapWindowTraffic.o
   CXX     output/TARGET/dbg/src/MapWindow/MapWindowTrail.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/MapWindow/MapWindowTrail.cpp:26:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/MapWindow/MapWindowTrail.cpp:26:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/MapWindow/MapWindowWaypoints.o
   CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindow.o
   CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindowItems.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/MapWindow/GlueMapWindowItems.cpp:32:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/MapWindow/GlueMapWindowItems.cpp:32:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindowEvents.o
   CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindowOverlays.o
   CXX     output/TARGET/dbg/src/MapWindow/GlueMapWindowDisplayMode.o
   CXX     output/TARGET/dbg/src/MapWindow/TargetMapWindow.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/MapWindow/TargetMapWindow.cpp:33:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/MapWindow/TargetMapWindow.cpp:33:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/MapWindow/TargetMapWindowEvents.o
   CXX     output/TARGET/dbg/src/MapWindow/TargetMapWindowDrag.o
   CXX     output/TARGET/dbg/src/UIUtil/GestureManager.o
@@ -671,48 +365,6 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/Computer/Settings.o
   CXX     output/TARGET/dbg/src/MergeThread.o
   CXX     output/TARGET/dbg/src/CalculationThread.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Computer/RouteComputer.hpp:27,
-                 from src/Computer/TaskComputer.hpp:27,
-                 from src/Computer/GlideComputer.hpp:32,
-                 from src/CalculationThread.cpp:25:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Computer/RouteComputer.hpp:27,
-                 from src/Computer/TaskComputer.hpp:27,
-                 from src/Computer/GlideComputer.hpp:32,
-                 from src/CalculationThread.cpp:25:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/DisplayMode.o
   CXX     output/TARGET/dbg/src/Topography/TopographyFile.o
   CXX     output/TARGET/dbg/src/Topography/TopographyStore.o
@@ -779,36 +431,6 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/FLARM/NameFile.o
   CXX     output/TARGET/dbg/src/FLARM/TrafficDatabases.o
   CXX     output/TARGET/dbg/src/UtilsSettings.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/UtilsSettings.cpp:45:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/UtilsSettings.cpp:45:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/UtilsSystem.o
   CXX     output/TARGET/dbg/src/OS/LogError.o
   CXX     output/TARGET/dbg/src/Version.o
@@ -858,139 +480,13 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/Polar/Parser.o
   CXX     output/TARGET/dbg/src/Polar/PolarStore.o
   CXX     output/TARGET/dbg/src/Protection.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Computer/RouteComputer.hpp:27,
-                 from src/Computer/TaskComputer.hpp:27,
-                 from src/Computer/GlideComputer.hpp:32,
-                 from src/Protection.cpp:28:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Computer/RouteComputer.hpp:27,
-                 from src/Computer/TaskComputer.hpp:27,
-                 from src/Computer/GlideComputer.hpp:32,
-                 from src/Protection.cpp:28:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/BatteryTimer.o
   CXX     output/TARGET/dbg/src/ProcessTimer.o
   CXX     output/TARGET/dbg/src/ApplyExternalSettings.o
   CXX     output/TARGET/dbg/src/ApplyVegaSwitches.o
   CXX     output/TARGET/dbg/src/MainWindow.o
   CXX     output/TARGET/dbg/src/Startup.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Computer/RouteComputer.hpp:27,
-                 from src/Computer/TaskComputer.hpp:27,
-                 from src/Computer/GlideComputer.hpp:32,
-                 from src/Startup.cpp:62:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Computer/RouteComputer.hpp:27,
-                 from src/Computer/TaskComputer.hpp:27,
-                 from src/Computer/GlideComputer.hpp:32,
-                 from src/Startup.cpp:62:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Components.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Computer/RouteComputer.hpp:27,
-                 from src/Computer/TaskComputer.hpp:27,
-                 from src/Computer/GlideComputer.hpp:32,
-                 from src/Components.cpp:25:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from src/Computer/RouteComputer.hpp:27,
-                 from src/Computer/TaskComputer.hpp:27,
-                 from src/Computer/GlideComputer.hpp:32,
-                 from src/Components.cpp:25:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/DataGlobals.o
   CXX     output/TARGET/dbg/src/Device/Declaration.o
   CXX     output/TARGET/dbg/src/Device/MultipleDevices.o
@@ -1039,36 +535,6 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/Dialogs/Airspace/dlgAirspacePatterns.o
   CXX     output/TARGET/dbg/src/Dialogs/Airspace/dlgAirspaceDetails.o
   CXX     output/TARGET/dbg/src/Dialogs/Airspace/AirspaceList.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Dialogs/Airspace/AirspaceList.cpp:35:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Dialogs/Airspace/AirspaceList.cpp:35:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Dialogs/Airspace/AirspaceCRendererSettingsDialog.o
   CXX     output/TARGET/dbg/src/Dialogs/Airspace/AirspaceCRendererSettingsPanel.o
   CXX     output/TARGET/dbg/src/Dialogs/Airspace/dlgAirspaceWarnings.o
@@ -1081,48 +547,6 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/Dialogs/Traffic/FlarmTrafficDetails.o
   CXX     output/TARGET/dbg/src/Dialogs/Traffic/TeamCodeDialog.o
   CXX     output/TARGET/dbg/src/Dialogs/dlgAnalysis.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/Dialogs/dlgAnalysis.cpp:39:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/Dialogs/dlgAnalysis.cpp:39:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Dialogs/dlgChecklist.o
   CXX     output/TARGET/dbg/src/Dialogs/ProfileListDialog.o
   CXX     output/TARGET/dbg/src/Dialogs/Plane/PlaneListDialog.o
@@ -1707,38 +1131,6 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/Engine/Route/Config.o
   CXX     output/TARGET/dbg/src/Engine/Route/RoutePlanner.o
   CXX     output/TARGET/dbg/src/Engine/Route/AirspaceRoute.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Route/AirspaceRoute.hpp:27,
-                 from src/Engine/Route/AirspaceRoute.cpp:23:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Route/AirspaceRoute.hpp:27,
-                 from src/Engine/Route/AirspaceRoute.cpp:23:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Engine/Route/TerrainRoute.o
   CXX     output/TARGET/dbg/src/Engine/Route/RouteLink.o
   CXX     output/TARGET/dbg/src/Engine/Route/RoutePolar.o
@@ -1762,36 +1154,6 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   AR      output/TARGET/dbg/libwaypoint.a
   CXX     output/TARGET/dbg/src/Engine/Util/AircraftStateFilter.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspacesTerrain.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/AirspacesTerrain.cpp:23:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/AirspacesTerrain.cpp:23:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Engine/Airspace/Airspace.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceAltitude.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceAircraftPerformance.o
@@ -1799,138 +1161,16 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceCircle.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspacePolygon.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/Airspaces.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/Airspaces.cpp:23:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/Airspaces.cpp:23:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceIntersectSort.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/SoonestAirspace.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/Minimum.hpp:27,
-                 from src/Engine/Airspace/SoonestAirspace.cpp:28:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/Minimum.hpp:27,
-                 from src/Engine/Airspace/SoonestAirspace.cpp:28:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Engine/Airspace/Predicate/AirspacePredicate.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/Predicate/AirspacePredicateHeightRange.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/Predicate/OutsideAirspacePredicate.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceIntersectionVisitor.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceWarningConfig.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceWarningManager.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/AirspaceWarningManager.cpp:25:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/AirspaceWarningManager.cpp:25:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceWarning.o
   CXX     output/TARGET/dbg/src/Engine/Airspace/AirspaceSorter.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/AirspaceSorter.cpp:2:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from src/Engine/Airspace/AirspaceSorter.cpp:2:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   AR      output/TARGET/dbg/libairspace.a
   CXX     output/TARGET/dbg/src/Lua/Ptr.o
   CXX     output/TARGET/dbg/src/Lua/Error.o
@@ -1946,48 +1186,6 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/Lua/Map.o
   CXX     output/TARGET/dbg/src/Lua/Blackboard.o
   CXX     output/TARGET/dbg/src/Lua/Airspace.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/Lua/Airspace.cpp:30:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/normalize_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/strategies/cartesian/point_in_box.hpp:28,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/covered_by/interface.hpp:30,
-                 from ./output/src/boost_1_73_0/boost/geometry/index/rtree.hpp:29,
-                 from ./src/Engine/Airspace/AirspacesInterface.hpp:28,
-                 from ./src/Engine/Airspace/Airspaces.hpp:26,
-                 from ./src/Engine/Route/AirspaceRoute.hpp:27,
-                 from ./src/Task/RoutePlannerGlue.hpp:26,
-                 from ./src/Task/ProtectedRoutePlanner.hpp:27,
-                 from ./src/Computer/RouteComputer.hpp:27,
-                 from ./src/Computer/TaskComputer.hpp:27,
-                 from ./src/Computer/GlideComputer.hpp:32,
-                 from src/Lua/Airspace.cpp:30:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Lua/Dialogs.o
   CXX     output/TARGET/dbg/src/Lua/Legacy.o
   CXX     output/TARGET/dbg/src/Lua/Full.o
@@ -2070,36 +1268,6 @@ In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.h
   CXX     output/TARGET/dbg/src/Util/WStringUtil.o
   AR      output/TARGET/dbg/util.a
   CXX     output/TARGET/dbg/src/Geo/Boost/RangeBox.o
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/is_inverse_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/assign_values.hpp:42,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/assign_box_corners.hpp:21,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/convert.hpp:38,
-                 from ./output/src/boost_1_73_0/boost/geometry/geometries/box.hpp:22,
-                 from src/Geo/Boost/RangeBox.hpp:29,
-                 from src/Geo/Boost/RangeBox.cpp:24:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:99:88: note: #pragma message: CAUTION: One or more C++11 features were found to be unavailable
- BOOST_PRAGMA_MESSAGE("CAUTION: One or more C++11 features were found to be unavailable")
-                                                                                        ^
-In file included from ./output/src/boost_1_73_0/boost/math/constants/constants.hpp:11:0,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/math.hpp:29,
-                 from ./output/src/boost_1_73_0/boost/geometry/util/is_inverse_spheroidal_coordinates.hpp:19,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/assign_values.hpp:42,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/detail/assign_box_corners.hpp:21,
-                 from ./output/src/boost_1_73_0/boost/geometry/algorithms/convert.hpp:38,
-                 from ./output/src/boost_1_73_0/boost/geometry/geometries/box.hpp:22,
-                 from src/Geo/Boost/RangeBox.hpp:29,
-                 from src/Geo/Boost/RangeBox.cpp:24:
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:100:139: note: #pragma message: CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.
- BOOST_PRAGMA_MESSAGE("CAUTION: Compiling Boost.Math in pre-C++11 conformance modes is now deprecated and will be removed from March 2021.")
-                                                                                                                                           ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:101:106: note: #pragma message: CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.
- BOOST_PRAGMA_MESSAGE("CAUTION: Define BOOST_MATH_DISABLE_DEPRECATED_03_WARNING to suppress this message.")
-                                                                                                          ^
-./output/src/boost_1_73_0/boost/math/tools/cxx03_warn.hpp:102:108: note: #pragma message: CAUTION: This message was generated due to the define: BOOST_NO_CXX11_THREAD_LOCAL
- BOOST_PRAGMA_MESSAGE("CAUTION: This message was generated due to the define: " BOOST_MATH_CXX03_WARN_REASON)
-                                                                                                            ^
   CXX     output/TARGET/dbg/src/Geo/ConvexHull/GrahamScan.o
   CXX     output/TARGET/dbg/src/Geo/ConvexHull/PolygonInterior.o
   CXX     output/TARGET/dbg/src/Geo/Memento/DistanceMemento.o

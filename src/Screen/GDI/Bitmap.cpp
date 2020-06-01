@@ -108,23 +108,17 @@ test_gil(std::string filename) {
 }
 
 bool Bitmap::LoadFile(Path path) {
-    std::string img_filename = path.ToUTF8();
-//    img_filename = "D:\\Projects\\Gliding\\XCSoarAug\\output\\data\\bitmaps\\airspace0.png";
-//    img_filename = "D:\\Projects\\Gliding\\XCSoarAug\\Data\\bitmaps\\airspace0.bmp";
-        // HBITMAP   hBMP = (HBITMAP)LoadImageA(nullptr, img_filename.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    bitmap = (HBITMAP)LoadImageA(nullptr, img_filename.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-
-    // bitmap = test_gil();
-//    bitmap = test_gil("D:\\Projects\\Gliding\\XCSoarAug\\Data\\bitmaps\\airspace0.bmp");
+    // std::string img_filename = ;
+    bitmap = (HBITMAP)LoadImageA(nullptr, path.ToUTF8().c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
     return bitmap;
 }
-#else _AUG
+#else  // _AUG
 bool
 Bitmap::LoadFile(Path path)
 {
   return false;
 }
-#endif
+#endif  // _AUG
 
 void
 Bitmap::Reset()

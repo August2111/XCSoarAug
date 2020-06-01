@@ -271,6 +271,8 @@ Window::WndProc(HWND _hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     window = (Window *)cs->lpCreateParams;
     window->Created(_hWnd);
     window->SetUserData(window);
+  } else if(message == WM_SETTEXT) {
+    window = GetUnchecked(_hWnd);
   } else {
     window = GetUnchecked(_hWnd);
   }

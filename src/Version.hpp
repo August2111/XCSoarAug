@@ -37,4 +37,8 @@ extern const TCHAR XCSoar_VersionStringOld[];
 /** XCSoar v5.2.5F-PC */
 extern const TCHAR XCSoar_ProductToken[];
 
+#ifdef _AUG
+extern const TCHAR XCSoar_Caption[];
+#endif
+
 #endif

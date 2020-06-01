@@ -55,6 +55,8 @@ compiler_setup = {
            'ninja' : gcc,
            'unix' : gcc,
            'clang10' : clang,
+           'msvc2015' : visual_studio,
+           'msvc2017' : visual_studio,
            'msvc2019' : visual_studio,
 }
 
@@ -308,6 +310,9 @@ def create_xcsoar(args):
 
   #========================================================================
   if creation & 0x08:   # ==>Run
+    if toolchain.startswith('msvc'):
+      # build_dir = build_dir + '/Release'
+      build_dir = build_dir + '/Debug'
     arguments = [build_dir + '/XCSoarAug.exe', '-1200x800']
     # arguments = ['XCSoarAug.exe', '-120x800']
     if with_call:

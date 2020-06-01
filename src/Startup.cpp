@@ -196,6 +196,10 @@ Startup()
   MainWindow *const main_window = CommonInterface::main_window =
     new MainWindow();
   main_window->Create(SystemWindowSize(), style);
+  
+//  SetWindowText(nullptr, XCSoar_VersionString);
+  // main_window->SetCaption();
+
   if (!main_window->IsDefined())
     return false;
 

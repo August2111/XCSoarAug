@@ -29,3 +29,6 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
 )
 # message(FATAL_ERROR "Stop!")
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
+
+target_link_libraries(${TARGET_NAME} Geo)
+add_dependencies(${TARGET_NAME} Geo)

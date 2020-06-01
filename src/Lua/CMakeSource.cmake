@@ -1,0 +1,29 @@
+set(Lua_SOURCES
+        Lua/Airspace.cpp
+        Lua/Associate.cpp
+        Lua/Background.cpp
+        Lua/Basic.cpp
+        Lua/Blackboard.cpp
+        Lua/Catch.cpp
+        Lua/Dialogs.cpp
+        Lua/Error.cxx
+        Lua/Full.cpp
+        Lua/Geo.cpp
+        Lua/InputEvent.cpp
+        Lua/Legacy.cpp
+        Lua/Log.cpp
+        Lua/Logger.cpp
+        Lua/Map.cpp
+        Lua/Persistent.cpp
+        Lua/Ptr.cpp
+        Lua/Replay.cpp
+        Lua/RunFile.cxx
+        Lua/Settings.cpp
+        Lua/StartFile.cpp
+        Lua/Task.cpp
+        Lua/Timer.cpp
+        Lua/Tracking.cpp
+        Lua/Wind.cpp
+)
+set(xcsLua_SOURCES ${Lua_SOURCES})
+

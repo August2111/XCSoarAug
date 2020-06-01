@@ -24,6 +24,7 @@ Copyright_License {
 #ifndef XCSOAR_MAIN_WINDOW_HXX
 #define XCSOAR_MAIN_WINDOW_HXX
 
+#include "Version.hpp"
 #include "Screen/SingleWindow.hpp"
 #include "Screen/Timer.hpp"
 #include "BatteryTimer.hpp"
@@ -72,7 +73,11 @@ class MainWindow : public SingleWindow {
     RESTORE_PAGE,
   };
 
-  static constexpr const TCHAR *title = _T("XCSoar");
+#ifdef _AUG
+  static constexpr const TCHAR *title = XCSoar_Caption;
+#else
+  static constexpr const TCHAR* title = _T("XCSoar");
+#endif
 
   Look *look;
 

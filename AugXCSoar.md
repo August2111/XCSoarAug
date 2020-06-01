@@ -35,6 +35,9 @@ Erledigt:
 | kobo    | ?            | kobo |
 | gcc     | ?            | unix |
 
+## 01.06.2020
+* Aufsplittung der CMakeSource in die einzelnen Ordner..
+
 ## 25.05.2020
 * Manuelles Merging mit XCSoar 7.0-preview 15 bzw 6.8.14 (mit BCompare)
 
@@ -143,6 +146,69 @@ Erledigt:
 ## 21.03.2020
 Path-Variable
 * PATH=$(PATH);D:\Projects\3rd_Party\curl\curl-7.64.1\build\Win64\VC16\DLL Release;D:\link_libs\zlib\zlib-1.2.11\bin
+
+
+# XCSoar
+
+## Overview
+
+### 02.05.2020
+
+* Win32: VS-System läuft : OK
+  * keine transparente PNGs für Lufträume
+  * nur englisch (kein Deutsch)
+  * Terrain nur mit Gewässer-Bezeichnungen?
+* Win32: MinGW/GCC läuft: OK
+  * nur englisch (kein Deutsch)
+  * Terrain nur mit Gewässer-Bezeichnungen?
+* Win32: Clang
+  * kommt beim compilieren nicht über eine Stelle hinweg..
+
+| Tabelle | Spalte 1 | Spalte 2 | Spalte 3 | Spalte 4 |
+| Zeile 1 | Spalte 1 | Spalte 2 | Spalte 3 | Spalte 4 |
+| Zeile 2 | Spalte 1 | Spalte 2 | Spalte 3 | Spalte 4 |
+| Zeile 3 | Spalte 1 | Spalte 2 | Spalte 3 | Spalte 4 |
+
+<table>
+<tr><td> Tabelle </td><td> Spalte 1 </td><td> Spalte 2 </td><td> Spalte 3 </td><td> Spalte 4 </td></tr>
+<tr><td> Zeile 1 </td><td> Spalte 1 </td><td> Spalte 2 </td><td> Spalte 3 </td><td> Spalte 4 </td></tr>
+<tr><td> Zeile 2 </td><td> Spalte 1 </td><td> Spalte 2 </td><td> Spalte 3 </td><td> Spalte 4 </td></tr>
+<tr><td> Zeile 3 </td><td> Spalte 1 </td><td> Spalte 2 </td><td> Spalte 3 </td><td> Spalte 4 </td></tr>
+</table>
+
+## 3rd Party Components
+
+### lua
+Scripting im Programm (wo im Einsatz)?
+Scripting Zugriffe auf IO-Ports?
+Erst ab 7.0 im Einsatz (8.8 noch nicht...)
+
+### mapserver
+noch keine Ahnung ;-)
+
+### jasper
+noch keine Ahnung ;-)
+
+### curl
+Zugriffe auf Dateien im (Inter-)Net (ähnlich wget)
+
+### zlib
+Zip-Basis-Paket
+
+### zzip
+vereinfachte ZIP-Aufrufe (?)
+
+### xmlparser
+Ein einfacher und schnelle XML-Parser, Alternativen sind TinyXML, Rapid^XML (?)
+
+### boost
+Das Boost-Paket
+
+## Fehlerbehebung
+
+"D:\Projects\Gliding\XCSoarAug\src\Interface.hpp:74:15: error: 'InMainThread' was not declared in this scope
+     MY_ASSERT(InMainThread());"
+Den Fehler hatte ich schon mal, auch schon einmal behoben, aber wie?
 
 
 * *kursiv*: 

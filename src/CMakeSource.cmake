@@ -1,4 +1,4 @@
-
+# Location ./XCSoarAug/src/CMakeSource.cmake
 
 # file(GLOB_RECURSE SOURCE_FILES  ${PROJECTGROUP_SOURCE_DIR}/src/*.cpp)
 # file(GLOB_RECURSE HEADER_FILES  ${PROJECTGROUP_SOURCE_DIR}/src/*.h*)

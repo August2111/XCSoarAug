@@ -19,10 +19,13 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
 
 # target_link_libraries(${TARGET_NAME} PUBLIC Screen)
 # target_link_libraries(${TARGET_NAME} PUBLIC ${XCSOAR_LINK_LIBRARIES})
-target_link_libraries(${TARGET_NAME} PUBLIC Atmosphere Screen)
+# target_link_libraries(${TARGET_NAME} PUBLIC Atmosphere Screen)
 
 # set_target_properties(${TARGET_NAME} PROPERTIES SUFFIX ".cti")
 # set_target_properties(${TARGET_NAME} PROPERTIES VERSION ${CMAKE_PROJECT_VERSION}${BO_PROJECT_VERSION_TWEAK})
 # set_target_properties(${TARGET_NAME} PROPERTIES SOVERSION ${CMAKE_PROJECT_VERSION_MAJOR}.${CMAKE_PROJECT_VERSION_MINOR})
 
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER _Main)
+
+target_link_libraries(${TARGET_NAME} Dialogs Math)
+add_dependencies(${TARGET_NAME} Dialogs Math)

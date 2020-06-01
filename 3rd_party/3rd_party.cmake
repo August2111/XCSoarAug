@@ -56,7 +56,10 @@ include(3rd_party/libpng.cmake)
 include(3rd_party/curl.cmake)
 include(3rd_party/xmlparser.cmake)
 include(3rd_party/boost.cmake)
-include(3rd_party/googletest.cmake)
+
+# include(3rd_party/googletest.cmake)
+
+
 # include(Qt5.cmake)
 # include(googlmock.cmake)
 # noch nicht! include(boost.cmake)
