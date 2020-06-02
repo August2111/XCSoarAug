@@ -45,4 +45,4 @@ set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
 # add_dependencies(${TARGET_NAME} Terrain)
 
 target_link_libraries(${TARGET_NAME} Projection Engine Terrain)
-add_dependencies(${TARGET_NAME} Projection Engine Terrain)
+# add_dependencies(${TARGET_NAME} Projection Engine Terrain)

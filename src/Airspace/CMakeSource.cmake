@@ -53,3 +53,5 @@ add_library(${LIB_TARGET_NAME} ${XCSOAR_LIB_TYPE}
 
 set_target_properties(${LIB_TARGET_NAME} PROPERTIES FOLDER Libs)
 
+target_link_libraries(${LIB_TARGET_NAME} PUBLIC IO)
+

@@ -27,5 +27,5 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
 
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER _Main)
 
-target_link_libraries(${TARGET_NAME} Dialogs Math)
-add_dependencies(${TARGET_NAME} Dialogs Math)
+target_link_libraries(${TARGET_NAME} PUBLIC Dialogs Math)
+# add_dependencies(${TARGET_NAME} Dialogs Math)

@@ -35,6 +35,10 @@ Erledigt:
 | kobo    | ?            | kobo |
 | gcc     | ?            | unix |
 
+## 02.06.2020
+* Externe Projecte in Abhängigkeit vom Vorhandensein einbinden
+* Nächste Schritt: Beispiel 'Airspace' für das umwandeln von CMakeLists.txt-Projecten zu ${lib}.cmake
+
 ## 01.06.2020
 * Aufsplittung der CMakeSource in die einzelnen Ordner..
 
@@ -212,3 +216,26 @@ Den Fehler hatte ich schon mal, auch schon einmal behoben, aber wie?
 
 
 * *kursiv*: 
+
+                Math        -   libXCSoar
+IO - Airspace - Dialogs     -   libXCSoar
+     Form -     Dialogs
+              - InputBoxes
+              - Widgets
+Geo - Engine
+
+OS - Util
+
+  Form          - Menu
+  libXCSoar     - Menu (?)
+  Blackboard    - Menu
+  UIUtil        - Menu
+  Dialogs       - Menu
+  
+  Projection    - Renderer
+  Engine        - Renderer
+  Terrain       - Renderer
+
+              
+
+              
