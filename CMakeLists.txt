@@ -44,20 +44,33 @@ get_filename_component(PROJECTGROUP_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR} ABSOL
 message(STATUS "*** PROJECTGROUP_SOURCE_DIR = '${PROJECTGROUP_SOURCE_DIR}'")
 message(STATUS "*** PROJECTGROUP_BINARY_DIR = '${PROJECTGROUP_BINARY_DIR}'")
 
-# if(NOT CMAKE_EXTERNALS_INCLUDE)
-# 3rd-party!
-  include(${PROJECTGROUP_SOURCE_DIR}/3rd_party/3rd_party.cmake)
-# endif()
+include(${PROJECTGROUP_SOURCE_DIR}/3rd_party/3rd_party.cmake)
 
 set(SRC "${PROJECTGROUP_SOURCE_DIR}/src")
 include(CMakeSource.cmake)
-# message(FATAL_ERROR "Stop. !")
 
 file(GLOB_RECURSE SCRIPT_FILES "*.txt;*.cmake;*.md")
 # file(GLOB_RECURSE SCRIPT_FILES "*.txt;*.md")
 
-if (${XCSOAR_LIB_TYPE} STREQUAL "WITHOUT")
-else()
+if (NOT Boost_INCLUDE_DIR)
+#   message(FATAL_ERROR "!!! Boost_INCLUDE_DIR is EMPTY")
+#  if(EXISTS "${BOOST_ROOT}/include/boost-1_73/boost/version.hpp")
+       set(Boost_INCLUDE_DIR  "${BOOST_ROOT}/include/boost-1_73")
+#       set(Boost_INCLUDE_DIR "/home/august/Projects/link_libs/boost/boost-1.73.0/include/boost-1_73")
+#  elseif(EXISTS "${BOOST_ROOT}/include/boost/version.hpp")
+#      set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include")
+#  else()
+  if(NOT EXISTS "${Boost_INCLUDE_DIR}/boost/version.hpp")
+      message(FATAL_ERROR "!!! Boost: include directories not found! (BOOST_ROOT = ${BOOST_ROOT})")
+  endif()
+endif()
+
+if (NOT EXISTS ${Boost_INCLUDE_DIR}/boost/config.hpp)
+    message(STATUS "!!! Boost_INCLUDE_DIR = ${Boost_INCLUDE_DIR} not correctly!")
+    set(Boost_INCLUDE_DIR   ${Boost_INCLUDE_DIR}/boost-1_73)
+    if (NOT EXISTS ${Boost_INCLUDE_DIR}/boost/config.hpp)
+      message(FATAL_ERROR "!!! Boost_INCLUDE_DIR = ${Boost_INCLUDE_DIR}")
+    endif()
 endif()
 
 if (WIN32 AND MSVC)
@@ -318,18 +331,6 @@ endif()
 # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 
 
-if (NOT Boost_INCLUDE_DIR)
-   # message(FATAL_ERROR "!!! Boost_INCLUDE_DIR is EMPTY")
-#  if(EXISTS "${BOOST_ROOT}/include/boost-1_73/boost/version.hpp")
-       set(Boost_INCLUDE_DIR  "${BOOST_ROOT}/include/boost-1_73")
-       set(Boost_INCLUDE_DIR "/home/august/Projects/link_libs/boost/boost-1.73.0/include/boost-1_73")
-#  elseif(EXISTS "${BOOST_ROOT}/include/boost/version.hpp")
-#      set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include")
-#  else()
-  if(NOT EXISTS "${Boost_INCLUDE_DIR}/boost/version.hpp")
-      message(FATAL_ERROR "!!! Boost: include directories not found! (BOOST_ROOT = ${BOOST_ROOT})")
-  endif()
-endif()
 include_directories( ${Boost_INCLUDE_DIR})
 link_directories(${BOOST_ROOT}/lib)
 
@@ -350,106 +351,107 @@ include_directories(
     ${LINK_LIBS}/glm/glm-0.9.9/include
 )
 
-list(APPEND XCSOAR_SOURCE_LISTS
-    Profile  # profile.a
-    Terrain   # libterrain.a
-    Widget    # libwidget.a
-    Form      # form.a
-    # AR      output/UNIX/dbg/datafield.a
-    Look      # liblook.a
-    Screen    # screen.a
-    Event     # libevent.a
-    # AR      output/UNIX/dbg/libresource.a
-    # AR      output/UNIX/dbg/resources.a
-    # AR      output/UNIX/dbg/libdata.a
-    # AR      output/UNIX/dbg/driver.a
-    # AR      output/UNIX/dbg/port.a
-    IO        # io.a
-    # AR      output/UNIX/dbg/async.a
-    Task  # libtask
-    # AR      output/UNIX/dbg/libcontest.a
-    # AR      output/UNIX/dbg/libroute.a
-    # AR      output/UNIX/dbg/libglide.a
-    # AR      output/UNIX/dbg/libwaypoint.a
-    Airspace  # AR      output/UNIX/dbg/libairspace.a
-    Net     
-    Time    
-    OS      
-    Thread  
-    Util    
-    Geo     
-    Math    
-
-
-    Computer
-    CrossSection
-    Gauge
-
-    # Airspace
-    Atmosphere
-    Audio
-    Blackboard
-    # Computer
-    # CrossSection
-    Dialogs
-    Engine
-    # Event
-    FLARM
-    # Form
-    Formatter
-    # Gauge
-    # Geo
-    Hardware
-    IGC
-    InfoBoxes
-    Input
-    Job
-    Language
-    Logger
-    # Look
-    xcsLua
-    #  lua1
-    Markers
-    # Math
-    Menu
-    Monitor
-    # Net
-    NMEA
-    Operation
-    # OS
-    Plane
-    Polar
-    # Profile
-    Projection
-    Renderer
-    Replay
-    Repository
-    # Screen
-    # Task
-    TeamCode
-    # Terrain
-    # Thread
-    # Time
-    Topography
-    UIUtil
-    Units
-    # Util
-    Waypoint
-    Weather
-    # Widget
-    XML
-
-    Device
-    Dialogs
-    # IO
-    MapWindow
-    Tracking
-)
+# 2020-06-02: list(APPEND XCSOAR_SOURCE_LISTS
+# 2020-06-02:     Profile  # profile.a
+# 2020-06-02:     Terrain   # libterrain.a
+# 2020-06-02:     Widget    # libwidget.a
+# 2020-06-02:     Form      # form.a
+# 2020-06-02:     # AR      output/UNIX/dbg/datafield.a
+# 2020-06-02:     Look      # liblook.a
+# 2020-06-02:     Screen    # screen.a
+# 2020-06-02:     Event     # libevent.a
+# 2020-06-02:     # AR      output/UNIX/dbg/libresource.a
+# 2020-06-02:     # AR      output/UNIX/dbg/resources.a
+# 2020-06-02:     # AR      output/UNIX/dbg/libdata.a
+# 2020-06-02:     # AR      output/UNIX/dbg/driver.a
+# 2020-06-02:     # AR      output/UNIX/dbg/port.a
+# 2020-06-02:     IO        # io.a
+# 2020-06-02:     # AR      output/UNIX/dbg/async.a
+# 2020-06-02:     Task  # libtask
+# 2020-06-02:     # AR      output/UNIX/dbg/libcontest.a
+# 2020-06-02:     # AR      output/UNIX/dbg/libroute.a
+# 2020-06-02:     # AR      output/UNIX/dbg/libglide.a
+# 2020-06-02:     # AR      output/UNIX/dbg/libwaypoint.a
+# 2020-06-02:     Airspace  # AR      output/UNIX/dbg/libairspace.a
+# 2020-06-02:     Net     
+# 2020-06-02:     Time    
+# 2020-06-02:     OS      
+# 2020-06-02:     Thread  
+# 2020-06-02:     Util    
+# 2020-06-02:     Geo     
+# 2020-06-02:     Math    
+# 2020-06-02: 
+# 2020-06-02: 
+# 2020-06-02:     Computer
+# 2020-06-02:     CrossSection
+# 2020-06-02:     Gauge
+# 2020-06-02: 
+# 2020-06-02:     # Airspace
+# 2020-06-02:     Atmosphere
+# 2020-06-02:     Audio
+# 2020-06-02:     Blackboard
+# 2020-06-02:     # Computer
+# 2020-06-02:     # CrossSection
+# 2020-06-02:     Dialogs
+# 2020-06-02:     Engine
+# 2020-06-02:     # Event
+# 2020-06-02:     FLARM
+# 2020-06-02:     # Form
+# 2020-06-02:     Formatter
+# 2020-06-02:     # Gauge
+# 2020-06-02:     # Geo
+# 2020-06-02:     Hardware
+# 2020-06-02:     IGC
+# 2020-06-02:     InfoBoxes
+# 2020-06-02:     Input
+# 2020-06-02:     Job
+# 2020-06-02:     Language
+# 2020-06-02:     Logger
+# 2020-06-02:     # Look
+# 2020-06-02:     xcsLua
+# 2020-06-02:     #  lua1
+# 2020-06-02:     Markers
+# 2020-06-02:     # Math
+# 2020-06-02:     Menu
+# 2020-06-02:     Monitor
+# 2020-06-02:     # Net
+# 2020-06-02:     NMEA
+# 2020-06-02:     Operation
+# 2020-06-02:     # OS
+# 2020-06-02:     Plane
+# 2020-06-02:     Polar
+# 2020-06-02:     # Profile
+# 2020-06-02:     Projection
+# 2020-06-02:     Renderer
+# 2020-06-02:     Replay
+# 2020-06-02:     Repository
+# 2020-06-02:     # Screen
+# 2020-06-02:     # Task
+# 2020-06-02:     TeamCode
+# 2020-06-02:     # Terrain
+# 2020-06-02:     # Thread
+# 2020-06-02:     # Time
+# 2020-06-02:     Topography
+# 2020-06-02:     UIUtil
+# 2020-06-02:     Units
+# 2020-06-02:     # Util
+# 2020-06-02:     Waypoint
+# 2020-06-02:     Weather
+# 2020-06-02:     # Widget
+# 2020-06-02:     XML
+# 2020-06-02: 
+# 2020-06-02:     Device
+# 2020-06-02:     Dialogs
+# 2020-06-02:     # IO
+# 2020-06-02:     MapWindow
+# 2020-06-02:     Tracking
+# 2020-06-02: )
 
 set(SOURCE_FILES )
 
 # message(FATAL_ERROR "Test-Stop!")
-    add_subdirectory(src/Airspace)
+
+#    add_subdirectory(src/Airspace)
     add_subdirectory(src/Atmosphere)
     add_subdirectory(src/Audio)
     add_subdirectory(src/Blackboard)
@@ -654,6 +656,7 @@ if (ANDROID)  # library!
 elseif(MINGW)
    add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES} ${EXT_PROJ}) #  ${XCSOAR_LINK_LIBRARIES})
 else()        # executable!
+   message(STATUS  "### add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES} ${EXT_PROJ}")
    add_executable(${TARGET_NAME}     ${SOURCE_FILES} ${SCRIPT_FILES} ${EXT_PROJ})
 endif()
 
@@ -707,10 +710,13 @@ foreach(translation ${TRANSLATIONS})
 endforeach()
 
 # add_dependencies(${TARGET_NAME} curl lua jasper libpng zlib mapserver zzip boost googletest)   #XCSoar Dialogs)
-add_dependencies(${TARGET_NAME} curl lua jasper libpng)
-add_dependencies(${TARGET_NAME} zlib)
-add_dependencies(${TARGET_NAME} mapserver zzip)   # missing: boost xmlparser
-add_dependencies(${TARGET_NAME} googletest )   # missing: boost xmlparser
+
+if (OFF)  # only if to build
+    add_dependencies(${TARGET_NAME} curl lua jasper libpng)
+    add_dependencies(${TARGET_NAME} zlib)
+    add_dependencies(${TARGET_NAME} mapserver zzip)   # missing: boost xmlparser
+    add_dependencies(${TARGET_NAME} googletest )   # missing: boost xmlparser
 # missing: add_dependencies(${TARGET_NAME} boost)
 # missing: add_dependencies(${TARGET_NAME} xmlparser)
+endif()
 

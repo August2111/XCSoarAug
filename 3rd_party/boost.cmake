@@ -34,9 +34,14 @@ endif()
 set(${TARGET_CNAME}_BUILD_CMD "./b2 -j4 toolset=${TOOLSET} link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
 
 
+set(INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+#-------------------
+if(NOT EXISTS "${INSTALL_DIR}")
+
 ## b2 -j4 toolset=msvc link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=D:/link_libs/boost/boost-1.73.0 --build-dir=D:/Projects/3rd_Party/boost/build/msvc2019 --with-chrono --with-system --with-filesystem --with-headers --with-regex --with-date_time  --includedir=D:/link_libs/boost/boost-1.73.0/include --libdir=D:/link_libs/boost/boost-1.73.0/lib/msvc2019 install
 message(STATUS "### ${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${TARGET_NAME}")
 message(STATUS "### ${${TARGET_CNAME}_BUILD_CMD}")
+
 
 #-------------------
 ExternalProject_Add(
@@ -46,7 +51,7 @@ ExternalProject_Add(
 
    PREFIX                "${${TARGET_CNAME}_PREFIX}"
 #   BINARY_DIR            "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
-   INSTALL_DIR           "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
+   INSTALL_DIR           "${INSTALL_DIR}"
 
    # PATCH_COMMAND         "bootstrap"
    CONFIGURE_COMMAND     bootstrap     ##  "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${TARGET_NAME}/TestOutput.cmd"
@@ -62,9 +67,11 @@ ExternalProject_Add(
 ##     "-DINSTALL_BIN_DIR:PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"
 ##     "-DINSTALL_LIB_DIR:PATH=<INSTALL_DIR>/lib/${TOOLCHAIN}"
     # BUILD_ALWAYS ${EP_BUILD_ALWAYS}
-    BUILD_ALWAYS ON
+#    BUILD_ALWAYS ON
     BUILD_IN_SOURCE ON  ## ${EP_BUILD_IN_SOURCE}
     # WORKING_DIRECTORY ${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${TARGET_NAME}  # = src_dir!
 )
 #===========================================
+endif()
+
 endif(MSVC)

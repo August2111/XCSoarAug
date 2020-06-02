@@ -24,24 +24,28 @@ message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET
      set(${TARGET_CNAME}_URL "http://www.FlapsOnline.de/XCSoarAug/mapserver-xcsoar.zip")
 #  if (EXIST      "${${TARGET_CNAME}_URL}")
   # ------------------
-  ExternalProject_Add(
-     ${TARGET_NAME}
-     URL "${${TARGET_CNAME}_URL}"
-     PREFIX  "${${TARGET_CNAME}_PREFIX}"
-     BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
-     INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
-     CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
-       "-DCMAKE_INSTALL_LIBDIR=lib/${TOOLCHAIN}"  # :PATH=<INSTALL_DIR>/lib/${TOOLCHAIN}"
-       "-DCMAKE_INSTALL_INCLUDEDIR=include"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"
-       "-DXCSOAR_DIR=${PROJECTGROUP_SOURCE_DIR}/src"
-       "-DLINK_LIBS=${LINK_LIBS}"
-       "-DZZIP_INCLUDE_DIR=${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/include"
-       "-DXCSOAR_ZZIP_VERSION=${XCSOAR_ZZIP_VERSION}"
-    BUILD_ALWAYS ${EP_BUILD_ALWAYS}
-    # BUILD_ALWAYS ${EP_BUILD_ALWAYS}
-    BUILD_ALWAYS OFF
-    DEPENDS zlib zzip
-)
+set(INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+#-------------------
+if(NOT EXISTS "${INSTALL_DIR}")
+    ExternalProject_Add(
+       ${TARGET_NAME}
+       URL "${${TARGET_CNAME}_URL}"
+       PREFIX  "${${TARGET_CNAME}_PREFIX}"
+       BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
+       INSTALL_DIR "${INSTALL_DIR}"      # "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
+       CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
+         "-DCMAKE_INSTALL_LIBDIR=lib/${TOOLCHAIN}"  # :PATH=<INSTALL_DIR>/lib/${TOOLCHAIN}"
+         "-DCMAKE_INSTALL_INCLUDEDIR=include"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"
+         "-DXCSOAR_DIR=${PROJECTGROUP_SOURCE_DIR}/src"
+         "-DLINK_LIBS=${LINK_LIBS}"
+         "-DZZIP_INCLUDE_DIR=${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/include"
+         "-DXCSOAR_ZZIP_VERSION=${XCSOAR_ZZIP_VERSION}"
+      BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+      # BUILD_ALWAYS ${EP_BUILD_ALWAYS}
+      BUILD_ALWAYS OFF
+      DEPENDS zlib zzip
+    )
+    endif()
   else()
     message(STATUS "!!! ZZIP-XCSOAR DON'T EXISTS !!!!!!!!!!!!!!!!!!!!!!!")
   endif()
