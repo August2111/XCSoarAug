@@ -1,3 +1,5 @@
+set(LIB_TARGET_NAME "Airspace")
+
 set(Airspace_SOURCES
         Airspace/ActivePredicate.cpp
         Airspace/AirspaceComputerSettings.cpp
@@ -8,21 +10,17 @@ set(Airspace_SOURCES
         Airspace/ProtectedAirspaceWarningManager.cpp
 )
 
-message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
+if (ON)
+#    add_subdirectory(src/Airspace)
+else()
+message(STATUS "+++ Start CMake ${CMAKE_CURRENT_LIST_DIR}!")  # ${CMAKE_SOURCE_DIR}/src/$LIB_NAME
 
-#  get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-  set(LIB_TARGET_NAME "Airspace")
-
-#  project(${LIB_TARGET_NAME} CXX) # Your project name
-
-# include(../../CMakeSource.cmake)
-# organize the files in subdirectories
 set(SOURCE_FILES )
 foreach(source_file ${${LIB_TARGET_NAME}_SOURCES})
     string(REPLACE "${LIB_TARGET_NAME}/" "" source_file ${source_file})
 #    list(APPEND SOURCE_FILES ${source_file})
-    if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/${LIB_TARGET_NAME}/${source_file})
-       list(APPEND SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/${LIB_TARGET_NAME}/${source_file})
+    if (EXISTS ${CMAKE_CURRENT_LIST_DIR}/${source_file})
+       list(APPEND SOURCE_FILES ${CMAKE_CURRENT_LIST_DIR}/${source_file})
     else()
         message(STATUS "+++ ${LIB_TARGET_NAME}/${source_file} don't exists!")
     endif()
@@ -47,6 +45,7 @@ include_directories(${SRC}/${LIB_TARGET_NAME})
 add_library(${LIB_TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SOURCE_FILES}
     ${HEADER_FILES}
+    ${CMAKE_CURRENT_LIST_DIR}/CMakeSource.cmake
     ${SCRIPT_FILES}
 )
 # message(FATAL_ERROR "Stop!")
@@ -55,3 +54,4 @@ set_target_properties(${LIB_TARGET_NAME} PROPERTIES FOLDER Libs)
 
 target_link_libraries(${LIB_TARGET_NAME} PUBLIC IO)
 
+endif()

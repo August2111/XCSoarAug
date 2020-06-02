@@ -32,10 +32,12 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
 )
+target_link_libraries(${LIB_TARGET_NAME} PUBLIC Screen Renderer)
+
 # message(FATAL_ERROR "Stop!")
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
 
-if (OFF)
-    add_dependencies(${TARGET_NAME} jasper zzip)   #XCSoar Dialogs)
+if (ON)
+    # add_dependencies(${TARGET_NAME} jasper zzip)   #XCSoar Dialogs)
 endif()
 

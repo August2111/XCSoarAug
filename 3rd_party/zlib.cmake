@@ -1,28 +1,28 @@
 # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB 
 cmake_minimum_required(VERSION 3.15)
 
-set(TARGET_NAME                                       zlib)
+set(LIB_TARGET_NAME                                       zlib)
 #==========================================================
-string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
-# get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
+string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
+# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
 
-# message(FATAL_ERROR "### TARGET_NAME = ${TARGET_NAME}")
+# message(FATAL_ERROR "### LIB_TARGET_NAME = ${LIB_TARGET_NAME}")
 # message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
 # ---------------------------------------------------------------------------
-option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${TARGET_NAME}?" OFF)
+option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)
 
 set(${TARGET_CNAME}_VERSION "1.2.11")
-set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
-set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
+set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 #-------------------
-set(INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 #-------------------
 if(NOT EXISTS "${INSTALL_DIR}")
     ExternalProject_Add(
-       ${TARGET_NAME}
+       ${LIB_TARGET_NAME}
        GIT_REPOSITORY "https://github.com/madler/zlib.git"
        GIT_TAG "v${${TARGET_CNAME}_VERSION}"
     

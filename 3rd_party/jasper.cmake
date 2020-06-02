@@ -1,33 +1,33 @@
 # JASPER # JASPER # JASPER # JASPER # JASPER # JASPER # JASPER # JASPER # JASPER # JASPER 
 cmake_minimum_required(VERSION 3.15)
 
-set(TARGET_NAME                                       jasper)
+set(LIB_TARGET_NAME                                       jasper)
 #============================================================
-string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
-# get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
+string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
+# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
 # string(LENGTH 15 ${TARGET_CNAME} TARGET_CNAME15)
 # message(STATUS "# ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} ")
 # ---------------------------------------------------------------------------
-option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${TARGET_NAME}?" OFF)
+option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)
 
 set(${TARGET_CNAME}_VERSION "2.0.16")
-set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
-set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
+set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 #-------------------
-set(INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 #-------------------
 if(NOT EXISTS "${INSTALL_DIR}")
     ExternalProject_Add(
-       ${TARGET_NAME}
+       ${LIB_TARGET_NAME}
        # URL "file://${THIRD_PARTY}/_Download/${XCSOAR_JASPER_VERSION}.tar.gz"
        GIT_REPOSITORY "https://github.com/mdadams/jasper.git"
        GIT_TAG "version-${${TARGET_CNAME}_VERSION}"           # git tag by jasper!
     
        PREFIX  "${${TARGET_CNAME}_PREFIX}"
        BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
-       INSTALL_DIR "${INSTALL_DIR}"   # "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
+       INSTALL_DIR "${INSTALL_DIR}"   # "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
     
        CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
            "-DCMAKE_INSTALL_BINDIR=bin/${TOOLCHAIN}"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"

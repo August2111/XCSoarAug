@@ -5,19 +5,19 @@ if (MSVC)  # in this moment not for MinGW enabled!!
 # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST
 cmake_minimum_required(VERSION 3.10)
 
-set(TARGET_NAME                                       boost)
+set(LIB_TARGET_NAME                                       boost)
 #==========================================================
-string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
-# get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
+string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
+# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 message(STATUS "# BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST ")
 
 # ---------------------------------------------------------------------------
-option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${TARGET_NAME}?" OFF)
+option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)
 
 set(${TARGET_CNAME}_VERSION "1.73.0")
-set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
-set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
+set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 
 if(MSVC)
 set(TOOLSET msvc)
@@ -28,24 +28,24 @@ set(TOOLSETNAME ${TOOLCHAIN})
 endif()
 
 
-# set(${TARGET_CNAME}_BUILD_CMD "cd ../../src/${TARGET_NAME} & .\\b2 -j4 toolset=${TOOLSET} variant=release link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
-# set(${TARGET_CNAME}_BUILD_CMD "cd ../../src/build & echo %CD% & ./b2 -j4 toolset=${TOOLSET} variant=release link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
-# set(${TARGET_CNAME}_BUILD_CMD "cd ../../src/build & echo %CD% & ./b2 -j4 toolset=${TOOLSET} link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
-set(${TARGET_CNAME}_BUILD_CMD "./b2 -j4 toolset=${TOOLSET} link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
+# set(${TARGET_CNAME}_BUILD_CMD "cd ../../src/${LIB_TARGET_NAME} & .\\b2 -j4 toolset=${TOOLSET} variant=release link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${LIB_TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
+# set(${TARGET_CNAME}_BUILD_CMD "cd ../../src/build & echo %CD% & ./b2 -j4 toolset=${TOOLSET} variant=release link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${LIB_TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
+# set(${TARGET_CNAME}_BUILD_CMD "cd ../../src/build & echo %CD% & ./b2 -j4 toolset=${TOOLSET} link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${LIB_TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
+set(${TARGET_CNAME}_BUILD_CMD "./b2 -j4 toolset=${TOOLSET} link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${LIB_TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install")
 
 
-set(INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 #-------------------
 if(NOT EXISTS "${INSTALL_DIR}")
 
 ## b2 -j4 toolset=msvc link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=D:/link_libs/boost/boost-1.73.0 --build-dir=D:/Projects/3rd_Party/boost/build/msvc2019 --with-chrono --with-system --with-filesystem --with-headers --with-regex --with-date_time  --includedir=D:/link_libs/boost/boost-1.73.0/include --libdir=D:/link_libs/boost/boost-1.73.0/lib/msvc2019 install
-message(STATUS "### ${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${TARGET_NAME}")
+message(STATUS "### ${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${LIB_TARGET_NAME}")
 message(STATUS "### ${${TARGET_CNAME}_BUILD_CMD}")
 
 
 #-------------------
 ExternalProject_Add(
-   ${TARGET_NAME}
+   ${LIB_TARGET_NAME}
    GIT_REPOSITORY        "https://github.com/boostorg/boost.git"
    GIT_TAG               "${XCSOAR_${TARGET_CNAME}_VERSION}"
 
@@ -54,13 +54,13 @@ ExternalProject_Add(
    INSTALL_DIR           "${INSTALL_DIR}"
 
    # PATCH_COMMAND         "bootstrap"
-   CONFIGURE_COMMAND     bootstrap     ##  "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${TARGET_NAME}/TestOutput.cmd"
+   CONFIGURE_COMMAND     bootstrap     ##  "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${LIB_TARGET_NAME}/TestOutput.cmd"
 
    # BUILD_COMMAND ${CMAKE_COMMAND} -E echo "Starting $<CONFIG> build"
-   # COMMAND       "cd ../../src/${TARGET_NAME} & b2.exe -j4 toolset=${TOOLSET} variant=release link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install"
+   # COMMAND       "cd ../../src/${LIB_TARGET_NAME} & b2.exe -j4 toolset=${TOOLSET} variant=release link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${LIB_TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install"
    # BUILD_COMMAND         
-   # CONFIGURE_COMMAND     "../../src/${TARGET_NAME}/TestOutput.cmd ${TARGET_NAME} ${TOOLSET} ${TOOLSETNAME} ${XCSOAR_${TARGET_CNAME}_VERSION}"
-#  BUILD_COMMAND "cd ../../src/${TARGET_NAME} & b2.exe -j4 toolset=${TOOLSET} variant=release link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install"
+   # CONFIGURE_COMMAND     "../../src/${LIB_TARGET_NAME}/TestOutput.cmd ${LIB_TARGET_NAME} ${TOOLSET} ${TOOLSETNAME} ${XCSOAR_${TARGET_CNAME}_VERSION}"
+#  BUILD_COMMAND "cd ../../src/${LIB_TARGET_NAME} & b2.exe -j4 toolset=${TOOLSET} variant=release link=static runtime-link=shared threading=multi address-model=64 --layout=versioned --prefix=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION} --build-dir=D:/Projects/3rd_Party/${LIB_TARGET_NAME}/build/${TOOLSETNAME} --with-chrono --with-system --with-filesystem --with-headers --with-date_time  --includedir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/include --libdir=${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/lib/${TOOLSETNAME} install"
    BUILD_COMMAND "${${TARGET_CNAME}_BUILD_CMD}"
 
 ##     CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
@@ -69,9 +69,11 @@ ExternalProject_Add(
     # BUILD_ALWAYS ${EP_BUILD_ALWAYS}
 #    BUILD_ALWAYS ON
     BUILD_IN_SOURCE ON  ## ${EP_BUILD_IN_SOURCE}
-    # WORKING_DIRECTORY ${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${TARGET_NAME}  # = src_dir!
+    # WORKING_DIRECTORY ${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}/src/${LIB_TARGET_NAME}  # = src_dir!
 )
 #===========================================
+set_target_properties(${LIB_TARGET_NAME} PROPERTIES FOLDER External)
+
 endif()
 
 endif(MSVC)

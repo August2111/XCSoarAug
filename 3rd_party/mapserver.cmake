@@ -1,19 +1,19 @@
 #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER #  MAPSERVER 
 cmake_minimum_required(VERSION 3.15)
 
-set(TARGET_NAME                                  mapserver)
+set(LIB_TARGET_NAME                                  mapserver)
 #==========================================================
-string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
-# get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
+string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
+# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
 # string(LENGTH 15 ${TARGET_CNAME} TARGET_CNAME15)
 # message(STATUS "# ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} ")
 
   set(${TARGET_CNAME}_VERSION "xcsoar")  # gdraheim
 
-  set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
-  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
+  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   set(${TARGET_CNAME}_FILE "${THIRD_PARTY}/mapserver/mapserver-xcsoar.zip")
   if (UNIX)  # only temporarily
       set(${TARGET_CNAME}_FILE "/home/august/Projects/Gliding/Download/mapserver-xcsoar.7z")
@@ -24,15 +24,15 @@ message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET
      set(${TARGET_CNAME}_URL "http://www.FlapsOnline.de/XCSoarAug/mapserver-xcsoar.zip")
 #  if (EXIST      "${${TARGET_CNAME}_URL}")
   # ------------------
-set(INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 #-------------------
 if(NOT EXISTS "${INSTALL_DIR}")
     ExternalProject_Add(
-       ${TARGET_NAME}
+       ${LIB_TARGET_NAME}
        URL "${${TARGET_CNAME}_URL}"
        PREFIX  "${${TARGET_CNAME}_PREFIX}"
        BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
-       INSTALL_DIR "${INSTALL_DIR}"      # "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
+       INSTALL_DIR "${INSTALL_DIR}"      # "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
        CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
          "-DCMAKE_INSTALL_LIBDIR=lib/${TOOLCHAIN}"  # :PATH=<INSTALL_DIR>/lib/${TOOLCHAIN}"
          "-DCMAKE_INSTALL_INCLUDEDIR=include"  #  :PATH=<INSTALL_DIR>/bin/${TOOLCHAIN}"

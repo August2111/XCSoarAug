@@ -47,5 +47,5 @@ set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
 
 target_link_libraries(${TARGET_NAME} PUBLIC Airspace Form)
 
-# add_dependencies(${TARGET_NAME} Form)
+add_dependencies(${TARGET_NAME} Form)
 

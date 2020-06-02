@@ -1,20 +1,20 @@
 set(TARGET_STRING "# ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP          ")
 cmake_minimum_required(VERSION 3.15)
 
-set(TARGET_NAME                                       zzip)
+set(LIB_TARGET_NAME                                       zzip)
 #==========================================================
-string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
-# get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
+string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
+# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 # message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
 message(STATUS "${TARGET_STRING}")
 
 set(ZLIB_DIR ${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION})
 
 # ---------------------------------------------------------------------------
-option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${TARGET_NAME}?" OFF)
+option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)
 option(USE_DRAHEIM "Should we use the draheim (or the BBDE) system?" OFF)
 
-set(INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 #-------------------
 if(NOT EXISTS "${INSTALL_DIR}")
 
@@ -22,13 +22,13 @@ if (OFF)   # USE_DRAHEIM)
   # Diese github-Version
   set(${TARGET_CNAME}_VERSION "0.13.70")  # gdraheim
 
-  set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
-  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
+  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   set(CONFIGURE_COMMAND "PATH=%PATH%;D:\\Programs\\msys\\msys1.0.11\\bin")
   # ------------------
     ExternalProject_Add(
-       ${TARGET_NAME}
+       ${LIB_TARGET_NAME}
        GIT_REPOSITORY "https://github.com/gdraheim/zziplib.git"
        GIT_TAG "v${${TARGET_CNAME}_VERSION}"
     
@@ -50,11 +50,11 @@ if (OFF)   # USE_DRAHEIM)
 elseif(USE_DDEBIN)
   set(${TARGET_CNAME}_VERSION "0.36c")    # ddebin
   
-  set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
-  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
+  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   ExternalProject_Add(
-     ${TARGET_NAME}
+     ${LIB_TARGET_NAME}
      GIT_REPOSITORY "https://github.com/ddebin/zzip.git"
      GIT_TAG "${${TARGET_CNAME}_VERSION}"
   
@@ -78,16 +78,16 @@ else()
 
   set(${TARGET_CNAME}_VERSION "xcsoar")    # ddebin
   
-  set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
-  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
+  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
   set(${TARGET_CNAME}_FILE "${THIRD_PARTY}/zzip/zzip-xcsoar.zip")
 #  if(EXISTS      "${${TARGET_CNAME}_FILE}")
 #     set(${TARGET_CNAME}_URL "file://${${TARGET_CNAME}_FILE}")
   if(ON)
      set(${TARGET_CNAME}_URL "http://www.FlapsOnline.de/XCSoarAug/zzip-xcsoar.zip")
   ExternalProject_Add(
-     ${TARGET_NAME}
+     ${LIB_TARGET_NAME}
      URL "${${TARGET_CNAME}_URL}"
      PREFIX  "${${TARGET_CNAME}_PREFIX}"
      BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"

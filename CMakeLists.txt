@@ -451,7 +451,7 @@ set(SOURCE_FILES )
 
 # message(FATAL_ERROR "Test-Stop!")
 
-#    add_subdirectory(src/Airspace)
+    add_subdirectory(src/Airspace)
     add_subdirectory(src/Atmosphere)
     add_subdirectory(src/Audio)
     add_subdirectory(src/Blackboard)

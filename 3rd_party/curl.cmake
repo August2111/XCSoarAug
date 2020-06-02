@@ -1,37 +1,37 @@
 # CURL # CURL # CURL # CURL # CURL # CURL # CURL # CURL # CURL # CURL 
 cmake_minimum_required(VERSION 3.15)
 
-set(TARGET_NAME                                       curl)
+set(LIB_TARGET_NAME                                       curl)
 #==========================================================
-string(TOUPPER ${TARGET_NAME} TARGET_CNAME)
-# get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
+string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
+# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
 
 set(ZLIB_DIR ${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION})
 
 # ---------------------------------------------------------------------------
-### option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${TARGET_NAME}?" OFF)
+### option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)
 ### option(USE_DRAHEIM "Should we use the draheim (or the BBDE) system?" OFF)
 
 #  set(${TARGET_CNAME}_VERSION "7.68.0")
   set(${TARGET_CNAME}_VERSION "7.69.1")
-  string(REPLACE "." "_" GIT_TAG ${TARGET_NAME}-${${TARGET_CNAME}_VERSION})
+  string(REPLACE "." "_" GIT_TAG ${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION})
   # message(FATAL_ERROR "### GIT_TAG = ${GIT_TAG}")
-  set(XCSOAR_${TARGET_CNAME}_VERSION "${TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
-  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
-  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
+  set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+  set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 
 
-set(INSTALL_DIR "${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+set(INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 #-------------------
 if(NOT EXISTS "${INSTALL_DIR}")
   ExternalProject_Add(
-     ${TARGET_NAME}
+     ${LIB_TARGET_NAME}
    GIT_REPOSITORY "https://github.com/curl/curl.git"
    GIT_TAG  ${GIT_TAG}
      PREFIX  "${${TARGET_CNAME}_PREFIX}"
      BINARY_DIR    "${${TARGET_CNAME}_PREFIX}/build/${TOOLCHAIN}"
-     INSTALL_DIR "${INSTALL_DIR}"  # ${LINK_LIBS}/${TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
+     INSTALL_DIR "${INSTALL_DIR}"  # ${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}"
      # PATCH_COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/CURL_CMakeLists.txt.in" <SOURCE_DIR>/CMakeLists.txt
      CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
          "-DCMAKE_INSTALL_BINDIR=bin/${TOOLCHAIN}"
