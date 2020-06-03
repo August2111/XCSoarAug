@@ -2,15 +2,17 @@
 cmake_minimum_required(VERSION 3.15)
 message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
-  get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
+  get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 
-  project(${LIB_TARGET_NAME} CXX) # Your project name
+#  project(${TARGET_NAME} CXX) # Your project name
 
 # include(../../CMakeSource.cmake)
 # organize the files in subdirectories
+include(CMakeSource.cmake)
 set(SOURCE_FILES )
-foreach(source_file ${${LIB_TARGET_NAME}_SOURCES})
-    string(REPLACE "${LIB_TARGET_NAME}/" "" source_file ${source_file})
+# foreach(source_file ${${TARGET_NAME}_SOURCES})
+foreach(source_file ${_SOURCES})
+    string(REPLACE "${TARGET_NAME}/" "" source_file ${source_file})
     list(APPEND SOURCE_FILES ${source_file})
     get_filename_component(src_path ${source_file} DIRECTORY)
     if (src_path)
@@ -24,10 +26,13 @@ endforeach()
 include_directories(${CMAKE_SOURCE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/Engine)
 
-add_library(${LIB_TARGET_NAME} ${XCSOAR_LIB_TYPE}
+add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
 )
+
+target_link_libraries(${TARGET_NAME} PUBLIC IO Engine)
+
 # message(FATAL_ERROR "Stop!")
-set_target_properties(${LIB_TARGET_NAME} PROPERTIES FOLDER Libs)
+set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)

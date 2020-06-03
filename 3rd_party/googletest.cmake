@@ -1,11 +1,10 @@
-set(DISPLY_STRING "# GTEST          # GTEST          # GTEST          # GTEST          # GTEST          # GTEST          # GTEST          # GTEST          # GTEST          # GTEST")
+set(DISPLAY_STRING "# GTEST          # GTEST          # GTEST          # GTEST          # GTEST")
+message(STATUS "${DISPLAY_STRING}")
 cmake_minimum_required(VERSION 3.15)
 
 set(LIB_TARGET_NAME googletest)
 #==========================================================
 string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
-# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-message(STATUS "${DISPLY_STRING}")
 
 # ---------------------------------------------------------------------------
 option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)

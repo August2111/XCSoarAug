@@ -4,11 +4,9 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 
-  project(${TARGET_NAME} CXX) # Your project name
-
 # include(../../CMakeSource.cmake)
 # organize the files in subdirectories
-
+file(GLOB_RECURSE SCRIPT_FILES *.txt *.cmake)
 
 set(SOURCE_FILES )
 foreach(source_file ${${TARGET_NAME}_SOURCES})
@@ -22,6 +20,8 @@ foreach(source_file ${${TARGET_NAME}_SOURCES})
     # message(STATUS "### ${src_path}  --- ${source_file}")
 endforeach()
 
+source_group("Scripts" FILES  ${SCRIPT_FILES})
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
@@ -29,6 +29,7 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
 )
+target_link_libraries(${TARGET_NAME} PUBLIC IGC Form Airspace)
+
 # message(FATAL_ERROR "Stop!")
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
-target_link_libraries(${TARGET_NAME} PUBLIC Airspace)

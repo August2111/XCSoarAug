@@ -4,8 +4,6 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 
-  project(${TARGET_NAME} C CXX) # Your project name
-
 # include(../../CMakeSource.cmake)
 # organize the files in subdirectories
 set(SOURCE_FILES )
@@ -34,6 +32,7 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SCRIPT_FILES}
     ${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c
 )
+target_link_libraries(${TARGET_NAME} PUBLIC Task OS)
 
 # target_link_libraries( ${TARGET_NAME}
 #     UTF8

@@ -32,7 +32,14 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
 )
-target_link_libraries(${LIB_TARGET_NAME} PUBLIC Screen Renderer)
+target_link_libraries(${TARGET_NAME} PUBLIC
+    IO
+    Screen
+    Renderer
+    ${ZZIP_LIB}
+    ${JASPER_LIB}
+    # "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
+)
 
 # message(FATAL_ERROR "Stop!")
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)

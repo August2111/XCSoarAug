@@ -4,8 +4,6 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 
-  project(${TARGET_NAME} CXX) # Your project name
-
 # include(../../CMakeSource.cmake)
 # organize the files in subdirectories
 set(SOURCE_FILES )
@@ -30,13 +28,21 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
 # message(FATAL_ERROR "Stop!")
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
 
+
+
 target_link_libraries(${TARGET_NAME} PUBLIC
-  Form 
+  Form
   libXCSoar
   Blackboard
   UIUtil
   Dialogs
+  ${LIBPNG_LIB}
+  ${ZZIP_LIB}
+
     # "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
     # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libpng16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
     # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
 )
+if(NOT EXISTS ${LIBPNG_LIB})
+  message(FATAL_ERROR "### LIBPNG_LIB = '${LIBPNG_LIB}' not found!")
+endif()

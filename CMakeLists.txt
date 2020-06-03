@@ -26,8 +26,6 @@ set(ENABLE_OPENGL OFF)  # better outside????
   get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
   # set(TARGET_NAME XCSoarAugMinGW)
 
-  project(${TARGET_NAME} C CXX) # Your project name
-
 # # # if (WIN32)
 # # # if (${TOOLCHAIN} STREQUAL "ninja")
 # # #   message(STATUS "Ninja!")
@@ -232,25 +230,34 @@ endif()
     include_directories("    ${PROJECTGROUP_SOURCE_DIR}/src/IO")   # Util")  # nr wegen Logfile!
 
 # 3rd Party !!!!
-# # # if(NOT CMAKE_EXTERNALS_INCLUDE)
-   add_subdirectory(3rd_party)
-# # # endif()
+
+#    set(THIRDPARTY_INCLUDES)
+    add_subdirectory(3rd_party)
+    message(STATUS "### THIRDPARTY_INCLUDES = '${THIRDPARTY_INCLUDES}'")
 
 # ALLE: ?
 # internal Project
 #      include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # internal lib
 
+# TODO(aug): Cleaning up this code!!!
 # external Projects
-      include_directories("${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/include")
-      include_directories("${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/include")
-      include_directories("${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/include")
-      include_directories("${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include") # for external
-      include_directories("${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include") # for external
-      include_directories("${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/include")
+      include_directories(
+        #    "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/include"
+        #    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/include"
+        #    "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/include"
+        #    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include"
+        #    "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/include"
+        #    "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/include"
+         ${LUA_INCLUDE_DIR}
+         ${CURL_INCLUDE_DIR}
+         ${JASPER_INCLUDE_DIR}
+         ${MAPSERVER_INCLUDE_DIR}
+         ${ZLIB_INCLUDE_DIR}
+         ${ZZIP_INCLUDE_DIR}
+         ${LIBPNG_INCLUDE_DIR}
+      )
 
-# message(FATAL_ERROR "include_directories(${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/include)")
-
-      include_directories("${LINK_LIBS}/libpng/libpng-1.6.37/include")  # neu am 27.03 wg. einbinden der PNG-Bilder aus der Resource
+#      include_directories("${LINK_LIBS}/libpng/libpng-1.6.37/include")  # neu am 27.03 wg. einbinden der PNG-Bilder aus der Resource
 #      include_directories("${THIRD_PARTY}/glut/glut-3.7/include")  # neu am 27.03
 
 #####################################################################################
@@ -297,6 +304,8 @@ endif()
 
 #####################################################################################
 #####################################################################################
+
+# TODO(aug): Move this to 3rd_party/boost.cmake!!!
 
 if(NOT Boost_DIR)
 # if ($ENV{COMPUTERNAME} MATCHES "PCDERAD0781")
@@ -350,102 +359,6 @@ include_directories(
     ${THIRD_PARTY}/glfw/glfw-3.3.2.bin.WIN64/include
     ${LINK_LIBS}/glm/glm-0.9.9/include
 )
-
-# 2020-06-02: list(APPEND XCSOAR_SOURCE_LISTS
-# 2020-06-02:     Profile  # profile.a
-# 2020-06-02:     Terrain   # libterrain.a
-# 2020-06-02:     Widget    # libwidget.a
-# 2020-06-02:     Form      # form.a
-# 2020-06-02:     # AR      output/UNIX/dbg/datafield.a
-# 2020-06-02:     Look      # liblook.a
-# 2020-06-02:     Screen    # screen.a
-# 2020-06-02:     Event     # libevent.a
-# 2020-06-02:     # AR      output/UNIX/dbg/libresource.a
-# 2020-06-02:     # AR      output/UNIX/dbg/resources.a
-# 2020-06-02:     # AR      output/UNIX/dbg/libdata.a
-# 2020-06-02:     # AR      output/UNIX/dbg/driver.a
-# 2020-06-02:     # AR      output/UNIX/dbg/port.a
-# 2020-06-02:     IO        # io.a
-# 2020-06-02:     # AR      output/UNIX/dbg/async.a
-# 2020-06-02:     Task  # libtask
-# 2020-06-02:     # AR      output/UNIX/dbg/libcontest.a
-# 2020-06-02:     # AR      output/UNIX/dbg/libroute.a
-# 2020-06-02:     # AR      output/UNIX/dbg/libglide.a
-# 2020-06-02:     # AR      output/UNIX/dbg/libwaypoint.a
-# 2020-06-02:     Airspace  # AR      output/UNIX/dbg/libairspace.a
-# 2020-06-02:     Net     
-# 2020-06-02:     Time    
-# 2020-06-02:     OS      
-# 2020-06-02:     Thread  
-# 2020-06-02:     Util    
-# 2020-06-02:     Geo     
-# 2020-06-02:     Math    
-# 2020-06-02: 
-# 2020-06-02: 
-# 2020-06-02:     Computer
-# 2020-06-02:     CrossSection
-# 2020-06-02:     Gauge
-# 2020-06-02: 
-# 2020-06-02:     # Airspace
-# 2020-06-02:     Atmosphere
-# 2020-06-02:     Audio
-# 2020-06-02:     Blackboard
-# 2020-06-02:     # Computer
-# 2020-06-02:     # CrossSection
-# 2020-06-02:     Dialogs
-# 2020-06-02:     Engine
-# 2020-06-02:     # Event
-# 2020-06-02:     FLARM
-# 2020-06-02:     # Form
-# 2020-06-02:     Formatter
-# 2020-06-02:     # Gauge
-# 2020-06-02:     # Geo
-# 2020-06-02:     Hardware
-# 2020-06-02:     IGC
-# 2020-06-02:     InfoBoxes
-# 2020-06-02:     Input
-# 2020-06-02:     Job
-# 2020-06-02:     Language
-# 2020-06-02:     Logger
-# 2020-06-02:     # Look
-# 2020-06-02:     xcsLua
-# 2020-06-02:     #  lua1
-# 2020-06-02:     Markers
-# 2020-06-02:     # Math
-# 2020-06-02:     Menu
-# 2020-06-02:     Monitor
-# 2020-06-02:     # Net
-# 2020-06-02:     NMEA
-# 2020-06-02:     Operation
-# 2020-06-02:     # OS
-# 2020-06-02:     Plane
-# 2020-06-02:     Polar
-# 2020-06-02:     # Profile
-# 2020-06-02:     Projection
-# 2020-06-02:     Renderer
-# 2020-06-02:     Replay
-# 2020-06-02:     Repository
-# 2020-06-02:     # Screen
-# 2020-06-02:     # Task
-# 2020-06-02:     TeamCode
-# 2020-06-02:     # Terrain
-# 2020-06-02:     # Thread
-# 2020-06-02:     # Time
-# 2020-06-02:     Topography
-# 2020-06-02:     UIUtil
-# 2020-06-02:     Units
-# 2020-06-02:     # Util
-# 2020-06-02:     Waypoint
-# 2020-06-02:     Weather
-# 2020-06-02:     # Widget
-# 2020-06-02:     XML
-# 2020-06-02: 
-# 2020-06-02:     Device
-# 2020-06-02:     Dialogs
-# 2020-06-02:     # IO
-# 2020-06-02:     MapWindow
-# 2020-06-02:     Tracking
-# 2020-06-02: )
 
 set(SOURCE_FILES )
 
@@ -553,69 +466,27 @@ endif()
 
   list(APPEND SOURCE_FILES "CMakeSource.cmake")
 
-# foreach(cpp_file ${Math_SOURCES})
-#   list(APPEND SOURCE_FILES  src/${cpp_file})
-# endforeach()
-
-  #==========================================================
-  #==========================================================
-# set(XCSOAR_LINK_LIBRARIES)  # -> empty
+#==========================================================
+#==========================================================
 
 # preparing target_link_libraries!
 
-    list(APPEND XCSOAR_LINK_LIBRARIES
-        libXCSoar
-        ${XCSOAR_SOURCE_LISTS}
-    )
+list(APPEND XCSOAR_LINK_LIBRARIES  libXCSoar     ${XCSOAR_SOURCE_LISTS})
 
-list(APPEND XCSOAR_LINK_LIBRARIES
-    ${Boost_LIBRARIES}
-)
+# TODO(aug): Cleaning up this code!!!
 
 # External Libs
-if (MSVC)
 list(APPEND XCSOAR_LINK_LIBRARIES
-   "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}lua.${LIB_EXTENSION}"
-   "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}jasper.${LIB_EXTENSION}"
-#   "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}curlstatic.${LIB_EXTENSION}"
-   "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libcurl.${LIB_EXTENSION}"
-#     libcurl
-# 7.69.1:    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/libcurl.${LIB_EXTENSION}"
-    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
-   "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
-    "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}mapserver.${LIB_EXTENSION}"
-    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}libpng16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
-)
-elseif(MINGW)
-###  message(FATAL_ERROR "Ich bin in MinGW!")
-list(APPEND XCSOAR_LINK_LIBRARIES
-   "${LINK_LIBS}/lua/${XCSOAR_LUA_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}lua.${LIB_EXTENSION}"
-#    "${LINK_LIBS}/jasper/JasPer-2.0.14/lib/${TOOLCHAIN}/jasperstatic.${LIB_EXTENSION}"
-    "${LINK_LIBS}/jasper/${XCSOAR_JASPER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}jasper.${LIB_EXTENSION}"  # now with dll only...
-    "${LINK_LIBS}/curl/${XCSOAR_CURL_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}curl.${LIB_EXTENSION}"
-   # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
-    "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
-    # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16_static.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
-)
-    if(${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Windows")     #WIN32)  # MinGW at Windows
-      list(APPEND XCSOAR_LINK_LIBRARIES
-            "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
-      )
-    else()
-      # elseif(UNIX)  # MinGW at Linux
-      list(APPEND XCSOAR_LINK_LIBRARIES
-            # message(FATAL_ERROR "Ich bin in MinGW/UNIX!")
-            "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}z.${LIB_EXTENSION}"
-      )
-    endif()
-    list(APPEND XCSOAR_LINK_LIBRARIES
+   ${LUA_LIB}
+   ${JASPER_LIB}
+   ${CURL_LIB}
+   ${MAPSERVER_LIB}
+   ${LIBPNG_LIB}
+   ${ZZIP_LIB}
+   ${ZLIB_LIB}
 
-#    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlib.dll.${LIB_EXTENSION}"  # now with dll only...
-   "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
-    "${LINK_LIBS}/mapserver/${XCSOAR_MAPSERVER_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}mapserver.${LIB_EXTENSION}"
+   ${Boost_LIBRARIES}
 )
-else()
-endif()
 
 if (WIN32)  # Windows only:
     if (MSVC)

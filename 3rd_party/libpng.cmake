@@ -1,10 +1,10 @@
-# LIBPNG # LIBPNG # LIBPNG # LIBPNG # LIBPNG # LIBPNG # LIBPNG # LIBPNG # LIBPNG # LIBPNG 
+set(DISPLAY_STRING "# LIBPNG         # LIBPNG         # LIBPNG         # LIBPNG         # LIBPNG")
+message(STATUS "${DISPLAY_STRING}")
 cmake_minimum_required(VERSION 3.15)
 # get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
 set(LIB_TARGET_NAME                                 libpng)
 #===================================================
 string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
-message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
 
 # ---------------------------------------------------------------------------
 option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)
@@ -39,11 +39,11 @@ if(NOT EXISTS "${INSTALL_DIR}")
        CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>"
            "-DCMAKE_INSTALL_LIBDIR=lib/${TOOLCHAIN}"
            "-DCMAKE_INSTALL_INCLUDEDIR=include"
-    
+
              "-DZLIB_INCLUDE_DIR=${ZLIB_DIR}/include"
              "-DZLIB_LIBRARY_DEBUG=${ZLIB_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstaticd.${LIB_EXTENSION}"
              "-DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
-    
+
              "-DPNG_SHARED=OFF"
              "-DPNG_STATIC=ON"
              "-DPNG_TEST=OFF"
@@ -53,3 +53,19 @@ if(NOT EXISTS "${INSTALL_DIR}")
        DEPENDS zlib
     )
 endif()
+
+if (MSVC)  # unfortunately the lib name is a little bit 'tricky' at libPng..
+  set(LIB_NAME libpng16_static)
+else()
+  set(LIB_NAME libpng16)
+endif()
+
+set(${TARGET_CNAME}_LIB  "${INSTALL_DIR}/lib/${TOOLCHAIN}/${LIB_NAME}.${LIB_EXTENSION}")
+
+set(${TARGET_CNAME}_INCLUDE_DIR  "${INSTALL_DIR}/include")
+# PARENT_SCOPE only available in Parent, not here...
+set(${TARGET_CNAME}_LIB  ${${TARGET_CNAME}_LIB} PARENT_SCOPE)
+set(${TARGET_CNAME}_INCLUDE_DIR  ${${TARGET_CNAME}_INCLUDE_DIR} PARENT_SCOPE)
+
+set(THIRDPARTY_INCLUDES ${THIRDPARTY_INCLUDES} ${${TARGET_CNAME}_INCLUDE_DIR})
+

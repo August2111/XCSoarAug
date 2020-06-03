@@ -1,4 +1,5 @@
-set(TARGET_STRING  "# XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     ")
+set(DISPLAY_STRING "# XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER     # XML-PARSER")
+message(STATUS "${DISPLAY_STRING}")
 cmake_minimum_required(VERSION 3.15)
 
 if (OFF)
@@ -6,10 +7,6 @@ if (OFF)
 set(LIB_TARGET_NAME  xmlparser)
 #==========================================================
 string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
-# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-string(LENGTH 15 ${TARGET_CNAME} TARGET_CNAME15)
-# message(STATUS "# ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} # ${TARGET_CNAME15} ")
-message(STATUS "${TARGET_STRING}")
 
 # ---------------------------------------------------------------------------
 option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)

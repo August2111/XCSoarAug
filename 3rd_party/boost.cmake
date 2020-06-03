@@ -1,15 +1,11 @@
-# if (ON)  # MSVC)  # in this moment not for MinGW enabled!!
-if (MSVC)  # in this moment not for MinGW enabled!!
-#===========================================
+set(DISPLAY_STRING "# BOOST          # BOOST          # BOOST          # BOOST          # BOOST")
+message(STATUS "${DISPLAY_STRING}")
 
-# BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST
 cmake_minimum_required(VERSION 3.10)
 
 set(LIB_TARGET_NAME                                       boost)
 #==========================================================
 string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
-# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-message(STATUS "# BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST          # BOOST ")
 
 # ---------------------------------------------------------------------------
 option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)
@@ -20,11 +16,11 @@ set(${TARGET_CNAME}_INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARG
 set(${TARGET_CNAME}_PREFIX "${EP_CMAKE}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
 
 if(MSVC)
-set(TOOLSET msvc)
-set(TOOLSETNAME msvc2019)
+    set(TOOLSET msvc)
+    set(TOOLSETNAME msvc2019)
 else()
-set(TOOLSET gcc)
-set(TOOLSETNAME ${TOOLCHAIN})
+    set(TOOLSET gcc)
+    set(TOOLSETNAME ${TOOLCHAIN})
 endif()
 
 
@@ -35,6 +31,10 @@ set(${TARGET_CNAME}_BUILD_CMD "./b2 -j4 toolset=${TOOLSET} link=static runtime-l
 
 
 set(INSTALL_DIR "${LINK_LIBS}/${LIB_TARGET_NAME}/${XCSOAR_${TARGET_CNAME}_VERSION}")
+
+# if (ON)  # MSVC)  # in this moment not for MinGW enabled!!
+if (MSVC)  # in this moment not for MinGW enabled!!
+#===========================================
 #-------------------
 if(NOT EXISTS "${INSTALL_DIR}")
 
@@ -77,3 +77,11 @@ set_target_properties(${LIB_TARGET_NAME} PROPERTIES FOLDER External)
 endif()
 
 endif(MSVC)
+set(${TARGET_CNAME}_LIB  "${INSTALL_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}${LIB_TARGET_NAME}.${LIB_EXTENSION}")
+set(${TARGET_CNAME}_INCLUDE_DIR  "${INSTALL_DIR}/include")
+# PARENT_SCOPE only available in Parent, not here...
+set(${TARGET_CNAME}_LIB  ${${TARGET_CNAME}_LIB} PARENT_SCOPE)
+set(${TARGET_CNAME}_INCLUDE_DIR  ${${TARGET_CNAME}_INCLUDE_DIR} PARENT_SCOPE)
+
+set(THIRDPARTY_INCLUDES ${THIRDPARTY_INCLUDES} ${${TARGET_CNAME}_INCLUDE_DIR})
+

@@ -1,15 +1,10 @@
-# ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB # ZLIB 
+set(DISPLAY_STRING "# ZLIB           # ZLIB           # ZLIB           # ZLIB           # ZLIB ")
+message(STATUS "${DISPLAY_STRING}")
 cmake_minimum_required(VERSION 3.15)
 
 set(LIB_TARGET_NAME                                       zlib)
 #==========================================================
 string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
-# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
-
-# message(FATAL_ERROR "### LIB_TARGET_NAME = ${LIB_TARGET_NAME}")
-# message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
-
 # ---------------------------------------------------------------------------
 option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${LIB_TARGET_NAME}?" OFF)
 
@@ -38,4 +33,18 @@ if(NOT EXISTS "${INSTALL_DIR}")
         BUILD_IN_SOURCE ${EP_BUILD_IN_SOURCE}
     )
 endif()
+
+if(${CMAKE_HOST_SYSTEM_NAME} STREQUAL "Windows")
+  set(LIB_NAME ${PRE_LIB}zlibstatic)
+else()
+  set(LIB_NAME ${PRE_LIB}z)
+endif()
+
+set(${TARGET_CNAME}_LIB  "${INSTALL_DIR}/lib/${TOOLCHAIN}/${LIB_NAME}.${LIB_EXTENSION}")
+set(${TARGET_CNAME}_INCLUDE_DIR  "${INSTALL_DIR}/include")
+# PARENT_SCOPE only available in Parent, not here...
+set(${TARGET_CNAME}_LIB  ${${TARGET_CNAME}_LIB} PARENT_SCOPE)
+set(${TARGET_CNAME}_INCLUDE_DIR  ${${TARGET_CNAME}_INCLUDE_DIR} PARENT_SCOPE)
+
+set(THIRDPARTY_INCLUDES ${THIRDPARTY_INCLUDES} ${${TARGET_CNAME}_INCLUDE_DIR})
 

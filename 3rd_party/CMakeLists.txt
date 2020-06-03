@@ -1,4 +1,4 @@
-if (OFF)
+if (ON)
   # 3rd-Party # 3rd-Party # 3rd-Party # 3rd-Party # 3rd-Party # 3rd-Party # 3rd-Party # 3rd-Party # 3rd-Party # 3rd-Party 
   cmake_minimum_required(VERSION 3.15)
   
@@ -10,7 +10,9 @@ if (OFF)
   option(USE_SYSTEM_${TARGET_CNAME} "Should we use the system ${TARGET_NAME}?" OFF)
   option(EP_BUILD_ALWAYS "Build 3rd party packages always?" OFF)
   option(EP_BUILD_IN_SOURCE "Build 3rd party in sources (Recommended: OFF)?" OFF)
-  
+
+file(GLOB_RECURSE SCRIPT_FILES *.txt *.cmake *.in)
+
   include(zlib.cmake)
   include(lua.cmake)
   include(jasper.cmake)
@@ -24,4 +26,15 @@ if (OFF)
   # include(Qt5.cmake)
   # include(googlmock.cmake)
   # noch nicht! include(boost.cmake)
+  set(THIRDPARTY_INCLUDES ${THIRDPARTY_INCLUDES} PARENT_SCOPE)
+
+
+source_group("Scripts" FILES  ${SCRIPT_FILES})
+
+add_custom_target(ThirdParty
+    EXCLUDE_FROM_ALL
+    SOURCES
+    ${SCRIPT_FILES}
+)
+
 endif()

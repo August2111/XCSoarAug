@@ -6,8 +6,6 @@ message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
   get_filename_component(PUR_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
   set(TARGET_NAME "xcs${PUR_TARGET_NAME}")
 
-  project(${TARGET_NAME} CXX) # Your project name
-
 # organize the files in subdirectories
 set(SOURCE_FILES )
 foreach(source_file ${${PUR_TARGET_NAME}_SOURCES})

@@ -87,7 +87,7 @@ ReadWorldFile(struct zzip_dir *dir, const char *path, WorldFileData &data)
 try {
   ZipLineReaderA reader(dir, path);
   return ReadWorldFile(reader, data);
-} catch (const std::runtime_error &e) {
+} catch (const std::runtime_error &/* ex */) {
   return false;
 }
 

@@ -1,12 +1,10 @@
-set(TARGET_STRING "# ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP           # ZZIP          ")
+set(DISPLAY_STRING "# ZLIB           # ZLIB           # ZLIB           # ZLIB           # ZLIB ")
+message(STATUS "${DISPLAY_STRING}")
 cmake_minimum_required(VERSION 3.15)
 
 set(LIB_TARGET_NAME                                       zzip)
 #==========================================================
 string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
-# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-# message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
-message(STATUS "${TARGET_STRING}")
 
 set(ZLIB_DIR ${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION})
 
@@ -112,3 +110,15 @@ else()
   endif()
 endif()
 endif()
+
+# set(${TARGET_CNAME}_LIB  "${${TARGET_CNAME}_INSTALL_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}${LIB_TARGET_NAME}.${LIB_EXTENSION}" PARENT_SCOPE)
+set(${TARGET_CNAME}_LIB  "${INSTALL_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}${LIB_TARGET_NAME}.${LIB_EXTENSION}")
+set(${TARGET_CNAME}_INCLUDE_DIR  "${INSTALL_DIR}/include")
+# PARENT_SCOPE only available in Parent, not here...
+set(${TARGET_CNAME}_LIB  ${${TARGET_CNAME}_LIB} PARENT_SCOPE)
+set(${TARGET_CNAME}_INCLUDE_DIR  ${${TARGET_CNAME}_INCLUDE_DIR} PARENT_SCOPE)
+
+set(THIRDPARTY_INCLUDES ${THIRDPARTY_INCLUDES} ${${TARGET_CNAME}_INCLUDE_DIR})
+
+
+

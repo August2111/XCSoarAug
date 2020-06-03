@@ -1,11 +1,10 @@
-# CURL # CURL # CURL # CURL # CURL # CURL # CURL # CURL # CURL # CURL 
+set(DISPLAY_STRING "# CURL           # CURL           # CURL           # CURL           # CURL")
+message(STATUS "${DISPLAY_STRING}")
 cmake_minimum_required(VERSION 3.15)
 
 set(LIB_TARGET_NAME                                       curl)
 #==========================================================
 string(TOUPPER ${LIB_TARGET_NAME} TARGET_CNAME)
-# get_filename_component(LIB_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-message(STATUS "# ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} # ${TARGET_CNAME} ")
 
 set(ZLIB_DIR ${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION})
 
@@ -52,3 +51,19 @@ if(NOT EXISTS "${INSTALL_DIR}")
     DEPENDS zlib
 )
 endif()
+# list(APPEND THIRDPARTY_INCLUDES "${LIB_TARGET_NAME}" PARENT_SCOPE)
+if (MSVC)  # unfortunately the lib name is a little bit 'tricky' at curl..
+  set(LIB_NAME lib${LIB_TARGET_NAME})
+else()
+  set(LIB_NAME ${PRE_LIB}${LIB_TARGET_NAME})
+endif()
+
+# TODO(aug): move this to a macro!!!
+set(${TARGET_CNAME}_LIB  "${INSTALL_DIR}/lib/${TOOLCHAIN}/${LIB_NAME}.${LIB_EXTENSION}")
+set(${TARGET_CNAME}_INCLUDE_DIR  "${INSTALL_DIR}/include")
+# PARENT_SCOPE only available in Parent, not here...
+set(${TARGET_CNAME}_LIB  ${${TARGET_CNAME}_LIB} PARENT_SCOPE)
+set(${TARGET_CNAME}_INCLUDE_DIR  ${${TARGET_CNAME}_INCLUDE_DIR} PARENT_SCOPE)
+
+set(THIRDPARTY_INCLUDES ${THIRDPARTY_INCLUDES} ${${TARGET_CNAME}_INCLUDE_DIR})
+
