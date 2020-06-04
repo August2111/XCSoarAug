@@ -99,7 +99,8 @@ public:
 #else
 #   ifdef _MSC_VER
     // OLD-XC: return false;
-    return font != nullptr;  // _AUG
+    return false;
+    // GDI? return font != nullptr;  // _AUG
 #else
     return font != nullptr;
 #endif

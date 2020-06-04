@@ -19,7 +19,10 @@ if (CMAKE_TOOLCHAIN_FILE)
   # message(STATUS "CMAKE_C_COMPILER = '${CMAKE_C_COMPILER}'")
 endif()
 
+set(ENABLE_OPENGL ON)  # better outside????
 set(ENABLE_OPENGL OFF)  # better outside????
+
+# Target links to target GLUT::GLUT but the target was not
 
 # cleanup 19.04.20: set(ASIO_GROUPING ON)
 
@@ -110,6 +113,8 @@ if (WIN32 AND MSVC)
       endif()
       # LUA ist vermutlich besser im output ordner aufgehoben...
       set(BOOST_ROOT D:/link_libs/boost/boost-1.73.0)
+
+      set(FREEGLUT_LIB_DIR "D:/link_libs/freeglut-MSVC-3.0.0-2/freeglut")
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
       message(STATUS "+++ System = WIN32 / MinGW (${TOOLCHAIN})!")
@@ -156,6 +161,7 @@ elseif(WIN32 AND MINGW)
 
 set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -static-libstdc++ -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive -v")
+    set(FREEGLUT_LIB_DIR "D:/link_libs/freeglut-MinGW-3.0.0-1/freeglut")
 
 elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
       message(STATUS "+++ System = WIN32 / Clang!")
@@ -280,6 +286,9 @@ if(ENABLE_OPENGL)
     # set(FreeGLUT_DIR ${LINK_LIBS}/glut/freeglut-3.2.1/lib/msvc2019/cmake/FreeGLUT)
     # find_package(FreeGLUT REQUIRED)
     find_package(OpenGL REQUIRED)
+    # find_package(OpenCL REQUIRED)
+    # set(GLEW_ROOT D:/link_libs/glew/glew-2.1.0/lib/Release/x64)
+    # find_package(GLEW REQUIRED)
     
     if(NOT TARGET OpenGL::GLU)
         message(FATAL_ERROR "GLU could not be found")
@@ -292,8 +301,18 @@ if(ENABLE_OPENGL)
     add_compile_definitions(ENABLE_OPENGL)
     add_compile_definitions(USE_WIN32_RESOURCES USE_WINUSER)
 
-    include_directories(D:/Programs/Android/android-ndk-r21/sysroot/usr/include/GLES2)
+    if (ANDROID)
+       include_directories(D:/Programs/Android/android-ndk-r21/sysroot/usr/include/GLES2)
+    endif()
     include_directories(${Boost_INCLUDE_DIR}/boost/compute/interop)
+
+    include_directories(${FREEGLUT_LIB_DIR}/include)
+    include_directories($ENV{OCL_ROOT}/include)
+    include_directories(D:/Programs/OCL_SDK_Light/include) # alternative???
+###    ${OCL_ROOT}\include
+###    ${OCL_ROOT}\lib\x86
+###    ${OCL_ROOT}\lib\x86_64
+
 
     # message(FATAL_ERROR "OpenGL-Stop!  OpenGL_INCLUDE_DIR = ${OpenGL_INCLUDE_DIR}")
 else()
@@ -558,10 +577,13 @@ if(ENABLE_OPENGL)
         PRIVATE   # PUBLIC
         OpenGL::GL
         OpenGL:GLU # single colon!
-        GLUT::GLUT
+        # GLUT::GLUT
+        # ${FREEGLUT_LIB_DIR}/lib/x64/${PRE_LIB}freeglut_static.${LIB_EXTENSION} # MinGW
+        ${FREEGLUT_LIB_DIR}/lib/x64/${PRE_LIB}freeglut.${LIB_EXTENSION}  # MSVC, but with DLL!
+        # ${OCL_ROOT}\lib\x86_64
         # FreeGLUT::FreeGLUT
         ###${THIRD_PARTY}/glfw/glfw-3.3.2.bin.WIN64/lib-vc2019/glfw3.${LIB_EXTENSION}
-        ### ${LINK_LIBS}/glm/glm-0.9.9/lib/msvc2019/glm_static.${LIB_EXTENSION}
+        ### ${LINK_LIBS}/glm/glm-0.9.9/lib/msvc2019/glm_static.
         ###${LINK_LIBS}/glut/freeglut-3.2.1/lib/msvc2019/freeglut.${LIB_EXTENSION}   # libpng.${LIB_EXTENSION}"
     )
 endif()
