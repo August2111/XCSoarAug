@@ -24,13 +24,13 @@ if(MSVC)
 set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
   else()
 # TODO(aug): is this correct?
-  set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C) # CXX)
+#  set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C) # CXX)
 endif()
 add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SOURCE_FILES}
     ${HEADER_FILES}
     ${SCRIPT_FILES}
-    ${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c
+#    ${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c
 )
 target_link_libraries(${TARGET_NAME} PUBLIC Task OS)
 

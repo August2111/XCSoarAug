@@ -396,6 +396,8 @@ METARParser::ParseLine(const METAR::ContentString &content, ParsedMETAR &parsed)
 
 #if defined(_AUG) && defined(_MSC_VER)
   METARLine line(&content.begin().operator*());
+#elif 0  // UNIX???
+  METARLine line(content.begin().operator*());
 #else
   METARLine line(content.begin());
 #endif
@@ -550,6 +552,8 @@ METARParser::ParseDecoded(const METAR::ContentString &decoded,
 
 #if defined(_AUG) && defined(_MSC_VER)
   const TCHAR* start = &decoded.begin().operator*();
+#elif 0  // UNIX???
+  const TCHAR* start = decoded.begin().operator*();
 #else
   const TCHAR* start = decoded.begin();
 #endif

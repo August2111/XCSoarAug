@@ -191,10 +191,12 @@ def create_xcsoar(args):
       # arguments.append('-DCMAKE_C_COMPILER_FORCED=1')    # don't test the compiler ???
       # arguments.append('-DCMAKE_CXX_COMPILER_FORCED=1')    # don't test the compiler ???
 
-    if not is_windows:
+    print('---')
+    if not is_windows and not (my_env['USER'] == 'pcderad0633'):
       arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/LinuxMinGW.toolchain\"')
       # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + root_dir.replace('\\','/') + '/opt/android-ndk-r21b/build/cmake/android.toolchain.cmake\"')
-
+    else:
+      print('!!! USER = ', my_env['USER'], '!!!')
     #    arguments.append('-DCMAKE_C_COMPILER=\"i686-w64-mingw32-gcc\"')
     # arguments.append('-DCMAKE_CXX_COMPILER=\"i686-w64-mingw32-g++\"')
     # arguments.append('-DCMAKE_RC_COMPILER=i686-w64-mingw32-windres')

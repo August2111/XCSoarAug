@@ -196,7 +196,7 @@ elseif(UNIX)
       set(PRE_LIB "lib")
 
       # no lib structure, this is failing on GCC  (serial order)???
-      set(XCSOAR_LIB_TYPE WITHOUT)
+      # set(XCSOAR_LIB_TYPE WITHOUT)
       if(MINGW)
          set(ENABLE_OPENGL OFF)  # das ist hier MinGWCrossCompiling für Windows! 
          message(FATAL_ERROR "Stop MinGW")
@@ -210,13 +210,21 @@ elseif(UNIX)
         add_compile_definitions(UNICODE)
         add_compile_definitions(STRICT)
       endif()
+      if($ENV{USER} STREQUAL "pcderad0633") 
+         set(Boost_COMPILER "gcc9")  # PC0633!
+      	 add_compile_definitions(__LITTLE_ENDIAN=1)  # have to be defined!
+      	 add_compile_definitions(__BIG_ENDIAN=2)
+      else()
+         set(Boost_COMPILER "gcc7")  # necessary: ??
+      endif()
 
       add_compile_definitions(BOOST_MATH_DISABLE_DEPRECATED_03_WARNING=ON) 
       # set(Boost_COMPILER "${TOOLCHAIN}")  # necessary: changed mgw as boost compiler to mgw73!
-      set(Boost_COMPILER "gcc7")  # necessary: ??
+      
+     
       # include_directories("D:/Programs/MinGW/${TOOLCHAIN}/include")
-      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
-      include_directories("${PROJECTGROUP_SOURCE_DIR}/src/unix")   # temporory data!
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
+      include_directories("${PROJECTGROUP_SOURCE_DIR}/src/unix")   # temporary data!
 
       set(Boost_DIR "$ENV{HOME}/Projects/link_libs/boost/boost-1.73.0/lib/unix/cmake/Boost-1.73.0") 
   
