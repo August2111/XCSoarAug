@@ -24,8 +24,8 @@ Copyright_License {
 #ifndef XCSOAR_EVENT_WINDOWS_EVENT_HPP
 #define XCSOAR_EVENT_WINDOWS_EVENT_HPP
 
-#include "Util/Compiler.h"   // <windows.h>
-#include <assert.h>
+#include <windows.h>
+#include <cassert>
 
 struct Event {
   MSG msg;

@@ -25,7 +25,7 @@ Copyright_License {
 #include "FileCache.hpp"
 #include "OS/FileUtil.hpp"
 
-#include <stdint.h>
+#include <cstdint>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>

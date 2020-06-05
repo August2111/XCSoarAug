@@ -29,8 +29,8 @@ Copyright_License {
 
 #include <curl/curl.h>
 
-#include <stddef.h>
-#include <stdint.h>
+#include <cstddef>
+#include <cstdint>
 
 namespace Net {
   class Session;
@@ -105,7 +105,7 @@ namespace Net {
                 unsigned timeout_ms=INFINITE);
 
   private:
-    void SubmitResponse();
+    bool SubmitResponse() noexcept;
 
     size_t ResponseData(const uint8_t *ptr, size_t size);
 

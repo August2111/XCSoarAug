@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Max Kellermann <max.kellermann@gmail.com>
+ * Copyright 2020 Max Kellermann <max.kellermann@gmail.com>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -27,23 +27,42 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "AllocatedString.hxx"
-#include "StringAPI.hxx"
+#pragma once
 
-template<>
-AllocatedString<char>
-AllocatedString<char>::Duplicate(const_pointer src)
-{
-	return Duplicate(src, StringLength(src));
-}
+#include "Util/ConstBuffer.hxx"
+#include "Util/Compiler.h"
 
-#ifdef _UNICODE
+#include <sodium/crypto_hash_sha256.h>
 
-template<>
-AllocatedString<wchar_t>
-AllocatedString<wchar_t>::Duplicate(const_pointer src)
-{
-	return Duplicate(src, StringLength(src));
-}
+#include <array>
+#include <cstddef> // for std::byte
 
-#endif
+class SHA256State {
+	crypto_hash_sha256_state state;
+
+public:
+	SHA256State() noexcept {
+		crypto_hash_sha256_init(&state);
+	}
+
+	void Update(ConstBuffer<void> p) noexcept {
+		crypto_hash_sha256_update(&state,
+					  (const unsigned char *)p.data,
+					  p.size);
+	}
+
+	template<typename T>
+	void UpdateT(const T &p) noexcept {
+		Update({&p, sizeof(p)});
+	}
+
+	void Final(void *out) noexcept {
+		crypto_hash_sha256_final(&state, (unsigned char *)out);
+	}
+
+	auto Final() noexcept {
+		std::array<std::byte, crypto_hash_sha256_BYTES> out;
+		Final(&out);
+		return out;
+	}
+};

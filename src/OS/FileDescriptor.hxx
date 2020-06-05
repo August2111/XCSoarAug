@@ -43,7 +43,7 @@ typedef int ssize_t;
 #include <sys/types.h>
 
 #ifdef __linux__
-#include <signal.h>
+#include <csignal>
 #endif
 
 #ifdef _WIN32
@@ -83,6 +83,12 @@ public:
 	 */
 	gcc_pure
 	bool IsValid() const noexcept;
+
+	/**
+	 * Ask the kernel whether this is a regular file.
+	 */
+	gcc_pure
+	bool IsRegularFile() const noexcept;
 
 	/**
 	 * Ask the kernel whether this is a pipe.
@@ -232,6 +238,12 @@ public:
 	ssize_t Read(void *buffer, size_t length) noexcept {
 		return ::read(fd, buffer, length);
 	}
+
+	/**
+	 * Read until all of the given buffer has been filled.  Throws
+	 * on error.
+	 */
+	void FullRead(void *buffer, size_t length);
 
 	ssize_t Write(const void *buffer, size_t length) noexcept {
 		return ::write(fd, buffer, length);

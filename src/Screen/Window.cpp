@@ -31,9 +31,9 @@ Copyright_License {
 #include "Screen/OpenGL/Debug.hpp"
 #endif
 
-#include <assert.h>
+#include <cassert>
 
-Window::~Window()
+Window::~Window() noexcept
 {
   Destroy();
 }
@@ -41,7 +41,7 @@ Window::~Window()
 #ifndef NDEBUG
 
 void
-Window::AssertThread() const
+Window::AssertThread() const noexcept
 {
   assert(IsDefined());
 
@@ -55,7 +55,7 @@ Window::AssertThread() const
 }
 
 void
-Window::AssertThreadOrUndefined() const
+Window::AssertThreadOrUndefined() const noexcept
 {
 #ifdef ENABLE_OPENGL
   assert(pthread_equal(pthread_self(), OpenGL::thread));
@@ -68,7 +68,7 @@ Window::AssertThreadOrUndefined() const
 #endif /* !NDEBUG */
 
 void
-Window::Destroy()
+Window::Destroy() noexcept
 {
   if (!IsDefined())
     return;
@@ -87,7 +87,7 @@ Window::Destroy()
 }
 
 ContainerWindow *
-Window::GetRootOwner()
+Window::GetRootOwner() noexcept
 {
   assert(IsDefined());
 
@@ -130,8 +130,6 @@ Window::OnDestroy()
     parent->RemoveChild(*this);
     parent = nullptr;
   }
-
-  event_queue->Purge(*this);
 #else /* USE_WINUSER */
   assert(hWnd != nullptr);
 
@@ -245,16 +243,4 @@ Window::OnKillFocus()
 
   focused = false;
 #endif /* USE_WINUSER */
-}
-
-bool
-Window::OnTimer(WindowTimer &timer)
-{
-  return false;
-}
-
-bool
-Window::OnUser(unsigned id)
-{
-  return false;
 }

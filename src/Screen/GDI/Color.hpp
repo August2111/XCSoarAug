@@ -26,8 +26,8 @@ Copyright_License {
 
 #include "Screen/PortableColor.hpp"
 
-#include "Util/Compiler.h"   // <windows.h>
-#include <stdint.h>
+#include <windows.h>
+#include <cstdint>
 
 /**
  * This class represents a color in the RGB color space.  This is used

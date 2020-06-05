@@ -25,7 +25,7 @@ Copyright_License {
 #include "Screen/Debug.hpp"
 #include "OS/Path.hpp"
 
-#include <assert.h>
+#include <cassert>
 
 #ifdef _AUG  // auch für MinGW & Co?...
 // "hat bereits einen Funktionsrumpf"

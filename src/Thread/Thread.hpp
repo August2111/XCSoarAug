@@ -32,7 +32,7 @@ Copyright_License {
 #include "Util/Compiler.h"   // <windows.h>
 #endif
 
-#include <assert.h>
+#include <cassert>
 
 /**
  * This class provides an OS independent view on a thread.

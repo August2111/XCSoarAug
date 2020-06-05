@@ -1,5 +1,4 @@
-/*
-Copyright_License {
+/* Copyright_License {
 
   XCSoar Glide Computer - http://www.xcsoar.org/
   Copyright (C) 2000-2016 The XCSoar Project
@@ -21,11 +20,52 @@ Copyright_License {
 }
 */
 
-#include "Screen/Timer.hpp"
-#include "Screen/Window.hpp"
+#ifndef MD5_HPP
+#define MD5_HPP
 
-void
-WindowTimer::OnTimer()
+#include <cstdint>
+#include <cstddef>
+
+class MD5
 {
-  window.OnTimer(*this);
-}
+public:
+  static constexpr size_t DIGEST_LENGTH = 32;
+
+  struct State {
+    uint32_t a, b, c, d;
+  };
+
+private:
+  uint8_t buff512bits[64];
+  State state;
+  uint64_t message_length;
+
+  void Process512(const uint8_t *in);
+
+public:
+  /**
+   * Initialise with a custom key.
+   */
+  void Initialise(const State &_state) {
+    state = _state;
+    message_length = 0;
+  }
+
+  /**
+   * Initialise with the default key.
+   */
+  void Initialise();
+
+  void Append(uint8_t ch);
+  void Append(const void *data, size_t length);
+
+  void Finalize();
+
+  /**
+   * @param buffer a buffer of at least #DIGEST_LENGTH+1 bytes
+   * @return a pointer to the null terminator
+   */
+  char *GetDigest(char *buffer) const;
+};
+
+#endif

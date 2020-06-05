@@ -34,7 +34,7 @@ Copyright_License {
 #include "Language/Language.hpp"
 #include "Util/Compiler.h"
 
-#include <assert.h>
+#include <cassert>
 
 class AirspaceDetailsWidget final
   : public RowFormWidget, public ActionListener {
@@ -106,8 +106,9 @@ dlgAirspaceDetails(const AbstractAirspace &airspace,
 {
   AirspaceDetailsWidget *widget =
     new AirspaceDetailsWidget(airspace, warnings);
-  WidgetDialog dialog(UIGlobals::GetDialogLook());
-  dialog.CreateAuto(UIGlobals::GetMainWindow(), _("Airspace Details"), widget);
+  WidgetDialog dialog(WidgetDialog::Auto{}, UIGlobals::GetMainWindow(),
+                      UIGlobals::GetDialogLook(),
+                      _("Airspace Details"), widget);
   dialog.AddButton(_("Close"), mrOK);
 
   if (warnings != nullptr) {

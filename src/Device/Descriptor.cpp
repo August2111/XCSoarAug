@@ -66,7 +66,7 @@ Copyright_License {
 #include "Apple/InternalSensors.hpp"
 #endif
 
-#include <assert.h>
+#include <cassert>
 
 /**
  * This scope class calls DeviceDescriptor::Return() and
@@ -540,7 +540,7 @@ DeviceDescriptor::Open(OperationEnvironment &env)
   LogFormat(_T("Opening device %s"), config.GetPortName(buffer, 64));
 
   open_job = new OpenDeviceJob(*this);
-  async.Start(open_job, env, this);
+  async.Start(open_job, env, &job_finished_notify);
 }
 
 void
@@ -1165,7 +1165,7 @@ DeviceDescriptor::ParseLine(const char *line)
 }
 
 void
-DeviceDescriptor::OnNotification()
+DeviceDescriptor::OnJobFinished() noexcept
 {
   /* notification from AsyncJobRunner, the Job was finished */
 
@@ -1183,14 +1183,14 @@ DeviceDescriptor::OnNotification()
 }
 
 void
-DeviceDescriptor::PortStateChanged()
+DeviceDescriptor::PortStateChanged() noexcept
 {
   if (port_listener != nullptr)
     port_listener->PortStateChanged();
 }
 
 void
-DeviceDescriptor::PortError(const char *msg)
+DeviceDescriptor::PortError(const char *msg) noexcept
 {
   {
     TCHAR buffer[64];
@@ -1210,8 +1210,8 @@ DeviceDescriptor::PortError(const char *msg)
     port_listener->PortError(msg);
 }
 
-void
-DeviceDescriptor::DataReceived(const void *data, size_t length)
+bool
+DeviceDescriptor::DataReceived(const void *data, size_t length) noexcept
 {
   if (monitor != nullptr)
     monitor->DataReceived(data, length);
@@ -1231,15 +1231,17 @@ DeviceDescriptor::DataReceived(const void *data, size_t length)
       device_blackboard->ScheduleMerge();
     }
 
-    return;
+    return true;
   }
 
   if (!IsNMEAOut())
     PortLineSplitter::DataReceived(data, length);
+
+  return true;
 }
 
-void
-DeviceDescriptor::LineReceived(const char *line)
+bool
+DeviceDescriptor::LineReceived(const char *line) noexcept
 {
   NMEALogger::Log(line);
 
@@ -1248,4 +1250,6 @@ DeviceDescriptor::LineReceived(const char *line)
 
   if (ParseLine(line))
     device_blackboard->ScheduleMerge();
+
+  return true;
 }

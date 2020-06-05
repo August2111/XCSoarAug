@@ -32,8 +32,8 @@ Copyright_License {
 #include "Screen/BulkPoint.hpp"
 #include "Util/Compiler.h"
 
-#include <assert.h>
-#include "Util/Compiler.h"   // <windows.h>
+#include <cassert>
+#include <windows.h>
 #include <tchar.h>
 
 class Angle;
@@ -71,10 +71,6 @@ protected:
   void Create(HDC _dc, PixelSize new_size) {
     assert(_dc != nullptr);
     assert(new_size.cx > 0);
-#if _AUG
-    if (new_size.cy <= 0)
-      new_size.cy = new_size.cx;
-#endif
     assert(new_size.cy > 0);
 
     Destroy();

@@ -26,15 +26,18 @@ Copyright_License {
 
 #include "Util/Compiler.h"
 
-#include <stddef.h>
+#include <cstddef>
 
 /**
  * Interface with callbacks for the #Port class.
  */
 class DataHandler {
 public:
+  /**
+   * @return false if the handler wishes to receive no more data
+   */
   gcc_nonnull_all
-  virtual void DataReceived(const void *data, size_t length) = 0;
+  virtual bool DataReceived(const void *data, size_t length) noexcept = 0;
 };
 
 #endif

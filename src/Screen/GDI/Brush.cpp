@@ -24,7 +24,7 @@ Copyright_License {
 #include "Screen/Brush.hpp"
 #include "Screen/Bitmap.hpp"
 
-#include <assert.h>
+#include <cassert>
 
 #if !defined(USE_MEMORY_CANVAS)  // "hat bereits einen Funktionsrumpf"
 void
