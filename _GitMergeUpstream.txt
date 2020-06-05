@@ -1,0 +1,152 @@
+Microsoft Windows [Version 10.0.18362.836]
+(c) 2019 Microsoft Corporation. Alle Rechte vorbehalten.
+
+P:\Projects\Gliding>git clone https://github.com/August2111/XCSoar.git XCSoarAug
+Cloning into 'XCSoarAug'...
+remote: Enumerating objects: 374, done.
+remote: Counting objects: 100% (374/374), done.
+remote: Compressing objects: 100% (220/220), done.
+Receiving objects: 100% (325862/325862), 133.00 MiB | 5.89 MiB/s, done.25488 eceiving objects: 100% (325862/325862), 132.68 MiB | 6.00 MiB/s
+
+Resolving deltas: 100% (267025/267025), done.
+Checking out files: 100% (4372/4372), done.
+
+P:\Projects\Gliding>cd XCSoarAug
+
+P:\Projects\Gliding\XCSoarAug>git remote add upstream https://github.com/XCSoar/XCSoar.git
+
+P:\Projects\Gliding\XCSoarAug>git fetch upstream
+remote: Enumerating objects: 2013, done.
+remote: Counting objects: 100% (2013/2013), done.
+remote: Compressing objects: 100% (18/18), done.
+remote: Total 2670 (delta 1994), reused 2012 (delta 1993), pack-reused 657R
+Receiving objects: 100% (2670/2670), 540.19 KiB | 2.02 MiB/s, done.
+Resolving deltas: 100% (2282/2282), completed with 974 local objects.
+From https://github.com/XCSoar/XCSoar
+ * [new branch]            master     -> upstream/master
+ * [new branch]            v6.8.x     -> upstream/v6.8.x
+ * [new tag]               v6.8.13        -> v6.8.13
+ * [new tag]               v6.8.13b       -> v6.8.13b
+ * [new tag]               v6.8.14        -> v6.8.14
+ * [new tag]               v7.0_preview15 -> v7.0_preview15
+
+P:\Projects\Gliding\XCSoarAug>git merge upstream/master master
+Auto-merging test/src/RunDownloadToFile.cpp
+CONFLICT (content): Merge conflict in test/src/RunDownloadToFile.cpp
+CONFLICT (modify/delete): src/zzip/zzip.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/zzip.h left in tree.
+CONFLICT (modify/delete): src/zzip/zip.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/zip.c left in tree.
+CONFLICT (modify/delete): src/zzip/stdint.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/stdint.h left in tree.
+CONFLICT (modify/delete): src/zzip/stat.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/stat.c left in tree.
+CONFLICT (modify/delete): src/zzip/plugin.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/plugin.c left in tree.
+CONFLICT (modify/delete): src/zzip/lib.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/lib.h left in tree.
+CONFLICT (modify/delete): src/zzip/format.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/format.h left in tree.
+CONFLICT (modify/delete): src/zzip/file.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/file.c left in tree.
+CONFLICT (modify/delete): src/zzip/fetch.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/fetch.c left in tree.
+CONFLICT (modify/delete): src/zzip/__mmap.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/__mmap.h left in tree.
+CONFLICT (modify/delete): src/zzip/__hints.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/__hints.h left in tree.
+CONFLICT (modify/delete): src/zzip/__debug.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/zzip/__debug.h left in tree.
+Auto-merging src/XCSoar.cpp
+Auto-merging src/Util/TriState.hpp
+Auto-merging src/Util/StaticString.hxx
+Auto-merging src/Util/MD5.hpp
+Auto-merging src/Util/MD5.cpp
+Removing src/Util/DereferenceIterator.hpp
+Auto-merging src/Tracking/SkyLines/Glue.cpp
+Auto-merging src/Tracking/SkyLines/CloudSettings.hpp
+Auto-merging src/Tracking/SkyLines/Client.hpp
+Auto-merging src/Tracking/SkyLines/Assemble.hpp
+CONFLICT (modify/delete): src/Topography/shapelib/mapxbase.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/Topography/shapelib/mapxbase.c left in tree.
+CONFLICT (modify/delete): src/Topography/shapelib/maptree.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/Topography/shapelib/maptree.h left in tree.
+CONFLICT (modify/delete): src/Topography/shapelib/maptree.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/Topography/shapelib/maptree.c left in tree.
+CONFLICT (modify/delete): src/Topography/shapelib/mapstring.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/Topography/shapelib/mapstring.c left in tree.
+CONFLICT (modify/delete): src/Topography/shapelib/mapshape.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/Topography/shapelib/mapshape.h left in tree.
+CONFLICT (modify/delete): src/Topography/shapelib/mapshape.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/Topography/shapelib/mapshape.c left in tree.
+CONFLICT (modify/delete): src/Topography/shapelib/mapserver.h deleted in HEAD and modified in upstream/master. Version upstream/master of src/Topography/shapelib/mapserver.h left in tree.
+CONFLICT (modify/delete): src/Topography/shapelib/mapprimitive.c deleted in HEAD and modified in upstream/master. Version upstream/master of src/Topography/shapelib/mapprimitive.c left in tree.
+Auto-merging src/Topography/ShapeRenderer.hpp
+Auto-merging src/Time/BrokenDateTime.cpp
+Auto-merging src/Thread/Thread.hpp
+Auto-merging src/Thread/Mutex.hxx
+Auto-merging src/Thread/CriticalSection.hxx
+Auto-merging src/Terrain/RasterTileCache.hpp
+Auto-merging src/StatusMessage.cpp
+Auto-merging src/Screen/Window.hpp
+CONFLICT (content): Merge conflict in src/Screen/Window.hpp
+Auto-merging src/Screen/StopWatch.hpp
+Auto-merging src/Screen/Point.hpp
+CONFLICT (content): Merge conflict in src/Screen/Point.hpp
+Auto-merging src/Screen/OpenGL/Color.hpp
+CONFLICT (content): Merge conflict in src/Screen/OpenGL/Color.hpp
+Auto-merging src/Screen/GDI/Window.cpp
+Removing src/Screen/GDI/Timer.cpp
+Auto-merging src/Screen/GDI/Color.hpp
+CONFLICT (content): Merge conflict in src/Screen/GDI/Color.hpp
+Auto-merging src/Screen/GDI/Canvas.hpp
+CONFLICT (content): Merge conflict in src/Screen/GDI/Canvas.hpp
+Auto-merging src/Screen/GDI/Brush.cpp
+Auto-merging src/Screen/GDI/Bitmap.cpp
+Removing src/Screen/Custom/Timer.cpp
+Auto-merging src/Screen/Brush.hpp
+Auto-merging src/Screen/Bitmap.hpp
+Auto-merging src/Resources.hpp
+Auto-merging src/ResourceLoader.cpp
+Auto-merging src/Renderer/ChartRenderer.cpp
+Auto-merging src/OS/SystemLoad.cpp
+Auto-merging src/OS/Process.cpp
+Auto-merging src/OS/FileUtil.hpp
+Auto-merging src/OS/FileUtil.cpp
+Auto-merging src/OS/FileMapping.hpp
+CONFLICT (content): Merge conflict in src/OS/FileMapping.hpp
+Auto-merging src/OS/FileDescriptor.hxx
+Auto-merging src/OS/Error.hxx
+Auto-merging src/MainWindow.hpp
+CONFLICT (content): Merge conflict in src/MainWindow.hpp
+Auto-merging src/LocalPath.cpp
+Auto-merging src/Language/MOFile.cpp
+Auto-merging src/Language/Language.cpp
+Auto-merging src/Input/InputDefaults.cpp
+Auto-merging src/InfoBoxes/InfoBoxLayout.cpp
+Auto-merging src/InfoBoxes/Content/Factory.cpp
+Auto-merging src/IO/TextWriter.hpp
+Auto-merging src/IO/KeyValueFileWriter.cpp
+Auto-merging src/IO/FileOutputStream.hxx
+Auto-merging src/IO/FileCache.cpp
+Auto-merging src/IO/CSVLine.cpp
+Auto-merging src/Gauge/GaugeVario.cpp
+CONFLICT (content): Merge conflict in src/Gauge/GaugeVario.cpp
+Auto-merging src/Gauge/FlarmTrafficWindow.cpp
+Auto-merging src/Form/Form.hpp
+Auto-merging src/Form/Form.cpp
+Auto-merging src/Event/Windows/Event.hpp
+CONFLICT (content): Merge conflict in src/Event/Windows/Event.hpp
+Auto-merging src/Event/PeriodicTimer.hpp
+CONFLICT (content): Merge conflict in src/Event/PeriodicTimer.hpp
+Auto-merging src/Event/Notify.cpp
+Removing src/Event/LambdaTimer.hpp
+Auto-merging src/Engine/Airspace/AbstractAirspace.cpp
+Auto-merging src/Dialogs/dlgCredits.cpp
+Auto-merging src/Dialogs/Traffic/TrafficList.cpp
+Auto-merging src/Dialogs/Traffic/TeamCodeDialog.cpp
+Auto-merging src/Dialogs/StartupDialog.cpp
+Auto-merging src/Device/Port/SerialPort.cpp
+Auto-merging src/Device/Driver/KRT2.cpp
+Auto-merging src/Device/Driver/AltairPro.cpp
+Auto-merging src/Device/Driver.hpp
+Auto-merging src/Device/Descriptor.cpp
+Auto-merging src/Crypto/SHA256.hxx
+Auto-merging src/Computer/Settings.hpp
+CONFLICT (content): Merge conflict in src/Computer/Settings.hpp
+Auto-merging src/ActionInterface.cpp
+Auto-merging ide/provisioning/add-debian-unstable.sh
+CONFLICT (add/add): Merge conflict in ide/provisioning/add-debian-unstable.sh
+Auto-merging debian/control
+Auto-merging build/thirdparty.py
+CONFLICT (content): Merge conflict in build/thirdparty.py
+Auto-merging build/test.mk
+Auto-merging build/python/build/libs.py
+Auto-merging VERSION.txt
+CONFLICT (content): Merge conflict in VERSION.txt
+Auto-merging Data/XCSoar.rc
+Automatic merge failed; fix conflicts and then commit the result.
+
+P:\Projects\Gliding\XCSoarAug>

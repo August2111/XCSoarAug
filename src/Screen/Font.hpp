@@ -97,13 +97,7 @@ public:
 #elif defined(ANDROID)
     return text_util_object != nullptr;
 #else
-#   ifdef _MSC_VER
-    // OLD-XC: return false;
-    return false;
-    // GDI? return font != nullptr;  // _AUG
-#else
     return font != nullptr;
-#endif
 #endif
   }
 

@@ -35,6 +35,15 @@ Erledigt:
 | kobo    | ?            | kobo |
 | gcc     | ?            | unix |
 
+## 05.06.2020
+* Freitag: Heute habe ich versucht, mit einem allgemeinen Merge wieder die Änderungen aus dem Upstream-Branch XCSoar hereizuholen und abzugleichen - aber das 
+  waren zu große und enscheidende Änderungen, mit denen ich meine Lauffähigkeit unter Windows gefährdet habe - ohne zu wissen, welcher Teilstep dafür verantwortlich ist.
+  Nachdem ich alles schon committed und gepusht hatte, bin ich wieder auf den Vorgängerstep zurückgesprungen mit der Absicht, Stück für Stück von den Änderungen hereinzuholen
+  
+
+## 04.06.2020
+* Externe Projecte in Abhängigkeit vom Vorhandensein einbinden
+
 ## 02.06.2020
 * Externe Projecte in Abhängigkeit vom Vorhandensein einbinden
 * Nächste Schritt: Beispiel 'Airspace' für das umwandeln von CMakeLists.txt-Projecten zu ${lib}.cmake
