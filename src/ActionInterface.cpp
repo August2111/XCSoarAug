@@ -37,8 +37,6 @@ Copyright_License {
 #include "UIState.hpp"
 #include "Operation/MessageOperationEnvironment.hpp"
 
-#pragma message("CPP-Version: " STRING(__cplusplus))
-
 using namespace CommonInterface;
 
 namespace ActionInterface {

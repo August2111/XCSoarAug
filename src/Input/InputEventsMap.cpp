@@ -36,6 +36,13 @@ Copyright_License {
 #include "PageActions.hpp"
 #include "Util/Clamp.hpp"
 
+// #ifdef MINGW
+#   include "math.h"  // _AUG missing include
+#   ifndef M_SQRT2
+#       define M_SQRT2   1.41421356237309504880
+#   endif
+// #endif
+
 // eventAutoZoom - Turn on|off|toggle AutoZoom
 // misc:
 //	auto on - Turn on if not already

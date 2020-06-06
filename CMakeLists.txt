@@ -84,7 +84,6 @@ if (WIN32 AND MSVC)
       if(NOT TOOLCHAIN)
         set(TOOLCHAIN msvc2019)
       endif()
-      # add_compile_definitions(BOOST_ASIO_WORKAROUND=1)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
       add_compile_definitions(_UNICODE)
       add_compile_definitions(_AUG_MSC=1)
@@ -92,13 +91,13 @@ if (WIN32 AND MSVC)
        # warning C4996: 'xxx': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _wcsdup. See online help for details.
        # xxx: wcscpy, wcsdup, strtok, strcpy, strdup, ....
       add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
+      # add_compile_definitions(/std:c++17 /Zc:__cplusplus)
+      add_definitions(/std:c++17 /Zc:__cplusplus)
 
       # add_definitions(/Zc:wchar_t)
-#      HAVE_HATCHED_BRUSH
       set(LIB_EXTENSION "lib")
       set(PRE_LIB "")
 
-      # add_definitions("/ZW")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
       if (NOT THIRD_PARTY AND EXISTS "D:/Projects/3rd_Party")
         set(THIRD_PARTY "D:/Projects/3rd_Party")
@@ -145,6 +144,11 @@ elseif(WIN32 AND MINGW)
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
       # disable WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
       add_compile_definitions(BOOST_MATH_DISABLE_DEPRECATED_03_WARNING=ON)     
+      # add_compile_definitions(std=c++17) ### ??? Only a test on 11.05.2020
+# noch einmal ausblenden?
+      #   add_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
+      set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++17")
+      set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS}")
 
       # sequence from 'targets.mk' 
       if (ON)
@@ -152,6 +156,7 @@ elseif(WIN32 AND MINGW)
         add_compile_definitions(_UNICODE)
         add_compile_definitions(UNICODE)
         add_compile_definitions(STRICT)
+        add_compile_definitions(_USE_MATH_DEFINES)   # necessary under C++17!
       endif()
 #      set(CMAKE_C_COMPILE_OBJECT "${CMAKE_C_COMPILER} -c <FLAGS> -o <OBJECT>")
 #      set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static")
@@ -171,8 +176,9 @@ elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
       add_compile_definitions(_AUG_MSC=1)  ### really???  ###
       add_compile_definitions(_UNICODE)
-# add_compile_definitions(std:c++11) ### Only a test on 11.05.2020
-add_definitions(-std=c++17) ### Only a test on 11.05.2020
+      # add_compile_definitions(std:c++11) ### Only a test on 11.05.2020
+      # add_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
+      add_compile_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
       set(LIB_EXTENSION "lib")
       set(PRE_LIB "")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!

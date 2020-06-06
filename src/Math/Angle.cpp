@@ -21,6 +21,7 @@ Copyright_License {
 }
 */
 
+#include "Util/Compiler.h"
 #include "Angle.hpp"
 
 #include <assert.h>

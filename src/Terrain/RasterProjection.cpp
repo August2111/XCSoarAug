@@ -28,6 +28,14 @@ Copyright_License {
 #include <algorithm>
 #include <assert.h>
 
+// #ifdef MINGW
+#   include "math.h"  // _AUG missing include
+#   ifndef M_SQRT2
+#       define M_SQRT2    1.41421356237309504880
+#       define M_SQRT1_2  0.70710678118654752440
+#   endif
+// #endif
+
 void
 RasterProjection::Set(const GeoBounds &bounds,
                       unsigned width, unsigned height)

@@ -39,7 +39,9 @@ Erledigt:
 * Freitag: Heute habe ich versucht, mit einem allgemeinen Merge wieder die Änderungen aus dem Upstream-Branch XCSoar hereizuholen und abzugleichen - aber das 
   waren zu große und enscheidende Änderungen, mit denen ich meine Lauffähigkeit unter Windows gefährdet habe - ohne zu wissen, welcher Teilstep dafür verantwortlich ist.
   Nachdem ich alles schon committed und gepusht hatte, bin ich wieder auf den Vorgängerstep zurückgesprungen mit der Absicht, Stück für Stück von den Änderungen hereinzuholen
-  
+* Das war ziemlich aufwendig - und schon das Enablen von C++17 erforderte ein paar Fingerübungen
+  * Auf einmal war bei MinGW in math.h die Macros M_SQRT2 und M_SQRT1_2 nicht erreichbar (Abhilfe: add_compile_definitions(_USE_MATH_DEFINES) )
+  * In MSVC waren die bei C++17 removed std::u
 
 ## 04.06.2020
 * Externe Projecte in Abhängigkeit vom Vorhandensein einbinden

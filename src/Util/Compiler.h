@@ -45,18 +45,43 @@ Copyright_License {
 #   define _WIN32_WINNT 0x0A00  // _AUG! Windows7 or above
 #endif
 
-#ifdef _MSC_VER
-#   include   "WinSock2.h"
-#else
-#   include   "winsock2.h"  // MinGW!
+#if _MSC_VER
+// #   pragma message("CPP-Version: " STRING(__cplusplus))
+#if __cplusplus >= 201700L
+#   include "Util/xcs_functional.hpp"
 #endif
-// #   define _WINSOCKAPI_
-#   include   "windows.h"
+#else
+
+#    ifndef __cplusplus
+#      error C++ is required
+#    elif __cplusplus < 201700L  // is C++17 required!
+#      error C++17 is required
+#    else
+#    endif
+//  #pragma message "Compiling " STRING(__cplusplus) "..."
 #endif
 
 #ifdef _MSC_VER
+#   include   "WinSock2.h"
+#else
+#   include   "winsock2.h"  // klein schreiben wegen MinGW, MSVC ist das egal!
+#endif
+// #   define _WINSOCKAPI_
+#   include   "windows.h"
+#else
+// erledigt? // #ifdef MINGW
+// erledigt? #   include "math.h"  // _AUG missing include
+// erledigt? #   ifndef M_SQRT2
+// erledigt? #       define M_SQRT2    1.41421356237309504880
+// erledigt? #       define M_SQRT1_2  0.70710678118654752440
+// erledigt? #   endif
+// erledigt? // #endif
+
+#endif
+
+#ifdef _MSC_VER
+
 #   include   <algorithm>
-// #   define USE_WINUSER
 
 #   include   "corecrt_math_defines.h"
 
@@ -73,20 +98,8 @@ Copyright_License {
 #define GCC_OLDER_THAN(x, y)  0
 #define CLANG_CHECK_VERSION(x, y)  0
 
-// #define BOOST_ASIO_WINDOWS_RUNTIME
-// #define ENABLE_OPENGL
-
 #define DT_UNDERLINE 0  // gibt es in WinUser.h nicht!
-// #define JAS_DLL
-// od declaration 
 
-// #define JAS_DLLEXPORT
-
-// typedef int jas_stream_t;
-// #include "jasper/jas_stream.h"
-
-// #define LogFormat printf
-// #define LogFormat printf
 #define __attribute__(x)
 
 #define gcc_const    //  aug: const  //  aug: 
