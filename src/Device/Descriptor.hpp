@@ -43,7 +43,7 @@ Copyright_License {
 
 #include <chrono>
 
-#include <assert.h>
+#include <cassert>
 #include <tchar.h>
 #include <stdio.h>
 
@@ -70,11 +70,13 @@ struct RecordedFlightInfo;
 class OperationEnvironment;
 class OpenDeviceJob;
 
-class DeviceDescriptor final : Notify, PortListener, PortLineSplitter {
+class DeviceDescriptor final : PortListener, PortLineSplitter {
   /**
    * The io_context instance used by Port instances.
    */
   boost::asio::io_context &io_context;
+
+  Notify job_finished_notify{[this]{ OnJobFinished(); }};
 
   /**
    * This mutex protects modifications of the attribute "device".  If
@@ -531,18 +533,17 @@ public:
 private:
   bool ParseLine(const char *line);
 
-  /* virtual methods from class Notify */
-  void OnNotification() override;
+  void OnJobFinished() noexcept;
 
   /* virtual methods from class PortListener */
-  void PortStateChanged() override;
-  void PortError(const char *msg) override;
+  void PortStateChanged() noexcept override;
+  void PortError(const char *msg) noexcept override;
 
   /* virtual methods from DataHandler  */
-  void DataReceived(const void *data, size_t length) override;
+  bool DataReceived(const void *data, size_t length) noexcept override;
 
   /* virtual methods from PortLineHandler */
-  void LineReceived(const char *line) override;
+  bool LineReceived(const char *line) noexcept override;
 };
 
 #endif

@@ -38,7 +38,7 @@ Copyright_License {
 
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
+#include <cassert>
 #include <tchar.h>
 #ifdef _UNICODE
 #include "Util/Compiler.h"   // <windows.h>

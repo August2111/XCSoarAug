@@ -120,26 +120,6 @@ GetMapRectAbove(const PixelRect &rc, const PixelRect &bottom_rect)
   return result;
 }
 
-MainWindow::MainWindow()
-  :look(nullptr),
-#ifdef HAVE_SHOW_MENU_BUTTON
-   show_menu_button(nullptr),
-#endif
-   map(nullptr), bottom_widget(nullptr), widget(nullptr), vario(*this),
-   traffic_gauge(*this),
-   suppress_traffic_gauge(false), force_traffic_gauge(false),
-   thermal_assistant(*this),
-   dragging(false),
-   popup(nullptr),
-   timer(*this),
-   FullScreen(false),
-#ifndef ENABLE_OPENGL
-   draw_suspended(false),
-#endif
-   restore_page_pending(false)
-{
-}
-
 /**
  * Destructor of the MainWindow-Class
  * @return
@@ -155,7 +135,7 @@ MainWindow::Create(PixelSize size, TopWindowStyle style)
   SingleWindow::Create(title, size, style);
 }
 
-gcc_noreturn
+[[noreturn]]
 static void
 FatalError(const TCHAR *msg)
 {
@@ -178,7 +158,7 @@ FatalError(const TCHAR *msg)
   exit(EXIT_FAILURE);
 }
 
-gcc_noreturn
+[[noreturn]]
 static void
 NoFontsAvailable()
 {
@@ -630,12 +610,9 @@ MainWindow::OnKeyDown(unsigned key_code)
     SingleWindow::OnKeyDown(key_code);
 }
 
-bool
-MainWindow::OnTimer(WindowTimer &_timer)
+void
+MainWindow::RunTimer() noexcept
 {
-  if (_timer != timer)
-    return SingleWindow::OnTimer(_timer);
-
   ProcessTimer();
 
   UpdateGaugeVisibility();
@@ -660,29 +637,25 @@ MainWindow::OnTimer(WindowTimer &_timer)
   }
 
   battery_timer.Process();
-
-  return true;
 }
 
-bool
-MainWindow::OnUser(unsigned id)
+void
+MainWindow::OnGpsNotify() noexcept
 {
-  switch ((Command)id) {
-  case Command::GPS_UPDATE:
-    UIReceiveSensorData();
-    return true;
+  UIReceiveSensorData();
+}
 
-  case Command::CALCULATED_UPDATE:
-    UIReceiveCalculatedData();
-    return true;
+void
+MainWindow::OnCalculatedNotify() noexcept
+{
+  UIReceiveCalculatedData();
+}
 
-  case Command::RESTORE_PAGE:
-    if (restore_page_pending)
-      PageActions::Restore();
-    return true;
-  }
-
-  return false;
+void
+MainWindow::OnRestorePageNotify() noexcept
+{
+  if (restore_page_pending)
+    PageActions::Restore();
 }
 
 void
@@ -696,7 +669,9 @@ MainWindow::OnDestroy()
   SingleWindow::OnDestroy();
 }
 
-bool MainWindow::OnClose() {
+bool
+MainWindow::OnClose() noexcept
+{
   if (HasDialog() || !IsRunning())
     /* no shutdown dialog if XCSoar hasn't completed initialization
        yet (e.g. if we are in the simulator prompt) */
@@ -826,7 +801,7 @@ MainWindow::DeferredRestorePage()
     return;
 
   restore_page_pending = true;
-  SendUser((unsigned)Command::RESTORE_PAGE);
+  restore_page_notify.SendNotification();
 }
 
 void
@@ -1021,7 +996,7 @@ MainWindow::ToggleForceFLARMRadar()
 #ifdef ANDROID
 
 void
-MainWindow::OnPause()
+MainWindow::OnPause() noexcept
 {
   if (!IsRunning() && HasDialog())
     /* suspending before initialization has finished doesn't leave

@@ -28,18 +28,13 @@ Copyright_License {
 
 #include <SDL_events.h>
 
-#include <assert.h>
+#include <cassert>
 
 enum {
   /**
-   * A "user" event for a #Window.
-   */
-  EVENT_USER = SDL_USEREVENT,
-
-  /**
    * A function pointer with a pointer argument gets called.
    */
-  EVENT_CALLBACK,
+  EVENT_CALLBACK = SDL_USEREVENT,
 };
 
 struct Event {

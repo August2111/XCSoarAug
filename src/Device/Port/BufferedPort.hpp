@@ -30,7 +30,7 @@ Copyright_License {
 #include "Thread/Cond.hxx"
 #include "Util/StaticFifoBuffer.hxx"
 
-#include <stdint.h>
+#include <cstdint>
 
 /**
  * An abstract #Port implementation which manages incoming data in a
@@ -73,7 +73,7 @@ public:
 
 protected:
   /* virtual methods from class DataHandler */
-  virtual void DataReceived(const void *data, size_t length) override;
+  bool DataReceived(const void *data, size_t length) noexcept override;
 };
 
 #endif

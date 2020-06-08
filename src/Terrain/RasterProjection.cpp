@@ -26,7 +26,7 @@ Copyright_License {
 #include "Geo/FAISphere.hpp"
 
 #include <algorithm>
-#include <assert.h>
+#include <cassert>
 
 // #ifdef MINGW
 #   include "math.h"  // _AUG missing include

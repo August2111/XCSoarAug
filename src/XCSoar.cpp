@@ -60,7 +60,7 @@ Copyright_License {
 #endif
 #endif
 
-#include <assert.h>
+#include <cassert>
 
 #if _WIN32
 // because static CURL!

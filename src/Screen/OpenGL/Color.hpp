@@ -29,9 +29,9 @@ Copyright_License {
 #include "System.hpp"
 #include "Attribute.hpp"
 
-#include "OpenGL.hpp"
+// TODO(aug): necessary: #include "OpenGL.hpp"
 
-#include <stdint.h>
+#include <cstdint>
 
 /**
  * This class represents a color in the RGB color space.  This is used

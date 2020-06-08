@@ -26,13 +26,14 @@ Copyright_License {
 
 #include "Version.hpp"
 #include "Screen/SingleWindow.hpp"
-#include "Screen/Timer.hpp"
+#include "Event/PeriodicTimer.hpp"
+#include "Event/Notify.hpp"
 #include "BatteryTimer.hpp"
 #include "Widget/ManagedWidget.hpp"
 #include "UIUtil/GestureManager.hpp"
 
-#include <stdint.h>
-#include <assert.h>
+#include <cstdint>
+#include <cassert>
 
 #ifdef KOBO
 #define HAVE_SHOW_MENU_BUTTON
@@ -55,23 +56,6 @@ namespace InfoBoxLayout { struct Layout; }
  * The XCSoar main window.
  */
 class MainWindow : public SingleWindow {
-  enum class Command: uint8_t {
-    /**
-     * Called by the #MergeThread when new GPS data is available.
-     */
-    GPS_UPDATE,
-
-    /**
-     * Called by the calculation thread when new calculation results
-     * are available.  This updates the map and the info boxes.
-     */
-    CALCULATED_UPDATE,
-
-    /**
-     * @see DeferredRestorePage()
-     */
-    RESTORE_PAGE,
-  };
 
 #ifdef _AUG
   static constexpr const TCHAR *title = XCSoar_Caption;
@@ -79,59 +63,74 @@ class MainWindow : public SingleWindow {
   static constexpr const TCHAR* title = _T("XCSoar");
 #endif
 
-  Look *look;
+  Look *look = nullptr;
 
 #ifdef HAVE_SHOW_MENU_BUTTON
-  ShowMenuButton *show_menu_button;
+  ShowMenuButton *show_menu_button = nullptr;
 #endif
 
-  GlueMapWindow *map;
+  GlueMapWindow *map = nullptr;
 
   /**
    * A #Widget that is shown below the map.
    */
-  Widget *bottom_widget;
+  Widget *bottom_widget = nullptr;
 
   /**
    * A #Widget that is shown instead of the map.  The #GlueMapWindow
    * is hidden and the DrawThread is suspended while this attribute is
    * non-nullptr.
    */
-  Widget *widget;
+  Widget *widget = nullptr;
 
-  ManagedWidget vario;
+  ManagedWidget vario{*this};
 
-  ManagedWidget traffic_gauge;
-  bool suppress_traffic_gauge, force_traffic_gauge;
+  ManagedWidget traffic_gauge{*this};
+  bool suppress_traffic_gauge = false, force_traffic_gauge = false;
 
-  ManagedWidget thermal_assistant;
+  ManagedWidget thermal_assistant{*this};
 
-  bool dragging;
+  bool dragging = false;
   GestureManager gestures;
 
 public:
-  PopupMessage *popup;
+  PopupMessage *popup = nullptr;
 
 private:
-  WindowTimer timer;
+  /**
+   * Called by the #MergeThread when new GPS data is available.
+   */
+  Notify gps_notify{[this]{ OnGpsNotify(); }};
+
+  /**
+   * Called by the calculation thread when new calculation results are
+   * available.  This updates the map and the info boxes.
+   */
+  Notify calculated_notify{[this]{ OnCalculatedNotify(); }};
+
+  /**
+   * @see DeferredRestorePage()
+   */
+  Notify restore_page_notify{[this]{ OnRestorePageNotify(); }};
+
+  PeriodicTimer timer{[this]{ RunTimer(); }};
 
   BatteryTimer battery_timer;
 
   PixelRect map_rect;
-  bool FullScreen;
+  bool FullScreen = false;
 
 #ifndef ENABLE_OPENGL
   /**
    * This variable tracks whether the #DrawThread was suspended
    * because the map was replaced by a #Widget.
    */
-  bool draw_suspended;
+  bool draw_suspended = false;
 #endif
 
-  bool restore_page_pending;
+  bool restore_page_pending = false;
 
 public:
-  MainWindow();
   virtual ~MainWindow();
 
 protected:
@@ -251,11 +250,11 @@ public:
   void SetFullScreen(bool _full_screen);
 
   void SendGPSUpdate() {
-    SendUser((unsigned)Command::GPS_UPDATE);
+    gps_notify.SendNotification();
   }
 
   void SendCalculatedUpdate() {
-    SendUser((unsigned)Command::CALCULATED_UPDATE);
+    calculated_notify.SendNotification();
   }
 
   void SetTerrain(RasterTerrain *terrain);
@@ -349,6 +348,12 @@ private:
 
   void StopDragging();
 
+  void RunTimer() noexcept;
+
+  void OnGpsNotify() noexcept;
+  void OnCalculatedNotify() noexcept;
+  void OnRestorePageNotify() noexcept;
+
 protected:
   /* virtual methods from class Window */
   virtual void OnDestroy() override;
@@ -360,15 +365,13 @@ protected:
   bool OnMouseMove(PixelPoint p, unsigned keys) override;
   bool OnMouseDouble(PixelPoint p) override;
   virtual bool OnKeyDown(unsigned key_code) override;
-  virtual bool OnUser(unsigned id) override;
-  virtual bool OnTimer(WindowTimer &timer) override;
   virtual void OnPaint(Canvas &canvas) override;
 
   /* virtual methods from class TopWindow */
-  virtual bool OnClose() override;
+  virtual bool OnClose() noexcept override;
 
 #ifdef ANDROID
-  virtual void OnPause() override;
+  virtual void OnPause() noexcept override;
 #endif
 };
 

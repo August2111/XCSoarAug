@@ -66,7 +66,7 @@ Copyright_License {
 
 class DeviceListWidget final
   : public ListWidget, private ActionListener,
-    NullBlackboardListener, PortListener, Notify {
+    NullBlackboardListener, PortListener {
   enum Buttons {
     DISABLE,
     RECONNECT, FLIGHT, EDIT, MANAGE, MONITOR,
@@ -170,6 +170,11 @@ class DeviceListWidget final
   Button *manage_button, *monitor_button;
   Button *debug_button;
 
+  Notify port_state_notify{[this]{
+    if (RefreshList())
+      UpdateButtons();
+  }};
+
 public:
   DeviceListWidget(const DialogLook &_look)
     :look(_look) {}
@@ -214,9 +219,9 @@ public:
   }
 
   /* virtual methods from class List::Handler */
-  virtual void OnPaintItem(Canvas &canvas, const PixelRect rc,
-                           unsigned idx) override;
-  virtual void OnCursorMoved(unsigned index) override;
+   void OnPaintItem(Canvas &canvas, const PixelRect rc,
+                    unsigned idx) noexcept override;
+  void OnCursorMoved(unsigned index) noexcept override;
 
 private:
   /* virtual methods from class ActionListener */
@@ -226,14 +231,8 @@ private:
   virtual void OnGPSUpdate(const MoreData &basic) override;
 
   /* virtual methods from class PortListener */
-  void PortStateChanged() override {
-    Notify::SendNotification();
-  }
-
-  /* virtual methods from class Notify */
-  void OnNotification() override {
-    if (RefreshList())
-      UpdateButtons();
+  void PortStateChanged() noexcept override {
+    port_state_notify.SendNotification();
   }
 };
 
@@ -329,7 +328,8 @@ DeviceListWidget::UpdateButtons()
 }
 
 void
-DeviceListWidget::OnPaintItem(Canvas &canvas, const PixelRect rc, unsigned idx)
+DeviceListWidget::OnPaintItem(Canvas &canvas, const PixelRect rc,
+                              unsigned idx) noexcept
 {
   assert(idx < NUMDEV);
 
@@ -436,7 +436,7 @@ DeviceListWidget::OnPaintItem(Canvas &canvas, const PixelRect rc, unsigned idx)
 }
 
 void
-DeviceListWidget::OnCursorMoved(unsigned index)
+DeviceListWidget::OnCursorMoved(unsigned index) noexcept
 {
   UpdateButtons();
 }
@@ -712,8 +712,9 @@ ShowDeviceList()
 {
   DeviceListWidget widget(UIGlobals::GetDialogLook());
 
-  WidgetDialog dialog(UIGlobals::GetDialogLook());
-  dialog.CreateFull(UIGlobals::GetMainWindow(), _("Devices"), &widget);
+  WidgetDialog dialog(WidgetDialog::Full{}, UIGlobals::GetMainWindow(),
+                      UIGlobals::GetDialogLook(),
+                      _("Devices"), &widget);
   widget.CreateButtons(dialog);
   dialog.AddButton(_("Close"), mrOK);
   dialog.EnableCursorSelection();

@@ -47,17 +47,22 @@ enum Buttons {
  * A bridge between DataHandler and TerminalWindow: copy all data
  * received from the Port to the TerminalWindow.
  */
-class PortTerminalBridge : public DataHandler, private DelayedNotify {
+class PortTerminalBridge final : public DataHandler {
   TerminalWindow &terminal;
   Mutex mutex;
   StaticFifoBuffer<char, 1024> buffer;
 
+  DelayedNotify notify{
+    std::chrono::milliseconds(100),
+    [this]{ OnNotification(); },
+  };
+
 public:
   PortTerminalBridge(TerminalWindow &_terminal)
-    :DelayedNotify(std::chrono::milliseconds(100)), terminal(_terminal) {}
+    :terminal(_terminal) {}
   virtual ~PortTerminalBridge() {}
 
-  virtual void DataReceived(const void *data, size_t length) {
+  bool DataReceived(const void *data, size_t length) noexcept {
     {
       const std::lock_guard<Mutex> lock(mutex);
       buffer.Shift();
@@ -68,11 +73,12 @@ public:
       buffer.Append(length);
     }
 
-    SendNotification();
+    notify.SendNotification();
+    return true;
   }
 
 private:
-  virtual void OnNotification() {
+  void OnNotification() noexcept {
     while (true) {
       char data[64];
       size_t length;
@@ -194,8 +200,8 @@ ShowPortMonitor(DeviceDescriptor &device)
 
   PortMonitorWidget widget(device, look.terminal);
 
-  WidgetDialog dialog(look.dialog);
-  dialog.CreateFull(UIGlobals::GetMainWindow(), caption, &widget);
+  WidgetDialog dialog(WidgetDialog::Full{}, UIGlobals::GetMainWindow(),
+                      look.dialog, caption, &widget);
   dialog.AddButton(_("Close"), mrOK);
   widget.CreateButtons(dialog);
 

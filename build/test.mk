@@ -979,7 +979,7 @@ RUN_DOWNLOAD_TO_FILE_SOURCES = \
 	$(SRC)/Operation/Operation.cpp \
 	$(SRC)/Operation/ConsoleOperationEnvironment.cpp \
 	$(TEST_SRC_DIR)/RunDownloadToFile.cpp
-RUN_DOWNLOAD_TO_FILE_DEPENDS = LIBNET UTIL
+RUN_DOWNLOAD_TO_FILE_DEPENDS = LIBNET IO OS UTIL
 $(eval $(call link-program,RunDownloadToFile,RUN_DOWNLOAD_TO_FILE))
 
 RUN_NOAA_DOWNLOADER_SOURCES = \
@@ -1545,13 +1545,14 @@ TEST_LXN_TO_IGC_SOURCES = \
 	$(SRC)/Device/Driver/LX/LXN.cpp \
 	$(TEST_SRC_DIR)/tap.c \
 	$(TEST_SRC_DIR)/TestLXNToIGC.cpp
-TEST_LXN_TO_IGC_DEPENDS =
+TEST_LXN_TO_IGC_DEPENDS = IO OS UTIL
 $(eval $(call link-program,TestLXNToIGC,TEST_LXN_TO_IGC))
 
 LXN2IGC_SOURCES = \
 	$(SRC)/Device/Driver/LX/Convert.cpp \
 	$(SRC)/Device/Driver/LX/LXN.cpp \
 	$(TEST_SRC_DIR)/lxn2igc.cpp
+LXN2IGC_DEPENDS = IO UTIL
 $(eval $(call link-program,lxn2igc,LXN2IGC))
 
 RUN_IGC_WRITER_SOURCES = \

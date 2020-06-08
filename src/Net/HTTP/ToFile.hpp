@@ -27,6 +27,9 @@ Copyright_License {
 #include "Job/Job.hpp"
 #include "OS/Path.hpp"
 
+#include <array>
+#include <cstddef> // for std::byte
+
 class OperationEnvironment;
 
 namespace Net {
@@ -35,22 +38,23 @@ namespace Net {
   /**
    * Download a URL into the specified file.
    *
+   * Throws on error.
+   *
    * @param md5_digest an optional buffer with at least 33 characters
    * which will contain the hex MD5 digest after returning
-   * @return true on success, false on error
    */
-  bool DownloadToFile(Session &session, const char *url,
+  void DownloadToFile(Session &session, const char *url,
                       const char *username, const char *password,
-                      Path path, char *md5_digest,
+                      Path path, std::array<std::byte, 32> *sha256,
                       OperationEnvironment &env);
 
-  static inline bool
+  static inline void
   DownloadToFile(Session &session, const char *url,
-                 Path path, char *md5_digest,
+                 Path path, std::array<std::byte, 32> *sha256,
                  OperationEnvironment &env)
   {
-    return DownloadToFile(session, url, nullptr, nullptr,
-                          path, md5_digest, env);
+    DownloadToFile(session, url, nullptr, nullptr,
+                   path, sha256, env);
   }
 
   class DownloadToFileJob : public Job {
@@ -58,24 +62,19 @@ namespace Net {
     const char *url;
     const char *username = nullptr, *password = nullptr;
     const Path path;
-    char md5_digest[33];
-    bool success;
+    std::array<std::byte, 32> sha256;
 
   public:
     DownloadToFileJob(Session &_session, const char *_url, Path _path)
-      :session(_session), url(_url), path(_path), success(false) {}
+      :session(_session), url(_url), path(_path) {}
 
     void SetBasicAuth(const char *_username, const char *_password) {
       username = _username;
       password = _password;
     }
 
-    bool WasSuccessful() const {
-      return success;
-    }
-
-    const char *GetMD5Digest() const {
-      return md5_digest;
+    const auto &GetSHA256() const {
+      return sha256;
     }
 
     virtual void Run(OperationEnvironment &env);
