@@ -8,7 +8,7 @@ set(Logger_SOURCES
         Logger/LoggerEPE.cpp
         Logger/LoggerFRecord.cpp
         Logger/LoggerImpl.cpp
-        Logger/MD5.cpp
+#        Logger/MD5.cpp
         Logger/NMEALogger.cpp
         Logger/Settings.cpp
 )

@@ -142,11 +142,12 @@ elseif(WIN32 AND MINGW)
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporory data!
 
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
-      # disable WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-      add_compile_definitions(BOOST_MATH_DISABLE_DEPRECATED_03_WARNING=ON)     
+      # disable WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      add_compile_definitions(BOOST_MATH_DISABLE_DEPRECATED_03_WARNING=ON)
+
       # add_compile_definitions(std=c++17) ### ??? Only a test on 11.05.2020
 # noch einmal ausblenden?
-      #   add_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
+      #   add_definitions(-std=c++17) ### Das setzt für c- und rc-Compiler ein falsches Argument!
       set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++17")
       set(CMAKE_C_FLAGS    "${CMAKE_C_FLAGS}")
 
@@ -397,6 +398,8 @@ set(SOURCE_FILES )
 
 # message(FATAL_ERROR "Test-Stop!")
 
+    add_subdirectory(src/_Deprecated)
+
     add_subdirectory(src/Airspace)
     add_subdirectory(src/Atmosphere)
     add_subdirectory(src/Audio)
@@ -459,23 +462,26 @@ set(SOURCE_FILES )
   add_subdirectory(src)   # libXCSoar!
 
 ### Translation Group
- if (NOT UNIX)
-     set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
-     list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
+ # if (NOT UNIX)
+#     set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
+#     list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
      set (TRANSLATIONS de)
      foreach(translation ${TRANSLATIONS})
-         if(NOT MSVC)
-              list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
-         endif()
+         # list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/_Deprecated/de.mo.c")
+         # ? set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/_Deprecated/de.mo.c PROPERTIES LANGUAGE C)
+###         if(NOT MSVC)
+###              list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")
+###         endif()
      endforeach()
- endif()
+ # endif()
 
-if(MSVC)
-  if (ON)  # FLAPS5)
-        list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c")
-        set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c PROPERTIES LANGUAGE C)
-  endif()
-endif()
+# # if(MSVC)
+# #   if (ON)  # FLAPS5)
+# #         # list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/po/de.mo.c")
+# #         list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/_Deprecated/de.mo.c")
+# #         set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/_Deprecated/de.mo.c PROPERTIES LANGUAGE C)
+# #   endif()
+# # endif()
 
 
 

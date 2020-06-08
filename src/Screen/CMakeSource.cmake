@@ -82,7 +82,7 @@ elseif(WIN32)  # GDI
         Screen/GDI/RawBitmap.cpp
         Screen/GDI/ResourceBitmap.cpp
         Screen/GDI/SingleWindow.cpp
-        Screen/GDI/Timer.cpp
+#        Screen/GDI/Timer.cpp
         Screen/GDI/TopWindow.cpp
         Screen/GDI/VirtualCanvas.cpp
         Screen/GDI/Window.cpp

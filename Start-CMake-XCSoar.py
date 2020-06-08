@@ -15,8 +15,8 @@ class ComputerDirectories(object):
 if sys.platform.startswith('win'):
     toolchain = 'mgw73'
     # toolchain = 'ninja'
-    toolchain = 'clang10'
-    # toolchain = 'msvc2019'
+    # toolchain = 'clang10'
+    toolchain = 'msvc2019'
 else:
     toolchain = 'unix'
 

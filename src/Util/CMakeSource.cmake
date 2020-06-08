@@ -1,5 +1,5 @@
 set(Util_SOURCES
-        Util/AllocatedString.cxx
+#        Util/AllocatedString.cxx
         Util/ASCII.cxx
         Util/Base64.cxx
         Util/ConvertString.cpp
@@ -16,6 +16,7 @@ set(Util_SOURCES
         Util/TruncateString.cpp
         Util/tstring.cpp
         Util/UTF8.cpp
+        Util/MD5.cpp  # new with 6.8.14
 )
 if(WIN32)
   list(APPEND Util_SOURCES
