@@ -177,8 +177,8 @@ elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
       add_compile_definitions(_AUG_MSC=1)  ### really???  ###
       add_compile_definitions(_UNICODE)
       # add_compile_definitions(std:c++11) ### Only a test on 11.05.2020
-      # add_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
-      add_compile_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
+# ???      add_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
+      # add_compile_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
       set(LIB_EXTENSION "lib")
       set(PRE_LIB "")
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!

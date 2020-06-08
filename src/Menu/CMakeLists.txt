@@ -44,5 +44,5 @@ target_link_libraries(${TARGET_NAME} PUBLIC
     # "${LINK_LIBS}/libpng/${XCSOAR_LIBPNG_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}png16.${LIB_EXTENSION}"   # libpng.${LIB_EXTENSION}"
 )
 if(NOT EXISTS ${LIBPNG_LIB})
-  message(FATAL_ERROR "### LIBPNG_LIB = '${LIBPNG_LIB}' not found!")
+#  message(FATAL_ERROR "### LIBPNG_LIB = '${LIBPNG_LIB}' not found!")
 endif()

@@ -20,7 +20,7 @@ endforeach()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-find_package(Boost 1.60 REQUIRED COMPONENTS date_time)
+## find_package(Boost 1.60 REQUIRED COMPONENTS date_time)
 
 
 add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
@@ -33,7 +33,7 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Libs)
 
 target_link_libraries(${TARGET_NAME}
-          ${Boost_LIBRARIES}
+      ${Boost_LIBRARIES}
 #    "${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
 #   "${LINK_LIBS}/zzip/${XCSOAR_ZZIP_VERSION}/lib/${TOOLCHAIN}/${PRE_LIB}zzip.${LIB_EXTENSION}"
 )
