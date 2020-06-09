@@ -20,8 +20,10 @@ Copyright_License {
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 */
+#include "Util/Compiler.h"   // aug!
 
 #include "FileMapping.hpp"
+// #include "winnt.h"
 #include "Path.hpp"
 
 #ifdef HAVE_POSIX
@@ -30,7 +32,7 @@ Copyright_License {
 #include <sys/mman.h>
 #include <sys/stat.h>
 #else
-#include "Util/Compiler.h"   // <windows.h>
+// aug: #include "Util/Compiler.h"   // <windows.h>
 #endif
 
 FileMapping::FileMapping(Path path)

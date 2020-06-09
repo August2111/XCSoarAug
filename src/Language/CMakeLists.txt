@@ -32,7 +32,7 @@ add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SCRIPT_FILES}
 #    ${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c
 )
-target_link_libraries(${TARGET_NAME} PUBLIC Task OS)
+target_link_libraries(${TARGET_NAME} PUBLIC Task OS _Deprecated)
 
 # target_link_libraries( ${TARGET_NAME}
 #     UTF8

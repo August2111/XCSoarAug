@@ -14815,3 +14815,5 @@ const unsigned long de_mo_length      = 0x0002B5ED;
 #define DE_MO_START       0x00000000
 #define DE_MO_FINISH      0x0002B5ED
 #define DE_MO_LENGTH      0x0002B5ED
+
+const unsigned long de_mo_size = DE_MO_LENGTH;

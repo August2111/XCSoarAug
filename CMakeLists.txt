@@ -101,19 +101,22 @@ if (WIN32 AND MSVC)
       set(PRE_LIB "")
 
       include_directories("${PROJECTGROUP_SOURCE_DIR}/temp/data")  # temporary data!
-      if (NOT THIRD_PARTY AND EXISTS "D:/Projects/3rd_Party")
-        set(THIRD_PARTY "D:/Projects/3rd_Party")
-      endif()
-      if (NOT LINK_LIBS AND EXISTS "D:/link_libs")
-        set(LINK_LIBS "D:/link_libs")
-      endif()
-      if (ON OR WIN64)  # momentan kein Flag verfügbar!
+      # # #if (NOT THIRD_PARTY AND EXISTS "D:/Projects/3rd_Party")
+      # # #  set(THIRD_PARTY "D:/Projects/3rd_Party")
+      # # #    message(FATAL_ERROR "Error: THIRD_PARTY?")
+      # # #endif()
+      # # #if (NOT LINK_LIBS AND EXISTS "D:/link_libs")
+      # # #  set(LINK_LIBS "D:/link_libs")
+      # # #    message(FATAL_ERROR "Error: LINK_LIBS?")
+      # # #endif()
+      if (ON OR WIN64)  # momentan kein Flag für 64bit verfügbar!
           add_compile_definitions(_AMD64_)
       else()
           message(FATAL_ERROR "Error: WIN32 not implemented?")
       endif()
       set(BOOST_ROOT ${LINK_LIBS}/boost/boost-1.73.0)
       set(FREEGLUT_LIB_DIR "${LINK_LIBS}/freeglut-MSVC-3.0.0-2/freeglut")
+      set(SODIUM_LIB "${LINK_LIBS}/libsodium/x64/Release/v142/static/libsodium.lib")
       add_compile_definitions(SODIUM_STATIC=1)  # MSCV only...
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
@@ -169,6 +172,7 @@ elseif(WIN32 AND MINGW)
 set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -static-libstdc++ -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive -v")
     set(FREEGLUT_LIB_DIR "D:/link_libs/freeglut-MinGW-3.0.0-1/freeglut")
+    set(SODIUM_LIB  ${LINK_LIBS}/libsodium/libsodium-win64/lib/libsodium.a)
 
 elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
       message(STATUS "+++ System = WIN32 / Clang!")
@@ -512,15 +516,6 @@ list(APPEND SOURCE_FILES "CMakeSource.cmake")
 list(APPEND XCSOAR_LINK_LIBRARIES  libXCSoar     ${XCSOAR_SOURCE_LISTS})
 
 # TODO(aug): Cleaning up this code!!!
-if (MSVC)
-
-  # list(APPEND XCSOAR_LINK_LIBRARIES  ${XCSOAR_LINK_LIBRARIES} ${LINK_LIBS}/libsodium/x64/Release/v142/static/libsodium.lib)
-  # list(APPEND XCSOAR_LINK_LIBRARIES  ${XCSOAR_LINK_LIBRARIES} ${LINK_LIBS}/libsodium/x64/Release/v142/dynamic/libsodium.lib)
-elseif(MINGW)
-  list(APPEND XCSOAR_LINK_LIBRARIES  ${XCSOAR_LINK_LIBRARIES} ${LINK_LIBS}/libsodium/libsodium-win64/lib/libsodium.a)
-else()
-  message(STATUS "+++ libsodium not supported yet!?!")
-endif()
 
 # External Libs
 list(APPEND XCSOAR_LINK_LIBRARIES
@@ -531,6 +526,7 @@ list(APPEND XCSOAR_LINK_LIBRARIES
    ${LIBPNG_LIB}
    ${ZZIP_LIB}
    ${ZLIB_LIB}
+   ${SODIUM_LIB}  # new at 06/2020
 
    ${Boost_LIBRARIES}
 )
