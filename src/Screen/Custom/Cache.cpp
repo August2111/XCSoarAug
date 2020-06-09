@@ -76,7 +76,7 @@ struct TextCacheKey {
   void Allocate() {
     assert(allocated == nullptr);
 
-    text = allocated = strdup(text);
+    text = allocated = _strdup(text);
   }
 
   TextCacheKey &operator=(const TextCacheKey &other) = delete;

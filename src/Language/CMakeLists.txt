@@ -21,7 +21,7 @@ endforeach()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 if(MSVC)
-set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
+#  set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
   else()
 # TODO(aug): is this correct?
 #  set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C) # CXX)

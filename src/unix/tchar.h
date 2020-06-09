@@ -39,7 +39,7 @@ typedef char TCHAR;
 #define _ftprintf fprintf
 #define _vftprintf vfprintf
 #define _fputts fputs
-#define _tcsdup strdup
+#define _tcsdup _strdup
 #define _tcscpy strcpy
 #define _tcscmp strcmp
 #define _tcslen strlen

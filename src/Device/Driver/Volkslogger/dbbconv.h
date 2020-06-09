@@ -20,8 +20,8 @@
 
 #include "Database.hpp"
 
-#include <stdint.h>
-#include <stddef.h>
+#include <cstdint>
+#include <cstddef>
 
 class DBB {
 public:

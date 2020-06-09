@@ -18,7 +18,7 @@
 #ifndef GRECORD_H
 #define GRECORD_H
 
-#include <stdint.h>
+#include <cstdint>
 #include <stdio.h>
 
 class GRECORD {

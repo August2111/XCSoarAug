@@ -180,8 +180,15 @@ elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
         set(TOOLCHAIN clang)
       endif()
       add_compile_definitions(BOOST_ASIO_SEPARATE_COMPILATION)
-      add_compile_definitions(_AUG_MSC=1)  ### really???  ###
-      add_compile_definitions(_UNICODE)
+      # add_compile_definitions(_AUG_MSC=1)  ### really???  ###
+      # add_compile_definitions(_UNICODE)
+      if (ON)
+        add_compile_definitions(HAVE_MSVCRT)
+        add_compile_definitions(_UNICODE)
+        add_compile_definitions(UNICODE)
+        add_compile_definitions(STRICT)
+        add_compile_definitions(_USE_MATH_DEFINES)   # necessary under C++17!
+      endif()
       # add_compile_definitions(std:c++11) ### Only a test on 11.05.2020
 # ???      add_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
       # add_compile_definitions(-std=c++17) ### ??? Only a test on 11.05.2020
@@ -619,8 +626,9 @@ endif()
 
 foreach(translation ${TRANSLATIONS})
         add_custom_command(TARGET ${TARGET_NAME} PRE_BUILD
-            # COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/output/po/${translation}.mo ${CMAKE_CURRENT_BINARY_DIR}/po/${translation}.mo
             COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/src/_Deprecated/${translation}.mo ${CMAKE_CURRENT_BINARY_DIR}/po/${translation}.mo
+            # TODO(aug): later do the creation here...
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/src/_Deprecated/${translation}.mo.c ${CMAKE_CURRENT_BINARY_DIR}/po/${translation}.mo.c
         )
 #    if(NOT MSVC)
 #            list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")

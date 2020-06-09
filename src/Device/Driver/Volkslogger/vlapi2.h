@@ -20,7 +20,7 @@
 
 #include "Geo/GeoPoint.hpp"
 
-#include <stdint.h>
+#include <cstdint>
 
 class DBB;
 

@@ -333,7 +333,7 @@ def create_xcsoar(args):
         myprocess = os.system(my_cmd)
       if myprocess != 0:
         creation = 0
-        print('cmd with failure!')
+        print('cmd with failure: ', myprocess, '!')
     else:
       myprocess = subprocess.Popen(arguments, env = my_env, shell = False)
       myprocess.wait()
