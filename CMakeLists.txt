@@ -373,7 +373,7 @@ else()
 endif()
 # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 
-
+include_directories( ${LINK_LIBS}/lipsodium/include)
 include_directories( ${Boost_INCLUDE_DIR})
 link_directories(${BOOST_ROOT}/lib)
 
@@ -463,8 +463,8 @@ set(SOURCE_FILES )
 
 ### Translation Group
  # if (NOT UNIX)
-#     set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
-#     list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
+     set_source_files_properties(${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c PROPERTIES LANGUAGE C)
+     list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/temp/data/memory_fields.c")
      set (TRANSLATIONS de)
      foreach(translation ${TRANSLATIONS})
          # list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/_Deprecated/de.mo.c")
