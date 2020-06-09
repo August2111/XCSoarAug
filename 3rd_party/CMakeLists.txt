@@ -29,6 +29,7 @@ file(GLOB_RECURSE SCRIPT_FILES *.txt *.cmake *.in)
   set(THIRDPARTY_INCLUDES ${THIRDPARTY_INCLUDES} PARENT_SCOPE)
 
 
+
 source_group("Scripts" FILES  ${SCRIPT_FILES})
 
 add_custom_target(ThirdParty

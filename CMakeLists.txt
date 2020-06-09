@@ -2,6 +2,8 @@
 cmake_minimum_required(VERSION 3.10)
 message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
+project(XCSoarAug)
+
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)  # important for folder structure f.e. in Visual Studio
 # Setting Area ===================================================
 include(ExternalProject)  # since 3.10
@@ -110,10 +112,9 @@ if (WIN32 AND MSVC)
       else()
           message(FATAL_ERROR "Error: WIN32 not implemented?")
       endif()
-      # LUA ist vermutlich besser im output ordner aufgehoben...
-      set(BOOST_ROOT D:/link_libs/boost/boost-1.73.0)
-
-      set(FREEGLUT_LIB_DIR "D:/link_libs/freeglut-MSVC-3.0.0-2/freeglut")
+      set(BOOST_ROOT ${LINK_LIBS}/boost/boost-1.73.0)
+      set(FREEGLUT_LIB_DIR "${LINK_LIBS}/freeglut-MSVC-3.0.0-2/freeglut")
+      add_compile_definitions(SODIUM_STATIC=1)  # MSCV only...
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
       message(STATUS "+++ System = WIN32 / MinGW (${TOOLCHAIN})!")
@@ -373,7 +374,7 @@ else()
 endif()
 # message(FATAL_ERROR "!!! Boost_DIR = ${Boost_DIR} at $ENV{COMPUTERNAME}")
 
-include_directories( ${LINK_LIBS}/lipsodium/include)
+include_directories( ${LINK_LIBS}/libsodium/include)
 include_directories( ${Boost_INCLUDE_DIR})
 link_directories(${BOOST_ROOT}/lib)
 
@@ -497,13 +498,11 @@ list(APPEND SOURCE_FILES "src/Version.cpp")
 if (MSVC)
   list(APPEND SOURCE_FILES "Data/XCSoar.def")
   list(APPEND SOURCE_FILES "Data/XCSoarVS.rc")
-elseif(MINGW)
-  list(APPEND SOURCE_FILES "Data/XCSoar.rc")
 else()
   list(APPEND SOURCE_FILES "Data/XCSoar.rc")
 endif()
 
-  list(APPEND SOURCE_FILES "CMakeSource.cmake")
+list(APPEND SOURCE_FILES "CMakeSource.cmake")
 
 #==========================================================
 #==========================================================
@@ -513,6 +512,15 @@ endif()
 list(APPEND XCSOAR_LINK_LIBRARIES  libXCSoar     ${XCSOAR_SOURCE_LISTS})
 
 # TODO(aug): Cleaning up this code!!!
+if (MSVC)
+
+  # list(APPEND XCSOAR_LINK_LIBRARIES  ${XCSOAR_LINK_LIBRARIES} ${LINK_LIBS}/libsodium/x64/Release/v142/static/libsodium.lib)
+  # list(APPEND XCSOAR_LINK_LIBRARIES  ${XCSOAR_LINK_LIBRARIES} ${LINK_LIBS}/libsodium/x64/Release/v142/dynamic/libsodium.lib)
+elseif(MINGW)
+  list(APPEND XCSOAR_LINK_LIBRARIES  ${XCSOAR_LINK_LIBRARIES} ${LINK_LIBS}/libsodium/libsodium-win64/lib/libsodium.a)
+else()
+  message(STATUS "+++ libsodium not supported yet!?!")
+endif()
 
 # External Libs
 list(APPEND XCSOAR_LINK_LIBRARIES
@@ -615,7 +623,8 @@ endif()
 
 foreach(translation ${TRANSLATIONS})
         add_custom_command(TARGET ${TARGET_NAME} PRE_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/output/po/${translation}.mo ${CMAKE_CURRENT_BINARY_DIR}/po/${translation}.mo
+            # COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/output/po/${translation}.mo ${CMAKE_CURRENT_BINARY_DIR}/po/${translation}.mo
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECTGROUP_SOURCE_DIR}/src/_Deprecated/${translation}.mo ${CMAKE_CURRENT_BINARY_DIR}/po/${translation}.mo
         )
 #    if(NOT MSVC)
 #            list(APPEND SOURCE_FILES "${PROJECTGROUP_SOURCE_DIR}/output/data/${translation}.mo.c")

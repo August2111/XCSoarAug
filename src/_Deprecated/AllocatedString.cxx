@@ -27,8 +27,9 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "AllocatedString.hxx"
-#include "StringAPI.hxx"
+/* 
+#include "Util/AllocatedString.hxx"
+#include "Util/StringAPI.hxx"
 
 template<>
 AllocatedString<char>
@@ -45,5 +46,5 @@ AllocatedString<wchar_t>::Duplicate(const_pointer src)
 {
 	return Duplicate(src, StringLength(src));
 }
-
 #endif
+*/

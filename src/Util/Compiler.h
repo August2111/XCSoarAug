@@ -25,6 +25,7 @@ Copyright_License {
 #define COMPILER_H
 
 #ifdef _WIN32
+
 // #   if _AUG_MSC
 // #   else
 // #   endif

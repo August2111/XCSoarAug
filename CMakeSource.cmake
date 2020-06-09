@@ -3,6 +3,7 @@
 # * src/Airspace/Airspace.cmake   or
 # * src/Airspace/CMakeSource.cmake
 
+include(src/_Deprecated/CMakeSource.cmake)
 include(src/Airspace/CMakeSource.cmake)
 include(src/Atmosphere/CMakeSource.cmake)
 include(src/Audio/CMakeSource.cmake)
@@ -75,7 +76,8 @@ set(Markers_SOURCES
 
 
 # list(APPEND XCSOAR_SOURCE_LISTS
-set(XCSOAR_LIB_LISTS 
+set(XCSOAR_LIB_LISTS
+    _Deprecated
     Profile  # profile.a
 #!!!    Engine #???
     Renderer  ##??

@@ -18,7 +18,7 @@ foreach(source_file ${${TARGET_NAME}_SOURCES})
     # message(STATUS "### ${src_path}  --- ${source_file}")
 endforeach()
 
-file(GLOB_RECURSE ${TARGET_NAME}_HEADERS "*.h*")
+file(GLOB_RECURSE ${TARGET_NAME}_HEADERS *.h *.hpp *.hxx)
 set(HEADER_FILES )
 foreach(source_file ${${TARGET_NAME}_HEADERS})
     # string(REPLACE "${TARGET_NAME}/" "" source_file ${source_file})
