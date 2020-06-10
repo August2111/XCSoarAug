@@ -42,11 +42,7 @@ Notify::SendNotification()
 #if defined(ANDROID) || defined(USE_POLL_EVENT) || defined(ENABLE_SDL)
   event_queue->Push(Callback, this);
 #else
-#ifndef _MSC_VER
   SendUser(0);
-#else
-  // TODO(aug): Hier muss noch etwas implementiert werden!
-#endif
 #endif
 }
 

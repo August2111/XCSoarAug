@@ -21,11 +21,6 @@ Copyright_License {
 }
 */
 
-#ifdef _MSC_VER  // aug: include before all others!
-#   include "Util/Compiler.h"
-#endif
-
-
 class Path;
 class AllocatedPath;
 

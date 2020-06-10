@@ -24,11 +24,11 @@ Copyright_License {
 #ifndef XCSOAR_PROFILE_PASSWORD_DIALOG_HPP
 #define XCSOAR_PROFILE_PASSWORD_DIALOG_HPP
 
-#include "Util/Compiler.h"
 #include "Util/TriState.hpp"
+#include "Util/Compiler.h"
 
 #ifdef _WIN32
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #ifdef ERROR
 #undef ERROR
 #endif

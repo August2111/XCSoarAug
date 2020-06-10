@@ -82,12 +82,8 @@ WrapPort(const DeviceConfig &config, PortListener *listener,
 }
 
 static Port *
-#if BOOST_ASIO_WORKAROUND
-OpenPortInternal(AsioThread &io_context,
-#else
 OpenPortInternal(boost::asio::io_context &io_context,
-#endif
-  const DeviceConfig &config, PortListener *listener,
+                 const DeviceConfig &config, PortListener *listener,
                  DataHandler &handler)
 {
   const TCHAR *path = nullptr;

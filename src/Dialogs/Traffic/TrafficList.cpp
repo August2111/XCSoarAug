@@ -570,13 +570,11 @@ TrafficListWidget::OnPaintItem(Canvas &canvas, PixelRect rc,
   assert(index < items.size());
   Item &item = items[index];
 
-// aug: in MSCV problems with original macro selection!
+  assert(item.IsFlarm()
 #ifdef HAVE_SKYLINES_TRACKING
-  assert(item.IsFlarm() || item.IsSkyLines());
-#else
-  assert(item.IsFlarm());
+         || item.IsSkyLines()
 #endif
-
+         );
 
   item.AutoLoad();
 

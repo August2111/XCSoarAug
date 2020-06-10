@@ -41,7 +41,7 @@ Copyright_License {
 #include <cassert>
 #include <tchar.h>
 #ifdef _UNICODE
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #endif
 
 #define DECELWPNAMESIZE   24                        // max size of taskpoint name
@@ -272,8 +272,6 @@ AltairProDevice::PropertySetGet(TCHAR *s, size_t size,
   bool result = true;
   assert(s != nullptr);
 
-  // char buffer[_tcslen(s) * 4 + 1];
-  // char* buffer = new char[_tcslen(s) * 4 + 1];
   size_t buflen = _tcslen(s) * 4 + 1;
   std::vector<char> buffer(buflen);
 
@@ -289,9 +287,7 @@ AltairProDevice::PropertySetGet(TCHAR *s, size_t size,
     if (::MultiByteToWideChar(CP_ACP, 0, &buffer[0], -1, s, size) <= 0)
       result  = false;
 
-  // delete[] buffer;
   return result;
-
 }
 #endif
 

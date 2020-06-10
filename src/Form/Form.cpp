@@ -264,7 +264,7 @@ WndForm::OnCommand(unsigned id, unsigned code)
     return true;
   }
 
-#if _AUG_MSC  // only MSVC!
+#if 0  // _AUG_MSC  // only MSVC!
   return false; // TODO(aug)!!!
 #else
   return ContainerWindow::OnCommand(id, code);

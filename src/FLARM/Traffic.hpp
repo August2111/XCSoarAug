@@ -189,10 +189,10 @@ struct FlarmTraffic {
 
   void Update(const FlarmTraffic &other);
 
-#ifdef _MSC_VER
+#ifdef _AUG
   bool operator>(FlarmTraffic* t) {
 #if 1  // TODO(aug) !!!!!!!!!!!!!!!!!
-    return true;
+    return true;  // needs to be defined!!
 #endif
   }
 #endif

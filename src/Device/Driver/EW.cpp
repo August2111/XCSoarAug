@@ -40,7 +40,7 @@ Copyright_License {
 #include "Waypoint/Waypoint.hpp"
 
 #ifdef _UNICODE
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #endif
 
 // Additional sentance for EW support

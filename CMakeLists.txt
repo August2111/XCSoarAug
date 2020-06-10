@@ -118,6 +118,7 @@ if (WIN32 AND MSVC)
       set(FREEGLUT_LIB_DIR "${LINK_LIBS}/freeglut-MSVC-3.0.0-2/freeglut")
       set(SODIUM_LIB "${LINK_LIBS}/libsodium/x64/Release/v142/static/libsodium.lib")
       add_compile_definitions(SODIUM_STATIC=1)  # MSCV only...
+      # add_compile_definitions(_WINSOCKAPI_)
 elseif(WIN32 AND MINGW)
       # Only MinGW / GCC:
       message(STATUS "+++ System = WIN32 / MinGW (${TOOLCHAIN})!")

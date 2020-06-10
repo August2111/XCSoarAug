@@ -20,6 +20,9 @@ Copyright_License {
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 }
 */
+#ifdef _AUG
+#   include "Util/Compiler.h"  // _AUG: Regarding winsock2.h!
+#endif
 
 #include "PCMetDialog.hpp"
 #include "Dialogs/Message.hpp"

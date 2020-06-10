@@ -22,7 +22,6 @@
 #ifndef ABSTRACTAIRSPACE_HPP
 #define ABSTRACTAIRSPACE_HPP
 
-#include "Util/Compiler.h"
 #include "Util/TriState.hpp"
 #include "Util/tstring.hpp"
 #include "AirspaceAltitude.hpp"
@@ -30,6 +29,7 @@
 #include "AirspaceActivity.hpp"
 #include "Geo/GeoPoint.hpp"
 #include "Geo/SearchPointVector.hpp"
+#include "Util/Compiler.h"
 
 #ifdef DO_PRINT
 #include <iostream>

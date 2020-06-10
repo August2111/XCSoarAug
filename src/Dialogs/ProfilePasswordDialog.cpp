@@ -40,12 +40,12 @@ ProfileFileHasPassword(Path path)
   try {
     Profile::LoadFile(map, path);
   } catch (...) {
-    return TriState::Unknown;
+    return TriState::UNKNOWN;
   }
 
   return map.Exists(ProfileKeys::Password)
-    ? TriState::True
-    : TriState::False;
+    ? TriState::TRUE
+    : TriState::FALSE;
 }
 
 ProfilePasswordResult

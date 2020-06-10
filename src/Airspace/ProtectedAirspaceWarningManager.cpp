@@ -20,8 +20,6 @@
 }
 */
 
-// #include "WinSock2.h"
-
 #include "Airspace/ProtectedAirspaceWarningManager.hpp"
 #include "Airspace/AirspaceWarningManager.hpp"
 

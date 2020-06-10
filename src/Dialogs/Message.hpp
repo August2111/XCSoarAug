@@ -24,14 +24,10 @@ Copyright_License {
 #ifndef XCSOAR_DIALOGS_MESSAGE_HPP
 #define XCSOAR_DIALOGS_MESSAGE_HPP
 
-#ifdef _MSC_VER  // aug: include before all others!
-#   include "Util/Compiler.h"
-#endif
-
 #include <tchar.h>
 
 #ifdef _WIN32
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #else
 
 enum {

@@ -32,7 +32,7 @@ Copyright_License {
 
 #if defined(_WIN32)
 #include "ResourceLoader.hpp"
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #include <mmsystem.h>
 #elif defined(HAVE_PCM_PLAYER)
 #include "GlobalPCMResourcePlayer.hpp"

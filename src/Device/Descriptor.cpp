@@ -805,8 +805,6 @@ DeviceDescriptor::WriteNMEA(const TCHAR* line, OperationEnvironment& env) {
   if (port == nullptr)
     return false;
 
-  // char buffer[_tcslen(line) * 4 + 1];
-  // char* buffer = new char[_tcslen(line) * 4 + 1];
   size_t buflen = _tcslen(line) * 4 + 1;
   std::vector<char> buffer(buflen);
 
@@ -815,7 +813,6 @@ DeviceDescriptor::WriteNMEA(const TCHAR* line, OperationEnvironment& env) {
     return false;
 
   return WriteNMEA(&buffer[0], env);
-//  delete[] buffer;
 }
 #endif
 

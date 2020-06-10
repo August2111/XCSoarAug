@@ -23,7 +23,7 @@
 #include <vector>
 
 #include <stdio.h>
-#include <cstdint>
+#include <stdint.h>
 
 /* Untertypen des Haupttyps Variabel */
 #define FLDPLT	     0x01

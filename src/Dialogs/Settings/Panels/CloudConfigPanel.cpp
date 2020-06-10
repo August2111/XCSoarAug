@@ -81,14 +81,14 @@ CloudConfigPanel::Prepare(ContainerWindow &parent, const PixelRect &rc)
 
   AddBoolean(_T("XCSoar Cloud"),
              _("Participate in the XCSoar Cloud field test?  This transmits your location, thermal/wave locations and other weather data to our test server."),
-             settings.enabled == TriState::True,
+             settings.enabled == TriState::TRUE,
              this);
 
   AddBoolean(_T("Show thermals"),
              _("Obtain and show thermal locations reported by others."),
              settings.show_thermals);
 
-  SetEnabled(settings.enabled == TriState::True);
+  SetEnabled(settings.enabled == TriState::TRUE);
 }
 
 bool
@@ -99,13 +99,13 @@ CloudConfigPanel::Save(bool &_changed)
   auto &settings =
     CommonInterface::SetComputerSettings().tracking.skylines.cloud;
 
-  bool cloud_enabled = settings.enabled == TriState::True;
+  bool cloud_enabled = settings.enabled == TriState::TRUE;
   if (SaveValue(ENABLED, ProfileKeys::CloudEnabled, cloud_enabled)) {
     settings.enabled = cloud_enabled
-      ? TriState::True
-      : TriState::False;
+      ? TriState::TRUE
+      : TriState::FALSE;
 
-    if (settings.enabled == TriState::True && settings.key == 0) {
+    if (settings.enabled == TriState::TRUE && settings.key == 0) {
       settings.key = SkyLinesTracking::GenerateKey();
 
       char s[64];

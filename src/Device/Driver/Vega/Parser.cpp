@@ -31,7 +31,7 @@ Copyright_License {
 #include <algorithm>
 
 #ifdef _UNICODE
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #endif
 
 static bool

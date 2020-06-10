@@ -30,7 +30,7 @@ Copyright_License {
 
 #include <chrono>
 
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 
 struct Event;
 

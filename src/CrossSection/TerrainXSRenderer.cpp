@@ -50,10 +50,6 @@ TerrainXSRenderer::Draw(Canvas &canvas, const ChartRenderer &chart,
     const TerrainHeight e = elevations[j];
     const TerrainType type = e.GetType();
 
-#if _MSC_VER
-// TODO(aug): leider klappt das noch nicht richtig, deshalb hier erst einmal ausblenden...
-// Das muss aber sicher noch einmal aktivert werden (aug)
-#else
     // Close and paint polygon
     if (j != 0 &&
         type != last_type &&
@@ -61,9 +57,8 @@ TerrainXSRenderer::Draw(Canvas &canvas, const ChartRenderer &chart,
       const auto center_distance = (distance + last_distance) / 2;
       points.append() = chart.ToScreen(center_distance, hmin);
       points.append() = chart.ToScreen(center_distance, hmin);
-#ifdef _MSC_VER
-      BulkPixelPoint p = points.begin();
-      DrawPolygon(canvas, last_type, &p, points.size());
+#ifdef _AUG_MSC  // TODO(aug): better solution?
+      DrawPolygon(canvas, last_type, &points.begin()[0], points.size());
 #else  // _MSC_VER
       DrawPolygon(canvas, last_type, points.begin(), points.size());
 #endif
@@ -90,9 +85,8 @@ TerrainXSRenderer::Draw(Canvas &canvas, const ChartRenderer &chart,
         points.append() = chart.ToScreen(distance, h);
         points.append() = chart.ToScreen(distance, hmin);
 
-#ifdef _MSC_VER
-        BulkPixelPoint p = points.begin();
-        DrawPolygon(canvas, type, &p, points.size());
+#ifdef _AUG_MSC  // TODO(aug): better solution?
+        DrawPolygon(canvas, type, &points.begin()[0], points.size());
 #else  // _MSC_VER
         DrawPolygon(canvas, type, points.begin(), points.size());
 #endif
@@ -104,7 +98,6 @@ TerrainXSRenderer::Draw(Canvas &canvas, const ChartRenderer &chart,
 
     last_type = type;
     last_distance = distance;
-#endif  // _MSV_VER - aug
   }
 }
 

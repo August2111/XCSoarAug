@@ -394,10 +394,8 @@ METARParser::ParseLine(const METAR::ContentString &content, ParsedMETAR &parsed)
   // METAR ETOU 231055Z AUTO 15004KT 9999 FEW130 27/19 A2993 RMK AO2 RAB1038E1048DZB1006E1011 SLP128 P0000 T02710189=
   // METAR KTTN 051853Z 04011KT 1/2SM VCTS SN FZFG BKN003 OVC010 M02/M02 A3006 RMK AO2 TSB40 SLP176 P0002 T10171017=
 
-#if defined(_AUG) && defined(_MSC_VER)
-  METARLine line(&content.begin().operator*());
-#elif 0  // UNIX???
-  METARLine line(content.begin().operator*());
+#ifdef _AUG_MSC
+  METARLine line(&content.begin()[0]);
 #else
   METARLine line(content.begin());
 #endif

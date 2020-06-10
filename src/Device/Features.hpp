@@ -24,8 +24,6 @@ Copyright_License {
 #ifndef XCSOAR_DEVICE_FEATURES_HPP
 #define XCSOAR_DEVICE_FEATURES_HPP
 
-#include "Util/Compiler.h"
-
 #ifdef _WIN32
 static constexpr unsigned NUMDEV = 4;
 #else

@@ -1,0 +1,11 @@
+D:\Projects\Gliding\XCSoarAug\src\Airspace\NearestAirspace.cpp                                  => __attribute__((always_inline)) statt gcc_always_inline
+D:\Projects\Gliding\XCSoarAug\src\CrossSection\TerrainXSRenderer.cpp                            => &points.begin()[0] instead of points.begin()
+D:\Projects\Gliding\XCSoarAug\src\Dialogs\Device\BlueFly\BlueFlyConfigurationDialog.cpp         => indirekter 'dialog'-aufruf
+D:\Projects\Gliding\XCSoarAug\src\Dialogs\Traffic\TeamCodeDialog.cpp                            => vector statt buffer
+D:\Projects\Gliding\XCSoarAug\src\Dialogs\ProfilePasswordDialog.cpp                             => TriState
+D:\Projects\Gliding\XCSoarAug\src\Dialogs\StartupDialog.cpp                                     => TriState
+
+Dialogs/Error.cpp
+
+Dialogs/dlgConfiguration
+Dialogs/PlaneListDialog.cpp

@@ -40,17 +40,8 @@
 
 /* TRUE and FALSE are macros on some platforms (at least on Win32, iOS and
  * macOS) - undefine */
-#if defined(_WIN32) || defined(_AUG) || 1
- /**
-  * A boolean type that has a third state called "unknown".
-  */
-// namespace TriState {
-enum class TriState : uint8_t {
-    False, True, Unknown
-};
-// };
 
-#else  // _MSC_VER
+#include "Util/Compiler.h"  // _AUG: Regarding winsock2.h!
 
 #ifdef TRUE
 #   undef TRUE
@@ -65,6 +56,5 @@ enum class TriState : uint8_t {
 enum class TriState : uint8_t {
   FALSE, TRUE, UNKNOWN
 };
-#endif  // _MSC_VER
 
 #endif

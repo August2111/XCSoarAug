@@ -29,7 +29,7 @@ Copyright_License {
 #include <stdio.h>
 
 #ifdef _UNICODE
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #endif
 
 bool

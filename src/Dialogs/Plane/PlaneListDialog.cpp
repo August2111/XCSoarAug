@@ -21,6 +21,10 @@ Copyright_License {
 }
 */
 
+#ifdef _AUG
+#   include "Util/Compiler.h"  // _AUG: Regarding winsock2.h!
+#endif
+
 #include "PlaneDialogs.hpp"
 #include "Dialogs/Error.hpp"
 #include "Dialogs/Message.hpp"

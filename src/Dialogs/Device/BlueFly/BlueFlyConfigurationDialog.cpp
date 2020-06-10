@@ -126,20 +126,16 @@ dlgConfigurationBlueFlyVarioShowModal(Device &_device)
 
   const DialogLook &look = UIGlobals::GetDialogLook();
 
-#ifndef _MSC_VER
   WidgetDialog dialog(WidgetDialog::Auto{}, UIGlobals::GetMainWindow(),
                       look,
-                      _T("BlueFly Vario"),
-                      new BlueFlyConfigurationWidget(look, dialog, device));
+                      _T("BlueFly Vario")
+#ifdef _AUG_MSC  // TODO(aug): 
+                      // das geht mit VS so NICHT!
+                      , nullptr);  // new BlueFlyConfigurationWidget(look, dialog, device));
 #else
-  WidgetDialog dialog(WidgetDialog::Auto{}, UIGlobals::GetMainWindow(),
-      look,
-      _T("BlueFly Vario"));
-// TODO(aug); this is wrong!!!  dialog.GetWidget().->Set(new BlueFlyConfigurationWidget(look, dialog, device));
-
-  // dialog.CreateAuto(UIGlobals::GetMainWindow(), _T("BlueFly Vario"),
-  //    new BlueFlyConfigurationWidget(look, dialog, device));
+      , new BlueFlyConfigurationWidget(look, dialog, device));
 #endif
+
   dialog.AddButton(_("Cancel"), mrCancel);
   dialog.ShowModal();
 }

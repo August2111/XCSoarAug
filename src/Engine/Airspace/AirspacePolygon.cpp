@@ -47,9 +47,9 @@ AirspacePolygon::AirspacePolygon(const std::vector<GeoPoint> &pts,
   if (prune) {
     // only for testing
     m_border.PruneInterior();
-    is_convex = TriState::True;
+    is_convex = TriState::TRUE;
   } else {
-    is_convex = TriState::Unknown;
+    is_convex = TriState::UNKNOWN;
   }
 }
 

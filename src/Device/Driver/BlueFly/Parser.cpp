@@ -135,7 +135,7 @@ BlueFlyDevice::ParseBST(const char *content, NMEAInfo &info)
 
   free(settings_keys);
 
-  settings_keys = _strdup(content);
+  settings_keys = strdup(content);
 
   return true;
 }

@@ -23,14 +23,9 @@
 #ifndef XCSOAR_PROTECTED_AIRSPACE_WARNING_MANAGER_HPP
 #define XCSOAR_PROTECTED_AIRSPACE_WARNING_MANAGER_HPP
 
-#ifdef _WIN32  // _MSC_VER  // aug: is this always correct?
-#include "Util/Compiler.h"
-#include "Thread/Guard.hpp"
-#else
-// aug: this was originally (02.03.2020)
 #include "Thread/Guard.hpp"
 #include "Util/Compiler.h"
-#endif
+
 class AirspaceWarningManager;
 class AbstractAirspace;
 class FlatProjection;

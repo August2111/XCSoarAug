@@ -30,7 +30,7 @@ Copyright_License {
 #include "Engine/Waypoint/Waypoint.hpp"
 
 #ifdef _UNICODE
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #endif
 
 #include <algorithm>

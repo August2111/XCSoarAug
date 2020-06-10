@@ -26,7 +26,7 @@ Copyright_License {
 
 #include <utility>
 
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 #include <tchar.h>
 #include <string.h>
 

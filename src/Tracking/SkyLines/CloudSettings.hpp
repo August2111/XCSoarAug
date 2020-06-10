@@ -46,7 +46,7 @@ struct CloudSettings {
   uint64_t key;
 
   void SetDefaults() {
-    enabled = TriState::Unknown;
+    enabled = TriState::UNKNOWN;
     show_thermals = true;
     key = 0;
   }

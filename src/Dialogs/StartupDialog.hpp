@@ -24,10 +24,6 @@ Copyright_License {
 #ifndef XCSOAR_STARTUP_DIALOG_HPP
 #define XCSOAR_STARTUP_DIALOG_HPP
 
-#ifdef _MSC_VER  // aug: include before all others!
-#   include "Util/Compiler.h"
-#endif
-
 /**
  * @return true on success, false if the user has pressed the "Quit"
  * button

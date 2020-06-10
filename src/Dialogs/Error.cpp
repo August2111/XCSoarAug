@@ -21,6 +21,11 @@ Copyright_License {
 }
 */
 
+#ifdef _AUG
+#   include "Util/Compiler.h"  // _AUG: Regarding winsock2.h!
+#endif
+
+
 #include "Error.hpp"
 #include "Message.hpp"
 #include "Util/ConvertString.hpp"

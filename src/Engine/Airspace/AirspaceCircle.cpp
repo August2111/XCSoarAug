@@ -30,7 +30,7 @@
 AirspaceCircle::AirspaceCircle(const GeoPoint &loc, const double _radius)
   :AbstractAirspace(Shape::CIRCLE), m_center(loc), m_radius(_radius)
 {
-  is_convex = TriState::True;
+  is_convex = TriState::TRUE;
 
   // @todo: find better enclosing radius as fn of NUM_SEGMENTS
 

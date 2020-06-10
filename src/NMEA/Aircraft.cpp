@@ -21,12 +21,6 @@ Copyright_License {
 }
 */
 
-#ifdef _MSC_VER
-#   define _CCTYPE_
-#   include <string>
-#   include <list>
-#endif
-
 #include "NMEA/Aircraft.hpp"
 #include "NMEA/MoreData.hpp"
 #include "NMEA/Derived.hpp"

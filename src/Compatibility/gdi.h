@@ -31,7 +31,7 @@ Copyright_License {
 #ifndef XCSOAR_COMPAT_GDI_H
 #define XCSOAR_COMPAT_GDI_H
 
-#include "Util/Compiler.h"   // <windows.h>
+#include <windows.h>
 
 #ifdef HAVE_MSVCRT
 

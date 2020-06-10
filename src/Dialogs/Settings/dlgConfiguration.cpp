@@ -21,6 +21,10 @@ Copyright_License {
 }
 */
 
+#ifdef _AUG
+#   include "Util/Compiler.h"  // _AUG: Regarding winsock2.h!
+#endif
+
 #include "Dialogs/Dialogs.h"
 #include "Dialogs/Message.hpp"
 #include "Widget/ArrowPagerWidget.hpp"
