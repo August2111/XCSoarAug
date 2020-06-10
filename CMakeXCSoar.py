@@ -197,7 +197,7 @@ def create_xcsoar(args):
       # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + root_dir.replace('\\','/') + '/opt/android-ndk-r21b/build/cmake/android.toolchain.cmake\"')
     else:
       if not (my_env['USER'] == 'pcderad0633'):
-        arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/LinuxMinGW.toolchain\"')
+        arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/.august/toolchains/LinuxMinGW.toolchain\"')
       else:
         print('!!! USER = ', my_env['USER'], '!!!')
     #    arguments.append('-DCMAKE_C_COMPILER=\"i686-w64-mingw32-gcc\"')
@@ -205,8 +205,8 @@ def create_xcsoar(args):
     # arguments.append('-DCMAKE_RC_COMPILER=i686-w64-mingw32-windres')
     # arguments.append('-DCMAKE_SYSTEM_NAME=windows')
 
-    # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/LinuxMinGW.cmake\"')
-    # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/build/toolchains/mscv2019.cmake\"')
+    # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/.august/toolchains/LinuxMinGW.cmake\"')
+    # arguments.append('-DCMAKE_TOOLCHAIN_FILE:PATH=\"' + src_dir.replace('\\','/') + '/.august/toolchains/mscv2019.cmake\"')
     arguments.append('-DTOOLCHAIN=' + toolchain)
     # arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost_1_73_0')
     arguments.append('-DBOOST_ROOT=' + link_libs + '/boost/boost-1.73.0') # the new one (25.05.2020)

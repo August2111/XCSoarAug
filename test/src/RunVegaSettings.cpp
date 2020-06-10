@@ -58,7 +58,7 @@ try {
 
   while (!args.IsEmpty()) {
     const char *p = args.GetNext();
-    char *q = _strdup(p);
+    char *q = strdup(p);
     char *v = strchr(q, '=');
     if (v == NULL) {
       if (!device.RequestSetting(q, env))

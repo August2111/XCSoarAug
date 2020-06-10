@@ -95,7 +95,7 @@ _gen_result(int ok, const char *func, const char *file, unsigned int line,
 		va_end(ap);
 #else
                 (void)ap;
-                local_test_name = _strdup(test_name);
+                local_test_name = strdup(test_name);
 #endif
 
 		/* Make sure the test name contains more than digits
