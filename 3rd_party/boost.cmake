@@ -1,6 +1,5 @@
 set(DISPLAY_STRING "# BOOST          # BOOST          # BOOST          # BOOST          # BOOST")
 message(STATUS "${DISPLAY_STRING}")
-
 cmake_minimum_required(VERSION 3.10)
 
 set(LIB_TARGET_NAME                                       boost)

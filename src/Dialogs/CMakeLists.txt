@@ -1,4 +1,3 @@
-# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC
 cmake_minimum_required(VERSION 3.15)
 message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
@@ -33,6 +32,10 @@ foreach(source_file ${${TARGET_NAME}_HEADERS})
 endforeach()
 # message(FATAL_ERROR Stop!)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+if (MSVC)
+      add_compile_definitions(_WINSOCKAPI_)
+endif()
 
 add_library(${TARGET_NAME} ${XCSOAR_LIB_TYPE}
     ${SOURCE_FILES}

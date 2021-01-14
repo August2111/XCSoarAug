@@ -87,28 +87,33 @@ def create_xcsoar(args):
       print('Debug-Stop')
       os.system("pause")
 
+  project_name = args[0]
   toolchain = args[1]
   if sys.platform.startswith('win'):
     is_windows = True
     # not necessary ?! install_bindir = 'bin'
     src_dir = start_dir
     if my_env['COMPUTERNAME'] == 'PCDERAD0781':
-       build_dir = 'D:/build_ws/XCSoarAug/' + toolchain
+       binary_dir = 'D:/build_ws'
     else:
-       build_dir = 'D:/Projects/Binaries/XCSoarAug/' + toolchain
+       binary_dir = 'D:/Projects/Binaries'
+    build_dir = binary_dir + '/'+ project_name + '/' + toolchain
 
-    link_libs = 'D:/link_libs'  # Windows!
-    third_party = 'D:/Projects/3rd_Party'  # Windows!
-    install_dir = 'D:/Programs/Install/XCSoar'
+    # link_libs = 'D:/link_libs'  # Windows!
+    link_libs = 'D:/Projects/link_libs'  # Windows!
+    # TODO(Augiust2111): delete: third_party = binary_dir + 'D:/Projects/3rd_Party'  # Windows!
+    third_party = binary_dir + '/3rd_Party'  # Windows!
     program_dir = 'D:/Programs'
+    install_dir = program_dir + '/Install/' + project_name
   else:
     src_dir = start_dir
     root_dir = my_env['HOME']
     proj_dir = root_dir + '/Projects'
-    build_dir = proj_dir + '/Binaries/XCSoarAug/' + toolchain
+    binary_dir = proj_dir + '/Binaries'
+    build_dir = binary_dir + '/'+ project_name+ '/' + toolchain
     link_libs = proj_dir + '/link_libs'
     third_party = proj_dir + '/3rd_Party'
-    install_dir = proj_dir + '/Install/XCSoar'
+    install_dir = proj_dir + '/Install/' + project_name
     # program_dir = '/usr/bin'
     program_dir = '/usr/local/bin'
 
@@ -331,7 +336,7 @@ def create_xcsoar(args):
         myprocess = subprocess.call(my_cmd, env = my_env, shell = False)
       else:
         myprocess = os.system(my_cmd)
-      if myprocess != 0:
+      if not myprocess in [0, 1]:
         creation = 0
         print('cmd with failure: ', myprocess, '!')
     else:

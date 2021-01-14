@@ -137,7 +137,7 @@ set(XCSOAR_LIB_LISTS
     Language
     Logger
     # Look
-    xcsLua
+    Lua
     #  lua1
     Markers
     # Math

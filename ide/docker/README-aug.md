@@ -9,8 +9,12 @@ Docker-Build:
 docker build --file ide/docker/Dockerfile -t xcsoar/xcsoar-build:latest ./ide/
 
 Docker-Run:
-docker run --mount type=bind,source="%CD%",target=/opt/xcsoar -it xcsoar/xcsoar-build:latest xcsoar-compile ANDROID
-docker run --mount type=bind,source="%CD%",target=/opt/xcsoar -it xcsoar/xcsoar-build:latest /bin/bash
+ - Linux-Host:
+   docker run --mount type=bind,source="$(pwd)",target=/opt/xcsoar -it xcsoar/xcsoar-build:latest xcsoar-compile ANDROID
+ - Windows-Host:
+   docker run --mount type=bind,source="%CD%",target=/opt/xcsoar -it xcsoar/xcsoar-build:latest xcsoar-compile ANDROID
+   docker run --mount type=bind,source="%CD:\=/%",target=/opt/xcsoar -it xcsoar/xcsoar-build:latest xcsoar-compile ANDROID
+   docker run --mount type=bind,source="%CD:\=/%",target=/opt/xcsoar -it xcsoar/xcsoar-build:latest /bin/bash
 
 docker ps --all
 docker container purge
@@ -30,3 +34,16 @@ TARGET_CPPFLAGS += -I/usr/include -I/usr/include/x86_64-linux-gnu
 # das erste wegen fwd.hpp, das zweite wegen "bits/libc-header-start.h"
 
 apt-get install -y libc6-dev-i386
+
+
+# unbedingt wegen Zugriff
+# kein sudo, weil debian (und nicht ubuntu)
+chmod o+r /etc/resolv.conf
+# installiere alle tools, die für build python notwendig sind!
+apt update
+apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
+# download python (aktuellste Version!)
+curl -O https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
+extract python
+tar -xf Python-3.8.3.tar.xz
+
