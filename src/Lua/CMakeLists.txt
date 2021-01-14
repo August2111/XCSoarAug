@@ -1,10 +1,9 @@
-# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC# XCSoar-MSVC
 cmake_minimum_required(VERSION 3.15)
 message(STATUS "+++ Start CMake ${CMAKE_CURRENT_SOURCE_DIR}!")
 
   # get_filename_component(TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
   get_filename_component(PUR_TARGET_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME_WE)
-  set(TARGET_NAME "xcs${PUR_TARGET_NAME}")
+  set(TARGET_NAME "${PUR_TARGET_NAME}")
 
 # organize the files in subdirectories
 set(SOURCE_FILES )

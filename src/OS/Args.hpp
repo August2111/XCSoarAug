@@ -35,6 +35,7 @@ Copyright_License {
 
 #include <list>
 #include <algorithm>
+#include <iterator>
 #include <stdlib.h>
 #include <stdio.h>
 #include <cassert>

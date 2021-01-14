@@ -20,6 +20,7 @@
 }
  */
 
+#include <iterator>
 #include "GrahamScan.hpp"
 #include "Geo/SearchPointVector.hpp"
 

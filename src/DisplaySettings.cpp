@@ -26,6 +26,7 @@ Copyright_License {
 void
 DisplaySettings::SetDefaults()
 {
-  orientation = DisplayOrientation::DEFAULT;
+  orientation = DisplayOrientation::PORTRAIT;
+  // aug: orientation = DisplayOrientation::DEFAULT;
   cursor_size = 1;
 }
