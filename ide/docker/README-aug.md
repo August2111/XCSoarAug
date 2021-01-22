@@ -17,8 +17,8 @@ Docker-Run:
    docker run --mount type=bind,source="%CD:\=/%",target=/opt/xcsoar -it xcsoar/xcsoar-build:latest /bin/bash
 
 docker ps --all
-docker container purge
-docker system purge
+docker container prune
+(docker system prune löscht docker komplett!!!!)
 
 LINUX es fehlt:
 (sudo apt install libglm-dev)
