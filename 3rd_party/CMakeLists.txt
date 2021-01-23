@@ -33,7 +33,7 @@ file(GLOB_RECURSE SCRIPT_FILES *.txt *.cmake *.in)
 source_group("Scripts" FILES  ${SCRIPT_FILES})
 
 add_custom_target(ThirdParty
-    EXCLUDE_FROM_ALL
+    # EXCLUDE_FROM_ALL
     SOURCES
     ${SCRIPT_FILES}
 )

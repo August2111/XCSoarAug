@@ -94,8 +94,15 @@ extern const char HomeWaypoint[];
 extern const char HomeLocation[];
 extern const char TeamcodeRefWaypoint[];
 extern const char PilotName[];
+// WeGlide +
+extern const char WeGlidePilotID[];
+extern const char WeGlidePilotDOB[];
+// WeGlide -
 extern const char CoPilotName[];
 extern const char AircraftType[];
+// WeGlide +
+extern const char WeGlideAircraftType[];
+// WeGlide -
 extern const char AircraftReg[];
 extern const char CompetitionId[];
 extern const char LoggerID[];

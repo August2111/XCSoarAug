@@ -33,6 +33,10 @@ Copyright_License {
 
 enum ControlIndex {
   PilotName,
+// WeGlide +
+  WeGlidePilotID,
+  WeGlidePilotDOB,
+// WeGlide +
   CoPilotName,
   LoggerTimeStepCruise,
   LoggerTimeStepCircling,
@@ -67,6 +71,17 @@ LoggerConfigPanel::Prepare(ContainerWindow &parent, const PixelRect &rc)
 
   RowFormWidget::Prepare(parent, rc);
   AddText(_("Pilot name"), nullptr, logger.pilot_name);
+
+// WeGlide +
+  AddInteger(_("WeGlide Pilot ID"),
+          _("Take this from your WeGlide Profile. Or set to 0 if not used."),
+	  _T("%u"), _T("%u"),
+	  0, 10000, 1,
+	  logger.weglide_pilot_id);
+  AddPassword(_("Pilot date of birth"),
+	  _("Date of birth to identify your WeGlide Profile."),
+	  logger.weglide_pilot_dob);
+// WeGlide -
 
   AddText(_("CoPilot name"), nullptr, logger.copilot_name);
 

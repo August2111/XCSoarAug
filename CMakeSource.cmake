@@ -27,6 +27,7 @@ include(src/IO/CMakeSource.cmake)
 include(src/Job/CMakeSource.cmake)
 include(src/Language/CMakeSource.cmake)
 include(src/Logger/CMakeSource.cmake)
+include(src/Cloud/CMakeSource.cmake)
 include(src/Look/CMakeSource.cmake)
 include(src/Lua/CMakeSource.cmake)
 include(src/MapWindow/CMakeSource.cmake)
@@ -136,6 +137,7 @@ set(XCSOAR_LIB_LISTS
     Job
     Language
     Logger
+    Cloud
     # Look
     Lua
     #  lua1

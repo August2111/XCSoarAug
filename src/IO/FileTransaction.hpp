@@ -64,6 +64,15 @@ public:
     return temporary_path;
   }
 
+ // WeGlide +
+/**
+   * Returns the final path.
+   */
+  Path GetFinalPath() const {
+    return final_path;
+  }
+// WeGlide -
+
   /**
    * Replace the file with the contents of the temporary file.
    *

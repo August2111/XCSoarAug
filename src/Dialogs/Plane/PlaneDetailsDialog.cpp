@@ -42,6 +42,7 @@ class PlaneEditWidget final
     MAX_BALLAST,
     DUMP_TIME,
     MAX_SPEED,
+    WEGLIDE_AIRCRAFT_TYPE_ID,
   };
 
   WndForm *dialog;

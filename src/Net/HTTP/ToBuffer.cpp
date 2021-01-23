@@ -92,4 +92,6 @@ Net::DownloadToBufferJob::Run(OperationEnvironment &env)
 {
   length = DownloadToBuffer(session, url, username, password,
                             buffer, max_length, env);
+
+  ((char*) buffer)[length] = 0;
 }
