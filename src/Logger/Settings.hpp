@@ -58,6 +58,11 @@ struct LoggerSettings {
 
   StaticString<64> pilot_name;
 
+// WeGlide +
+  unsigned weglide_pilot_id;
+  StaticString<20> weglide_pilot_dob;
+// WeGlide -
+
   StaticString<64> copilot_name;
 
   void SetDefaults();

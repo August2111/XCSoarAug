@@ -26,6 +26,9 @@
 #endif
 
 #include "Logger/ExternalLogger.hpp"
+// WeGlide +
+#include "Cloud/IGCFileUpload.hpp"
+// WeGlide -
 #include "Form/DataField/ComboList.hpp"
 #include "Dialogs/Message.hpp"
 #include "Dialogs/ComboPicker.hpp"
@@ -324,6 +327,13 @@ ExternalLogger::DownloadFlightFrom(DeviceDescriptor &device)
 
     transaction.SetPath(AllocatedPath::Build(logs_path, name));
     transaction.Commit();
+
+ // WeGlide +
+   /* ask whether this IGC should be uploaded to WeGlide */
+    IGCFileUpload IGCupload(IGCFileUpload::CompPlatform::WeGlide);
+// aug     IGCupload.PostIGCFile(transaction.GetFinalPath().c_str());
+    IGCupload.PostIGCFile(transaction.GetFinalPath().c_str());
+// WeGlide -
 
     if (ShowMessageBox(_("Do you want to download another flight?"),
                     _("Download flight"), MB_YESNO | MB_ICONQUESTION) != IDYES)
