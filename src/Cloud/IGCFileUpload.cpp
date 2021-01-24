@@ -171,10 +171,10 @@ IGCFileUpload::Upload2WeGlide(const wchar_t* _path, const unsigned aircraft_type
     sprintf(path, "%ws", _path);
   FileToWeGlide PostFile;
 //  if (path.IsNull()) return false;
-  if (!path || strlen(path)) return false;
+  if (!path || !strlen(path)) return false;
 
   bool rv = PostFile.SetWeGlideUploadParam(pilot_id,pilot_dob,aircraft_type_id);
-  if (rv) rv = PostFile.SetWeGlideUploadURL("http://api.weglide.org/v1/igcfile");
+  if (rv) rv = PostFile.SetWeGlideUploadURL("https://api.weglide.org/v1/igcfile");
   if (rv) rv = PostFile.SetWeGlideUploadFile(path);
   if (rv) rv = PostFile.DoUploadToWeGlide(err_msg,sizeof(err_msg),message_buf,sizeof(message_buf));
 
@@ -225,26 +225,28 @@ IGCFileUpload::PostIGCFile(const wchar_t* _path)
     Net::Session session;
 
     char buffer[0x4000];
-    Net::DownloadToBufferJob job(session, "https://api.weglide.org/v1/user/511", buffer, sizeof(buffer) - 1);
-    if (!runner.Run(job))
-    {
-        LogFormat("buffer = %s", buffer);
-        return;
-    }
-    LogFormat("buffer = %s", buffer);
+//    Net::DownloadToBufferJob job(session, "https://api.weglide.org/v1/user/511", buffer, sizeof(buffer) - 1);
+//    if (!runner.Run(job))
+//    {
+//        LogFormat("buffer = %s", buffer);
+//        return;
+//    }
+//    LogFormat("buffer = %s", buffer);
 
     /** Look up Pilot and Aircraft **/
-    IGCFileUpload::GetWeGlidePilotName(logger.weglide_pilot_id,session,runner);
-    IGCFileUpload::GetWeGlideAircraftType(plane.weglide_aircraft_type,session,runner);
+//    IGCFileUpload::GetWeGlidePilotName(logger.weglide_pilot_id,session,runner);
+//    IGCFileUpload::GetWeGlideAircraftType(plane.weglide_aircraft_type,session,runner);
   } catch (...) {
     ShowError(std::current_exception(), _T("WeGlide Upload"));
     LogFormat(_("WeGlide Upload: No network available"));
     return;
   }
 
+  memcpy(IGCFileUpload::pilot_name,L"Uwe",8);
+  memcpy(IGCFileUpload::aircraft_type , L"JS1",8);
   msg.Format(_T("Pilot: %s (%d)\nAircraft: %s (%d)"),
-	IGCFileUpload::pilot_name,logger.weglide_pilot_id,
-	IGCFileUpload::aircraft_type,plane.weglide_aircraft_type);
+      IGCFileUpload::pilot_name, logger.weglide_pilot_id,
+      IGCFileUpload::aircraft_type, plane.weglide_aircraft_type);
   if (ShowMessageBox(msg,
     _("Upload flight to WeGlide"), MB_YESNO | MB_ICONQUESTION) != IDYES) {
       LogFormat(_T("Abort Upload flight %s"),
@@ -263,11 +265,17 @@ IGCFileUpload::PostIGCFile(const wchar_t* _path)
 	  CopyString(CopyString(message_buf,"Flight ID ",sizeof(message_buf)),
 	    flt_msg,sizeof(message_buf));
 
-	msg.Format(_T("Success! %s"),message_buf);
-	ShowMessageBox(msg,_("Upload flight to WeGlide"), MB_OK | MB_ICONINFORMATION);
+    //wchar_t* net_message();
+    wchar_t s[256];
+    // wsprintf(s, L"%s", message_buf);
+    mbstowcs(s, message_buf, strlen(message_buf)+1);
+	msg.Format(_T("Success! %s"), s);
+    LogFormat(msg);
+        ShowMessageBox(msg,_("Upload flight to WeGlide"), MB_OK | MB_ICONINFORMATION);
       } else {
-	msg.Format(_T("Error! %s"),err_msg);
-	ShowMessageBox(msg,_("Upload flight to WeGlide"), MB_OK | MB_ICONINFORMATION);
+	msg.Format(_T("Error! %s",err_msg));
+    LogFormat(msg);
+    ShowMessageBox(msg,_("Upload flight to WeGlide"), MB_OK | MB_ICONINFORMATION);
       }
     }
 }

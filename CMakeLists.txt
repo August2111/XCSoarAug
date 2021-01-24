@@ -171,7 +171,7 @@ elseif(WIN32 AND MINGW)
 
 set(CMAKE_CXX_STANDARD_LIBRARIES "-static-libgcc -static-libstdc++ -lwsock32 -lws2_32 ${CMAKE_CXX_STANDARD_LIBRARIES}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -static-libstdc++ -Wl,-Bstatic,--whole-archive -lwinpthread -Wl,--no-whole-archive -v")
-    set(FREEGLUT_LIB_DIR "D:/link_libs/freeglut-MinGW-3.0.0-1/freeglut")
+    set(FREEGLUT_LIB_DIR "${LINK_LIBS}/freeglut-MinGW-3.0.0-1/freeglut")
     set(SODIUM_LIB  ${LINK_LIBS}/libsodium/libsodium-win64/lib/libsodium.a)
 
 elseif(WIN32 AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
@@ -587,6 +587,11 @@ endif()
 list(APPEND XCSOAR_LINK_LIBRARIES
 #    ${Boost_LIBRARIES}
 #    libXCSoar
+${LINK_LIBS}/openssl/OpenSSL-Win64/lib/VC/static/libssl64MDd.lib
+${LINK_LIBS}/openssl/OpenSSL-Win64/lib/VC/static/libcrypto64MDd.lib
+Crypt32.lib
+# CryptNet.lib
+# cryptdll.lib
 ) # Reihenfolge is very important!!!!
 
 foreach(lib ${XCSOAR_LINK_LIBRARIES})

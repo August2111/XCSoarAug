@@ -58,10 +58,6 @@ Copyright_License {
 #include "Profile/Profile.hpp"
 #include "Profile/DeviceConfig.hpp"
 #include "Interface.hpp"
-#include "LocalPath.hpp"             // WeGlide
-// #include "System/Path.hpp"           // WeGlide
-
-#include "Cloud/IGCFileUpload.hpp"   // WeGlide
 
 #ifdef ANDROID
 #include "Java/Global.hxx"
@@ -300,15 +296,16 @@ DeviceListWidget::UpdateButtons()
 {
   const unsigned current = GetList().GetCursorIndex();
 
-  IGCFileUpload IGCupload(IGCFileUpload::CompPlatform::WeGlide);
-
 // WeGlide
+//!  IGCFileUpload IGCupload(IGCFileUpload::CompPlatform::WeGlide);
+
   /* TODO: remove next 3 lines after debug phase is over */
 //  const auto logs_path = /* MakeLocalPath*/ (_T("logs"));
 //  const auto path = AllocatedPath::Build(logs_path, _("031GL6A1.IGC"));
 //  const auto path = logs_path + "//" + _("031GL6A1.IGC");
 //  IGCupload.PostIGCFile(L"logs/031GL6A1.IGC"); /* Dummy File for test */
-  IGCupload.PostIGCFile(L"D:/OneDrive/Dokumente/Gliding/Flights/2020/2020-09-11/09BVF4V1.igc"); /* Dummy File for test */
+//  IGCupload.PostIGCFile(L"D:/OneDrive/Dokumente/Gliding/Flights/2020/2020-09-11/09BVF4V1.igc"); /* Dummy File for test */
+//!  IGCupload.PostIGCFile(L"D:/OneDrive/Dokumente/Gliding/Flights/2020/2020-08-20/08KVF4V1.igc");  // Dummy File for test 
 // WeGlide
 
   if (current < NUMDEV) {

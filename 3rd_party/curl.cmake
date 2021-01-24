@@ -15,6 +15,7 @@ set(ZLIB_DIR ${LINK_LIBS}/zlib/${XCSOAR_ZLIB_VERSION})
 #  set(${TARGET_CNAME}_VERSION "7.68.0")
   set(${TARGET_CNAME}_VERSION "7.69.1")
   set(${TARGET_CNAME}_VERSION "7.71.1")
+  set(${TARGET_CNAME}_VERSION "7.74.0")
   string(REPLACE "." "_" GIT_TAG ${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION})
   # message(FATAL_ERROR "### GIT_TAG = ${GIT_TAG}")
   set(XCSOAR_${TARGET_CNAME}_VERSION "${LIB_TARGET_NAME}-${${TARGET_CNAME}_VERSION}")  # reset!
@@ -87,3 +88,9 @@ set(THIRDPARTY_INCLUDES ${THIRDPARTY_INCLUDES} ${${TARGET_CNAME}_INCLUDE_DIR})
 #          "-DZLIB_INCLUDE_DIR=${ZLIB_DIR}/include"
 #          "-DZLIB_LIBRARY_DEBUG=${ZLIB_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstaticd.${LIB_EXTENSION}"
 #          "-DZLIB_LIBRARY_RELEASE=${ZLIB_DIR}/lib/${TOOLCHAIN}/${PRE_LIB}zlibstatic.${LIB_EXTENSION}"
+
+# D:\Projects\link_libs\openssl\OpenSSL-Win64\lib\VC\static\libssl64MDd.lib
+# D:\Projects\link_libs\openssl\OpenSSL-Win64\lib\VC\static\libcrypto64MDd.lib
+# Crypt32.lib
+# CryptNet.lib
+# cryptdll.lib

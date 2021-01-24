@@ -688,3 +688,23 @@ InputEvents::eventFileManager(const TCHAR *misc)
 {
   ShowFileManager();
 }
+
+#include "LocalPath.hpp"             // WeGlide
+// #include "System/Path.hpp"           // WeGlide
+#include "Cloud/IGCFileUpload.hpp"   // WeGlide
+
+void
+InputEvents::eventUploadFile(const TCHAR *misc)
+{
+    // WeGlide
+    IGCFileUpload IGCupload(IGCFileUpload::CompPlatform::WeGlide);
+
+      /* TODO: remove next 3 lines after debug phase is over */
+    //  const auto logs_path = /* MakeLocalPath*/ (_T("logs"));
+    //  const auto path = AllocatedPath::Build(logs_path, _("031GL6A1.IGC"));
+    //  const auto path = logs_path + "//" + _("031GL6A1.IGC");
+    //  IGCupload.PostIGCFile(L"logs/031GL6A1.IGC"); /* Dummy File for test */
+    //  IGCupload.PostIGCFile(L"D:/OneDrive/Dokumente/Gliding/Flights/2020/2020-09-11/09BVF4V1.igc"); /* Dummy File for test */
+    IGCupload.PostIGCFile(L"D:/OneDrive/Dokumente/Gliding/Flights/2020/2020-07-30/07UVF4V1.igc");  // Dummy File for test 
+    // WeGlide
+}

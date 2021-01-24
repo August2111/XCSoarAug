@@ -183,6 +183,7 @@ namespace InputEvents
   void eventRunLuaFile(const TCHAR *misc);
   void eventResetTask(const TCHAR *misc);
   void eventLockScreen(const TCHAR *misc);
+  void eventUploadFile(const TCHAR *misc);
   // -------
 };
 

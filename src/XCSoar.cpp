@@ -47,6 +47,13 @@ Copyright_License {
 #include "OS/Args.hpp"
 #include "IO/Async/GlobalAsioThread.hpp"
 
+#ifdef _MSC_VER
+FILE _iob[] = { *stdin, *stdout, *stderr };
+extern "C" FILE * __cdecl __iob_func(void) { return _iob; }
+
+int (WINAPIV* __vsnprintf)(char*, size_t, const char*, va_list) = _vsnprintf;
+#endif _MSC_VER
+
 #ifdef ENABLE_SDL
 /* this is necessary on Mac OS X, to let libSDL bootstrap Quartz
    before entering our main() */

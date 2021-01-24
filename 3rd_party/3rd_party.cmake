@@ -5,6 +5,7 @@ set(XCSOAR_LUA_VERSION "lua-5.3.5")
 # set(XCSOAR_CURL_VERSION "curl-7.64.1")  # curl-git")
 # set(XCSOAR_CURL_VERSION "curl-7.69.1")
 set(XCSOAR_CURL_VERSION "curl-7.71.1")
+set(XCSOAR_CURL_VERSION "curl-7.74.0")
 add_definitions(-DCURL_STATICLIB)
 
 # 3rd-party! 

@@ -63,7 +63,7 @@ FileToWeGlide::DoUploadToWeGlide(char *err, size_t size_err, char *msg, size_t s
   curl_formadd(&formpost,
 	       &lastptr,
 	       CURLFORM_COPYNAME, "date_of_birth",
-	       CURLFORM_COPYCONTENTS, pilot_dob,
+	       CURLFORM_COPYCONTENTS, "1958-11-21",  //pilot_dob,
 	       CURLFORM_END);
 
   curl_formadd(&formpost,
@@ -88,6 +88,8 @@ FileToWeGlide::DoUploadToWeGlide(char *err, size_t size_err, char *msg, size_t s
 
   curl_easy_setopt(curl, CURLOPT_URL, send_to_URL);
   curl_easy_setopt(curl, CURLOPT_HTTPPOST, formpost);
+
+  curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
   /* Perform the request, res will get the return code */
   res = curl_easy_perform(curl);
   /* Check for errors */
